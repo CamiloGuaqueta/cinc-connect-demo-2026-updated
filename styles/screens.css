@@ -9633,14 +9633,14 @@ a.sub-header__right {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   gap: 12px;
-  padding-inline: calc((100% - 262px) / 2);
+  padding-inline: calc((100% - 240px) / 2);
 }
 .ledger-carousel__track::-webkit-scrollbar { display: none; }
 
 .ledger-carousel__slide {
   scroll-snap-align: center;
-  flex: 0 0 262px;
-  height: 154px;
+  flex: 0 0 240px;
+  height: 136px;
   background: #235237;
   border-radius: 10px;
   display: flex;
@@ -9677,7 +9677,7 @@ a.sub-header__right {
 
 .ledger-carousel__address {
   font-family: Montserrat, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: #b2de61;
   text-align: right;
@@ -9686,7 +9686,7 @@ a.sub-header__right {
 
 .ledger-carousel__meta {
   font-family: Montserrat, sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
   color: #fff8ea;
   text-align: right;
