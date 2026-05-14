@@ -9602,3 +9602,328 @@ a.sub-header__right {
   line-height: 1.55;
   max-width: 300px;
 }
+
+/* ============================================
+   ACCOUNT LEDGER
+   ============================================ */
+
+.ledger {
+  background: #112719;
+  padding-bottom: 90px;
+  overflow-x: hidden;
+}
+
+/* Carousel ---------------------------------- */
+.ledger-carousel {
+  margin: 12px 0 0;
+}
+
+.ledger-carousel__track {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 12px;
+  padding-left: 66px;
+}
+.ledger-carousel__track::-webkit-scrollbar { display: none; }
+
+.ledger-carousel__slide {
+  scroll-snap-align: start;
+  flex: 0 0 262px;
+  height: 154px;
+  background: #235237;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  padding: 14px 14px 10px;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ledger-carousel__logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.ledger-carousel__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ledger-carousel__type {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b2de61;
+  line-height: 1.4;
+  margin-bottom: auto;
+}
+
+.ledger-carousel__address {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b2de61;
+  text-align: right;
+  margin-top: 12px;
+}
+
+.ledger-carousel__meta {
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: #fff8ea;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* Dots */
+.ledger-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.ledger-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(178, 222, 97, 0.3);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.ledger-dot--active {
+  background: #b2de61;
+}
+
+/* Balance card ------------------------------ */
+.ledger-balance {
+  background: #235237;
+  border-radius: 10px;
+  margin: 0 20px 12px;
+  padding: 16px;
+}
+
+.ledger-balance__amount-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.ledger-balance__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.ledger-balance__amount {
+  font-family: Montserrat, sans-serif;
+  font-size: 35px;
+  font-weight: 700;
+  color: #b2de61;
+  line-height: 1;
+}
+
+.ledger-balance__info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.ledger-balance__info-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+}
+
+.ledger-balance__info-value {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #b2de61;
+}
+
+.ledger-balance__info-value--white {
+  color: #fff8ea;
+}
+
+.ledger-balance__sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 12px 0;
+}
+
+.ledger-balance__autopay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ledger-balance__autopay-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ledger-balance__autopay-label {
+  flex: 1;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.ledger-balance__autopay-badge {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  background: #112719;
+  color: #fff8ea;
+  border-radius: 5px;
+  padding: 3px 8px;
+}
+
+.ledger-balance__autopay-badge--on {
+  background: #b2de61;
+  color: #112719;
+}
+
+.ledger-balance__autopay-chev {
+  width: 6px;
+  height: 10px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L1 9' stroke='%23b2de61' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* Make Payment button */
+.ledger__pay-btn {
+  display: block;
+  margin: 0 20px 16px;
+  padding: 14px;
+  background: #b2de61;
+  border-radius: 12px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: #235237;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Transaction list -------------------------- */
+.ledger-list {
+  padding: 0 20px;
+}
+
+.ledger-group__date {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff8ea;
+  line-height: 20px;
+  margin: 16px 0 8px;
+}
+
+.ledger-group__card {
+  background: #235237;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  min-height: 50px;
+}
+
+.ledger-row__sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 12px;
+}
+
+.ledger-row__pay-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #b2de61;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ledger-row__sync-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ledger-row__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ledger-row__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  display: block;
+  line-height: 1.35;
+}
+
+.ledger-row__label--lime {
+  color: #b2de61;
+}
+
+.ledger-row__sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  color: #b2de61;
+  display: block;
+  margin-top: 2px;
+}
+
+.ledger-row__amount {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff8ea;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.ledger-row__amount--lime {
+  color: #b2de61;
+}

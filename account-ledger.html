@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Account Ledger</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ledger">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="financial.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Property selector -->
+      <button class="property-selector" type="button" aria-haspopup="listbox">
+        <img class="property-selector__door" src="assets/icons/icon-door.svg" alt="" />
+        <span class="property-selector__name">180 Crandon Blvd</span>
+        <img class="property-selector__chevron" src="assets/icons/icon-chevron-down.svg" alt="" />
+      </button>
+
+      <!-- ============================================================
+           LEDGER CAROUSEL
+           3 cards — horizontal scroll-snap, peek on sides
+           ============================================================ -->
+      <div class="ledger-carousel">
+        <div class="ledger-carousel__track" id="ledgerTrack">
+
+          <!-- Slide 0 — General Ledger -->
+          <div class="ledger-carousel__slide" data-idx="0">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">General Ledger</span>
+              <span class="ledger-carousel__address">180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: 23456789876545678</span>
+              <span class="ledger-carousel__meta">useremail@memail.com</span>
+            </div>
+          </div>
+
+          <!-- Slide 1 — Special Assessment -->
+          <div class="ledger-carousel__slide" data-idx="1">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">Special Assessment</span>
+              <span class="ledger-carousel__address">Happy Property LLC</span>
+              <span class="ledger-carousel__meta">UNIT: 180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: 097654r6788</span>
+              <span class="ledger-carousel__meta">useremail@email.com</span>
+            </div>
+          </div>
+
+          <!-- Slide 2 — Marina Rental -->
+          <div class="ledger-carousel__slide" data-idx="2">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">Marina Rental</span>
+              <span class="ledger-carousel__address">180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: MR-4409-2024</span>
+              <span class="ledger-carousel__meta">useremail@memail.com</span>
+            </div>
+          </div>
+
+          <!-- Trailing spacer so last slide can fully scroll into view -->
+          <div aria-hidden="true" style="flex:0 0 65px;"></div>
+        </div>
+
+        <!-- Dots -->
+        <div class="ledger-carousel__dots" id="ledgerDots">
+          <button class="ledger-dot ledger-dot--active" data-dot="0" aria-label="Slide 1"></button>
+          <button class="ledger-dot" data-dot="1" aria-label="Slide 2"></button>
+          <button class="ledger-dot" data-dot="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           BALANCE PANELS — one per slide, hidden/shown by JS
+           ============================================================ -->
+
+      <!-- Panel 0: General Ledger -->
+      <section class="ledger-balance" id="balancePanel0">
+        <div class="ledger-balance__amount-row">
+          <span class="ledger-balance__label">Total Balance</span>
+          <span class="ledger-balance__amount">$1,500.53</span>
+        </div>
+        <div class="ledger-balance__info-row">
+          <span class="ledger-balance__info-label">Future Balance (90 Days)</span>
+          <span class="ledger-balance__info-value">$3,001.03</span>
+        </div>
+        <div class="ledger-balance__sep"></div>
+        <div class="ledger-balance__autopay">
+          <svg class="ledger-balance__autopay-icon" viewBox="0 0 20 20" fill="none">
+            <path d="M16.5 10a6.5 6.5 0 1 1-6.5-6.5M16.5 3.5v4h-4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="ledger-balance__autopay-label">Auto Pay (Set Autopay)</span>
+          <span class="ledger-balance__autopay-badge">Off</span>
+          <span class="ledger-balance__autopay-chev" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <!-- Panel 1: Special Assessment -->
+      <section class="ledger-balance" id="balancePanel1" hidden>
+        <div class="ledger-balance__amount-row">
+          <span class="ledger-balance__label">Total Balance</span>
+          <span class="ledger-balance__amount">$125.00</span>
+        </div>
+        <div class="ledger-balance__info-row">
+          <span class="ledger-balance__info-label">Payment due</span>
+          <span class="ledger-balance__info-value">$750.05</span>
+        </div>
+        <div class="ledger-balance__info-row">
+          <span class="ledger-balance__info-label">Payment due on</span>
+          <span class="ledger-balance__info-value ledger-balance__info-value--white">Sep 8 2024</span>
+        </div>
+        <div class="ledger-balance__sep"></div>
+        <div class="ledger-balance__autopay">
+          <svg class="ledger-balance__autopay-icon" viewBox="0 0 20 20" fill="none">
+            <path d="M16.5 10a6.5 6.5 0 1 1-6.5-6.5M16.5 3.5v4h-4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="ledger-balance__autopay-label">Auto Pay (3)</span>
+          <span class="ledger-balance__autopay-badge ledger-balance__autopay-badge--on">On</span>
+          <span class="ledger-balance__autopay-chev" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <!-- Panel 2: Marina Rental -->
+      <section class="ledger-balance" id="balancePanel2" hidden>
+        <div class="ledger-balance__amount-row">
+          <span class="ledger-balance__label">Total Balance</span>
+          <span class="ledger-balance__amount">$225.00</span>
+        </div>
+        <div class="ledger-balance__info-row">
+          <span class="ledger-balance__info-label">Future Balance (90 Days)</span>
+          <span class="ledger-balance__info-value">$675.00</span>
+        </div>
+        <div class="ledger-balance__sep"></div>
+        <div class="ledger-balance__autopay">
+          <svg class="ledger-balance__autopay-icon" viewBox="0 0 20 20" fill="none">
+            <path d="M16.5 10a6.5 6.5 0 1 1-6.5-6.5M16.5 3.5v4h-4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="ledger-balance__autopay-label">Auto Pay (Set Autopay)</span>
+          <span class="ledger-balance__autopay-badge">Off</span>
+          <span class="ledger-balance__autopay-chev" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <!-- Make Payment -->
+      <a class="ledger__pay-btn" href="payment-amount.html">Make Payment</a>
+
+      <!-- ============================================================
+           TRANSACTION LISTS — one per slide
+           ============================================================ -->
+
+      <!-- List 0: General Ledger -->
+      <div class="ledger-list" id="txList0">
+
+        <h3 class="ledger-group__date">Today, Aug 25</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__sync-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.5 10a6.5 6.5 0 1 1-6.5-6.5M16.5 3.5v4h-4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Payment Processing</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">$750.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Aug 14</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $350.00</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Monthly Assessment July</span>
+              <span class="ledger-row__sub">Recurrent Charge</span>
+            </span>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">AC Filter Replacement</span>
+              <span class="ledger-row__sub">Service Request Charge</span>
+            </span>
+            <span class="ledger-row__amount">$45.56</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Tennis Court Reservation</span>
+              <span class="ledger-row__sub">Amenity Fee or Hold</span>
+            </span>
+            <span class="ledger-row__amount">$54.50</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Aug 13</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $350.00</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Marina Rental Payment</span>
+              <span class="ledger-row__sub">Recurrent Charge</span>
+            </span>
+            <span class="ledger-row__amount">$45.56</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">AC Filter Replacement</span>
+              <span class="ledger-row__sub">Service Request Charge</span>
+            </span>
+            <span class="ledger-row__amount">$45.56</span>
+          </div>
+          <div class="ledger-row__sep"></div>
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Tennis Court Reservation</span>
+              <span class="ledger-row__sub">Amenity Fee or Hold</span>
+            </span>
+            <span class="ledger-row__amount">$54.50</span>
+          </div>
+        </div>
+
+      </div><!-- /#txList0 -->
+
+      <!-- List 1: Special Assessment -->
+      <div class="ledger-list" id="txList1" hidden>
+
+        <h3 class="ledger-group__date">Aug 10</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">2024 Special Assessment 3/4</span>
+              <span class="ledger-row__sub">Special Assessment</span>
+            </span>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jul 29</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $350.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jul 10</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">2024 Special Assessment 3/4</span>
+              <span class="ledger-row__sub">Special Assessment</span>
+            </span>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jun 29</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $350.00</span>
+          </div>
+        </div>
+
+      </div><!-- /#txList1 -->
+
+      <!-- List 2: Marina Rental -->
+      <div class="ledger-list" id="txList2" hidden>
+
+        <h3 class="ledger-group__date">Aug 15</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Marina Slip B-12 Monthly</span>
+              <span class="ledger-row__sub">Recurrent Charge</span>
+            </span>
+            <span class="ledger-row__amount">$225.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jul 22</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $225.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jul 15</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__info">
+              <span class="ledger-row__label">Marina Slip B-12 Monthly</span>
+              <span class="ledger-row__sub">Recurrent Charge</span>
+            </span>
+            <span class="ledger-row__amount">$225.00</span>
+          </div>
+        </div>
+
+        <h3 class="ledger-group__date">Jun 22</h3>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon" aria-hidden="true">
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                <path d="M1.5 6L6 10.5L14.5 1.5" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="ledger-row__info">
+              <span class="ledger-row__label ledger-row__label--lime">Online payment</span>
+              <span class="ledger-row__label ledger-row__label--lime">Thank you</span>
+            </span>
+            <span class="ledger-row__amount ledger-row__amount--lime">- $225.00</span>
+          </div>
+        </div>
+
+      </div><!-- /#txList2 -->
+
+    </main>
+
+    <!-- Bottom Navigation (Financial active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var track   = document.getElementById('ledgerTrack');
+      var dots    = document.querySelectorAll('[data-dot]');
+      var SLIDE_W = 262 + 12; // card width + gap
+      var N       = 3;
+      var current = 0;
+
+      function activate(idx) {
+        if (idx === current && idx !== 0) return; // avoid redundant redraws on init
+        current = idx;
+        dots.forEach(function (d, i) {
+          d.classList.toggle('ledger-dot--active', i === idx);
+        });
+        for (var i = 0; i < N; i++) {
+          var bp = document.getElementById('balancePanel' + i);
+          var tl = document.getElementById('txList' + i);
+          if (bp) bp.hidden = (i !== idx);
+          if (tl) tl.hidden = (i !== idx);
+        }
+      }
+
+      // Scroll → update dots + panels
+      track.addEventListener('scroll', function () {
+        var idx = Math.min(N - 1, Math.round(track.scrollLeft / SLIDE_W));
+        activate(idx);
+      }, { passive: true });
+
+      // Dot click → scroll to slide
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var idx = parseInt(dot.dataset.dot, 10);
+          track.scrollTo({ left: idx * SLIDE_W, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
