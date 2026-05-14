@@ -3699,6 +3699,50 @@
 /* ============================================
    PET REGISTRATION SUCCESS modal
    ============================================ */
+/* Pet Registration Success — Green Sheet */
+.pet-success-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #112719;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.pet-success-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pet-success-sheet {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(110%);
+  width: 393px;
+  max-width: 100vw;
+  height: calc(100% - 70px);
+  background: #235237;
+  border-radius: 25px 25px 0 0;
+  z-index: 201;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.pet-success-sheet--open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.pet-success-sheet__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 32px;
+}
+
 .pet-success {
   padding: 32px 24px 28px;
   text-align: center;

@@ -207,16 +207,20 @@
       </div>
     </div>
 
-    <!-- Success modal (bottom-sheet) -->
-    <div class="modal-backdrop" data-success-modal hidden>
-      <div class="modal-sheet pet-success">
-        <div class="pet-success__icon" aria-hidden="true">
-          <img src="assets/icons/icon-more-animals.svg" alt="" />
-        </div>
-        <h2 class="pet-success__title">Animal Registration Submitted</h2>
-        <p class="pet-success__text">Our management team will review your application and notify you of the approval or denial.</p>
-        <a class="btn btn--primary pet-success__cta" href="pets.html">Back to My Animals</a>
+  </div>
+
+  <!-- ============================================================
+       PET REGISTRATION SUCCESS SHEET (Green Sheet pattern)
+       ============================================================ -->
+  <div class="pet-success-backdrop" id="petSuccessBackdrop"></div>
+  <div class="pet-success-sheet" id="petSuccessSheet" aria-hidden="true">
+    <div class="pet-success-sheet__body">
+      <div class="pet-success__icon" aria-hidden="true">
+        <img src="assets/icons/icon-more-animals.svg" alt="" />
       </div>
+      <h2 class="pet-success__title">Animal Registration<br>Submitted</h2>
+      <p class="pet-success__text">Our management team will review your application and notify you of the approval or denial.</p>
+      <a class="btn btn--primary pet-success__cta" href="pets.html">Back to My Animals</a>
     </div>
   </div>
 
@@ -644,7 +648,20 @@
 
       // ----- Submit -----
       const form = document.querySelector('[data-pet-form]');
-      const successModal = document.querySelector('[data-success-modal]');
+      const successSheet   = document.getElementById('petSuccessSheet');
+      const successBackdrop = document.getElementById('petSuccessBackdrop');
+
+      function openSuccessSheet() {
+        successBackdrop.classList.add('pet-success-backdrop--open');
+        successSheet.style.display = 'flex';
+        successSheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            successSheet.classList.add('pet-success-sheet--open');
+          });
+        });
+      }
+
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const data = new FormData(form);
@@ -667,7 +684,7 @@
           createdAt: Date.now()
         };
         P.addPet(pet);
-        successModal.hidden = false;
+        openSuccessSheet();
       });
     })();
   </script>
