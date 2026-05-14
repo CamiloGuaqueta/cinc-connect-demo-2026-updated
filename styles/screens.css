@@ -9614,12 +9614,16 @@ a.sub-header__right {
 .ledger {
   background: #112719;
   padding-bottom: 90px;
-  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+.ledger .property-selector {
+  margin-top: 20px;
 }
 
 /* Carousel ---------------------------------- */
 .ledger-carousel {
-  margin: 12px 0 0;
+  margin: 20px 0 0;
 }
 
 .ledger-carousel__track {
@@ -9629,12 +9633,12 @@ a.sub-header__right {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   gap: 12px;
-  padding-left: 66px;
+  padding-inline: calc((100% - 262px) / 2);
 }
 .ledger-carousel__track::-webkit-scrollbar { display: none; }
 
 .ledger-carousel__slide {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   flex: 0 0 262px;
   height: 154px;
   background: #235237;
