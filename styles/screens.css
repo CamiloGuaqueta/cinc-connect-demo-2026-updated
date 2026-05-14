@@ -3710,9 +3710,11 @@
   margin: 0 auto 20px;
 }
 
-.pet-success__icon svg {
+.pet-success__icon svg,
+.pet-success__icon img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .pet-success__title {
