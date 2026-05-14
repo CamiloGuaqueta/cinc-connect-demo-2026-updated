@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Card Removed</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <!-- Header — no back on success screen -->
+        <header class="pay-sheet__header">
+          <span class="pay-sheet__back" aria-hidden="true"></span>
+          <span class="pay-sheet__title">Remove Credit Card</span>
+          <a class="pay-sheet__close" href="financial.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <!-- Body -->
+        <div class="pay-sheet__body">
+
+          <!-- Success hero -->
+          <div class="pay-success">
+            <div class="pay-success__icon" aria-hidden="true">
+              <svg width="44" height="34" viewBox="0 0 44 34" fill="none">
+                <path d="M3 17L16 30L41 3" stroke="#235237" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="pay-success__title">Credit Card Removed!</h2>
+            <p class="pay-success__text">The Visa card ending in ****2564 has been removed from your payment methods.</p>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="payment-methods.html">Done</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

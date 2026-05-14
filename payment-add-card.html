@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Add Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <!-- Header — no back arrow per design -->
+        <header class="pay-sheet__header">
+          <span class="pay-sheet__back" aria-hidden="true"></span>
+          <span class="pay-sheet__title">Make Payment</span>
+          <a class="pay-sheet__close" href="financial.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <!-- Body -->
+        <div class="pay-sheet__body">
+
+          <p class="pay-section__title">Add Debit or Credit Card</p>
+
+          <!-- Card nickname -->
+          <div class="pay-field-card">
+            <div class="pay-field">
+              <span class="pay-field__label">Nickname</span>
+              <input
+                class="pay-field__input"
+                type="text"
+                placeholder="Optional"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <!-- Card details row -->
+          <div class="pay-field-card">
+            <div class="pay-field pay-field--card-row">
+              <!-- Generic card icon -->
+              <svg class="pay-field__card-icon" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="27" height="19" rx="3.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)"/>
+                <rect x="0" y="6" width="28" height="5" fill="rgba(255,255,255,0.15)"/>
+                <rect x="3" y="13" width="8" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+              </svg>
+              <input
+                class="pay-field__input pay-field__input--num"
+                type="tel"
+                inputmode="numeric"
+                placeholder="Card number"
+                maxlength="19"
+              />
+              <div class="pay-field__divider"></div>
+              <input
+                class="pay-field__input pay-field__input--exp"
+                type="tel"
+                inputmode="numeric"
+                placeholder="MM/YY"
+                maxlength="5"
+              />
+              <div class="pay-field__divider"></div>
+              <input
+                class="pay-field__input pay-field__input--cvc"
+                type="tel"
+                inputmode="numeric"
+                placeholder="CVC"
+                maxlength="4"
+              />
+            </div>
+          </div>
+
+          <!-- Billing address -->
+          <div class="pay-field-card">
+            <div class="pay-field">
+              <span class="pay-field__label">Address</span>
+              <input
+                class="pay-field__input"
+                type="text"
+                placeholder="Billing address"
+                autocomplete="street-address"
+              />
+            </div>
+            <div class="pay-field">
+              <span class="pay-field__label">Address 2</span>
+              <input
+                class="pay-field__input"
+                type="text"
+                placeholder="Apt, suite, etc. (optional)"
+                autocomplete="address-line2"
+              />
+            </div>
+            <div class="pay-field">
+              <span class="pay-field__label">State</span>
+              <input
+                class="pay-field__input"
+                type="text"
+                placeholder="State"
+                autocomplete="address-level1"
+                maxlength="2"
+              />
+            </div>
+            <div class="pay-field">
+              <span class="pay-field__label">Zip Code</span>
+              <input
+                class="pay-field__input"
+                type="tel"
+                inputmode="numeric"
+                placeholder="Zip code"
+                autocomplete="postal-code"
+                maxlength="10"
+              />
+            </div>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="payment-methods.html">Add Credit Card</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

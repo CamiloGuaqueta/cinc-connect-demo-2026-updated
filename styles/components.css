@@ -110,6 +110,8 @@
   font-weight: var(--font-weight-extrabold);
   letter-spacing: 0.48px;
   text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
   transition: transform var(--transition-fast), opacity var(--transition-fast);
   width: 100%;
 }

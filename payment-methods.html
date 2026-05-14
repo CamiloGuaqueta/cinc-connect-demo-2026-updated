@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Payment Methods</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <!-- Header -->
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="javascript:history.back()" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Payment Methods</span>
+          <a class="pay-sheet__close" href="financial.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <!-- Body -->
+        <div class="pay-sheet__body">
+
+          <p class="pay-section__title">Saved Methods</p>
+
+          <!-- Saved methods list -->
+          <div class="pay-tool-card">
+            <a class="pay-tool-row" href="payment-edit-card.html">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+              <div style="flex:1; min-width:0;">
+                <div class="pay-tool-row__label">Visa - 2564</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; font-family:Montserrat,sans-serif;">Credit Card Business</div>
+              </div>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </a>
+            <div class="pay-option-divider"></div>
+            <button class="pay-tool-row" type="button" style="opacity:0.5; cursor:default;">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+              <div style="flex:1; min-width:0;">
+                <div class="pay-tool-row__label">Bank Account 1 - 5695</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; font-family:Montserrat,sans-serif;">Checking BOA</div>
+              </div>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </button>
+            <div class="pay-option-divider"></div>
+            <button class="pay-tool-row" type="button" style="opacity:0.5; cursor:default;">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+              <div style="flex:1; min-width:0;">
+                <div class="pay-tool-row__label">Bank Account 2 - 8698</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; font-family:Montserrat,sans-serif;">Join Bank Account Checking</div>
+              </div>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </button>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="payment-add-card.html">Add Payment Method</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
