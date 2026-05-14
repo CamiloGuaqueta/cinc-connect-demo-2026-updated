@@ -71,6 +71,12 @@
     </main>
   </div>
 
+  <script>
+    // Show splash on first load of this session
+    if (!sessionStorage.getItem('cinc-splash-shown')) {
+      window.location.replace('splash.html');
+    }
+  </script>
   <script src="scripts/auth.js"></script>
   <script src="scripts/app-dialogs.js"></script>
   <script>

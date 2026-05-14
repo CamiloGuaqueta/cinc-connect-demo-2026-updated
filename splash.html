@@ -27,7 +27,8 @@
   </div>
 
   <script>
-    // Auto-redirect to login after a short splash delay
+    // Mark splash as shown for this session, then redirect to login
+    sessionStorage.setItem('cinc-splash-shown', '1');
     setTimeout(() => {
       window.location.href = 'index.html';
     }, 2000);
