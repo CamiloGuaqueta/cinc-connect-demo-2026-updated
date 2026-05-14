@@ -198,14 +198,7 @@
       const input = document.querySelector('.chat-composer__input');
       const sendBtn = document.querySelector('.chat-composer__send');
 
-      // Quick canned Cephai responses for the demo
-      const CEPHAI_REPLIES = [
-        'Sure — here is what the CC&Rs say about that: pets must be leashed in common areas at all times and must be registered through the Animals section.',
-        'Based on your account, your current balance is $750.41 with autopay scheduled. Anything else I can help with?',
-        'Reservations can be made through the Concierge tab. Free amenities (like the Pickleball Court) don\'t require a deposit; paid ones do.',
-        'I can help you with FAQs about the community, account balance, amenity rules, and HOA documents. What would you like to know?',
-        'Got it — I\'ll log this and a community manager will follow up via email within one business day.'
-      ];
+      const CEPHAI_DISCLAIMER = 'This is a demo version of Cephai. In the live CINC Connect app, I can answer questions about your CC&Rs, account balance, amenities, violations, and more — all in real time. Stay tuned!';
 
       function send() {
         const text = input.value.trim();
@@ -217,12 +210,11 @@
         input.value = '';
         renderAll();
 
-        // Cephai auto-reply
+        // Cephai disclaimer auto-reply
         if (id === 'cephai') {
           setTimeout(() => {
-            const reply = CEPHAI_REPLIES[Math.floor(Math.random() * CEPHAI_REPLIES.length)];
             const cur = getMyMessages();
-            cur.push({ incoming: true, text: reply, time: formatTime(Date.now()) });
+            cur.push({ incoming: true, text: CEPHAI_DISCLAIMER, time: formatTime(Date.now()) });
             saveMyMessages(cur);
             renderAll();
           }, 700);
