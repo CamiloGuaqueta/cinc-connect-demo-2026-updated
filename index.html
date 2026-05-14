@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>if (!sessionStorage.getItem('cinc-splash-shown')) { window.location.replace('splash.html'); }</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#112719" />
   <title>CINC Connect — Sign In</title>
@@ -71,12 +72,6 @@
     </main>
   </div>
 
-  <script>
-    // Show splash on first load of this session
-    if (!sessionStorage.getItem('cinc-splash-shown')) {
-      window.location.replace('splash.html');
-    }
-  </script>
   <script src="scripts/auth.js"></script>
   <script src="scripts/app-dialogs.js"></script>
   <script>
