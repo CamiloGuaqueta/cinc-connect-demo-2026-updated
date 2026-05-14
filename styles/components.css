@@ -7,6 +7,7 @@
 .app-frame {
   max-width: var(--max-width-mobile);
   min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   background: var(--color-bg-base);
   position: relative;

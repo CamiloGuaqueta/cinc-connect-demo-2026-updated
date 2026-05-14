@@ -9,6 +9,7 @@
 .splash {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   overflow: hidden;
 }
@@ -28,6 +29,7 @@
 .login {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding: 0 20px;
   display: flex;
@@ -170,6 +172,7 @@
    ============================================ */
 .feed {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-brand-forest);
   padding-bottom: calc(var(--bottom-nav-height) + var(--space-6));
 }
@@ -581,6 +584,7 @@
    ============================================ */
 .todos {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + var(--space-6));
 }
@@ -690,6 +694,7 @@
    ============================================ */
 .amenities {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -1066,6 +1071,7 @@
    ============================================ */
 .all-amenities {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: 100px; /* leave room above bottom-nav */
 }
@@ -1187,6 +1193,7 @@
    ============================================ */
 .amenity-detail {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(80px + var(--bottom-nav-height, 0px));
   display: flex;
@@ -1521,6 +1528,7 @@
    ============================================ */
 .amenity-payment {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   display: flex;
   flex-direction: column;
@@ -1688,6 +1696,7 @@
    ============================================ */
 .reservation-confirm {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   display: flex;
   flex-direction: column;
@@ -1822,6 +1831,7 @@
    ============================================ */
 .chat-detail {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   display: flex;
   flex-direction: column;
@@ -2038,6 +2048,7 @@
    ============================================ */
 .notif-detail {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -2078,6 +2089,7 @@
    ============================================ */
 .notifications {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-brand-forest);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -2253,6 +2265,7 @@
    ============================================ */
 .more {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-brand-forest);
   padding-bottom: calc(var(--bottom-nav-height) + 30px);
 }
@@ -2577,6 +2590,7 @@
    ============================================ */
 .voting {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -2906,6 +2920,7 @@
    ============================================ */
 .ballot {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: 32px;
 }
@@ -3334,6 +3349,7 @@
    ============================================ */
 .pets {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -3482,6 +3498,7 @@
    ============================================ */
 .pet-policy {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -3528,6 +3545,7 @@
    ============================================ */
 .pet-register {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: 40px;
 }
@@ -4518,6 +4536,7 @@
    ============================================ */
 .event {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-brand-forest);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -4591,6 +4610,7 @@
    ============================================ */
 .calendar {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-brand-forest);
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
@@ -5184,6 +5204,7 @@ a.sub-header__right {
    ============================================ */
 .messages {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + var(--space-6));
 }
@@ -5362,6 +5383,7 @@ a.sub-header__right {
    ============================================ */
 .financial {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + var(--space-6));
 }
@@ -5532,6 +5554,7 @@ a.sub-header__right {
 .concierge,
 .pinboard {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + var(--space-6));
 }
@@ -5604,6 +5627,7 @@ a.sub-header__right {
 
 .amenity-detail-v2 {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   position: relative;
 }
@@ -7163,6 +7187,7 @@ a.sub-header__right {
    ============================================ */
 .profile {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--color-bg-base);
   padding-bottom: calc(var(--bottom-nav-height) + 30px);
 }
@@ -8225,6 +8250,7 @@ a.sub-header__right {
 .ar-ledger {
   background: #112719;
   min-height: 100vh;
+  min-height: 100dvh;
   padding-bottom: var(--bottom-nav-height);
 }
 
@@ -8395,6 +8421,7 @@ a.sub-header__right {
 .ar-violations {
   background: #112719;
   min-height: 100vh;
+  min-height: 100dvh;
   padding-bottom: var(--bottom-nav-height);
 }
 
@@ -8643,6 +8670,7 @@ a.sub-header__right {
 .ar-collections {
   background: #112719;
   min-height: 100vh;
+  min-height: 100dvh;
   padding-bottom: var(--bottom-nav-height);
 }
 
@@ -8710,6 +8738,7 @@ a.sub-header__right {
 .ar-workorders {
   background: #112719;
   min-height: 100vh;
+  min-height: 100dvh;
   padding-bottom: var(--bottom-nav-height);
 }
 
