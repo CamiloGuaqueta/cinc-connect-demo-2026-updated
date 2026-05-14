@@ -20,10 +20,10 @@
       <div class="pay-screen__backdrop"></div>
       <div class="pay-sheet">
 
-        <!-- Header — no back arrow per design -->
+        <!-- Header -->
         <header class="pay-sheet__header">
           <span class="pay-sheet__back" aria-hidden="true"></span>
-          <span class="pay-sheet__title">Make Payment</span>
+          <span class="pay-sheet__title">Edit Credit Card</span>
           <a class="pay-sheet__close" href="financial.html">Close</a>
         </header>
         <div class="pay-sheet__sep"></div>
@@ -31,121 +31,64 @@
         <!-- Body -->
         <div class="pay-sheet__body">
 
-          <p class="pay-section__title">Edit Credit Card</p>
-
-          <!-- Card nickname (pre-filled) -->
-          <div class="pay-field-card">
-            <div class="pay-field">
-              <span class="pay-field__label">Nickname</span>
-              <input
-                class="pay-field__input"
-                type="text"
-                value="Personal CC Chase"
-                autocomplete="off"
-                readonly
-              />
-              <button class="pay-field__edit" type="button" aria-label="Edit nickname">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+          <!-- Card nickname (pre-filled + edit icon) -->
+          <div class="pay-input">
+            <input class="pay-input__field" type="text" value="Personal CC Chase" autocomplete="off" readonly />
+            <!-- Edit icon: lime circle with pencil -->
+            <svg class="pay-input__edit" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="7.5" r="7.5" fill="#b2de61"/>
+              <path d="M9.8 5.2a.8.8 0 0 1 1.1 1.1L5.9 11.3H4.5v-1.4L9.8 5.2Z" fill="#235237"/>
+            </svg>
           </div>
 
-          <!-- Card details row (pre-filled, masked) -->
-          <div class="pay-field-card">
-            <div class="pay-field pay-field--card-row">
-              <!-- Visa icon -->
-              <svg class="pay-field__card-icon" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.5" y="0.5" width="27" height="19" rx="3.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)"/>
-                <text x="4" y="14" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="rgba(255,255,255,0.6)">VISA</text>
-              </svg>
-              <input
-                class="pay-field__input pay-field__input--num"
-                type="text"
-                value="**** ****** *2564"
-                readonly
-              />
-              <div class="pay-field__divider"></div>
-              <input
-                class="pay-field__input pay-field__input--exp"
-                type="text"
-                value="02/28"
-                readonly
-              />
-              <div class="pay-field__divider"></div>
-              <input
-                class="pay-field__input pay-field__input--cvc"
-                type="text"
-                value="356"
-                readonly
-              />
-              <button class="pay-field__edit" type="button" aria-label="Edit card">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+          <!-- Card number row (pre-filled + edit icon) -->
+          <div class="pay-input pay-input--card">
+            <input class="pay-input__field pay-input__field--num" type="text" value="**** ****** *2564" readonly />
+            <div class="pay-input__vdivider"></div>
+            <input class="pay-input__field pay-input__field--exp" type="text" value="02/28" readonly />
+            <div class="pay-input__vdivider"></div>
+            <input class="pay-input__field pay-input__field--cvc" type="text" value="356" readonly />
+            <svg class="pay-input__edit" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="7.5" r="7.5" fill="#b2de61"/>
+              <path d="M9.8 5.2a.8.8 0 0 1 1.1 1.1L5.9 11.3H4.5v-1.4L9.8 5.2Z" fill="#235237"/>
+            </svg>
           </div>
 
-          <!-- Billing address (pre-filled) -->
-          <div class="pay-field-card">
-            <div class="pay-field">
-              <span class="pay-field__label">Address</span>
-              <input
-                class="pay-field__input"
-                type="text"
-                value="180 Crandon Blvd"
-                readonly
-              />
-              <button class="pay-field__edit" type="button" aria-label="Edit address">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="pay-field">
-              <span class="pay-field__label">Address 2</span>
-              <input
-                class="pay-field__input"
-                type="text"
-                placeholder="Apt, suite, etc. (optional)"
-                readonly
-              />
-            </div>
-            <div class="pay-field">
-              <span class="pay-field__label">State</span>
-              <input
-                class="pay-field__input"
-                type="text"
-                value="FL"
-                readonly
-              />
-              <button class="pay-field__edit" type="button" aria-label="Edit state">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-            <div class="pay-field">
-              <span class="pay-field__label">Zip Code</span>
-              <input
-                class="pay-field__input"
-                type="text"
-                value="33138"
-                readonly
-              />
-              <button class="pay-field__edit" type="button" aria-label="Edit zip">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
+          <!-- Address (pre-filled + edit icon) -->
+          <div class="pay-input">
+            <input class="pay-input__field" type="text" value="180 Crandon Blvd" readonly />
+            <svg class="pay-input__edit" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="7.5" r="7.5" fill="#b2de61"/>
+              <path d="M9.8 5.2a.8.8 0 0 1 1.1 1.1L5.9 11.3H4.5v-1.4L9.8 5.2Z" fill="#235237"/>
+            </svg>
+          </div>
+
+          <!-- Address 2 (empty — no edit icon) -->
+          <div class="pay-input">
+            <input class="pay-input__field" type="text" placeholder="Address 2 (Unit, Apt, Etc)" readonly />
+          </div>
+
+          <!-- State (pre-filled + edit icon) -->
+          <div class="pay-input">
+            <input class="pay-input__field" type="text" value="FL" readonly style="text-transform:uppercase;" />
+            <svg class="pay-input__edit" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="7.5" r="7.5" fill="#b2de61"/>
+              <path d="M9.8 5.2a.8.8 0 0 1 1.1 1.1L5.9 11.3H4.5v-1.4L9.8 5.2Z" fill="#235237"/>
+            </svg>
+          </div>
+
+          <!-- Zipcode (pre-filled + edit icon) -->
+          <div class="pay-input">
+            <input class="pay-input__field" type="text" value="33138" readonly />
+            <svg class="pay-input__edit" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="7.5" cy="7.5" r="7.5" fill="#b2de61"/>
+              <path d="M9.8 5.2a.8.8 0 0 1 1.1 1.1L5.9 11.3H4.5v-1.4L9.8 5.2Z" fill="#235237"/>
+            </svg>
           </div>
 
         </div><!-- /.pay-sheet__body -->
 
-        <!-- Footer — stacked: Remove (red) + Save (lime) -->
+        <!-- Footer — Remove (coral) on top, Save (lime) below -->
         <div class="pay-sheet__footer pay-sheet__footer--stack">
           <a class="pay-btn--danger" href="payment-remove-card.html">Remove Credit Card</a>
           <a class="pay-continue" href="payment-updated.html">Save</a>
