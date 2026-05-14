@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Make Payment</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+
+      <!-- Dark backdrop strip -->
+      <div class="pay-screen__backdrop"></div>
+
+      <!-- Green sheet -->
+      <div class="pay-sheet">
+
+        <!-- Header -->
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="financial.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Make Payment</span>
+          <a class="pay-sheet__close" href="financial.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <!-- Body -->
+        <div class="pay-sheet__body">
+
+          <!-- Select Payment Amount -->
+          <p class="pay-section__title">Select Payment Amount</p>
+          <div class="pay-radio-card">
+            <label class="pay-radio-option" id="optTotalBalance">
+              <input type="radio" name="pay-amount" value="total" checked />
+              <span class="pay-radio-option__radio"></span>
+              <div class="pay-radio-option__text">
+                <span class="pay-radio-option__label">Total Balance</span>
+                <span class="pay-radio-option__sub" data-balance-display>$1,500.97</span>
+              </div>
+            </label>
+            <div class="pay-option-divider"></div>
+            <label class="pay-radio-option" id="optOtherAmount">
+              <input type="radio" name="pay-amount" value="other" />
+              <span class="pay-radio-option__radio"></span>
+              <div class="pay-radio-option__text">
+                <span class="pay-radio-option__label">Other Amount</span>
+                <span class="pay-radio-option__hint">Enter Amount</span>
+              </div>
+            </label>
+            <div class="pay-amount-input-wrap" id="payAmountInputWrap">
+              <span class="pay-amount-input-prefix">$</span>
+              <input class="pay-amount-input" type="number" inputmode="decimal" placeholder="0.00" id="payAmountInput" />
+            </div>
+          </div>
+
+          <!-- Payment tools -->
+          <p class="pay-section__title">Payment tools</p>
+          <div class="pay-tool-card">
+            <button class="pay-tool-row" type="button">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-autopay.svg" alt="" />
+              <span class="pay-tool-row__label">AutoPay</span>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </button>
+            <div class="pay-option-divider"></div>
+            <button class="pay-tool-row" type="button">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+              <span class="pay-tool-row__label">Manage Payment Methods</span>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </button>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" id="payContinueBtn" href="payment-method.html">Continue</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      const radios = document.querySelectorAll('input[name="pay-amount"]');
+      const inputWrap = document.getElementById('payAmountInputWrap');
+      const continueBtn = document.getElementById('payContinueBtn');
+
+      function updateState() {
+        const selected = document.querySelector('input[name="pay-amount"]:checked');
+        const isOther = selected && selected.value === 'other';
+        inputWrap.classList.toggle('pay-amount-input-wrap--visible', isOther);
+      }
+
+      radios.forEach((r) => r.addEventListener('change', updateState));
+      updateState();
+    })();
+  </script>
+</body>
+</html>

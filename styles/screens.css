@@ -9011,3 +9011,294 @@ a.sub-header__right {
   color: #235237;
   cursor: pointer;
 }
+
+/* ============================================================
+   MAKE PAYMENT SCREENS (payment-amount.html, payment-method.html)
+   ============================================================ */
+
+.pay-screen {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #112719;
+  display: flex;
+  flex-direction: column;
+}
+
+.pay-screen__backdrop {
+  height: 70px;
+  flex-shrink: 0;
+  background: #112719;
+}
+
+/* Green sheet */
+.pay-sheet {
+  flex: 1;
+  background: #235237;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.pay-sheet__header {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 60px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pay-sheet__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.pay-sheet__title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #b2de61;
+  white-space: nowrap;
+}
+
+.pay-sheet__close {
+  margin-left: auto;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b2de61;
+  text-decoration: none;
+  padding: 8px 4px;
+}
+
+.pay-sheet__sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+/* Scrollable body */
+.pay-sheet__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 20px 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Section title */
+.pay-section__title {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff8ea;
+  margin: 0 0 12px;
+}
+
+/* Radio card container */
+.pay-radio-card {
+  background: #112719;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+/* Individual radio option row */
+.pay-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.pay-radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom radio circle */
+.pay-radio-option__radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 248, 234, 0.4);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+
+.pay-radio-option input:checked + .pay-radio-option__radio {
+  border-color: #b2de61;
+  background: #b2de61;
+}
+
+.pay-radio-option input:checked + .pay-radio-option__radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #235237;
+}
+
+.pay-radio-option__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pay-radio-option__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.pay-radio-option__sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
+.pay-radio-option__hint {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(255, 248, 234, 0.5);
+}
+
+/* Divider between radio options */
+.pay-option-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 16px;
+}
+
+/* "Other Amount" expandable input */
+.pay-amount-input-wrap {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px 16px 48px;
+}
+
+.pay-amount-input-wrap--visible {
+  display: flex;
+}
+
+.pay-amount-input-prefix {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff8ea;
+}
+
+.pay-amount-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(178, 222, 97, 0.3);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff8ea;
+  outline: none;
+}
+
+.pay-amount-input:focus {
+  border-color: #b2de61;
+}
+
+.pay-amount-input::placeholder {
+  color: rgba(255, 248, 234, 0.3);
+}
+
+/* Tool rows card */
+.pay-tool-card {
+  background: #112719;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.pay-tool-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  color: #fff8ea;
+}
+
+.pay-tool-row__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.pay-tool-row__label {
+  flex: 1;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.pay-tool-row__chev {
+  width: 7px;
+  height: 12px;
+  flex-shrink: 0;
+  border-top: 2px solid #b2de61;
+  border-right: 2px solid #b2de61;
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+/* Footer with Continue button */
+.pay-sheet__footer {
+  padding: 12px 20px 28px;
+  flex-shrink: 0;
+  background: #235237;
+}
+
+.pay-continue {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #b2de61;
+  border: none;
+  border-radius: 12px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #235237;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}

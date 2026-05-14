@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Select Payment Method</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+
+      <!-- Dark backdrop strip -->
+      <div class="pay-screen__backdrop"></div>
+
+      <!-- Green sheet -->
+      <div class="pay-sheet">
+
+        <!-- Header -->
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="payment-amount.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Make Payment</span>
+          <a class="pay-sheet__close" href="financial.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <!-- Body -->
+        <div class="pay-sheet__body">
+
+          <!-- Select Payment Method -->
+          <p class="pay-section__title">Select Payment Method</p>
+          <div class="pay-radio-card">
+            <label class="pay-radio-option">
+              <input type="radio" name="pay-method" value="bank1" checked />
+              <span class="pay-radio-option__radio"></span>
+              <div class="pay-radio-option__text">
+                <span class="pay-radio-option__label">Bank Account 1 - 5695</span>
+                <span class="pay-radio-option__sub">Checking BOA</span>
+              </div>
+            </label>
+            <div class="pay-option-divider"></div>
+            <label class="pay-radio-option">
+              <input type="radio" name="pay-method" value="bank2" />
+              <span class="pay-radio-option__radio"></span>
+              <div class="pay-radio-option__text">
+                <span class="pay-radio-option__label">Bank Account 2 - 8698</span>
+                <span class="pay-radio-option__sub">Join Bank Account Checking</span>
+              </div>
+            </label>
+            <div class="pay-option-divider"></div>
+            <label class="pay-radio-option">
+              <input type="radio" name="pay-method" value="visa" />
+              <span class="pay-radio-option__radio"></span>
+              <div class="pay-radio-option__text">
+                <span class="pay-radio-option__label">Visa - 2564</span>
+                <span class="pay-radio-option__sub">Credit Card Business</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Manage Payment Methods -->
+          <div class="pay-tool-card">
+            <button class="pay-tool-row" type="button">
+              <img class="pay-tool-row__icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+              <span class="pay-tool-row__label">Manage Payment Methods</span>
+              <span class="pay-tool-row__chev" aria-hidden="true"></span>
+            </button>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="payment-review.html">Continue</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
