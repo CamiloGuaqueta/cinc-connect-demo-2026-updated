@@ -4626,7 +4626,7 @@
   gap: 14px;
   height: 90px;
   padding: 20px 20px 0 20px;
-  border-bottom: 2px solid var(--color-brand-lime);
+  border-bottom: 1px solid var(--color-brand-lime);
   background: var(--color-brand-forest);
 }
 

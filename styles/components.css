@@ -29,6 +29,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
+  border-bottom: 1px solid var(--color-brand-lime);
 }
 
 .app-header__hoa {
