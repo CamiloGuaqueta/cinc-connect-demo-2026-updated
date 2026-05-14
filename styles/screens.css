@@ -4618,6 +4618,9 @@
 /* Sub-header used by calendar/event (back arrow + search + logo)
    Matches app-header dimensions so the CINC bell sits in the same place. */
 .sub-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 14px;
