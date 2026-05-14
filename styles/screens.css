@@ -4630,6 +4630,7 @@
 /* Sub-header search bar override: dark background, no margin */
 .calendar .messages__search,
 .amenities .messages__search,
+.all-amenities .messages__search,
 .notifications .messages__search {
   background: var(--color-bg-base);
   margin: 0;
