@@ -287,63 +287,6 @@
     });
   }
 
-  // ----- Fullscreen button -----
-  // Shows a small pill button at the bottom of the screen inviting the user
-  // to go fullscreen. Hidden on desktop and in browsers that don't support
-  // the Fullscreen API. Disappears once fullscreen is active.
-  function wireFullscreenButton() {
-    // Only show on touch devices (phones/tablets)
-    if (!('ontouchstart' in window)) return;
-    // Must support fullscreen API
-    const docEl = document.documentElement;
-    const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen;
-    if (!requestFS) return;
-
-    // Create the button
-    const btn = document.createElement('button');
-    btn.id = 'fs-btn';
-    btn.setAttribute('aria-label', 'Fullscreen');
-    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 3h6M3 3v6M3 3l6 6M21 3h-6M21 3v6M21 3l-6 6M3 21h6M3 21v-6M3 21l6-6M21 21h-6M21 21v-6M21 21l-6-6" stroke="#112719" stroke-width="2" stroke-linecap="round"/>
-    </svg><span>Full Screen</span>`;
-    btn.style.cssText = [
-      'position:fixed',
-      'bottom:80px',
-      'left:50%',
-      'transform:translateX(-50%)',
-      'z-index:9999',
-      'background:#b2de61',
-      'color:#112719',
-      'border:none',
-      'border-radius:999px',
-      'padding:8px 18px 8px 14px',
-      'font-family:Montserrat,sans-serif',
-      'font-size:12px',
-      'font-weight:700',
-      'display:flex',
-      'align-items:center',
-      'gap:6px',
-      'cursor:pointer',
-      'box-shadow:0 2px 12px rgba(0,0,0,0.25)',
-      'letter-spacing:0.3px',
-      'text-transform:uppercase',
-    ].join(';');
-
-    document.body.appendChild(btn);
-
-    btn.addEventListener('click', () => {
-      requestFS.call(docEl);
-    });
-
-    // Hide the button when fullscreen is active
-    const onFSChange = () => {
-      const isFS = !!(document.fullscreenElement || document.webkitFullscreenElement);
-      btn.style.display = isFS ? 'none' : 'flex';
-    };
-    document.addEventListener('fullscreenchange', onFSChange);
-    document.addEventListener('webkitfullscreenchange', onFSChange);
-  }
-
   // ----- Init -----
   function init() {
     loadState();
@@ -354,7 +297,6 @@
     wirePreloaderOnNav();
     showPreloaderOnLoad();
     syncTodoBadge();
-    wireFullscreenButton();
   }
 
   if (document.readyState === 'loading') {
