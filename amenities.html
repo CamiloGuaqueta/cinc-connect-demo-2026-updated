@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Amenities & Common Areas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="amenities">
+      <!-- Sub-header with search (matches calendar style) -->
+      <header class="sub-header">
+        <a href="concierge.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center">
+          <div class="messages__search">
+            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+            <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
+          </div>
+        </div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></a>
+      </header>
+
+      <!-- Title row with info icon -->
+      <div class="amenities__title-row">
+        <h1 class="amenities__title">Amenities &amp; Common Areas</h1>
+        <button class="amenities__info" type="button" aria-label="Info">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#b2de61" stroke-width="2"/>
+            <line x1="12" y1="11" x2="12" y2="17" stroke="#b2de61" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="7.5" r="1.2" fill="#b2de61"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tabs: Amenities / My Reservations -->
+      <div class="amenities__tabs">
+        <button class="amenities__tab amenities__tab--active" type="button" data-amenity-tab="amenities">Amenities</button>
+        <button class="amenities__tab" type="button" data-amenity-tab="reservations">My Reservations</button>
+      </div>
+
+      <!-- AMENITIES tab pane — dynamically rendered from AmenitiesData -->
+      <section class="amenities__pane" data-amenity-pane="amenities">
+        <div class="amenities__section">
+          <div class="amenities__section-header">
+            <h2 class="amenities__section-title">My Favorite</h2>
+            <a href="all-amenities.html" class="amenities__view-all">All Amenities</a>
+          </div>
+          <div class="amenity-scroller" data-amenity-section="favorite"></div>
+        </div>
+
+        <div class="amenities__section">
+          <div class="amenities__section-header">
+            <h2 class="amenities__section-title">Recently Reserved</h2>
+          </div>
+          <div class="amenity-scroller" data-amenity-section="recent"></div>
+        </div>
+
+        <div class="amenities__section">
+          <div class="amenities__section-header">
+            <h2 class="amenities__section-title">Popular Amenities</h2>
+            <a href="all-amenities.html" class="amenities__view-all">View All Amenities</a>
+          </div>
+          <div class="amenity-scroller" data-amenity-section="popular"></div>
+        </div>
+      </section>
+
+      <!-- MY RESERVATIONS tab pane -->
+      <section class="amenities__pane" data-amenity-pane="reservations" hidden>
+        <!-- empty state (hidden when reservations exist) -->
+        <div class="amenities__empty" data-reservations-empty>
+          <p class="amenities__empty-text">You have no reservations yet.</p>
+        </div>
+        <!-- populated list -->
+        <div class="my-reservations" data-reservations-list></div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation (Concierge active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/amenities-data.js"></script>
+  <script>
+    // Render amenity cards into each section
+    (function () {
+      const D = window.AmenitiesData;
+      const SECTIONS = D.SECTIONS;
+
+      function priceChip(a) {
+        if (a.pricePerHour === 0) return '<li><span class="amenity-card__chip-icon">$</span>Free</li>';
+        const label = a.flatFee ? `$${a.pricePerHour}` : `$${a.pricePerHour.toFixed(2)}/hr`;
+        return `<li><span class="amenity-card__chip-icon">$</span>${label}</li>`;
+      }
+
+      const ICON_PEOPLE = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+        <path d="M4.48972 8.76367C2.36276 8.76367 0.486698 10.2693 0.0288668 12.3436C-0.0504455 12.7034 0.0354449 13.0736 0.264737 13.3591C0.490833 13.6404 0.827441 13.8017 1.18848 13.8017H7.79114C8.15218 13.8017 8.48879 13.6404 8.7147 13.3593C8.94418 13.0736 9.03026 12.7035 8.95076 12.3436C8.49311 10.2693 6.61687 8.76367 4.48972 8.76367ZM7.98209 12.7706C7.95465 12.8048 7.89338 12.862 7.79114 12.862H1.18848C1.08624 12.862 1.02497 12.8048 0.99753 12.7706C0.947349 12.7082 0.928743 12.6265 0.946597 12.546C1.31008 10.8989 2.8001 9.70339 4.48972 9.70339C6.17952 9.70339 7.66973 10.8989 8.03303 12.546C8.05088 12.6263 8.03228 12.7082 7.98209 12.7706Z" fill="#B2DE61"/>
+        <path d="M4.48945 7.22108C5.81915 7.22108 6.90077 6.13927 6.90077 4.80976C6.90077 3.48005 5.81915 2.39844 4.48945 2.39844C3.15974 2.39844 2.07812 3.48005 2.07812 4.80976C2.07812 6.13927 3.15974 7.22108 4.48945 7.22108ZM4.48945 3.33816C5.3008 3.33816 5.96105 3.99822 5.96105 4.80976C5.96105 5.62111 5.3008 6.28136 4.48945 6.28136C3.67809 6.28136 3.01785 5.62111 3.01785 4.80976C3.01785 3.99822 3.67809 3.33816 4.48945 3.33816Z" fill="#B2DE61"/>
+        <path d="M14.9716 9.94538C14.5138 7.87104 12.6378 6.36523 10.5106 6.36523C9.28671 6.36523 8.13724 6.8428 7.27364 7.71017C7.09058 7.89416 7.09114 8.19167 7.27496 8.37473C7.45876 8.55779 7.75646 8.55704 7.93953 8.37342C8.62552 7.6846 9.53855 7.30495 10.5106 7.30495C12.2002 7.30495 13.6906 8.50066 14.0539 10.1478C14.0716 10.2281 14.0532 10.31 14.003 10.3724C13.9755 10.4066 13.9143 10.4639 13.812 10.4639H10.3352C10.0757 10.4639 9.86539 10.6742 9.86539 10.9338C9.86539 11.1933 10.0757 11.4036 10.3352 11.4036H13.812C14.1729 11.4036 14.5095 11.2422 14.7356 10.961C14.9649 10.6755 15.051 10.3053 14.9716 9.94538Z" fill="#B2DE61"/>
+        <path d="M10.5109 4.82264C11.8406 4.82264 12.9223 3.74084 12.9223 2.41132C12.9223 1.08162 11.8406 0 10.5109 0C9.18123 0 8.09961 1.08162 8.09961 2.41132C8.09961 3.74084 9.18123 4.82264 10.5109 4.82264ZM10.5109 0.93972C11.3223 0.93972 11.9825 1.59997 11.9825 2.41132C11.9825 3.22268 11.3223 3.88292 10.5109 3.88292C9.69958 3.88292 9.03933 3.22268 9.03933 2.41132C9.03933 1.59997 9.69958 0.93972 10.5109 0.93972Z" fill="#B2DE61"/>
+      </svg>`;
+      const ICON_CLOCK = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <circle cx="7" cy="7" r="6" stroke="#B2DE61" stroke-width="1.3" fill="none"/>
+        <path d="M7 3.5V7L9.2 8.4" stroke="#B2DE61" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`;
+      const ICON_DOLLAR = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <circle cx="7" cy="7" r="6" stroke="#B2DE61" stroke-width="1.3" fill="none"/>
+        <path d="M9 5.2C8.5 4.4 7.9 4 7 4C5.9 4 5.1 4.6 5.1 5.4C5.1 6.2 5.8 6.6 7 6.9C8.2 7.2 8.9 7.6 8.9 8.5C8.9 9.3 8.1 10 7 10C6 10 5.4 9.6 4.9 8.9M7 3.4V4M7 10V10.6" stroke="#B2DE61" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`;
+
+      function priceChipV2(a) {
+        if (a.pricePerHour === 0) {
+          return `<li><span class="amenity-card__chip-icon">${ICON_DOLLAR}</span>Free</li>`;
+        }
+        const label = a.flatFee ? `$${a.pricePerHour}` : `$${a.pricePerHour.toFixed(2)}/hr`;
+        return `<li><span class="amenity-card__chip-icon">${ICON_DOLLAR}</span>${label}</li>`;
+      }
+
+      function renderCard(a) {
+        const slots = a.slots.slice(0, 3).map((s) =>
+          `<button class="amenity-card__slot" type="button">${s}</button>`).join('');
+        return `
+          <a class="amenity-card" href="amenity-detail.html?id=${a.id}">
+            <img class="amenity-card__image" src="${a.image}" alt="" />
+            <h3 class="amenity-card__title">${a.name}</h3>
+            <ul class="amenity-card__chips">
+              ${priceChipV2(a)}
+              <li><span class="amenity-card__chip-icon">${ICON_PEOPLE}</span>Max ${a.maxGuests}</li>
+              <li><span class="amenity-card__chip-icon">${ICON_CLOCK}</span>Max ${a.maxHours}h</li>
+            </ul>
+            <p class="amenity-card__slots-label">Today's Next Available Time-slots</p>
+            <div class="amenity-card__slots">
+              ${slots}
+              <span class="amenity-card__slot-more" aria-label="More slots">›</span>
+            </div>
+          </a>`;
+      }
+
+      Object.entries(SECTIONS).forEach(([section, ids]) => {
+        const el = document.querySelector(`[data-amenity-section="${section}"]`);
+        if (!el) return;
+        el.innerHTML = ids.map((id) => {
+          const a = D.findById(id);
+          return a ? renderCard(a) : '';
+        }).join('');
+      });
+    })();
+  </script>
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Tabs
+    document.querySelectorAll('[data-amenity-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-amenity-tab');
+        document.querySelectorAll('[data-amenity-tab]').forEach((t) => {
+          t.classList.toggle('amenities__tab--active', t === tab);
+        });
+        document.querySelectorAll('[data-amenity-pane]').forEach((pane) => {
+          pane.hidden = pane.getAttribute('data-amenity-pane') !== target;
+        });
+      });
+    });
+
+    // Mouse drag-to-scroll on horizontal scrollers — only when intent is clearly horizontal
+    document.querySelectorAll('.amenity-scroller').forEach((scroller) => {
+      let isDown = false;
+      let hasMoved = false;
+      let cancelled = false;
+      let startX = 0, startY = 0;
+      let scrollLeft = 0;
+      const ACTIVATE_THRESHOLD = 8;
+
+      scroller.addEventListener('mousedown', (e) => {
+        // Only left button
+        if (e.button !== 0) return;
+        isDown = true;
+        hasMoved = false;
+        cancelled = false;
+        startX = e.pageX;
+        startY = e.pageY;
+        scrollLeft = scroller.scrollLeft;
+      });
+
+      const stopDrag = () => {
+        isDown = false;
+        scroller.classList.remove('is-dragging');
+      };
+      scroller.addEventListener('mouseleave', stopDrag);
+      scroller.addEventListener('mouseup', stopDrag);
+
+      scroller.addEventListener('mousemove', (e) => {
+        if (!isDown || cancelled) return;
+        const dx = e.pageX - startX;
+        const dy = e.pageY - startY;
+
+        if (!hasMoved) {
+          // Decide gesture intent before activating drag
+          if (Math.abs(dx) < ACTIVATE_THRESHOLD && Math.abs(dy) < ACTIVATE_THRESHOLD) return;
+          if (Math.abs(dy) > Math.abs(dx)) {
+            // Vertical intent → bail out, let the page scroll
+            cancelled = true;
+            return;
+          }
+          hasMoved = true;
+          scroller.classList.add('is-dragging');
+        }
+        e.preventDefault();
+        scroller.scrollLeft = scrollLeft - dx * 1.6;
+      });
+
+      // Prevent the click on a card if the user dragged
+      scroller.addEventListener('click', (e) => {
+        if (hasMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+
+      // Disable native link drag-ghost on anchor cards
+      scroller.querySelectorAll('a').forEach((a) => {
+        a.addEventListener('dragstart', (e) => e.preventDefault());
+      });
+    });
+
+    // My Reservations — load from localStorage and render
+    (function () {
+      const NS = 'cinc:demo:';
+      const KEY = NS + 'reservations';
+      let list = [];
+      try { list = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (_) {}
+
+      const emptyEl = document.querySelector('[data-reservations-empty]');
+      const listEl  = document.querySelector('[data-reservations-list]');
+
+      if (!list.length) {
+        emptyEl.hidden = false;
+        return;
+      }
+      emptyEl.hidden = true;
+
+      listEl.innerHTML = list.map((r) => {
+        const statusLabel = r.paid ? 'Confirmed &amp; Paid' : 'Confirmed';
+        const totalLine   = r.paid ? `<span class="my-res-card__total">$${r.total.toFixed(2)} paid</span>` : '';
+        return `
+          <a class="my-res-card" href="reservation-confirm.html?id=${r.amenityId}&date=${encodeURIComponent(r.date)}&slot=${encodeURIComponent(r.slot)}&guests=${r.guests}&paid=${r.paid ? 1 : 0}&total=${r.total}&deposit=${r.deposit}">
+            <div class="my-res-card__body">
+              <div class="my-res-card__status-row">
+                <span class="my-res-card__status">${statusLabel}</span>
+                ${totalLine}
+              </div>
+              <h3 class="my-res-card__name">${r.name}</h3>
+              <p class="my-res-card__meta">${r.date} · ${r.timeRange}</p>
+              <p class="my-res-card__meta">Guests: ${r.guests}</p>
+            </div>
+            <img class="my-res-card__img" src="${r.image}" alt="" />
+            <span class="my-res-card__chev" aria-hidden="true">›</span>
+          </a>`;
+      }).join('');
+    })();
+
+    // Search filter — hides cards (and sections) that don't match
+    const searchInput = document.querySelector('[data-amenity-search]');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        document.querySelectorAll('.amenities__section').forEach((section) => {
+          const cards = section.querySelectorAll('.amenity-card');
+          let visible = 0;
+          cards.forEach((card) => {
+            const title = card.querySelector('.amenity-card__title')?.textContent.toLowerCase() || '';
+            const match = !q || title.includes(q);
+            card.style.display = match ? '' : 'none';
+            if (match) visible++;
+          });
+          section.style.display = (q && visible === 0) ? 'none' : '';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

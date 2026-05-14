@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Financial Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="financial">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="app-header__hoa">
+          <img class="app-header__logo" src="assets/icons/hoa-logo.png" alt="Magic Views HOA" />
+          <span class="app-header__name">Magic Views HOA</span>
+        </div>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <h1 class="financial__title">Financial Hub</h1>
+
+      <!-- Property selector -->
+      <button class="property-selector" type="button" aria-haspopup="listbox" data-open-sheet="unit-sheet">
+        <img class="property-selector__door" src="assets/icons/icon-door.svg" alt="" />
+        <span class="property-selector__name" data-property-name>12346 Washington Avenue</span>
+        <img class="property-selector__chevron" src="assets/icons/icon-chevron-down.svg" alt="" />
+      </button>
+
+      <!-- Dark balance card -->
+      <section class="balance-card balance-card--dark">
+        <p class="balance-card__acct"><strong>Acct:</strong> <span data-balance-acct>1588:6523</span></p>
+        <p class="balance-card__address" data-balance-address>12346 Washington Avenue</p>
+
+        <div class="balance-card__balance-row balance-card__balance-row--lg">
+          <span class="balance-card__label">Current Balance</span>
+          <span class="balance-card__leader" aria-hidden="true"></span>
+          <span class="balance-card__amount balance-card__amount--lime" data-balance-current>$750.41</span>
+        </div>
+
+        <div class="balance-card__balance-row">
+          <span class="balance-card__label">Future Balance (90 days)</span>
+          <span class="balance-card__leader" aria-hidden="true"></span>
+          <span class="balance-card__future-amount" data-balance-future>$2,368.00</span>
+        </div>
+
+        <button class="btn balance-card__btn balance-card__btn--lime">Make a payment</button>
+      </section>
+
+      <!-- Tiles grid -->
+      <div class="financial__grid">
+        <button class="financial__tile" data-financial="ledger">
+          <img class="financial__tile-icon" src="assets/icons/icon-tile-account-ledger.svg" alt="" />
+          <span class="financial__tile-label">Account<br>Ledger</span>
+        </button>
+
+        <button class="financial__tile" data-financial="history">
+          <img class="financial__tile-icon" src="assets/icons/icon-tile-payment-history.svg" alt="" />
+          <span class="financial__tile-label">Payment<br>History</span>
+        </button>
+
+        <button class="financial__tile" data-financial="methods">
+          <img class="financial__tile-icon" src="assets/icons/icon-tile-payment-methods.svg" alt="" />
+          <span class="financial__tile-label">Payment<br>Methods</span>
+        </button>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+
+    <!-- Unit / Account selector — bottom sheet -->
+    <div class="sheet-overlay" id="unit-sheet" aria-hidden="true" data-sheet-overlay>
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="unit-sheet-title">
+        <header class="sheet__header">
+          <h2 class="sheet__title" id="unit-sheet-title">Select Unit or Account</h2>
+          <button class="sheet__close" type="button" data-close-sheet>Close</button>
+        </header>
+
+        <ul class="unit-list">
+          <li>
+            <button class="unit-list__item is-selected" type="button"
+              data-unit-name="12346 Washington Avenue"
+              data-unit-acct="1588:6523"
+              data-unit-current="$750.41"
+              data-unit-future="$2,368.00">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">12346 Washington Avenue</div>
+                <div class="unit-list__acct">ACC#: 1588:6523</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="13490 Avenue 58"
+              data-unit-acct="89761312"
+              data-unit-current="$1,205.00"
+              data-unit-future="$1,800.00">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">13490 Avenue 58</div>
+                <div class="unit-list__acct">ACC#: 89761312</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="12 Trees 20 43"
+              data-unit-acct="SMM 101"
+              data-unit-current="$0.00"
+              data-unit-future="$450.00">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">12 Trees 20 43</div>
+                <div class="unit-list__acct">ACC#: SMM 101</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="1 APT22"
+              data-unit-acct="PAY022"
+              data-unit-current="$325.50"
+              data-unit-future="$980.00">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">1 APT22</div>
+                <div class="unit-list__acct">ACC#: PAY022</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+
+        <button class="sheet__primary" type="button" data-close-sheet>Sort</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

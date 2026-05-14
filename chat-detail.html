@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Chat</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="chat-detail">
+      <!-- Chat header: back, avatar, name, info -->
+      <header class="chat-detail__header">
+        <a href="messages.html" class="chat-detail__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <img class="chat-detail__avatar" src="assets/personas/dalton-thomson.png" alt="" data-chat-avatar />
+        <h1 class="chat-detail__name" data-chat-name>Loading…</h1>
+        <button class="chat-detail__info" type="button" aria-label="Info">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#b2de61" stroke-width="2"/>
+            <line x1="12" y1="11" x2="12" y2="17" stroke="#b2de61" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="7.5" r="1.2" fill="#b2de61"/>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Messages area (empty for now) -->
+      <div class="chat-detail__messages" data-chat-messages>
+        <!-- Will be populated with messages when conversation history is built -->
+      </div>
+
+      <!-- Composer bar -->
+      <footer class="chat-composer">
+        <button class="chat-composer__plus" type="button" aria-label="Add">
+          <svg viewBox="0 0 24 24" fill="none">
+            <line x1="12" y1="6" x2="12" y2="18" stroke="#112719" stroke-width="3" stroke-linecap="round"/>
+            <line x1="6" y1="12" x2="18" y2="12" stroke="#112719" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="chat-composer__input-wrap">
+          <input class="chat-composer__input" type="text" placeholder="Type a message…" aria-label="Type a message" />
+          <button class="chat-composer__send" type="button" aria-label="Send">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M2 21 L23 12 L2 3 L2 10 L17 12 L2 14 Z" fill="#b2de61"/>
+            </svg>
+          </button>
+        </div>
+        <button class="chat-composer__camera" type="button" aria-label="Send photo">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="7" width="18" height="13" rx="2" stroke="#112719" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="13.5" r="3.5" stroke="#112719" stroke-width="2" fill="none"/>
+            <path d="M8 7l1.5-2h5L16 7" stroke="#112719" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </footer>
+    </main>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script>
+    // Resolve chat info from ?id= query, render history + handle replies
+    (function () {
+      const CHATS = {
+        'cephai': {
+          name: 'Ask Cephai',
+          avatar: 'assets/icons/icon-cephai-diamond.svg',
+          messages: [
+            { text: 'Hi, I am Cephai I can answer questions related to Covenants, Conditions, and Restrictions as well as FAQs and information about your account.', time: 'Today' }
+          ]
+        },
+        'dalton': {
+          name: 'Dalton Thomson',
+          avatar: 'assets/personas/dalton-thomson.png',
+          messages: [
+            { text: 'Hi Jhon I reserved the tennis Court on Thursday at 5PM Hope you can join us', time: '11:56 AM' }
+          ]
+        },
+        'clare': {
+          name: 'Clare Watson',
+          avatar: 'assets/personas/chat-clare.png',
+          messages: [
+            { text: 'Jhon a group of neighbors will be getting together to discuss what\'s been happening with the new amenity rules. Hope you can join.', time: '8:28 AM' },
+            { text: 'We\'ll meet at the clubhouse on Saturday at 5 PM. Bring snacks if you can! 🍪', time: '8:30 AM' }
+          ]
+        },
+        'antonio': {
+          name: 'Antonio Segura',
+          avatar: 'assets/personas/chat-antonio.png',
+          messages: [
+            { text: 'Amazing Bbq Last Weekend, thank you very much for hosting, next time it\'s on me!', time: 'Friday' }
+          ]
+        },
+        'pickleball': {
+          name: 'Pickleball Group',
+          avatar: 'assets/personas/chat-pickleball-group.png',
+          messages: [
+            { sender: 'Thomas Brown', text: 'Tournament starts this weekend, let\' do it 💪🏻', time: 'Thursday' }
+          ]
+        },
+        'anthony': {
+          name: 'Anthony Lowes',
+          avatar: 'assets/personas/chat-anthony.png',
+          messages: [
+            { text: 'Keep seeing trash all over the kids park, can we write a formal letter to the administration?', time: 'Monday' }
+          ]
+        },
+        'kelly': {
+          name: 'Kelly Lopez',
+          avatar: 'assets/personas/chat-kelly.png',
+          messages: [
+            { text: 'Hi Jhon I reserved the tennis Court on Thursday at 5PM Hope you can join us', time: '05/04/2026' }
+          ]
+        }
+      };
+
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const chat = CHATS[id] || CHATS['dalton'];
+      const STORAGE_KEY = `cinc:demo:chat:${id || 'dalton'}`;
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+      }
+
+      function getMyMessages() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+        catch (_) { return []; }
+      }
+
+      function saveMyMessages(arr) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+      }
+
+      function formatTime(ts) {
+        const d = new Date(ts);
+        let h = d.getHours();
+        const m = d.getMinutes();
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        return `${h}:${String(m).padStart(2, '0')} ${ampm}`;
+      }
+
+      document.querySelector('[data-chat-name]').textContent = chat.name;
+      document.querySelector('[data-chat-avatar]').src = chat.avatar;
+
+      const messagesEl = document.querySelector('[data-chat-messages]');
+      const userInitials = (window.CincAuth.getUserInitials && window.CincAuth.getUserInitials()) || 'You';
+
+      function renderAll() {
+        const seed = chat.messages.map((m) => ({
+          incoming: true,
+          sender: m.sender,
+          text: m.text,
+          time: m.time
+        }));
+        const mine = getMyMessages();
+        const all = [...seed, ...mine];
+
+        messagesEl.innerHTML = all.map((m) => {
+          if (m.incoming) {
+            const senderLine = m.sender ? `<strong>${escapeHtml(m.sender)}</strong>` : '';
+            return `<div class="chat-message">
+              <img class="chat-message__avatar" src="${escapeHtml(chat.avatar)}" alt="" />
+              <div class="chat-message__bubble">
+                ${senderLine}
+                ${escapeHtml(m.text).replace(/\n/g, '<br>')}
+                <span class="chat-message__time">${escapeHtml(m.time)}</span>
+              </div>
+            </div>`;
+          }
+          return `<div class="chat-message chat-message--mine">
+            <div class="chat-message__bubble chat-message__bubble--mine">
+              ${escapeHtml(m.text).replace(/\n/g, '<br>')}
+              <span class="chat-message__time">${escapeHtml(m.time)}</span>
+            </div>
+          </div>`;
+        }).join('');
+
+        // Scroll to bottom
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
+      renderAll();
+
+      // ----- Composer wiring -----
+      const input = document.querySelector('.chat-composer__input');
+      const sendBtn = document.querySelector('.chat-composer__send');
+
+      // Quick canned Cephai responses for the demo
+      const CEPHAI_REPLIES = [
+        'Sure — here is what the CC&Rs say about that: pets must be leashed in common areas at all times and must be registered through the Animals section.',
+        'Based on your account, your current balance is $750.41 with autopay scheduled. Anything else I can help with?',
+        'Reservations can be made through the Concierge tab. Free amenities (like the Pickleball Court) don\'t require a deposit; paid ones do.',
+        'I can help you with FAQs about the community, account balance, amenity rules, and HOA documents. What would you like to know?',
+        'Got it — I\'ll log this and a community manager will follow up via email within one business day.'
+      ];
+
+      function send() {
+        const text = input.value.trim();
+        if (!text) return;
+        const mine = getMyMessages();
+        const time = formatTime(Date.now());
+        mine.push({ incoming: false, text, time });
+        saveMyMessages(mine);
+        input.value = '';
+        renderAll();
+
+        // Cephai auto-reply
+        if (id === 'cephai') {
+          setTimeout(() => {
+            const reply = CEPHAI_REPLIES[Math.floor(Math.random() * CEPHAI_REPLIES.length)];
+            const cur = getMyMessages();
+            cur.push({ incoming: true, text: reply, time: formatTime(Date.now()) });
+            saveMyMessages(cur);
+            renderAll();
+          }, 700);
+        }
+      }
+
+      sendBtn.addEventListener('click', send);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); send(); }
+      });
+    })();
+  </script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

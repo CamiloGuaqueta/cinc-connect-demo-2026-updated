@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Chat</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="messages">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="app-header__hoa">
+          <img class="app-header__logo" src="assets/icons/hoa-logo.png" alt="Magic Views HOA" />
+          <span class="app-header__name">Magic Views HOA</span>
+        </div>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Search bar -->
+      <div class="messages__search">
+        <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+        <input class="messages__search-input" type="text" placeholder="Search Chats" />
+      </div>
+
+      <!-- Chat list -->
+      <ul class="chat-list">
+        <!-- Ask Cephai (special) -->
+        <li class="chat-item chat-item--cephai" data-chat-id="cephai">
+          <img class="chat-item__avatar chat-item__avatar--diamond" src="assets/icons/icon-cephai-diamond.svg" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__name">Ask Cephai</div>
+            <div class="chat-item__preview">Hi, I am Cephai I can answer questions related to Covenants, Conditions, and Restrictions as well as FAQs and information about your account.</div>
+          </div>
+          <img class="chat-item__chevron" src="assets/icons/icon-chevron-right-thin.svg" alt="" />
+        </li>
+
+        <li class="chat-item" data-chat-id="dalton">
+          <img class="chat-item__avatar" src="assets/personas/dalton-thomson.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Dalton Thomson</span>
+              <span class="chat-item__time">11:56 AM</span>
+            </div>
+            <div class="chat-item__row">
+              <span class="chat-item__preview">Hi Jhon I reserved the tennis Court on Thursday at 5PM Hope you can join us</span>
+              <span class="chat-item__unread">1</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="chat-item" data-chat-id="clare">
+          <img class="chat-item__avatar" src="assets/personas/chat-clare.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Clare Watson</span>
+              <span class="chat-item__time">8:30 AM</span>
+            </div>
+            <div class="chat-item__row">
+              <span class="chat-item__preview">Jhon a group of neighbors will be getting together to discuss what's bee happening…</span>
+              <span class="chat-item__unread">2</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="chat-item" data-chat-id="antonio">
+          <img class="chat-item__avatar" src="assets/personas/chat-antonio.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Antonio Segura</span>
+              <span class="chat-item__time">Friday</span>
+            </div>
+            <div class="chat-item__preview">Amazing Bbq Last Weekend, thank you very much for hosting, next time it's on me!</div>
+          </div>
+        </li>
+
+        <li class="chat-item" data-chat-id="pickleball">
+          <img class="chat-item__avatar" src="assets/personas/chat-pickleball-group.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Pickleball Group</span>
+              <span class="chat-item__time">Thursday</span>
+            </div>
+            <div class="chat-item__preview"><strong>Thomas Brown:</strong> Tournament starts this weekend, let' do it 💪🏻</div>
+          </div>
+        </li>
+
+        <li class="chat-item" data-chat-id="anthony">
+          <img class="chat-item__avatar" src="assets/personas/chat-anthony.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Anthony Lowes</span>
+              <span class="chat-item__time">Monday</span>
+            </div>
+            <div class="chat-item__preview">Keep seeing trash all over the kids park, can we write a formal letter to the administration?</div>
+          </div>
+        </li>
+
+        <li class="chat-item" data-chat-id="kelly">
+          <img class="chat-item__avatar" src="assets/personas/chat-kelly.png" alt="" />
+          <div class="chat-item__body">
+            <div class="chat-item__row">
+              <span class="chat-item__name">Kelly Lopez</span>
+              <span class="chat-item__time">05/04/2026</span>
+            </div>
+            <div class="chat-item__preview">Hi Jhon I reserved the tennis Court on Thursday at 5PM Hope you can join us</div>
+          </div>
+        </li>
+      </ul>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Click on a chat row navigates to chat-detail
+    document.querySelectorAll('.chat-item[data-chat-id]').forEach((item) => {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', () => {
+        const id = item.getAttribute('data-chat-id');
+        window.location.href = 'chat-detail.html?id=' + encodeURIComponent(id);
+      });
+    });
+  </script>
+</body>
+</html>

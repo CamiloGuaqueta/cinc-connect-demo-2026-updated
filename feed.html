@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Feed</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="feed">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="app-header__hoa">
+          <img class="app-header__logo" src="assets/icons/hoa-logo.png" alt="Magic Views HOA" />
+          <span class="app-header__name">Magic Views HOA</span>
+        </div>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Engage with neighbors -->
+      <section class="feed__engage">
+        <button class="feed__engage-input" type="button" data-compose-open>
+          <span>Engage with your neighbors</span>
+          <img src="assets/icons/icon-filter.svg" alt="" class="feed__engage-pencil" />
+        </button>
+        <button class="feed__filter" type="button" aria-label="Compose" data-compose-open>
+          <img src="assets/icons/icon-pencil.svg" alt="" />
+        </button>
+      </section>
+
+      <!-- Balance card (cream colored) -->
+      <section class="balance-card">
+        <div class="balance-card__header">
+          <div>
+            <p class="balance-card__acct"><strong>Acct:</strong> 1588:6523</p>
+            <p class="balance-card__address">12346 Washington Avenue</p>
+          </div>
+          <span class="balance-card__chevron" aria-hidden="true"></span>
+        </div>
+
+        <div class="balance-card__balance-row">
+          <span class="balance-card__label">Current Balance</span>
+          <span class="balance-card__leader" aria-hidden="true"></span>
+          <span class="balance-card__amount">$750.41</span>
+        </div>
+
+        <div class="balance-card__divider"></div>
+
+        <div class="balance-card__autopay">
+          <img src="assets/icons/icon-autopay.svg" alt="" />
+          <span>Autopay scheduled for xx/xx/xxxx</span>
+        </div>
+
+        <button class="btn balance-card__btn">Make a payment</button>
+
+        <p class="balance-card__note">Only you can see this</p>
+      </section>
+
+      <!-- Carousel dots -->
+      <div class="feed__dots">
+        <span class="feed__dot feed__dot--active"></span>
+        <span class="feed__dot"></span>
+        <span class="feed__dot"></span>
+      </div>
+
+      <!-- Posts -->
+      <section class="feed__posts">
+
+        <!-- User-created posts (rendered dynamically at top) -->
+        <div data-user-posts></div>
+
+        <!-- Post: Carol Green (Property Manager - VOTE NOW) -->
+        <article class="post">
+          <header class="post__header">
+            <div class="post__avatar-wrap">
+              <img class="post__avatar" src="assets/personas/carol-green.png" alt="" />
+              <img class="post__pm-badge" src="assets/icons/icon-pm-badge.svg" alt="PM" />
+            </div>
+            <div class="post__author">
+              <div class="post__name">Carol Green</div>
+              <div class="post__time">Property Manager  |  20 minutes ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title post__title--lime">Board Of directors Election</h3>
+          <p class="post__body">
+            The deadline to cast your vote is June 8.  Just click in the button below and cast your vote.
+          </p>
+
+          <a class="btn btn--vote post__cta" href="ballot-detail.html?id=board-election-2026">Vote Now</a>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-1.png" alt="" />
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-3.png" alt="" />
+                <img src="assets/personas/avatar-4.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Liza Stevens and <strong>3 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-2" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">9</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>11</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Nancy — Lost sports equipment at fitness center -->
+        <article class="post">
+          <header class="post__header">
+            <img class="post__avatar" src="assets/images/Nancy-1.png" alt="" />
+            <div class="post__author">
+              <div class="post__name">Nancy Whitfield</div>
+              <div class="post__time">1 hour ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Did you leave these at the fitness center?</h3>
+          <p class="post__body">
+            Found a towel, lifting gloves, a water bottle, a resistance band, and a jump rope this morning at the gym. Dropped them off at the concierge desk — if any of these are yours, stop by and ask for Mateo. 💪
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/Lost-elements-fitness-center.png" alt="" />
+          </div>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-4.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Antonio Segura and <strong>5 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-nancy-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">7</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>3</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Wanda (Board) — Pool Deck Renovation Budget Vote -->
+        <article class="post">
+          <header class="post__header">
+            <div class="post__avatar-wrap">
+              <img class="post__avatar" src="assets/images/Wanda-1.png" alt="" />
+              <img class="post__pm-badge" src="assets/icons/icon-pm-badge.svg" alt="Board" />
+            </div>
+            <div class="post__author">
+              <div class="post__name">Wanda Ashford</div>
+              <div class="post__time">Board Member  |  2 hours ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title post__title--lime">Pool Deck Renovation — Your Vote Needed</h3>
+          <p class="post__body">
+            The board has narrowed it down to two finalist proposals for resurfacing the pool deck. Both come with detailed cost breakdowns and timelines. Please review and cast your vote by Friday, June 12.
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/Pool-Spa.jpg" alt="" />
+          </div>
+
+          <a class="btn btn--vote post__cta" href="ballot-detail.html?id=pool-deck-design-2026">Vote Now</a>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-1.png" alt="" />
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-3.png" alt="" />
+                <img src="assets/personas/avatar-4.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Antonio Segura and <strong>18 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-wanda-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">22</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>14</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Kevin — Pickleball challenge -->
+        <article class="post">
+          <header class="post__header">
+            <img class="post__avatar" src="assets/images/Kevin-1.png" alt="" />
+            <div class="post__author">
+              <div class="post__name">Kevin O'Sullivan</div>
+              <div class="post__time">4 hours ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Who's brave enough? 🏓</h3>
+          <p class="post__body">
+            Booked the pickleball court for Saturday at 4 PM. Looking for 3 worthy opponents — beginners welcome, trash talk encouraged. Loser buys the round after. Drop a comment if you're in! 😎
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/Pickleball2.jpg" alt="" />
+          </div>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-1.png" alt="" />
+                <img src="assets/personas/avatar-4.png" alt="" />
+                <img src="assets/personas/avatar-2.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Dalton Thomson and <strong>11 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-kevin-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">14</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>12</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Wanda (Board) — Quarterly Town Hall -->
+        <article class="post">
+          <header class="post__header">
+            <div class="post__avatar-wrap">
+              <img class="post__avatar" src="assets/images/Wanda-1.png" alt="" />
+              <img class="post__pm-badge" src="assets/icons/icon-pm-badge.svg" alt="Board" />
+            </div>
+            <div class="post__author">
+              <div class="post__name">Wanda Ashford</div>
+              <div class="post__time">Board Member  |  8 hours ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Quarterly Town Hall — This Saturday</h3>
+          <p class="post__body">
+            Join us this Saturday at 10 AM in the Clubhouse for our spring town hall. We'll cover the landscaping update, upcoming amenity projects, and there will be time for Q&amp;A. Coffee and pastries provided — hope to see you there!
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/ClubHouse-2.png" alt="" />
+          </div>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-1.png" alt="" />
+                <img src="assets/personas/avatar-3.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Dalton Thomson and <strong>9 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-wanda-2" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">12</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>5</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Jim — Parking question -->
+        <article class="post">
+          <header class="post__header">
+            <img class="post__avatar" src="assets/images/Jim-1.png" alt="" />
+            <div class="post__author">
+              <div class="post__name">Jim Patterson</div>
+              <div class="post__time">12 hours ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Question on overnight guest parking</h3>
+          <p class="post__body">
+            Has the rule about overnight guest parking changed recently? I've noticed a couple of vehicles staying past the 48-hour limit this past week. Wanted to confirm with the board before saying anything to the neighbors. Thanks in advance.
+          </p>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-3.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Clare Watson and <strong>4 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-jim-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">6</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>9</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Betty — Dog Park reminder -->
+        <article class="post">
+          <header class="post__header">
+            <img class="post__avatar" src="assets/images/Betty-1.png" alt="" />
+            <div class="post__author">
+              <div class="post__name">Betty Calloway</div>
+              <div class="post__time">Yesterday</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Dog park cleanup — Wednesday mornings</h3>
+          <p class="post__body">
+            Friendly reminder: our wonderful groundskeeper deep-cleans the dog park every Wednesday at 7 AM. Try to keep your pups away during that hour 🐕. Also — the new water station near the small-dog area is finally working again. Bingo gives it two paws up!
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/Dog-park-3.webp" alt="" />
+          </div>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-4.png" alt="" />
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-1.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Kelly Lopez and <strong>7 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-betty-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">10</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>4</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Post: Dalton Thomson -->
+        <article class="post">
+          <header class="post__header">
+            <img class="post__avatar" src="assets/personas/dalton-thomson.png" alt="" />
+            <div class="post__author">
+              <div class="post__name">Dalton Thomson</div>
+              <div class="post__time">5 days ago</div>
+            </div>
+            <button class="post__menu" aria-label="Post options">
+              <img src="assets/icons/icon-3dots.svg" alt="" />
+            </button>
+          </header>
+
+          <h3 class="post__title">Board Of directors Election</h3>
+          <p class="post__body">
+            The deadline to cast your vote is June 8.  Just click in the button below and cast your vote.
+          </p>
+
+          <div class="post__media">
+            <img src="assets/images/post-board-meeting.png" alt="" />
+          </div>
+
+          <footer class="post__footer">
+            <div class="post__likes">
+              <div class="post__likes-avatars">
+                <img src="assets/personas/avatar-1.png" alt="" />
+                <img src="assets/personas/avatar-2.png" alt="" />
+                <img src="assets/personas/avatar-3.png" alt="" />
+                <img src="assets/personas/avatar-4.png" alt="" />
+              </div>
+              <span class="post__likes-text">Liked by Liza Stevens and <strong>3 others</strong></span>
+            </div>
+            <div class="post__reactions">
+              <button class="post__reaction" data-like="post-1" aria-label="Like">
+                <img src="assets/icons/icon-heart.svg" alt="" />
+                <span class="post__reaction-count">9</span>
+              </button>
+              <button class="post__reaction" aria-label="Comment">
+                <img src="assets/icons/icon-comment.svg" alt="" />
+                <span>11</span>
+              </button>
+            </div>
+          </footer>
+        </article>
+
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item bottom-nav__item--active" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Pinboard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+
+    <!-- Compose Post — anchored at top, slides down -->
+    <div class="modal-backdrop modal-backdrop--top" data-compose-modal hidden>
+      <div class="compose-shell">
+        <header class="compose-shell__bar">
+          <button class="compose-shell__cancel" type="button" data-compose-close>Cancel</button>
+          <span class="compose-shell__step">New Post</span>
+          <button class="compose-shell__send" type="button" data-compose-submit disabled aria-label="Post">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor"/>
+            </svg>
+          </button>
+        </header>
+
+        <!-- Draft post card — mirrors how it'll look in the feed -->
+        <article class="compose-card">
+          <header class="compose-card__header">
+            <div class="compose-card__avatar" data-compose-initials>U</div>
+            <div class="compose-card__author">
+              <div class="compose-card__name" data-compose-author>You</div>
+              <div class="compose-card__time">
+                <span class="post__badge-mine">Your post — only you</span>
+              </div>
+            </div>
+          </header>
+
+          <input class="compose-card__title" type="text" placeholder="Add a title (optional)" data-compose-title maxlength="80" />
+          <textarea class="compose-card__body" placeholder="What's on your mind? Share something with your neighbors..." data-compose-body maxlength="500" rows="5"></textarea>
+
+          <!-- Image preview (hidden until an image is attached) -->
+          <div class="compose-card__image" data-compose-image hidden>
+            <img data-compose-image-src src="" alt="" />
+            <button class="compose-card__image-remove" type="button" data-compose-image-remove aria-label="Remove image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="6" y1="6" x2="18" y2="18"/>
+                <line x1="6" y1="18" x2="18" y2="6"/>
+              </svg>
+            </button>
+          </div>
+
+          <footer class="compose-card__footer">
+            <button class="compose-card__attach" type="button" disabled aria-label="Add a photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span>Photo</span>
+            </button>
+            <span class="compose-card__counter" data-compose-counter>0 / 500</span>
+          </footer>
+        </article>
+      </div>
+    </div>
+
+    <!-- Comments bottom-sheet -->
+    <div class="modal-backdrop" data-comments-modal hidden>
+      <div class="modal-sheet comments-sheet">
+        <header class="modal-sheet__header">
+          <h2 class="modal-sheet__title">Comments</h2>
+          <button class="modal-sheet__close" type="button" data-comments-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </button>
+        </header>
+        <div class="comments-sheet__list" data-comments-list></div>
+        <footer class="comments-sheet__footer">
+          <div class="comments-sheet__avatar" data-comment-initials>U</div>
+          <input class="comments-sheet__input" type="text" placeholder="Write a comment..." data-comment-body maxlength="240" />
+          <button class="comments-sheet__send" type="button" data-comment-submit aria-label="Send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor"/>
+            </svg>
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/feed-state.js"></script>
+  <script src="scripts/app-dialogs.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth || !window.CincAuth.isLoggedIn()) return;
+
+      const F = window.FeedState;
+      const userName = window.CincAuth.getUserName() || 'You';
+      const userInitials = window.CincAuth.getUserInitials() || 'U';
+
+      // ---------- Render user-created posts at the top ----------
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+      }
+
+      function renderUserPost(p) {
+        const titleHtml = p.title ? `<h3 class="post__title">${escapeHtml(p.title)}</h3>` : '';
+        const bodyHtml = p.body ? `<p class="post__body">${escapeHtml(p.body).replace(/\n/g, '<br>')}</p>` : '';
+        const imageHtml = p.image ? `<div class="post__media"><img src="${p.image}" alt="" /></div>` : '';
+        return `
+          <article class="post post--mine" data-post-id="${p.id}">
+            <header class="post__header">
+              <div class="post__avatar post__avatar--initials">${escapeHtml(p.initials || 'U')}</div>
+              <div class="post__author">
+                <div class="post__name">${escapeHtml(p.author)} <span class="post__badge-mine">Your post — only you</span></div>
+                <div class="post__time">${escapeHtml(F.formatRelativeTime(p.createdAt))}</div>
+              </div>
+              <button class="post__menu" type="button" aria-label="Delete" data-delete="${p.id}">
+                <img src="assets/icons/icon-3dots.svg" alt="" />
+              </button>
+            </header>
+            ${titleHtml}
+            ${bodyHtml}
+            ${imageHtml}
+            <footer class="post__footer">
+              <div class="post__likes">
+                <span class="post__likes-text" style="opacity:0.6">Only you can see this post</span>
+              </div>
+              <div class="post__reactions">
+                <button class="post__reaction" data-like="${p.id}" aria-label="Like">
+                  <img src="assets/icons/icon-heart.svg" alt="" />
+                  <span class="post__reaction-count">0</span>
+                </button>
+                <button class="post__reaction" data-comments="${p.id}" aria-label="Comment">
+                  <img src="assets/icons/icon-comment.svg" alt="" />
+                  <span>0</span>
+                </button>
+              </div>
+            </footer>
+          </article>
+        `;
+      }
+
+      function renderAllUserPosts() {
+        const container = document.querySelector('[data-user-posts]');
+        if (!container) return;
+        const posts = F.getUserPosts();
+        container.innerHTML = posts.map(renderUserPost).join('');
+        wireLikesAndComments(container);
+
+        // Delete buttons
+        container.querySelectorAll('[data-delete]').forEach((btn) => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const id = btn.getAttribute('data-delete');
+            const ok = await window.AppDialog.confirm({
+              title: 'Delete post?',
+              message: 'This will remove your post from the demo.',
+              confirmLabel: 'Delete',
+              cancelLabel: 'Keep',
+              danger: true
+            });
+            if (ok) {
+              F.deleteUserPost(id);
+              renderAllUserPosts();
+            }
+          });
+        });
+      }
+
+      // ---------- Compose Post ----------
+      const composeModal = document.querySelector('[data-compose-modal]');
+      const composeTitle = document.querySelector('[data-compose-title]');
+      const composeBody = document.querySelector('[data-compose-body]');
+      const composeSubmit = document.querySelector('[data-compose-submit]');
+      document.querySelector('[data-compose-initials]').textContent = userInitials;
+      document.querySelector('[data-compose-author]').textContent = userName;
+
+      // Image upload disabled for demo — button kept for UI reference only
+      const composeImage = document.querySelector('[data-compose-image]');
+      const composeImageSrc = document.querySelector('[data-compose-image-src]');
+      const composeImageRemove = document.querySelector('[data-compose-image-remove]');
+      let attachedImage = null;
+
+      function openCompose() {
+        composeTitle.value = '';
+        composeBody.value = '';
+        attachedImage = null;
+        composeImageSrc.src = '';
+        composeImage.hidden = true;
+        updateComposeState();
+        composeModal.hidden = false;
+        setTimeout(() => composeBody.focus(), 100);
+      }
+      function closeCompose() { composeModal.hidden = true; }
+
+      document.querySelectorAll('[data-compose-open]').forEach((el) => {
+        el.addEventListener('click', openCompose);
+      });
+      document.querySelector('[data-compose-close]').addEventListener('click', closeCompose);
+      composeModal.addEventListener('click', (e) => {
+        if (e.target === composeModal) closeCompose();
+      });
+
+      const composeCounter = document.querySelector('[data-compose-counter]');
+      function updateComposeState() {
+        const len = composeBody.value.length;
+        if (composeCounter) composeCounter.textContent = `${len} / 500`;
+        const hasText = !!composeBody.value.trim();
+        const hasImage = !!attachedImage;
+        composeSubmit.disabled = !hasText && !hasImage;
+      }
+      composeBody.addEventListener('input', updateComposeState);
+      composeTitle.addEventListener('input', updateComposeState);
+
+      composeSubmit.addEventListener('click', () => {
+        const body = composeBody.value.trim();
+        if (!body && !attachedImage) return;
+        F.addUserPost({
+          id: F.newPostId(),
+          author: userName,
+          initials: userInitials,
+          title: composeTitle.value.trim(),
+          body,
+          image: attachedImage || null,
+          createdAt: Date.now()
+        });
+        closeCompose();
+        renderAllUserPosts();
+        // Scroll to top to show new post
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ---------- Likes (works for ALL posts) ----------
+      function wireLikesAndComments(scope) {
+        const root = scope || document;
+        root.querySelectorAll('[data-like]').forEach((btn) => {
+          if (btn.__wired) return;
+          btn.__wired = true;
+          const postId = btn.getAttribute('data-like');
+          const countEl = btn.querySelector('.post__reaction-count');
+          const baseCount = parseInt(countEl ? countEl.textContent : '0', 10) || 0;
+          // Restore state
+          const st = F.getLikeState(postId, baseCount);
+          if (st.liked) btn.classList.add('post__reaction--liked');
+          if (countEl) countEl.textContent = st.count;
+          btn.addEventListener('click', () => {
+            const next = F.toggleLike(postId, baseCount);
+            btn.classList.toggle('post__reaction--liked', next.liked);
+            if (countEl) countEl.textContent = next.count;
+          });
+        });
+        // Comments button
+        root.querySelectorAll('[data-comments]').forEach((btn) => {
+          if (btn.__wired) return;
+          btn.__wired = true;
+          const postId = btn.getAttribute('data-comments');
+          const countSpan = btn.querySelector('span');
+          const baseCount = parseInt(countSpan ? countSpan.textContent : '0', 10) || 0;
+          // Update count with stored comments
+          const total = F.getCommentCount(postId, baseCount);
+          if (countSpan) countSpan.textContent = total;
+          btn.addEventListener('click', () => openComments(postId, baseCount, countSpan));
+        });
+      }
+
+      // Auto-wire comment buttons on existing seed posts (their like button uses `data-like="post-X"`)
+      // Convert seed posts: their like buttons already have data-like, comment buttons don't have data-comments.
+      // We attach data-comments to comment buttons too.
+      document.querySelectorAll('.post').forEach((post) => {
+        const likeBtn = post.querySelector('[data-like]');
+        if (!likeBtn) return;
+        const postId = likeBtn.getAttribute('data-like');
+        const commentBtn = post.querySelectorAll('.post__reaction')[1]; // the second reaction is comments
+        if (commentBtn && !commentBtn.getAttribute('data-comments')) {
+          commentBtn.setAttribute('data-comments', postId);
+        }
+      });
+
+      // ---------- Comments modal ----------
+      const commentsModal = document.querySelector('[data-comments-modal]');
+      const commentsList = document.querySelector('[data-comments-list]');
+      const commentBody = document.querySelector('[data-comment-body]');
+      const commentSubmit = document.querySelector('[data-comment-submit]');
+      document.querySelector('[data-comment-initials]').textContent = userInitials;
+      let currentPostId = null;
+      let currentBaseCount = 0;
+      let currentCountSpan = null;
+
+      function renderComments(postId) {
+        const list = F.getComments(postId);
+        if (list.length === 0) {
+          commentsList.innerHTML = '<div class="comments-sheet__empty">No comments yet. Be the first!</div>';
+          return;
+        }
+        commentsList.innerHTML = list.map((c) => `
+          <div class="comment">
+            <div class="comment__avatar">${escapeHtml((c.author || 'U').split(' ').slice(0,2).map(p=>p[0]||'').join('').toUpperCase())}</div>
+            <div class="comment__body">
+              <div class="comment__head">
+                <span class="comment__name">${escapeHtml(c.author)}</span>
+                <span class="comment__time">${escapeHtml(F.formatRelativeTime(c.createdAt))}</span>
+              </div>
+              <div class="comment__text">${escapeHtml(c.body)}</div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function openComments(postId, baseCount, countSpan) {
+        currentPostId = postId;
+        currentBaseCount = baseCount;
+        currentCountSpan = countSpan;
+        renderComments(postId);
+        commentsModal.hidden = false;
+        setTimeout(() => commentBody.focus(), 100);
+      }
+      function closeComments() {
+        commentsModal.hidden = true;
+        currentPostId = null;
+      }
+
+      document.querySelector('[data-comments-close]').addEventListener('click', closeComments);
+      commentsModal.addEventListener('click', (e) => {
+        if (e.target === commentsModal) closeComments();
+      });
+
+      function submitComment() {
+        if (!currentPostId) return;
+        const body = commentBody.value.trim();
+        if (!body) return;
+        F.addComment(currentPostId, body, userName);
+        commentBody.value = '';
+        renderComments(currentPostId);
+        // Update count in the post footer
+        const total = F.getCommentCount(currentPostId, currentBaseCount);
+        if (currentCountSpan) currentCountSpan.textContent = total;
+      }
+      commentSubmit.addEventListener('click', submitComment);
+      commentBody.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          submitComment();
+        }
+      });
+
+      // ---------- Initial render ----------
+      renderAllUserPosts();
+      wireLikesAndComments(document); // wire seed posts
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Event</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="event">
+      <!-- Sub-header: back + logo -->
+      <header class="sub-header">
+        <a href="calendar.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></a>
+      </header>
+
+      <div class="event__body">
+        <h1 class="event__title" data-event-title>Loading…</h1>
+        <p class="event__date" data-event-range></p>
+        <p class="event__description" data-event-description></p>
+
+        <div class="event__actions">
+          <button class="btn event__btn event__btn--primary" type="button">Share Event</button>
+          <button class="btn event__btn event__btn--secondary" type="button">Add to Calendar</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation (PinBoard active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/calendar-data.js"></script>
+  <script>
+    // Render event details based on ?id= query
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const event = window.CalendarData.findEventById(id) || window.CalendarData.EVENTS[0];
+      document.querySelector('[data-event-title]').textContent = event.title;
+      document.querySelector('[data-event-range]').textContent = window.CalendarData.formatRange(
+        event.startDate, event.endDate, event.startTime, event.endTime
+      );
+      document.querySelector('[data-event-description]').textContent = event.description;
+    })();
+  </script>
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

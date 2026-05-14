@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Animals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="pets">
+      <header class="sub-header">
+        <a href="more.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <h1 class="pets__title">ANIMALS</h1>
+
+      <!-- Empty state (visible when no pets registered) -->
+      <section class="pets__empty" data-empty hidden>
+        <img class="pets__empty-icon" src="assets/icons/icon-more-animals.svg" alt="" />
+        <p class="pets__empty-text">NOTHING TO SHOW</p>
+      </section>
+
+      <!-- Registered pets list (visible when pets exist) -->
+      <section class="pets__list" data-pets-list hidden></section>
+
+      <!-- Actions: Policy + Register -->
+      <div class="pets__actions">
+        <a class="btn btn--primary pets__action" href="pet-policy.html">Animal Policy</a>
+        <a class="btn btn--secondary pets__action" href="pet-register.html">Register Animal</a>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation (More active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/pets-state.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+
+      const P = window.PetsState;
+      const empty = document.querySelector('[data-empty]');
+      const list = document.querySelector('[data-pets-list]');
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+      }
+
+      function render() {
+        const pets = P.getPets();
+        if (pets.length === 0) {
+          empty.hidden = false;
+          list.hidden = true;
+          list.innerHTML = '';
+          return;
+        }
+        empty.hidden = true;
+        list.hidden = false;
+        list.innerHTML = pets.map((pet) => {
+          const photoHTML = pet.photo
+            ? `<img class="pet-card__avatar-img" src="${pet.photo}" alt="" />`
+            : `<img class="pet-card__avatar-paw" src="assets/icons/icon-more-animals.svg" alt="" />`;
+          return `
+            <article class="pet-card">
+              <div class="pet-card__avatar">${photoHTML}</div>
+              <div class="pet-card__body">
+                <h3 class="pet-card__name">${escapeHtml(pet.name)}</h3>
+                <p class="pet-card__meta">${escapeHtml(P.typeLabel(pet.type))} · ${escapeHtml(pet.breed || '—')}</p>
+                <p class="pet-card__meta pet-card__meta--muted">Unit ${escapeHtml(pet.unitNumber || '—')}</p>
+              </div>
+              <span class="pet-card__status pet-card__status--${escapeHtml(pet.status || 'pending')}">${escapeHtml((pet.status || 'pending').replace('-', ' '))}</span>
+            </article>
+          `;
+        }).join('');
+      }
+
+      render();
+    })();
+  </script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

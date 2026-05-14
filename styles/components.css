@@ -1,0 +1,596 @@
+﻿/* ============================================
+   CINC Connect Demo — Components
+   Reusable UI pieces extracted from Figma.
+   ============================================ */
+
+/* ----- Mobile App Frame ----- */
+.app-frame {
+  max-width: var(--max-width-mobile);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--color-bg-base);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   APP HEADER (used across Feed, To-Dos, Concierge)
+   Background: #235237, height 120px in Figma
+   ============================================ */
+.app-header {
+  background: var(--color-brand-forest);
+  height: 90px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.app-header__hoa {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.app-header__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.app-header__name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+.app-header__notification {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header__notification img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.app-header__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: #DF434F;
+  /* stroke effect via box-shadow keeps element size exact */
+  box-shadow: 0 0 0 2px #225237;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  width: 100%;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-brand-lime);
+  color: var(--color-brand-forest);
+}
+
+.btn--secondary {
+  background: var(--color-brand-forest);
+  color: var(--color-brand-lime);
+}
+
+.btn--vote {
+  background: var(--color-vote);
+  color: #112719;
+}
+
+/* ============================================
+   INPUTS
+   ============================================ */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background: var(--color-bg-input);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  padding: 0 var(--space-3);
+  gap: var(--space-3);
+  width: 100%;
+  transition: border-color 150ms ease;
+}
+
+.input-group--error {
+  border-color: #DF434F;
+}
+
+.input-group__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group__icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.input-group__icon--right {
+  margin-left: auto;
+}
+
+.input-group__icon--right img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+}
+
+.input-group__field--lowercase,
+.input-group__field.input-group__field--lowercase {
+  text-transform: lowercase !important;
+}
+
+.input-group__field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  text-transform: capitalize;
+  min-width: 0;
+}
+
+.input-group__field::placeholder {
+  color: var(--color-text-primary);
+  opacity: 0.5;
+  text-transform: capitalize;
+}
+
+/* ============================================
+   TOGGLE
+   ============================================ */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle__switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  background: #8e8e8e;
+  border-radius: 18px;
+  transition: background var(--transition-base);
+  flex-shrink: 0;
+}
+
+.toggle__switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: left var(--transition-base);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle__input:checked + .toggle__switch {
+  background: var(--color-brand-lime);
+}
+
+.toggle__input:checked + .toggle__switch::after {
+  left: 29px;
+}
+
+/* ── Labeled toggle variant (shows Yes / No inside track) ── */
+.toggle--labeled .toggle__switch {
+  overflow: hidden;
+}
+
+.toggle--labeled .toggle__yes,
+.toggle--labeled .toggle__no {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-family-base);
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 1;
+}
+
+.toggle--labeled .toggle__yes {
+  left: 8px;
+  color: var(--color-brand-forest);
+  opacity: 0;
+}
+
+.toggle--labeled .toggle__no {
+  right: 8px;
+  color: var(--color-brand-lime);
+  opacity: 1;
+}
+
+.toggle--labeled .toggle__input:checked + .toggle__switch .toggle__yes { opacity: 1; }
+.toggle--labeled .toggle__input:checked + .toggle__switch .toggle__no  { opacity: 0; }
+
+.toggle__label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   BOTTOM NAVIGATION (NAV 1 from Figma)
+   Background: #235237, with rounded top corners
+   ============================================ */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  height: var(--bottom-nav-height);
+  background: var(--color-brand-forest);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  padding: 0 8px;
+  z-index: 100;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  height: 100%;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Fixed-size container so icon position is stable whether active or not */
+.bottom-nav__icon-wrap {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bottom-nav__icon-wrap img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  /* Default state: cream/white icon on dark green nav */
+  filter: brightness(0) saturate(100%) invert(99%) sepia(11%) saturate(382%) hue-rotate(316deg) brightness(105%) contrast(98%);
+}
+
+.bottom-nav__item--active .bottom-nav__icon-wrap {
+  background: var(--color-brand-lime);
+  border-radius: 50%;
+}
+
+/* Active icon stays BLACK on the lime circle */
+.bottom-nav__item--active .bottom-nav__icon-wrap img {
+  filter: brightness(0) saturate(100%);
+}
+
+.bottom-nav__nav-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 9px;
+  font-weight: var(--font-weight-extrabold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Reserve label space always to prevent icon shift on active state */
+.bottom-nav__label {
+  font-size: 9px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-align: center;
+  visibility: hidden;
+  height: 11px;
+}
+
+.bottom-nav__item--active .bottom-nav__label {
+  visibility: visible;
+}
+
+/* ============================================
+   BOTTOM SHEET (modal that slides up from bottom)
+   Used by Financial Hub property selector and similar pickers.
+   ============================================ */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.sheet-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sheet {
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  height: 92vh;
+  background: var(--color-brand-forest);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px;
+  transform: translateY(100%);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.sheet-overlay.is-open .sheet {
+  transform: translateY(0);
+}
+
+.sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-brand-lime);
+  margin-bottom: 14px;
+}
+
+.sheet__title {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-brand-lime);
+}
+
+.sheet__close {
+  background: none;
+  border: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-brand-lime);
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.sheet__primary {
+  margin-top: auto;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-brand-lime);
+  color: var(--color-brand-forest);
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Unit list inside the sheet — fills available space, pushes SORT to bottom */
+.unit-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 0 0 auto;
+}
+
+.unit-list__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--color-bg-base);
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.unit-list__door {
+  width: 18px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.unit-list__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.unit-list__address {
+  color: var(--color-text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.unit-list__acct {
+  color: var(--color-brand-lime);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+}
+
+.unit-list__radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-brand-lime);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.unit-list__item.is-selected .unit-list__radio::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--color-brand-lime);
+}
+
+/* ============================================
+   PRELOADER (transition spinner between screens)
+   Sits over the content area, leaves header + nav visible.
+   ============================================ */
+.preloader {
+  position: fixed;
+  top: 90px;             /* below the app-header */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  bottom: var(--bottom-nav-height);
+  background: var(--color-bg-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  pointer-events: none;
+}
+
+.preloader[hidden],
+.preloader.is-hidden {
+  display: flex;            /* override [hidden] default to keep transition */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader__spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(178, 222, 97, 0.2);
+  border-top-color: var(--color-brand-lime);
+  border-radius: 50%;
+  animation: preloader-spin 800ms linear infinite;
+}
+
+@keyframes preloader-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* For pages that should show preloader on load before content is revealed */
+.preloader--on-load {
+  background: var(--color-brand-forest);
+}
+
+/* ============================================
+   DEMO DISCLAIMER BANNER
+   ============================================ */
+.demo-banner {
+  background: var(--color-brand-lime);
+  color: var(--color-bg-base);
+  text-align: center;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

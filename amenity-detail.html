@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Amenity Detail</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body class="amenity-detail-body">
+  <div class="app-frame">
+    <main class="amenity-detail-v2">
+
+      <!-- Standard sub-header (back + bell) -->
+      <header class="sub-header">
+        <a href="amenities.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <!-- Bottom-sheet content -->
+      <section class="amenity-sheet">
+        <!-- Hero with overlaid title + close + favorite -->
+        <div class="amenity-sheet__hero">
+          <img class="amenity-sheet__hero-img" data-amenity-image src="" alt="" />
+          <a class="amenity-sheet__close" href="amenities.html" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </a>
+          <h1 class="amenity-sheet__title" data-amenity-name>—</h1>
+          <button class="amenity-sheet__fav" type="button" aria-label="Favorite" data-favorite-toggle>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Stats row -->
+        <ul class="amenity-sheet__stats">
+          <li>
+            <span class="amenity-sheet__stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none" aria-hidden="true">
+                <path d="M4.48972 8.76367C2.36276 8.76367 0.486698 10.2693 0.0288668 12.3436C-0.0504455 12.7034 0.0354449 13.0736 0.264737 13.3591C0.490833 13.6404 0.827441 13.8017 1.18848 13.8017H7.79114C8.15218 13.8017 8.48879 13.6404 8.7147 13.3593C8.94418 13.0736 9.03026 12.7035 8.95076 12.3436C8.49311 10.2693 6.61687 8.76367 4.48972 8.76367ZM7.98209 12.7706C7.95465 12.8048 7.89338 12.862 7.79114 12.862H1.18848C1.08624 12.862 1.02497 12.8048 0.99753 12.7706C0.947349 12.7082 0.928743 12.6265 0.946597 12.546C1.31008 10.8989 2.8001 9.70339 4.48972 9.70339C6.17952 9.70339 7.66973 10.8989 8.03303 12.546C8.05088 12.6263 8.03228 12.7082 7.98209 12.7706Z" fill="#B2DE61"/>
+                <path d="M4.48945 7.22108C5.81915 7.22108 6.90077 6.13927 6.90077 4.80976C6.90077 3.48005 5.81915 2.39844 4.48945 2.39844C3.15974 2.39844 2.07812 3.48005 2.07812 4.80976C2.07812 6.13927 3.15974 7.22108 4.48945 7.22108ZM4.48945 3.33816C5.3008 3.33816 5.96105 3.99822 5.96105 4.80976C5.96105 5.62111 5.3008 6.28136 4.48945 6.28136C3.67809 6.28136 3.01785 5.62111 3.01785 4.80976C3.01785 3.99822 3.67809 3.33816 4.48945 3.33816Z" fill="#B2DE61"/>
+                <path d="M14.9716 9.94538C14.5138 7.87104 12.6378 6.36523 10.5106 6.36523C9.28671 6.36523 8.13724 6.8428 7.27364 7.71017C7.09058 7.89416 7.09114 8.19167 7.27496 8.37473C7.45876 8.55779 7.75646 8.55704 7.93953 8.37342C8.62552 7.6846 9.53855 7.30495 10.5106 7.30495C12.2002 7.30495 13.6906 8.50066 14.0539 10.1478C14.0716 10.2281 14.0532 10.31 14.003 10.3724C13.9755 10.4066 13.9143 10.4639 13.812 10.4639H10.3352C10.0757 10.4639 9.86539 10.6742 9.86539 10.9338C9.86539 11.1933 10.0757 11.4036 10.3352 11.4036H13.812C14.1729 11.4036 14.5095 11.2422 14.7356 10.961C14.9649 10.6755 15.051 10.3053 14.9716 9.94538Z" fill="#B2DE61"/>
+                <path d="M10.5109 4.82264C11.8406 4.82264 12.9223 3.74084 12.9223 2.41132C12.9223 1.08162 11.8406 0 10.5109 0C9.18123 0 8.09961 1.08162 8.09961 2.41132C8.09961 3.74084 9.18123 4.82264 10.5109 4.82264ZM10.5109 0.93972C11.3223 0.93972 11.9825 1.59997 11.9825 2.41132C11.9825 3.22268 11.3223 3.88292 10.5109 3.88292C9.69958 3.88292 9.03933 3.22268 9.03933 2.41132C9.03933 1.59997 9.69958 0.93972 10.5109 0.93972Z" fill="#B2DE61"/>
+              </svg>
+            </span>
+            Max <span data-amenity-guests>—</span>
+          </li>
+          <li>
+            <span class="amenity-sheet__stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="#B2DE61" stroke-width="1.3" fill="none"/>
+                <path d="M7 3.5V7L9.2 8.4" stroke="#B2DE61" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            Max: <span data-amenity-hours>—</span> Hrs
+          </li>
+          <li>
+            <span class="amenity-sheet__stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="#B2DE61" stroke-width="1.3" fill="none"/>
+                <path d="M9 5.2C8.5 4.4 7.9 4 7 4C5.9 4 5.1 4.6 5.1 5.4C5.1 6.2 5.8 6.6 7 6.9C8.2 7.2 8.9 7.6 8.9 8.5C8.9 9.3 8.1 10 7 10C6 10 5.4 9.6 4.9 8.9M7 3.4V4M7 10V10.6" stroke="#B2DE61" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <span data-amenity-price>—</span>
+          </li>
+          <li data-deposit-stat hidden>
+            <span class="amenity-sheet__stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="6" stroke="#B2DE61" stroke-width="1.3" fill="none"/>
+                <path d="M9 5.2C8.5 4.4 7.9 4 7 4C5.9 4 5.1 4.6 5.1 5.4C5.1 6.2 5.8 6.6 7 6.9C8.2 7.2 8.9 7.6 8.9 8.5C8.9 9.3 8.1 10 7 10C6 10 5.4 9.6 4.9 8.9M7 3.4V4M7 10V10.6" stroke="#B2DE61" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <span data-amenity-deposit>—</span>
+          </li>
+        </ul>
+
+        <!-- Description with See More -->
+        <p class="amenity-sheet__description" data-amenity-description>—</p>
+        <a href="#" class="amenity-sheet__see-more" data-see-more>See More</a>
+
+        <!-- Reservation date -->
+        <div class="amenity-sheet__field">
+          <label class="amenity-sheet__label">RESERVATION DATE</label>
+          <button class="amenity-sheet__date-wrap" type="button" data-date-trigger>
+            <span class="amenity-sheet__date-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </span>
+            <span class="amenity-sheet__date-text">
+              <span class="amenity-sheet__date-primary" data-date-primary>MM/DD/YYYY</span>
+              <span class="amenity-sheet__date-secondary" data-date-secondary hidden></span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Start times -->
+        <div class="amenity-sheet__field">
+          <label class="amenity-sheet__label">START TIMES</label>
+          <div class="amenity-sheet__time-strip" data-start-strip></div>
+        </div>
+
+        <!-- End time (revealed after start is selected) -->
+        <div class="amenity-sheet__field" data-end-field hidden>
+          <label class="amenity-sheet__label">END TIME</label>
+          <div class="amenity-sheet__time-strip" data-end-strip></div>
+        </div>
+
+        <!-- Number of guests pills -->
+        <div class="amenity-sheet__field">
+          <label class="amenity-sheet__label">NUMBER OF GUESTS</label>
+          <div class="amenity-sheet__guests" data-guest-pills></div>
+        </div>
+
+        <!-- Additional details -->
+        <div class="amenity-sheet__field">
+          <label class="amenity-sheet__label">ADDITIONAL DETAILS <span class="amenity-sheet__required">*</span></label>
+          <p class="amenity-sheet__hint">Please describe the nature of your event (e.g., birthday party, corporate meeting, family celebration). Include any special setup requirements, catering plans, entertainment, or accessibility needs you'd like us to be aware of.</p>
+          <textarea class="amenity-sheet__textarea" placeholder="Type your details here..." data-details></textarea>
+        </div>
+
+        <!-- Continue CTA -->
+        <button class="btn amenity-sheet__cta" type="button" data-continue-btn disabled>CONTINUE</button>
+
+        <!-- Info card at bottom -->
+        <ul class="amenity-sheet__info">
+          <li>
+            <span class="amenity-sheet__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <span data-amenity-address>—</span>
+          </li>
+          <li>
+            <span class="amenity-sheet__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </span>
+            <span data-amenity-phone>—</span>
+          </li>
+          <li class="amenity-sheet__info-row--button" data-hours-toggle>
+            <span class="amenity-sheet__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span>Hours of Operation</span>
+            <span class="amenity-sheet__info-chevron" aria-hidden="true">›</span>
+          </li>
+          <li class="amenity-sheet__info-row--button" data-pdf-open>
+            <span class="amenity-sheet__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+              </svg>
+            </span>
+            <span data-pdf-title>—</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Hours of operation mini sheet -->
+    <div class="modal-backdrop" data-hours-modal hidden>
+      <div class="modal-sheet modal-sheet--small">
+        <header class="modal-sheet__header">
+          <h2 class="modal-sheet__title">Hours of Operation</h2>
+          <button class="modal-sheet__close" type="button" data-hours-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </button>
+        </header>
+        <p class="modal-sheet__body" data-amenity-hours-text></p>
+      </div>
+    </div>
+
+    <!-- Disclosure agreement modal -->
+    <div class="modal-backdrop" data-disclosure-modal hidden>
+      <div class="modal-sheet">
+        <header class="modal-sheet__header">
+          <h2 class="modal-sheet__title">DISCLOSURE AGREEMENT</h2>
+          <button class="modal-sheet__close" type="button" data-disclosure-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </button>
+        </header>
+        <div class="modal-sheet__body modal-sheet__body--scrollable">
+          <p data-amenity-rules>—</p>
+        </div>
+        <footer class="modal-sheet__footer">
+          <button class="modal-sheet__pdf-link" type="button" data-disclosure-pdf-open>
+            <span class="amenity-sheet__info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+              </svg>
+            </span>
+            <span data-disclosure-pdf-title>—</span>
+          </button>
+          <label class="modal-sheet__checkbox-row">
+            <input type="checkbox" data-agree-check />
+            <span class="modal-sheet__checkbox-box" aria-hidden="true"></span>
+            <span>I have read and agree to the above disclaimer</span>
+          </label>
+          <button class="btn btn--primary modal-sheet__cta" type="button" data-disclosure-continue disabled>CONTINUE</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Date picker modal -->
+    <div class="modal-backdrop modal-backdrop--center" data-date-modal hidden>
+      <div class="modal-sheet date-picker">
+        <header class="modal-sheet__header">
+          <h2 class="modal-sheet__title">Select Date</h2>
+          <button class="modal-sheet__close" type="button" data-date-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </button>
+        </header>
+        <div class="date-picker__body">
+          <div class="cal-month__nav">
+            <button class="cal-month__arrow" type="button" data-picker-prev aria-label="Previous month">
+              <span class="cal-arrow cal-arrow--left" aria-hidden="true"></span>
+            </button>
+            <span class="cal-month__title" data-picker-title>—</span>
+            <button class="cal-month__arrow" type="button" data-picker-next aria-label="Next month">
+              <span class="cal-arrow" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="cal-month__weekdays">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          </div>
+          <div class="cal-month__grid" data-picker-grid></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PDF viewer modal (full screen white) -->
+    <div class="pdf-modal" data-pdf-modal hidden>
+      <header class="pdf-modal__header">
+        <h2 class="pdf-modal__filename" data-pdf-modal-title>—</h2>
+        <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="6" y1="18" x2="18" y2="6"/>
+          </svg>
+        </button>
+      </header>
+      <div class="pdf-modal__sheet">
+        <h3 class="pdf-modal__title" data-pdf-heading>—</h3>
+        <p class="pdf-modal__subtitle">Rules &amp; Regulations</p>
+        <hr class="pdf-modal__divider" />
+        <div class="pdf-modal__content" data-pdf-paragraphs></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="scripts/amenities-data.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id') || 'clubhouse';
+      const D = window.AmenitiesData;
+      const a = D.findById(id) || D.AMENITIES[0];
+
+      // --- Populate static content ---
+      document.querySelector('[data-amenity-image]').src = a.image;
+      document.querySelector('[data-amenity-name]').textContent = a.name;
+      document.querySelector('[data-amenity-guests]').textContent = a.maxGuests;
+      document.querySelector('[data-amenity-hours]').textContent = a.maxHours;
+      document.querySelector('[data-amenity-address]').textContent = a.address;
+      document.querySelector('[data-amenity-phone]').textContent = a.phone;
+      document.querySelector('[data-amenity-description]').textContent = a.description;
+      document.querySelector('[data-amenity-rules]').textContent = a.rules;
+      document.querySelector('[data-amenity-hours-text]').textContent = a.hours;
+
+      // Price chip
+      const priceEl = document.querySelector('[data-amenity-price]');
+      priceEl.textContent = a.pricePerHour === 0 ? 'Free' : `$${a.pricePerHour.toFixed(2)}`;
+
+      // Deposit chip (only if > 0)
+      if (a.deposit && a.deposit > 0) {
+        document.querySelector('[data-deposit-stat]').hidden = false;
+        document.querySelector('[data-amenity-deposit]').textContent = `$${a.deposit.toFixed(2)}`;
+      }
+
+      // PDF titles
+      document.querySelector('[data-pdf-title]').textContent = a.pdfTitle;
+      document.querySelector('[data-disclosure-pdf-title]').textContent = a.pdfTitle;
+      document.querySelector('[data-pdf-modal-title]').textContent = a.pdfTitle;
+      document.querySelector('[data-pdf-heading]').textContent = a.pdfHeading;
+      const pdfParagraphs = document.querySelector('[data-pdf-paragraphs]');
+      pdfParagraphs.innerHTML = a.pdfParagraphs.map((p) => `<p>${p}</p>`).join('');
+
+      // --- State ---
+      const state = {
+        date: '',
+        slot: null,
+        endSlot: null,
+        guests: 2,
+        details: '',
+        agreed: false
+      };
+
+      // --- Continue button readiness ---
+      const continueBtn = document.querySelector('[data-continue-btn]');
+      function checkReady() {
+        const ready = state.date !== '' && state.slot !== null && state.endSlot !== null;
+        continueBtn.disabled = !ready;
+        continueBtn.classList.toggle('btn--primary', ready);
+      }
+
+      // --- Reservation date custom picker ---
+      const dateTrigger = document.querySelector('[data-date-trigger]');
+      const datePrimary = document.querySelector('[data-date-primary]');
+      const dateSecondary = document.querySelector('[data-date-secondary]');
+      const dateModal = document.querySelector('[data-date-modal]');
+      const pickerTitle = document.querySelector('[data-picker-title]');
+      const pickerGrid = document.querySelector('[data-picker-grid]');
+
+      const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const DAY_NAMES_LONG = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+      const today = new Date();
+      let pickerCursor = new Date(today.getFullYear(), today.getMonth(), 1);
+      let selectedDay = null; // Date object
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function isSameDay(a, b) {
+        return a && b &&
+          a.getFullYear() === b.getFullYear() &&
+          a.getMonth() === b.getMonth() &&
+          a.getDate() === b.getDate();
+      }
+
+      function renderPicker() {
+        const cur = pickerCursor;
+        pickerTitle.textContent = `${MONTH_NAMES[cur.getMonth()]} ${cur.getFullYear()}`;
+        const firstOfMonth = new Date(cur.getFullYear(), cur.getMonth(), 1);
+        const lastOfMonth = new Date(cur.getFullYear(), cur.getMonth() + 1, 0);
+        const startWeekday = firstOfMonth.getDay();
+        const totalDays = lastOfMonth.getDate();
+
+        const cells = [];
+        for (let i = 0; i < startWeekday; i++) cells.push('<span class="cal-day cal-day--empty"></span>');
+        for (let day = 1; day <= totalDays; day++) {
+          const d = new Date(cur.getFullYear(), cur.getMonth(), day);
+          const classes = ['cal-day'];
+          if (isSameDay(d, selectedDay)) classes.push('cal-day--selected');
+          if (d < new Date(today.getFullYear(), today.getMonth(), today.getDate())) classes.push('cal-day--past');
+          cells.push(`<button type="button" class="${classes.join(' ')}" data-day="${day}">
+            <span class="cal-day__num">${day}</span>
+          </button>`);
+        }
+        // Pad trailing cells so the grid is always 6 rows (42 cells) — keeps modal height stable
+        while (cells.length < 42) cells.push('<span class="cal-day cal-day--empty"></span>');
+        pickerGrid.innerHTML = cells.join('');
+
+        pickerGrid.querySelectorAll('[data-day]').forEach((btn) => {
+          if (btn.classList.contains('cal-day--past')) return;
+          btn.addEventListener('click', () => {
+            const day = Number(btn.getAttribute('data-day'));
+            selectedDay = new Date(cur.getFullYear(), cur.getMonth(), day);
+            // Update display
+            const mm = pad(selectedDay.getMonth() + 1);
+            const dd = pad(selectedDay.getDate());
+            const yyyy = selectedDay.getFullYear();
+            const primary = `${mm}/${dd}/${yyyy}`;
+            const secondary = `${DAY_NAMES_LONG[selectedDay.getDay()]}, ${MONTH_NAMES[selectedDay.getMonth()]} ${selectedDay.getDate()}, ${yyyy}`;
+            datePrimary.textContent = primary;
+            dateSecondary.textContent = secondary;
+            dateSecondary.hidden = false;
+            dateTrigger.classList.add('amenity-sheet__date-wrap--filled');
+            state.date = primary;
+            dateModal.hidden = true;
+            checkReady();
+          });
+        });
+      }
+
+      dateTrigger.addEventListener('click', () => {
+        dateModal.hidden = false;
+        renderPicker();
+      });
+      document.querySelector('[data-date-close]').addEventListener('click', () => {
+        dateModal.hidden = true;
+      });
+      dateModal.addEventListener('click', (e) => {
+        if (e.target === dateModal) dateModal.hidden = true;
+      });
+      document.querySelector('[data-picker-prev]').addEventListener('click', () => {
+        pickerCursor = new Date(pickerCursor.getFullYear(), pickerCursor.getMonth() - 1, 1);
+        renderPicker();
+      });
+      document.querySelector('[data-picker-next]').addEventListener('click', () => {
+        pickerCursor = new Date(pickerCursor.getFullYear(), pickerCursor.getMonth() + 1, 1);
+        renderPicker();
+      });
+
+      // --- Time strip helpers: parse "h:mm AM/PM" → minutes-from-midnight, and back ---
+      function parseTime(str) {
+        const m = str.match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+        if (!m) return null;
+        let h = parseInt(m[1], 10) % 12;
+        if (m[3].toUpperCase() === 'PM') h += 12;
+        return h * 60 + parseInt(m[2], 10);
+      }
+      function formatTime(mins) {
+        const total = ((mins % 1440) + 1440) % 1440;
+        const h24 = Math.floor(total / 60);
+        const min = total % 60;
+        const period = h24 >= 12 ? 'PM' : 'AM';
+        const h = ((h24 + 11) % 12) + 1;
+        return `${h}:${String(min).padStart(2, '0')} ${period}`;
+      }
+
+      // --- Start time strip ---
+      const startStrip = document.querySelector('[data-start-strip]');
+      const endField = document.querySelector('[data-end-field]');
+      const endStrip = document.querySelector('[data-end-strip]');
+
+      a.slots.forEach((s) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'time-pill';
+        btn.textContent = s;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-start-strip] .time-pill').forEach((el) =>
+            el.classList.remove('time-pill--active'));
+          btn.classList.add('time-pill--active');
+          state.slot = s;
+          state.endSlot = null;
+          renderEndTimes(s);
+          checkReady();
+        });
+        startStrip.appendChild(btn);
+      });
+
+      function renderEndTimes(startStr) {
+        const startMins = parseTime(startStr);
+        if (startMins === null) return;
+        endStrip.innerHTML = '';
+        const maxStep = (a.maxHours || 1) * 2; // 30-min steps
+        for (let i = 1; i <= maxStep; i++) {
+          const t = formatTime(startMins + i * 30);
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'time-pill';
+          btn.textContent = t;
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('[data-end-strip] .time-pill').forEach((el) =>
+              el.classList.remove('time-pill--active'));
+            btn.classList.add('time-pill--active');
+            state.endSlot = t;
+            checkReady();
+          });
+          endStrip.appendChild(btn);
+        }
+        endField.hidden = false;
+      }
+
+      // --- Guest pills (1..maxGuests) ---
+      const guestsContainer = document.querySelector('[data-guest-pills]');
+      const guestMax = Math.min(a.maxGuests, 7); // cap pills visually
+      for (let i = 1; i <= guestMax; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'amenity-sheet__guest-pill';
+        btn.textContent = i;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.amenity-sheet__guest-pill').forEach((el) =>
+            el.classList.remove('amenity-sheet__guest-pill--active'));
+          btn.classList.add('amenity-sheet__guest-pill--active');
+          state.guests = i;
+        });
+        if (i === 2) {
+          btn.classList.add('amenity-sheet__guest-pill--active');
+        }
+        guestsContainer.appendChild(btn);
+      }
+
+      // --- Details textarea ---
+      document.querySelector('[data-details]').addEventListener('input', (e) => {
+        state.details = e.target.value;
+      });
+
+      // --- See More (toggle clamp) ---
+      const desc = document.querySelector('[data-amenity-description]');
+      const seeMore = document.querySelector('[data-see-more]');
+      seeMore.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = desc.classList.toggle('amenity-sheet__description--expanded');
+        seeMore.textContent = expanded ? 'See Less' : 'See More';
+      });
+
+      // --- Hours modal ---
+      const hoursModal = document.querySelector('[data-hours-modal]');
+      document.querySelector('[data-hours-toggle]').addEventListener('click', () => {
+        hoursModal.hidden = false;
+      });
+      document.querySelector('[data-hours-close]').addEventListener('click', () => {
+        hoursModal.hidden = true;
+      });
+      hoursModal.addEventListener('click', (e) => {
+        if (e.target === hoursModal) hoursModal.hidden = true;
+      });
+
+      // --- PDF modal ---
+      const pdfModal = document.querySelector('[data-pdf-modal]');
+      function openPdf() { pdfModal.hidden = false; }
+      function closePdf() { pdfModal.hidden = true; }
+      document.querySelector('[data-pdf-open]').addEventListener('click', openPdf);
+      document.querySelector('[data-pdf-close]').addEventListener('click', closePdf);
+      document.querySelector('[data-disclosure-pdf-open]').addEventListener('click', openPdf);
+
+      // --- Disclosure modal ---
+      const disclosureModal = document.querySelector('[data-disclosure-modal]');
+      const agreeCheck = document.querySelector('[data-agree-check]');
+      const disclosureContinue = document.querySelector('[data-disclosure-continue]');
+
+      document.querySelector('[data-continue-btn]').addEventListener('click', () => {
+        disclosureModal.hidden = false;
+      });
+      document.querySelector('[data-disclosure-close]').addEventListener('click', () => {
+        disclosureModal.hidden = true;
+      });
+      disclosureModal.addEventListener('click', (e) => {
+        if (e.target === disclosureModal) disclosureModal.hidden = true;
+      });
+
+      agreeCheck.addEventListener('change', () => {
+        state.agreed = agreeCheck.checked;
+        disclosureContinue.disabled = !state.agreed;
+      });
+
+      disclosureContinue.addEventListener('click', () => {
+        const qs = new URLSearchParams({
+          id: a.id,
+          date: state.date,
+          slot: state.slot,
+          endSlot: state.endSlot || '',
+          guests: state.guests,
+          details: state.details
+        }).toString();
+        const dest = D.isPaid(a) ? 'amenity-payment.html' : 'reservation-confirm.html';
+        location.href = `${dest}?${qs}`;
+      });
+
+      // --- Favorite toggle ---
+      const favBtn = document.querySelector('[data-favorite-toggle]');
+      const favKey = `amenity-fav-${a.id}`;
+      if (localStorage.getItem(favKey) === '1') {
+        favBtn.classList.add('amenity-sheet__fav--active');
+      }
+      favBtn.addEventListener('click', () => {
+        const on = favBtn.classList.toggle('amenity-sheet__fav--active');
+        localStorage.setItem(favKey, on ? '1' : '0');
+      });
+    })();
+  </script>
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — My Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="profile">
+      <!-- Sub-header: back + notification bell -->
+      <header class="sub-header">
+        <a href="more.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+          <span class="sub-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Hero with background + avatar -->
+      <section class="profile__hero">
+        <div class="profile__hero-bg" aria-hidden="true"></div>
+        <div class="profile__hero-overlay" aria-hidden="true"></div>
+        <div class="profile__avatar-wrap">
+          <img class="profile__avatar" src="assets/personas/user-john.jpg" alt="" />
+          <button class="profile__avatar-edit" type="button" aria-label="Edit profile photo">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5.5 3.5L6.5 2h3l1 1.5H13a1 1 0 0 1 1 1V12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1h2.5z" stroke="#112719" stroke-width="1.3" stroke-linejoin="round"/>
+              <circle cx="8" cy="8.5" r="2.3" stroke="#112719" stroke-width="1.3"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Form -->
+      <form class="profile__form" novalidate>
+        <div class="profile__field">
+          <label class="profile__label" for="profile-first-name">First Name</label>
+          <input class="profile__input" type="text" id="profile-first-name" name="firstName" autocomplete="given-name" />
+        </div>
+
+        <div class="profile__field">
+          <label class="profile__label" for="profile-last-name">Last Name</label>
+          <input class="profile__input" type="text" id="profile-last-name" name="lastName" autocomplete="family-name" />
+        </div>
+
+        <div class="profile__field">
+          <label class="profile__label" for="profile-email">Email</label>
+          <input class="profile__input" type="email" id="profile-email" name="email" autocomplete="email" />
+        </div>
+
+        <div class="profile__field">
+          <label class="profile__label" for="profile-mobile">Mobile Phone</label>
+          <input class="profile__input" type="tel" id="profile-mobile" name="mobile" autocomplete="tel" placeholder="555.535.3446" />
+        </div>
+
+        <div class="profile__field">
+          <label class="profile__label" for="profile-home">Home Phone</label>
+          <input class="profile__input" type="tel" id="profile-home" name="home" placeholder="555.535.3446" />
+        </div>
+
+        <div class="profile__field">
+          <label class="profile__label" for="profile-work">Work Phone</label>
+          <input class="profile__input" type="tel" id="profile-work" name="work" placeholder="555.535.3446" />
+        </div>
+
+        <aside class="profile__heads-up" role="note">
+          <div class="profile__heads-up-title">
+            <span class="profile__heads-up-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="8" r="7" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M8 4.5v4.2" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="8" cy="11" r="0.9" fill="#b2de61"/>
+              </svg>
+            </span>
+            <span>Just a Heads Up</span>
+          </div>
+          <p class="profile__heads-up-body">
+            Updating your name on this page does not update your legal name on file with management company. If you need to update your legal name on your homeowner account, please contact your management company.
+          </p>
+        </aside>
+
+        <button class="profile__update" type="submit">Update</button>
+      </form>
+    </main>
+
+    <!-- Bottom Navigation (More active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">More</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/app-dialogs.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+
+      const PROFILE_KEY = window.CincAuth.NS + 'profile';
+
+      const $first  = document.getElementById('profile-first-name');
+      const $last   = document.getElementById('profile-last-name');
+      const $email  = document.getElementById('profile-email');
+      const $mobile = document.getElementById('profile-mobile');
+      const $home   = document.getElementById('profile-home');
+      const $work   = document.getElementById('profile-work');
+
+      // Load: split CincAuth name into first/last, then overlay any saved profile fields.
+      const fullName = (window.CincAuth.getUserName() || '').trim();
+      const parts = fullName.split(/\s+/);
+      $first.value = parts[0] || '';
+      $last.value  = parts.slice(1).join(' ') || '';
+      $email.value = window.CincAuth.getUserEmail() || '';
+
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}'); } catch (_) {}
+      if (saved.firstName) $first.value = saved.firstName;
+      if (saved.lastName)  $last.value  = saved.lastName;
+      if (saved.email)     $email.value = saved.email;
+      $mobile.value = saved.mobile || '555.535.3446';
+      $home.value   = saved.home   || '555.535.3446';
+      $work.value   = saved.work   || '555.535.3446';
+
+      document.querySelector('.profile__form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const first = $first.value.trim();
+        const last  = $last.value.trim();
+        const email = $email.value.trim();
+
+        if (!first || !last || !email) {
+          await window.AppDialog.alert({
+            title: 'Missing info',
+            message: 'First name, last name and email are required.'
+          });
+          return;
+        }
+
+        const profile = {
+          firstName: first,
+          lastName: last,
+          email: email,
+          mobile: $mobile.value.trim(),
+          home: $home.value.trim(),
+          work: $work.value.trim()
+        };
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+        // Keep CincAuth in sync so other screens (More, Feed) reflect the change
+        window.CincAuth.login(first + ' ' + last, email);
+
+        await window.AppDialog.alert({
+          title: 'Profile updated',
+          message: 'Your changes have been saved.',
+          confirmLabel: 'OK'
+        });
+        window.location.href = 'more.html';
+      });
+    })();
+  </script>
+</body>
+</html>

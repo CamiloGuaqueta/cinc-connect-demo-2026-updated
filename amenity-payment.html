@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Payment</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body class="ap-body">
+  <div class="app-frame ap-frame">
+
+    <!-- Previous screen peek -->
+    <div class="ap-peek" aria-hidden="true"></div>
+
+    <!-- Main payment panel -->
+    <section class="ap-panel">
+
+      <!-- Header -->
+      <div class="ap-panel__header">
+        <a href="javascript:history.back()" class="ap-panel__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <span class="ap-panel__title">Reservation Charge &amp; Deposit</span>
+        <a href="amenities.html" class="ap-panel__close">Close</a>
+      </div>
+      <div class="ap-panel__rule"></div>
+
+      <!-- Credit card illustration (centered) -->
+      <div class="ap-card-visual">
+        <img src="assets/icons/icon-credit-card.svg" alt="" width="122" height="90" />
+      </div>
+
+      <!-- Fees card: Amenity Fee + Security Deposit -->
+      <div class="ap-card">
+        <div class="ap-card__row">
+          <span class="ap-card__label">Amenity Fee</span>
+          <span class="ap-card__value" data-amenity-fee>$0.00</span>
+        </div>
+        <div class="ap-card__rule" data-deposit-rule></div>
+        <div class="ap-card__row" data-deposit-row>
+          <span class="ap-card__label">Security Deposit</span>
+          <span class="ap-card__value" data-deposit>$0.00</span>
+        </div>
+      </div>
+
+      <!-- Processing Fee card -->
+      <div class="ap-card">
+        <div class="ap-card__row">
+          <div class="ap-card__label-stack">
+            <span class="ap-card__label">Processing Fee</span>
+            <span class="ap-card__sublabel" data-fee-pct>Credit Card 3.5%</span>
+          </div>
+          <span class="ap-card__value" data-transaction-fee>$0.00</span>
+        </div>
+      </div>
+
+      <!-- Total card -->
+      <div class="ap-card ap-card--total">
+        <span class="ap-card__total-label">Total Payment</span>
+        <span class="ap-card__total-amount" data-total>$0.00</span>
+      </div>
+
+      <!-- Payment Method row (opens modal) -->
+      <button class="ap-pay-method" type="button" id="openPayMethod" aria-haspopup="dialog">
+        <div class="ap-pay-method__info">
+          <span class="ap-pay-method__name" id="selectedMethodName">Visa - 2564</span>
+          <span class="ap-pay-method__type" id="selectedMethodType">Credit Card Business</span>
+        </div>
+        <svg class="ap-pay-method__chev" width="8" height="14" viewBox="0 0 9 17" fill="none" aria-hidden="true">
+          <path d="M1 16L7.199 8.5L1 1" stroke="#B2DE61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Divider -->
+      <div class="ap-light-rule"></div>
+
+      <!-- Disclaimer -->
+      <p class="ap-disclaimer" data-disclaimer>3.5% processing fee Applies</p>
+
+      <!-- CTA -->
+      <button class="btn btn--primary ap-cta" type="button" data-pay-btn>PAY &amp; RESERVE</button>
+
+    </section>
+  </div>
+
+  <!-- ─── Payment Method selector (bottom sheet) ─────────────────────────── -->
+  <div class="pm-sheet" id="pmSheet" aria-hidden="true" style="display:none">
+    <div class="pm-sheet__scrim" id="pmScrim"></div>
+    <div class="pm-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="pmSheetTitle">
+
+      <!-- Sheet sub-header -->
+      <div class="pm-sheet__header">
+        <button class="pm-sheet__back" id="pmBack" type="button" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </button>
+        <span class="pm-sheet__header-title" id="pmSheetTitle">Payment Method</span>
+        <div class="pm-sheet__header-right"></div>
+      </div>
+      <div class="pm-sheet__rule"></div>
+
+      <div class="pm-sheet__body">
+        <h2 class="pm-sheet__title">Select Payment Method</h2>
+
+        <!-- Apple Pay -->
+        <label class="pm-option" data-method="apple" data-name="Apple Pay" data-type="Amex. Discover, Mastercard, Visa">
+          <input class="pm-option__radio" type="radio" name="payMethod" value="apple" />
+          <span class="pm-option__dot" aria-hidden="true"></span>
+          <div class="pm-option__body">
+            <span class="pm-option__name">Apple Pay</span>
+            <span class="pm-option__type">Amex. Discover, Mastercard, Visa</span>
+          </div>
+          <img class="pm-option__logo" src="assets/icons/icon-apple-pay.svg" alt="Apple Pay" width="40" height="25" />
+        </label>
+
+        <!-- Google Pay -->
+        <label class="pm-option" data-method="google" data-name="Google Pay" data-type="Amex. Discover, Mastercard, Visa">
+          <input class="pm-option__radio" type="radio" name="payMethod" value="google" />
+          <span class="pm-option__dot" aria-hidden="true"></span>
+          <div class="pm-option__body">
+            <span class="pm-option__name">Google Pay</span>
+            <span class="pm-option__type">Amex. Discover, Mastercard, Visa</span>
+          </div>
+          <img class="pm-option__logo" src="assets/icons/icon-google-pay.svg" alt="Google Pay" width="46" height="25" />
+        </label>
+
+        <!-- Visa -->
+        <label class="pm-option" data-method="visa" data-name="Visa - 2564" data-type="Credit Card Business">
+          <input class="pm-option__radio" type="radio" name="payMethod" value="visa" checked />
+          <span class="pm-option__dot" aria-hidden="true"></span>
+          <div class="pm-option__body">
+            <span class="pm-option__name">Visa - 2564</span>
+            <span class="pm-option__type">Credit Card Business</span>
+          </div>
+        </label>
+
+        <!-- Mastercard -->
+        <label class="pm-option" data-method="mc" data-name="Mastercard - 8821" data-type="Credit Card Personal">
+          <input class="pm-option__radio" type="radio" name="payMethod" value="mc" />
+          <span class="pm-option__dot" aria-hidden="true"></span>
+          <div class="pm-option__body">
+            <span class="pm-option__name">Mastercard - 8821</span>
+            <span class="pm-option__type">Credit Card Personal</span>
+          </div>
+        </label>
+
+        <button class="btn btn--primary pm-sheet__select-btn" type="button" id="pmConfirm">Select Payment Method</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/amenities-data.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+
+      /* ── Fee calculation ──────────────────────────────────────────────── */
+      const params = new URLSearchParams(location.search);
+      const id     = params.get('id');
+      const D      = window.AmenitiesData;
+      const a      = D.findById(id) || D.AMENITIES[0];
+
+      const date   = params.get('date')   || '';
+      const slot   = params.get('slot')   || '';
+      const guests = params.get('guests') || '1';
+
+      const fee    = a.pricePerHour || 0;
+      const pct    = 0.035;
+      const txFee  = +(fee * pct).toFixed(2);
+      const dep    = a.deposit || 0;
+      const total  = +(fee + txFee + dep).toFixed(2);
+      const pctLbl = (pct * 100).toFixed(1).replace('.0', '') + '%';
+
+      document.querySelector('[data-amenity-fee]').textContent     = '$' + fee.toFixed(2);
+      document.querySelector('[data-transaction-fee]').textContent = '$' + txFee.toFixed(2);
+      document.querySelector('[data-total]').textContent           = '$' + total.toFixed(2);
+      document.querySelector('[data-fee-pct]').textContent         = 'Credit Card ' + pctLbl;
+      document.querySelector('[data-disclaimer]').textContent      = pctLbl + ' processing fee Applies';
+
+      // Hide deposit row if none
+      if (dep > 0) {
+        document.querySelector('[data-deposit]').textContent = '$' + dep.toFixed(2);
+      } else {
+        document.querySelector('[data-deposit-row]').style.display  = 'none';
+        document.querySelector('[data-deposit-rule]').style.display = 'none';
+      }
+
+      /* ── Pay & Reserve ────────────────────────────────────────────────── */
+      document.querySelector('[data-pay-btn]').addEventListener('click', function () {
+        const qs = new URLSearchParams({
+          id: a.id, date, slot, guests,
+          paid: '1',
+          total: total.toFixed(2),
+          deposit: dep.toFixed(2)
+        }).toString();
+        location.href = 'reservation-confirm.html?' + qs;
+      });
+
+      /* ── Payment method bottom sheet ─────────────────────────────────── */
+      var sheet    = document.getElementById('pmSheet');
+      var scrim    = document.getElementById('pmScrim');
+      var pmBack   = document.getElementById('pmBack');
+      var pmConfirm = document.getElementById('pmConfirm');
+      var nameEl   = document.getElementById('selectedMethodName');
+      var typeEl   = document.getElementById('selectedMethodType');
+
+      function openSheet() {
+        sheet.style.display = 'block';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('pm-sheet--open');
+            sheet.removeAttribute('aria-hidden');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('pm-sheet--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () {
+          if (!sheet.classList.contains('pm-sheet--open')) sheet.style.display = 'none';
+        }, 360);
+      }
+
+      document.getElementById('openPayMethod').addEventListener('click', openSheet);
+      pmBack.addEventListener('click', closeSheet);
+      scrim.addEventListener('click', closeSheet);
+
+      pmConfirm.addEventListener('click', function () {
+        var checked = sheet.querySelector('.pm-option__radio:checked');
+        if (checked) {
+          var label = checked.closest('.pm-option');
+          nameEl.textContent = label.dataset.name;
+          typeEl.textContent = label.dataset.type;
+        }
+        closeSheet();
+      });
+
+      // Swipe down to close
+      var startY = 0;
+      sheet.querySelector('.pm-sheet__panel').addEventListener('touchstart', function (e) {
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+      sheet.querySelector('.pm-sheet__panel').addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - startY > 60) closeSheet();
+      }, { passive: true });
+    })();
+  </script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Animal Policy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="pet-policy">
+      <header class="sub-header">
+        <a href="pets.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <h1 class="pet-policy__title">ANIMAL POLICY</h1>
+
+      <article class="pet-policy__body">
+        <h2 class="pet-policy__section-title">Purpose</h2>
+        <p>The Magic Views HOA welcomes responsible pet ownership while protecting the comfort, safety, and well-being of all residents. This policy outlines the requirements for keeping animals within the community and ensures that pets and their owners can coexist harmoniously with neighbors and shared amenities.</p>
+
+        <h2 class="pet-policy__section-title">Permitted Animals</h2>
+        <p>Household pets are limited to domestic dogs and cats. Each unit may register up to two (2) pets. Exotic, aggressive-breed, or farm animals are not permitted. Service Animals and Emotional Support Animals are accepted with valid supporting documentation as required by applicable law.</p>
+
+        <h2 class="pet-policy__section-title">Registration and Documentation</h2>
+        <p>All pets must be registered with the management office within 30 days of arrival to the community. Registration requires a current photo, microchip number (when applicable), proof of current vaccinations, and the resident's unit number. Renewals are required annually or whenever vaccination records expire.</p>
+
+        <h2 class="pet-policy__section-title">Pet Behavior</h2>
+        <p>Residents are responsible for ensuring their pets do not disturb neighbors through excessive barking, aggressive behavior, or property damage. Pets must remain under the owner's control at all times. Repeated complaints or violations may result in fines or revocation of pet privileges.</p>
+
+        <h2 class="pet-policy__section-title">Common Areas</h2>
+        <p>Pets must be leashed at all times when in common areas, including hallways, elevators, walkways, and parking lots. Pets are not permitted in the clubhouse interior, fitness center, pool deck, or pool. The community Dog Park is available for off-leash play in designated zones.</p>
+
+        <h2 class="pet-policy__section-title">Sanitation</h2>
+        <p>Owners must immediately clean up after their pets in all common areas. Pet waste must be disposed of in designated waste stations. Repeated failure to comply may result in fines per incident.</p>
+
+        <h2 class="pet-policy__section-title">Liability and Damages</h2>
+        <p>Pet owners are fully responsible for any injury or property damage caused by their animals, whether on common property or within another resident's unit. The Association reserves the right to bill the responsible owner for any cleanup, repair, or replacement costs.</p>
+
+        <h2 class="pet-policy__section-title">Enforcement</h2>
+        <p>The Board may issue warnings, fines, or require the permanent removal of any pet that repeatedly violates this policy. Decisions made under this policy may be appealed in writing to the management office within 10 business days.</p>
+
+        <p class="pet-policy__footer">Last updated: May 2026 · Magic Views HOA Board of Directors</p>
+      </article>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

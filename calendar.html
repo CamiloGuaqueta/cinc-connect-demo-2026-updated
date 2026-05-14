@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Community Calendar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="calendar">
+      <!-- Sub-header: back + search/title -->
+      <header class="sub-header">
+        <a href="pinboard.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center" data-list-only>
+          <div class="messages__search">
+            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+            <input class="messages__search-input" type="text" placeholder="Search Calendar" data-calendar-search />
+          </div>
+        </div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></a>
+      </header>
+
+      <!-- View tabs -->
+      <div class="cal-tabs">
+        <button class="cal-tabs__item cal-tabs__item--active" type="button" data-view="list">List</button>
+        <button class="cal-tabs__item" type="button" data-view="month">Month</button>
+        <button class="cal-tabs__item" type="button" data-view="year">Year</button>
+      </div>
+
+      <!-- LIST VIEW -->
+      <section class="cal-view cal-view--list" data-view-pane="list">
+        <div class="cal-empty" data-list-empty>
+          <div class="cal-empty__icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="14" width="48" height="44" rx="4" stroke="#b2de61" stroke-width="3"/>
+              <line x1="8" y1="26" x2="56" y2="26" stroke="#b2de61" stroke-width="3"/>
+              <line x1="20" y1="6" x2="20" y2="20" stroke="#b2de61" stroke-width="3" stroke-linecap="round"/>
+              <line x1="44" y1="6" x2="44" y2="20" stroke="#b2de61" stroke-width="3" stroke-linecap="round"/>
+              <path d="M22 42 L29 49 L44 34" stroke="#b2de61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="cal-empty__title">There Are No<br>Events Available</h2>
+        </div>
+        <ul class="cal-list" data-list-results hidden></ul>
+      </section>
+
+      <!-- MONTH VIEW -->
+      <section class="cal-view cal-view--month" data-view-pane="month" hidden>
+        <div class="cal-month__nav">
+          <button class="cal-month__arrow" type="button" data-month-prev aria-label="Previous month">
+            <span class="cal-arrow cal-arrow--left" aria-hidden="true"></span>
+          </button>
+          <button class="cal-month__title" type="button" data-month-title>May 2026</button>
+          <button class="cal-month__arrow" type="button" data-month-next aria-label="Next month">
+            <span class="cal-arrow cal-arrow--right" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="cal-month__weekdays" data-month-weekdays>
+          <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+        </div>
+
+        <div class="cal-month__grid" data-month-grid></div>
+
+        <div class="cal-month__selected">
+          <h3 class="cal-month__selected-title" data-selected-day-title>Friday May 8</h3>
+          <ul class="cal-month__events" data-selected-day-events>
+            <li class="cal-month__no-events">No events on this date</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- YEAR VIEW -->
+      <section class="cal-view cal-view--year" data-view-pane="year" hidden>
+        <button class="cal-year__select" type="button" data-year-select>
+          <span data-year-label>2026</span>
+          <span class="cal-arrow cal-arrow--down" aria-hidden="true"></span>
+        </button>
+        <div class="cal-year__months" data-year-grid></div>
+      </section>
+    </main>
+
+    <!-- Year picker modal -->
+    <div class="cal-year-modal" data-year-picker hidden>
+      <div class="cal-year-modal__panel">
+        <button class="cal-year-modal__close" type="button" data-year-picker-close aria-label="Close">×</button>
+        <h3 class="cal-year-modal__title">Year Selection</h3>
+        <div class="cal-year-modal__divider"></div>
+        <ul class="cal-year-modal__list">
+          <li><button type="button" data-year="2025">2025</button></li>
+          <li><button type="button" data-year="2026">2026</button></li>
+          <li><button type="button" data-year="2027">2027</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (PinBoard active since calendar is inside PinBoard) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/calendar-data.js"></script>
+  <script src="scripts/calendar.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

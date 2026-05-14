@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Ballot</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ballot">
+      <header class="sub-header">
+        <a href="voting.html" class="sub-header__back" aria-label="Back" onclick="if (history.length > 1) { event.preventDefault(); history.back(); }">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <!-- Category badge -->
+      <div class="ballot__category">
+        <span class="ballot-card__badge"><span class="ballot-card__badge-letter" data-category-letter>E</span></span>
+        <span class="ballot-card__category" data-category>Electoral Ballot</span>
+      </div>
+
+      <!-- Hero image -->
+      <img class="ballot__hero" data-hero src="" alt="" />
+
+      <!-- Title + description -->
+      <div class="ballot__intro">
+        <h1 class="ballot__title" data-ballot-title>—</h1>
+        <p class="ballot__description">
+          <span data-ballot-description>—</span>
+          <a href="#" class="ballot-card__see-more" data-see-more>See More</a>
+        </p>
+
+        <button class="ballot-card__doc ballot__doc" type="button" data-open-ballot-doc>
+          <span class="ballot-card__doc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+            </svg>
+          </span>
+          <span class="ballot-card__doc-name" data-doc-name>—</span>
+          <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
+        </button>
+      </div>
+
+      <!-- Candidates section header -->
+      <div class="ballot__candidates-header">
+        <h2 class="ballot__candidates-title" data-candidates-count>Candidates (—)</h2>
+        <p class="ballot__candidates-hint" data-candidates-hint>—</p>
+      </div>
+
+      <!-- Candidate list -->
+      <div class="ballot__candidates" data-candidates></div>
+
+      <div class="ballot__footer">
+        <button class="btn btn--primary ballot__submit" type="button" data-ballot-submit disabled>CAST MY VOTE</button>
+        <p class="ballot__counter" data-ballot-counter>—</p>
+      </div>
+    </main>
+
+    <!-- PDF viewer modal (full screen white) -->
+    <div class="pdf-modal" data-pdf-modal hidden>
+      <header class="pdf-modal__header">
+        <h2 class="pdf-modal__filename" data-pdf-modal-title>—</h2>
+        <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="6" y1="18" x2="18" y2="6"/>
+          </svg>
+        </button>
+      </header>
+      <div class="pdf-modal__sheet">
+        <h3 class="pdf-modal__title" data-pdf-heading>—</h3>
+        <p class="pdf-modal__subtitle" data-pdf-subheading>—</p>
+        <hr class="pdf-modal__divider" />
+        <div class="pdf-modal__content" data-pdf-paragraphs></div>
+      </div>
+    </div>
+
+    <!-- Confirm Selection bottom sheet -->
+    <div class="modal-backdrop" data-confirm-modal hidden>
+      <div class="modal-sheet ballot-confirm">
+        <header class="ballot-confirm__bar">
+          <span class="ballot-confirm__title">Confirm Selection</span>
+          <button class="ballot-confirm__close" type="button" data-confirm-close>Close</button>
+        </header>
+
+        <div class="ballot-confirm__warn">
+          <div class="ballot-confirm__warn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="11" fill="#f3a93b"/>
+              <path d="M12 7v6" stroke="#112719" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="12" cy="17" r="1.4" fill="#112719"/>
+            </svg>
+          </div>
+          <h3 class="ballot-confirm__heading">Please Confirm Your Selection</h3>
+          <p class="ballot-confirm__text">Electoral votes are final and by law CANNOT be changed once submitted. Please double check your selection is as desired.</p>
+        </div>
+
+        <div class="ballot-confirm__selected" data-confirm-selected></div>
+
+        <footer class="ballot-confirm__footer">
+          <button class="btn btn--primary ballot-confirm__submit" type="button" data-confirm-submit>SUBMIT VOTE</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Thank you bottom sheet -->
+    <div class="modal-backdrop" data-thanks-modal hidden>
+      <div class="modal-sheet ballot-thanks">
+        <header class="ballot-confirm__bar">
+          <span class="ballot-confirm__title">Confirm Selection</span>
+          <a class="ballot-confirm__close" href="voting.html">Close</a>
+        </header>
+
+        <div class="ballot-thanks__body">
+          <div class="ballot-thanks__check" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="30" fill="#b2de61"/>
+              <path d="M20 33 L29 42 L46 23" stroke="#112719" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="ballot-thanks__heading">THANK YOU FOR VOTING!</h3>
+          <p class="ballot-thanks__text" data-thanks-text>Your vote has been submitted, and an email confirmation has been sent.</p>
+
+          <a class="btn ballot-thanks__receipt" href="voting.html">SEE VOTE Receipt</a>
+          <a class="btn btn--primary ballot-thanks__next" href="voting.html">GO TO NEXt ballot</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/voting-state.js?v=4"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+      const V = window.VotingState;
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+      }
+
+      const params = new URLSearchParams(location.search);
+      const ballot = V.findBallot(params.get('id'));
+      if (!ballot) {
+        document.querySelector('.ballot__title').textContent = 'Ballot not found';
+        return;
+      }
+
+      // Populate header
+      document.querySelector('[data-category-letter]').textContent = ballot.categoryLetter || 'E';
+      document.querySelector('[data-category]').textContent = ballot.category;
+      document.querySelector('[data-hero]').src = ballot.coverImage;
+      document.querySelector('[data-ballot-title]').textContent = ballot.title;
+      const descEl = document.querySelector('[data-ballot-description]');
+      descEl.textContent = ballot.description;
+      document.querySelector('[data-doc-name]').textContent = ballot.documentName;
+
+      // See More toggle for ballot description
+      const descParent = descEl.parentElement;
+      const seeMoreLink = document.querySelector('[data-see-more]');
+      seeMoreLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = descParent.classList.toggle('ballot__description--expanded');
+        seeMoreLink.textContent = expanded ? 'See Less' : 'See More';
+      });
+
+      // Candidates header
+      const count = ballot.options.length;
+      const isMulti = ballot.type === 'multi';
+      document.querySelector('[data-candidates-count]').textContent =
+        isMulti ? `Candidates (${count})` : `Options (${count})`;
+      document.querySelector('[data-candidates-hint]').textContent =
+        isMulti
+          ? `Select up to ${ballot.maxSelections} out of the ${count} candidates`
+          : `Select 1 option`;
+
+      // Already voted?
+      const alreadyVoted = V.hasVoted(ballot.id);
+      const prevChoices = V.getUserChoice(ballot.id) || [];
+
+      // Render candidates
+      const container = document.querySelector('[data-candidates]');
+      container.innerHTML = ballot.options.map((opt) => {
+        const checked = prevChoices.includes(opt.id);
+        return `
+          <label class="candidate-card ${checked ? 'candidate-card--selected' : ''}">
+            <input type="${isMulti ? 'checkbox' : 'radio'}"
+                   name="choice"
+                   value="${escapeHtml(opt.id)}"
+                   ${checked ? 'checked' : ''}
+                   ${alreadyVoted ? 'disabled' : ''} />
+            <img class="candidate-card__photo" src="${escapeHtml(opt.photo)}" alt="" />
+            <div class="candidate-card__body">
+              <div class="candidate-card__name">${escapeHtml(opt.name)}</div>
+              ${opt.subtitle ? `<div class="candidate-card__subtitle">${escapeHtml(opt.subtitle)}</div>` : ''}
+              <p class="candidate-card__bio">
+                <span class="candidate-card__bio-clamp">${escapeHtml(opt.bio || '')}</span>
+                <a href="#" class="ballot-card__see-more" data-bio-more>See More</a>
+              </p>
+              ${opt.documentName ? `
+                <button class="candidate-card__doc" type="button" data-open-option-doc="${escapeHtml(opt.id)}">
+                  <span class="ballot-card__doc-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                    </svg>
+                  </span>
+                  <span class="ballot-card__doc-name">${escapeHtml(opt.documentName)}</span>
+                  <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
+                </button>
+              ` : ''}
+            </div>
+            <span class="candidate-card__radio" aria-hidden="true"></span>
+          </label>
+        `;
+      }).join('');
+
+      // Wire see-more per candidate (toggle text + state)
+      container.querySelectorAll('[data-bio-more]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const expanded = link.parentElement.classList.toggle('candidate-card__bio--expanded');
+          link.textContent = expanded ? 'See Less' : 'See More';
+        });
+      });
+
+      // ----- PDF viewer -----
+      const pdfModal = document.querySelector('[data-pdf-modal]');
+      function openPdf({ documentName, pdfHeading, pdfSubheading, pdfParagraphs }) {
+        document.querySelector('[data-pdf-modal-title]').textContent = documentName || 'Document.pdf';
+        document.querySelector('[data-pdf-heading]').textContent = pdfHeading || '';
+        document.querySelector('[data-pdf-subheading]').textContent = pdfSubheading || '';
+        document.querySelector('[data-pdf-paragraphs]').innerHTML =
+          (pdfParagraphs || ['No additional content available.']).map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+        pdfModal.hidden = false;
+      }
+      document.querySelector('[data-pdf-close]').addEventListener('click', () => { pdfModal.hidden = true; });
+      pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) pdfModal.hidden = true;
+      });
+
+      // Main ballot document
+      document.querySelector('[data-open-ballot-doc]').addEventListener('click', () => {
+        openPdf(ballot);
+      });
+
+      // Per-option (candidate / design choice) document
+      container.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-open-option-doc]');
+        if (!trigger) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const opt = ballot.options.find((o) => o.id === trigger.getAttribute('data-open-option-doc'));
+        if (opt) openPdf(opt);
+      });
+
+      const submitBtn = document.querySelector('[data-ballot-submit]');
+      const counterEl = document.querySelector('[data-ballot-counter]');
+
+      if (alreadyVoted) {
+        submitBtn.textContent = 'Vote already cast';
+        submitBtn.disabled = true;
+        counterEl.textContent = 'You have already voted on this ballot.';
+        return;
+      }
+
+      function getSelected() {
+        return Array.from(container.querySelectorAll('input:checked')).map((i) => i.value);
+      }
+
+      function updateState() {
+        const checked = getSelected();
+        container.querySelectorAll('.candidate-card').forEach((card) => {
+          const input = card.querySelector('input');
+          card.classList.toggle('candidate-card--selected', input.checked);
+        });
+        const max = ballot.maxSelections;
+        const total = ballot.options.length;
+        if (isMulti) {
+          counterEl.innerHTML = `${checked.length} out of up to <span class="ballot__counter-max">${max}</span> candidates selected`;
+        } else {
+          counterEl.textContent = checked.length === 1 ? 'Selection ready' : 'Select 1 option';
+        }
+        submitBtn.disabled = checked.length === 0;
+      }
+
+      container.querySelectorAll('input').forEach((input) => {
+        input.addEventListener('change', (e) => {
+          if (isMulti) {
+            const checked = container.querySelectorAll('input:checked');
+            if (checked.length > ballot.maxSelections) {
+              e.target.checked = false;
+            }
+          }
+          updateState();
+        });
+      });
+      updateState();
+
+      // ----- Confirm modal -----
+      const confirmModal = document.querySelector('[data-confirm-modal]');
+      const confirmSelected = document.querySelector('[data-confirm-selected]');
+
+      submitBtn.addEventListener('click', () => {
+        const ids = getSelected();
+        if (ids.length === 0) return;
+        const selected = ids.map((id) => ballot.options.find((o) => o.id === id)).filter(Boolean);
+        confirmSelected.innerHTML = selected.map((opt) => `
+          <div class="confirm-selected-row">
+            <img src="${escapeHtml(opt.photo || '')}" alt="" />
+            <div>
+              <div class="confirm-selected-row__name">${escapeHtml(opt.name)}</div>
+              ${opt.subtitle ? `<div class="confirm-selected-row__sub">${escapeHtml(opt.subtitle)}</div>` : ''}
+            </div>
+          </div>
+        `).join('');
+        confirmModal.hidden = false;
+      });
+
+      document.querySelector('[data-confirm-close]').addEventListener('click', () => {
+        confirmModal.hidden = true;
+      });
+      confirmModal.addEventListener('click', (e) => {
+        if (e.target === confirmModal) confirmModal.hidden = true;
+      });
+
+      // ----- Submit + Thanks modal -----
+      const thanksModal = document.querySelector('[data-thanks-modal]');
+      const thanksText = document.querySelector('[data-thanks-text]');
+
+      document.querySelector('[data-confirm-submit]').addEventListener('click', () => {
+        const ids = getSelected();
+        V.castVote(ballot.id, ids);
+        confirmModal.hidden = true;
+
+        const email = window.CincAuth.getUserEmail() || 'user@email.com';
+        // Demo unit assignments — matches the Figma copy pattern
+        const units = '1503, 2701, 2909, PH1';
+        thanksText.innerHTML = `Your votes for unit(s) <strong>${units}</strong> have been submitted, and an email confirmation has been sent to <strong>${escapeHtml(email)}</strong>.`;
+        thanksModal.hidden = false;
+      });
+    })();
+  </script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

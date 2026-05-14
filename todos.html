@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — My To-Dos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="todos">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="app-header__hoa">
+          <img class="app-header__logo" src="assets/icons/hoa-logo.png" alt="Magic Views HOA" />
+          <span class="app-header__name">Magic Views HOA</span>
+        </div>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <h1 class="todos__title">My To-Dos</h1>
+
+      <!-- Tabs -->
+      <div class="todos__tabs">
+        <button class="todos__tab todos__tab--active" data-todos-tab="bod">BOD (12)</button>
+        <button class="todos__tab" data-todos-tab="personal">Personal (7)</button>
+      </div>
+
+      <!-- BOD List -->
+      <section class="todos__list" data-todos-pane="bod">
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-1-receivable.svg" alt="" />
+          <span class="todos__item-label">Accounts Receivable</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-2-action-items.svg" alt="" />
+          <span class="todos__item-label">Board Action Items Review</span>
+          <span class="todos__item-count">3</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
+          <span class="todos__item-label">Board Acc Review</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+          <span class="todos__item-label">Board Violation Review</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+          <span class="todos__item-label">Board Work Order Review</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-6-invoice.svg" alt="" />
+          <span class="todos__item-label">Invoice Approval</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-8-bank.svg" alt="" />
+          <span class="todos__item-label">Bank Summary</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-7-vendor.svg" alt="" />
+          <span class="todos__item-label">Vendor Payment History</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-9-aging.svg" alt="" />
+          <span class="todos__item-label">Board Aging</span>
+          <span class="todos__item-count">2</span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-10-homeowners.svg" alt="" />
+          <span class="todos__item-label">Home Owner List</span>
+        </button>
+      </section>
+
+      <!-- Personal List -->
+      <section class="todos__list" data-todos-pane="personal" hidden>
+        <a class="todos__item" href="voting.html">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
+          <span class="todos__item-label">Online Voting</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </a>
+
+        <button class="todos__item" type="button">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+          <span class="todos__item-label">My Violations</span>
+          <span class="todos__item-count">1</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item" type="button">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+          <span class="todos__item-label">My Work Orders</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item" type="button">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
+          <span class="todos__item-label">My ACC Request</span>
+          <span class="todos__item-count">1</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <a class="todos__item" href="voting.html">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-1-receivable.svg" alt="" />
+          <span class="todos__item-label">Ballots &amp; Votes</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </a>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-6-invoice.svg" alt="" />
+          <span class="todos__item-label">Consents &amp; Signatures</span>
+          <span class="todos__item-count">1</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-2-action-items.svg" alt="" />
+          <span class="todos__item-label">Surveys</span>
+          <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="todos__item">
+          <img class="todos__item-icon" src="assets/icons/icon-todo-9-aging.svg" alt="" />
+          <span class="todos__item-label">Ratings</span>
+        </button>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Pinboard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — FAQs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="faqs">
+
+      <!-- Header: back to More, CINC logo with badge -->
+      <header class="sub-header" style="margin: -20px -20px 0; width: calc(100% + 40px);">
+        <a href="more.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-cinc-logo.svg" alt="" />
+          <span class="sub-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Page title -->
+      <h1 class="faqs__page-title">FAQs</h1>
+
+      <!-- Category filter -->
+      <button class="faqs__filter" type="button" aria-label="Filter by category">
+        <span class="faqs__filter-label">All Categories</span>
+        <span class="faqs__filter-arrow" aria-hidden="true"></span>
+      </button>
+
+      <!-- FAQ list — each item opens the bottom sheet -->
+      <ul class="faqs__list" role="list">
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What exactly does the HOA do, and how does it affect me as a homeowner?"
+            data-faq-a="The HOA manages shared spaces and enforces community rules to protect property values. This includes maintaining amenities, landscaping, and common areas — and collecting dues to fund those services. As a homeowner you are bound by the community's CC&Rs and benefit from a well-maintained, organized neighborhood. The HOA also handles vendor contracts, insurance for common areas, and ensures the community complies with local regulations.">
+            <span class="faqs__question-text">What exactly does the HOA do, and how does it affect me as a homeowner?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="Who makes decisions for the community, and how are those decisions made?"
+            data-faq-a="An elected Board of Directors makes decisions on behalf of all homeowners. Board meetings are held regularly and are open to residents to attend. Major decisions — such as budget approvals, rule changes, or capital improvements — may require a community-wide vote. You can run for a board seat during annual elections and have your voice represented directly in community governance.">
+            <span class="faqs__question-text">Who makes decisions for the community, and how are those decisions made?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What kinds of changes or renovations can I make to my unit without approval?"
+            data-faq-a="Interior cosmetic changes — like painting walls, replacing flooring, or updating fixtures — typically don't require approval. However, anything that affects the exterior appearance, structural elements, or shared building systems usually requires an Architectural Review Committee (ARC) request before work begins. When in doubt, submit a request first. Starting unapproved exterior work can result in a violation notice and required restoration at your expense.">
+            <span class="faqs__question-text">What kinds of changes or renovations can I make to my unit without approval?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What should I do if I have a concern about another resident or a community issue?"
+            data-faq-a="Submit your concern through the CINC Connect app using the Concierge or Feed features, or contact your community manager directly. All concerns are handled confidentially. For noise complaints or other neighbor-related issues, the management team will follow up according to community rules. For urgent safety matters, please contact local authorities first, then notify the management office.">
+            <span class="faqs__question-text">What should I do if I have a concern about another resident or a community issue?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What exactly is considered a violation in this community, how does the HOA determine whether something is a violation or not, and what is the full process the HOA follows once a potential violation is identified?"
+            data-faq-a="A violation is any condition or action that conflicts with the community's CC&Rs, bylaws, or rules and regulations. The HOA identifies potential violations through routine property inspections and resident reports. When a potential issue is found, a formal notice is sent to the homeowner — typically allowing 14 to 30 days to remedy the situation. If the violation is not corrected within the cure period, fines may be applied on an escalating schedule. Homeowners always have the right to request a hearing before the board to dispute any violation or fine.">
+            <span class="faqs__question-text">What exactly is considered a violation in this community, how does the HOA determine whether something is a violation or not, and what is the full process the HOA follows once a potential violation is identified?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What are my HOA dues paying for each month?"
+            data-faq-a="Your monthly dues fund the day-to-day operations and long-term health of the community. This includes maintenance of common areas and landscaping, amenity upkeep, insurance for shared structures, utilities for common spaces, management fees, and contributions to the reserve fund. The reserve fund is critical — it covers major future repairs like roof replacements or pool resurfacing without requiring special assessments. A full budget breakdown is available in the Documents section of the app.">
+            <span class="faqs__question-text">What are my HOA dues paying for each month?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="How often do I pay HOA dues?"
+            data-faq-a="Dues are assessed monthly and due on the 1st of each month. A grace period typically extends to the 10th before a late fee is applied. You can view your current balance, payment history, and upcoming due dates in the Financial section of the app. We strongly recommend setting up autopay to avoid any accidental late fees.">
+            <span class="faqs__question-text">How often do I pay HOA dues?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+        <li class="faqs__item">
+          <button class="faqs__question" type="button"
+            data-faq-q="What happens if I pay my dues late?"
+            data-faq-a="A late fee is applied after the grace period ends. If dues remain unpaid beyond 30 days, interest charges may begin to accrue and access to community amenities may be suspended. Prolonged non-payment can ultimately result in a lien being placed on your property. If you are experiencing a financial hardship, please contact your community manager as soon as possible — payment plans may be available before the situation escalates.">
+            <span class="faqs__question-text">What happens if I pay my dues late?</span>
+            <img class="faqs__chevron" src="assets/icons/icon-faq-chevron.svg" alt="" aria-hidden="true" />
+          </button>
+        </li>
+
+      </ul>
+
+    </main>
+
+    <!-- Bottom Navigation (More active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">More</span>
+      </a>
+    </nav>
+
+  </div><!-- /.app-frame -->
+
+  <!-- FAQ Detail Bottom Sheet — outside app-frame to avoid overflow clipping -->
+  <div class="faq-sheet" id="faqSheet" aria-hidden="true" style="display:none">
+    <div class="faq-sheet__scrim" id="faqScrim"></div>
+    <div class="faq-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="faqSheetTitle">
+      <div class="faq-sheet__header">
+        <span class="faq-sheet__label">FAQ</span>
+        <button class="faq-sheet__close" id="faqClose" type="button">Close</button>
+      </div>
+      <div class="faq-sheet__divider"></div>
+      <div class="faq-sheet__body">
+        <h2 class="faq-sheet__question" id="faqSheetTitle"></h2>
+        <p class="faq-sheet__answer"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+
+      var sheet    = document.getElementById('faqSheet');
+      var scrim    = document.getElementById('faqScrim');
+      var closeBtn = document.getElementById('faqClose');
+      var sheetQ   = sheet.querySelector('.faq-sheet__question');
+      var sheetA   = sheet.querySelector('.faq-sheet__answer');
+
+      function openSheet(q, a) {
+        sheetQ.textContent = q;
+        sheetA.textContent = a;
+        sheet.querySelector('.faq-sheet__body').scrollTop = 0;
+        // Must show element first, let browser paint one frame at initial
+        // transform state, then add class — otherwise transition won't fire
+        sheet.style.display = 'block';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('faq-sheet--open');
+            sheet.removeAttribute('aria-hidden');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('faq-sheet--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () {
+          if (!sheet.classList.contains('faq-sheet--open')) {
+            sheet.style.display = 'none';
+          }
+        }, 380);
+      }
+
+      document.querySelectorAll('.faqs__question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(
+            btn.getAttribute('data-faq-q'),
+            btn.getAttribute('data-faq-a')
+          );
+        });
+      });
+
+      closeBtn.addEventListener('click', closeSheet);
+      scrim.addEventListener('click', closeSheet);
+
+      // Swipe down to close
+      var startY = 0;
+      sheet.querySelector('.faq-sheet__panel').addEventListener('touchstart', function (e) {
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+      sheet.querySelector('.faq-sheet__panel').addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - startY > 60) closeSheet();
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

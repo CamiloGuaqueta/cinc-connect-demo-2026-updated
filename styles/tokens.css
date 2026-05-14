@@ -1,0 +1,132 @@
+/* ============================================
+   CINC Connect Demo — Design Tokens
+   Single source of truth for colors, fonts,
+   spacing, and other foundational values.
+   Values extracted directly from Figma.
+   ============================================ */
+
+:root {
+  /* ----- Colors (extracted from Figma) ----- */
+  /* Backgrounds */
+  --color-bg-base: #112719;          /* App background — deep forest green */
+  --color-bg-surface: #1A3527;       /* Cards, elevated surfaces */
+  --color-bg-input: #235237;         /* Input fields, sunken surfaces */
+  --color-bg-overlay: rgba(17, 39, 25, 0.85);
+
+  /* Brand greens */
+  --color-brand-lime: #b2de61;       /* Primary lime — buttons, highlights, active states */
+  --color-brand-lime-soft: #7DDB00;  /* Secondary lime variation */
+  --color-brand-forest: #235237;     /* Forest green — surfaces, inputs */
+  --color-brand-forest-deep: #1A3527;
+
+  /* Text */
+  --color-text-primary: #fff8ea;     /* Cream white — primary text */
+  --color-text-secondary: #B8D4C0;
+  --color-text-muted: rgba(255, 248, 234, 0.5);
+  --color-text-accent: var(--color-brand-lime);
+
+  /* Status / Semantic */
+  --color-danger: #E84A4A;
+  --color-vote: #E84A4A;
+  --color-success: var(--color-brand-lime);
+
+  /* Borders */
+  --color-border-subtle: rgba(255, 248, 234, 0.08);
+  --color-border-strong: rgba(255, 248, 234, 0.18);
+
+  /* ----- Typography ----- */
+  --font-family-base: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --font-size-xs: 9px;
+  --font-size-sm: 11px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;       /* Default body / inputs */
+  --font-size-lg: 16px;       /* Buttons */
+  --font-size-xl: 18px;
+  --font-size-2xl: 22px;
+  --font-size-3xl: 28px;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ----- Spacing (8pt grid) ----- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ----- Radius (from Figma) ----- */
+  --radius-sm: 5px;            /* Inputs, buttons */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 23px;           /* Active nav circle */
+  --radius-full: 999px;
+
+  /* ----- Shadows ----- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow-lime: 0 0 24px rgba(178, 222, 97, 0.25);
+
+  /* ----- Transitions ----- */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ----- Layout (mobile-first, 393px Figma frame) ----- */
+  --max-width-mobile: 393px;
+  --bottom-nav-height: 100px;
+  --header-height: 60px;
+}
+
+/* ----- Base reset & defaults ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background: #000;             /* Black around the app frame on desktop */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

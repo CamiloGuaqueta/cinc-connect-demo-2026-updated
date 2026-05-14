@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — All Amenities</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="all-amenities">
+      <!-- Sub-header with search -->
+      <header class="sub-header">
+        <a href="amenities.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center">
+          <div class="messages__search">
+            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+            <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
+          </div>
+        </div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <h1 class="all-amenities__title" data-page-title>All Amenities</h1>
+
+      <ul class="all-amenities__list" data-amenity-list></ul>
+    </main>
+
+    <!-- Bottom Navigation (Concierge active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/amenities-data.js"></script>
+  <script>
+    (function () {
+      const D = window.AmenitiesData;
+      const params = new URLSearchParams(location.search);
+      const section = params.get('section');
+
+      // Decide which amenities to show + title
+      let items, title;
+      if (section && D.SECTIONS[section]) {
+        items = D.getSection(section);
+        title = D.SECTION_LABELS[section] || 'All Amenities';
+      } else {
+        items = D.AMENITIES;
+        title = 'All Amenities';
+      }
+      document.querySelector('[data-page-title]').textContent = title;
+
+      function renderCard(a) {
+        const slots = a.slots.slice(0, 2).map((s) =>
+          `<span class="all-amenity-card__slot">${s}</span>`).join('');
+        return `
+          <li>
+            <a class="all-amenity-card" href="amenity-detail.html?id=${a.id}">
+              <div class="all-amenity-card__body">
+                <h3 class="all-amenity-card__title">${a.name}</h3>
+                <ul class="all-amenity-card__meta">
+                  <li><span class="all-amenity-card__meta-icon">👥</span>Max ${a.maxGuests}</li>
+                  <li><span class="all-amenity-card__meta-icon">⏱</span>Max ${a.maxHours}h</li>
+                </ul>
+                <p class="all-amenity-card__slots-label">Today's Next Available Timeslots</p>
+                <div class="all-amenity-card__slots">${slots}</div>
+              </div>
+              <img class="all-amenity-card__image" src="${a.image}" alt="" />
+              <span class="all-amenity-card__chevron" aria-hidden="true">›</span>
+            </a>
+          </li>`;
+      }
+
+      const list = document.querySelector('[data-amenity-list]');
+      list.innerHTML = items.map(renderCard).join('');
+
+      // Search filter
+      const searchInput = document.querySelector('[data-amenity-search]');
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        document.querySelectorAll('.all-amenity-card').forEach((card) => {
+          const title = card.querySelector('.all-amenity-card__title').textContent.toLowerCase();
+          card.parentElement.style.display = (!q || title.includes(q)) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

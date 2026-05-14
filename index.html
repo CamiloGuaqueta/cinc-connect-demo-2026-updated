@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Sign In</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="login">
+      <!-- Logo: spiral + "CINC CONNEC+" text -->
+      <div class="login__logo">
+        <div class="login__logo-mark">
+          <img src="assets/icons/login-cinc-logo.svg" alt="CINC Connect logo" />
+        </div>
+      </div>
+
+      <form class="login__form" data-login-form novalidate>
+        <div class="login__field-wrap">
+          <label class="input-group login__field" data-field-wrap="name">
+            <span class="input-group__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <mask id="mask0_91_633" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+                  <path d="M0 0.000106812H24.9999V25H0V0.000106812Z" fill="black"/>
+                </mask>
+                <g mask="url(#mask0_91_633)">
+                  <path d="M12.4999 6.86646e-05C5.60716 6.86646e-05 0 5.60723 0 12.5C0 16.2556 1.66293 19.6269 4.29358 21.9221C6.49103 23.8401 9.35924 25 12.4999 25C15.6372 25 18.5089 23.8401 20.7028 21.9256C23.3335 19.6304 24.9999 16.2556 24.9999 12.5C24.9999 5.60723 19.3927 6.86646e-05 12.4999 6.86646e-05ZM6.36526 21.3247C7.44477 18.9736 9.83786 17.3805 12.4999 17.3805C15.162 17.3805 17.5551 18.9736 18.6346 21.3247C16.8948 22.5405 14.7812 23.2532 12.4999 23.2532C10.2187 23.2532 8.10505 22.5405 6.36526 21.3247V21.3247ZM20.0146 20.1823C18.5752 17.4539 15.6896 15.6337 12.4999 15.6337C9.31033 15.6337 6.42814 17.4539 4.98531 20.1789C2.98699 18.2295 1.74678 15.508 1.74678 12.5C1.74678 6.57145 6.57138 1.74685 12.4999 1.74685C18.4285 1.74685 23.2531 6.57145 23.2531 12.5C23.2531 15.508 22.0129 18.2295 20.0146 20.1823Z" fill="#BBBBBB"/>
+                  <path d="M12.4998 3.80106C10.0264 3.80106 8.01758 5.81334 8.01758 8.28329C8.01758 10.7567 10.0264 12.7655 12.4998 12.7655C14.9698 12.7655 16.982 10.7567 16.982 8.28329C16.982 5.81334 14.9698 3.80106 12.4998 3.80106V3.80106ZM12.4998 11.0187C10.9906 11.0187 9.76435 9.7925 9.76435 8.28329C9.76435 6.77407 10.9906 5.54783 12.4998 5.54783C14.009 5.54783 15.2353 6.77407 15.2353 8.28329C15.2353 9.7925 14.009 11.0187 12.4998 11.0187Z" fill="#BBBBBB"/>
+                </g>
+              </svg>
+            </span>
+            <input class="input-group__field" type="text" name="name" placeholder="Full Name" autocomplete="name" required />
+          </label>
+          <span class="login__error" data-error-for="name" hidden></span>
+        </div>
+
+        <div class="login__field-wrap">
+          <label class="input-group login__field" data-field-wrap="email">
+            <span class="input-group__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <path d="M25 12.5C25 12.2549 24.9909 12.0122 24.9769 11.7705C24.9712 11.6665 24.9614 11.5626 24.9531 11.4587C24.9433 11.3393 24.9329 11.2206 24.9199 11.1023C24.9118 11.0299 24.9085 10.9574 24.8994 10.885C24.8961 10.8599 24.888 10.8368 24.8827 10.8123C24.0559 4.71549 18.8197 0 12.5 0C5.6073 0 0 5.6073 0 12.5C0 19.3927 5.6073 25 12.5 25C14.7184 25 16.898 24.4109 18.803 23.2969C19.2026 23.0632 19.337 22.5499 19.1034 22.1499C18.87 21.7506 18.3564 21.6168 17.9568 21.8499C16.3083 22.8141 14.4214 23.3237 12.5 23.3237C6.53162 23.3237 1.67632 18.4684 1.67632 12.5C1.67632 6.53162 6.53162 1.67632 12.5 1.67632C18.0654 1.67632 22.6612 5.89898 23.2566 11.3085C23.265 11.3883 23.2724 11.4677 23.2791 11.5472C23.2895 11.6642 23.2995 11.7815 23.3059 11.8995C23.3113 11.9948 23.3126 12.09 23.3156 12.1852C23.3186 12.2898 23.3237 12.3944 23.3237 12.5C23.3237 12.5047 23.3247 12.5087 23.325 12.5134C23.3247 13.8873 23.0695 15.2237 22.5603 16.5017C22.2552 17.2678 21.6088 17.8039 20.7871 17.9732C19.9425 18.1465 19.0762 17.889 18.4701 17.2832C17.7734 16.5862 17.5588 15.5167 17.9232 14.5579C18.0315 14.2725 18.114 13.9778 18.1757 13.6785C18.1774 13.6711 18.1787 13.6637 18.1804 13.6563C18.3098 13.0153 18.3346 12.3511 18.2454 11.6954C18.2394 11.6501 18.227 11.6079 18.2142 11.566C17.7653 8.8131 15.3776 6.70328 12.5 6.70328C9.30359 6.70328 6.70294 9.30359 6.70294 12.5C6.70294 15.6964 9.30359 18.2967 12.5 18.2967C13.9527 18.2967 15.279 17.7556 16.2975 16.8692C16.498 17.4633 16.8289 18.0128 17.2846 18.4684C18.0845 19.268 19.1557 19.7032 20.2641 19.7028C20.55 19.7028 20.8384 19.674 21.1253 19.6153C22.4889 19.3344 23.6076 18.4023 24.1176 17.1226C24.6966 15.6689 24.9936 14.1022 24.998 12.5188C24.9983 12.5124 25 12.5064 25 12V12.5ZM12.5 16.6204C10.2279 16.6204 8.37926 14.7718 8.37926 12.5C8.37926 10.2282 10.2279 8.3796 12.5 8.3796C14.6175 8.3796 16.3656 9.98585 16.5936 12.0434C16.5989 12.0937 16.6013 12.1436 16.605 12.1939C16.6124 12.2955 16.6204 12.3967 16.6204 12.5C16.6204 12.7451 16.5949 12.9841 16.5537 13.2178C16.5453 13.2657 16.5386 13.3137 16.5282 13.3613C16.5084 13.4538 16.4839 13.544 16.4581 13.6342C16.4414 13.6919 16.4236 13.7492 16.4045 13.8065C15.8567 15.4393 14.3151 16.6204 12.5 16.6204Z" fill="#D1D1D1"/>
+              </svg>
+            </span>
+            <input class="input-group__field input-group__field--lowercase" type="email" name="email" placeholder="Email" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="email" required data-force-lowercase />
+          </label>
+          <span class="login__error" data-error-for="email" hidden></span>
+        </div>
+
+        <p class="login__hint">This is a CINC Connect demo experience. Your info is used only to personalize your preview.</p>
+
+        <button type="submit" class="btn btn--primary login__btn">Sign In</button>
+
+        <button type="button" class="login__biometric" data-biometric aria-label="Sign in with fingerprint">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="none" d="M0 0h24v24H0V0z"/>
+            <path fill="#fff8ea" d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2a.506.506 0 0 1 .2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67a.49.49 0 0 1-.44.28zM3.5 9.72a.499.499 0 0 1-.41-.79c.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25a.5.5 0 0 1-.12.7c-.23.16-.54.11-.7-.12a9.388 9.388 0 0 0-3.39-2.94c-2.87-1.47-6.54-1.47-9.4.01-1.36.7-2.5 1.7-3.4 2.96-.08.14-.23.21-.39.21zm6.25 12.07a.47.47 0 0 1-.35-.15c-.87-.87-1.34-1.43-2.01-2.64-.69-1.23-1.05-2.73-1.05-4.34 0-2.97 2.54-5.39 5.66-5.39s5.66 2.42 5.66 5.39c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-2.42-2.09-4.39-4.66-4.39s-4.66 1.97-4.66 4.39c0 1.44.32 2.77.93 3.85.64 1.15 1.08 1.64 1.85 2.42.19.2.19.51 0 .71-.11.1-.24.15-.37.15zm7.17-1.85c-1.19 0-2.24-.3-3.1-.89-1.49-1.01-2.38-2.65-2.38-4.39 0-.28.22-.5.5-.5s.5.22.5.5c0 1.41.72 2.74 1.94 3.56.71.48 1.54.71 2.54.71.24 0 .64-.03 1.04-.1.27-.05.53.13.58.41.05.27-.13.53-.41.58-.57.11-1.07.12-1.21.12zM14.91 22c-.04 0-.09-.01-.13-.02-1.59-.44-2.63-1.03-3.72-2.1a7.297 7.297 0 0 1-2.17-5.22c0-1.62 1.38-2.94 3.08-2.94s3.08 1.32 3.08 2.94c0 1.07.93 1.94 2.08 1.94s2.08-.87 2.08-1.94c0-3.77-3.25-6.83-7.25-6.83-2.84 0-5.44 1.58-6.61 4.03-.39.81-.59 1.76-.59 2.8 0 .78.07 2.01.67 3.61.1.26-.03.55-.29.64-.26.1-.55-.04-.64-.29a11.14 11.14 0 0 1-.73-3.96c0-1.2.23-2.29.68-3.24 1.33-2.79 4.28-4.6 7.51-4.6 4.55 0 8.25 3.51 8.25 7.83 0 1.62-1.38 2.94-3.08 2.94s-3.08-1.32-3.08-2.94c0-1.07-.93-1.94-2.08-1.94s-2.08.87-2.08 1.94c0 1.71.66 3.31 1.87 4.51.95.94 1.86 1.46 3.27 1.85.27.07.42.35.35.61-.05.23-.26.38-.47.38z"/>
+          </svg>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/app-dialogs.js"></script>
+  <script>
+    // If already logged in & not idle, skip to feed
+    window.CincAuth.bootstrapLoginPage();
+
+    // Biometric (visual only — explains it works in the real app)
+    document.querySelector('[data-biometric]')?.addEventListener('click', async () => {
+      await window.AppDialog.alert({
+        title: 'Biometric Sign-In',
+        message: 'Fingerprint and Face ID work in the published CINC Connect app. For this demo preview, please enter your name and email above.',
+        confirmLabel: 'Got it'
+      });
+    });
+
+    // Force lowercase on email field as the user types
+    document.querySelectorAll('[data-force-lowercase]').forEach((el) => {
+      el.addEventListener('input', () => {
+        const pos = el.selectionStart;
+        const lower = el.value.toLowerCase();
+        if (el.value !== lower) {
+          el.value = lower;
+          try { el.setSelectionRange(pos, pos); } catch (_) {}
+        }
+      });
+    });
+
+    const form = document.querySelector('[data-login-form]');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setFieldError(fieldName, message) {
+      const wrap = form.querySelector(`[data-field-wrap="${fieldName}"]`);
+      const errorEl = form.querySelector(`[data-error-for="${fieldName}"]`);
+      if (message) {
+        wrap?.classList.add('input-group--error');
+        if (errorEl) {
+          errorEl.textContent = message;
+          errorEl.hidden = false;
+        }
+      } else {
+        wrap?.classList.remove('input-group--error');
+        if (errorEl) errorEl.hidden = true;
+      }
+    }
+
+    // Clear a field's error as soon as the user starts typing
+    form.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('input', () => setFieldError(input.name, null));
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get('name') || '').trim();
+      const email = String(data.get('email') || '').trim();
+
+      let firstInvalid = null;
+      if (!name) {
+        setFieldError('name', 'Required');
+        if (!firstInvalid) firstInvalid = 'name';
+      } else {
+        setFieldError('name', null);
+      }
+      if (!email) {
+        setFieldError('email', 'Required');
+        if (!firstInvalid) firstInvalid = 'email';
+      } else if (!EMAIL_RE.test(email)) {
+        setFieldError('email', 'Invalid email');
+        if (!firstInvalid) firstInvalid = 'email';
+      } else {
+        setFieldError('email', null);
+      }
+
+      if (firstInvalid) {
+        form.querySelector(`input[name="${firstInvalid}"]`).focus();
+        return;
+      }
+
+      window.CincAuth.login(name, email);
+
+      // Future: POST to HubSpot form endpoint here using the form ID
+      // fetch('https://forms.hubspot.com/...formId.../submissions', { method: 'POST', body: JSON.stringify({ name, email }) });
+
+      window.location.href = 'feed.html';
+    });
+  </script>
+</body>
+</html>

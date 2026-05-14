@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Voting</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="voting">
+      <header class="sub-header">
+        <a href="more.html" class="sub-header__back" aria-label="Back" onclick="if (history.length > 1) { event.preventDefault(); history.back(); }">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center"></div>
+        <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
+          <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
+        </a>
+      </header>
+
+      <!-- Tabs -->
+      <div class="voting__tabs">
+        <button class="voting__tab voting__tab--active" type="button" data-voting-tab="available">
+          AVAILABLE Ballots
+        </button>
+        <button class="voting__tab" type="button" data-voting-tab="history">
+          VOTE HISTORY
+        </button>
+      </div>
+
+      <!-- Available Ballots pane -->
+      <section class="voting__pane" data-voting-pane="available">
+        <div class="voting__list" data-available-list></div>
+        <div class="voting__empty" data-available-empty hidden>
+          <p>You're all caught up! No open ballots right now.</p>
+        </div>
+      </section>
+
+      <!-- Voting History pane -->
+      <section class="voting__pane" data-voting-pane="history" hidden>
+        <div class="voting__list" data-history-list></div>
+      </section>
+    </main>
+
+    <!-- PDF viewer modal (full screen white) -->
+    <div class="pdf-modal" data-pdf-modal hidden>
+      <header class="pdf-modal__header">
+        <h2 class="pdf-modal__filename" data-pdf-modal-title>—</h2>
+        <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="6" y1="18" x2="18" y2="6"/>
+          </svg>
+        </button>
+      </header>
+      <div class="pdf-modal__sheet">
+        <h3 class="pdf-modal__title" data-pdf-heading>—</h3>
+        <p class="pdf-modal__subtitle" data-pdf-subheading>—</p>
+        <hr class="pdf-modal__divider" />
+        <div class="pdf-modal__content" data-pdf-paragraphs></div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/voting-state.js?v=4"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+      const V = window.VotingState;
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+      }
+
+      function renderBallotCard(b) {
+        const voted = V.hasVoted(b.id);
+        const closeStr = V.formatCloseDate(b.closesAt);
+        return `
+          <article class="ballot-card" data-ballot-id="${escapeHtml(b.id)}">
+            <header class="ballot-card__type">
+              <span class="ballot-card__badge"><span class="ballot-card__badge-letter">${escapeHtml(b.categoryLetter || 'E')}</span></span>
+              <span class="ballot-card__category">${escapeHtml(b.category)}</span>
+            </header>
+
+            <img class="ballot-card__hero" src="${escapeHtml(b.coverImage)}" alt="" />
+
+            <div class="ballot-card__body">
+              <h2 class="ballot-card__title">${escapeHtml(b.title)}</h2>
+              <p class="ballot-card__description">
+                <span class="ballot-card__desc-clamp">${escapeHtml(b.description)}</span>
+                <a href="ballot-detail.html?id=${escapeHtml(b.id)}" class="ballot-card__see-more">See More</a>
+              </p>
+
+              <button class="ballot-card__doc" type="button" data-open-doc="${escapeHtml(b.id)}">
+                <span class="ballot-card__doc-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                  </svg>
+                </span>
+                <span class="ballot-card__doc-name">${escapeHtml(b.documentName || '')}</span>
+                <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
+              </button>
+
+              <p class="ballot-card__close-label">${escapeHtml(closeStr)}</p>
+
+              <div class="ballot-card__countdown" data-countdown="${escapeHtml(b.closesAt)}">
+                <div class="ballot-card__count-cell">
+                  <span class="ballot-card__count-num" data-unit="days">--</span>
+                  <span class="ballot-card__count-label">DAYS</span>
+                </div>
+                <span class="ballot-card__count-sep">:</span>
+                <div class="ballot-card__count-cell">
+                  <span class="ballot-card__count-num" data-unit="hours">--</span>
+                  <span class="ballot-card__count-label">HOURS</span>
+                </div>
+                <span class="ballot-card__count-sep">:</span>
+                <div class="ballot-card__count-cell">
+                  <span class="ballot-card__count-num" data-unit="minutes">--</span>
+                  <span class="ballot-card__count-label">MINUTES</span>
+                </div>
+                <span class="ballot-card__count-sep">:</span>
+                <div class="ballot-card__count-cell">
+                  <span class="ballot-card__count-num" data-unit="seconds">--</span>
+                  <span class="ballot-card__count-label">SECONDS</span>
+                </div>
+              </div>
+
+              ${voted
+                ? `
+                  <a class="btn ballot-card__cta ballot-card__cta--receipt" href="ballot-detail.html?id=${escapeHtml(b.id)}">SEE VOTE Receipt</a>
+                  <p class="ballot-card__status ballot-card__status--success">Your vote has been recorded.</p>
+                `
+                : `
+                  <a class="btn btn--primary ballot-card__cta" href="ballot-detail.html?id=${escapeHtml(b.id)}">VOTE NOW</a>
+                  <p class="ballot-card__status">You have not cast your vote yet.</p>
+                `
+              }
+            </div>
+          </article>
+        `;
+      }
+
+      function renderHistoryCard(b) {
+        const userOpts = (b.userChoice || []).map((cid) => {
+          const opt = (b.options || []).find((o) => o.id === cid);
+          return opt ? opt.name : cid;
+        });
+        return `
+          <article class="ballot-card ballot-card--past">
+            <header class="ballot-card__type">
+              <span class="ballot-card__badge ballot-card__badge--past"><span class="ballot-card__badge-letter">${escapeHtml((b.category || 'E')[0])}</span></span>
+              <span class="ballot-card__category">${escapeHtml(b.category || 'Ballot')}</span>
+            </header>
+            <div class="ballot-card__body ballot-card__body--past">
+              <h2 class="ballot-card__title">${escapeHtml(b.title)}</h2>
+              ${b.description ? `<p class="ballot-card__description">${escapeHtml(b.description)}</p>` : ''}
+              <p class="ballot-card__your-vote"><strong>Your vote:</strong> ${escapeHtml(userOpts.join(', ') || '—')}</p>
+              <div class="ballot-card__past-meta">
+                <span class="ballot-card__past-badge">CLOSED</span>
+                <span class="ballot-card__past-date">${escapeHtml(b.decidedAt || '')}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      // ----- Countdown ticker -----
+      function tickCountdowns() {
+        document.querySelectorAll('[data-countdown]').forEach((el) => {
+          const t = V.timeRemaining(el.getAttribute('data-countdown'));
+          el.querySelector('[data-unit="days"]').textContent = String(t.days).padStart(2, '0');
+          el.querySelector('[data-unit="hours"]').textContent = String(t.hours).padStart(2, '0');
+          el.querySelector('[data-unit="minutes"]').textContent = String(t.minutes).padStart(2, '0');
+          el.querySelector('[data-unit="seconds"]').textContent = String(t.seconds).padStart(2, '0');
+          if (t.expired) el.classList.add('ballot-card__countdown--expired');
+        });
+      }
+
+      // ----- Render -----
+      function renderAvailable() {
+        const list = document.querySelector('[data-available-list]');
+        const empty = document.querySelector('[data-available-empty]');
+        const items = V.getAvailableBallots();
+        if (items.length === 0) {
+          list.innerHTML = '';
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+        list.innerHTML = items.map(renderBallotCard).join('');
+        tickCountdowns();
+      }
+
+      function renderHistory() {
+        const list = document.querySelector('[data-history-list]');
+        const items = V.getVotingHistory();
+        if (items.length === 0) {
+          list.innerHTML = '<div class="voting__empty"><p>You haven\'t voted on any ballots yet.</p></div>';
+          return;
+        }
+        list.innerHTML = items.map(renderHistoryCard).join('');
+      }
+
+      // Tabs
+      document.querySelectorAll('[data-voting-tab]').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-voting-tab');
+          document.querySelectorAll('[data-voting-tab]').forEach((t) =>
+            t.classList.toggle('voting__tab--active', t === tab));
+          document.querySelectorAll('[data-voting-pane]').forEach((pane) =>
+            pane.hidden = pane.getAttribute('data-voting-pane') !== target);
+        });
+      });
+
+      // ----- PDF modal -----
+      const pdfModal = document.querySelector('[data-pdf-modal]');
+      function openPdf({ documentName, pdfHeading, pdfSubheading, pdfParagraphs }) {
+        document.querySelector('[data-pdf-modal-title]').textContent = documentName || 'Document.pdf';
+        document.querySelector('[data-pdf-heading]').textContent = pdfHeading || '';
+        document.querySelector('[data-pdf-subheading]').textContent = pdfSubheading || '';
+        document.querySelector('[data-pdf-paragraphs]').innerHTML =
+          (pdfParagraphs || ['No additional content available.']).map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+        pdfModal.hidden = false;
+      }
+      document.querySelector('[data-pdf-close]').addEventListener('click', () => { pdfModal.hidden = true; });
+      pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) pdfModal.hidden = true;
+      });
+
+      // Delegate ballot-doc clicks (cards are dynamic)
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('[data-open-doc]');
+        if (!trigger) return;
+        e.preventDefault();
+        const ballot = V.findBallot(trigger.getAttribute('data-open-doc'));
+        if (ballot) openPdf(ballot);
+      });
+
+      renderAvailable();
+      renderHistory();
+      // Live countdown
+      setInterval(tickCountdowns, 1000);
+    })();
+  </script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

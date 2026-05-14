@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Notifications</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="notifications">
+      <!-- Sub-header with search (matches calendar/amenities) -->
+      <header class="sub-header">
+        <a href="feed.html" class="sub-header__back" aria-label="Back">
+          <span class="sub-header__back-icon" aria-hidden="true"></span>
+        </a>
+        <div class="sub-header__center">
+          <div class="messages__search">
+            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+            <input class="messages__search-input" type="text" placeholder="Search notifications" data-notif-search />
+          </div>
+        </div>
+        <div class="sub-header__right"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></div>
+      </header>
+
+      <!-- Filter row -->
+      <div class="notif-filter-row">
+        <button class="notif-filter" type="button">
+          <span class="notif-filter__label">Filter Notifications</span>
+          <span class="notif-filter__chevron" aria-hidden="true"></span>
+        </button>
+        <button class="notif-filter__toggle" type="button" aria-label="Unread only">
+          <svg viewBox="0 0 24 24" fill="none">
+            <line x1="6" y1="8" x2="18" y2="8" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="8" y1="12" x2="16" y2="12" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="10" y1="16" x2="14" y2="16" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Notifications list -->
+      <ul class="notif-list">
+
+        <li>
+          <a class="notif-item" href="notification-detail.html?id=tennis-tournament">
+            <div class="notif-item__avatar-wrap">
+              <img class="notif-item__avatar" src="assets/icons/hoa-logo.png" alt="" />
+              <span class="notif-item__badge notif-item__badge--bell" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3a6 6 0 0 0-6 6v3l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" stroke="#235237" stroke-width="2" stroke-linejoin="round" fill="#235237"/>
+                  <path d="M10 18a2 2 0 0 0 4 0" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+            <div class="notif-item__body">
+              <div class="notif-item__title">Tennis tournament Fo…</div>
+              <div class="notif-item__text">Tennis tournament for all magic city condo tennis players start Monday may 29 at 10AM please make sure…</div>
+              <div class="notif-item__time">2:58 PM</div>
+            </div>
+            <span class="notif-item__unread" aria-hidden="true"></span>
+            <span class="notif-item__chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="notif-item" href="notification-detail.html?id=bbq-4th-july">
+            <div class="notif-item__avatar-wrap">
+              <img class="notif-item__avatar" src="assets/icons/hoa-logo.png" alt="" />
+              <span class="notif-item__badge notif-item__badge--cal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="4" y="6" width="16" height="14" rx="2" stroke="#235237" stroke-width="2" fill="#235237"/>
+                  <line x1="4" y1="10" x2="20" y2="10" stroke="#235237" stroke-width="2"/>
+                  <line x1="9" y1="3" x2="9" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+                  <line x1="15" y1="3" x2="15" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+            <div class="notif-item__body">
+              <div class="notif-item__title">4th of July BBQ at the Pool</div>
+              <div class="notif-item__text">You are all invited to Join us on Sunday 4th of July for a Magical Night City ni…</div>
+              <div class="notif-item__time">1 day ago</div>
+            </div>
+            <span class="notif-item__unread" aria-hidden="true"></span>
+            <span class="notif-item__chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="notif-item" href="notification-detail.html?id=payment-reminder">
+            <div class="notif-item__avatar-wrap">
+              <img class="notif-item__avatar" src="assets/icons/hoa-logo.png" alt="" />
+              <span class="notif-item__badge notif-item__badge--dollar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <text x="12" y="17" font-family="Montserrat" font-size="14" font-weight="800" fill="#235237" text-anchor="middle">$</text>
+                </svg>
+              </span>
+            </div>
+            <div class="notif-item__body">
+              <div class="notif-item__title">Payment Reminder</div>
+              <div class="notif-item__text">Your Payment is now due please make a payment as soon as possible to avoid any late fees</div>
+              <div class="notif-item__time">2 days ago</div>
+            </div>
+            <span class="notif-item__unread" aria-hidden="true"></span>
+            <span class="notif-item__chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="notif-item" href="notification-detail.html?id=shift-log">
+            <div class="notif-item__avatar-wrap">
+              <img class="notif-item__avatar" src="assets/icons/hoa-logo.png" alt="" />
+              <span class="notif-item__badge notif-item__badge--dollar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <text x="12" y="17" font-family="Montserrat" font-size="14" font-weight="800" fill="#235237" text-anchor="middle">$</text>
+                </svg>
+              </span>
+            </div>
+            <div class="notif-item__body">
+              <div class="notif-item__title">New High Priority Shift Log Entry</div>
+              <div class="notif-item__text">Preview Test</div>
+              <div class="notif-item__time">8 days ago</div>
+            </div>
+            <span class="notif-item__unread" aria-hidden="true"></span>
+            <span class="notif-item__chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+      </ul>
+    </main>
+
+    <!-- Bottom Navigation (no item active — accessed via bell) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-1-feed.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-3-concierge.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-4-pinboard.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-5-financial.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-6-messages.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-7-menu.svg" alt="" />
+        </span>
+        <span class="bottom-nav__label">More</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Search filter
+    const input = document.querySelector('[data-notif-search]');
+    if (input) {
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        document.querySelectorAll('.notif-list li').forEach((li) => {
+          const text = li.textContent.toLowerCase();
+          li.style.display = (!q || text.includes(q)) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
