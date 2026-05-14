@@ -39,12 +39,12 @@
 
       <!-- BOD List -->
       <section class="todos__list" data-todos-pane="bod">
-        <button class="todos__item">
+        <a class="todos__item" href="accounts-receivable.html">
           <img class="todos__item-icon" src="assets/icons/icon-todo-1-receivable.svg" alt="" />
           <span class="todos__item-label">Accounts Receivable</span>
           <span class="todos__item-count">2</span>
           <span class="todos__item-arrow" aria-hidden="true"></span>
-        </button>
+        </a>
 
         <button class="todos__item">
           <img class="todos__item-icon" src="assets/icons/icon-todo-2-action-items.svg" alt="" />
@@ -99,11 +99,13 @@
           <img class="todos__item-icon" src="assets/icons/icon-todo-9-aging.svg" alt="" />
           <span class="todos__item-label">Board Aging</span>
           <span class="todos__item-count">2</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
         </button>
 
         <button class="todos__item">
           <img class="todos__item-icon" src="assets/icons/icon-todo-10-homeowners.svg" alt="" />
           <span class="todos__item-label">Home Owner List</span>
+          <span class="todos__item-arrow" aria-hidden="true"></span>
         </button>
       </section>
 
@@ -216,5 +218,37 @@
   <script src="scripts/auth.js"></script>
   <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
   <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      function paneSum(pane) {
+        var total = 0;
+        pane.querySelectorAll('.todos__item-count').forEach(function (el) {
+          var n = parseInt(el.textContent, 10);
+          if (!isNaN(n)) total += n;
+        });
+        return total;
+      }
+
+      var bodPane      = document.querySelector('[data-todos-pane="bod"]');
+      var personalPane = document.querySelector('[data-todos-pane="personal"]');
+      var bodTotal      = bodPane      ? paneSum(bodPane)      : 0;
+      var personalTotal = personalPane ? paneSum(personalPane) : 0;
+      var grandTotal    = bodTotal + personalTotal;
+
+      // Update tab labels dynamically
+      var bodTab      = document.querySelector('[data-todos-tab="bod"]');
+      var personalTab = document.querySelector('[data-todos-tab="personal"]');
+      if (bodTab)      bodTab.textContent      = 'BOD (' + bodTotal + ')';
+      if (personalTab) personalTab.textContent = 'Personal (' + personalTotal + ')';
+
+      // Persist total for all other pages
+      localStorage.setItem('cinc-todos-count', grandTotal);
+
+      // Update nav badge on this page immediately
+      document.querySelectorAll('.bottom-nav__nav-badge').forEach(function (el) {
+        el.textContent = grandTotal;
+      });
+    })();
+  </script>
 </body>
 </html>

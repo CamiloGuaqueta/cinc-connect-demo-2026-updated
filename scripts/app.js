@@ -277,6 +277,16 @@
     }
   }
 
+  // ----- Todo badge sync -----
+  // Reads the count stored by todos.html and updates every nav badge on the page.
+  function syncTodoBadge() {
+    const stored = localStorage.getItem('cinc-todos-count');
+    if (stored === null) return;
+    document.querySelectorAll('.bottom-nav__nav-badge').forEach((el) => {
+      el.textContent = stored;
+    });
+  }
+
   // ----- Init -----
   function init() {
     loadState();
@@ -286,7 +296,7 @@
     wireSheets();
     wirePreloaderOnNav();
     showPreloaderOnLoad();
-
+    syncTodoBadge();
   }
 
   if (document.readyState === 'loading') {

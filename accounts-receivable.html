@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Accounts Receivable</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ar-list">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="14" height="24" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Page title + filter -->
+      <div class="ar-list__topbar">
+        <h1 class="ar-list__title">Accounts Receivable</h1>
+        <button class="ar-list__filter" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg?v=2" alt="" />
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="ar-list__search-wrap">
+        <input class="ar-list__search" type="text" placeholder="Search Name, Address, Account" />
+        <img class="ar-list__search-icon" src="assets/icons/icon-search.svg" alt="" />
+      </div>
+
+      <!-- Homeowner Cards -->
+      <div class="ar-list__cards">
+
+        <!-- Card 1: Thomas Bravo -->
+        <div class="ar-card">
+          <div class="ar-card__meta">
+            <p class="ar-card__address">12346 Washington Avenue</p>
+            <p class="ar-card__field"><strong>Acct:</strong> 1588:6523</p>
+            <p class="ar-card__field"><strong>Total Balance:</strong> <span class="ar-card__lime">$2,550.83</span></p>
+            <p class="ar-card__field"><strong>Last Pay:</strong> 04/10/2026</p>
+            <p class="ar-card__field"><strong>Collections / Hold Resume:</strong> <span class="ar-card__lime">At Attorney</span></p>
+          </div>
+
+          <button class="ar-card__owner" type="button" data-owner="thomas">
+            <img class="ar-card__owner-avatar" src="https://www.figma.com/api/mcp/asset/abd52bb3-34f6-486c-9353-2ba2cd5d64bf" alt="Thomas Bravo" />
+            <div class="ar-card__owner-info">
+              <p class="ar-card__owner-name">Thomas Bravo</p>
+              <p class="ar-card__owner-role">Owner</p>
+            </div>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </button>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-ledger.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-tile-account-ledger.svg" alt="" />
+            <span class="ar-card__link-label">Account Ledger</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-collections.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-collections.svg" alt="" />
+            <span class="ar-card__link-label">Collections</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-violations.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-card__link-label">Violations</span>
+            <span class="ar-card__link-badge">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-workorders.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="ar-card__link-label">Work Orders</span>
+            <span class="ar-card__link-badge">1</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 2: Dewayne Johnson -->
+        <div class="ar-card">
+          <div class="ar-card__meta">
+            <p class="ar-card__address">6345 Hurricane Shoals Road</p>
+            <p class="ar-card__field"><strong>Acct:</strong> 7776345</p>
+            <p class="ar-card__field"><strong>Total Balance:</strong> <span class="ar-card__lime">$10,538.42</span></p>
+            <p class="ar-card__field"><strong>Last Pay:</strong> 03/22/2026</p>
+            <p class="ar-card__field"><strong>Collections / Hold Resume:</strong> <span class="ar-card__lime">At Attorney</span></p>
+          </div>
+
+          <button class="ar-card__owner" type="button" data-owner="dewayne">
+            <div class="ar-card__owner-avatar ar-card__owner-avatar--initials">DJ</div>
+            <div class="ar-card__owner-info">
+              <p class="ar-card__owner-name">Dewayne Johnson</p>
+              <p class="ar-card__owner-role">Owner</p>
+            </div>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </button>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-ledger.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-tile-account-ledger.svg" alt="" />
+            <span class="ar-card__link-label">Account Ledger</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-collections.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-collections.svg" alt="" />
+            <span class="ar-card__link-label">Collections</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-violations.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-card__link-label">Violations</span>
+            <span class="ar-card__link-badge">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-card__divider"></div>
+          <a class="ar-card__link-row" href="ar-workorders.html">
+            <img class="ar-card__link-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="ar-card__link-label">Work Orders</span>
+            <span class="ar-card__link-badge">1</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+      </div><!-- /.ar-list__cards -->
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">More</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="ho-sheet-backdrop" id="hoBackdrop"></div>
+
+  <!-- ============================================================
+       HOMEOWNER DETAIL BOTTOM SHEET (outside .app-frame)
+       ============================================================ -->
+  <div class="ho-sheet" id="hoSheet" aria-hidden="true">
+
+    <!-- Header -->
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="hoSheetClose" aria-label="Close">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Home Owner</span>
+    </div>
+
+    <!-- Hero -->
+    <div class="ho-sheet__hero">
+      <div class="ho-sheet__hero-bg" style="background-image: url('assets/images/Community-aerial.jpg')"></div>
+      <div class="ho-sheet__hero-overlay"></div>
+      <img class="ho-sheet__avatar" id="hoAvatar" src="" alt="" />
+      <div class="ho-sheet__avatar-initials ho-sheet__avatar-initials--hidden" id="hoAvatarInitials"></div>
+      <h2 class="ho-sheet__name" id="hoName"></h2>
+    </div>
+
+    <!-- Body -->
+    <div class="ho-sheet__body">
+      <!-- Primary contact -->
+      <div class="ho-sheet__card" id="hoContactCard">
+        <div class="ho-sheet__row">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-more-profile.svg" alt="" />
+          <div class="ho-sheet__row-text">
+            <p class="ho-sheet__row-primary ho-sheet__row-primary--lime" id="hoAddress"></p>
+            <p class="ho-sheet__row-sub" id="hoAcct"></p>
+          </div>
+        </div>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmail" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-email.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmailText"></p>
+        </a>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoPhone" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-sms.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoPhoneText"></p>
+        </a>
+      </div>
+
+      <!-- Emergency contact -->
+      <h3 class="ho-sheet__section-title">Emergency contact</h3>
+      <div class="ho-sheet__card" id="hoEmergencyCard">
+        <div class="ho-sheet__row">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-more-profile.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyName"></p>
+        </div>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmergencyEmail" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-email.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyEmailText"></p>
+        </a>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmergencyPhone" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-sms.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyPhoneText"></p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      if (!window.CincAuth.requireAuth()) return;
+
+      // ---- Homeowner data ----
+      const OWNERS = {
+        thomas: {
+          name: 'Thomas Bravo',
+          photo: 'https://www.figma.com/api/mcp/asset/737b0030-025f-4ae4-9a42-fb26b2840994',
+          initials: null,
+          address: '12346 Washington Avenue',
+          acct: 'Acct: 1588 : 6523',
+          email: 'thomasb@testemail.com',
+          phone: '+1 555.345.567',
+          emergency: { name: 'Monica Bravo', email: 'Monicab@testemail.com', phone: '+1 555.23465.567' }
+        },
+        dewayne: {
+          name: 'Dewayne Johnson',
+          photo: null,
+          initials: 'DJ',
+          address: '6345 Hurricane Shoals Road',
+          acct: 'Acct: 7776345',
+          email: 'dewaynej@testemail.com',
+          phone: '+1 555.876.543',
+          emergency: { name: 'Sarah Johnson', email: 'sarahj@testemail.com', phone: '+1 555.876.544' }
+        }
+      };
+
+      // ---- Sheet elements ----
+      const sheet       = document.getElementById('hoSheet');
+      const backdrop    = document.getElementById('hoBackdrop');
+      const closeBtn    = document.getElementById('hoSheetClose');
+      const hoAvatar    = document.getElementById('hoAvatar');
+      const hoAvatarIni = document.getElementById('hoAvatarInitials');
+      const hoName      = document.getElementById('hoName');
+      const hoAddress   = document.getElementById('hoAddress');
+      const hoAcct      = document.getElementById('hoAcct');
+      const hoEmailEl   = document.getElementById('hoEmail');
+      const hoEmailTxt  = document.getElementById('hoEmailText');
+      const hoPhoneEl   = document.getElementById('hoPhone');
+      const hoPhoneTxt  = document.getElementById('hoPhoneText');
+      const hoEmgName   = document.getElementById('hoEmergencyName');
+      const hoEmgEmail  = document.getElementById('hoEmergencyEmail');
+      const hoEmgEmailT = document.getElementById('hoEmergencyEmailText');
+      const hoEmgPhone  = document.getElementById('hoEmergencyPhone');
+      const hoEmgPhoneT = document.getElementById('hoEmergencyPhoneText');
+
+      function openSheet(ownerKey) {
+        const d = OWNERS[ownerKey];
+        if (!d) return;
+
+        // Populate
+        hoName.textContent    = d.name;
+        hoAddress.textContent = d.address;
+        hoAcct.textContent    = d.acct;
+        hoEmailTxt.textContent  = d.email;
+        hoEmailEl.href          = 'mailto:' + d.email;
+        hoPhoneTxt.textContent  = d.phone;
+        hoPhoneEl.href          = 'tel:' + d.phone.replace(/[^+\d]/g, '');
+        hoEmgName.textContent   = d.emergency.name;
+        hoEmgEmailT.textContent = d.emergency.email;
+        hoEmgEmail.href         = 'mailto:' + d.emergency.email;
+        hoEmgPhoneT.textContent = d.emergency.phone;
+        hoEmgPhone.href         = 'tel:' + d.emergency.phone.replace(/[^+\d]/g, '');
+
+        if (d.photo) {
+          hoAvatar.src = d.photo;
+          hoAvatar.style.display = 'block';
+          hoAvatarIni.classList.add('ho-sheet__avatar-initials--hidden');
+        } else {
+          hoAvatar.style.display = 'none';
+          hoAvatarIni.textContent = d.initials;
+          hoAvatarIni.classList.remove('ho-sheet__avatar-initials--hidden');
+        }
+
+        // Open animation
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.style.display = 'flex';
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        setTimeout(() => {
+          sheet.style.display = 'none';
+          sheet.setAttribute('aria-hidden', 'true');
+        }, 370);
+      }
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      document.querySelectorAll('[data-owner]').forEach((btn) => {
+        btn.addEventListener('click', () => openSheet(btn.getAttribute('data-owner')));
+      });
+    })();
+  </script>
+</body>
+</html>

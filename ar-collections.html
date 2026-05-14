@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Collections</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ar-collections">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="accounts-receivable.html" aria-label="Back">
+          <svg width="14" height="24" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="ar-collections__topbar">
+        <h1 class="ar-collections__title">Collections</h1>
+        <button class="ar-collections__filter" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg?v=2" alt="" />
+        </button>
+      </div>
+
+      <!-- Collection Log Cards -->
+      <div class="ar-collections__list">
+
+        <div class="ar-coll-card">
+          <p class="ar-coll-card__line"><strong>Date:</strong> 03/15/26</p>
+          <p class="ar-coll-card__line"><strong>User:</strong> Sarah Johnson</p>
+          <p class="ar-coll-card__line"><strong>Action:</strong> Collection Level</p>
+          <p class="ar-coll-card__line"><strong>From:</strong> 30 Days Notice</p>
+          <p class="ar-coll-card__line"><strong>To:</strong> Attorney</p>
+        </div>
+
+        <div class="ar-coll-card">
+          <p class="ar-coll-card__line"><strong>Date:</strong> 01/23/26</p>
+          <p class="ar-coll-card__line"><strong>User:</strong> Thomas Bravo</p>
+          <p class="ar-coll-card__line"><strong>Action:</strong> Collection Level</p>
+          <p class="ar-coll-card__line"><strong>From:</strong> Builder - NonBillable</p>
+          <p class="ar-coll-card__line"><strong>To:</strong> Owner</p>
+        </div>
+
+        <div class="ar-coll-card">
+          <p class="ar-coll-card__line"><strong>Date:</strong> 12/15/25</p>
+          <p class="ar-coll-card__line"><strong>User:</strong> Thomas Bravo</p>
+          <p class="ar-coll-card__line"><strong>Action:</strong> Property Status</p>
+          <p class="ar-coll-card__line"><strong>From:</strong> Owner</p>
+          <p class="ar-coll-card__line"><strong>To:</strong> Builder</p>
+        </div>
+
+        <div class="ar-coll-card">
+          <p class="ar-coll-card__line"><strong>Date:</strong> 09/11/25</p>
+          <p class="ar-coll-card__line"><strong>User:</strong> Thomas Bravo</p>
+          <p class="ar-coll-card__line"><strong>Action:</strong> ResetCollectionLevel</p>
+          <p class="ar-coll-card__line"><strong>From:</strong> 30 Days Notice</p>
+          <p class="ar-coll-card__line"><strong>To:</strong> Owner</p>
+        </div>
+
+        <div class="ar-coll-card">
+          <p class="ar-coll-card__line"><strong>Date:</strong> 06/03/25</p>
+          <p class="ar-coll-card__line"><strong>User:</strong> Mike Torres</p>
+          <p class="ar-coll-card__line"><strong>Action:</strong> Property Status</p>
+          <p class="ar-coll-card__line"><strong>From:</strong> Builder</p>
+          <p class="ar-coll-card__line"><strong>To:</strong> Owner</p>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap">
+          <img src="assets/icons/nav-2-todos.svg" alt="" />
+          <span class="bottom-nav__nav-badge">3</span>
+        </span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
