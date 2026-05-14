@@ -34,7 +34,7 @@
       <!-- Page title + filter -->
       <div class="ar-list__topbar">
         <h1 class="ar-list__title">Accounts Receivable</h1>
-        <button class="ar-list__filter" aria-label="Filter">
+        <button class="ar-list__filter" id="arFilterBtn" aria-label="Filter">
           <img src="assets/icons/icon-filter.svg?v=2" alt="" />
         </button>
       </div>
@@ -258,6 +258,178 @@
     </div>
   </div>
 
+  <!-- ============================================================
+       AR FILTER SHEET (outside .app-frame — Green Sheet pattern)
+       ============================================================ -->
+  <div class="ar-filter-backdrop" id="arFilterBackdrop"></div>
+
+  <div class="ar-filter-sheet" id="arFilterSheet" aria-hidden="true">
+
+    <!-- Header -->
+    <div class="ar-filter-sheet__header">
+      <button class="ar-filter-sheet__close" id="arFilterClose" aria-label="Close filter">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ar-filter-sheet__title">Search/Filter Accounts Receivable</span>
+      <button class="ar-filter-sheet__reset" id="arFilterReset">Reset</button>
+    </div>
+    <div class="ar-filter-sheet__top-divider"></div>
+
+    <!-- Body (scrollable) -->
+    <div class="ar-filter-sheet__body">
+
+      <!-- Levels -->
+      <p class="ar-filter-sheet__section-title">Levels</p>
+      <div class="ar-filter-sheet__card">
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="all-levels" checked />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">All Collection Levels</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="all-owners" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">All Home Owners</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="all-owners-balance" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">All Home Owners with Balance</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="30-day" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">30 Day Notice</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="60-day" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">60 Day Notice</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="attorney" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">At Attorney</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-level" value="lien" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Intent to Lien</span>
+        </label>
+      </div>
+
+      <!-- Hold Reason -->
+      <p class="ar-filter-sheet__section-title">Hold Reason</p>
+      <div class="ar-filter-sheet__card">
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-hold" value="no-hold" checked />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">(No Hold Reason)</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-hold" value="check-mail" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Check is In the Mail - 5 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-hold" value="pending-sale" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Pending Sale - 30 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-hold" value="armed-services" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Armed Services - Indefinitely</span>
+        </label>
+      </div>
+
+      <!-- Partial Payment -->
+      <p class="ar-filter-sheet__section-title">Partial Payment</p>
+      <div class="ar-filter-sheet__card">
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-partial" value="received" checked />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Received</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-partial" value="not-received" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Not Received</span>
+        </label>
+      </div>
+
+      <!-- Within -->
+      <p class="ar-filter-sheet__section-title">Within</p>
+      <div class="ar-filter-sheet__card">
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-within" value="7" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">7 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-within" value="15" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">15 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-within" value="30" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">30 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-within" value="60" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">60 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option">
+          <input type="radio" name="ar-within" value="90" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">90 Days</span>
+        </label>
+        <label class="ar-filter-sheet__option" id="arWithinOtherOption">
+          <input type="radio" name="ar-within" value="other" />
+          <span class="ar-filter-sheet__radio"></span>
+          <span class="ar-filter-sheet__option-label">Other (Custom Time Frame)</span>
+        </label>
+        <!-- Date range — visible when "Other" is selected -->
+        <div class="ar-filter-sheet__date-range" id="arDateRange">
+          <p class="ar-filter-sheet__date-label">From</p>
+          <div class="ar-filter-sheet__date-input-wrap">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="2.5" width="14" height="13" rx="2" stroke="#FFF8EA" stroke-width="1.4"/>
+              <path d="M1 6.5H15" stroke="#FFF8EA" stroke-width="1.4"/>
+              <path d="M5 1.5V3.5" stroke="#FFF8EA" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M11 1.5V3.5" stroke="#FFF8EA" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <input class="ar-filter-sheet__date-input" type="text" placeholder="DD/MM/YYYY" />
+          </div>
+          <p class="ar-filter-sheet__date-label">To</p>
+          <div class="ar-filter-sheet__date-input-wrap">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="2.5" width="14" height="13" rx="2" stroke="#FFF8EA" stroke-width="1.4"/>
+              <path d="M1 6.5H15" stroke="#FFF8EA" stroke-width="1.4"/>
+              <path d="M5 1.5V3.5" stroke="#FFF8EA" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M11 1.5V3.5" stroke="#FFF8EA" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <input class="ar-filter-sheet__date-input" type="text" placeholder="DD/MM/YYYY" />
+          </div>
+        </div>
+      </div>
+
+      <div style="height:8px"></div>
+    </div><!-- /.ar-filter-sheet__body -->
+
+    <!-- Footer -->
+    <div class="ar-filter-sheet__footer">
+      <div class="ar-filter-sheet__footer-divider"></div>
+      <p class="ar-filter-sheet__count">4 results</p>
+      <button class="ar-filter-sheet__apply" id="arFilterApply">Apply Filter</button>
+    </div>
+
+  </div><!-- /.ar-filter-sheet -->
+
   <script src="scripts/auth.js"></script>
   <script src="scripts/app.js"></script>
   <script>
@@ -360,6 +532,65 @@
 
       document.querySelectorAll('[data-owner]').forEach((btn) => {
         btn.addEventListener('click', () => openSheet(btn.getAttribute('data-owner')));
+      });
+
+      // ---- AR Filter Sheet ----
+      const filterSheet    = document.getElementById('arFilterSheet');
+      const filterBackdrop = document.getElementById('arFilterBackdrop');
+      const filterOpenBtn  = document.getElementById('arFilterBtn');
+      const filterCloseBtn = document.getElementById('arFilterClose');
+      const filterResetBtn = document.getElementById('arFilterReset');
+      const filterApplyBtn = document.getElementById('arFilterApply');
+      const dateRange      = document.getElementById('arDateRange');
+
+      function openFilterSheet() {
+        filterBackdrop.classList.add('ar-filter-backdrop--open');
+        filterSheet.style.display = 'flex';
+        filterSheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            filterSheet.classList.add('ar-filter-sheet--open');
+          });
+        });
+      }
+
+      function closeFilterSheet() {
+        filterSheet.classList.remove('ar-filter-sheet--open');
+        filterBackdrop.classList.remove('ar-filter-backdrop--open');
+        setTimeout(() => {
+          filterSheet.style.display = 'none';
+          filterSheet.setAttribute('aria-hidden', 'true');
+        }, 370);
+      }
+
+      filterOpenBtn.addEventListener('click', openFilterSheet);
+      filterCloseBtn.addEventListener('click', closeFilterSheet);
+      filterBackdrop.addEventListener('click', closeFilterSheet);
+      filterApplyBtn.addEventListener('click', closeFilterSheet);
+
+      // Reset — restore all radio groups to their defaults
+      filterResetBtn.addEventListener('click', () => {
+        const defaults = {
+          'ar-level':   'all-levels',
+          'ar-hold':    'no-hold',
+          'ar-partial': 'received',
+          'ar-within':  null
+        };
+        Object.entries(defaults).forEach(([name, val]) => {
+          filterSheet.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
+            radio.checked = val !== null && radio.value === val;
+          });
+        });
+        if (dateRange) dateRange.classList.remove('is-visible');
+      });
+
+      // Show/hide date range when "Other" is selected in the Within group
+      filterSheet.querySelectorAll('input[name="ar-within"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          if (dateRange) {
+            dateRange.classList.toggle('is-visible', radio.value === 'other' && radio.checked);
+          }
+        });
       });
     })();
   </script>
