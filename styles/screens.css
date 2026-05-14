@@ -75,6 +75,16 @@
   text-align: center;
 }
 
+.login__copyright {
+  margin: 0 4px 16px;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  opacity: 0.4;
+  text-align: center;
+}
+
 .login__biometric {
   display: flex;
   align-items: center;
