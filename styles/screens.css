@@ -9302,3 +9302,145 @@ a.sub-header__right {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* --- Payment Review card --- */
+.pay-review-card {
+  background: #112719;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.pay-review-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.pay-review-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pay-review-row__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.pay-review-row__sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
+.pay-review-row__value {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.pay-review-row__value--total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
+/* --- Info cards (Date, Payment Method) --- */
+.pay-info-card {
+  background: #112719;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pay-info-card__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.pay-info-card__value {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
+/* --- Payment Success hero --- */
+.pay-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 16px 24px;
+}
+
+.pay-success__icon {
+  width: 95px;
+  height: 95px;
+  background: #b2de61;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.pay-success__title {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 10px;
+}
+
+.pay-success__text {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 320px;
+}
+
+/* --- Confirmation code card --- */
+.pay-confirm-card {
+  background: #112719;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pay-confirm-card__code {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  letter-spacing: 0.04em;
+}
+
+.pay-confirm-card__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff8ea;
+  opacity: 0.7;
+}
