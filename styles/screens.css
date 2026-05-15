@@ -6388,6 +6388,25 @@ a.sub-header__right {
 }
 
 /* ============================================
+   PDF MODAL — IMAGE VIEWER VARIANT
+   ============================================ */
+.pdf-modal--img .pdf-modal__sheet { display: none; }
+
+.pdf-modal__img-wrap {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px 12px 0 0;
+  background: #e8e8e8;
+}
+
+.pdf-modal__img {
+  width: 100%;
+  display: block;
+}
+
+/* ============================================
    PAYMENT SHEET (V2 layout)
    ============================================ */
 .payment-sheet {
