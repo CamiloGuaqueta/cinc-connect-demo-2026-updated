@@ -24,7 +24,7 @@
       <header class="app-header">
         <a class="app-header__back" href="board-action-items.html" aria-label="Back">
           <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
-            <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
         <a class="app-header__notification" href="notifications.html">
@@ -33,78 +33,72 @@
         </a>
       </header>
 
-      <h1 class="acct-info__title">Account Info</h1>
+      <!-- Title -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title">Account Info</h1>
+      </div>
 
-      <div class="acct-info__card">
+      <!-- Account card — ar-vcard pattern -->
+      <div class="ar-violations__cards">
+        <div class="ar-vcard">
 
-        <!-- Top block: summary + owner (single border-bottom) -->
-        <div class="acct-info__top">
-          <div class="acct-info__summary">
-            <p class="acct-info__acct"><strong>Acct:</strong> 1588:6523</p>
-            <p class="acct-info__address">12346 Washington Avenue</p>
-            <p class="acct-info__balance"><strong>Total Balance:</strong> <span>$2,550.83</span></p>
+          <!-- Account summary -->
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 1588:6523</p>
+            <p class="ar-vcard__address">12346 Washington Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Total Balance:</strong> $2,550.83</p>
           </div>
 
-          <a class="acct-info__owner" href="#">
-            <img class="acct-info__owner-avatar" src="assets/personas/Ethan Young.png" alt="Thomas Bravo" />
-            <div class="acct-info__owner-info">
-              <span class="acct-info__owner-name">Thomas Bravo</span>
-              <span class="acct-info__owner-role">Owner</span>
+          <div class="ar-vcard__divider"></div>
+
+          <!-- Owner: Thomas Bravo -->
+          <a class="ar-vcard__owner" href="ar-homeowner.html">
+            <img class="ar-vcard__owner-avatar" src="assets/personas/thomas-bravo.png" alt="Thomas Bravo" />
+            <div class="ar-vcard__owner-info">
+              <span class="ar-vcard__owner-name">Thomas Bravo</span>
+              <span class="ar-vcard__owner-role">Home Owner</span>
             </div>
-            <span class="board-ai__row-chev"></span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
+
+          <div class="ar-vcard__divider"></div>
+
+          <!-- Account Ledger -->
+          <a class="ar-vcard__row" href="account-ledger.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-tile-account-ledger.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
+            <span class="ar-vcard__row-label">Account Ledger</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-vcard__divider"></div>
+
+          <!-- Collections -->
+          <a class="ar-vcard__row" href="ar-collections.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-collections.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
+            <span class="ar-vcard__row-label">Collections</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-vcard__divider"></div>
+
+          <!-- Violations -->
+          <a class="ar-vcard__row" href="ar-violations.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
+            <span class="ar-vcard__row-label">Violations</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
+          <div class="ar-vcard__divider"></div>
+
+          <!-- Work Orders -->
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
+            <span class="ar-vcard__row-label">Work Orders</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+
         </div>
-
-        <!-- Nav rows -->
-        <a class="board-ai__row" href="account-ledger.html">
-          <span class="board-ai__row-icon">
-            <img src="assets/icons/icon-tile-account-ledger.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
-          </span>
-          <div class="board-ai__row-info">
-            <span class="board-ai__row-label">Account Ledger</span>
-          </div>
-          <div class="board-ai__row-right">
-            <span class="board-ai__row-chev"></span>
-          </div>
-        </a>
-
-        <a class="board-ai__row" href="#">
-          <span class="board-ai__row-icon">
-            <img src="assets/icons/icon-collections.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
-          </span>
-          <div class="board-ai__row-info">
-            <span class="board-ai__row-label">Collections</span>
-          </div>
-          <div class="board-ai__row-right">
-            <span class="board-ai__row-chev"></span>
-          </div>
-        </a>
-
-        <a class="board-ai__row" href="ar-violations.html">
-          <span class="board-ai__row-icon">
-            <img src="assets/icons/icon-todo-4-violation.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
-          </span>
-          <div class="board-ai__row-info">
-            <span class="board-ai__row-label">Violations</span>
-          </div>
-          <div class="board-ai__row-right">
-            <span class="board-ai__row-chev"></span>
-          </div>
-        </a>
-
-        <a class="board-ai__row" href="#">
-          <span class="board-ai__row-icon">
-            <img src="assets/icons/icon-todo-5-work-order.svg" alt="" style="width:22px;height:22px;filter:brightness(0) saturate(100%) invert(76%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(110%);" />
-          </span>
-          <div class="board-ai__row-info">
-            <span class="board-ai__row-label">Work Orders</span>
-          </div>
-          <div class="board-ai__row-right">
-            <span class="board-ai__row-chev"></span>
-          </div>
-        </a>
-
-      </div><!-- /.acct-info__card -->
+      </div><!-- /.ar-violations__cards -->
 
     </main>
 
