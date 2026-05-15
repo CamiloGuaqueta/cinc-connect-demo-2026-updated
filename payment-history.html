@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Payment History</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ledger">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="financial.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Property selector -->
+      <button class="property-selector" type="button" aria-haspopup="listbox">
+        <img class="property-selector__door" src="assets/icons/icon-door.svg" alt="" />
+        <span class="property-selector__name">180 Crandon Blvd</span>
+        <img class="property-selector__chevron" src="assets/icons/icon-chevron-down.svg" alt="" />
+      </button>
+
+      <!-- Carousel — same 3 ledger cards -->
+      <div class="ledger-carousel">
+        <div class="ledger-carousel__track" id="ledgerTrack">
+
+          <div class="ledger-carousel__slide" data-idx="0">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">General Ledger</span>
+              <span class="ledger-carousel__address">180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: 23456789876545678</span>
+              <span class="ledger-carousel__meta">useremail@memail.com</span>
+            </div>
+          </div>
+
+          <div class="ledger-carousel__slide" data-idx="1">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">Special Assessment</span>
+              <span class="ledger-carousel__address">Happy Property LLC</span>
+              <span class="ledger-carousel__meta">UNIT: 180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: 097654r6788</span>
+              <span class="ledger-carousel__meta">useremail@email.com</span>
+            </div>
+          </div>
+
+          <div class="ledger-carousel__slide" data-idx="2">
+            <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
+            <div class="ledger-carousel__content">
+              <span class="ledger-carousel__type">Marina Rental</span>
+              <span class="ledger-carousel__address">180 Crandon Blvd</span>
+              <span class="ledger-carousel__meta">ACC#: MR-4409-2024</span>
+              <span class="ledger-carousel__meta">useremail@memail.com</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ledger-carousel__dots" id="ledgerDots">
+          <button class="ledger-dot ledger-dot--active" data-dot="0" aria-label="Slide 1"></button>
+          <button class="ledger-dot" data-dot="1" aria-label="Slide 2"></button>
+          <button class="ledger-dot" data-dot="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
+      <!-- Page title -->
+      <h1 class="ledger-section__title" style="padding: 16px 20px 0; margin:0; font-family:Montserrat,sans-serif; font-size:22px; font-weight:700; color:#fff8ea;">Payment History</h1>
+
+      <!-- Transaction list -->
+      <div class="ledger-list">
+
+        <!-- Oct 25 -->
+        <p class="ledger-group__date">Today, Oct 25</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__sync-icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M19 11a8 8 0 1 1-8-8M19 3.5v4h-4" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">General Ledger · Processing</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- Sep 15 -->
+        <p class="ledger-group__date">Sep, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- Aug 15 -->
+        <p class="ledger-group__date">Aug, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">AutoPay</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$950.00</span>
+          </div>
+        </div>
+
+        <!-- Jul 15 -->
+        <p class="ledger-group__date">Jul, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- Jun 15 -->
+        <p class="ledger-group__date">Jun, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">AutoPay</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- May 15 -->
+        <p class="ledger-group__date">May, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">Special Assessment</span>
+            </div>
+            <span class="ledger-row__amount">$125.00</span>
+          </div>
+        </div>
+
+        <!-- Apr 15 -->
+        <p class="ledger-group__date">Apr, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">AutoPay</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- Mar 15 -->
+        <p class="ledger-group__date">Mar, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+        <!-- Feb 15 -->
+        <p class="ledger-group__date">Feb, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">AutoPay</span>
+              <span class="ledger-row__sub">Marina Rental</span>
+            </div>
+            <span class="ledger-row__amount">$225.00</span>
+          </div>
+        </div>
+
+        <!-- Jan 15 -->
+        <p class="ledger-group__date">Jan, 15</p>
+        <div class="ledger-group__card">
+          <div class="ledger-row">
+            <span class="ledger-row__pay-icon">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1 5L5 9L13 1" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="ledger-row__info">
+              <span class="ledger-row__label">Online Payment</span>
+              <span class="ledger-row__sub">General Ledger</span>
+            </div>
+            <span class="ledger-row__amount">$750.00</span>
+          </div>
+        </div>
+
+      </div><!-- /.ledger-list -->
+
+    </main>
+
+    <!-- Bottom Navigation (Financial active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Carousel dots JS (same as account-ledger) -->
+  <script>
+    (function () {
+      var track   = document.getElementById('ledgerTrack');
+      var dots    = document.querySelectorAll('[data-dot]');
+      var SLIDE_W = 240 + 12;
+      var N       = 3;
+
+      function activate(idx) {
+        dots.forEach(function (d, i) {
+          d.classList.toggle('ledger-dot--active', i === idx);
+        });
+      }
+
+      track.addEventListener('scroll', function () {
+        activate(Math.min(N - 1, Math.round(track.scrollLeft / SLIDE_W)));
+      }, { passive: true });
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          track.scrollTo({ left: parseInt(dot.dataset.dot, 10) * SLIDE_W, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
