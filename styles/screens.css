@@ -9945,13 +9945,20 @@ a.sub-header__right {
   padding-bottom: 90px;
 }
 
+.board-ai__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+}
+
 .board-ai__title {
   font-family: Montserrat, sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #b2de61;
   margin: 0;
-  padding: 16px 20px 14px;
+  padding: 0;
 }
 
 /* 2×2 stat grid */
@@ -10397,7 +10404,6 @@ a.sub-header__right {
   font-weight: 700;
   color: #112719;
   position: relative;
-  overflow: hidden;
 }
 
 .log-entry__avatar-badge {
@@ -10466,14 +10472,15 @@ a.sub-header__right {
 
 .log-footer-bar {
   position: fixed;
-  bottom: 0;
+  bottom: var(--bottom-nav-height);
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 393px;
   background: #235237;
-  padding: 16px 20px 28px;
+  padding: 14px 20px 16px;
   border-top: 1px solid rgba(178,222,97,0.2);
+  z-index: 110;
 }
 
 /* ============================================
