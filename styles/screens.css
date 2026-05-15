@@ -9973,6 +9973,9 @@ a.sub-header__right {
   background: #235237;
   border-radius: 10px;
   padding: 12px 14px 14px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .board-ai__stat-top {
@@ -10633,4 +10636,108 @@ a.sub-header__right {
   color: rgba(255,248,234,0.7);
   margin: 0;
   line-height: 1.6;
+}
+
+/* ============================================
+   ACCOUNT INFO SCREEN
+   ============================================ */
+
+.acct-info {
+  background: #112719;
+  padding-bottom: 90px;
+}
+
+.acct-info__title {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+  padding: 16px 20px 14px;
+}
+
+.acct-info__card {
+  background: #235237;
+  border-radius: 10px;
+  margin: 0 20px 16px;
+}
+
+.acct-info__summary {
+  padding: 14px 16px 16px;
+  border-bottom: 1px solid rgba(178,222,97,0.2);
+}
+
+.acct-info__acct {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0 0 3px;
+}
+
+.acct-info__acct strong { font-weight: 700; }
+
+.acct-info__address {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0 0 6px;
+}
+
+.acct-info__balance {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0;
+}
+
+.acct-info__balance strong { font-weight: 700; }
+.acct-info__balance span   { color: #b2de61; }
+
+/* Owner row inside account info card */
+.acct-info__owner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(178,222,97,0.15);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+}
+
+.acct-info__owner-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.acct-info__owner-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.acct-info__owner-name {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #b2de61;
+  text-transform: capitalize;
+}
+
+.acct-info__owner-role {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin-top: 2px;
 }

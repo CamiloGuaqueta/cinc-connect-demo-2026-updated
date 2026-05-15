@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Board Action Items</title>
+  <title>CINC Connect — Past Due Items</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,7 @@
 
       <!-- App Header -->
       <header class="app-header">
-        <a class="app-header__back" href="todos.html" aria-label="Back">
+        <a class="app-header__back" href="board-action-items.html" aria-label="Back">
           <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
             <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -33,15 +33,15 @@
         </a>
       </header>
 
-      <!-- Page title row with inline filter -->
+      <!-- Title row -->
       <div class="board-ai__title-row">
-        <h1 class="board-ai__title">Board Review Items</h1>
+        <h1 class="board-ai__title">Past Due Items</h1>
         <a class="board-ai__filter-btn" href="board-filter.html" aria-label="Filter">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-            <mask id="mask0_125_1707" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+            <mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
               <path d="M23.1715 0V25H2.09808e-05V0H23.1715Z" fill="black"/>
             </mask>
-            <g mask="url(#mask0_125_1707)">
+            <g mask="url(#mask0)">
               <path d="M4.34955 24.1391V10.3073C5.8574 9.92252 6.97742 8.55673 6.97742 6.93053C6.97742 5.30432 5.8574 3.93853 4.34955 3.55372V0.860882C4.34955 0.385675 3.96391 0 3.48866 0C3.01306 0 2.62782 0.385675 2.62782 0.860882V3.55372C1.11997 3.93853 -5.34058e-05 5.30432 -5.34058e-05 6.93053C-5.34058e-05 8.55673 1.11997 9.92252 2.62782 10.3073V24.1391C2.62782 24.6148 3.01306 25 3.48866 25C3.96391 25 4.34955 24.6148 4.34955 24.1391V24.1391ZM1.72171 6.93053C1.72171 6.27023 2.08977 5.70033 2.62782 5.39687C2.88349 5.25267 3.17449 5.16357 3.48866 5.16357C3.80291 5.16357 4.09346 5.25267 4.34955 5.39687C4.8876 5.70033 5.25568 6.27023 5.25568 6.93053C5.25568 7.59082 4.8876 8.16073 4.34955 8.46419C4.09346 8.60839 3.80291 8.69749 3.48866 8.69749C3.17449 8.69749 2.88349 8.60839 2.62782 8.46419C2.08977 8.16073 1.72171 7.59082 1.72171 6.93053Z" fill="#B2DE61"/>
               <path d="M11.08 0.860882V14.9888C9.57169 15.3736 8.45212 16.7394 8.45212 18.3656C8.45212 19.9918 9.57169 21.3576 11.08 21.7424V24.1391C11.08 24.6148 11.4652 25 11.9409 25C12.4161 25 12.8017 24.6148 12.8017 24.1391V21.7424C14.3096 21.3576 15.4296 19.9918 15.4296 18.3656C15.4296 16.7394 14.3096 15.3736 12.8017 14.9888V0.860882C12.8017 0.385675 12.4161 0 11.9409 0C11.4652 0 11.08 0.385675 11.08 0.860882V0.860882ZM13.7078 18.3656C13.7078 19.0259 13.3393 19.5958 12.8017 19.8993C12.5456 20.0435 12.2546 20.1326 11.9409 20.1326C11.6266 20.1326 11.3356 20.0435 11.08 19.8993C10.5419 19.5958 10.1739 19.0259 10.1739 18.3656C10.1739 17.7053 10.5419 17.1354 11.08 16.832C11.3356 16.6878 11.6266 16.5987 11.9409 16.5987C12.2546 16.5987 12.5456 16.6878 12.8017 16.832C13.3393 17.1354 13.7078 17.7053 13.7078 18.3656Z" fill="#B2DE61"/>
               <path d="M18.8219 0.860882V5.82645C17.3136 6.21126 16.1936 7.57705 16.1936 9.20325C16.1936 10.8295 17.3136 12.1952 18.8219 12.5801V24.1391C18.8219 24.6148 19.2071 25 19.6828 25C20.158 25 20.5437 24.6148 20.5437 24.1391V12.5801C22.0515 12.1952 23.1715 10.8295 23.1715 9.20325C23.1715 7.57705 22.0515 6.21126 20.5437 5.82645V0.860882C20.5437 0.385675 20.158 0 19.6828 0C19.2071 0 18.8219 0.385675 18.8219 0.860882V0.860882ZM21.4497 9.20325C21.4497 9.86355 21.0813 10.4335 20.5437 10.7369C20.2876 10.8811 19.9966 10.9702 19.6828 10.9702C19.3686 10.9702 19.0776 10.8811 18.8219 10.7369C18.2839 10.4335 17.9154 9.86355 17.9154 9.20325C17.9154 8.54296 18.2839 7.97306 18.8219 7.6696C19.0776 7.5254 19.3686 7.4363 19.6828 7.4363C19.9966 7.4363 20.2876 7.5254 20.5437 7.6696C21.0813 7.97306 21.4497 8.54296 21.4497 9.20325Z" fill="#B2DE61"/>
@@ -51,77 +51,21 @@
         </a>
       </div>
 
-      <!-- Stats grid -->
-      <div class="board-ai__stats">
-
-        <!-- Past Due -->
-        <a class="board-ai__stat" href="board-past-due.html">
-          <div class="board-ai__stat-top">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="10" stroke="#df434f" stroke-width="1.8"/>
-              <path d="M11 6v6" stroke="#df434f" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="11" cy="15.5" r="1" fill="#df434f"/>
-            </svg>
-            <span class="board-ai__stat-num">5</span>
-          </div>
-          <p class="board-ai__stat-label">Past Due</p>
-        </a>
-
-        <!-- Not Started -->
-        <div class="board-ai__stat">
-          <div class="board-ai__stat-top">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="10" stroke="rgba(255,248,234,0.3)" stroke-width="1.8"/>
-              <circle cx="7" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
-              <circle cx="11" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
-              <circle cx="15" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
-            </svg>
-            <span class="board-ai__stat-num">3</span>
-          </div>
-          <p class="board-ai__stat-label">Not Started</p>
-        </div>
-
-        <!-- In Progress -->
-        <div class="board-ai__stat">
-          <div class="board-ai__stat-top">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M19 11a8 8 0 1 1-8-8M19 3.5v4h-4" stroke="#f5c518" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="board-ai__stat-num">25</span>
-          </div>
-          <p class="board-ai__stat-label">In Progress</p>
-        </div>
-
-        <!-- Completed -->
-        <div class="board-ai__stat">
-          <div class="board-ai__stat-top">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="10" stroke="#b2de61" stroke-width="1.8"/>
-              <path d="M6.5 11L9.5 14L15.5 8" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="board-ai__stat-num">255</span>
-          </div>
-          <p class="board-ai__stat-label">Completed</p>
-        </div>
-
-      </div><!-- /.board-ai__stats -->
-
-      <!-- Action item cards -->
+      <!-- Past due cards -->
       <div class="board-ai__cards">
 
-        <!-- Card 1 — Not Started, overdue -->
+        <!-- Card 1 — Collections, Not Started -->
         <div class="board-ai__card">
           <div class="board-ai__card-head">
             <p class="board-ai__card-due"><strong>Due Date:</strong> <span class="board-ai__card-due--overdue">04/28/2026</span></p>
             <span class="board-ai__badge board-ai__badge--not-started">Not Started</span>
           </div>
           <p class="board-ai__card-category"><strong>Category:</strong> Collections</p>
-          <p class="board-ai__card-title">Unit Collection Files – Please Review</p>
-          <p class="board-ai__card-body">Please review the unit collection documents and all attached files at your earliest convenience. It's important that we confirm all information is accurate and complete before moving forward. Let me know if you have any questions.</p>
+          <p class="board-ai__card-title">Please review collections for attorney approval</p>
+          <p class="board-ai__card-body">Please review the unit collection documents and all attached files at your earliest convenience. It's important that we confirm all information is accurate and complete before moving forward.</p>
           <a class="board-ai__see-more" href="#">See More</a>
 
           <div class="board-ai__rows">
-            <!-- Attachment row -->
             <a class="board-ai__row" href="#">
               <span class="board-ai__row-icon">
                 <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -137,7 +81,6 @@
               </div>
             </a>
 
-            <!-- Account info row -->
             <a class="board-ai__row" href="board-account-info.html">
               <span class="board-ai__row-icon">
                 <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
@@ -155,7 +98,6 @@
               </div>
             </a>
 
-            <!-- Log & Messages row -->
             <a class="board-ai__row" href="board-log-messages.html">
               <span class="board-ai__row-icon">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
@@ -173,18 +115,34 @@
           </div>
         </div><!-- /card 1 -->
 
-        <!-- Card 2 — In Progress, due today -->
+        <!-- Card 2 — Collections, Not Started -->
         <div class="board-ai__card">
           <div class="board-ai__card-head">
-            <p class="board-ai__card-due"><strong>Due Date:</strong> 05/15/2026 (Today)</p>
-            <span class="board-ai__badge board-ai__badge--in-progress">In Progress</span>
+            <p class="board-ai__card-due"><strong>Due Date:</strong> <span class="board-ai__card-due--overdue">04/15/2026</span></p>
+            <span class="board-ai__badge board-ai__badge--not-started">Not Started</span>
           </div>
           <p class="board-ai__card-category"><strong>Category:</strong> Collections</p>
-          <p class="board-ai__card-title">Title goes here, even if it is very long it can wrap up to 2 lines</p>
-          <p class="board-ai__card-body">Please take a moment to review the unit collection documents and attached files. Let me know if you have any questions or need clarification on any of the items included.</p>
+          <p class="board-ai__card-title">Unit Collection Files – Please Review</p>
+          <p class="board-ai__card-body">Please take a moment to review the unit collection documents and attached files. Let us know if you have any questions or need clarification on any of the items included.</p>
 
           <div class="board-ai__rows">
-            <!-- Log & Messages row -->
+            <a class="board-ai__row" href="board-account-info.html">
+              <span class="board-ai__row-icon">
+                <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
+                  <rect x="1" y="1" width="18" height="14" rx="2" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 5h18" stroke="#b2de61" stroke-width="1.5"/>
+                  <rect x="3" y="9" width="5" height="2" rx="1" fill="#b2de61" opacity=".6"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Account Info</span>
+                <span class="board-ai__row-sub">Acct: 1588 : 6523  |  12346 Washington Avenue</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+
             <a class="board-ai__row" href="board-log-messages.html">
               <span class="board-ai__row-icon">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
@@ -202,19 +160,18 @@
           </div>
         </div><!-- /card 2 -->
 
-        <!-- Card 3 — Completed, due today -->
+        <!-- Card 3 — Financial, Not Started -->
         <div class="board-ai__card">
           <div class="board-ai__card-head">
-            <p class="board-ai__card-due"><strong>Due Date:</strong> 05/12/2026</p>
-            <span class="board-ai__badge board-ai__badge--completed">Completed</span>
+            <p class="board-ai__card-due"><strong>Due Date:</strong> <span class="board-ai__card-due--overdue">05/02/2026</span></p>
+            <span class="board-ai__badge board-ai__badge--not-started">Not Started</span>
           </div>
           <p class="board-ai__card-category"><strong>Category:</strong> Financial</p>
           <p class="board-ai__card-title">Review of Prior Year Financial Documents before end of month</p>
-          <p class="board-ai__card-body">Please take some time to carefully review last year's financial documents, including all statements, reports, and any supporting materials provided. It's important that we ensure the accuracy and completeness of all records.</p>
+          <p class="board-ai__card-body">Please take some time to carefully review last year's financial documents, including all statements, reports, and any supporting materials provided. Ensure the accuracy and completeness of all records.</p>
           <a class="board-ai__see-more" href="#">See More</a>
 
           <div class="board-ai__rows">
-            <!-- Attachments row -->
             <a class="board-ai__row" href="board-attachments.html">
               <span class="board-ai__row-icon">
                 <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
@@ -230,7 +187,6 @@
               </div>
             </a>
 
-            <!-- Log & Messages row -->
             <a class="board-ai__row" href="board-log-messages.html">
               <span class="board-ai__row-icon">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
