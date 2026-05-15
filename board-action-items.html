@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Board Action Items</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="board-ai">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="board-ai__header-right">
+          <!-- Filter button -->
+          <button class="board-ai__filter-btn" type="button" aria-label="Filter">
+            <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
+              <path d="M1 1h20M5 9h12M9 17h4" stroke="#b2de61" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="board-ai__filter-badge">2</span>
+          </button>
+          <!-- Notification bell -->
+          <a class="app-header__notification" href="notifications.html">
+            <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+            <span class="app-header__badge">3</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Page title -->
+      <h1 class="board-ai__title">Board Review Items</h1>
+
+      <!-- Stats grid -->
+      <div class="board-ai__stats">
+
+        <!-- Past Due -->
+        <div class="board-ai__stat">
+          <div class="board-ai__stat-top">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="10" stroke="#df434f" stroke-width="1.8"/>
+              <path d="M11 6v6" stroke="#df434f" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="11" cy="15.5" r="1" fill="#df434f"/>
+            </svg>
+            <span class="board-ai__stat-num">5</span>
+          </div>
+          <p class="board-ai__stat-label">Past Due</p>
+        </div>
+
+        <!-- Not Started -->
+        <div class="board-ai__stat">
+          <div class="board-ai__stat-top">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="10" stroke="rgba(255,248,234,0.3)" stroke-width="1.8"/>
+              <circle cx="7" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
+              <circle cx="11" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
+              <circle cx="15" cy="11" r="1.5" fill="#fff8ea" opacity=".5"/>
+            </svg>
+            <span class="board-ai__stat-num">3</span>
+          </div>
+          <p class="board-ai__stat-label">Not Started</p>
+        </div>
+
+        <!-- In Progress -->
+        <div class="board-ai__stat">
+          <div class="board-ai__stat-top">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M19 11a8 8 0 1 1-8-8M19 3.5v4h-4" stroke="#f5c518" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="board-ai__stat-num">25</span>
+          </div>
+          <p class="board-ai__stat-label">In Progress</p>
+        </div>
+
+        <!-- Completed -->
+        <div class="board-ai__stat">
+          <div class="board-ai__stat-top">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="10" stroke="#b2de61" stroke-width="1.8"/>
+              <path d="M6.5 11L9.5 14L15.5 8" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="board-ai__stat-num">255</span>
+          </div>
+          <p class="board-ai__stat-label">Completed</p>
+        </div>
+
+      </div><!-- /.board-ai__stats -->
+
+      <!-- Action item cards -->
+      <div class="board-ai__cards">
+
+        <!-- Card 1 — Not Started, overdue -->
+        <div class="board-ai__card">
+          <div class="board-ai__card-head">
+            <p class="board-ai__card-due"><strong>Due Date:</strong> <span class="board-ai__card-due--overdue">03/24/2025</span></p>
+            <span class="board-ai__badge board-ai__badge--not-started">Not Started</span>
+          </div>
+          <p class="board-ai__card-category"><strong>Category:</strong> Collections</p>
+          <p class="board-ai__card-title">Unit Collection Files – Please Review</p>
+          <p class="board-ai__card-body">Please review the unit collection documents and all attached files at your earliest convenience. It's important that we confirm all information is accurate and complete before moving forward. Let me know if you have any questions.</p>
+          <a class="board-ai__see-more" href="#">See More</a>
+
+          <div class="board-ai__rows">
+            <!-- Attachment row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                  <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">invoice_12345.pdf</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+
+            <!-- Account info row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="20" height="16" viewBox="0 0 20 16" fill="none">
+                  <rect x="1" y="1" width="18" height="14" rx="2" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 5h18" stroke="#b2de61" stroke-width="1.5"/>
+                  <rect x="3" y="9" width="5" height="2" rx="1" fill="#b2de61" opacity=".6"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Account Info</span>
+                <span class="board-ai__row-sub">Acct: 1588 : 6523  |  12346 Washington Avenue</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+
+            <!-- Log & Messages row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+                  <path d="M18 1H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3l2 4 2-4h9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Log &amp; Messages</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__msg-badge">2</span>
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+          </div>
+        </div><!-- /card 1 -->
+
+        <!-- Card 2 — In Progress, due today -->
+        <div class="board-ai__card">
+          <div class="board-ai__card-head">
+            <p class="board-ai__card-due"><strong>Due Date:</strong> 03/25/2025 (Today)</p>
+            <span class="board-ai__badge board-ai__badge--in-progress">In Progress</span>
+          </div>
+          <p class="board-ai__card-category"><strong>Category:</strong> Collections</p>
+          <p class="board-ai__card-title">Title goes here, even if it is very long it can wrap up to 2 lines</p>
+          <p class="board-ai__card-body">Please take a moment to review the unit collection documents and attached files. Let me know if you have any questions or need clarification on any of the items included.</p>
+
+          <div class="board-ai__rows">
+            <!-- Log & Messages row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+                  <path d="M18 1H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3l2 4 2-4h9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Log &amp; Messages</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__msg-badge">2</span>
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+          </div>
+        </div><!-- /card 2 -->
+
+        <!-- Card 3 — Completed, due today -->
+        <div class="board-ai__card">
+          <div class="board-ai__card-head">
+            <p class="board-ai__card-due"><strong>Due Date:</strong> 03/25/2025 (Today)</p>
+            <span class="board-ai__badge board-ai__badge--completed">Completed</span>
+          </div>
+          <p class="board-ai__card-category"><strong>Category:</strong> Financial</p>
+          <p class="board-ai__card-title">Review of Prior Year Financial Documents before end of month</p>
+          <p class="board-ai__card-body">Please take some time to carefully review last year's financial documents, including all statements, reports, and any supporting materials provided. It's important that we ensure the accuracy and completeness of all records.</p>
+          <a class="board-ai__see-more" href="#">See More</a>
+
+          <div class="board-ai__rows">
+            <!-- Attachments row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                  <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Attachments (3)</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+
+            <!-- Log & Messages row -->
+            <a class="board-ai__row" href="#">
+              <span class="board-ai__row-icon">
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none">
+                  <path d="M18 1H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3l2 4 2-4h9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="board-ai__row-info">
+                <span class="board-ai__row-label">Log &amp; Messages</span>
+              </div>
+              <div class="board-ai__row-right">
+                <span class="board-ai__row-chev"></span>
+              </div>
+            </a>
+          </div>
+        </div><!-- /card 3 -->
+
+      </div><!-- /.board-ai__cards -->
+
+    </main>
+
+    <!-- Bottom Navigation (To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

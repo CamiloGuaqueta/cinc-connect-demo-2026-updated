@@ -9935,3 +9935,273 @@ a.sub-header__right {
 .ledger-row__amount--lime {
   color: #b2de61;
 }
+
+/* ============================================
+   BOARD ACTION ITEMS
+   ============================================ */
+
+.board-ai {
+  background: #112719;
+  padding-bottom: 90px;
+}
+
+.board-ai__title {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+  padding: 16px 20px 14px;
+}
+
+/* 2×2 stat grid */
+.board-ai__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  padding: 0 20px 20px;
+}
+
+.board-ai__stat {
+  background: #235237;
+  border-radius: 10px;
+  padding: 12px 14px 14px;
+}
+
+.board-ai__stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.board-ai__stat-num {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+  line-height: 1;
+}
+
+.board-ai__stat-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+/* Action item cards */
+.board-ai__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px;
+}
+
+.board-ai__card {
+  background: #235237;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 14px 10px 0;
+}
+
+.board-ai__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.board-ai__card-due {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff8ea;
+}
+
+.board-ai__card-due strong {
+  font-weight: 700;
+}
+
+.board-ai__card-due--overdue {
+  color: #df434f;
+}
+
+/* Status pills */
+.board-ai__badge {
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #112719;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.board-ai__badge--not-started { background: #df434f; color: #fff8ea; }
+.board-ai__badge--in-progress { background: #f5c518; }
+.board-ai__badge--completed   { background: #b2de61; }
+
+.board-ai__card-category {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin-bottom: 8px;
+}
+
+.board-ai__card-category strong { font-weight: 700; }
+
+.board-ai__card-title {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.board-ai__card-body {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.6;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.board-ai__see-more {
+  display: block;
+  color: #b2de61;
+  text-decoration: underline;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Rows inside card (attachment, account, messages) */
+.board-ai__rows {
+  border-top: 1px solid rgba(255,248,234,0.08);
+}
+
+.board-ai__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 2px;
+  min-height: 48px;
+  border-bottom: 1px solid rgba(255,248,234,0.08);
+  text-decoration: none;
+}
+
+.board-ai__row:last-child {
+  border-bottom: none;
+}
+
+.board-ai__row-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-ai__row-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.board-ai__row-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  display: block;
+  line-height: 1.3;
+}
+
+.board-ai__row-sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #b2de61;
+  display: block;
+  margin-top: 2px;
+}
+
+.board-ai__row-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.board-ai__msg-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #b2de61;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #112719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-ai__row-chev {
+  width: 6px;
+  height: 10px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L1 9' stroke='%23b2de61' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* Filter button in header */
+.board-ai__header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.board-ai__filter-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.board-ai__filter-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #b2de61;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #112719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
