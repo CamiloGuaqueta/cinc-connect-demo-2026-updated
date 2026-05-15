@@ -10662,9 +10662,14 @@ a.sub-header__right {
   margin: 0 20px 16px;
 }
 
-.acct-info__summary {
-  padding: 14px 16px 16px;
+/* Top block: summary text + owner row, single border-bottom */
+.acct-info__top {
+  padding: 14px 16px 0;
   border-bottom: 1px solid rgba(178,222,97,0.2);
+}
+
+.acct-info__summary {
+  padding-bottom: 20px;
 }
 
 .acct-info__acct {
@@ -10672,7 +10677,7 @@ a.sub-header__right {
   font-size: 14px;
   font-weight: 500;
   color: #fff8ea;
-  margin: 0 0 3px;
+  margin: 0 0 4px;
 }
 
 .acct-info__acct strong { font-weight: 700; }
@@ -10696,16 +10701,15 @@ a.sub-header__right {
 .acct-info__balance strong { font-weight: 700; }
 .acct-info__balance span   { color: #b2de61; }
 
-/* Owner row inside account info card */
+/* Owner row — inside .acct-info__top, no independent border */
 .acct-info__owner {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
+  padding: 12px 0 14px;
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(178,222,97,0.15);
   cursor: pointer;
   text-align: left;
   text-decoration: none;
