@@ -104,6 +104,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overscroll-behavior: none;    /* Prevent Safari rubber-band bounce */
 }
 
 body {
@@ -111,7 +112,7 @@ body {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
-  background: #000;             /* Black around the app frame on desktop */
+  background: var(--color-bg-base); /* Match app bg — no black gaps on mobile */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

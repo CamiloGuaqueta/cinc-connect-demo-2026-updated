@@ -5,6 +5,7 @@
 
 /* ----- Mobile App Frame ----- */
 .app-frame {
+  width: 100%;
   max-width: var(--max-width-mobile);
   min-height: 100vh;
   min-height: 100dvh;
