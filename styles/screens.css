@@ -10766,6 +10766,348 @@ a.sub-header__right {
 }
 
 /* ============================================================
+   BOARD WORK ORDERS / ACC REVIEW  (board-workorders, acc-review)
+   ============================================================ */
+
+/* Meta-line color variants */
+.ar-vcard__meta-line--red  { color: #df434f !important; }
+.ar-vcard__meta-line--lime { color: #b2de61 !important; }
+
+/* ACC Review: address at card top (lime bold) */
+.acc-card__address {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  padding: 10px 16px 6px;
+  margin: 0;
+  display: block;
+}
+
+/* Filter button with count badge */
+.acc-filter-btn {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+}
+
+.acc-filter-btn__badge {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 17px;
+  height: 17px;
+  background: #b2de61;
+  border-radius: 50%;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #112719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Search bar */
+.acc-search {
+  margin: 0 16px 14px;
+  background: #235237;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  height: 48px;
+  gap: 10px;
+}
+
+.acc-search__input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  outline: none;
+  text-transform: capitalize;
+}
+
+.acc-search__input::placeholder {
+  color: rgba(255,248,234,.5);
+}
+
+/* Stats grid */
+.acc-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin: 0 16px 20px;
+}
+
+.acc-stats-card {
+  background: #235237;
+  border-radius: 10px;
+  padding: 10px 14px 12px;
+}
+
+.acc-stats-card__icon {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.acc-stats-card__number {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.acc-stats-card__label {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+/* ============================================================
+   COMMITTEE VIEW  (acc-review-committee.html)
+   ============================================================ */
+
+.committee-screen {
+  min-height: 100%;
+  background: #112719;
+  padding-bottom: 90px;
+  overflow-y: auto;
+}
+
+.committee-header {
+  padding: 2px 16px 16px;
+}
+
+.committee-header__address {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 4px;
+}
+
+.committee-header__type {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff8ea;
+  margin: 0;
+}
+
+/* Decision card */
+.committee-decision {
+  background: #235237;
+  border-radius: 10px;
+  margin: 0 16px 22px;
+  padding: 14px 16px;
+}
+
+.committee-decision__title {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 10px;
+}
+
+.committee-decision__status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.committee-decision__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #b2de61;
+  flex-shrink: 0;
+}
+
+.committee-decision__status {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.committee-decision__text {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Timeline */
+.committee-timeline {
+  margin: 0 16px;
+}
+
+.committee-entry {
+  display: flex;
+  position: relative;
+}
+
+.committee-entry__gutter {
+  width: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+
+.committee-entry__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b2de61;
+  flex-shrink: 0;
+}
+
+.committee-entry__line {
+  flex: 1;
+  width: 1px;
+  background: rgba(178,222,97,.25);
+  min-height: 16px;
+}
+
+.committee-entry__content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 20px;
+}
+
+.committee-entry__date {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0 0 8px 8px;
+  display: block;
+}
+
+.committee-note {
+  background: #235237;
+  border-radius: 10px;
+  padding: 14px;
+  margin-left: 8px;
+}
+
+.committee-note__author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.committee-note__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.committee-note__avatar-initials {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #112719;
+  color: #b2de61;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.committee-note__name {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #b2de61;
+  text-transform: capitalize;
+}
+
+.committee-note__role {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin-top: 2px;
+}
+
+.committee-note__text {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.committee-note__see-more {
+  color: #b2de61;
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Add Note sticky bar */
+.committee-add-bar {
+  position: sticky;
+  bottom: 0;
+  background: #112719;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 12px 16px 28px;
+}
+
+.committee-add-btn {
+  display: block;
+  width: 100%;
+  background: #b2de61;
+  color: #112719;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  border: none;
+  border-radius: 50px;
+  padding: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* ============================================================
    BOARD ACCOUNT LEDGER  (board-account-ledger.html)
    ============================================================ */
 

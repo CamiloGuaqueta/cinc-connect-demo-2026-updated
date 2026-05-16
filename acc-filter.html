@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Filter ACC Requests</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="acc-review.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Filter ACC Requests</span>
+          <a class="pay-sheet__close" href="acc-review.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Status -->
+          <p class="filter-section__title">Status</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Additional Info Needed</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Approved With Stipulations</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Completed</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Open</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Received</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Sent to Committee for Review</span>
+            </div>
+          </div>
+
+          <!-- Type -->
+          <p class="filter-section__title">Type</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Deck Installation</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Fence Installation</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Landscaping</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Mailbox</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">New Construction or Addition</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Painting</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Parking</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Patio</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Roof</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Swimming Pool</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Other</span>
+            </div>
+          </div>
+
+          <!-- Time Criteria -->
+          <p class="filter-section__title">Time Criteria</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">None</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Form Received</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Sent to Committee</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Response</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Auto Approval</span>
+            </div>
+          </div>
+
+          <!-- From / To date inputs -->
+          <p class="filter-section__title" style="margin-top:8px;">From</p>
+          <div class="filter-group" style="margin-bottom:0;">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;">dd/mm/yyyy</span>
+            </div>
+          </div>
+          <p class="filter-section__title" style="margin-top:14px;">To</p>
+          <div class="filter-group">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;">dd/mm/yyyy</span>
+            </div>
+          </div>
+
+          <p class="filter-results">X results</p>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="acc-review.html">Apply Filter</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Radio toggle
+    document.querySelectorAll('.filter-row').forEach(function(row) {
+      row.addEventListener('click', function() {
+        var group = row.closest('.filter-group');
+        if (!group) return;
+        group.querySelectorAll('.filter-radio').forEach(function(r) {
+          r.classList.remove('filter-radio--selected');
+        });
+        var radio = row.querySelector('.filter-radio');
+        if (radio) radio.classList.add('filter-radio--selected');
+      });
+    });
+  </script>
+</body>
+</html>

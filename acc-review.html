@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Board ACC Review</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ar-workorders">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="ar-workorders__topbar">
+        <h1 class="ar-workorders__title">Board ACC Review</h1>
+        <a class="acc-filter-btn" href="acc-filter.html" aria-label="Filter">
+          <span class="acc-filter-btn__badge">2</span>
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Search -->
+      <div class="acc-search">
+        <input class="acc-search__input" type="text" placeholder="Search Address, Account" />
+        <svg class="acc-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" opacity=".5">
+          <circle cx="8.5" cy="8.5" r="7" stroke="#fff8ea" stroke-width="1.5"/>
+          <path d="M14 14l4 4" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="acc-stats-grid">
+        <!-- New -->
+        <div class="acc-stats-card">
+          <svg class="acc-stats-card__icon" viewBox="0 0 25 25" fill="none">
+            <path d="M12.5 6v13M6 12.5h13" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span class="acc-stats-card__number">5</span>
+          <span class="acc-stats-card__label">New</span>
+        </div>
+        <!-- Open -->
+        <div class="acc-stats-card">
+          <svg class="acc-stats-card__icon" viewBox="0 0 25 25" fill="none">
+            <circle cx="6.5" cy="12.5" r="2" fill="#b2de61"/>
+            <circle cx="12.5" cy="12.5" r="2" fill="#b2de61"/>
+            <circle cx="18.5" cy="12.5" r="2" fill="#b2de61"/>
+          </svg>
+          <span class="acc-stats-card__number">15</span>
+          <span class="acc-stats-card__label">Open</span>
+        </div>
+        <!-- In Progress -->
+        <div class="acc-stats-card">
+          <svg class="acc-stats-card__icon" viewBox="0 0 25 25" fill="none">
+            <circle cx="12.5" cy="12.5" r="10" stroke="#b2de61" stroke-width="1.5"/>
+            <path d="M12.5 7.5v5.5l3.5 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="acc-stats-card__number">25</span>
+          <span class="acc-stats-card__label">In Progress</span>
+        </div>
+        <!-- Completed -->
+        <div class="acc-stats-card">
+          <svg class="acc-stats-card__icon" viewBox="0 0 25 25" fill="none">
+            <circle cx="12.5" cy="12.5" r="10" stroke="#b2de61" stroke-width="1.5"/>
+            <path d="M7.5 12.5l3.5 3.5 6.5-7" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="acc-stats-card__number">255</span>
+          <span class="acc-stats-card__label">Completed</span>
+        </div>
+      </div>
+
+      <!-- ACC Cards -->
+      <div class="ar-workorders__cards">
+
+        <!-- Card 1: 6345 Hurricane Shoals Road — Approved -->
+        <div class="ar-vcard">
+          <p class="acc-card__address">6345 Hurricane Shoals Road</p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Type:</strong> Mailbox</p>
+            <p class="ar-vcard__meta-line"><strong>Form Received:</strong> 04/07/2025</p>
+            <p class="ar-vcard__meta-line"><strong>To Committee:</strong> 04/06/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Response:</strong> 08/30/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Auto Approval:</strong> <span class="ar-vcard__meta-line--red">10/29/2024</span></p>
+            <p class="ar-vcard__meta-line"><strong>Status:</strong> <span class="ar-vcard__meta-line--lime">Approved</span></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <button class="ar-vcard__row" type="button">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </button>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-review-committee.html">
+            <span class="ar-vcard__row-icon" aria-hidden="true">
+              <svg width="25" height="21" viewBox="0 0 25 21" fill="none">
+                <circle cx="9" cy="6" r="4.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M1 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="19" cy="7" r="3.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M22 20c0-3.314-2.686-6-6-6" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="ar-vcard__row-label">Committee</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">Attachments</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 2: 6611 Hamilton Road — Open (Deck Installation) -->
+        <div class="ar-vcard">
+          <p class="acc-card__address">6611 Hamilton Road</p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Type:</strong> Deck Installation</p>
+            <p class="ar-vcard__meta-line"><strong>Form Received:</strong> 03/12/2025</p>
+            <p class="ar-vcard__meta-line"><strong>To Committee:</strong> 07/07/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Response:</strong> 08/30/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Auto Approval:</strong> <span class="ar-vcard__meta-line--red">10/29/2024</span></p>
+            <p class="ar-vcard__meta-line"><strong>Status:</strong> Open</p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <button class="ar-vcard__row" type="button">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </button>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-review-committee.html">
+            <span class="ar-vcard__row-icon" aria-hidden="true">
+              <svg width="25" height="21" viewBox="0 0 25 21" fill="none">
+                <circle cx="9" cy="6" r="4.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M1 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="19" cy="7" r="3.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M22 20c0-3.314-2.686-6-6-6" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="ar-vcard__row-label">Committee</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">ACC request 6611.pdf</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 3: 6611 Hamilton Road — Open (Fence Installation) -->
+        <div class="ar-vcard">
+          <p class="acc-card__address">6611 Hamilton Road</p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Type:</strong> Fence Installation</p>
+            <p class="ar-vcard__meta-line"><strong>Form Received:</strong> 02/18/2025</p>
+            <p class="ar-vcard__meta-line"><strong>To Committee:</strong> 07/07/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Response:</strong> 08/30/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Auto Approval:</strong> <span class="ar-vcard__meta-line--red">10/29/2024</span></p>
+            <p class="ar-vcard__meta-line"><strong>Status:</strong> Open</p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <button class="ar-vcard__row" type="button">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </button>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-review-committee.html">
+            <span class="ar-vcard__row-icon" aria-hidden="true">
+              <svg width="25" height="21" viewBox="0 0 25 21" fill="none">
+                <circle cx="9" cy="6" r="4.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M1 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="19" cy="7" r="3.5" stroke="#b2de61" stroke-width="1.4"/>
+                <path d="M22 20c0-3.314-2.686-6-6-6" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="ar-vcard__row-label">Committee</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">ACC request 6611.pdf</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+      </div><!-- /.ar-workorders__cards -->
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

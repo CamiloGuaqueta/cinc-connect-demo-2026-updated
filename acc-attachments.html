@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Attachments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="attach-screen">
+
+      <header class="app-header">
+        <a class="app-header__back" href="acc-review-committee.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <h1 class="attach-screen__title">Attachments</h1>
+
+      <div class="attach-list">
+
+        <a class="attach-item" href="#"
+           data-open-img="assets/images/Invoice-3.jpg"
+           data-doc-name="acc_request_6345.pdf">
+          <span class="board-ai__row-icon">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="board-ai__row-label">acc_request_6345.pdf</span>
+          <span class="board-ai__row-chev"></span>
+        </a>
+
+        <a class="attach-item" href="#"
+           data-open-img="assets/images/Community-aerial.jpg"
+           data-doc-name="property_photo_mailbox.jpg">
+          <span class="board-ai__row-icon">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="board-ai__row-label">property_photo_mailbox.jpg</span>
+          <span class="board-ai__row-chev"></span>
+        </a>
+
+        <a class="attach-item" href="#"
+           data-open-img="assets/images/Invoice-4.jpg"
+           data-doc-name="committee_approval_form.pdf">
+          <span class="board-ai__row-icon">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="board-ai__row-label">committee_approval_form.pdf</span>
+          <span class="board-ai__row-chev"></span>
+        </a>
+
+      </div><!-- /.attach-list -->
+
+    </main>
+
+    <!-- Bottom Navigation (To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Image viewer modal -->
+  <div class="pdf-modal pdf-modal--img" id="imgModal" hidden>
+    <header class="pdf-modal__header">
+      <h2 class="pdf-modal__filename" id="imgModalTitle">—</h2>
+      <button class="pdf-modal__close" type="button" id="imgModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="6" y1="18" x2="18" y2="6"/>
+        </svg>
+      </button>
+    </header>
+    <div class="pdf-modal__img-wrap">
+      <img class="pdf-modal__img" id="imgModalImg" src="" alt="Document" />
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var modal      = document.getElementById('imgModal');
+      var modalImg   = document.getElementById('imgModalImg');
+      var modalTitle = document.getElementById('imgModalTitle');
+      var closeBtn   = document.getElementById('imgModalClose');
+
+      function openModal(src, name) {
+        modalImg.src = src;
+        modalTitle.textContent = name;
+        modal.hidden = false;
+        modal.querySelector('.pdf-modal__img-wrap').scrollTop = 0;
+      }
+
+      function closeModal() {
+        modal.hidden = true;
+        modalImg.src = '';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+      document.querySelectorAll('[data-open-img]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal(el.dataset.openImg, el.dataset.docName || 'Document');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
