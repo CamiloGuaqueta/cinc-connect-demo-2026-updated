@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1" />
+  <meta name="theme-color" content="#235237" />
+  <title>ACC Request Form — 6345 Hurricane Shoals Rd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e8e8;
+      font-family: Montserrat, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Viewer top bar */
+    .doc-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #235237;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+    }
+    .doc-bar__back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .doc-bar__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff8ea;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Paper document */
+    .doc-paper {
+      max-width: 680px;
+      margin: 20px auto 40px;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+      padding: 40px 40px 48px;
+    }
+
+    /* HOA header */
+    .doc-hoa-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      border-bottom: 3px solid #235237;
+      margin-bottom: 24px;
+    }
+    .doc-hoa-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #235237;
+      line-height: 1.2;
+    }
+    .doc-hoa-sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: #555;
+      margin-top: 3px;
+    }
+    .doc-hoa-logo {
+      width: 42px;
+      height: 42px;
+      background: #235237;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Form title */
+    .doc-form-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #112719;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .doc-form-subtitle {
+      font-size: 11px;
+      font-weight: 400;
+      color: #555;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* Section headers */
+    .doc-section {
+      margin-bottom: 22px;
+    }
+    .doc-section-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #235237;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      background: #f0f7f1;
+      padding: 5px 8px;
+      margin-bottom: 12px;
+    }
+
+    /* Fields */
+    .doc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      margin-bottom: 10px;
+    }
+    .doc-row--full { grid-template-columns: 1fr; }
+    .doc-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .doc-field {}
+    .doc-field__label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .doc-field__value {
+      font-size: 13px;
+      font-weight: 500;
+      color: #111;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+      min-height: 22px;
+      display: block;
+    }
+    .doc-field__value--bold {
+      font-weight: 700;
+    }
+
+    /* Description box */
+    .doc-textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 10px;
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      color: #111;
+      line-height: 1.6;
+      min-height: 80px;
+      resize: none;
+      background: #fafafa;
+    }
+
+    /* Checkbox rows */
+    .doc-check-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .doc-check {
+      width: 14px;
+      height: 14px;
+      border: 1.5px solid #235237;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #235237;
+    }
+    .doc-check--empty { background: #fff; }
+    .doc-check__tick {
+      font-size: 9px;
+      color: #fff;
+      font-weight: 900;
+    }
+    .doc-check-label {
+      font-size: 12px;
+      color: #222;
+    }
+
+    /* Signature block */
+    .doc-sig-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .doc-sig__line {
+      border-bottom: 1px solid #999;
+      height: 36px;
+      margin-bottom: 4px;
+    }
+    .doc-sig__label {
+      font-size: 9px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .doc-sig__name {
+      font-size: 12px;
+      font-style: italic;
+      color: #235237;
+      padding-top: 6px;
+      font-weight: 600;
+    }
+
+    /* Stamp */
+    .doc-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2.5px solid #3a913f;
+      border-radius: 6px;
+      padding: 6px 14px;
+      margin-top: 16px;
+    }
+    .doc-stamp__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3a913f;
+      flex-shrink: 0;
+    }
+    .doc-stamp__text {
+      font-size: 13px;
+      font-weight: 800;
+      color: #3a913f;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .doc-stamp__date {
+      font-size: 10px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .doc-divider {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 500px) {
+      .doc-paper { margin: 12px; padding: 24px 20px 36px; }
+      .doc-row { grid-template-columns: 1fr; }
+      .doc-row--3 { grid-template-columns: 1fr 1fr; }
+      .doc-sig-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="doc-bar">
+    <a class="doc-bar__back" href="acc-attachments.html" aria-label="Back">
+      <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+        <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <span class="doc-bar__title">acc_request_6345.pdf</span>
+  </div>
+
+  <div class="doc-paper">
+
+    <!-- HOA Header -->
+    <div class="doc-hoa-header">
+      <div>
+        <p class="doc-hoa-name">Willow Creek Homeowners Association</p>
+        <p class="doc-hoa-sub">7200 Community Blvd, Suite 100 · Lawrenceville, GA 30043<br>Phone: (770) 555-0182 · management@willowcreekhoa.org</p>
+      </div>
+      <div class="doc-hoa-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="#b2de61" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="6" stroke="#b2de61" stroke-width="1.2"/>
+          <circle cx="12" cy="12" r="2.5" fill="#b2de61"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Form Title -->
+    <p class="doc-form-title">Architectural Change Request Form</p>
+    <p class="doc-form-subtitle">Complete all sections. Incomplete forms will not be processed.<br>Allow up to 30 days for committee review.</p>
+
+    <!-- Section 1: Property Info -->
+    <div class="doc-section">
+      <p class="doc-section-title">1. Property Information</p>
+      <div class="doc-row">
+        <div class="doc-field">
+          <span class="doc-field__label">Property Address</span>
+          <span class="doc-field__value doc-field__value--bold">6345 Hurricane Shoals Road</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Account Number</span>
+          <span class="doc-field__value">1588:6523</span>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-field">
+          <span class="doc-field__label">Owner Name</span>
+          <span class="doc-field__value">Thomas Bravo</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Phone</span>
+          <span class="doc-field__value">(770) 555-0247</span>
+        </div>
+      </div>
+      <div class="doc-row">
+        <div class="doc-field">
+          <span class="doc-field__label">Email Address</span>
+          <span class="doc-field__value">thomas.bravo@email.com</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Date Submitted</span>
+          <span class="doc-field__value">04/07/2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Type of Modification -->
+    <div class="doc-section">
+      <p class="doc-section-title">2. Type of Modification</p>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Fence / Gate</span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Deck / Patio</span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Landscaping / Tree Removal</span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check">
+          <span class="doc-check__tick">✓</span>
+        </span>
+        <span class="doc-check-label"><strong>Mailbox Replacement</strong></span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Exterior Paint / Siding</span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Addition / New Construction</span>
+      </div>
+      <div class="doc-check-row">
+        <span class="doc-check doc-check--empty"></span>
+        <span class="doc-check-label">Other (describe below)</span>
+      </div>
+    </div>
+
+    <!-- Section 3: Description -->
+    <div class="doc-section">
+      <p class="doc-section-title">3. Description of Proposed Work</p>
+      <div class="doc-row doc-row--full" style="margin-bottom:14px;">
+        <div class="doc-field">
+          <span class="doc-field__label">Manufacturer / Model</span>
+          <span class="doc-field__value">Salsbury Industries 4C Horizontal — Model 3704D-12</span>
+        </div>
+      </div>
+      <div class="doc-row doc-row--3">
+        <div class="doc-field">
+          <span class="doc-field__label">Width</span>
+          <span class="doc-field__value">13.5 in</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Height</span>
+          <span class="doc-field__value">9.75 in</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Finish / Color</span>
+          <span class="doc-field__value">Matte Black</span>
+        </div>
+      </div>
+      <div class="doc-row doc-row--full" style="margin-top:10px;">
+        <div class="doc-field">
+          <span class="doc-field__label">Full Description</span>
+        </div>
+      </div>
+      <textarea class="doc-textarea" readonly>Existing mailbox (bronze finish, 14+ years old) is rusted and the door latch is broken. Requesting replacement with Salsbury Industries 4C horizontal mailbox in matte black powder-coated finish. Dimensions are within the limits stated in the CC&Rs (max 14" W × 10" H). Post will be set at 42" from ground level. House number will be placed on the left side of the door using standard black vinyl numerals to match neighboring units. Installation by licensed contractor — license #GC-2024-08847. Work expected to take one day.</textarea>
+    </div>
+
+    <!-- Section 4: Timeline -->
+    <div class="doc-section">
+      <p class="doc-section-title">4. Proposed Timeline</p>
+      <div class="doc-row">
+        <div class="doc-field">
+          <span class="doc-field__label">Estimated Start Date</span>
+          <span class="doc-field__value">04/21/2025</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Estimated Completion Date</span>
+          <span class="doc-field__value">04/21/2025</span>
+        </div>
+      </div>
+      <div class="doc-row doc-row--full">
+        <div class="doc-field">
+          <span class="doc-field__label">Contractor Name &amp; License #</span>
+          <span class="doc-field__value">ProFix Home Services · License #GC-2024-08847</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <!-- Signature -->
+    <div class="doc-section">
+      <p class="doc-section-title">5. Owner Certification</p>
+      <p style="font-size:11px;color:#444;line-height:1.6;margin-bottom:16px;">I certify that the proposed modification complies with the CC&Rs and community guidelines. I understand that work may not begin until written approval is received from the Architectural Committee.</p>
+      <div class="doc-sig-row">
+        <div>
+          <div class="doc-sig__line">
+            <span class="doc-sig__name">Thomas Bravo</span>
+          </div>
+          <p class="doc-sig__label">Owner Signature</p>
+        </div>
+        <div>
+          <div class="doc-sig__line" style="display:flex;align-items:flex-end;padding-bottom:4px;">
+            <span style="font-size:12px;color:#111;">04/07/2025</span>
+          </div>
+          <p class="doc-sig__label">Date</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="doc-divider" />
+
+    <!-- Committee Use -->
+    <div class="doc-section">
+      <p class="doc-section-title">For Committee Use Only</p>
+      <div class="doc-row">
+        <div class="doc-field">
+          <span class="doc-field__label">Date Received</span>
+          <span class="doc-field__value">04/07/2025</span>
+        </div>
+        <div class="doc-field">
+          <span class="doc-field__label">Auto-Approval Date</span>
+          <span class="doc-field__value" style="color:#df434f;">10/29/2024</span>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <div class="doc-stamp">
+          <span class="doc-stamp__dot"></span>
+          <span class="doc-stamp__text">Approved with Stipulations</span>
+        </div>
+        <p class="doc-stamp__date">Response Date: 03/23/2025 &nbsp;·&nbsp; Reviewed by Architectural Committee</p>
+      </div>
+    </div>
+
+  </div><!-- /.doc-paper -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+</body>
+</html>
