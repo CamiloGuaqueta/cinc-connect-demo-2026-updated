@@ -10341,7 +10341,7 @@ a.sub-header__right {
 
 .log-screen {
   background: #112719;
-  padding-bottom: 100px;
+  padding-bottom: 90px; /* room for fixed log-footer-bar */
 }
 
 .log-screen__topbar {
@@ -10500,7 +10500,7 @@ a.sub-header__right {
   width: 100%;
   max-width: 393px;
   background: #235237;
-  padding: 14px 20px calc(var(--bottom-nav-height) + 14px);
+  padding: 14px 20px 35px;
   border-top: 1px solid rgba(178,222,97,0.2);
   z-index: 110;
 }
