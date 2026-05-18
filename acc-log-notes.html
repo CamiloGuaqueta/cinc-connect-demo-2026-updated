@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — ACC Log & Notes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="log-screen">
+
+      <header class="app-header">
+        <a class="app-header__back" href="acc-review.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="log-screen__topbar">
+        <h1 class="log-screen__title">ACC Log &amp; Notes</h1>
+        <a class="acc-filter-btn" href="acc-filter.html" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Address + Type -->
+      <div class="committee-header">
+        <p class="committee-header__address">6345 Hurricane Shoals Road</p>
+        <p class="committee-header__type">Mailbox</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="log-timeline">
+        <div class="log-timeline__line"></div>
+
+        <!-- Entry 1 — Status Change: Sent To Committee → Approved -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/23/2025 1:30PM</p>
+          <div class="log-entry__card">
+            <p class="log-entry__status-change-label">Status Change</p>
+            <div class="log-entry__status-transition">
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">Sent To Committee</span>
+              </span>
+              <span class="log-entry__status-arrow">&#8594;</span>
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">Approved</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2 — Thomas Bravo (Homeowner) -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/24/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <img class="log-entry__photo" src="assets/personas/thomas-bravo.png" alt="" />
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Thomas Bravo</span>
+                <span class="log-entry__role">Homeowner</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+        <!-- Entry 3 — Architectural Committee -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/21/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
+                  <circle cx="9.5" cy="6.5" r="4.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 21c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="20" cy="7.5" r="3.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M23.5 21c0-3.59-2.91-6.5-6.5-6.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Architectural Committee</span>
+                <span class="log-entry__role">Committee</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+        <!-- Entry 4 — Status Change: Open → Sent To Committee -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/23/2025 1:30PM</p>
+          <div class="log-entry__card">
+            <p class="log-entry__status-change-label">Status Change</p>
+            <div class="log-entry__status-transition">
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">Open</span>
+              </span>
+              <span class="log-entry__status-arrow">&#8594;</span>
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">Sent To Committee</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 5 — Architectural Committee (with See More) -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/21/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
+                  <circle cx="9.5" cy="6.5" r="4.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 21c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="20" cy="7.5" r="3.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M23.5 21c0-3.59-2.91-6.5-6.5-6.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Architectural Committee</span>
+                <span class="log-entry__role">Committee</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore. Bibendum est ultricies integer quis. Iaculis urna id volutpat lacus laoreet… <a class="committee-note__see-more" href="#">See More</a></p>
+          </div>
+        </div>
+
+        <!-- Entry 6 — Thomas Bravo — Form Received → Open -->
+        <div class="log-entry">
+          <p class="log-entry__date">04/07/2025 1:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <img class="log-entry__photo" src="assets/personas/thomas-bravo.png" alt="" />
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Thomas Bravo</span>
+                <span class="log-entry__role">Homeowner</span>
+              </div>
+            </div>
+            <p class="log-entry__form-label">Form Received</p>
+            <div class="log-entry__status-transition">
+              <span class="log-entry__status-arrow">&#8594;</span>
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">Open</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.log-timeline -->
+
+    </main>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

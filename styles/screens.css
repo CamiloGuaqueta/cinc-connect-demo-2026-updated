@@ -10889,7 +10889,8 @@ a.sub-header__right {
 .committee-screen {
   min-height: 100%;
   background: #112719;
-  padding-bottom: 90px;
+  /* room for fixed bottom nav (106px) + add-note bar (~70px) */
+  padding-bottom: calc(var(--bottom-nav-height) + 74px);
   overflow-y: auto;
 }
 
@@ -11080,13 +11081,18 @@ a.sub-header__right {
   font-weight: 500;
 }
 
-/* Add Note sticky bar */
+/* Add Note bar — fixed above the bottom nav */
 .committee-add-bar {
-  position: sticky;
-  bottom: 0;
+  position: fixed;
+  bottom: var(--bottom-nav-height);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
   background: #112719;
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding: 12px 16px 28px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding: 12px 16px 16px;
+  z-index: 90;
 }
 
 .committee-add-btn {
@@ -11460,6 +11466,71 @@ a.sub-header__right {
 }
 
 .detail-sheet__info-val--lime { color: #b2de61; }
+
+/* ============================================
+   ACC LOG NOTES — extra entry types
+   ============================================ */
+
+/* Photo avatar (Thomas Bravo, homeowner) inside log-entry__person */
+.log-entry__photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Committee green circle avatar */
+.log-entry__avatar-committee {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #235237;
+  border: 2px solid rgba(178,222,97,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* "Status Change" lime label at top of status-change card */
+.log-entry__status-change-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 12px;
+}
+
+/* "Form Received" lime label inside a person entry */
+.log-entry__form-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 10px 0 6px;
+}
+
+/* Status transition row: ● Label → ● Label */
+.log-entry__status-transition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.log-entry__status-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* The → arrow between pills */
+.log-entry__status-arrow {
+  font-size: 16px;
+  color: rgba(255,248,234,.5);
+  flex-shrink: 0;
+}
 
 /* DONE button */
 .detail-sheet__done {
