@@ -10889,8 +10889,7 @@ a.sub-header__right {
 .committee-screen {
   min-height: 100%;
   background: #112719;
-  /* room for fixed bottom nav (106px) + add-note bar (~70px) */
-  padding-bottom: calc(var(--bottom-nav-height) + 74px);
+  padding-bottom: 90px; /* room for fixed log-footer-bar */
   overflow-y: auto;
 }
 
@@ -11081,17 +11080,17 @@ a.sub-header__right {
   font-weight: 500;
 }
 
-/* Add Note bar — fixed above the bottom nav */
+/* Add Note bar (kept for legacy reference, replaced by log-footer-bar in HTML) */
 .committee-add-bar {
   position: fixed;
-  bottom: var(--bottom-nav-height);
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: var(--max-width-mobile);
   background: #112719;
   border-top: 1px solid rgba(255,255,255,.12);
-  padding: 12px 16px 16px;
+  padding: 12px 16px 35px;
   z-index: 90;
 }
 
