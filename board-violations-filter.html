@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Filter Violations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen" style="height:100dvh;overflow:hidden;">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="board-violations.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Filter Violations</span>
+          <a class="pay-sheet__close" href="board-violations.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Type -->
+          <p class="filter-section__title">Type</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Architectural Modifications</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Behavioral Violations</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Commercial Use</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Exterior Maintenance</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Health and Safety Violations</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Insurance Compliance</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Landscaping</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Leasing / Rental Violations</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Noise Disturbances</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Parking</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Pet Violations</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Trash</span>
+            </div>
+          </div>
+
+          <!-- Level -->
+          <p class="filter-section__title">Level</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">1st Notice</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">2nd Notice</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">3rd Notice</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Decision Notice</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Hearing</span>
+            </div>
+          </div>
+
+          <!-- Fine Status -->
+          <p class="filter-section__title">Fine Status</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Pending Fine Approval</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">With Active Fines</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Without Fines</span>
+            </div>
+          </div>
+
+          <!-- Time Criteria -->
+          <p class="filter-section__title">Time Criteria</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">None</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Violation Date</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Notice Sent</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Due Date</span>
+            </div>
+          </div>
+
+          <!-- From / To date inputs -->
+          <p class="filter-section__title" style="margin-top:8px;">From</p>
+          <div class="filter-group" style="margin-bottom:0;">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;">dd/mm/yyyy</span>
+            </div>
+          </div>
+          <p class="filter-section__title" style="margin-top:14px;">To</p>
+          <div class="filter-group">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;">dd/mm/yyyy</span>
+            </div>
+          </div>
+
+          <p class="filter-results">X results</p>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="board-violations.html">Apply Filter</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Radio toggle — each group is independent
+    document.querySelectorAll('.filter-row').forEach(function(row) {
+      row.addEventListener('click', function() {
+        var group = row.closest('.filter-group');
+        if (!group) return;
+        group.querySelectorAll('.filter-radio').forEach(function(r) {
+          r.classList.remove('filter-radio--selected');
+        });
+        var radio = row.querySelector('.filter-radio');
+        if (radio) radio.classList.add('filter-radio--selected');
+      });
+    });
+  </script>
+</body>
+</html>
