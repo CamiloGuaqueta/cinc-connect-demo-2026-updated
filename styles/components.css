@@ -15,6 +15,11 @@
   overflow-x: clip;
 }
 
+/* Hide scrollbars inside the app frame on desktop
+   (scroll still works, bar just stays hidden like on mobile) */
+.app-frame *::-webkit-scrollbar { display: none; }
+.app-frame *      { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ============================================
    APP HEADER (used across Feed, To-Dos, Concierge)
    Background: #235237, height 120px in Figma
