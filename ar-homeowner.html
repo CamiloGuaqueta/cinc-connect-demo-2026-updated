@@ -125,6 +125,14 @@
   <script>
     (function () {
       if (!window.CincAuth.requireAuth()) return;
+
+      // Dynamic back destination via ?back= query param
+      var params = new URLSearchParams(window.location.search);
+      var backUrl = params.get('back');
+      if (backUrl) {
+        var backBtn = document.querySelector('.ar-homeowner__back');
+        if (backBtn) backBtn.setAttribute('href', backUrl);
+      }
     })();
   </script>
 </body>
