@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Board Violations Review</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ar-violations">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title">Board Violations Review</h1>
+        <a class="acc-filter-btn" href="#" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Search -->
+      <div class="acc-search">
+        <input class="acc-search__input" type="text" placeholder="Search by Name, Address or Account #" />
+        <svg class="acc-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" opacity=".5">
+          <circle cx="8.5" cy="8.5" r="7" stroke="#fff8ea" stroke-width="1.5"/>
+          <path d="M14 14l4 4" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Violation Cards -->
+      <div class="ar-violations__cards">
+
+        <!-- Card 1 — Thomas Bravo — Fencing — 12346 Washington Ave -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-vcard__type">Fencing</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Open</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 1588:6523</p>
+            <p class="ar-vcard__address">12346 Washington Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Date:</strong> 04/02/2024</p>
+            <p class="ar-vcard__meta-line"><strong>Level:</strong> 2nd Notice - No Fine</p>
+            <p class="ar-vcard__meta-line"><strong>Fine Starts:</strong> 12/26/2024</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Unapproved fence extension along the rear property line exceeds the permitted height by approximately 14 inches. Homeowner was notified on 04/02/2024. Written response received, but no corrective action has been taken. <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <!-- Homeowner row -->
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__person-photo" src="assets/personas/thomas-bravo.png" alt="" />
+            <span class="ar-vcard__row-label-group">
+              <span class="ar-vcard__person-name">Thomas Bravo</span>
+              <span class="ar-vcard__person-role">Home Owner</span>
+            </span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-violation-items.svg" alt="" />
+            <span class="ar-vcard__row-label">Violation Items</span>
+            <span class="ar-vcard__row-count">3</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-log-notes.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">Attachments</span>
+            <span class="ar-vcard__row-count">6</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 2 — Lori Keith — Landscaping — 4567 Washington Ave -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-vcard__type">Landscaping</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Open</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 2204:1837</p>
+            <p class="ar-vcard__address">4567 Washington Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Date:</strong> 04/02/2024</p>
+            <p class="ar-vcard__meta-line"><strong>Level:</strong> 2nd Notice - No Fine</p>
+            <p class="ar-vcard__meta-line"><strong>Fine Starts:</strong> 12/26/2024</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Front yard grass height exceeds the community standard of 6 inches. Two notices sent. Visible weeds along the public-facing curb line have not been addressed. Property scheduled for re-inspection on 04/21. <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__person-photo" src="assets/personas/avatar-1.png" alt="" />
+            <span class="ar-vcard__row-label-group">
+              <span class="ar-vcard__person-name">Lori Keith</span>
+              <span class="ar-vcard__person-role">Home Owner</span>
+            </span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-violation-items.svg" alt="" />
+            <span class="ar-vcard__row-label">Violation Items</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-log-notes.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">img_front_yard_4567.jpg</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 3 — Gabriel Casas — Landscaping — 4567 Washington Ave -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-vcard__type">Landscaping</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Open</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 3391:0026</p>
+            <p class="ar-vcard__address">4567 Washington Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Date:</strong> 04/02/2024</p>
+            <p class="ar-vcard__meta-line"><strong>Level:</strong> 2nd Notice - No Fine</p>
+            <p class="ar-vcard__meta-line"><strong>Fine Starts:</strong> 12/26/2024</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Overgrown shrubs blocking sightlines at the driveway entrance. Homeowner acknowledged the issue in writing but has not completed trimming as required by community standards. Inspector confirmed non-compliance. <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__person-photo" src="assets/personas/avatar-4.png" alt="" />
+            <span class="ar-vcard__row-label-group">
+              <span class="ar-vcard__person-name">Gabriel Casas</span>
+              <span class="ar-vcard__person-role">Home Owner</span>
+            </span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-violation-items.svg" alt="" />
+            <span class="ar-vcard__row-label">Violation Items</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-log-notes.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 4 — Gabriel Casas — Landscaping — 5698 Lincoln Ct (initials avatar) -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+            <span class="ar-vcard__type">Landscaping</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Open</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 3391:0058</p>
+            <p class="ar-vcard__address">5698 Lincoln Court</p>
+            <p class="ar-vcard__meta-line"><strong>Date:</strong> 04/02/2024</p>
+            <p class="ar-vcard__meta-line"><strong>Level:</strong> 2nd Notice - No Fine</p>
+            <p class="ar-vcard__meta-line"><strong>Fine Starts:</strong> 12/26/2024</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Yard debris and landscaping waste deposited in the common area adjacent to 5698 Lincoln Ct. Second notice issued with no response from homeowner. Fine schedule begins 12/26/2024 if not resolved. <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <span class="ar-vcard__person-initials" aria-hidden="true">GC</span>
+            <span class="ar-vcard__row-label-group">
+              <span class="ar-vcard__person-name">Gabriel Casas</span>
+              <span class="ar-vcard__person-role">Home Owner</span>
+            </span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-violation-items.svg" alt="" />
+            <span class="ar-vcard__row-label">Violation Items</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-log-notes.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="acc-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">img_lincoln_debris.jpg</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+      </div><!-- /.ar-violations__cards -->
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
