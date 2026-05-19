@@ -12435,3 +12435,227 @@ a.sub-header__right {
 .bank-card__value--lg {
   font-size: 22px;
 }
+
+/* ─── Invoice Action Sheets ──────────────────────────────────────────── */
+.inv-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 599;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.inv-sheet-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.inv-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 70px);
+  background: #235237;
+  border-radius: 25px 25px 0 0;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform .35s cubic-bezier(.32,.72,0,1);
+  overflow: hidden;
+}
+.inv-sheet--open { transform: translateY(0); }
+.inv-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 18px 60px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  flex-shrink: 0;
+}
+.inv-sheet__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b2de61;
+  text-align: center;
+}
+.inv-sheet__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b2de61;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+.inv-sheet__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 20px 0;
+}
+.inv-sheet__question {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+  text-align: center;
+  margin: 0 0 20px;
+  line-height: 1.35;
+}
+.inv-sheet__invoice-card {
+  background: #112719;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.inv-sheet__vendor-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 4px;
+}
+.inv-sheet__invoice-num {
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0 0 12px;
+}
+.inv-sheet__amount-divider {
+  height: 1px;
+  background: rgba(255,255,255,.1);
+  margin: 0 -16px 12px;
+}
+.inv-sheet__amount-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inv-sheet__amount-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+.inv-sheet__amount-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+}
+.inv-sheet__bank-card {
+  background: #112719;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.inv-sheet__bank-header {
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.inv-sheet__bank-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0 0 3px;
+}
+.inv-sheet__bank-acct {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0 0 3px;
+}
+.inv-sheet__bank-acct strong { font-weight: 700; }
+.inv-sheet__bank-type {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0;
+}
+.inv-sheet__bank-body { padding: 10px 16px 12px; }
+.inv-sheet__bank-row {
+  display: flex;
+  align-items: baseline;
+  padding: 5px 0;
+}
+.inv-sheet__bank-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  white-space: nowrap;
+}
+.inv-sheet__bank-dots {
+  flex: 1;
+  margin: 0 8px 3px;
+  border-bottom: 2px dotted rgba(255,255,255,.3);
+}
+.inv-sheet__bank-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b2de61;
+  white-space: nowrap;
+}
+.inv-sheet__bank-value--lg { font-size: 22px; }
+.inv-sheet__footer {
+  padding: 12px 20px 28px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.inv-sheet__btn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .48px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.inv-sheet__btn:active { opacity: .8; }
+.inv-sheet__btn--yes  { background: #b2de61; color: #235237; }
+.inv-sheet__btn--no   { background: #df434f; color: #112719; }
+.inv-sheet__btn--done { background: #b2de61; color: #235237; }
+.inv-sheet__result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  text-align: center;
+}
+.inv-sheet__result-icon {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+.inv-sheet__result-icon--approved { background: #b2de61; }
+.inv-sheet__result-icon--denied   { background: #df434f; }
+.inv-sheet__result-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.inv-sheet__result-title--approved { color: #b2de61; }
+.inv-sheet__result-title--denied   { color: #df434f; }
+.inv-sheet__result-body {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.5;
+  margin: 0;
+}

@@ -47,7 +47,7 @@
       <!-- Invoice Cards -->
       <div class="ar-violations__cards">
 
-        <!-- Card 1 — 1800GOTJUNK? -->
+        <!-- Card 1 — 1-800-GOT-JUNK? -->
         <div class="ar-vcard">
           <div class="ar-vcard__top">
             <img class="ar-vcard__cat-icon" src="assets/icons/icon-vendor.svg" alt="" />
@@ -105,8 +105,8 @@
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="inv-card__actions">
-            <button class="inv-deny-btn" type="button">Deny</button>
-            <button class="inv-approve-btn" type="button">Approve</button>
+            <button class="inv-deny-btn" type="button" onclick="denyInvoice()">Deny</button>
+            <button class="inv-approve-btn" type="button" onclick="approveInvoice('1-800-GOT-JUNK?','GJI_009876','$100.00')">Approve</button>
           </div>
         </div>
 
@@ -168,8 +168,8 @@
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="inv-card__actions">
-            <button class="inv-deny-btn" type="button">Deny</button>
-            <button class="inv-approve-btn" type="button">Approve</button>
+            <button class="inv-deny-btn" type="button" onclick="denyInvoice()">Deny</button>
+            <button class="inv-approve-btn" type="button" onclick="approveInvoice('AC&amp;M Construction Services Inc.','ACM-34567','$36,720.00')">Approve</button>
           </div>
         </div>
 
@@ -188,8 +188,147 @@
     </nav>
   </div><!-- /.app-frame -->
 
+  <!-- ── Backdrop ─────────────────────────────────────────────────────── -->
+  <div class="inv-sheet-backdrop" id="inv-sheet-backdrop" onclick="closeAllSheets()"></div>
+
+  <!-- ── Confirmation Sheet ────────────────────────────────────────────── -->
+  <div class="inv-sheet" id="inv-confirm-sheet" role="dialog" aria-modal="true">
+    <div class="inv-sheet__header">
+      <span class="inv-sheet__title">Confirm Invoice Approval</span>
+      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+    </div>
+    <div class="inv-sheet__body">
+      <p class="inv-sheet__question">Are you sure you want to approve this invoice?</p>
+      <div class="inv-sheet__invoice-card">
+        <p class="inv-sheet__vendor-name" id="confirm-vendor"></p>
+        <p class="inv-sheet__invoice-num" id="confirm-invoice-num"></p>
+        <div class="inv-sheet__amount-divider"></div>
+        <div class="inv-sheet__amount-row">
+          <span class="inv-sheet__amount-label">Amount</span>
+          <span class="inv-sheet__amount-value" id="confirm-amount"></span>
+        </div>
+      </div>
+      <div class="inv-sheet__bank-card">
+        <div class="inv-sheet__bank-header">
+          <p class="inv-sheet__bank-name">Bank of America — Operating Account</p>
+          <p class="inv-sheet__bank-acct"><strong>Acct:</strong> ****6523</p>
+          <p class="inv-sheet__bank-type">Depository Account</p>
+        </div>
+        <div class="inv-sheet__bank-body">
+          <div class="inv-sheet__bank-row">
+            <span class="inv-sheet__bank-label">Account Balance</span>
+            <span class="inv-sheet__bank-dots"></span>
+            <span class="inv-sheet__bank-value inv-sheet__bank-value--lg">$257,628.31</span>
+          </div>
+          <div class="inv-sheet__bank-row">
+            <span class="inv-sheet__bank-label">Ready For Payment</span>
+            <span class="inv-sheet__bank-dots"></span>
+            <span class="inv-sheet__bank-value">$155,781.00</span>
+          </div>
+          <div class="inv-sheet__bank-row">
+            <span class="inv-sheet__bank-label">Remaining Balance</span>
+            <span class="inv-sheet__bank-dots"></span>
+            <span class="inv-sheet__bank-value">$101,847.31</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inv-sheet__footer">
+      <button class="inv-sheet__btn inv-sheet__btn--yes" onclick="confirmApprove()">Yes</button>
+      <button class="inv-sheet__btn inv-sheet__btn--no" onclick="closeAllSheets()">No</button>
+    </div>
+  </div>
+
+  <!-- ── Approved Result Sheet ─────────────────────────────────────────── -->
+  <div class="inv-sheet" id="inv-approved-sheet" role="dialog" aria-modal="true">
+    <div class="inv-sheet__header">
+      <span class="inv-sheet__title">Invoice Approved</span>
+      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+    </div>
+    <div class="inv-sheet__result">
+      <div class="inv-sheet__result-icon inv-sheet__result-icon--approved">
+        <!-- checkmark -->
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <path d="M9 23L19 33L38 14" stroke="#235237" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="inv-sheet__result-title inv-sheet__result-title--approved">Invoice Approved</h2>
+      <p class="inv-sheet__result-body">The invoice has been approved and logged. Your decision has been recorded and the process keeps moving forward — just the way it should.</p>
+    </div>
+    <div class="inv-sheet__footer">
+      <button class="inv-sheet__btn inv-sheet__btn--done" onclick="closeAllSheets()">Done</button>
+    </div>
+  </div>
+
+  <!-- ── Denied Result Sheet ───────────────────────────────────────────── -->
+  <div class="inv-sheet" id="inv-denied-sheet" role="dialog" aria-modal="true">
+    <div class="inv-sheet__header">
+      <span class="inv-sheet__title">Invoice Denied</span>
+      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+    </div>
+    <div class="inv-sheet__result">
+      <div class="inv-sheet__result-icon inv-sheet__result-icon--denied">
+        <!-- X -->
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <path d="M12 12L32 32M32 12L12 32" stroke="#235237" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 class="inv-sheet__result-title inv-sheet__result-title--denied">Invoice Denied</h2>
+      <p class="inv-sheet__result-body">You've denied this invoice. The status has been updated and the team has been notified.</p>
+    </div>
+    <div class="inv-sheet__footer">
+      <button class="inv-sheet__btn inv-sheet__btn--done" onclick="closeAllSheets()">Done</button>
+    </div>
+  </div>
+
   <script src="scripts/auth.js"></script>
   <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
   <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var backdrop = document.getElementById('inv-sheet-backdrop');
+
+      function openSheet(id) {
+        var sheet = document.getElementById(id);
+        sheet.style.display = 'flex';
+        backdrop.classList.add('inv-sheet-backdrop--open');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('inv-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet(id) {
+        var sheet = document.getElementById(id);
+        sheet.classList.remove('inv-sheet--open');
+        sheet.addEventListener('transitionend', function handler() {
+          sheet.style.display = '';
+          sheet.removeEventListener('transitionend', handler);
+        });
+      }
+
+      window.closeAllSheets = function () {
+        ['inv-confirm-sheet', 'inv-approved-sheet', 'inv-denied-sheet'].forEach(closeSheet);
+        backdrop.classList.remove('inv-sheet-backdrop--open');
+      };
+
+      window.approveInvoice = function (vendor, invoiceNum, amount) {
+        document.getElementById('confirm-vendor').textContent = vendor;
+        document.getElementById('confirm-invoice-num').textContent = 'Invoice #: ' + invoiceNum;
+        document.getElementById('confirm-amount').textContent = amount;
+        openSheet('inv-confirm-sheet');
+      };
+
+      window.confirmApprove = function () {
+        closeSheet('inv-confirm-sheet');
+        setTimeout(function () { openSheet('inv-approved-sheet'); }, 200);
+      };
+
+      window.denyInvoice = function () {
+        openSheet('inv-denied-sheet');
+      };
+    })();
+  </script>
 </body>
 </html>
