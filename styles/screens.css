@@ -12411,7 +12411,8 @@ a.sub-header__right {
   border-radius: 10px;
   padding: 12px 14px;
 }
-.aging-screen .vph-search {
+.aging-screen .vph-search,
+.hol-screen .vph-search {
   margin: 0 0 16px;
 }
 .vph-search__input {
