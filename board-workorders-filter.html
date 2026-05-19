@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Filter Work Orders</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen" style="height:100dvh;overflow:hidden;">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="board-workorders.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Filter Work Orders</span>
+          <a class="pay-sheet__close" href="board-workorders.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Vendor -->
+          <p class="filter-section__title">Vendor</p>
+          <div class="filter-group">
+            <a class="filter-row" href="board-workorders-vendor-picker.html" style="text-decoration:none;">
+              <span class="filter-row__label">Select Vendor</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" style="margin-left:auto;flex-shrink:0;opacity:.5;">
+                <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- State -->
+          <p class="filter-section__title">State</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Open</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Closed</span>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <p class="filter-section__title">Status</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Approved</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Awaiting Quote</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Closed</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Completed</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Dispatched to vendor</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Not Association Responsibility</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Open</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Pending Review</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Priority</span>
+            </div>
+          </div>
+
+          <!-- Created -->
+          <p class="filter-section__title">Created</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 7 days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 15 Days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 30 days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">Other (Custom time frame)</span>
+            </div>
+            <!-- From date -->
+            <div class="filter-row" style="padding:14px 16px;border-top:1px solid rgba(255,255,255,.06);">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">From &nbsp; DD/MM/YYYY</span>
+            </div>
+            <!-- To date -->
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">To &nbsp; DD/MM/YYYY</span>
+            </div>
+          </div>
+
+          <!-- Duedate -->
+          <p class="filter-section__title">Duedate</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">This week</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">This Month</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">Other (Custom time frame)</span>
+            </div>
+            <!-- From date -->
+            <div class="filter-row" style="padding:14px 16px;border-top:1px solid rgba(255,255,255,.06);">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">From &nbsp; DD/MM/YYYY</span>
+            </div>
+            <!-- To date -->
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">To &nbsp; DD/MM/YYYY</span>
+            </div>
+          </div>
+
+          <p class="filter-results">X results</p>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="board-workorders.html">Apply Filter</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Radio toggle — each group is independent
+    // Date input rows (no filter-radio child) are excluded automatically
+    document.querySelectorAll('.filter-group').forEach(function(group) {
+      group.querySelectorAll('.filter-row').forEach(function(row) {
+        row.addEventListener('click', function() {
+          var radio = row.querySelector('.filter-radio');
+          if (!radio) return; // skip date rows
+          group.querySelectorAll('.filter-radio').forEach(function(r) {
+            r.classList.remove('filter-radio--selected');
+          });
+          radio.classList.add('filter-radio--selected');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

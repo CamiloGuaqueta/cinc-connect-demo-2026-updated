@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Select Vendor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen" style="height:100dvh;overflow:hidden;">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="board-workorders-filter.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Select Vendor</span>
+          <a class="pay-sheet__close" href="board-workorders-filter.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body" style="padding-top:0;">
+
+          <!-- Search bar -->
+          <div class="acc-search" style="margin:12px 0 16px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;opacity:.5;">
+              <circle cx="7" cy="7" r="5.25" stroke="#fff8ea" stroke-width="1.5"/>
+              <path d="M11 11l3 3" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="text" class="acc-search__input" placeholder="Search by Vendor Name" />
+          </div>
+
+          <!-- Vendor list -->
+          <div class="filter-group" style="padding:0;">
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">EverGreen Property Care</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Palm &amp; Pine Outdoor Services</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">GreenScape Solutions</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Precision Paving Co.</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">SolidStone Masonry &amp; Repairs</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">BrightLine Painting Group</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">FlowGuard Plumbing</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">PowerSure Electric</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">AirPro Comfort Systems</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Sentinel Security Patrols</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">SafeHaven Fire &amp; Safety</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Guardian Access Systems</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Crystal Clear Janitorial</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">EcoWaste Solutions</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Sparkle Pools &amp; Spas</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">HOA Legal Partners</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Community Accounting Services</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">BrightPath Insurance Brokers</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">Clubhouse Events &amp; Catering</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+            <div class="filter-row vendor-picker-row">
+              <img src="assets/icons/icon-vendor.svg" alt="" class="vendor-picker-row__icon" />
+              <span class="filter-row__label">ActiveLife Fitness Contractors</span>
+              <span class="filter-radio" style="margin-left:auto;"></span>
+            </div>
+
+          </div><!-- /.filter-group -->
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="board-workorders-filter.html">Select Vendor</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    // Single-select radio across all vendor rows
+    var group = document.querySelector('.filter-group');
+    group.querySelectorAll('.filter-row').forEach(function(row) {
+      row.addEventListener('click', function() {
+        group.querySelectorAll('.filter-radio').forEach(function(r) {
+          r.classList.remove('filter-radio--selected');
+        });
+        var radio = row.querySelector('.filter-radio');
+        if (radio) radio.classList.add('filter-radio--selected');
+      });
+    });
+  </script>
+</body>
+</html>

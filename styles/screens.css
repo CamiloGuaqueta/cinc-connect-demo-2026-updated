@@ -10359,6 +10359,15 @@ a.sub-header__right {
   padding: 12px 0 0;
 }
 
+.vendor-picker-row__icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 10px;
+  opacity: .8;
+}
+
 /* ============================================
    BOARD ATTACHMENTS
    ============================================ */
