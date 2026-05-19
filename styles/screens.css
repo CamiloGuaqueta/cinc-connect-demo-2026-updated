@@ -11694,3 +11694,78 @@ a.sub-header__right {
   padding: 0;
 }
 
+/* ============================================
+   VIOLATION LOG & NOTES SCREEN
+   ============================================ */
+
+.vlog-screen {
+  flex: 1;
+  overflow-y: auto;
+  background: #112719;
+  padding-bottom: calc(var(--bottom-nav-height) + 16px);
+}
+
+.vlog-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 10px 16px;
+}
+
+.vlog-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vlog-topbar__icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.vlog-topbar__type {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff8ea;
+  text-transform: capitalize;
+}
+
+.vlog-header {
+  padding: 0 16px 16px;
+}
+
+.vlog-header__address {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 5px;
+}
+
+.vlog-header__meta {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0 0 3px;
+}
+
+.vlog-header__meta strong {
+  font-weight: 700;
+}
+
+/* Status dot color variants for log entries */
+.log-entry__status-dot--blue   { background: #4a9fd4; }
+.log-entry__status-dot--yellow { background: #e8b84b; }
+
+/* "Violation" lime label — used in violation-type log entries */
+.log-entry__violation-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 12px;
+}
+

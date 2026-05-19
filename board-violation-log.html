@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Violation Log &amp; Notes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="vlog-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="board-violations.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Topbar: violation type icon + name + filter -->
+      <div class="vlog-topbar">
+        <div class="vlog-topbar__left">
+          <img class="vlog-topbar__icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+          <span class="vlog-topbar__type">Fencing</span>
+        </div>
+        <a class="acc-filter-btn" href="#" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Violation context meta -->
+      <div class="vlog-header">
+        <p class="vlog-header__address">12346 Washington Avenue</p>
+        <p class="vlog-header__meta"><strong>Date:</strong> 04/02/2024</p>
+        <p class="vlog-header__meta"><strong>Level:</strong> 2nd Notice - No Fine</p>
+        <p class="vlog-header__meta"><strong>Fine Starts:</strong> 12/26/24</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="log-timeline">
+        <div class="log-timeline__line"></div>
+
+        <!-- Entry 1 — Management Company -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/24/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
+                  <circle cx="9.5" cy="6.5" r="4.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 21c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="20" cy="7.5" r="3.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M23.5 21c0-3.59-2.91-6.5-6.5-6.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Management Company</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Property inspection completed at 12346 Washington Avenue. Unauthorized wooden privacy fence confirmed along the rear property line. Height measured at 6 feet 2 inches at three separate points. No ACC application on file. Certified notice prepared and mailed to homeowner on 04/02/2025.</p>
+          </div>
+        </div>
+
+        <!-- Entry 2 — Management Company -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/21/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
+                  <circle cx="9.5" cy="6.5" r="4.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 21c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="20" cy="7.5" r="3.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M23.5 21c0-3.59-2.91-6.5-6.5-6.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Management Company</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Resident complaint received regarding new fence installation at 12346 Washington Avenue, visible from the community walking path. Field inspection scheduled to confirm scope, document conditions, and collect measurements against community standards.</p>
+          </div>
+        </div>
+
+        <!-- Entry 3 — Status Change: Open → Sent To Committee -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/23/2025 1:30PM</p>
+          <div class="log-entry__card">
+            <p class="log-entry__status-change-label">Status Change</p>
+            <div class="log-entry__status-transition">
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot log-entry__status-dot--blue"></span>
+                <span class="log-entry__status-label">Open</span>
+              </span>
+              <span class="log-entry__status-arrow">&#8594;</span>
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot log-entry__status-dot--yellow"></span>
+                <span class="log-entry__status-label">Sent To Committee</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 4 — Management Company Note (See More) -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/21/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
+                  <circle cx="9.5" cy="6.5" r="4.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M1 21c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="20" cy="7.5" r="3.75" stroke="#b2de61" stroke-width="1.5"/>
+                  <path d="M23.5 21c0-3.59-2.91-6.5-6.5-6.5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Management Company Note</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Initial review of fencing violation at 12346 Washington Avenue. An unauthorized wooden privacy fence was erected along the rear and right-side property lines without prior ACC approval. The structure appears to violate both Section 3.2 (written approval required before installation) and Section 3.4 (maximum height of 4 feet). This case has been logged and assigned for formal inspection. The homeowner has not contacted the management office as of this date&#8230; <button class="committee-note__see-more" type="button"
+                data-note-title="Management Company Note — 03/21/2025"
+                data-note-text="Initial review of fencing violation at 12346 Washington Avenue. An unauthorized wooden privacy fence was erected along the rear and right-side property lines without prior ACC approval. The structure appears to violate both Section 3.2 (written approval required before installation) and Section 3.4 (maximum height of 4 feet in community-facing areas). This case has been logged and assigned for formal field inspection. The homeowner has not contacted the management office as of this date. A follow-up inspection is scheduled for April 8, 2025. If no corrective action is taken within the cure period, this case will be escalated to a formal hearing before the Board of Directors. All correspondence will be documented in the violation record for reference.">See More</button></p>
+          </div>
+        </div>
+
+        <!-- Entry 5 — Violation: First Notice -->
+        <div class="log-entry">
+          <p class="log-entry__date">04/07/2025 1:30PM</p>
+          <div class="log-entry__card">
+            <p class="log-entry__violation-label">Violation</p>
+            <div class="log-entry__status-transition">
+              <span class="log-entry__status-arrow">&#8594;</span>
+              <span class="log-entry__status-pill">
+                <span class="log-entry__status-dot"></span>
+                <span class="log-entry__status-label">First Notice - No Fine</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.log-timeline -->
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <!-- Note detail — ho-sheet pattern (outside .app-frame) -->
+  <div class="ho-sheet-backdrop" id="noteBackdrop"></div>
+  <div class="ho-sheet" id="noteSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="noteClose" type="button" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Note</span>
+    </div>
+    <div class="ho-sheet__body">
+      <h2 class="ho-sheet__detail-title" id="noteSheetTitle"></h2>
+      <p class="ho-sheet__detail-text" id="noteSheetText"></p>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var sheet    = document.getElementById('noteSheet');
+      var backdrop = document.getElementById('noteBackdrop');
+      var closeBtn = document.getElementById('noteClose');
+      var sheetTitle = document.getElementById('noteSheetTitle');
+      var sheetText  = document.getElementById('noteSheetText');
+
+      function openSheet(title, text) {
+        sheetTitle.textContent = title;
+        sheetText.textContent  = text;
+        sheet.querySelector('.ho-sheet__body').scrollTop = 0;
+        sheet.style.display = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { sheet.style.display = 'none'; }, 370);
+      }
+
+      document.querySelectorAll('.committee-note__see-more[data-note-title]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.getAttribute('data-note-title'), btn.getAttribute('data-note-text'));
+        });
+      });
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      sheet.addEventListener('touchstart', function (e) {
+        sheet._startY = e.touches[0].clientY;
+      }, { passive: true });
+      sheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - sheet._startY > 60) closeSheet();
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
