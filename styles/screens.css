@@ -7710,6 +7710,22 @@ a.sub-header__right {
   cursor: pointer;
 }
 
+.ho-sheet__action {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b2de61;
+  text-decoration: none;
+}
+
 .ho-sheet__title {
   color: var(--color-brand-lime);
   font-family: Montserrat, sans-serif;
@@ -10366,6 +10382,64 @@ a.sub-header__right {
   flex-shrink: 0;
   margin-right: 10px;
   opacity: .8;
+}
+
+/* Vendor picker inside ho-sheet */
+.vendor-picker-search {
+  display: flex;
+  align-items: center;
+  background: #112719;
+  border-radius: 5px;
+  margin: 12px 16px 0;
+  padding: 0 14px;
+  height: 48px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.vendor-picker-search__input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  outline: none;
+}
+.vendor-picker-search__input::placeholder {
+  color: rgba(255,248,234,.5);
+  text-transform: capitalize;
+}
+.vendor-picker-card {
+  display: flex;
+  align-items: center;
+  background: #112719;
+  border-radius: 10px;
+  height: 60px;
+  padding: 0 16px;
+  gap: 14px;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  flex-shrink: 0;
+  transition: opacity .15s;
+  text-align: left;
+}
+.vendor-picker-card:active { opacity: .65; }
+.vendor-picker-card--selected {
+  outline: 1.5px solid #b2de61;
+}
+.vendor-picker-card__icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.vendor-picker-card__name {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
 }
 
 /* ============================================
