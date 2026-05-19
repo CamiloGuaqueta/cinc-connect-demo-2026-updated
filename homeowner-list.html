@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Home Owner List</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+
+    <!-- App Header — outside scroll area -->
+    <header class="app-header">
+      <a class="app-header__back" href="todos.html" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="app-header__notification" href="notifications.html">
+        <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+        <span class="app-header__badge">3</span>
+      </a>
+    </header>
+
+    <main class="hol-screen">
+
+      <h1 class="hol-title">Home Owner List</h1>
+
+      <!-- Search -->
+      <div class="vph-search" style="margin-bottom:16px;">
+        <input class="vph-search__input" type="text" placeholder="Search Account #, HO Name, Unit/Address" />
+        <svg class="vph-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="6.25" stroke="#fff8ea" stroke-width="1.5"/>
+          <path d="M13.5 13.5L18 18" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- ─── Owner Cards ─── -->
+
+      <!-- Thomas Bravo -->
+      <div class="hol-card" data-search="thomas bravo 100 palm grove lane 8219374">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/thomas-bravo.png" alt="Thomas Bravo" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">Thomas Bravo</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">100 Palm Grove Lane, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 8219374</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="thomas">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Daniel Carter -->
+      <div class="hol-card" data-search="daniel carter 109 palm grove lane 91735268">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/daniel-carter.png" alt="Daniel Carter" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">Daniel Carter</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">109 Palm Grove Lane, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 91735268</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="daniel">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Sophia Diaz -->
+      <div class="hol-card" data-search="sophia diaz 127 palm grove lane 2745369636951">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/sophia-diaz.png" alt="Sophia Diaz" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">Sophia Diaz</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">127 Palm Grove Lane, Unit 2A, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 2745369636951</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="sophia">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Emma Hughes -->
+      <div class="hol-card" data-search="emma hughes 135 palm grove lane 2745369636951">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/emma-hughes.png" alt="Emma Hughes" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">Emma Hughes</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">135 Palm Grove Lane, Unit 3C, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 2745369636951</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="emma">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- James Roberts -->
+      <div class="hol-card" data-search="james roberts 142 palm grove lane 2745369636951">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/james-roberts.png" alt="James Roberts" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">James Roberts</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">142 Palm Grove Lane, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 2745369636951</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="james">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- William Walker -->
+      <div class="hol-card" data-search="william walker 156 palm grove lane 80429563">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/william-walker.png" alt="William Walker" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">William Walker</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">156 Palm Grove Lane, Unit 1B, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 80429563</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="william">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Ethan Young -->
+      <div class="hol-card" data-search="ethan young 190 palm grove lane 61382047">
+        <div class="hol-card__owner">
+          <img class="hol-card__photo" src="assets/personas/ethan-young.png" alt="Ethan Young" />
+          <div class="hol-card__owner-info">
+            <span class="hol-card__owner-name">Ethan Young</span>
+            <span class="hol-card__owner-role">Owner</span>
+          </div>
+        </div>
+        <p class="hol-card__address">190 Palm Grove Lane, Unit 4D, Miami, FL 33138</p>
+        <p class="hol-card__acct"><strong>Acct:</strong> 61382047</p>
+        <div class="hol-card__divider"></div>
+        <button class="hol-card__contact-btn" type="button" data-owner="ethan">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <rect x="1" y="3" width="20" height="14" rx="2" stroke="#fff8ea" stroke-width="1.5"/>
+            <path d="M1 7l10 6 10-6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Contact Info</span>
+          <svg class="hol-card__contact-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <!-- ─── Contact Info Bottom Sheet ─── -->
+  <div class="ho-sheet-backdrop" id="hoBackdrop"></div>
+  <div class="ho-sheet" id="hoSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="hoSheetClose" type="button" aria-label="Close">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Home Owner</span>
+    </div>
+    <div class="ho-sheet__hero">
+      <div class="ho-sheet__hero-bg" style="background-image: url('assets/images/Community-aerial.jpg')"></div>
+      <div class="ho-sheet__hero-overlay"></div>
+      <img class="ho-sheet__avatar" id="hoAvatar" src="" alt="" />
+      <h2 class="ho-sheet__name" id="hoName"></h2>
+    </div>
+    <div class="ho-sheet__body">
+      <div class="ho-sheet__card">
+        <div class="ho-sheet__row">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-more-profile.svg" alt="" />
+          <div class="ho-sheet__row-text">
+            <p class="ho-sheet__row-primary ho-sheet__row-primary--lime" id="hoAddress"></p>
+            <p class="ho-sheet__row-sub" id="hoAcct"></p>
+          </div>
+        </div>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmail" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-email.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmailText"></p>
+        </a>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoPhone" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-sms.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoPhoneText"></p>
+        </a>
+      </div>
+    </div>
+  </div><!-- /#hoSheet -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      /* ── Owner data ── */
+      var OWNERS = {
+        thomas:  { name: 'Thomas Bravo',    photo: 'assets/personas/thomas-bravo.png',   address: '100 Palm Grove Lane, Miami, FL 33138',        acct: 'Acct: 8219374',         email: 'thomasb@testemail.com',   phone: '+1 555.345.567' },
+        daniel:  { name: 'Daniel Carter',   photo: 'assets/personas/daniel-carter.png',  address: '109 Palm Grove Lane, Miami, FL 33138',        acct: 'Acct: 91735268',        email: 'danielc@testemail.com',   phone: '+1 555.612.340' },
+        sophia:  { name: 'Sophia Diaz',     photo: 'assets/personas/sophia-diaz.png',    address: '127 Palm Grove Lane, Unit 2A, Miami, FL 33138', acct: 'Acct: 2745369636951',   email: 'sophiad@testemail.com',   phone: '+1 555.278.901' },
+        emma:    { name: 'Emma Hughes',     photo: 'assets/personas/emma-hughes.png',    address: '135 Palm Grove Lane, Unit 3C, Miami, FL 33138', acct: 'Acct: 2745369636951',   email: 'emmah@testemail.com',     phone: '+1 555.483.217' },
+        james:   { name: 'James Roberts',   photo: 'assets/personas/james-roberts.png',  address: '142 Palm Grove Lane, Miami, FL 33138',        acct: 'Acct: 2745369636951',   email: 'jamesr@testemail.com',    phone: '+1 555.739.084' },
+        william: { name: 'William Walker',  photo: 'assets/personas/william-walker.png', address: '156 Palm Grove Lane, Unit 1B, Miami, FL 33138', acct: 'Acct: 80429563',        email: 'williamw@testemail.com',  phone: '+1 555.921.653' },
+        ethan:   { name: 'Ethan Young',     photo: 'assets/personas/ethan-young.png',    address: '190 Palm Grove Lane, Unit 4D, Miami, FL 33138', acct: 'Acct: 61382047',        email: 'ethany@testemail.com',    phone: '+1 555.164.738' }
+      };
+
+      /* ── Sheet elements ── */
+      var sheet    = document.getElementById('hoSheet');
+      var backdrop = document.getElementById('hoBackdrop');
+      var closeBtn = document.getElementById('hoSheetClose');
+      var hoAvatar   = document.getElementById('hoAvatar');
+      var hoName     = document.getElementById('hoName');
+      var hoAddress  = document.getElementById('hoAddress');
+      var hoAcct     = document.getElementById('hoAcct');
+      var hoEmailEl  = document.getElementById('hoEmail');
+      var hoEmailTxt = document.getElementById('hoEmailText');
+      var hoPhoneEl  = document.getElementById('hoPhone');
+      var hoPhoneTxt = document.getElementById('hoPhoneText');
+
+      function openSheet(ownerKey) {
+        var d = OWNERS[ownerKey];
+        if (!d) return;
+        hoName.textContent     = d.name;
+        hoAddress.textContent  = d.address;
+        hoAcct.textContent     = d.acct;
+        hoEmailTxt.textContent = d.email;
+        hoEmailEl.href         = 'mailto:' + d.email;
+        hoPhoneTxt.textContent = d.phone;
+        hoPhoneEl.href         = 'tel:' + d.phone.replace(/[^+\d]/g, '');
+        hoAvatar.src           = d.photo;
+        hoAvatar.alt           = d.name;
+
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.style.display = 'flex';
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        setTimeout(function () {
+          sheet.style.display = 'none';
+          sheet.setAttribute('aria-hidden', 'true');
+        }, 370);
+      }
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      document.querySelectorAll('[data-owner]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.getAttribute('data-owner'));
+        });
+      });
+
+      /* ── Live search ── */
+      document.querySelector('.vph-search__input').addEventListener('input', function () {
+        var q = this.value.toLowerCase();
+        document.querySelectorAll('.hol-card').forEach(function (card) {
+          var text = card.getAttribute('data-search') + ' ' + card.textContent.toLowerCase();
+          card.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
