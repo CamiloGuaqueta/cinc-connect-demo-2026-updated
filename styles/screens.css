@@ -12374,6 +12374,118 @@ a.sub-header__right {
   background: #112719;
   padding-bottom: 90px;
 }
+/* ─── Vendor Payment History screen ──────────────────────────────────── */
+.vph-screen {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120px;
+}
+.vph-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+}
+.vph-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+}
+.vph-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+.vph-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 20px 16px;
+  background: #235237;
+  border-radius: 5px;
+  padding: 12px 14px;
+}
+.vph-search__input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+.vph-search__input::placeholder {
+  color: rgba(255,248,234,.5);
+}
+.vph-search__icon {
+  flex-shrink: 0;
+  opacity: .5;
+}
+.vph-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
+}
+.vph-card {
+  background: #235237;
+  border-radius: 10px;
+  padding: 14px 16px 14px;
+}
+.vph-card__vendor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.vph-card__icon {
+  flex-shrink: 0;
+}
+.vph-card__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #b2de61;
+}
+.vph-card__meta {
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  padding-bottom: 10px;
+}
+.vph-card__meta-line {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0 0 4px;
+}
+.vph-card__meta-line:last-child {
+  margin-bottom: 0;
+}
+.vph-card__meta-line strong {
+  font-weight: 700;
+}
+.vph-card__amount-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.vph-card__amount-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+.vph-card__amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
 /* ─── Bank Balance screen ─────────────────────────────────────────────── */
 .bank-balance-screen {
   flex: 1;

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Filter Vendor Payment History</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen" style="height:100dvh;overflow:hidden;">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="board-vendor-payment.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Filter Vendor Payment History</span>
+          <a class="pay-sheet__close" href="board-vendor-payment.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Vendor -->
+          <p class="filter-section__title">Vendor</p>
+          <div class="filter-group">
+            <button class="filter-row" id="vendorPickerBtn" type="button" style="background:none;border:none;width:100%;cursor:pointer;text-align:left;">
+              <span class="filter-row__label" id="selectedVendorLabel">Select Vendor</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" style="margin-left:auto;flex-shrink:0;opacity:.5;">
+                <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Invoice Date -->
+          <p class="filter-section__title">Invoice Date</p>
+          <div class="filter-group">
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 7 days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 15 Days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Last 30 days</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">Other (Custom time frame)</span>
+            </div>
+          </div>
+
+          <p class="filter-section__title" style="margin-top:14px;">From</p>
+          <div class="filter-group" style="margin-bottom:0;">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">DD/MM/YYYY</span>
+            </div>
+          </div>
+
+          <p class="filter-section__title" style="margin-top:14px;">To</p>
+          <div class="filter-group">
+            <div class="filter-row" style="padding:14px 16px;">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" style="flex-shrink:0;opacity:.6;">
+                <rect x=".75" y="2.25" width="14.5" height="13.5" rx="1.25" stroke="#fff8ea" stroke-width="1.5"/>
+                <path d="M.75 6.25h14.5M5 1v2.5M11 1v2.5" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="filter-row__label" style="opacity:.5;text-transform:uppercase;font-size:13px;margin-left:10px;">DD/MM/YYYY</span>
+            </div>
+          </div>
+
+          <p class="filter-results">3 results</p>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="board-vendor-payment.html">Apply Filter</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <!-- ─── Vendor Picker ho-sheet (outside app-frame) ─── -->
+  <div class="ho-sheet-backdrop" id="vendorBackdrop"></div>
+  <div class="ho-sheet" id="vendorSheet" aria-hidden="true" style="display:none;">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="vendorSheetClose" type="button" aria-label="Close">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Select Vendor</span>
+      <button class="ho-sheet__action" id="vendorSheetReset" type="button">Reset</button>
+    </div>
+
+    <!-- Search -->
+    <div class="vendor-picker-search">
+      <input class="vendor-picker-search__input" id="vendorSearch" type="text" placeholder="Search by Vendor Name" />
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;opacity:.5;">
+        <circle cx="8.5" cy="8.5" r="6.25" stroke="#fff8ea" stroke-width="1.5"/>
+        <path d="M13.5 13.5L18 18" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Vendor list -->
+    <div class="ho-sheet__body" id="vendorList" style="gap:8px;">
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">1-800-GOT-JUNK?</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">AC&amp;M Construction Services</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Pipes And Flows LLC</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">EverGreen Property Care</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Palm &amp; Pine Outdoor Services</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">GreenScape Solutions</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Precision Paving Co.</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">SolidStone Masonry &amp; Repairs</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">BrightLine Painting Group</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">FlowGuard Plumbing</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">PowerSure Electric</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">AirPro Comfort Systems</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Sentinel Security Patrols</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">SafeHaven Fire &amp; Safety</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Guardian Access Systems</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Crystal Clear Janitorial</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">EcoWaste Solutions</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Sparkle Pools &amp; Spas</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">HOA Legal Partners</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Community Accounting Services</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">BrightPath Insurance Brokers</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">Clubhouse Events &amp; Catering</span>
+      </button>
+
+      <button class="vendor-picker-card" type="button">
+        <img class="vendor-picker-card__icon" src="assets/icons/icon-vendor.svg" alt="" />
+        <span class="vendor-picker-card__name">ActiveLife Fitness Contractors</span>
+      </button>
+
+    </div><!-- /.ho-sheet__body -->
+  </div><!-- /#vendorSheet -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var sheet    = document.getElementById('vendorSheet');
+      var backdrop = document.getElementById('vendorBackdrop');
+      var closeBtn = document.getElementById('vendorSheetClose');
+      var resetBtn = document.getElementById('vendorSheetReset');
+      var label    = document.getElementById('selectedVendorLabel');
+      var searchEl = document.getElementById('vendorSearch');
+
+      function openVendorPicker() {
+        sheet.style.display = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+        searchEl.value = '';
+        filterVendors('');
+      }
+
+      function closeVendorPicker() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { sheet.style.display = 'none'; }, 370);
+      }
+
+      function filterVendors(query) {
+        document.querySelectorAll('.vendor-picker-card').forEach(function (card) {
+          var name = card.querySelector('.vendor-picker-card__name').textContent.toLowerCase();
+          card.style.display = name.includes(query.toLowerCase()) ? 'flex' : 'none';
+        });
+      }
+
+      document.getElementById('vendorPickerBtn').addEventListener('click', openVendorPicker);
+      closeBtn.addEventListener('click', closeVendorPicker);
+      backdrop.addEventListener('click', closeVendorPicker);
+
+      resetBtn.addEventListener('click', function () {
+        label.textContent = 'Select Vendor';
+        document.querySelectorAll('.vendor-picker-card').forEach(function (c) {
+          c.classList.remove('vendor-picker-card--selected');
+        });
+        closeVendorPicker();
+      });
+
+      searchEl.addEventListener('input', function () {
+        filterVendors(this.value.trim());
+      });
+
+      document.querySelectorAll('.vendor-picker-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var name = card.querySelector('.vendor-picker-card__name').textContent;
+          label.textContent = name;
+          document.querySelectorAll('.vendor-picker-card').forEach(function (c) {
+            c.classList.remove('vendor-picker-card--selected');
+          });
+          card.classList.add('vendor-picker-card--selected');
+          closeVendorPicker();
+        });
+      });
+
+      sheet.addEventListener('touchstart', function (e) { sheet._startY = e.touches[0].clientY; }, { passive: true });
+      sheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - sheet._startY > 60) closeVendorPicker();
+      }, { passive: true });
+
+      document.querySelectorAll('.filter-group').forEach(function (group) {
+        group.querySelectorAll('.filter-row').forEach(function (row) {
+          row.addEventListener('click', function () {
+            var radio = row.querySelector('.filter-radio');
+            if (!radio) return;
+            group.querySelectorAll('.filter-radio').forEach(function (r) {
+              r.classList.remove('filter-radio--selected');
+            });
+            radio.classList.add('filter-radio--selected');
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

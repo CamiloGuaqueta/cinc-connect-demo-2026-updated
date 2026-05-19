@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Vendor Payment History</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="vph-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title row -->
+      <div class="vph-title-row">
+        <h1 class="vph-title">Vendor Payment History</h1>
+        <a class="vph-filter-btn" href="board-vendor-payment-filter.html" aria-label="Filter">
+          <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+            <line x1="1" y1="5" x2="21" y2="5" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="1" y1="15" x2="21" y2="15" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="7" cy="5" r="2.5" fill="#112719" stroke="#b2de61" stroke-width="1.8"/>
+            <circle cx="15" cy="15" r="2.5" fill="#112719" stroke="#b2de61" stroke-width="1.8"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Search -->
+      <div class="vph-search">
+        <input class="vph-search__input" type="text" placeholder="Search by Vendor Name, Invoice#" />
+        <svg class="vph-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="6.25" stroke="#fff8ea" stroke-width="1.5"/>
+          <path d="M13.5 13.5L18 18" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Payment Cards -->
+      <div class="vph-list">
+
+        <!-- Card 1 — 1-800-GOT-JUNK? -->
+        <div class="vph-card">
+          <div class="vph-card__vendor">
+            <svg class="vph-card__icon" width="25" height="20" viewBox="0 0 25 20" fill="none">
+              <path d="M2 14V7.5C2 6.12 2.84 4.9 4.1 4.38L11.5 1.5L18.9 4.38C20.16 4.9 21 6.12 21 7.5V14" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="1" y="13" width="22" height="6" rx="2" stroke="#b2de61" stroke-width="1.6"/>
+              <path d="M8.5 13v6M15.5 13v6" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="vph-card__name">1-800-GOT-JUNK?</span>
+          </div>
+          <div class="vph-card__meta">
+            <p class="vph-card__meta-line"><strong>Date:</strong> 04/02/2025</p>
+            <p class="vph-card__meta-line"><strong>Invoice #:</strong> GJI_025445</p>
+          </div>
+          <div class="vph-card__amount-row">
+            <span class="vph-card__amount-label">Invoice Amount</span>
+            <span class="vph-card__amount">$2,360.00</span>
+          </div>
+        </div>
+
+        <!-- Card 2 — AC&M Construction -->
+        <div class="vph-card">
+          <div class="vph-card__vendor">
+            <svg class="vph-card__icon" width="25" height="20" viewBox="0 0 25 20" fill="none">
+              <path d="M2 14V7.5C2 6.12 2.84 4.9 4.1 4.38L11.5 1.5L18.9 4.38C20.16 4.9 21 6.12 21 7.5V14" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="1" y="13" width="22" height="6" rx="2" stroke="#b2de61" stroke-width="1.6"/>
+              <path d="M8.5 13v6M15.5 13v6" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="vph-card__name">AC&amp;M Construction Services</span>
+          </div>
+          <div class="vph-card__meta">
+            <p class="vph-card__meta-line"><strong>Date:</strong> 03/15/2025</p>
+            <p class="vph-card__meta-line"><strong>Invoice #:</strong> ACM-34567</p>
+          </div>
+          <div class="vph-card__amount-row">
+            <span class="vph-card__amount-label">Invoice Amount</span>
+            <span class="vph-card__amount">$36,720.00</span>
+          </div>
+        </div>
+
+        <!-- Card 3 — Pipes And Flows LLC -->
+        <div class="vph-card">
+          <div class="vph-card__vendor">
+            <svg class="vph-card__icon" width="25" height="20" viewBox="0 0 25 20" fill="none">
+              <path d="M2 14V7.5C2 6.12 2.84 4.9 4.1 4.38L11.5 1.5L18.9 4.38C20.16 4.9 21 6.12 21 7.5V14" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="1" y="13" width="22" height="6" rx="2" stroke="#b2de61" stroke-width="1.6"/>
+              <path d="M8.5 13v6M15.5 13v6" stroke="#b2de61" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <span class="vph-card__name">Pipes And Flows LLC</span>
+          </div>
+          <div class="vph-card__meta">
+            <p class="vph-card__meta-line"><strong>Date:</strong> 02/28/2025</p>
+            <p class="vph-card__meta-line"><strong>Invoice #:</strong> PFL-00892</p>
+          </div>
+          <div class="vph-card__amount-row">
+            <span class="vph-card__amount-label">Invoice Amount</span>
+            <span class="vph-card__amount">$4,150.00</span>
+          </div>
+        </div>
+
+      </div><!-- /.vph-list -->
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var input = document.querySelector('.vph-search__input');
+      input.addEventListener('input', function () {
+        var q = this.value.toLowerCase();
+        document.querySelectorAll('.vph-card').forEach(function (card) {
+          var name = card.querySelector('.vph-card__name').textContent.toLowerCase();
+          var inv  = card.querySelector('.vph-card__meta').textContent.toLowerCase();
+          card.style.display = (name.includes(q) || inv.includes(q)) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
