@@ -12396,7 +12396,7 @@ a.sub-header__right {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 }
 .bank-summary-title {
   font-size: 20px;
