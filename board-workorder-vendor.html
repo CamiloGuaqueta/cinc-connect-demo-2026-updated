@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Work Order Vendor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="vendor-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="board-workorders.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Vendor Info Section -->
+      <h2 class="wo-section-title">Vendor Info</h2>
+
+      <div class="ar-vcard">
+        <div class="ar-vcard__top">
+          <img class="ar-vcard__cat-icon" src="assets/icons/icon-vendor.svg" alt="" />
+          <span class="ar-vcard__type">1800GOTJUNK?</span>
+        </div>
+        <div class="ar-vcard__meta">
+          <p class="ar-vcard__meta-line"><strong>Contact Name:</strong> Emily Thorton</p>
+          <p class="ar-vcard__meta-line"><strong>Email:</strong> info@gotjunk.com</p>
+          <p class="ar-vcard__meta-line"><strong>Phone Number:</strong> 1800.468.5865</p>
+          <p class="ar-vcard__meta-line"><strong>Website:</strong> www.gotjunk.com</p>
+          <p class="ar-vcard__meta-line"><strong>Address:</strong> 128 Crandon Ave, Miami, FL 33138</p>
+          <p class="ar-vcard__meta-line"><strong>Type:</strong> Trash Removal</p>
+        </div>
+        <div class="ar-vcard__divider"></div>
+        <a class="ar-vcard__row" href="#">
+          <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+          <span class="ar-vcard__row-label">Recent Vendor Payments</span>
+          <span class="ar-card__chev" aria-hidden="true"></span>
+        </a>
+        <div class="ar-vcard__divider"></div>
+        <a class="ar-vcard__row" href="#">
+          <img class="ar-vcard__row-icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+          <span class="ar-vcard__row-label">Current Work Orders</span>
+          <span class="ar-vcard__row-count">4</span>
+          <span class="ar-card__chev" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- Work Orders Summary Section -->
+      <h2 class="wo-section-title">Work Orders Summary</h2>
+
+      <div class="wo-stat-grid">
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">29</span>
+          </div>
+          <span class="wo-stat-tile__label">All</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">1</span>
+          </div>
+          <span class="wo-stat-tile__label">Open</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">3</span>
+          </div>
+          <span class="wo-stat-tile__label">In Progress</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">25</span>
+          </div>
+          <span class="wo-stat-tile__label">Completed</span>
+        </div>
+      </div>
+
+      <!-- Total Payed Invoices Section -->
+      <h2 class="wo-section-title">Total Payed Invoices</h2>
+
+      <div class="wo-total-card">
+        <div class="wo-total-card__top">
+          <img class="wo-total-card__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+          <span class="wo-total-card__count">23</span>
+        </div>
+        <div class="wo-total-card__bottom">
+          <span class="wo-total-card__period">Last 6 Months</span>
+          <span class="wo-total-card__amount">$25,568.00</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

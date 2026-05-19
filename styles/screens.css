@@ -11769,3 +11769,124 @@ a.sub-header__right {
   margin: 0 0 12px;
 }
 
+
+/* ============================================
+   BOARD WORK ORDERS — stat grid
+   ============================================ */
+
+.wo-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0 20px 16px;
+}
+
+.wo-stat-tile {
+  background: #235237;
+  border-radius: 10px;
+  padding: 12px 14px 16px;
+}
+
+.wo-stat-tile__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.wo-stat-tile__icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  opacity: .85;
+}
+
+.wo-stat-tile__count {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #b2de61;
+  line-height: 1;
+}
+
+.wo-stat-tile__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+/* ============================================
+   BOARD WORK ORDERS — section title
+   ============================================ */
+
+.wo-section-title {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+  padding: 20px 20px 12px;
+}
+
+/* ============================================
+   VENDOR INFO SCREEN
+   ============================================ */
+
+.vendor-screen {
+  background: #112719;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: calc(var(--bottom-nav-height) + 16px);
+}
+
+/* ============================================
+   WORK ORDER TOTAL INVOICES CARD
+   ============================================ */
+
+.wo-total-card {
+  background: #235237;
+  border-radius: 10px;
+  margin: 0 20px;
+  padding: 16px;
+}
+
+.wo-total-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.wo-total-card__icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.wo-total-card__count {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #b2de61;
+}
+
+.wo-total-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wo-total-card__period {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.wo-total-card__amount {
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  color: #b2de61;
+}

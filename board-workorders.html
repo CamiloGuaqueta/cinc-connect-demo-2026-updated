@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#235237" />
-  <title>CINC Connect — Work Orders</title>
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Board Work Order Review</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,7 @@
 
       <!-- App Header -->
       <header class="app-header">
-        <a class="app-header__back" href="board-account-info.html" aria-label="Back">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
           <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
             <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -34,11 +34,49 @@
       </header>
 
       <!-- Title + Filter -->
-      <div class="ar-workorders__topbar">
-        <h1 class="ar-workorders__title">Work Orders</h1>
-        <button class="ar-workorders__filter" type="button" aria-label="Filter">
-          <img src="assets/icons/icon-filter.svg" alt="" />
-        </button>
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title">Board Work Order Review</h1>
+        <a class="acc-filter-btn" href="#" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Search -->
+      <div class="acc-search">
+        <img class="acc-search__icon" src="assets/icons/icon-search.svg" alt="" />
+        <input class="acc-search__input" type="search" placeholder="Search by Work order #" />
+      </div>
+
+      <!-- Stat Grid -->
+      <div class="wo-stat-grid">
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">5</span>
+          </div>
+          <span class="wo-stat-tile__label">New</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">15</span>
+          </div>
+          <span class="wo-stat-tile__label">Open</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">25</span>
+          </div>
+          <span class="wo-stat-tile__label">In Progress</span>
+        </div>
+        <div class="wo-stat-tile">
+          <div class="wo-stat-tile__top">
+            <img class="wo-stat-tile__icon" src="assets/icons/icon-todo-5-work-order.svg" alt="" />
+            <span class="wo-stat-tile__count">255</span>
+          </div>
+          <span class="wo-stat-tile__label">Completed</span>
+        </div>
       </div>
 
       <!-- Work Order Cards -->
@@ -59,26 +97,28 @@
             <p class="ar-vcard__meta-line"><strong>Location:</strong> Jhon Ringer 526332 Washington Ave townhouse 2 located at the end of the street</p>
           </div>
           <div class="ar-vcard__desc">
-            <p class="ar-vcard__desc-text">Trash removal, reporting that garbage and debris have been left near the common area dumpsters. They are request… <a class="ar-vcard__desc-more" href="#">See More</a></p>
+            <p class="ar-vcard__desc-text">Trash removal request filed by Jhon Ringer at 526332 Washington Ave, townhouse 2. Resident reports that garbage and debris have been left near the common area dumpsters&#8230; <button class="committee-note__see-more" type="button"
+              data-note-title="WO #2854 — Trash Removal"
+              data-note-text="Trash removal request filed by Jhon Ringer at 526332 Washington Ave, townhouse 2. Resident reports that garbage and debris have been left near the common area dumpsters by multiple units over the past two weeks. The buildup is creating an odor and attracting pests. Resident requests immediate removal and cleanup. Vendor 1800GOTJUNK? has been assigned and contacted. Scheduled pickup pending confirmation.">See More</button></p>
           </div>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-vendor.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-vendor.svg" alt="" />
             <div class="ar-vcard__row-label-group">
               <span class="ar-vcard__row-label">1800GOTJUNK?</span>
               <span class="ar-vcard__row-sub">Vendor</span>
             </div>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-log.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
             <span class="ar-vcard__row-label">Log &amp; Notes</span>
             <span class="ar-vcard__row-count">2</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <a class="ar-vcard__row" href="board-attachments.html">
+          <a class="ar-vcard__row" href="board-workorder-attachments.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
             <span class="ar-vcard__row-label">Attachments (6)</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
@@ -97,30 +137,32 @@
             <p class="ar-vcard__meta-line"><strong>Printed Emailed:</strong> 03/30/2025</p>
             <p class="ar-vcard__meta-line"><strong>Due:</strong> 04/02/2026</p>
             <p class="ar-vcard__meta-line"><strong>Status:</strong> New Work Order</p>
-            <p class="ar-vcard__meta-line"><strong>Location:</strong> 234 Buenavista court</p>
+            <p class="ar-vcard__meta-line"><strong>Location:</strong> 234 Buenavista Court</p>
           </div>
           <div class="ar-vcard__desc">
-            <p class="ar-vcard__desc-text">I'd like to submit a work order request as my AC unit is not working. The temperature inside the unit is getting uncomfo… <a class="ar-vcard__desc-more" href="#">See More</a></p>
+            <p class="ar-vcard__desc-text">HVAC repair request from resident at 234 Buenavista Court. The AC unit has not been functioning properly for several days&#8230; <button class="committee-note__see-more" type="button"
+              data-note-title="WO #2853 — HVAC Repair"
+              data-note-text="HVAC repair request from resident at 234 Buenavista Court. The AC unit has not been functioning properly for several days. Interior temperature is reaching uncomfortable levels, particularly during afternoon hours. Resident reports hearing an unusual rattling noise from the unit. Family Friend HVAC has been assigned. A service appointment is being coordinated. Resident has been advised to keep windows open in the interim.">See More</button></p>
           </div>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-vendor.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-vendor.svg" alt="" />
             <div class="ar-vcard__row-label-group">
               <span class="ar-vcard__row-label">Family Friend HVAC</span>
               <span class="ar-vcard__row-sub">Vendor</span>
             </div>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-log.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
             <span class="ar-vcard__row-label">Log &amp; Notes</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <a class="ar-vcard__row" href="board-attachments.html">
+          <a class="ar-vcard__row" href="board-workorder-attachments.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
-            <span class="ar-vcard__row-label">image_123.jpeg</span>
+            <span class="ar-vcard__row-label">Attachments</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
         </div>
@@ -137,30 +179,32 @@
             <p class="ar-vcard__meta-line"><strong>Printed Emailed:</strong> 03/30/2025</p>
             <p class="ar-vcard__meta-line"><strong>Due:</strong> 04/02/2026</p>
             <p class="ar-vcard__meta-line"><strong>Status:</strong> New Work Order</p>
-            <p class="ar-vcard__meta-line"><strong>Location:</strong> 234 Buenavista court</p>
+            <p class="ar-vcard__meta-line"><strong>Location:</strong> 234 Buenavista Court</p>
           </div>
           <div class="ar-vcard__desc">
-            <p class="ar-vcard__desc-text">I'm submitting a work order request for a wall repair. There is visible damage, including cracks and chipped paint… <a class="ar-vcard__desc-more" href="#">See More</a></p>
+            <p class="ar-vcard__desc-text">Wall repair request at 234 Buenavista Court. Resident reports visible structural damage including cracks and chipped paint on the main hallway wall&#8230; <button class="committee-note__see-more" type="button"
+              data-note-title="WO #2849 — Wall Repair"
+              data-note-text="Wall repair request at 234 Buenavista Court. Resident reports visible structural damage including cracks and chipped paint on the main hallway wall adjacent to the entrance. The damage appears to have been caused by water infiltration from a prior roof leak that was addressed in February 2025. Happy Building LLC has been assigned to assess and complete the repair. Inspection scheduled for the week of 04/07/2025.">See More</button></p>
           </div>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-vendor.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-vendor.svg" alt="" />
             <div class="ar-vcard__row-label-group">
               <span class="ar-vcard__row-label">Happy Building LLC</span>
               <span class="ar-vcard__row-sub">Vendor</span>
             </div>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <button class="ar-vcard__row" type="button">
+          <a class="ar-vcard__row" href="board-workorder-log.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
             <span class="ar-vcard__row-label">Log &amp; Notes</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
-          </button>
+          </a>
           <div class="ar-vcard__divider"></div>
-          <a class="ar-vcard__row" href="board-attachments.html">
+          <a class="ar-vcard__row" href="board-workorder-attachments.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
-            <span class="ar-vcard__row-label">image_123.jpeg</span>
+            <span class="ar-vcard__row-label">Attachments</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
         </div>
@@ -170,39 +214,81 @@
 
     <!-- Bottom Navigation (My To-Dos active) -->
     <nav class="bottom-nav" aria-label="Main navigation">
-      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
-        <span class="bottom-nav__label">Feed</span>
-      </a>
-      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
-        <span class="bottom-nav__label">My To-Dos</span>
-      </a>
-      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
-        <span class="bottom-nav__label">Concierge</span>
-      </a>
-      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
-        <span class="bottom-nav__label">PinBoard</span>
-      </a>
-      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
-        <span class="bottom-nav__label">Financial</span>
-      </a>
-      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
-        <span class="bottom-nav__label">Chat</span>
-      </a>
-      <a class="bottom-nav__item" href="more.html" aria-label="More">
-        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
-        <span class="bottom-nav__label">Menu</span>
-      </a>
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
     </nav>
+  </div><!-- /.app-frame -->
+
+  <!-- Work Order note detail — ho-sheet (outside .app-frame) -->
+  <div class="ho-sheet-backdrop" id="woNoteBackdrop"></div>
+  <div class="ho-sheet" id="woNoteSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="woNoteClose" type="button" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Work Order</span>
+    </div>
+    <div class="ho-sheet__body">
+      <h2 class="ho-sheet__detail-title" id="woNoteSheetTitle"></h2>
+      <p class="ho-sheet__detail-text" id="woNoteSheetText"></p>
+    </div>
   </div>
 
   <script src="scripts/auth.js"></script>
   <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
   <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var sheet    = document.getElementById('woNoteSheet');
+      var backdrop = document.getElementById('woNoteBackdrop');
+      var closeBtn = document.getElementById('woNoteClose');
+      var sheetTitle = document.getElementById('woNoteSheetTitle');
+      var sheetText  = document.getElementById('woNoteSheetText');
+
+      function openSheet(title, text) {
+        sheetTitle.textContent = title;
+        sheetText.textContent  = text;
+        sheet.querySelector('.ho-sheet__body').scrollTop = 0;
+        sheet.style.display = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { sheet.style.display = 'none'; }, 370);
+      }
+
+      document.querySelectorAll('.committee-note__see-more[data-note-title]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.getAttribute('data-note-title'), btn.getAttribute('data-note-text'));
+        });
+      });
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      sheet.addEventListener('touchstart', function (e) {
+        sheet._startY = e.touches[0].clientY;
+      }, { passive: true });
+      sheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - sheet._startY > 60) closeSheet();
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
