@@ -316,7 +316,6 @@
       }
 
       function closeAll() {
-        if (justOpened) return;                   // ignore ghost clicks
         ['inv-confirm-sheet', 'inv-approved-sheet', 'inv-denied-sheet'].forEach(closeSheet);
         backdrop.classList.remove('inv-sheet-backdrop--open');
       }
@@ -347,8 +346,10 @@
       document.querySelectorAll('.inv-sheet__close, .inv-sheet__btn--no, .inv-sheet__btn--done')
         .forEach(function (el) { el.addEventListener('click', closeAll); });
 
-      // Backdrop tap
-      backdrop.addEventListener('click', closeAll);
+      // Backdrop tap — guard only here against ghost clicks
+      backdrop.addEventListener('click', function () {
+        if (!justOpened) closeAll();
+      });
     })();
   </script>
 </body>
