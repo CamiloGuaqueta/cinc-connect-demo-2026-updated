@@ -12415,21 +12415,13 @@ a.sub-header__right {
 .hol-screen .vph-search {
   margin: 0 0 16px;
 }
-.aging-screen .vph-search__input,
-.hol-screen .vph-search__input {
-  font-size: 12px;
-}
-.aging-screen .vph-search__input::placeholder,
-.hol-screen .vph-search__input::placeholder {
-  font-size: 12px;
-}
 .vph-search__input {
   flex: 1;
   background: none;
   border: none;
   outline: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: #fff8ea;
 }
