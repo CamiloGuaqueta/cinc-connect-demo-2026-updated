@@ -204,6 +204,14 @@
   <script src="scripts/app.js"></script>
   <script>
     (function () {
+      // Dynamic back destination via ?back= query param
+      var params = new URLSearchParams(window.location.search);
+      var backUrl = params.get('back');
+      if (backUrl) {
+        var backBtn = document.querySelector('.app-header__back');
+        if (backBtn) backBtn.setAttribute('href', backUrl);
+      }
+
       const OWNERS = {
         thomas: {
           name:    'Thomas Bravo',

@@ -111,18 +111,23 @@
       </a>
     </nav>
 
-    <!-- See More sheet overlay (shared, populated by JS) -->
+    <!-- See More — Green Sheet (standard pay-sheet pattern) -->
     <div class="vitem-sheet-overlay" id="vitemOverlay" role="dialog" aria-modal="true">
-      <div class="vitem-sheet-backdrop" id="vitemBackdrop"></div>
-      <div class="vitem-sheet">
-        <div class="vitem-sheet__header">
-          <span class="vitem-sheet__title">Violation Item</span>
-          <button class="vitem-sheet__close" id="vitemClose" aria-label="Close">Close</button>
-        </div>
-        <div class="vitem-sheet__sep"></div>
-        <div class="vitem-sheet__body">
-          <p class="vitem-sheet__item-title" id="vitemSheetTitle"></p>
-          <p class="vitem-sheet__text" id="vitemSheetText"></p>
+      <div class="pay-screen__backdrop" id="vitemBackdrop"></div>
+      <div class="pay-sheet">
+        <header class="pay-sheet__header">
+          <button class="pay-sheet__back" id="vitemClose" aria-label="Close">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <span class="pay-sheet__title">Violation Item</span>
+          <button class="pay-sheet__close" id="vitemCloseBtn">Close</button>
+        </header>
+        <div class="pay-sheet__sep"></div>
+        <div class="pay-sheet__body">
+          <p class="filter-section__title" id="vitemSheetTitle" style="margin-bottom:12px;"></p>
+          <p style="font-family:Montserrat,sans-serif;font-size:13px;font-weight:400;color:rgba(255,248,234,.85);line-height:1.75;margin:0;" id="vitemSheetText"></p>
         </div>
       </div>
     </div>
@@ -134,9 +139,10 @@
   <script src="scripts/app.js"></script>
   <script>
     (function () {
-      var overlay  = document.getElementById('vitemOverlay');
-      var backdrop = document.getElementById('vitemBackdrop');
-      var closeBtn = document.getElementById('vitemClose');
+      var overlay    = document.getElementById('vitemOverlay');
+      var backdrop   = document.getElementById('vitemBackdrop');
+      var closeBack  = document.getElementById('vitemClose');
+      var closeBtn   = document.getElementById('vitemCloseBtn');
       var sheetTitle = document.getElementById('vitemSheetTitle');
       var sheetText  = document.getElementById('vitemSheetText');
 
@@ -144,25 +150,21 @@
         sheetTitle.textContent = title;
         sheetText.innerHTML    = text;
         overlay.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
       }
 
       function closeSheet() {
         overlay.classList.remove('is-open');
-        document.body.style.overflow = '';
       }
 
-      // Wire each "See More" button
       document.querySelectorAll('.vitem-card__see-more').forEach(function (btn) {
         btn.addEventListener('click', function () {
           openSheet(btn.dataset.title, btn.dataset.text);
         });
       });
 
+      closeBack.addEventListener('click', closeSheet);
       closeBtn.addEventListener('click', closeSheet);
       backdrop.addEventListener('click', closeSheet);
-
-      // Close on Escape
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeSheet();
       });
