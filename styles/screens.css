@@ -12415,6 +12415,14 @@ a.sub-header__right {
 .hol-screen .vph-search {
   margin: 0 0 16px;
 }
+.aging-screen .vph-search__input,
+.hol-screen .vph-search__input {
+  font-size: 12px;
+}
+.aging-screen .vph-search__input::placeholder,
+.hol-screen .vph-search__input::placeholder {
+  font-size: 12px;
+}
 .vph-search__input {
   flex: 1;
   background: none;
