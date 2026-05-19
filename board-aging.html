@@ -55,7 +55,7 @@
           <p class="aging-card__meta-line"><strong>Last Payment Date:</strong> 02/02/2025</p>
         </div>
 
-        <a class="aging-card__owner" href="ar-homeowner.html?back=board-aging.html">
+        <button class="aging-card__owner" type="button" data-owner="thomas">
           <img class="aging-card__owner-photo" src="assets/personas/thomas-bravo.png" alt="Thomas Bravo" />
           <div class="aging-card__owner-info">
             <span class="aging-card__owner-name">Thomas Bravo</span>
@@ -64,7 +64,7 @@
           <svg class="aging-card__owner-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
             <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </a>
+        </button>
 
         <div class="aging-card__charges">
 
@@ -163,7 +163,7 @@
           <p class="aging-card__meta-line"><strong>Last Payment Date:</strong> 03/10/2025</p>
         </div>
 
-        <a class="aging-card__owner" href="ar-homeowner.html?back=board-aging.html">
+        <button class="aging-card__owner" type="button" data-owner="dalton">
           <img class="aging-card__owner-photo" src="assets/personas/dalton-thomson.png" alt="Dalton Thomson" />
           <div class="aging-card__owner-info">
             <span class="aging-card__owner-name">Dalton Thomson</span>
@@ -172,7 +172,7 @@
           <svg class="aging-card__owner-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
             <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </a>
+        </button>
 
         <div class="aging-card__charges">
 
@@ -237,6 +237,64 @@
     </nav>
   </div><!-- /.app-frame -->
 
+  <!-- ─── Homeowner Detail Bottom Sheet (outside app-frame) ─── -->
+  <div class="ho-sheet-backdrop" id="hoBackdrop"></div>
+  <div class="ho-sheet" id="hoSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="hoSheetClose" type="button" aria-label="Close">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Home Owner</span>
+    </div>
+    <div class="ho-sheet__hero">
+      <div class="ho-sheet__hero-bg" style="background-image: url('assets/images/Community-aerial.jpg')"></div>
+      <div class="ho-sheet__hero-overlay"></div>
+      <img class="ho-sheet__avatar" id="hoAvatar" src="" alt="" />
+      <div class="ho-sheet__avatar-initials ho-sheet__avatar-initials--hidden" id="hoAvatarInitials"></div>
+      <h2 class="ho-sheet__name" id="hoName"></h2>
+    </div>
+    <div class="ho-sheet__body">
+      <div class="ho-sheet__card" id="hoContactCard">
+        <div class="ho-sheet__row">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-more-profile.svg" alt="" />
+          <div class="ho-sheet__row-text">
+            <p class="ho-sheet__row-primary ho-sheet__row-primary--lime" id="hoAddress"></p>
+            <p class="ho-sheet__row-sub" id="hoAcct"></p>
+          </div>
+        </div>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmail" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-email.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmailText"></p>
+        </a>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoPhone" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-sms.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoPhoneText"></p>
+        </a>
+      </div>
+      <h3 class="ho-sheet__section-title">Emergency contact</h3>
+      <div class="ho-sheet__card" id="hoEmergencyCard">
+        <div class="ho-sheet__row">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-more-profile.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyName"></p>
+        </div>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmergencyEmail" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-email.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyEmailText"></p>
+        </a>
+        <div class="ho-sheet__divider"></div>
+        <a class="ho-sheet__row" id="hoEmergencyPhone" href="#">
+          <img class="ho-sheet__row-icon" src="assets/icons/icon-sms.svg" alt="" />
+          <p class="ho-sheet__row-primary" id="hoEmergencyPhoneText"></p>
+        </a>
+      </div>
+    </div>
+  </div><!-- /#hoSheet -->
+
   <script src="scripts/auth.js"></script>
   <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
   <script src="scripts/app.js"></script>
@@ -262,6 +320,98 @@
         document.querySelectorAll('.aging-card').forEach(function (card) {
           var text = card.textContent.toLowerCase();
           card.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+
+      /* ── Homeowner bottom sheet ── */
+      var OWNERS = {
+        thomas: {
+          name: 'Thomas Bravo',
+          photo: 'assets/personas/thomas-bravo.png',
+          address: '12346 Washington Avenue',
+          acct: 'Acct: 1588 : 6523',
+          email: 'thomasb@testemail.com',
+          phone: '+1 555.345.567',
+          emergency: { name: 'Monica Bravo', email: 'monicab@testemail.com', phone: '+1 555.234.657' }
+        },
+        dalton: {
+          name: 'Dalton Thomson',
+          photo: 'assets/personas/dalton-thomson.png',
+          address: '8520 Palm Court Drive, Unit 4B',
+          acct: 'Acct: 2024-2341',
+          email: 'daltont@testemail.com',
+          phone: '+1 555.421.889',
+          emergency: { name: 'Laura Thomson', email: 'lauratho@testemail.com', phone: '+1 555.421.890' }
+        }
+      };
+
+      var sheet    = document.getElementById('hoSheet');
+      var backdrop = document.getElementById('hoBackdrop');
+      var closeBtn = document.getElementById('hoSheetClose');
+      var hoAvatar    = document.getElementById('hoAvatar');
+      var hoAvatarIni = document.getElementById('hoAvatarInitials');
+      var hoName      = document.getElementById('hoName');
+      var hoAddress   = document.getElementById('hoAddress');
+      var hoAcct      = document.getElementById('hoAcct');
+      var hoEmailEl   = document.getElementById('hoEmail');
+      var hoEmailTxt  = document.getElementById('hoEmailText');
+      var hoPhoneEl   = document.getElementById('hoPhone');
+      var hoPhoneTxt  = document.getElementById('hoPhoneText');
+      var hoEmgName   = document.getElementById('hoEmergencyName');
+      var hoEmgEmail  = document.getElementById('hoEmergencyEmail');
+      var hoEmgEmailT = document.getElementById('hoEmergencyEmailText');
+      var hoEmgPhone  = document.getElementById('hoEmergencyPhone');
+      var hoEmgPhoneT = document.getElementById('hoEmergencyPhoneText');
+
+      function openSheet(ownerKey) {
+        var d = OWNERS[ownerKey];
+        if (!d) return;
+        hoName.textContent      = d.name;
+        hoAddress.textContent   = d.address;
+        hoAcct.textContent      = d.acct;
+        hoEmailTxt.textContent  = d.email;
+        hoEmailEl.href          = 'mailto:' + d.email;
+        hoPhoneTxt.textContent  = d.phone;
+        hoPhoneEl.href          = 'tel:' + d.phone.replace(/[^+\d]/g, '');
+        hoEmgName.textContent   = d.emergency.name;
+        hoEmgEmailT.textContent = d.emergency.email;
+        hoEmgEmail.href         = 'mailto:' + d.emergency.email;
+        hoEmgPhoneT.textContent = d.emergency.phone;
+        hoEmgPhone.href         = 'tel:' + d.emergency.phone.replace(/[^+\d]/g, '');
+        if (d.photo) {
+          hoAvatar.src = d.photo;
+          hoAvatar.style.display = 'block';
+          hoAvatarIni.classList.add('ho-sheet__avatar-initials--hidden');
+        } else {
+          hoAvatar.style.display = 'none';
+          hoAvatarIni.textContent = d.initials || '';
+          hoAvatarIni.classList.remove('ho-sheet__avatar-initials--hidden');
+        }
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.style.display = 'flex';
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        setTimeout(function () {
+          sheet.style.display = 'none';
+          sheet.setAttribute('aria-hidden', 'true');
+        }, 370);
+      }
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      document.querySelectorAll('[data-owner]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.getAttribute('data-owner'));
         });
       });
     })();
