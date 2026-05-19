@@ -292,17 +292,18 @@
   <script src="scripts/app.js"></script>
   <script>
     (function () {
-      var backdrop = document.getElementById('inv-sheet-backdrop');
+      var backdrop   = document.getElementById('inv-sheet-backdrop');
+      var justOpened = false; // ghost-click guard
 
       function openSheet(id) {
+        justOpened = true;
+        setTimeout(function () { justOpened = false; }, 450);
+
         var sheet = document.getElementById(id);
         sheet.style.display = 'flex';
+        sheet.offsetHeight;                       // force reflow → commits translateY(100%)
         backdrop.classList.add('inv-sheet-backdrop--open');
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            sheet.classList.add('inv-sheet--open');
-          });
-        });
+        sheet.classList.add('inv-sheet--open');   // transition plays from 100% → 0
       }
 
       function closeSheet(id) {
@@ -315,6 +316,7 @@
       }
 
       function closeAll() {
+        if (justOpened) return;                   // ignore ghost clicks
         ['inv-confirm-sheet', 'inv-approved-sheet', 'inv-denied-sheet'].forEach(closeSheet);
         backdrop.classList.remove('inv-sheet-backdrop--open');
       }
