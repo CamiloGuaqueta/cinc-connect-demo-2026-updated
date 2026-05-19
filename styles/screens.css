@@ -11988,3 +11988,73 @@ a.sub-header__right {
   font-weight: 800;
   color: #b2de61;
 }
+
+/* ============================================
+   INVOICE APPROVAL
+   ============================================ */
+
+.inv-approval-screen {
+  background: #112719;
+  min-height: 100dvh;
+  padding-bottom: var(--bottom-nav-height);
+}
+
+.inv-card__amount-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 14px;
+}
+
+.inv-card__amount-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+.inv-card__amount-value {
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #b2de61;
+}
+
+.inv-card__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px 16px 16px;
+}
+
+.inv-deny-btn {
+  height: 45px;
+  background: #df434f;
+  border: none;
+  border-radius: 5px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #112719;
+  letter-spacing: .42px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.inv-deny-btn:active { opacity: .8; }
+
+.inv-approve-btn {
+  height: 45px;
+  background: linear-gradient(135deg, #b2de61, #019F38);
+  border: none;
+  border-radius: 5px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #112719;
+  letter-spacing: .42px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+.inv-approve-btn:active { opacity: .8; }

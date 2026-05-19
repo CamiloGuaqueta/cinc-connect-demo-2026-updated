@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Invoice Approval</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="inv-approval-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title bar -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title">Invoice Approval</h1>
+      </div>
+
+      <!-- Search -->
+      <div class="acc-search">
+        <input class="acc-search__input" type="search" placeholder="Search by Invoice #" />
+        <img class="acc-search__icon" src="assets/icons/icon-search.svg" alt="" />
+      </div>
+
+      <!-- Invoice Cards -->
+      <div class="ar-violations__cards">
+
+        <!-- Card 1 — 1800GOTJUNK? -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-vendor.svg" alt="" />
+            <span class="ar-vcard__type" style="color:#b2de61;font-size:16px;font-weight:500;">1800GOTJUNK?</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Pending</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Invoice #:</strong> GJI_009876</p>
+            <p class="ar-vcard__meta-line"><strong>Invoiced:</strong> 04/02/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Due:</strong> 05/17/2025</p>
+            <p class="ar-vcard__meta-line"><strong>GL Account:</strong> 10-1400-00</p>
+            <p class="ar-vcard__meta-line"><strong>Description:</strong> Petty Cash</p>
+          </div>
+          <div class="inv-card__amount-row">
+            <span class="inv-card__amount-label">Invoice Amount</span>
+            <span class="inv-card__amount-value">$100.00</span>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="board-invoice-vendor.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-vendor.svg" alt="" />
+            <div class="ar-vcard__row-label-group">
+              <span class="ar-vcard__row-label">1800GOTJUNK?</span>
+              <span class="ar-vcard__row-sub" style="color:#b2de61;font-size:10px;">Vendor Info</span>
+            </div>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="22" height="25" viewBox="0 0 22 25" fill="none">
+              <path d="M13 1H3a2 2 0 0 0-2 2v19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9l-8-8Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 1v8h8M6 14h10M6 18h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Invoice</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M7 22H4.5A2.5 2.5 0 0 1 2 19.5v-7A2.5 2.5 0 0 1 4.5 10H7m7-3V4a3 3 0 0 0-3-3L7 10v12h11.28a2 2 0 0 0 1.99-1.7l1.38-9a2 2 0 0 0-1.99-2.3H14Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Previous Approvers</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M3 10.5h19M3 10.5 12.5 3 22 10.5M3 10.5V22h19V10.5M7.5 14.5v4M12.5 14.5v4M17.5 14.5v4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Bank Balance</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="inv-card__actions">
+            <button class="inv-deny-btn" type="button">Deny</button>
+            <button class="inv-approve-btn" type="button">Approve</button>
+          </div>
+        </div>
+
+        <!-- Card 2 — AC&M Construction Services Inc. -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-vendor.svg" alt="" />
+            <span class="ar-vcard__type" style="color:#b2de61;font-size:16px;font-weight:500;">AC&amp;M Construction Services Inc.</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Pending</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__meta-line"><strong>Invoice #:</strong> 34567876789890</p>
+            <p class="ar-vcard__meta-line"><strong>Invoiced:</strong> 11/31/2024</p>
+            <p class="ar-vcard__meta-line"><strong>Due:</strong> 02/17/2025</p>
+            <p class="ar-vcard__meta-line"><strong>GL Account:</strong> 10-1400-00</p>
+            <p class="ar-vcard__meta-line"><strong>Description:</strong> Petty Cash</p>
+          </div>
+          <div class="inv-card__amount-row">
+            <span class="inv-card__amount-label">Invoice Amount</span>
+            <span class="inv-card__amount-value">$36,720.00</span>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="board-invoice-vendor.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-vendor.svg" alt="" />
+            <div class="ar-vcard__row-label-group">
+              <span class="ar-vcard__row-label">AC&amp;M Construction Services Inc.</span>
+              <span class="ar-vcard__row-sub" style="color:#b2de61;font-size:10px;">Vendor Info</span>
+            </div>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="22" height="25" viewBox="0 0 22 25" fill="none">
+              <path d="M13 1H3a2 2 0 0 0-2 2v19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9l-8-8Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 1v8h8M6 14h10M6 18h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Invoice</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M7 22H4.5A2.5 2.5 0 0 1 2 19.5v-7A2.5 2.5 0 0 1 4.5 10H7m7-3V4a3 3 0 0 0-3-3L7 10v12h11.28a2 2 0 0 0 1.99-1.7l1.38-9a2 2 0 0 0-1.99-2.3H14Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Previous Approvers</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="#">
+            <svg class="ar-vcard__row-icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M3 10.5h19M3 10.5 12.5 3 22 10.5M3 10.5V22h19V10.5M7.5 14.5v4M12.5 14.5v4M17.5 14.5v4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="ar-vcard__row-label">Bank Balance</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="inv-card__actions">
+            <button class="inv-deny-btn" type="button">Deny</button>
+            <button class="inv-approve-btn" type="button">Approve</button>
+          </div>
+        </div>
+
+      </div><!-- /.ar-violations__cards -->
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
