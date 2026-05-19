@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Bank Summary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="bank-summary-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <h1 class="bank-summary-title">Bank Summary</h1>
+
+      <!-- Account 1 — Operating -->
+      <div class="bank-card">
+        <div class="bank-card__header">
+          <p class="bank-card__name">Bank of America — Operating Account</p>
+          <p class="bank-card__acct"><strong>Acct:</strong> ****6523</p>
+          <p class="bank-card__type">Depository Account</p>
+        </div>
+        <div class="bank-card__body">
+          <div class="bank-card__row">
+            <span class="bank-card__label">Bank Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$257,628.31</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+          <div class="bank-card__row">
+            <span class="bank-card__label">Register Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$263,144.00</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account 2 — Reserve Fund -->
+      <div class="bank-card bank-card--mt">
+        <div class="bank-card__header">
+          <p class="bank-card__name">Bank of America — Reserve Fund</p>
+          <p class="bank-card__acct"><strong>Acct:</strong> ****8841</p>
+          <p class="bank-card__type">Reserve Account</p>
+        </div>
+        <div class="bank-card__body">
+          <div class="bank-card__row">
+            <span class="bank-card__label">Bank Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$1,245,360.00</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+          <div class="bank-card__row">
+            <span class="bank-card__label">Register Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$1,287,420.00</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account 3 — Maintenance Reserve -->
+      <div class="bank-card bank-card--mt">
+        <div class="bank-card__header">
+          <p class="bank-card__name">Bank of America — Maintenance Reserve</p>
+          <p class="bank-card__acct"><strong>Acct:</strong> ****2207</p>
+          <p class="bank-card__type">Reserve Account</p>
+        </div>
+        <div class="bank-card__body">
+          <div class="bank-card__row">
+            <span class="bank-card__label">Bank Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$185,245.00</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+          <div class="bank-card__row">
+            <span class="bank-card__label">Register Balance</span>
+            <span class="bank-card__dots"></span>
+            <span class="bank-card__value-stack">
+              <span class="bank-card__value">$213,963.00</span>
+              <span class="bank-card__date">As of: 05/19/2026</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

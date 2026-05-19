@@ -12374,6 +12374,14 @@ a.sub-header__right {
   background: #112719;
   padding-bottom: 90px;
 }
+/* ─── Bank Balance screen ─────────────────────────────────────────────── */
+.bank-balance-screen {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+}
 .bank-balance-title {
   font-size: 20px;
   font-weight: 700;
@@ -12381,6 +12389,23 @@ a.sub-header__right {
   margin: 0;
   padding: 18px 20px 16px;
 }
+
+/* ─── Bank Summary screen ─────────────────────────────────────────────── */
+.bank-summary-screen {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+}
+.bank-summary-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+  padding: 18px 20px 16px;
+}
+
 .bank-card {
   margin: 0 20px;
   background: #235237;
@@ -12442,6 +12467,20 @@ a.sub-header__right {
 }
 .bank-card__value--lg {
   font-size: 22px;
+}
+.bank-card--mt {
+  margin-top: 16px;
+}
+.bank-card__value-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.bank-card__date {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,248,234,.6);
 }
 
 /* ─── Invoice Action Sheets ──────────────────────────────────────────── */
