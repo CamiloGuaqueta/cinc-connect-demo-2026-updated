@@ -8578,6 +8578,14 @@ a.sub-header__right {
   background: #b2de61;
   color: #112719;
 }
+.ar-vcard__badge--approved {
+  background: #3A913F;
+  color: #ffffff;
+}
+.ar-vcard__badge--denied {
+  background: #df434f;
+  color: #112719;
+}
 
 .ar-vcard__person-photo {
   width: 50px;

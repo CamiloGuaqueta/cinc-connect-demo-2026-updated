@@ -292,8 +292,10 @@
   <script src="scripts/app.js"></script>
   <script>
     (function () {
-      var backdrop   = document.getElementById('inv-sheet-backdrop');
-      var justOpened = false; // ghost-click guard
+      var backdrop    = document.getElementById('inv-sheet-backdrop');
+      var justOpened  = false; // ghost-click guard
+      var activeCard  = null;  // card that triggered current action
+      var activeAction = null; // 'approve' | 'deny'
 
       function openSheet(id) {
         justOpened = true;
@@ -315,6 +317,21 @@
         });
       }
 
+      function applyCardState(action) {
+        if (!activeCard) return;
+        var badge   = activeCard.querySelector('.ar-vcard__badge');
+        var actions = activeCard.querySelector('.inv-card__actions');
+        if (action === 'approve') {
+          badge.textContent = 'Approved';
+          badge.className   = 'ar-vcard__badge ar-vcard__badge--approved';
+        } else {
+          badge.textContent = 'Denied';
+          badge.className   = 'ar-vcard__badge ar-vcard__badge--denied';
+        }
+        if (actions) actions.style.display = 'none';
+        activeCard = null;
+      }
+
       function closeAll() {
         ['inv-confirm-sheet', 'inv-approved-sheet', 'inv-denied-sheet'].forEach(closeSheet);
         backdrop.classList.remove('inv-sheet-backdrop--open');
@@ -323,16 +340,22 @@
       // Approve buttons
       document.querySelectorAll('.js-approve').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          document.getElementById('confirm-vendor').textContent     = btn.dataset.vendor;
+          activeCard   = btn.closest('.ar-vcard');
+          activeAction = 'approve';
+          document.getElementById('confirm-vendor').textContent      = btn.dataset.vendor;
           document.getElementById('confirm-invoice-num').textContent = 'Invoice #: ' + btn.dataset.invoice;
-          document.getElementById('confirm-amount').textContent     = btn.dataset.amount;
+          document.getElementById('confirm-amount').textContent      = btn.dataset.amount;
           openSheet('inv-confirm-sheet');
         });
       });
 
       // Deny buttons
       document.querySelectorAll('.js-deny').forEach(function (btn) {
-        btn.addEventListener('click', function () { openSheet('inv-denied-sheet'); });
+        btn.addEventListener('click', function () {
+          activeCard   = btn.closest('.ar-vcard');
+          activeAction = 'deny';
+          openSheet('inv-denied-sheet');
+        });
       });
 
       // YES inside confirm sheet
@@ -342,8 +365,16 @@
           setTimeout(function () { openSheet('inv-approved-sheet'); }, 250);
         });
 
-      // Close / Done / No buttons inside sheets
-      document.querySelectorAll('.inv-sheet__close, .inv-sheet__btn--no, .inv-sheet__btn--done')
+      // Done button in approved sheet
+      document.querySelector('#inv-approved-sheet .inv-sheet__btn--done')
+        .addEventListener('click', function () { applyCardState('approve'); closeAll(); });
+
+      // Done button in denied sheet
+      document.querySelector('#inv-denied-sheet .inv-sheet__btn--done')
+        .addEventListener('click', function () { applyCardState('deny'); closeAll(); });
+
+      // Close / No buttons (no state change)
+      document.querySelectorAll('.inv-sheet__close, .inv-sheet__btn--no')
         .forEach(function (el) { el.addEventListener('click', closeAll); });
 
       // Backdrop tap — guard only here against ghost clicks
