@@ -157,19 +157,20 @@
 
   </div><!-- /.app-frame -->
 
-  <!-- FAQ Detail Bottom Sheet — outside app-frame to avoid overflow clipping -->
-  <div class="faq-sheet" id="faqSheet" aria-hidden="true" style="display:none">
-    <div class="faq-sheet__scrim" id="faqScrim"></div>
-    <div class="faq-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="faqSheetTitle">
-      <div class="faq-sheet__header">
-        <span class="faq-sheet__label">FAQ</span>
-        <button class="faq-sheet__close" id="faqClose" type="button">Close</button>
-      </div>
-      <div class="faq-sheet__divider"></div>
-      <div class="faq-sheet__body">
-        <h2 class="faq-sheet__question" id="faqSheetTitle"></h2>
-        <p class="faq-sheet__answer"></p>
-      </div>
+  <!-- FAQ Detail — ho-sheet pattern (outside .app-frame) -->
+  <div class="ho-sheet-backdrop" id="faqBackdrop"></div>
+  <div class="ho-sheet" id="faqSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="faqClose" type="button" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">FAQ</span>
+    </div>
+    <div class="ho-sheet__body">
+      <h2 class="ho-sheet__detail-title" id="faqSheetTitle"></h2>
+      <p class="ho-sheet__detail-text" id="faqSheetAnswer"></p>
     </div>
   </div>
 
@@ -180,34 +181,32 @@
       if (!window.CincAuth.requireAuth()) return;
 
       var sheet    = document.getElementById('faqSheet');
-      var scrim    = document.getElementById('faqScrim');
+      var backdrop = document.getElementById('faqBackdrop');
       var closeBtn = document.getElementById('faqClose');
-      var sheetQ   = sheet.querySelector('.faq-sheet__question');
-      var sheetA   = sheet.querySelector('.faq-sheet__answer');
+      var sheetQ   = document.getElementById('faqSheetTitle');
+      var sheetA   = document.getElementById('faqSheetAnswer');
 
       function openSheet(q, a) {
         sheetQ.textContent = q;
         sheetA.textContent = a;
-        sheet.querySelector('.faq-sheet__body').scrollTop = 0;
-        // Must show element first, let browser paint one frame at initial
-        // transform state, then add class — otherwise transition won't fire
-        sheet.style.display = 'block';
+        sheet.querySelector('.ho-sheet__body').scrollTop = 0;
+        sheet.style.display = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
-            sheet.classList.add('faq-sheet--open');
-            sheet.removeAttribute('aria-hidden');
+            sheet.classList.add('ho-sheet--open');
           });
         });
       }
 
       function closeSheet() {
-        sheet.classList.remove('faq-sheet--open');
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
         sheet.setAttribute('aria-hidden', 'true');
         setTimeout(function () {
-          if (!sheet.classList.contains('faq-sheet--open')) {
-            sheet.style.display = 'none';
-          }
-        }, 380);
+          sheet.style.display = 'none';
+        }, 370);
       }
 
       document.querySelectorAll('.faqs__question').forEach(function (btn) {
@@ -220,14 +219,14 @@
       });
 
       closeBtn.addEventListener('click', closeSheet);
-      scrim.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
 
       // Swipe down to close
       var startY = 0;
-      sheet.querySelector('.faq-sheet__panel').addEventListener('touchstart', function (e) {
+      sheet.addEventListener('touchstart', function (e) {
         startY = e.touches[0].clientY;
       }, { passive: true });
-      sheet.querySelector('.faq-sheet__panel').addEventListener('touchend', function (e) {
+      sheet.addEventListener('touchend', function (e) {
         if (e.changedTouches[0].clientY - startY > 60) closeSheet();
       }, { passive: true });
     })();

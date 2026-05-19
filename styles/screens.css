@@ -7799,6 +7799,24 @@ a.sub-header__right {
   overflow-y: auto;
 }
 
+/* Detail content inside any ho-sheet — for free-text descriptions */
+.ho-sheet__detail-title {
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-brand-lime);
+  margin: 0 0 12px;
+}
+
+.ho-sheet__detail-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.75;
+  margin: 0;
+}
+
 .ho-sheet__section-title {
   color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
@@ -11676,16 +11694,3 @@ a.sub-header__right {
   padding: 0;
 }
 
-/* ── Violation Item Detail Sheet (overlay) ─ */
-
-.vitem-sheet-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 200;
-  display: none;
-  align-items: flex-end;
-}
-
-.vitem-sheet-overlay.is-open {
-  display: flex;
-}
