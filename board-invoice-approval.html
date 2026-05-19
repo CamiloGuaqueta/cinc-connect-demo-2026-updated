@@ -310,6 +310,10 @@
 
       function closeSheet(id) {
         var sheet = document.getElementById(id);
+        if (!sheet.classList.contains('inv-sheet--open')) {
+          sheet.style.display = 'none'; // already closed, just ensure hidden
+          return;
+        }
         sheet.classList.remove('inv-sheet--open');
         sheet.addEventListener('transitionend', function handler() {
           sheet.style.display = 'none';
