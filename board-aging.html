@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Board Aging</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css" />
+</head>
+<body>
+  <div class="app-frame">
+
+    <!-- App Header — outside scroll area -->
+    <header class="app-header">
+      <a class="app-header__back" href="todos.html" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="app-header__notification" href="notifications.html">
+        <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+        <span class="app-header__badge">3</span>
+      </a>
+    </header>
+
+    <main class="aging-screen">
+
+      <h1 class="aging-title">Board Aging</h1>
+
+      <!-- Search -->
+      <div class="vph-search" style="margin-bottom:16px;">
+        <input class="vph-search__input" type="text" placeholder="Search Account #, HO Name, Unit/Address" />
+        <svg class="vph-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="6.25" stroke="#fff8ea" stroke-width="1.5"/>
+          <path d="M13.5 13.5L18 18" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- ─── Card 1 — Thomas Bravo ─── -->
+      <div class="aging-card">
+        <div class="aging-card__header">
+          <p class="aging-card__address">12346 Washington Avenue</p>
+          <p class="aging-card__meta-line"><strong>Acct:</strong> 2024-1588</p>
+          <p class="aging-card__meta-line"><strong>Status:</strong> <span class="aging-card__status">Owner Occupied</span></p>
+          <p class="aging-card__meta-line"><strong>Last Payment:</strong> $240.00</p>
+          <p class="aging-card__meta-line"><strong>Last Payment Date:</strong> 02/02/2025</p>
+        </div>
+
+        <div class="aging-card__owner">
+          <img class="aging-card__owner-photo" src="assets/personas/thomas-bravo.png" alt="Thomas Bravo" />
+          <div class="aging-card__owner-info">
+            <span class="aging-card__owner-name">Thomas Bravo</span>
+            <span class="aging-card__owner-role">Owner</span>
+          </div>
+          <svg class="aging-card__owner-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="aging-card__charges">
+
+          <!-- Charge row 1 — collapsed -->
+          <div class="aging-row">
+            <button class="aging-row__toggle js-aging-toggle" type="button">
+              <span class="aging-row__label">Regular Assessment 2023</span>
+              <span class="aging-row__amount">$1,916.00</span>
+              <svg class="aging-row__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 1l5 5 5-5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="aging-row__breakdown" hidden>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Current</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 30 days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 60 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 90 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$1,916.00</span>
+              </div>
+              <div class="aging-breakdown__line aging-breakdown__line--total">
+                <span class="aging-breakdown__label">Total</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value aging-breakdown__value--lg">$1,916.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charge row 2 -->
+          <div class="aging-row">
+            <button class="aging-row__toggle js-aging-toggle" type="button">
+              <span class="aging-row__label">Regular Assessment 2025</span>
+              <span class="aging-row__amount">$1,680.00</span>
+              <svg class="aging-row__chevron" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 1l5 5 5-5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="aging-row__breakdown" hidden>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Current</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$1,680.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 30 days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 60 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 90 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line aging-breakdown__line--total">
+                <span class="aging-breakdown__label">Total</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value aging-breakdown__value--lg">$1,680.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total row -->
+          <div class="aging-row aging-row--total">
+            <span class="aging-row__label">Total</span>
+            <span class="aging-row__amount aging-row__amount--lg">$3,596.00</span>
+          </div>
+
+        </div><!-- /.aging-card__charges -->
+      </div><!-- /.aging-card -->
+
+      <!-- ─── Card 2 — Dalton Thomson ─── -->
+      <div class="aging-card">
+        <div class="aging-card__header">
+          <p class="aging-card__address">8520 Palm Court Drive, Unit 4B</p>
+          <p class="aging-card__meta-line"><strong>Acct:</strong> 2024-2341</p>
+          <p class="aging-card__meta-line"><strong>Status:</strong> <span class="aging-card__status">Owner Occupied</span></p>
+          <p class="aging-card__meta-line"><strong>Last Payment:</strong> $480.00</p>
+          <p class="aging-card__meta-line"><strong>Last Payment Date:</strong> 03/10/2025</p>
+        </div>
+
+        <div class="aging-card__owner">
+          <img class="aging-card__owner-photo" src="assets/personas/dalton-thomson.png" alt="Dalton Thomson" />
+          <div class="aging-card__owner-info">
+            <span class="aging-card__owner-name">Dalton Thomson</span>
+            <span class="aging-card__owner-role">Owner</span>
+          </div>
+          <svg class="aging-card__owner-chevron" width="8" height="14" viewBox="0 0 8 14" fill="none">
+            <path d="M1 1l6 6-6 6" stroke="#fff8ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="aging-card__charges">
+
+          <!-- Charge row — pre-expanded to demo the accordion -->
+          <div class="aging-row aging-row--open">
+            <button class="aging-row__toggle js-aging-toggle" type="button">
+              <span class="aging-row__label">Regular Assessment 2024</span>
+              <span class="aging-row__amount">$960.00</span>
+              <svg class="aging-row__chevron aging-row__chevron--up" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 1l5 5 5-5" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="aging-row__breakdown">
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Current</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 30 days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 60 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$960.00</span>
+              </div>
+              <div class="aging-breakdown__line">
+                <span class="aging-breakdown__label">Over 90 Days</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value">$0.00</span>
+              </div>
+              <div class="aging-breakdown__line aging-breakdown__line--total">
+                <span class="aging-breakdown__label">Total</span>
+                <span class="aging-breakdown__dots"></span>
+                <span class="aging-breakdown__value aging-breakdown__value--lg">$960.00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total row -->
+          <div class="aging-row aging-row--total">
+            <span class="aging-row__label">Total</span>
+            <span class="aging-row__amount aging-row__amount--lg">$960.00</span>
+          </div>
+
+        </div><!-- /.aging-card__charges -->
+      </div><!-- /.aging-card -->
+
+    </main>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span><span class="bottom-nav__label">Feed</span></a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span><span class="bottom-nav__label">My To-Dos</span></a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span><span class="bottom-nav__label">Concierge</span></a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span><span class="bottom-nav__label">PinBoard</span></a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span><span class="bottom-nav__label">Financial</span></a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span><span class="bottom-nav__label">Chat</span></a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More"><span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span><span class="bottom-nav__label">Menu</span></a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      /* ── Accordion toggles ── */
+      document.querySelectorAll('.js-aging-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var row       = btn.closest('.aging-row');
+          var breakdown = row.querySelector('.aging-row__breakdown');
+          var chevron   = btn.querySelector('.aging-row__chevron');
+          var isOpen    = !breakdown.hidden;
+
+          breakdown.hidden = isOpen;
+          chevron.classList.toggle('aging-row__chevron--up', !isOpen);
+          row.classList.toggle('aging-row--open', !isOpen);
+        });
+      });
+
+      /* ── Live search ── */
+      document.querySelector('.vph-search__input').addEventListener('input', function () {
+        var q = this.value.toLowerCase();
+        document.querySelectorAll('.aging-card').forEach(function (card) {
+          var text = card.textContent.toLowerCase();
+          card.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
