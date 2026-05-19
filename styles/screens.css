@@ -12045,7 +12045,7 @@ a.sub-header__right {
 
 .inv-approve-btn {
   height: 45px;
-  background: linear-gradient(135deg, #b2de61, #019F38);
+  background: #3A913F;
   border: none;
   border-radius: 5px;
   font-family: Montserrat, sans-serif;
@@ -12058,3 +12058,301 @@ a.sub-header__right {
   transition: opacity .15s;
 }
 .inv-approve-btn:active { opacity: .8; }
+
+/* ─── Invoice Document Screen ─────────────────────────────────────────── */
+.inv-doc-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  background: #112719;
+  padding-bottom: 90px;
+}
+.inv-doc-wrapper {
+  margin: 16px 20px 0;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.inv-doc-header {
+  background: #235237;
+  padding: 18px 20px 14px;
+}
+.inv-doc-vendor-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+.inv-doc-vendor-address {
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+  margin: 0;
+  line-height: 1.5;
+}
+.inv-doc-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.inv-doc-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #112719;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.inv-doc-status {
+  font-size: 10px;
+  font-weight: 700;
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 20px;
+  padding: 3px 10px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.inv-doc-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.inv-doc-meta-item {}
+.inv-doc-meta-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  margin-bottom: 2px;
+}
+.inv-doc-meta-value {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #112719;
+}
+.inv-doc-bill-to {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.inv-doc-bill-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin: 0 0 4px;
+}
+.inv-doc-bill-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #112719;
+  margin: 0 0 2px;
+}
+.inv-doc-bill-address {
+  font-size: 11px;
+  font-weight: 400;
+  color: #555;
+  margin: 0;
+  line-height: 1.4;
+}
+.inv-doc-items {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.inv-doc-items-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 8px;
+}
+.inv-doc-items-header span {
+  font-size: 9px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.inv-doc-items-header span:last-child { text-align: right; }
+.inv-doc-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.inv-doc-line:last-child { border-bottom: none; }
+.inv-doc-line-desc {
+  font-size: 11px;
+  font-weight: 600;
+  color: #112719;
+}
+.inv-doc-line-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: #888;
+  display: block;
+  margin-top: 2px;
+}
+.inv-doc-line-amount {
+  font-size: 11px;
+  font-weight: 700;
+  color: #112719;
+  text-align: right;
+  white-space: nowrap;
+}
+.inv-doc-totals {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.inv-doc-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+}
+.inv-doc-total-row__label {
+  font-size: 11px;
+  font-weight: 400;
+  color: #555;
+}
+.inv-doc-total-row__value {
+  font-size: 11px;
+  font-weight: 600;
+  color: #112719;
+}
+.inv-doc-total-row--grand .inv-doc-total-row__label {
+  font-size: 13px;
+  font-weight: 800;
+  color: #112719;
+}
+.inv-doc-total-row--grand .inv-doc-total-row__value {
+  font-size: 14px;
+  font-weight: 800;
+  color: #3A913F;
+}
+.inv-doc-footer {
+  padding: 12px 20px 16px;
+}
+.inv-doc-footer-line {
+  font-size: 10px;
+  font-weight: 400;
+  color: #888;
+  margin: 0 0 3px;
+}
+
+/* ─── Previous Approvers Screen ──────────────────────────────────────── */
+.approvers-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  background: #112719;
+  padding-bottom: 90px;
+}
+.approvers-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b2de61;
+  margin: 0;
+  padding: 18px 20px 0;
+}
+.approvers-timeline {
+  padding: 20px 20px 0 32px;
+  position: relative;
+}
+.approvers-entry {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 30px;
+}
+/* dot on the left */
+.approvers-entry__dot {
+  position: absolute;
+  left: -10px;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b2de61;
+}
+/* vertical connector line */
+.approvers-entry:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 32px;
+  width: 2px;
+  height: calc(100% + 8px);
+  background: rgba(178,222,97,.3);
+}
+.approvers-entry__time {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  margin: 0 0 8px;
+}
+.approvers-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 10px;
+  min-height: 70px;
+}
+.approvers-card--approved { background: #3A913F; }
+.approvers-card--denied   { background: #df434f; }
+.approvers-card__avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(0,0,0,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  overflow: hidden;
+}
+.approvers-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.approvers-card__info {
+  flex: 1;
+  min-width: 0;
+}
+.approvers-card__name {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #112719;
+  text-transform: capitalize;
+}
+.approvers-card__role {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin-top: 2px;
+}
+.approvers-card__verdict {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
