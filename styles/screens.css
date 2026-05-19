@@ -12408,8 +12408,11 @@ a.sub-header__right {
   gap: 10px;
   margin: 0 20px 16px;
   background: #235237;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 12px 14px;
+}
+.aging-screen .vph-search {
+  margin: 0 0 16px;
 }
 .vph-search__input {
   flex: 1;
@@ -12913,8 +12916,6 @@ a.sub-header__right {
   font-size: 11px;
   font-weight: 500;
   color: rgba(255,248,234,.5);
-  text-transform: uppercase;
-  letter-spacing: .5px;
 }
 
 .aging-card__owner-chevron {
