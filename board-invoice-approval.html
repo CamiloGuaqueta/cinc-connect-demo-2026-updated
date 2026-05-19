@@ -105,8 +105,11 @@
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="inv-card__actions">
-            <button class="inv-deny-btn" type="button" onclick="denyInvoice()">Deny</button>
-            <button class="inv-approve-btn" type="button" onclick="approveInvoice('1-800-GOT-JUNK?','GJI_009876','$100.00')">Approve</button>
+            <button class="inv-deny-btn js-deny" type="button">Deny</button>
+            <button class="inv-approve-btn js-approve" type="button"
+              data-vendor="1-800-GOT-JUNK?"
+              data-invoice="GJI_009876"
+              data-amount="$100.00">Approve</button>
           </div>
         </div>
 
@@ -168,8 +171,11 @@
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="inv-card__actions">
-            <button class="inv-deny-btn" type="button" onclick="denyInvoice()">Deny</button>
-            <button class="inv-approve-btn" type="button" onclick="approveInvoice('AC&amp;M Construction Services Inc.','ACM-34567','$36,720.00')">Approve</button>
+            <button class="inv-deny-btn js-deny" type="button">Deny</button>
+            <button class="inv-approve-btn js-approve" type="button"
+              data-vendor="AC&amp;M Construction Services Inc."
+              data-invoice="ACM-34567"
+              data-amount="$36,720.00">Approve</button>
           </div>
         </div>
 
@@ -189,13 +195,13 @@
   </div><!-- /.app-frame -->
 
   <!-- ── Backdrop ─────────────────────────────────────────────────────── -->
-  <div class="inv-sheet-backdrop" id="inv-sheet-backdrop" onclick="closeAllSheets()"></div>
+  <div class="inv-sheet-backdrop" id="inv-sheet-backdrop"></div>
 
   <!-- ── Confirmation Sheet ────────────────────────────────────────────── -->
   <div class="inv-sheet" id="inv-confirm-sheet" role="dialog" aria-modal="true">
     <div class="inv-sheet__header">
       <span class="inv-sheet__title">Confirm Invoice Approval</span>
-      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+      <button class="inv-sheet__close">Close</button>
     </div>
     <div class="inv-sheet__body">
       <p class="inv-sheet__question">Are you sure you want to approve this invoice?</p>
@@ -234,8 +240,8 @@
       </div>
     </div>
     <div class="inv-sheet__footer">
-      <button class="inv-sheet__btn inv-sheet__btn--yes" onclick="confirmApprove()">Yes</button>
-      <button class="inv-sheet__btn inv-sheet__btn--no" onclick="closeAllSheets()">No</button>
+      <button class="inv-sheet__btn inv-sheet__btn--yes">Yes</button>
+      <button class="inv-sheet__btn inv-sheet__btn--no">No</button>
     </div>
   </div>
 
@@ -243,7 +249,7 @@
   <div class="inv-sheet" id="inv-approved-sheet" role="dialog" aria-modal="true">
     <div class="inv-sheet__header">
       <span class="inv-sheet__title">Invoice Approved</span>
-      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+      <button class="inv-sheet__close">Close</button>
     </div>
     <div class="inv-sheet__result">
       <div class="inv-sheet__result-icon inv-sheet__result-icon--approved">
@@ -256,7 +262,7 @@
       <p class="inv-sheet__result-body">The invoice has been approved and logged. Your decision has been recorded and the process keeps moving forward — just the way it should.</p>
     </div>
     <div class="inv-sheet__footer">
-      <button class="inv-sheet__btn inv-sheet__btn--done" onclick="closeAllSheets()">Done</button>
+      <button class="inv-sheet__btn inv-sheet__btn--done">Done</button>
     </div>
   </div>
 
@@ -264,7 +270,7 @@
   <div class="inv-sheet" id="inv-denied-sheet" role="dialog" aria-modal="true">
     <div class="inv-sheet__header">
       <span class="inv-sheet__title">Invoice Denied</span>
-      <button class="inv-sheet__close" onclick="closeAllSheets()">Close</button>
+      <button class="inv-sheet__close">Close</button>
     </div>
     <div class="inv-sheet__result">
       <div class="inv-sheet__result-icon inv-sheet__result-icon--denied">
@@ -277,7 +283,7 @@
       <p class="inv-sheet__result-body">You've denied this invoice. The status has been updated and the team has been notified.</p>
     </div>
     <div class="inv-sheet__footer">
-      <button class="inv-sheet__btn inv-sheet__btn--done" onclick="closeAllSheets()">Done</button>
+      <button class="inv-sheet__btn inv-sheet__btn--done">Done</button>
     </div>
   </div>
 
@@ -303,31 +309,44 @@
         var sheet = document.getElementById(id);
         sheet.classList.remove('inv-sheet--open');
         sheet.addEventListener('transitionend', function handler() {
-          sheet.style.display = '';
+          sheet.style.display = 'none';
           sheet.removeEventListener('transitionend', handler);
         });
       }
 
-      window.closeAllSheets = function () {
+      function closeAll() {
         ['inv-confirm-sheet', 'inv-approved-sheet', 'inv-denied-sheet'].forEach(closeSheet);
         backdrop.classList.remove('inv-sheet-backdrop--open');
-      };
+      }
 
-      window.approveInvoice = function (vendor, invoiceNum, amount) {
-        document.getElementById('confirm-vendor').textContent = vendor;
-        document.getElementById('confirm-invoice-num').textContent = 'Invoice #: ' + invoiceNum;
-        document.getElementById('confirm-amount').textContent = amount;
-        openSheet('inv-confirm-sheet');
-      };
+      // Approve buttons
+      document.querySelectorAll('.js-approve').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.getElementById('confirm-vendor').textContent     = btn.dataset.vendor;
+          document.getElementById('confirm-invoice-num').textContent = 'Invoice #: ' + btn.dataset.invoice;
+          document.getElementById('confirm-amount').textContent     = btn.dataset.amount;
+          openSheet('inv-confirm-sheet');
+        });
+      });
 
-      window.confirmApprove = function () {
-        closeSheet('inv-confirm-sheet');
-        setTimeout(function () { openSheet('inv-approved-sheet'); }, 200);
-      };
+      // Deny buttons
+      document.querySelectorAll('.js-deny').forEach(function (btn) {
+        btn.addEventListener('click', function () { openSheet('inv-denied-sheet'); });
+      });
 
-      window.denyInvoice = function () {
-        openSheet('inv-denied-sheet');
-      };
+      // YES inside confirm sheet
+      document.getElementById('inv-confirm-sheet').querySelector('.inv-sheet__btn--yes')
+        .addEventListener('click', function () {
+          closeSheet('inv-confirm-sheet');
+          setTimeout(function () { openSheet('inv-approved-sheet'); }, 250);
+        });
+
+      // Close / Done / No buttons inside sheets
+      document.querySelectorAll('.inv-sheet__close, .inv-sheet__btn--no, .inv-sheet__btn--done')
+        .forEach(function (el) { el.addEventListener('click', closeAll); });
+
+      // Backdrop tap
+      backdrop.addEventListener('click', closeAll);
     })();
   </script>
 </body>
