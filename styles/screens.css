@@ -10797,6 +10797,249 @@ a.sub-header__right {
 }
 
 /* ============================================
+   NEW ACC REQUEST FORM — Extra field types
+   ============================================ */
+
+/* Actual <input> text element (5px radius matching Figma) */
+.nm-input-field {
+  background: #112719;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  padding: 0 14px;
+  margin-bottom: 20px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  caret-color: #b2de61;
+  display: block;
+}
+.nm-input-field::placeholder {
+  color: rgba(209,209,209,.5);
+  opacity: 1;
+}
+
+/* Static date display field */
+.nm-date-display {
+  background: #112719;
+  border-radius: 5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.nm-date-display__placeholder {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(209,209,209,.5);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+/* Clickable ACC Type selector button */
+.nm-acc-type-btn {
+  background: #112719;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  gap: 8px;
+  box-sizing: border-box;
+}
+.nm-acc-type-btn__text {
+  flex: 1;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(209,209,209,.5);
+  text-align: left;
+}
+.nm-acc-type-btn__text--selected {
+  color: #fff8ea;
+  opacity: 1;
+}
+
+/* Currency field */
+.nm-currency-wrap {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 20px;
+  height: 50px;
+}
+.nm-currency-symbol {
+  background: #f1f1f1;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #235237;
+  flex-shrink: 0;
+  border-radius: 5px 0 0 5px;
+}
+.nm-currency-input {
+  background: #112719;
+  flex: 1;
+  height: 50px;
+  padding: 0 14px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(209,209,209,.5);
+  border: none;
+  outline: none;
+  border-radius: 0 5px 5px 0;
+  caret-color: #b2de61;
+}
+.nm-currency-input::placeholder {
+  color: rgba(209,209,209,.5);
+}
+.nm-currency-input:focus { color: #fff8ea; }
+
+/* Toggle rows */
+.nm-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+.nm-toggle-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.nm-toggle {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+.nm-toggle__input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.nm-toggle__track {
+  position: absolute;
+  inset: 0;
+  background: #112719;
+  border-radius: 17px;
+  transition: background .25s;
+}
+.nm-toggle__input:checked + .nm-toggle__track {
+  background: #b2de61;
+}
+.nm-toggle__thumb {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #fff8ea;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  transition: left .25s;
+  pointer-events: none;
+}
+.nm-toggle__input:checked ~ .nm-toggle__thumb {
+  left: 30px;
+}
+.nm-toggle-row__text {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ACC TYPE PICKER — ho-sheet list */
+.acc-type-heading {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff8ea;
+  margin: 0 0 14px;
+}
+.acc-type-list {
+  background: #235237;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.acc-type-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+.acc-type-row:active { background: rgba(255,255,255,.04); }
+.acc-type-divider {
+  height: 1px;
+  background: rgba(255,248,234,.12);
+  margin: 0 14px;
+}
+.acc-type-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #b2de61;
+  flex-shrink: 0;
+  background: transparent;
+  transition: background .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.acc-type-row--selected .acc-type-radio {
+  background: #b2de61;
+}
+.acc-type-radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #112719;
+  display: none;
+}
+.acc-type-row--selected .acc-type-radio-dot {
+  display: block;
+}
+.acc-type-label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+.acc-type-other {
+  background: #112719;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ============================================
    POST CONFIRMATION SHEET
    ============================================ */
 

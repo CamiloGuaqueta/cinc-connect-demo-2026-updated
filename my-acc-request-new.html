@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — New ACC Request</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="my-acc-request.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">New ACC Request</span>
+          <span class="pay-sheet__back" aria-hidden="true"></span>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Your email -->
+          <label class="nm-field-label">Your email</label>
+          <input class="nm-input-field" type="email" value="jdoe@email.com" />
+
+          <!-- Your Phone Number -->
+          <label class="nm-field-label">Your Phone Number</label>
+          <input class="nm-input-field" type="tel" value="+1 555.555.5555" />
+
+          <!-- ACC Type -->
+          <label class="nm-field-label">ACC Type*</label>
+          <button class="nm-acc-type-btn" id="accTypeBtn" type="button" aria-haspopup="true">
+            <span class="nm-acc-type-btn__text" id="accTypeBtnText">Select Acc Type</span>
+            <svg width="12" height="7" viewBox="0 0 12 7" fill="none">
+              <path d="M1 1l5 5 5-5" stroke="rgba(209,209,209,.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <!-- Other ACC Type Description (hidden until "Other" selected) -->
+          <div id="otherSection" style="display:none;">
+            <label class="nm-field-label">Other ACC Type Description</label>
+            <textarea class="nm-textarea" placeholder="Enter details here"></textarea>
+          </div>
+
+          <!-- Project Name -->
+          <label class="nm-field-label">Project Name*</label>
+          <input class="nm-input-field" type="text" placeholder="Shortly describes your project" />
+
+          <!-- Project Description -->
+          <label class="nm-field-label">Project Description</label>
+          <textarea class="nm-textarea" placeholder="Enter a detailed description of your project, the more details the better"></textarea>
+
+          <!-- Planned Construction Start Date -->
+          <label class="nm-field-label">Planned Construction Start Date*</label>
+          <div class="nm-date-display">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none">
+              <rect x="1" y="2.5" width="14" height="13" rx="2" stroke="#b2de61" stroke-width="1.4"/>
+              <path d="M1 6.5h14" stroke="#b2de61" stroke-width="1.4"/>
+              <path d="M5 1.5v2M11 1.5v2" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span class="nm-date-display__placeholder">DD/MM/YYYY</span>
+          </div>
+
+          <!-- Planned Project Completion Date -->
+          <label class="nm-field-label">Planned Project Completion Date*</label>
+          <div class="nm-date-display">
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none">
+              <rect x="1" y="2.5" width="14" height="13" rx="2" stroke="#b2de61" stroke-width="1.4"/>
+              <path d="M1 6.5h14" stroke="#b2de61" stroke-width="1.4"/>
+              <path d="M5 1.5v2M11 1.5v2" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <span class="nm-date-display__placeholder">DD/MM/YYYY</span>
+          </div>
+
+          <!-- Project Dimensions -->
+          <label class="nm-field-label">Project Dimensions</label>
+          <input class="nm-input-field" type="text" placeholder="Eg. 500 Sqf" />
+
+          <!-- Materials List -->
+          <label class="nm-field-label">Materials List</label>
+          <textarea class="nm-textarea" placeholder="Enter the list of materials you are going to use in your project"></textarea>
+
+          <!-- Estimated Project Cost -->
+          <label class="nm-field-label">Estimated Project Cost*</label>
+          <div class="nm-currency-wrap">
+            <span class="nm-currency-symbol">$</span>
+            <input class="nm-currency-input" type="number" placeholder=".00" />
+          </div>
+
+          <!-- Add Attachment -->
+          <a class="nm-attachment" href="#">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M10 1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-7-6Z" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 1v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="nm-attachment__label">Add Attachment</span>
+          </a>
+
+          <!-- Contractors Information -->
+          <label class="nm-field-label">Contractors Information</label>
+          <textarea class="nm-textarea" placeholder="Please provide the general contractor's information, including name, company, phone number, and email. This helps the review team verify project details if needed."></textarea>
+
+          <!-- Confirmations / Toggles -->
+          <div class="nm-toggles">
+            <div class="nm-toggle-row">
+              <label class="nm-toggle">
+                <input class="nm-toggle__input" type="checkbox" />
+                <span class="nm-toggle__track"></span>
+                <span class="nm-toggle__thumb"></span>
+              </label>
+              <p class="nm-toggle-row__text">I confirm I've contacted the following entities before submitting; Zoning, Planning, Permitting, Utilities.*</p>
+            </div>
+            <div class="nm-toggle-row">
+              <label class="nm-toggle">
+                <input class="nm-toggle__input" type="checkbox" />
+                <span class="nm-toggle__track"></span>
+                <span class="nm-toggle__thumb"></span>
+              </label>
+              <p class="nm-toggle-row__text">I understand that Construction can not start until approval is provided.*</p>
+            </div>
+            <div class="nm-toggle-row">
+              <label class="nm-toggle">
+                <input class="nm-toggle__input" type="checkbox" />
+                <span class="nm-toggle__track"></span>
+                <span class="nm-toggle__thumb"></span>
+              </label>
+              <p class="nm-toggle-row__text">I unapproved modifications may result in penalties or fines.*</p>
+            </div>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="my-acc-request-submitted.html">SUBMIT</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <!-- ACC Type Picker — ho-sheet (outside app-frame) -->
+  <div class="ho-sheet-backdrop" id="accTypeBackdrop"></div>
+  <div class="ho-sheet" id="accTypeSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <span style="width:40px;"></span>
+      <span class="ho-sheet__title">ACC Type</span>
+      <button class="ho-sheet__action" id="accTypeClose" type="button">Close</button>
+    </div>
+    <div class="ho-sheet__body">
+
+      <h2 class="acc-type-heading">Select ACC Type</h2>
+
+      <!-- Main list -->
+      <div class="acc-type-list">
+        <button class="acc-type-row" type="button" data-type="Deck Installation">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Deck Installation</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Fence Installation">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Fence Installation</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Landscaping">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Landscaping</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Mail Box">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Mail Box</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="New Construction or Addition">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">New Construction or Addition</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Painting">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Painting</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Parking">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Parking</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Roof">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Roof</span>
+        </button>
+        <div class="acc-type-divider"></div>
+        <button class="acc-type-row" type="button" data-type="Swimming Pool">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Swimming Pool</span>
+        </button>
+      </div>
+
+      <!-- Other — separate card -->
+      <div class="acc-type-other">
+        <button class="acc-type-row" type="button" data-type="Other">
+          <span class="acc-type-radio"><span class="acc-type-radio-dot"></span></span>
+          <span class="acc-type-label">Other</span>
+        </button>
+      </div>
+
+    </div><!-- /.ho-sheet__body -->
+  </div><!-- /#accTypeSheet -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var accTypeSheet    = document.getElementById('accTypeSheet');
+      var accTypeBackdrop = document.getElementById('accTypeBackdrop');
+      var accTypeClose    = document.getElementById('accTypeClose');
+      var accTypeBtn      = document.getElementById('accTypeBtn');
+      var accTypeBtnText  = document.getElementById('accTypeBtnText');
+      var otherSection    = document.getElementById('otherSection');
+
+      function openAccTypeSheet() {
+        accTypeSheet.style.display = 'flex';
+        accTypeBackdrop.classList.add('ho-sheet-backdrop--open');
+        accTypeSheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            accTypeSheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeAccTypeSheet() {
+        accTypeSheet.classList.remove('ho-sheet--open');
+        accTypeBackdrop.classList.remove('ho-sheet-backdrop--open');
+        accTypeSheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { accTypeSheet.style.display = 'none'; }, 370);
+      }
+
+      accTypeBtn.addEventListener('click', openAccTypeSheet);
+      accTypeClose.addEventListener('click', closeAccTypeSheet);
+      accTypeBackdrop.addEventListener('click', closeAccTypeSheet);
+
+      document.querySelectorAll('.acc-type-row').forEach(function (row) {
+        row.addEventListener('click', function () {
+          var type = row.getAttribute('data-type');
+
+          // Update selection state
+          document.querySelectorAll('.acc-type-row').forEach(function (r) {
+            r.classList.remove('acc-type-row--selected');
+          });
+          row.classList.add('acc-type-row--selected');
+
+          // Update button text
+          accTypeBtnText.textContent = type;
+          accTypeBtnText.classList.add('nm-acc-type-btn__text--selected');
+
+          // Toggle "Other" section visibility
+          if (type === 'Other') {
+            otherSection.style.display = 'block';
+          } else {
+            otherSection.style.display = 'none';
+          }
+
+          closeAccTypeSheet();
+        });
+      });
+
+      accTypeSheet.addEventListener('touchstart', function (e) {
+        accTypeSheet._startY = e.touches[0].clientY;
+      }, { passive: true });
+      accTypeSheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - accTypeSheet._startY > 60) closeAccTypeSheet();
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
