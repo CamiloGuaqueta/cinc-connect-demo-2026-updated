@@ -11275,6 +11275,27 @@ a.sub-header__right {
   font-weight: 500;
 }
 
+/* ============================================
+   ACC REQUEST — FOOTER BAR (above bottom nav)
+   ============================================ */
+.acc-list-footer {
+  position: fixed;
+  bottom: var(--bottom-nav-height);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  padding: 12px 20px;
+  background: #112719;
+  border-top: 1px solid rgba(178,222,97,.18);
+  z-index: 50;
+}
+
+/* Extra bottom padding when footer bar sits above bottom nav */
+.ar-violations--with-footer {
+  padding-bottom: calc(var(--bottom-nav-height) + 72px);
+}
+
 /* Add Note bar (kept for legacy reference, replaced by log-footer-bar in HTML) */
 .committee-add-bar {
   position: fixed;

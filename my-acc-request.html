@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — My ACC Request</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ar-violations ar-violations--with-footer">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title">My ACC Request</h1>
+        <a class="acc-filter-btn" href="#" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Unit Dropdown -->
+      <button class="mv-unit-dropdown" id="unitDropdownBtn" type="button" aria-label="Select unit">
+        <span class="mv-unit-dropdown__label" id="unitLabel">All Units</span>
+        <svg class="mv-unit-dropdown__chevron" width="14" height="8" viewBox="0 0 14 8" fill="none">
+          <path d="M1 1l6 6 6-6" stroke="#fff8ea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- ACC Request Cards -->
+      <div class="ar-violations__cards">
+
+        <!-- Card 1 — Fence Installation -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
+            <span class="ar-vcard__type">Fence Installation</span>
+            <span class="ar-vcard__badge ar-vcard__badge--open">Pending Review</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address">183 Very Long Fellow Tree Rd</p>
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 2745369636952</p>
+            <p class="ar-vcard__meta-line"><strong>Submitted:</strong> 02/14/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Status:</strong> Awaiting Committee Decision</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Request to install a 4-foot cedar privacy fence along the rear and right side property lines. Full site plan and material specifications attached for committee review&#8230; <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-log.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count ar-vcard__row-count--badge">4</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">Attachments</span>
+            <span class="ar-vcard__row-count">5</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 2 — Deck Addition -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
+            <span class="ar-vcard__type">Deck Addition</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Under Review</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address">180 Crandon Blvd</p>
+            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 2745369636951</p>
+            <p class="ar-vcard__meta-line"><strong>Submitted:</strong> 03/20/2025</p>
+            <p class="ar-vcard__meta-line"><strong>Status:</strong> In Committee Review</p>
+          </div>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Request to construct a 12×16 ft pressure-treated wood deck attached to the rear of the home. Deck height will not exceed 18 inches above grade at any point along the structure&#8230; <a class="ar-vcard__desc-more" href="#">See More</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-log.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count ar-vcard__row-count--badge">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">Attachments</span>
+            <span class="ar-vcard__row-count">3</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+      </div><!-- /.ar-violations__cards -->
+    </main>
+
+    <!-- NEW ACC REQUEST footer bar (above bottom nav) -->
+    <div class="acc-list-footer">
+      <a class="pay-continue" href="#">NEW ACC REQUEST</a>
+    </div>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">Pinboard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <!-- Backdrop -->
+  <div class="ho-sheet-backdrop" id="unitBackdrop"></div>
+
+  <!-- Unit Picker Sheet -->
+  <div class="ho-sheet" id="unitSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <span class="ho-sheet__title">Select Unit or Account</span>
+      <button class="ho-sheet__action" id="unitSheetClose" type="button">Close</button>
+    </div>
+
+    <div class="mv-unit-picker-search">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;opacity:.5;">
+        <circle cx="7.5" cy="7.5" r="6" stroke="#fff8ea" stroke-width="1.4"/>
+        <path d="M12 12l4 4" stroke="#fff8ea" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <input class="mv-unit-picker-search__input" type="text" placeholder="Search Unit or Account Number" />
+    </div>
+
+    <div class="ho-sheet__body" style="padding:0;">
+
+      <button class="mv-unit-row" type="button" data-unit-name="All Units">
+        <span class="mv-unit-row__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
+            <mask id="mask-acc-unit-0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
+              <path d="M0 0H22.5707V25H0V0Z" fill="black"/>
+            </mask>
+            <g mask="url(#mask-acc-unit-0)">
+              <path d="M13.0925 0C13.0539 0 13.0153 0.00235133 12.977 0.00772579L2.74501 1.42558C1.22538 1.45883 0 2.70537 0 4.23273V20.7666C0 22.294 1.22538 23.5402 2.74467 23.5738L12.977 24.9919C13.0153 24.9973 13.0539 24.9997 13.0925 24.9997C14.6407 24.9997 15.9004 23.74 15.9004 22.1915V2.80782C15.9004 1.25964 14.6407 0 13.0925 0ZM14.2208 22.1915C14.2208 22.7971 13.7415 23.2929 13.1426 23.3191L2.92304 21.903C2.88474 21.8976 2.84645 21.8949 2.80782 21.8949C2.18539 21.8949 1.67952 21.3887 1.67952 20.7666V4.23273C1.67952 3.61063 2.18539 3.10443 2.80782 3.10443C2.84645 3.10443 2.88474 3.10174 2.92304 3.09636L13.1426 1.68019C13.7415 1.70673 14.2208 2.20219 14.2208 2.80782V22.1915Z" fill="#B2DE61"/>
+              <path d="M19.7625 2.35742H17.3061C16.8418 2.35742 16.4663 2.73363 16.4663 3.19718C16.4663 3.6614 16.8418 4.03694 17.3061 4.03694H19.7625C20.3853 4.03694 20.8912 4.54315 20.8912 5.16558V19.8318C20.8912 20.4543 20.3853 20.9605 19.7625 20.9605H17.3061C16.8418 20.9605 16.4663 21.3363 16.4663 21.8002C16.4663 22.2644 16.8418 22.64 17.3061 22.64H19.7625C21.3111 22.64 22.5704 21.3803 22.5704 19.8318V5.16558C22.5704 3.61706 21.3111 2.35742 19.7625 2.35742Z" fill="#B2DE61"/>
+              <path d="M11.5055 12.5195C10.8931 12.5195 10.397 13.016 10.397 13.628C10.397 14.2404 10.8931 14.7365 11.5055 14.7365C12.1178 14.7365 12.6139 14.2404 12.6139 13.628C12.6139 13.016 12.1178 12.5195 11.5055 12.5195Z" fill="#B2DE61"/>
+            </g>
+          </svg>
+        </span>
+        <span class="mv-unit-row__info">
+          <span class="mv-unit-row__name">All Units</span>
+        </span>
+        <span class="filter-radio filter-radio--selected"></span>
+      </button>
+
+      <button class="mv-unit-row" type="button" data-unit-name="183 Very Long Fellow Tree Rd">
+        <span class="mv-unit-row__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
+            <mask id="mask-acc-unit-1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
+              <path d="M0 0H22.5707V25H0V0Z" fill="black"/>
+            </mask>
+            <g mask="url(#mask-acc-unit-1)">
+              <path d="M13.0925 0C13.0539 0 13.0153 0.00235133 12.977 0.00772579L2.74501 1.42558C1.22538 1.45883 0 2.70537 0 4.23273V20.7666C0 22.294 1.22538 23.5402 2.74467 23.5738L12.977 24.9919C13.0153 24.9973 13.0539 24.9997 13.0925 24.9997C14.6407 24.9997 15.9004 23.74 15.9004 22.1915V2.80782C15.9004 1.25964 14.6407 0 13.0925 0ZM14.2208 22.1915C14.2208 22.7971 13.7415 23.2929 13.1426 23.3191L2.92304 21.903C2.88474 21.8976 2.84645 21.8949 2.80782 21.8949C2.18539 21.8949 1.67952 21.3887 1.67952 20.7666V4.23273C1.67952 3.61063 2.18539 3.10443 2.80782 3.10443C2.84645 3.10443 2.88474 3.10174 2.92304 3.09636L13.1426 1.68019C13.7415 1.70673 14.2208 2.20219 14.2208 2.80782V22.1915Z" fill="#B2DE61"/>
+              <path d="M19.7625 2.35742H17.3061C16.8418 2.35742 16.4663 2.73363 16.4663 3.19718C16.4663 3.6614 16.8418 4.03694 17.3061 4.03694H19.7625C20.3853 4.03694 20.8912 4.54315 20.8912 5.16558V19.8318C20.8912 20.4543 20.3853 20.9605 19.7625 20.9605H17.3061C16.8418 20.9605 16.4663 21.3363 16.4663 21.8002C16.4663 22.2644 16.8418 22.64 17.3061 22.64H19.7625C21.3111 22.64 22.5704 21.3803 22.5704 19.8318V5.16558C22.5704 3.61706 21.3111 2.35742 19.7625 2.35742Z" fill="#B2DE61"/>
+              <path d="M11.5055 12.5195C10.8931 12.5195 10.397 13.016 10.397 13.628C10.397 14.2404 10.8931 14.7365 11.5055 14.7365C12.1178 14.7365 12.6139 14.2404 12.6139 13.628C12.6139 13.016 12.1178 12.5195 11.5055 12.5195Z" fill="#B2DE61"/>
+            </g>
+          </svg>
+        </span>
+        <span class="mv-unit-row__info">
+          <span class="mv-unit-row__name">183 Very Long Fellow Tree Rd</span>
+          <span class="mv-unit-row__acct">ACC#: 6789</span>
+        </span>
+        <span class="filter-radio"></span>
+      </button>
+
+      <button class="mv-unit-row" type="button" data-unit-name="180 Crandon Blvd">
+        <span class="mv-unit-row__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
+            <mask id="mask-acc-unit-2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
+              <path d="M0 0H22.5707V25H0V0Z" fill="black"/>
+            </mask>
+            <g mask="url(#mask-acc-unit-2)">
+              <path d="M13.0925 0C13.0539 0 13.0153 0.00235133 12.977 0.00772579L2.74501 1.42558C1.22538 1.45883 0 2.70537 0 4.23273V20.7666C0 22.294 1.22538 23.5402 2.74467 23.5738L12.977 24.9919C13.0153 24.9973 13.0539 24.9997 13.0925 24.9997C14.6407 24.9997 15.9004 23.74 15.9004 22.1915V2.80782C15.9004 1.25964 14.6407 0 13.0925 0ZM14.2208 22.1915C14.2208 22.7971 13.7415 23.2929 13.1426 23.3191L2.92304 21.903C2.88474 21.8976 2.84645 21.8949 2.80782 21.8949C2.18539 21.8949 1.67952 21.3887 1.67952 20.7666V4.23273C1.67952 3.61063 2.18539 3.10443 2.80782 3.10443C2.84645 3.10443 2.88474 3.10174 2.92304 3.09636L13.1426 1.68019C13.7415 1.70673 14.2208 2.20219 14.2208 2.80782V22.1915Z" fill="#B2DE61"/>
+              <path d="M19.7625 2.35742H17.3061C16.8418 2.35742 16.4663 2.73363 16.4663 3.19718C16.4663 3.6614 16.8418 4.03694 17.3061 4.03694H19.7625C20.3853 4.03694 20.8912 4.54315 20.8912 5.16558V19.8318C20.8912 20.4543 20.3853 20.9605 19.7625 20.9605H17.3061C16.8418 20.9605 16.4663 21.3363 16.4663 21.8002C16.4663 22.2644 16.8418 22.64 17.3061 22.64H19.7625C21.3111 22.64 22.5704 21.3803 22.5704 19.8318V5.16558C22.5704 3.61706 21.3111 2.35742 19.7625 2.35742Z" fill="#B2DE61"/>
+              <path d="M11.5055 12.5195C10.8931 12.5195 10.397 13.016 10.397 13.628C10.397 14.2404 10.8931 14.7365 11.5055 14.7365C12.1178 14.7365 12.6139 14.2404 12.6139 13.628C12.6139 13.016 12.1178 12.5195 11.5055 12.5195Z" fill="#B2DE61"/>
+            </g>
+          </svg>
+        </span>
+        <span class="mv-unit-row__info">
+          <span class="mv-unit-row__name">180 Crandon Blvd</span>
+          <span class="mv-unit-row__acct">ACC#: 12345</span>
+        </span>
+        <span class="filter-radio"></span>
+      </button>
+
+    </div><!-- /.ho-sheet__body -->
+  </div><!-- /#unitSheet -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var unitSheet    = document.getElementById('unitSheet');
+      var unitBackdrop = document.getElementById('unitBackdrop');
+      var unitLabel    = document.getElementById('unitLabel');
+      var closeBtn     = document.getElementById('unitSheetClose');
+
+      function openUnitPicker() {
+        unitSheet.style.display = 'flex';
+        unitBackdrop.classList.add('ho-sheet-backdrop--open');
+        unitSheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            unitSheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeUnitPicker() {
+        unitSheet.classList.remove('ho-sheet--open');
+        unitBackdrop.classList.remove('ho-sheet-backdrop--open');
+        unitSheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { unitSheet.style.display = 'none'; }, 370);
+      }
+
+      document.getElementById('unitDropdownBtn').addEventListener('click', openUnitPicker);
+      unitBackdrop.addEventListener('click', closeUnitPicker);
+      closeBtn.addEventListener('click', closeUnitPicker);
+
+      document.querySelectorAll('.mv-unit-row').forEach(function (row) {
+        row.addEventListener('click', function () {
+          var name = row.getAttribute('data-unit-name');
+          unitLabel.textContent = name;
+          document.querySelectorAll('.filter-radio').forEach(function (r) {
+            r.classList.remove('filter-radio--selected');
+          });
+          row.querySelector('.filter-radio').classList.add('filter-radio--selected');
+          closeUnitPicker();
+        });
+      });
+
+      unitSheet.addEventListener('touchstart', function (e) { unitSheet._startY = e.touches[0].clientY; }, { passive: true });
+      unitSheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - unitSheet._startY > 60) closeUnitPicker();
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
