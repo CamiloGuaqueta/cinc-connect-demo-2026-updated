@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const DEFAULT_ADDRESS = '1056 NE, Cardinal Point Road, Duluth, GA 30096';
+  const DEFAULT_ADDRESS = '200 Palm Grove Lane, Weston, FL 33326';
   const DEFAULT_PHONE = '+1 (555) 256.256';
   const DEFAULT_HOURS = 'Mon – Fri: 9:00 AM – 9:00 PM\nSat – Sun: 10:00 AM – 10:00 PM';
 
@@ -108,7 +108,7 @@
       maxGuests: 20,
       maxHours: 5,
       slots: ['10:00 AM', '1:00 PM', '5:00 PM', '7:00 PM'],
-      description: 'The Cardinal Hills Clubhouse is a welcoming community space available for private parties, celebrations, meetings, and special events. Includes a full kitchen, dining area, and lounge space with setup and cleanup.',
+      description: 'The Magic Views Clubhouse is a welcoming community space available for private parties, celebrations, meetings, and special events. Includes a full kitchen, dining area, and lounge space with setup and cleanup.',
       rules: `By reserving and using the clubhouse, I agree to follow all community rules and accept responsibility for the conduct of my guests during the reservation period. I understand that I am responsible for any damages, excessive cleaning, or violations associated with the event and that the clubhouse must be left clean and in good condition. I acknowledge that the association reserves the right to revoke clubhouse privileges for misuse or noncompliance with community policies.`,
       pdfTitle: 'Clubhouse-rules-regulations.pdf',
       pdfHeading: 'Club House',
