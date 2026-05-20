@@ -11346,20 +11346,20 @@ a.sub-header__right {
    ============================================ */
 .acc-list-footer {
   position: fixed;
-  bottom: var(--bottom-nav-height);
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: var(--max-width-mobile);
-  padding: 12px 20px;
-  background: #112719;
-  border-top: 1px solid rgba(178,222,97,.18);
-  z-index: 50;
+  padding: 14px 20px 35px;
+  background: #235237;
+  border-top: 1px solid rgba(178,222,97,.2);
+  z-index: 110;
 }
 
-/* Extra bottom padding when footer bar sits above bottom nav */
+/* Extra bottom padding for acc-list-footer (no bottom nav) */
 .ar-violations--with-footer {
-  padding-bottom: calc(var(--bottom-nav-height) + 72px);
+  padding-bottom: 90px;
 }
 
 /* Add Note bar (kept for legacy reference, replaced by log-footer-bar in HTML) */
