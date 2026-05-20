@@ -280,7 +280,7 @@
         <span class="mv-unit-row__info">
           <span class="mv-unit-row__name">All Units</span>
         </span>
-        <span class="mv-unit-radio mv-unit-radio--selected"></span>
+        <span class="filter-radio filter-radio--selected"></span>
       </button>
 
       <!-- 180 Crandon Blvd -->
@@ -301,7 +301,7 @@
           <span class="mv-unit-row__name">180 Crandon Blvd</span>
           <span class="mv-unit-row__acct">ACC#: 12345</span>
         </span>
-        <span class="mv-unit-radio"></span>
+        <span class="filter-radio"></span>
       </button>
 
       <!-- 183 Very long fellow tree road -->
@@ -322,7 +322,7 @@
           <span class="mv-unit-row__name">183 Very long fellow tree road</span>
           <span class="mv-unit-row__acct">ACC#: 6789</span>
         </span>
-        <span class="mv-unit-radio"></span>
+        <span class="filter-radio"></span>
       </button>
 
       <!-- 250 Mashtha Ave -->
@@ -343,7 +343,7 @@
           <span class="mv-unit-row__name">250 Mashtha Ave</span>
           <span class="mv-unit-row__acct">ACC#: 101112</span>
         </span>
-        <span class="mv-unit-radio"></span>
+        <span class="filter-radio"></span>
       </button>
 
       <!-- 325 Carmen Street -->
@@ -364,7 +364,7 @@
           <span class="mv-unit-row__name">325 Carmen Street</span>
           <span class="mv-unit-row__acct">ACC#: 161718</span>
         </span>
-        <span class="mv-unit-radio"></span>
+        <span class="filter-radio"></span>
       </button>
 
     </div><!-- /.ho-sheet__body -->
@@ -407,10 +407,10 @@
           var name = row.getAttribute('data-unit-name');
           unitLabel.textContent = name;
           // toggle radios
-          document.querySelectorAll('.mv-unit-radio').forEach(function (r) {
-            r.classList.remove('mv-unit-radio--selected');
+          document.querySelectorAll('.filter-radio').forEach(function (r) {
+            r.classList.remove('filter-radio--selected');
           });
-          row.querySelector('.mv-unit-radio').classList.add('mv-unit-radio--selected');
+          row.querySelector('.mv-unit-radio').classList.add('filter-radio--selected');
           closeUnitPicker();
         });
       });

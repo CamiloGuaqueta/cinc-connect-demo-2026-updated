@@ -11726,9 +11726,8 @@ a.sub-header__right {
 
 .vitem-screen__topbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px 10px;
+  flex-direction: column;
+  padding: 14px 0 4px;
 }
 
 .vitem-screen__title {
@@ -11737,20 +11736,20 @@ a.sub-header__right {
   font-weight: 800;
   color: #fff8ea;
   margin: 0;
+  padding: 0 20px 10px;
 }
 
-.vitem-type-badge {
-  display: inline-flex;
+.vitem-type-row {
+  display: flex;
   align-items: center;
-  background: rgba(178,222,97,.12);
-  border: 1px solid rgba(178,222,97,.3);
-  border-radius: 20px;
-  padding: 4px 12px;
+  gap: 8px;
+  padding: 0 20px 14px;
+}
+.vitem-type-label {
   font-family: Montserrat, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  color: #b2de61;
-  flex-shrink: 0;
+  color: #fff8ea;
 }
 
 .vitem-list {
@@ -11761,7 +11760,7 @@ a.sub-header__right {
 }
 
 .vitem-card {
-  background: #1a3a27;
+  background: #235237;
   border: 1px solid rgba(178,222,97,.15);
   border-radius: 12px;
   padding: 16px;
@@ -13205,15 +13204,10 @@ a.sub-header__right {
 }
 .mv-stat__icon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.mv-stat--open .mv-stat__icon  { background: rgba(232,160,43,.15); border: 1.5px solid #e8a02b; }
-.mv-stat--closed .mv-stat__icon { background: rgba(71,140,202,.15); border: 1.5px solid #478CCA; }
 .mv-stat__count {
   font-size: 22px;
   font-weight: 700;
