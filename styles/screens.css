@@ -362,6 +362,35 @@
   margin: 8px 0 0;
 }
 
+/* Balance card carousel wrapper */
+.balance-carousel {
+  overflow: hidden;
+  margin-top: 17px;
+}
+
+.balance-carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.balance-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.balance-carousel__slide {
+  flex-shrink: 0;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+/* Remove top margin from balance-card when inside the carousel (carousel wrapper handles spacing) */
+.balance-carousel .balance-card {
+  margin-top: 0;
+}
+
 /* Carousel dots */
 .feed__dots {
   display: flex;
@@ -3546,8 +3575,21 @@
 .pet-register {
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--color-bg-base);
-  padding-bottom: 40px;
+  background: #235237;
+  padding-bottom: 100px;
+}
+
+.pet-register-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
+  padding: 14px 20px 35px;
+  background: #235237;
+  border-top: 1px solid rgba(178, 222, 97, 0.3);
+  z-index: 110;
 }
 
 .pet-form {
@@ -3721,7 +3763,7 @@
 }
 
 .pet-form__submit {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 /* ============================================
@@ -3817,7 +3859,7 @@
    CUSTOM SELECT PICKER MODAL
    ============================================ */
 .csel-modal {
-  background: #1e3527;
+  background: #235237;
   border-radius: 20px;
   width: calc(100% - 48px);
   max-width: 345px;
@@ -6133,7 +6175,7 @@ a.sub-header__right {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: #112719;
   display: flex;
   align-items: flex-end;
   justify-content: center;

@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Feed</title>
+  <title>CINC Connect ï¿½ Feed</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,36 +42,90 @@
         </button>
       </section>
 
-      <!-- Balance card (cream colored) -->
-      <section class="balance-card">
-        <div class="balance-card__header">
-          <div>
-            <p class="balance-card__acct"><strong>Acct:</strong> 1588:6523</p>
-            <p class="balance-card__address">12346 Washington Avenue</p>
+      <!-- Balance card carousel -->
+      <div class="balance-carousel">
+        <div class="balance-carousel__track" id="balanceTrack">
+
+          <!-- Slide 1: General Ledger -->
+          <div class="balance-carousel__slide">
+            <section class="balance-card">
+              <div class="balance-card__header">
+                <div>
+                  <p class="balance-card__acct"><strong>Acct:</strong> 23456789876545678</p>
+                  <p class="balance-card__address">180 Crandon Blvd</p>
+                </div>
+                <span class="balance-card__chevron" aria-hidden="true"></span>
+              </div>
+              <div class="balance-card__balance-row">
+                <span class="balance-card__label">Current Balance</span>
+                <span class="balance-card__leader" aria-hidden="true"></span>
+                <span class="balance-card__amount">$1,500.53</span>
+              </div>
+              <div class="balance-card__divider"></div>
+              <div class="balance-card__autopay">
+                <img src="assets/icons/icon-autopay.svg" alt="" />
+                <span>No autopay scheduled</span>
+              </div>
+              <a class="btn balance-card__btn" href="payment-amount.html">Make a payment</a>
+              <p class="balance-card__note">Only you can see this</p>
+            </section>
           </div>
-          <span class="balance-card__chevron" aria-hidden="true"></span>
+
+          <!-- Slide 2: Special Assessment -->
+          <div class="balance-carousel__slide">
+            <section class="balance-card">
+              <div class="balance-card__header">
+                <div>
+                  <p class="balance-card__acct"><strong>Acct:</strong> 097654r6788</p>
+                  <p class="balance-card__address">Happy Property LLC</p>
+                </div>
+                <span class="balance-card__chevron" aria-hidden="true"></span>
+              </div>
+              <div class="balance-card__balance-row">
+                <span class="balance-card__label">Current Balance</span>
+                <span class="balance-card__leader" aria-hidden="true"></span>
+                <span class="balance-card__amount">$125.00</span>
+              </div>
+              <div class="balance-card__divider"></div>
+              <div class="balance-card__autopay">
+                <img src="assets/icons/icon-autopay.svg" alt="" />
+                <span>Autopay scheduled for Jun 08, 2026</span>
+              </div>
+              <a class="btn balance-card__btn" href="payment-amount.html">Make a payment</a>
+              <p class="balance-card__note">Only you can see this</p>
+            </section>
+          </div>
+
+          <!-- Slide 3: Marina Rental -->
+          <div class="balance-carousel__slide">
+            <section class="balance-card">
+              <div class="balance-card__header">
+                <div>
+                  <p class="balance-card__acct"><strong>Acct:</strong> MR-4409-2024</p>
+                  <p class="balance-card__address">180 Crandon Blvd</p>
+                </div>
+                <span class="balance-card__chevron" aria-hidden="true"></span>
+              </div>
+              <div class="balance-card__balance-row">
+                <span class="balance-card__label">Current Balance</span>
+                <span class="balance-card__leader" aria-hidden="true"></span>
+                <span class="balance-card__amount">$225.00</span>
+              </div>
+              <div class="balance-card__divider"></div>
+              <div class="balance-card__autopay">
+                <img src="assets/icons/icon-autopay.svg" alt="" />
+                <span>No autopay scheduled</span>
+              </div>
+              <a class="btn balance-card__btn" href="payment-amount.html">Make a payment</a>
+              <p class="balance-card__note">Only you can see this</p>
+            </section>
+          </div>
+
         </div>
-
-        <div class="balance-card__balance-row">
-          <span class="balance-card__label">Current Balance</span>
-          <span class="balance-card__leader" aria-hidden="true"></span>
-          <span class="balance-card__amount">$750.41</span>
-        </div>
-
-        <div class="balance-card__divider"></div>
-
-        <div class="balance-card__autopay">
-          <img src="assets/icons/icon-autopay.svg" alt="" />
-          <span>Autopay scheduled for xx/xx/xxxx</span>
-        </div>
-
-        <a class="btn balance-card__btn" href="payment-amount.html">Make a payment</a>
-
-        <p class="balance-card__note">Only you can see this</p>
-      </section>
+      </div>
 
       <!-- Carousel dots -->
-      <div class="feed__dots">
+      <div class="feed__dots" id="feedDots">
         <span class="feed__dot feed__dot--active"></span>
         <span class="feed__dot"></span>
         <span class="feed__dot"></span>
@@ -129,7 +183,7 @@
           </footer>
         </article>
 
-        <!-- Post: Nancy — Lost sports equipment at fitness center -->
+        <!-- Post: Nancy ï¿½ Lost sports equipment at fitness center -->
         <article class="post">
           <header class="post__header">
             <img class="post__avatar" src="assets/images/Nancy-1.png" alt="" />
@@ -144,7 +198,7 @@
 
           <h3 class="post__title">Did you leave these at the fitness center?</h3>
           <p class="post__body">
-            Found a towel, lifting gloves, a water bottle, a resistance band, and a jump rope this morning at the gym. Dropped them off at the concierge desk — if any of these are yours, stop by and ask for Mateo. ??
+            Found a towel, lifting gloves, a water bottle, a resistance band, and a jump rope this morning at the gym. Dropped them off at the concierge desk ï¿½ if any of these are yours, stop by and ask for Mateo. ??
           </p>
 
           <div class="post__media">
@@ -172,7 +226,7 @@
           </footer>
         </article>
 
-        <!-- Post: Wanda (Board) — Pool Deck Renovation Budget Vote -->
+        <!-- Post: Wanda (Board) ï¿½ Pool Deck Renovation Budget Vote -->
         <article class="post">
           <header class="post__header">
             <div class="post__avatar-wrap">
@@ -188,7 +242,7 @@
             </button>
           </header>
 
-          <h3 class="post__title post__title--lime">Pool Deck Renovation — Your Vote Needed</h3>
+          <h3 class="post__title post__title--lime">Pool Deck Renovation ï¿½ Your Vote Needed</h3>
           <p class="post__body">
             The board has narrowed it down to two finalist proposals for resurfacing the pool deck. Both come with detailed cost breakdowns and timelines. Please review and cast your vote by Friday, June 12.
           </p>
@@ -222,7 +276,7 @@
           </footer>
         </article>
 
-        <!-- Post: Kevin — Pickleball challenge -->
+        <!-- Post: Kevin ï¿½ Pickleball challenge -->
         <article class="post">
           <header class="post__header">
             <img class="post__avatar" src="assets/images/Kevin-1.png" alt="" />
@@ -237,7 +291,7 @@
 
           <h3 class="post__title">Who's brave enough? ??</h3>
           <p class="post__body">
-            Booked the pickleball court for Saturday at 4 PM. Looking for 3 worthy opponents — beginners welcome, trash talk encouraged. Loser buys the round after. Drop a comment if you're in! ??
+            Booked the pickleball court for Saturday at 4 PM. Looking for 3 worthy opponents ï¿½ beginners welcome, trash talk encouraged. Loser buys the round after. Drop a comment if you're in! ??
           </p>
 
           <div class="post__media">
@@ -266,7 +320,7 @@
           </footer>
         </article>
 
-        <!-- Post: Wanda (Board) — Quarterly Town Hall -->
+        <!-- Post: Wanda (Board) ï¿½ Quarterly Town Hall -->
         <article class="post">
           <header class="post__header">
             <div class="post__avatar-wrap">
@@ -282,9 +336,9 @@
             </button>
           </header>
 
-          <h3 class="post__title">Quarterly Town Hall — This Saturday</h3>
+          <h3 class="post__title">Quarterly Town Hall ï¿½ This Saturday</h3>
           <p class="post__body">
-            Join us this Saturday at 10 AM in the Clubhouse for our spring town hall. We'll cover the landscaping update, upcoming amenity projects, and there will be time for Q&amp;A. Coffee and pastries provided — hope to see you there!
+            Join us this Saturday at 10 AM in the Clubhouse for our spring town hall. We'll cover the landscaping update, upcoming amenity projects, and there will be time for Q&amp;A. Coffee and pastries provided ï¿½ hope to see you there!
           </p>
 
           <div class="post__media">
@@ -313,7 +367,7 @@
           </footer>
         </article>
 
-        <!-- Post: Jim — Parking question -->
+        <!-- Post: Jim ï¿½ Parking question -->
         <article class="post">
           <header class="post__header">
             <img class="post__avatar" src="assets/images/Jim-1.png" alt="" />
@@ -352,7 +406,7 @@
           </footer>
         </article>
 
-        <!-- Post: Betty — Dog Park reminder -->
+        <!-- Post: Betty ï¿½ Dog Park reminder -->
         <article class="post">
           <header class="post__header">
             <img class="post__avatar" src="assets/images/Betty-1.png" alt="" />
@@ -365,9 +419,9 @@
             </button>
           </header>
 
-          <h3 class="post__title">Dog park cleanup — Wednesday mornings</h3>
+          <h3 class="post__title">Dog park cleanup ï¿½ Wednesday mornings</h3>
           <p class="post__body">
-            Friendly reminder: our wonderful groundskeeper deep-cleans the dog park every Wednesday at 7 AM. Try to keep your pups away during that hour ??. Also — the new water station near the small-dog area is finally working again. Bingo gives it two paws up!
+            Friendly reminder: our wonderful groundskeeper deep-cleans the dog park every Wednesday at 7 AM. Try to keep your pups away during that hour ??. Also ï¿½ the new water station near the small-dog area is finally working again. Bingo gives it two paws up!
           </p>
 
           <div class="post__media">
@@ -491,7 +545,7 @@
       </a>
     </nav>
 
-    <!-- Compose Post — anchored at top, slides down -->
+    <!-- Compose Post ï¿½ anchored at top, slides down -->
     <div class="modal-backdrop modal-backdrop--top" data-compose-modal hidden>
       <div class="compose-shell">
         <header class="compose-shell__bar">
@@ -505,14 +559,14 @@
           </button>
         </header>
 
-        <!-- Draft post card — mirrors how it'll look in the feed -->
+        <!-- Draft post card ï¿½ mirrors how it'll look in the feed -->
         <article class="compose-card">
           <header class="compose-card__header">
             <div class="compose-card__avatar" data-compose-initials>U</div>
             <div class="compose-card__author">
               <div class="compose-card__name" data-compose-author>You</div>
               <div class="compose-card__time">
-                <span class="post__badge-mine">Your post — only you</span>
+                <span class="post__badge-mine">Your post ï¿½ only you</span>
               </div>
             </div>
           </header>
@@ -601,7 +655,7 @@
             <header class="post__header">
               <div class="post__avatar post__avatar--initials">${escapeHtml(p.initials || 'U')}</div>
               <div class="post__author">
-                <div class="post__name">${escapeHtml(p.author)} <span class="post__badge-mine">Your post — only you</span></div>
+                <div class="post__name">${escapeHtml(p.author)} <span class="post__badge-mine">Your post ï¿½ only you</span></div>
                 <div class="post__time">${escapeHtml(F.formatRelativeTime(p.createdAt))}</div>
               </div>
               <button class="post__menu" type="button" aria-label="Delete" data-delete="${p.id}">
@@ -665,7 +719,7 @@
       document.querySelector('[data-compose-initials]').textContent = userInitials;
       document.querySelector('[data-compose-author]').textContent = userName;
 
-      // Image upload disabled for demo — button kept for UI reference only
+      // Image upload disabled for demo ï¿½ button kept for UI reference only
       const composeImage = document.querySelector('[data-compose-image]');
       const composeImageSrc = document.querySelector('[data-compose-image-src]');
       const composeImageRemove = document.querySelector('[data-compose-image-remove]');
@@ -836,6 +890,27 @@
       // ---------- Initial render ----------
       renderAllUserPosts();
       wireLikesAndComments(document); // wire seed posts
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var track = document.getElementById('balanceTrack');
+      var dots  = document.querySelectorAll('#feedDots .feed__dot');
+      if (!track || !dots.length) return;
+
+      function updateDots() {
+        var index = Math.round(track.scrollLeft / track.offsetWidth);
+        dots.forEach(function (dot, i) {
+          if (i === index) {
+            dot.classList.add('feed__dot--active');
+          } else {
+            dot.classList.remove('feed__dot--active');
+          }
+        });
+      }
+
+      track.addEventListener('scroll', updateDots, { passive: true });
     })();
   </script>
 </body>
