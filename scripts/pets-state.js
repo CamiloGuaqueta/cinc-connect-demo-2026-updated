@@ -11,8 +11,10 @@
 
   // Dropdown values that match Jessica's spec
   const UNIT_NUMBERS = [
-    '101A', '102B', '103C', '201A', '202B', '203C',
-    '301A', '302B', '303C', '401A', '402B', '403C'
+    '12346 Washington Ave',
+    '13490 Avenue 58',
+    '12 Trees 20 43',
+    '1 APT22'
   ];
 
   const DESIGNATIONS = [
