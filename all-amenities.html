@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — All Amenities</title>
+  <title>CINC Connect ï¿½ All Amenities</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,23 +19,26 @@
 <body>
   <div class="app-frame">
     <main class="all-amenities">
-      <!-- Sub-header with search -->
+      <!-- Sub-header: back + notifications -->
       <header class="sub-header">
         <a href="amenities.html" class="sub-header__back" aria-label="Back">
           <span class="sub-header__back-icon" aria-hidden="true"></span>
         </a>
-        <div class="sub-header__center">
-          <div class="messages__search">
-            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
-            <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
-          </div>
-        </div>
+        <div class="sub-header__center"></div>
         <a class="sub-header__right" href="notifications.html" aria-label="Notifications">
           <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
         </a>
       </header>
 
       <h1 class="all-amenities__title" data-page-title>All Amenities</h1>
+
+      <!-- Search bar -->
+      <div class="amenities-search-bar">
+        <div class="messages__search">
+          <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+          <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
+        </div>
+      </div>
 
       <ul class="all-amenities__list" data-amenity-list></ul>
     </main>
@@ -107,7 +110,7 @@
                 <div class="all-amenity-card__slots">${slots}</div>
               </div>
               <img class="all-amenity-card__image" src="${a.image}" alt="" />
-              <span class="all-amenity-card__chevron" aria-hidden="true">›</span>
+              <span class="all-amenity-card__chevron" aria-hidden="true">ï¿½</span>
             </a>
           </li>`;
       }

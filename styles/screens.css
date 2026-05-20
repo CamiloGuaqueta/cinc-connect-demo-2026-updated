@@ -4736,6 +4736,29 @@ a.sub-header__right {
   object-fit: contain;
 }
 
+/* Calendar inline search — sits below the tabs, same horizontal margin */
+.cal-search {
+  margin: 10px 18px 0;
+}
+
+.cal-search .messages__search {
+  margin: 0;
+  background: var(--color-bg-base);
+  height: 40px;
+}
+
+/* Amenities inline search bar — below title row */
+.amenities-search-bar {
+  background: #235237;
+  padding: 10px 20px;
+}
+
+.amenities-search-bar .messages__search {
+  margin: 0;
+  background: var(--color-bg-base);
+  height: 40px;
+}
+
 /* Tabs (List / Month / Year) — segmented control style */
 .cal-tabs {
   display: flex;

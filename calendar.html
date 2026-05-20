@@ -19,17 +19,12 @@
 <body>
   <div class="app-frame">
     <main class="calendar">
-      <!-- Sub-header: back + search/title -->
+      <!-- Sub-header: back + notifications -->
       <header class="sub-header">
         <a href="pinboard.html" class="sub-header__back" aria-label="Back">
           <span class="sub-header__back-icon" aria-hidden="true"></span>
         </a>
-        <div class="sub-header__center" data-list-only>
-          <div class="messages__search">
-            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
-            <input class="messages__search-input" type="text" placeholder="Search Calendar" data-calendar-search />
-          </div>
-        </div>
+        <div class="sub-header__center"></div>
         <a class="sub-header__right" href="notifications.html" aria-label="Notifications"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></a>
       </header>
 
@@ -38,6 +33,14 @@
         <button class="cal-tabs__item cal-tabs__item--active" type="button" data-view="list">List</button>
         <button class="cal-tabs__item" type="button" data-view="month">Month</button>
         <button class="cal-tabs__item" type="button" data-view="year">Year</button>
+      </div>
+
+      <!-- Search — only visible in List view -->
+      <div class="cal-search" data-list-only>
+        <div class="messages__search">
+          <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+          <input class="messages__search-input" type="text" placeholder="Search Calendar" data-calendar-search />
+        </div>
       </div>
 
       <!-- LIST VIEW -->

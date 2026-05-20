@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Amenities & Common Areas</title>
+  <title>CINC Connect ï¿½ Amenities & Common Areas</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,17 +19,12 @@
 <body>
   <div class="app-frame">
     <main class="amenities">
-      <!-- Sub-header with search (matches calendar style) -->
+      <!-- Sub-header: back + notifications -->
       <header class="sub-header">
         <a href="concierge.html" class="sub-header__back" aria-label="Back">
           <span class="sub-header__back-icon" aria-hidden="true"></span>
         </a>
-        <div class="sub-header__center">
-          <div class="messages__search">
-            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
-            <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
-          </div>
-        </div>
+        <div class="sub-header__center"></div>
         <a class="sub-header__right" href="notifications.html" aria-label="Notifications"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></a>
       </header>
 
@@ -45,13 +40,21 @@
         </button>
       </div>
 
+      <!-- Search bar -->
+      <div class="amenities-search-bar">
+        <div class="messages__search">
+          <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+          <input class="messages__search-input" type="text" placeholder="Search Amenities" data-amenity-search />
+        </div>
+      </div>
+
       <!-- Tabs: Amenities / My Reservations -->
       <div class="amenities__tabs">
         <button class="amenities__tab amenities__tab--active" type="button" data-amenity-tab="amenities">Amenities</button>
         <button class="amenities__tab" type="button" data-amenity-tab="reservations">My Reservations</button>
       </div>
 
-      <!-- AMENITIES tab pane — dynamically rendered from AmenitiesData -->
+      <!-- AMENITIES tab pane ï¿½ dynamically rendered from AmenitiesData -->
       <section class="amenities__pane" data-amenity-pane="amenities">
         <div class="amenities__section">
           <div class="amenities__section-header">
@@ -187,7 +190,7 @@
             <p class="amenity-card__slots-label">Today's Next Available Time-slots</p>
             <div class="amenity-card__slots">
               ${slots}
-              <span class="amenity-card__slot-more" aria-label="More slots">›</span>
+              <span class="amenity-card__slot-more" aria-label="More slots">ï¿½</span>
             </div>
           </a>`;
       }
@@ -219,7 +222,7 @@
       });
     });
 
-    // Mouse drag-to-scroll on horizontal scrollers — only when intent is clearly horizontal
+    // Mouse drag-to-scroll on horizontal scrollers ï¿½ only when intent is clearly horizontal
     document.querySelectorAll('.amenity-scroller').forEach((scroller) => {
       let isDown = false;
       let hasMoved = false;
@@ -280,7 +283,7 @@
       });
     });
 
-    // My Reservations — load from localStorage and render
+    // My Reservations ï¿½ load from localStorage and render
     (function () {
       const NS = 'cinc:demo:';
       const KEY = NS + 'reservations';
@@ -307,16 +310,16 @@
                 ${totalLine}
               </div>
               <h3 class="my-res-card__name">${r.name}</h3>
-              <p class="my-res-card__meta">${r.date} · ${r.timeRange}</p>
+              <p class="my-res-card__meta">${r.date} ï¿½ ${r.timeRange}</p>
               <p class="my-res-card__meta">Guests: ${r.guests}</p>
             </div>
             <img class="my-res-card__img" src="${r.image}" alt="" />
-            <span class="my-res-card__chev" aria-hidden="true">›</span>
+            <span class="my-res-card__chev" aria-hidden="true">ï¿½</span>
           </a>`;
       }).join('');
     })();
 
-    // Search filter — hides cards (and sections) that don't match
+    // Search filter ï¿½ hides cards (and sections) that don't match
     const searchInput = document.querySelector('[data-amenity-search]');
     if (searchInput) {
       searchInput.addEventListener('input', () => {
