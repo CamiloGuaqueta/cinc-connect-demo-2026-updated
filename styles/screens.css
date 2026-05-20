@@ -11772,7 +11772,10 @@ a.sub-header__right {
   font-size: 15px;
   font-weight: 700;
   color: #b2de61;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .vitem-card__body {
@@ -11781,11 +11784,7 @@ a.sub-header__right {
   font-weight: 400;
   color: rgba(255,248,234,.75);
   line-height: 1.65;
-  margin: 0 0 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  margin: 0;
 }
 
 .vitem-card__see-more {
@@ -13214,7 +13213,7 @@ a.sub-header__right {
   justify-content: center;
 }
 .mv-stat--open .mv-stat__icon  { background: rgba(232,160,43,.15); border: 1.5px solid #e8a02b; }
-.mv-stat--closed .mv-stat__icon { background: rgba(178,222,97,.15); border: 1.5px solid #b2de61; }
+.mv-stat--closed .mv-stat__icon { background: rgba(71,140,202,.15); border: 1.5px solid #478CCA; }
 .mv-stat__count {
   font-size: 22px;
   font-weight: 700;
