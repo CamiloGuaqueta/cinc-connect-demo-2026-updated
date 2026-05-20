@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#235237" />
-  <title>CINC Connect — Notifications</title>
+  <title>CINC Connect ï¿½ Notifications</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,27 +24,24 @@
         <a href="feed.html" class="sub-header__back" aria-label="Back">
           <span class="sub-header__back-icon" aria-hidden="true"></span>
         </a>
-        <div class="sub-header__center">
-          <div class="messages__search">
-            <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
-            <input class="messages__search-input" type="text" placeholder="Search notifications" data-notif-search />
-          </div>
-        </div>
+        <div class="sub-header__center"></div>
         <div class="sub-header__right"><img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" /></div>
       </header>
 
+      <!-- Search bar -->
+      <div class="notif-search-bar">
+        <div class="messages__search">
+          <img class="messages__search-icon" src="assets/icons/icon-search.svg" alt="" />
+          <input class="messages__search-input" type="text" placeholder="Search notifications" data-notif-search />
+        </div>
+      </div>
+
       <!-- Filter row -->
       <div class="notif-filter-row">
-        <button class="notif-filter" type="button">
+        <button class="notif-filter" type="button" data-notif-filter-open aria-label="Filter notifications">
+          <img src="assets/icons/icon-filter.svg" alt="" width="20" height="20" style="flex-shrink:0;" />
           <span class="notif-filter__label">Filter Notifications</span>
           <span class="notif-filter__chevron" aria-hidden="true"></span>
-        </button>
-        <button class="notif-filter__toggle" type="button" aria-label="Unread only">
-          <svg viewBox="0 0 24 24" fill="none">
-            <line x1="6" y1="8" x2="18" y2="8" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="8" y1="12" x2="16" y2="12" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="10" y1="16" x2="14" y2="16" stroke="#112719" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
         </button>
       </div>
 
@@ -63,8 +60,8 @@
               </span>
             </div>
             <div class="notif-item__body">
-              <div class="notif-item__title">Tennis tournament Fo…</div>
-              <div class="notif-item__text">Tennis tournament for all magic city condo tennis players start Monday may 29 at 10AM please make sure…</div>
+              <div class="notif-item__title">Tennis tournament Foï¿½</div>
+              <div class="notif-item__text">Tennis tournament for all magic city condo tennis players start Monday may 29 at 10AM please make sureï¿½</div>
               <div class="notif-item__time">2:58 PM</div>
             </div>
             <span class="notif-item__unread" aria-hidden="true"></span>
@@ -87,7 +84,7 @@
             </div>
             <div class="notif-item__body">
               <div class="notif-item__title">4th of July BBQ at the Pool</div>
-              <div class="notif-item__text">You are all invited to Join us on Sunday 4th of July for a Magical Night City ni…</div>
+              <div class="notif-item__text">You are all invited to Join us on Sunday 4th of July for a Magical Night City niï¿½</div>
               <div class="notif-item__time">1 day ago</div>
             </div>
             <span class="notif-item__unread" aria-hidden="true"></span>
@@ -138,7 +135,7 @@
       </ul>
     </main>
 
-    <!-- Bottom Navigation (no item active — accessed via bell) -->
+    <!-- Bottom Navigation (no item active ï¿½ accessed via bell) -->
     <nav class="bottom-nav" aria-label="Main navigation">
       <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
         <span class="bottom-nav__icon-wrap">
@@ -184,6 +181,122 @@
         <span class="bottom-nav__label">More</span>
       </a>
     </nav>
+
+    <!-- Notification Filter Sheet -->
+    <div class="modal-backdrop" data-notif-filter-sheet hidden>
+      <div class="modal-sheet notif-filter-sheet">
+        <header class="modal-sheet__header">
+          <button class="modal-sheet__close" type="button" data-notif-filter-close aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="6" y1="18" x2="18" y2="6"/>
+            </svg>
+          </button>
+          <h2 class="modal-sheet__title">Filter Notifications</h2>
+          <button class="notif-filter-sheet__reset" type="button" data-notif-filter-reset>Reset</button>
+        </header>
+        <div class="modal-sheet__body modal-sheet__body--scrollable">
+
+          <p class="notif-filter-sheet__section">Notification Type</p>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3a6 6 0 0 0-6 6v3l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" stroke="#235237" stroke-width="2" stroke-linejoin="round" fill="#235237"/>
+                <path d="M10 18a2 2 0 0 0 4 0" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Management Announcements</span>
+            <input type="checkbox" name="notif-type" value="announcement" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="6" width="16" height="14" rx="2" stroke="#235237" stroke-width="2" fill="#235237"/>
+                <line x1="4" y1="10" x2="20" y2="10" stroke="#235237" stroke-width="2"/>
+                <line x1="9" y1="3" x2="9" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+                <line x1="15" y1="3" x2="15" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Events &amp; Calendar</span>
+            <input type="checkbox" name="notif-type" value="event" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <text x="12" y="17" font-family="Montserrat" font-size="14" font-weight="800" fill="#235237" text-anchor="middle">$</text>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Payment Reminders</span>
+            <input type="checkbox" name="notif-type" value="payment" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Work Order Updates</span>
+            <input type="checkbox" name="notif-type" value="workorder" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#235237"/>
+                <line x1="12" y1="9" x2="12" y2="13" stroke="#FFF8EA" stroke-width="2" stroke-linecap="round"/>
+                <line x1="12" y1="17" x2="12.01" y2="17" stroke="#FFF8EA" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Violation Notices</span>
+            <input type="checkbox" name="notif-type" value="violation" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 11l19-9-9 19-2-8-8-2z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#235237"/>
+              </svg>
+            </span>
+            <span class="notif-filter-option__label">Community Alerts</span>
+            <input type="checkbox" name="notif-type" value="alert" />
+            <span class="notif-filter-option__check" aria-hidden="true"></span>
+          </label>
+
+          <p class="notif-filter-sheet__section">Read Status</p>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__label">All Notifications</span>
+            <input type="radio" name="notif-read" value="all" checked />
+            <span class="notif-filter-option__radio" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__label">Unread Only</span>
+            <input type="radio" name="notif-read" value="unread" />
+            <span class="notif-filter-option__radio" aria-hidden="true"></span>
+          </label>
+
+          <label class="notif-filter-option">
+            <span class="notif-filter-option__label">Read Only</span>
+            <input type="radio" name="notif-read" value="read" />
+            <span class="notif-filter-option__radio" aria-hidden="true"></span>
+          </label>
+
+        </div>
+        <footer class="notif-filter-sheet__footer">
+          <button class="btn btn--primary" type="button" data-notif-filter-apply style="width:100%;">Apply Filters</button>
+        </footer>
+      </div>
+    </div>
   </div>
 
   <script src="scripts/auth.js"></script>
@@ -191,16 +304,37 @@
   <script src="scripts/app.js"></script>
   <script>
     // Search filter
-    const input = document.querySelector('[data-notif-search]');
-    if (input) {
-      input.addEventListener('input', () => {
-        const q = input.value.trim().toLowerCase();
+    const notifSearch = document.querySelector('[data-notif-search]');
+    if (notifSearch) {
+      notifSearch.addEventListener('input', () => {
+        const q = notifSearch.value.trim().toLowerCase();
         document.querySelectorAll('.notif-list li').forEach((li) => {
           const text = li.textContent.toLowerCase();
           li.style.display = (!q || text.includes(q)) ? '' : 'none';
         });
       });
     }
+
+    // Notification filter sheet
+    const notifFilterSheet = document.querySelector('[data-notif-filter-sheet]');
+    document.querySelector('[data-notif-filter-open]')?.addEventListener('click', () => {
+      if (notifFilterSheet) notifFilterSheet.hidden = false;
+    });
+    document.querySelector('[data-notif-filter-close]')?.addEventListener('click', () => {
+      if (notifFilterSheet) notifFilterSheet.hidden = true;
+    });
+    document.querySelector('[data-notif-filter-reset]')?.addEventListener('click', () => {
+      if (!notifFilterSheet) return;
+      notifFilterSheet.querySelectorAll('input[type="checkbox"]').forEach((cb) => { cb.checked = false; });
+      const radios = notifFilterSheet.querySelectorAll('input[type="radio"]');
+      radios.forEach((r, i) => { r.checked = i === 0; });
+    });
+    document.querySelector('[data-notif-filter-apply]')?.addEventListener('click', () => {
+      if (notifFilterSheet) notifFilterSheet.hidden = true;
+    });
+    notifFilterSheet?.addEventListener('click', (e) => {
+      if (e.target === notifFilterSheet) notifFilterSheet.hidden = true;
+    });
   </script>
 </body>
 </html>

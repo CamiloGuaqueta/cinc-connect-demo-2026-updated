@@ -2125,55 +2125,153 @@
   padding-bottom: calc(var(--bottom-nav-height) + 24px);
 }
 
+/* Search bar (above filter row) */
+.notif-search-bar { padding: 10px 20px 0; }
+.notif-search-bar .messages__search { margin: 0; background: #235237; height: 40px; }
+
 .notif-filter-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 20px 10px;
+  padding: 10px 20px 12px;
+  background: var(--color-bg-base);
 }
 
 .notif-filter {
-  flex: 1;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 40px;
+  gap: 10px;
+  height: 44px;
   padding: 0 16px;
-  background: transparent;
-  border: 1px solid #fff8ea;
-  border-radius: 5px;
+  background: #235237;
+  border: 1px solid rgba(178, 222, 97, 0.25);
+  border-radius: 8px;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 248, 234, 0.5);
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.7);
   cursor: pointer;
+}
+
+.notif-filter__label {
+  flex: 1;
+  text-align: left;
 }
 
 .notif-filter__chevron {
   display: inline-block;
   width: 10px;
   height: 6px;
-  background: #fff8ea;
+  background: rgba(255, 248, 234, 0.6);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  opacity: 0.8;
 }
 
-.notif-filter__toggle {
-  width: 38px;
-  height: 38px;
+/* Notification filter sheet */
+.notif-filter-sheet {
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+.notif-filter-sheet .modal-sheet__body--scrollable {
+  padding: 0 20px 8px;
+}
+.notif-filter-sheet__section {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-brand-lime);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 18px 0 4px;
+}
+.notif-filter-sheet__section:first-child { margin-top: 4px; }
+.notif-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(178, 222, 97, 0.1);
+  cursor: pointer;
+}
+.notif-filter-option:last-of-type { border-bottom: none; }
+.notif-filter-option input { display: none; }
+.notif-filter-option__icon {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: var(--color-brand-lime);
-  border: none;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-
-.notif-filter__toggle svg {
-  width: 24px;
-  height: 24px;
+.notif-filter-option__icon svg { width: 16px; height: 16px; }
+.notif-filter-option__label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+.notif-filter-option__check {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 2px solid rgba(178, 222, 97, 0.4);
+  flex-shrink: 0;
+  position: relative;
+  background: transparent;
+}
+.notif-filter-option input[type="checkbox"]:checked ~ .notif-filter-option__check {
+  background: var(--color-brand-lime);
+  border-color: var(--color-brand-lime);
+}
+.notif-filter-option input[type="checkbox"]:checked ~ .notif-filter-option__check::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 7px;
+  height: 11px;
+  border: 2.5px solid #112719;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+.notif-filter-option__radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(178, 222, 97, 0.4);
+  flex-shrink: 0;
+  position: relative;
+  background: transparent;
+}
+.notif-filter-option input[type="radio"]:checked ~ .notif-filter-option__radio {
+  border-color: var(--color-brand-lime);
+}
+.notif-filter-option input[type="radio"]:checked ~ .notif-filter-option__radio::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-brand-lime);
+}
+.notif-filter-sheet__footer {
+  padding: 14px 20px 28px;
+  flex-shrink: 0;
+  border-top: 1px solid var(--color-brand-lime);
+}
+.notif-filter-sheet__reset {
+  background: none;
+  border: none;
+  color: var(--color-brand-lime);
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px;
+  flex-shrink: 0;
 }
 
 /* Notification list */
