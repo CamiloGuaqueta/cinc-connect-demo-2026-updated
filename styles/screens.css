@@ -13981,7 +13981,7 @@ a.sub-header__right {
 
 /* WO search bar (above status grid) */
 .wo-search-bar { padding: 0 0 10px; }
-.wo-search-bar .messages__search { margin: 0; background: #235237; height: 40px; }
+.wo-search-bar .messages__search { margin: 0; background: #235237; height: 40px; border-radius: 10px; }
 
 /* WO warning screen content */
 .wo-warning-body {
