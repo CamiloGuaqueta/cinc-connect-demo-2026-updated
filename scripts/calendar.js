@@ -27,6 +27,7 @@
     tabs.forEach((t) => t.classList.toggle('cal-tabs__item--active', t.getAttribute('data-view') === v));
     panes.forEach((p) => { p.hidden = p.getAttribute('data-view-pane') !== v; });
     listOnlyEls.forEach((el) => { el.style.visibility = (v === 'list') ? '' : 'hidden'; });
+    if (v === 'list') renderListAll();
     if (v === 'month') renderMonth();
     if (v === 'year') renderYear();
   }
@@ -34,43 +35,83 @@
 
   // ----- LIST VIEW -----
   const searchInput = document.querySelector('[data-calendar-search]');
-  const listEmpty = document.querySelector('[data-list-empty]');
+  const listEmpty   = document.querySelector('[data-list-empty]');
   const listResults = document.querySelector('[data-list-results]');
 
-  function applyListSearch(q) {
-    q = (q || '').trim().toLowerCase();
-    if (!q) {
+  function renderListAll(filter) {
+    filter = (filter || '').trim().toLowerCase();
+
+    // Sort all events by start date
+    let sorted = D.EVENTS.slice().sort((a, b) =>
+      a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0
+    );
+
+    // Apply search filter if present
+    if (filter) {
+      sorted = sorted.filter((e) =>
+        e.title.toLowerCase().includes(filter) ||
+        e.description.toLowerCase().includes(filter)
+      );
+    }
+
+    if (!sorted.length) {
       listEmpty.hidden = false;
       listResults.hidden = true;
       listResults.innerHTML = '';
       return;
     }
-    const matches = D.EVENTS.filter((e) =>
-      e.title.toLowerCase().includes(q) || e.description.toLowerCase().includes(q)
-    );
-    listResults.innerHTML = matches.map((e) => `
-      <li class="cal-list__item">
-        <a href="event.html?id=${encodeURIComponent(e.id)}">
-          <div class="cal-list__date">${formatShort(e.startDate)}</div>
-          <div class="cal-list__body">
-            <div class="cal-list__title">${escapeHtml(e.title)}</div>
-            <div class="cal-list__time">${e.startTime} - ${e.endTime}</div>
-          </div>
-        </a>
-      </li>`).join('');
-    listEmpty.hidden = matches.length > 0;
-    listResults.hidden = matches.length === 0;
+
+    // Group events by start date
+    const groups = {};
+    const dateOrder = [];
+    sorted.forEach((e) => {
+      if (!groups[e.startDate]) {
+        groups[e.startDate] = [];
+        dateOrder.push(e.startDate);
+      }
+      groups[e.startDate].push(e);
+    });
+
+    // Build HTML — one section per date
+    let html = '';
+    dateOrder.forEach((dateISO) => {
+      const d = D.isoToDate(dateISO);
+      html += `<div class="cal-list-group">`;
+      html += `<h3 class="cal-month__selected-title">${D.formatDateLong(d)}</h3>`;
+      html += `<ul class="cal-month__events">`;
+      groups[dateISO].forEach((e) => {
+        const personalClass = e.category === 'personal' ? ' cal-month__event--personal' : '';
+        html += `<li>
+          <a class="cal-month__event${personalClass}" href="event.html?id=${encodeURIComponent(e.id)}">
+            <div class="cal-month__event-time">
+              <span>${escapeHtml(e.startTime)}</span>
+              <span>${escapeHtml(e.endTime)}</span>
+            </div>
+            <div class="cal-month__event-bar" aria-hidden="true"></div>
+            <div class="cal-month__event-body">
+              <div class="cal-month__event-title">${escapeHtml(e.title)}</div>
+              ${e.category === 'personal' ? '<div class="cal-month__event-tag">Personal</div>' : ''}
+              <div class="cal-month__event-desc">${escapeHtml(e.description.substring(0, 90))}…</div>
+            </div>
+          </a>
+        </li>`;
+      });
+      html += `</ul></div>`;
+    });
+
+    listResults.innerHTML = html;
+    listEmpty.hidden = true;
+    listResults.hidden = false;
   }
 
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => applyListSearch(e.target.value));
+    searchInput.addEventListener('input', (e) => renderListAll(e.target.value));
   }
 
   // ----- MONTH VIEW -----
-  const monthGrid = document.querySelector('[data-month-grid]');
-  const monthTitle = document.querySelector('[data-month-title]');
-  const monthWeekdays = document.querySelector('[data-month-weekdays]');
-  const selectedTitle = document.querySelector('[data-selected-day-title]');
+  const monthGrid     = document.querySelector('[data-month-grid]');
+  const monthTitle    = document.querySelector('[data-month-title]');
+  const selectedTitle  = document.querySelector('[data-selected-day-title]');
   const selectedEvents = document.querySelector('[data-selected-day-events]');
 
   function renderMonth() {
@@ -81,12 +122,11 @@
     const today = new Date();
     const sel = state.selectedDate;
     const firstOfMonth = new Date(cur.getFullYear(), cur.getMonth(), 1);
-    const lastOfMonth = new Date(cur.getFullYear(), cur.getMonth() + 1, 0);
-    const startWeekday = firstOfMonth.getDay(); // 0 = Sun
-    const totalDays = lastOfMonth.getDate();
+    const lastOfMonth  = new Date(cur.getFullYear(), cur.getMonth() + 1, 0);
+    const startWeekday = firstOfMonth.getDay();
+    const totalDays    = lastOfMonth.getDate();
 
     const cells = [];
-    // empty leading cells
     for (let i = 0; i < startWeekday; i++) cells.push('<span class="cal-day cal-day--empty"></span>');
 
     for (let day = 1; day <= totalDays; day++) {
@@ -104,9 +144,6 @@
 
     monthGrid.innerHTML = cells.join('');
 
-    // No more red column header highlight — selection is shown by lime border on the day.
-
-    // Wire up day clicks
     monthGrid.querySelectorAll('[data-day]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const day = Number(btn.getAttribute('data-day'));
@@ -126,9 +163,10 @@
       selectedEvents.innerHTML = '<li class="cal-month__no-events">No events on this date</li>';
       return;
     }
-    selectedEvents.innerHTML = events.map((e) => `
-      <li>
-        <a class="cal-month__event" href="event.html?id=${encodeURIComponent(e.id)}">
+    selectedEvents.innerHTML = events.map((e) => {
+      const personalClass = e.category === 'personal' ? ' cal-month__event--personal' : '';
+      return `<li>
+        <a class="cal-month__event${personalClass}" href="event.html?id=${encodeURIComponent(e.id)}">
           <div class="cal-month__event-time">
             <span>${e.startTime}</span>
             <span>${e.endTime}</span>
@@ -136,11 +174,13 @@
           <div class="cal-month__event-bar" aria-hidden="true"></div>
           <div class="cal-month__event-body">
             <div class="cal-month__event-title">${escapeHtml(e.title)}</div>
+            ${e.category === 'personal' ? '<div class="cal-month__event-tag">Personal</div>' : ''}
             <div class="cal-month__event-meta">Ending date: ${formatShort(e.endDate)}</div>
             <div class="cal-month__event-desc">${escapeHtml(e.description.substring(0, 80))}…</div>
           </div>
         </a>
-      </li>`).join('');
+      </li>`;
+    }).join('');
   }
 
   document.querySelector('[data-month-prev]')?.addEventListener('click', () => {
@@ -153,10 +193,10 @@
   });
 
   // ----- YEAR VIEW -----
-  const yearGrid = document.querySelector('[data-year-grid]');
-  const yearLabel = document.querySelector('[data-year-label]');
+  const yearGrid      = document.querySelector('[data-year-grid]');
+  const yearLabel     = document.querySelector('[data-year-label]');
   const yearSelectBtn = document.querySelector('[data-year-select]');
-  const yearPicker = document.querySelector('[data-year-picker]');
+  const yearPicker    = document.querySelector('[data-year-picker]');
 
   function renderYear() {
     yearLabel.textContent = state.yearCursor;
@@ -166,9 +206,9 @@
     const blocks = [];
     for (let m = 0; m < 12; m++) {
       const firstOfMonth = new Date(state.yearCursor, m, 1);
-      const lastOfMonth = new Date(state.yearCursor, m + 1, 0);
+      const lastOfMonth  = new Date(state.yearCursor, m + 1, 0);
       const startWeekday = firstOfMonth.getDay();
-      const totalDays = lastOfMonth.getDate();
+      const totalDays    = lastOfMonth.getDate();
       const cells = [];
       for (let i = 0; i < startWeekday; i++) cells.push('<span class="cal-yd cal-yd--empty"></span>');
       for (let day = 1; day <= totalDays; day++) {
@@ -187,17 +227,15 @@
     }
     yearGrid.innerHTML = blocks.join('');
 
-    // Wire up day clicks — just mark the day as selected, stay in year view
     yearGrid.querySelectorAll('[data-year-day]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const [y, m, day] = btn.getAttribute('data-year-day').split('-').map(Number);
         state.selectedDate = new Date(y, m, day);
-        state.monthCursor = new Date(y, m, 1);
+        state.monthCursor  = new Date(y, m, 1);
         renderYear();
       });
     });
 
-    // Click on month name jumps to that month
     yearGrid.querySelectorAll('.cal-year__month-name').forEach((h, m) => {
       h.style.cursor = 'pointer';
       h.addEventListener('click', () => {
@@ -225,11 +263,9 @@
       renderYear();
     });
   });
-  // Click on backdrop closes it
   yearPicker?.addEventListener('click', (e) => {
     if (e.target === yearPicker) closeYearPicker();
   });
-  // Escape closes it
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && yearPicker && !yearPicker.hidden) closeYearPicker();
   });

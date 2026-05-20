@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Community Calendar</title>
+  <title>CINC Connect ï¿½ Community Calendar</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +42,7 @@
 
       <!-- LIST VIEW -->
       <section class="cal-view cal-view--list" data-view-pane="list">
-        <div class="cal-empty" data-list-empty>
+        <div class="cal-empty" data-list-empty hidden>
           <div class="cal-empty__icon" aria-hidden="true">
             <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="8" y="14" width="48" height="44" rx="4" stroke="#b2de61" stroke-width="3"/>
@@ -52,9 +52,9 @@
               <path d="M22 42 L29 49 L44 34" stroke="#b2de61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h2 class="cal-empty__title">There Are No<br>Events Available</h2>
+          <h2 class="cal-empty__title">No Events Found</h2>
         </div>
-        <ul class="cal-list" data-list-results hidden></ul>
+        <div class="cal-list-grouped" data-list-results></div>
       </section>
 
       <!-- MONTH VIEW -->
@@ -96,7 +96,7 @@
     <!-- Year picker modal -->
     <div class="cal-year-modal" data-year-picker hidden>
       <div class="cal-year-modal__panel">
-        <button class="cal-year-modal__close" type="button" data-year-picker-close aria-label="Close">×</button>
+        <button class="cal-year-modal__close" type="button" data-year-picker-close aria-label="Close">ï¿½</button>
         <h3 class="cal-year-modal__title">Year Selection</h3>
         <div class="cal-year-modal__divider"></div>
         <ul class="cal-year-modal__list">

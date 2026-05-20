@@ -5015,10 +5015,39 @@ a.sub-header__right {
   text-decoration: none;
 }
 
-/* If the events list grows tall, allow vertical scroll */
-.cal-month__events {
+/* In month view day panel — cap height and allow scroll */
+.cal-month__selected .cal-month__events {
   max-height: 240px;
   overflow-y: auto;
+}
+
+/* In list view — no height cap, full scroll of the page */
+.cal-view--list .cal-month__events {
+  max-height: none;
+  overflow-y: visible;
+}
+
+/* Spacing between date groups in list view */
+.cal-list-group {
+  margin-bottom: 28px;
+}
+
+/* Personal event — cream bar to distinguish from community (lime) */
+.cal-month__event--personal .cal-month__event-bar {
+  background: #FFF8EA;
+}
+
+/* "Personal" label badge */
+.cal-month__event-tag {
+  display: inline-block;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #FFF8EA;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 4px;
+  opacity: 0.7;
 }
 
 .cal-month__event-time {
@@ -6175,7 +6204,7 @@ a.sub-header__right {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: #112719;
+  background: rgba(17, 39, 25, 0.88);
   display: flex;
   align-items: flex-end;
   justify-content: center;
