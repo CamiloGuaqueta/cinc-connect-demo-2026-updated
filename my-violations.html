@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=2" />
+  <link rel="stylesheet" href="styles/screens.css?v=3" />
 </head>
 <body>
   <div class="app-frame">
@@ -410,7 +410,7 @@
           document.querySelectorAll('.filter-radio').forEach(function (r) {
             r.classList.remove('filter-radio--selected');
           });
-          row.querySelector('.mv-unit-radio').classList.add('filter-radio--selected');
+          row.querySelector('.filter-radio').classList.add('filter-radio--selected');
           closeUnitPicker();
         });
       });

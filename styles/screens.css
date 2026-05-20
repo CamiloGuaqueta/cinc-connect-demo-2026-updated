@@ -11734,7 +11734,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 22px;
   font-weight: 800;
-  color: #fff8ea;
+  color: #fff8ea !important;
   margin: 0;
   padding: 0 20px 10px;
 }
@@ -11806,7 +11806,7 @@ a.sub-header__right {
   flex: 1;
   overflow-y: auto;
   background: #112719;
-  padding-bottom: calc(var(--bottom-nav-height) + 16px);
+  padding-bottom: calc(var(--bottom-nav-height) + 80px);
 }
 
 .vlog-topbar {
@@ -13284,10 +13284,16 @@ a.sub-header__right {
    MY VIOLATION LOG — Add Note sticky bar
    ============================================ */
 .vlog-add-note-bar {
-  flex-shrink: 0;
+  position: fixed;
+  bottom: var(--bottom-nav-height);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width-mobile);
   padding: 12px 20px;
   background: #112719;
   border-top: 1px solid rgba(255,255,255,.1);
+  z-index: 50;
 }
 .vlog-add-note-btn {
   display: block;
