@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#235237" />
+  <title>CINC Connect — Violation Items</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=2" />
+</head>
+<body>
+  <div class="app-frame" style="position:relative;">
+    <main class="vitem-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="my-violations.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Type -->
+      <div class="vitem-screen__topbar">
+        <h1 class="vitem-screen__title">Violation Items</h1>
+        <span class="vitem-type-badge">Fencing</span>
+      </div>
+
+      <!-- Items list -->
+      <div class="vitem-list">
+
+        <!-- Item 1 — Unauthorized Fencing -->
+        <div class="vitem-card">
+          <p class="vitem-card__title">Unauthorized Fencing</p>
+          <p class="vitem-card__body">A wooden privacy fence was erected along the rear and right side property lines without prior ACC approval. Installed in March 2025 with no submitted request form or board consent. The structure is visible from the community walking path and has generated complaints from adjacent residents.</p>
+          <button class="vitem-card__see-more"
+            data-title="Unauthorized Fencing"
+            data-text="A wooden privacy fence was erected along the rear and right side property lines without prior Architectural Control Committee approval. The structure was installed in March 2025 without a submitted ACC request form or board consent. Per Section 3.2 of the CC&amp;Rs, any fence installation requires written approval prior to construction. The unauthorized fence is visible from the community walking path along the rear easement and has generated informal complaints from two neighboring residents. The homeowner was notified via certified letter dated April 2, 2025. No response has been received to date. A follow-up inspection is scheduled for May 22, 2025 to document current conditions and determine whether escalation to a formal hearing is warranted.">
+            See More
+          </button>
+        </div>
+
+        <!-- Item 2 — Fence Height -->
+        <div class="vitem-card">
+          <p class="vitem-card__title">Fence Height Violation</p>
+          <p class="vitem-card__body">The installed fence measures 6 feet 2 inches at its tallest point, exceeding the community maximum of 4 feet per Section 3.4 of the CC&Rs. Non-compliant height is concentrated near the alley gate and the northeast corner of the lot, creating a visible obstruction from the common area walking path.</p>
+          <button class="vitem-card__see-more"
+            data-title="Fence Height Violation"
+            data-text="The installed fence measures 6 feet 2 inches at its tallest point along the rear property line, exceeding the community-wide maximum of 4 feet established in Section 3.4 of the CC&amp;Rs. The non-compliant sections are concentrated near the alley gate and the northeast corner of the lot. This elevation creates a visible obstruction along the community walking path and is inconsistent with the 4-foot standard maintained by all adjacent properties on Washington Avenue. Photographic evidence and field measurements collected during the April 8, 2025 property inspection confirm the height violation at three separate measurement points. The homeowner has been advised that all fence sections facing the easement or public-facing boundaries must be reduced to 4 feet or below prior to case closure.">
+            See More
+          </button>
+        </div>
+
+        <!-- Item 3 — Fence Color -->
+        <div class="vitem-card">
+          <p class="vitem-card__title">Fence Color Non-Compliance</p>
+          <p class="vitem-card__body">The fence is painted in a dark burgundy tone not included in the Association's approved exterior color palette. Section 5.1 of the Architectural Guidelines requires natural wood stain or an approved earth tone. No color change approval was submitted or granted prior to painting.</p>
+          <button class="vitem-card__see-more"
+            data-title="Fence Color Non-Compliance"
+            data-text="The fence has been painted a dark burgundy tone that does not appear in the Association's approved exterior color palette for Washington Avenue. Section 5.1 of the Architectural Guidelines requires all fence materials to be finished in either natural untreated wood, an approved cedar stain (Sherwin-Williams Cordovan Brown SW 2714 or equivalent), or a neutral earth tone pre-approved in writing by the Architectural Review Committee. The current color contrasts sharply with all neighboring fence finishes and disrupts the visual continuity of the streetscape. No color change approval was submitted or granted. The homeowner must submit a formal color correction plan to the ACC before any repainting or refinishing takes place. Until written approval is received, no work may commence.">
+            See More
+          </button>
+        </div>
+
+      </div><!-- /.vitem-list -->
+
+    </main>
+
+    <!-- Bottom Navigation — My To-Dos active -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+
+  </div><!-- /.app-frame -->
+
+  <!-- Violation Item Detail — ho-sheet pattern (outside .app-frame) -->
+  <div class="ho-sheet-backdrop" id="vitemBackdrop"></div>
+  <div class="ho-sheet" id="vitemSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="vitemClose" type="button" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Violation Item</span>
+    </div>
+    <div class="ho-sheet__body">
+      <h2 class="ho-sheet__detail-title" id="vitemSheetTitle"></h2>
+      <p class="ho-sheet__detail-text" id="vitemSheetText"></p>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var sheet      = document.getElementById('vitemSheet');
+      var backdrop   = document.getElementById('vitemBackdrop');
+      var closeBtn   = document.getElementById('vitemClose');
+      var sheetTitle = document.getElementById('vitemSheetTitle');
+      var sheetText  = document.getElementById('vitemSheetText');
+
+      function openSheet(title, text) {
+        sheetTitle.textContent = title;
+        sheetText.innerHTML    = text;
+        sheet.style.display    = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        setTimeout(function () {
+          sheet.style.display = 'none';
+          sheet.setAttribute('aria-hidden', 'true');
+        }, 370);
+      }
+
+      document.querySelectorAll('.vitem-card__see-more').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.dataset.title, btn.dataset.text);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeSheet();
+      });
+    })();
+  </script>
+</body>
+</html>

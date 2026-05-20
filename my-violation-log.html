@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Violation Log &amp; Notes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=2" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="vlog-screen">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="my-violations.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Topbar: violation type icon + name (no filter) -->
+      <div class="vlog-topbar">
+        <div class="vlog-topbar__left">
+          <img class="vlog-topbar__icon" src="assets/icons/icon-todo-4-violation.svg" alt="" />
+          <span class="vlog-topbar__type">Trash Cans</span>
+        </div>
+      </div>
+
+      <!-- Violation context meta -->
+      <div class="vlog-header">
+        <p class="vlog-header__address">180 Crandon Blvd</p>
+        <p class="vlog-header__meta"><strong>Date:</strong> 03/02/2025</p>
+        <p class="vlog-header__meta"><strong>Level:</strong> 1st Notice - No Fine</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="log-timeline">
+        <div class="log-timeline__line"></div>
+
+        <!-- Entry 1 — Management Company -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/22/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask-mgmt-1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="21">
+                    <path d="M0 0H24.4294V20.8079H0V0Z" fill="black"/>
+                  </mask>
+                  <g mask="url(#mask-mgmt-1)">
+                    <path d="M14.7744 15.6475H9.65498C9.29978 15.6475 9.01196 15.9353 9.01196 16.2905C9.01196 16.6457 9.29978 16.9335 9.65498 16.9335H14.7744C15.1296 16.9335 15.4174 16.6457 15.4174 16.2905C15.4174 15.9353 15.1296 15.6475 14.7744 15.6475Z" fill="#FFF8EA"/>
+                    <path d="M6.91322 10.031L5.94253 12.282C5.8021 12.6082 5.9523 12.9865 6.27844 13.1272C6.36126 13.1629 6.44768 13.1799 6.53282 13.1799C6.78179 13.1799 7.01868 13.0343 7.12362 12.7913L7.92661 10.9286H16.7171L17.2989 12.3924C17.4301 12.7224 17.8036 12.8831 18.1341 12.7522C18.4641 12.621 18.6251 12.247 18.4939 11.917L17.7508 10.0479C17.6536 9.80307 17.4167 9.64258 17.1533 9.64258H7.50376C7.24708 9.64258 7.01507 9.7951 6.91322 10.031Z" fill="#FFF8EA"/>
+                    <path d="M12.2147 6.59989C14.0345 6.59989 15.5147 5.11941 15.5147 3.29994C15.5147 1.48022 14.0345 0 12.2147 0C10.395 0 8.91479 1.48022 8.91479 3.29994C8.91479 5.11941 10.395 6.59989 12.2147 6.59989ZM12.2147 1.28603C13.3251 1.28603 14.2287 2.18959 14.2287 3.29994C14.2287 4.4103 13.3251 5.31386 12.2147 5.31386C11.1044 5.31386 10.2008 4.4103 10.2008 3.29994C10.2008 2.18959 11.1044 1.28603 12.2147 1.28603Z" fill="#FFF8EA"/>
+                    <path d="M21.1295 3.2998C19.3098 3.2998 17.8296 4.78028 17.8296 6.59975C17.8296 8.41948 19.3098 9.89969 21.1295 9.89969C22.9493 9.89969 24.4295 8.41948 24.4295 6.59975C24.4295 4.78028 22.9493 3.2998 21.1295 3.2998ZM21.1295 8.61366C20.0192 8.61366 19.1156 7.71036 19.1156 6.59975C19.1156 5.48939 20.0192 4.58583 21.1295 4.58583C22.2399 4.58583 23.1434 5.48939 23.1434 6.59975C23.1434 7.71036 22.2399 8.61366 21.1295 8.61366Z" fill="#FFF8EA"/>
+                    <path d="M3.29994 9.89969C5.11967 9.89969 6.59989 8.41922 6.59989 6.59975C6.59989 4.78002 5.11967 3.2998 3.29994 3.2998C1.48022 3.2998 0 4.78002 0 6.59975C0 8.41922 1.48022 9.89969 3.29994 9.89969ZM3.29994 4.58583C4.4103 4.58583 5.31386 5.48939 5.31386 6.59975C5.31386 7.7101 4.4103 8.61366 3.29994 8.61366C2.18959 8.61366 1.28603 7.7101 1.28603 6.59975C1.28603 5.48939 2.18959 4.58583 3.29994 4.58583Z" fill="#FFF8EA"/>
+                    <path d="M4.68325 14.208C2.86352 14.208 1.3833 15.6885 1.3833 17.5079C1.3833 19.3277 2.86352 20.8079 4.68325 20.8079C6.50297 20.8079 7.98319 19.3277 7.98319 17.5079C7.98319 15.6885 6.50297 14.208 4.68325 14.208ZM4.68325 19.5219C3.57289 19.5219 2.66933 18.6186 2.66933 17.5079C2.66933 16.3976 3.57289 15.494 4.68325 15.494C5.7936 15.494 6.69716 16.3976 6.69716 17.5079C6.69716 18.6186 5.7936 19.5219 4.68325 19.5219Z" fill="#FFF8EA"/>
+                    <path d="M19.7462 14.208C17.9265 14.208 16.4463 15.6885 16.4463 17.5079C16.4463 19.3277 17.9265 20.8079 19.7462 20.8079C21.566 20.8079 23.0462 19.3277 23.0462 17.5079C23.0462 15.6885 21.566 14.208 19.7462 14.208ZM19.7462 19.5219C18.6359 19.5219 17.7323 18.6186 17.7323 17.5079C17.7323 16.3976 18.6359 15.494 19.7462 15.494C20.8566 15.494 21.7602 16.3976 21.7602 17.5079C21.7602 18.6186 20.8566 19.5219 19.7462 19.5219Z" fill="#FFF8EA"/>
+                  </g>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Management Company</span>
+              </div>
+            </div>
+            <p class="log-entry__text">We will hold escalation of this Violation until next Monday 03/25/2025</p>
+          </div>
+        </div>
+
+        <!-- Entry 2 — John Doe, Owner -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/21/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <img class="log-entry__photo" src="assets/personas/user-john.jpg" alt="John Doe" />
+              <div class="log-entry__meta">
+                <span class="log-entry__name">John Doe</span>
+                <span class="log-entry__role">Owner</span>
+              </div>
+            </div>
+            <p class="log-entry__text">I am moving next week. Can I have more time please?</p>
+          </div>
+        </div>
+
+        <!-- Entry 3 — Management Company Note (See More) -->
+        <div class="log-entry">
+          <p class="log-entry__date">03/20/2025 3:30PM</p>
+          <div class="log-entry__card">
+            <div class="log-entry__person">
+              <span class="log-entry__avatar-committee" aria-hidden="true">
+                <svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask-mgmt-3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="21">
+                    <path d="M0 0H24.4294V20.8079H0V0Z" fill="black"/>
+                  </mask>
+                  <g mask="url(#mask-mgmt-3)">
+                    <path d="M14.7744 15.6475H9.65498C9.29978 15.6475 9.01196 15.9353 9.01196 16.2905C9.01196 16.6457 9.29978 16.9335 9.65498 16.9335H14.7744C15.1296 16.9335 15.4174 16.6457 15.4174 16.2905C15.4174 15.9353 15.1296 15.6475 14.7744 15.6475Z" fill="#FFF8EA"/>
+                    <path d="M6.91322 10.031L5.94253 12.282C5.8021 12.6082 5.9523 12.9865 6.27844 13.1272C6.36126 13.1629 6.44768 13.1799 6.53282 13.1799C6.78179 13.1799 7.01868 13.0343 7.12362 12.7913L7.92661 10.9286H16.7171L17.2989 12.3924C17.4301 12.7224 17.8036 12.8831 18.1341 12.7522C18.4641 12.621 18.6251 12.247 18.4939 11.917L17.7508 10.0479C17.6536 9.80307 17.4167 9.64258 17.1533 9.64258H7.50376C7.24708 9.64258 7.01507 9.7951 6.91322 10.031Z" fill="#FFF8EA"/>
+                    <path d="M12.2147 6.59989C14.0345 6.59989 15.5147 5.11941 15.5147 3.29994C15.5147 1.48022 14.0345 0 12.2147 0C10.395 0 8.91479 1.48022 8.91479 3.29994C8.91479 5.11941 10.395 6.59989 12.2147 6.59989ZM12.2147 1.28603C13.3251 1.28603 14.2287 2.18959 14.2287 3.29994C14.2287 4.4103 13.3251 5.31386 12.2147 5.31386C11.1044 5.31386 10.2008 4.4103 10.2008 3.29994C10.2008 2.18959 11.1044 1.28603 12.2147 1.28603Z" fill="#FFF8EA"/>
+                    <path d="M21.1295 3.2998C19.3098 3.2998 17.8296 4.78028 17.8296 6.59975C17.8296 8.41948 19.3098 9.89969 21.1295 9.89969C22.9493 9.89969 24.4295 8.41948 24.4295 6.59975C24.4295 4.78028 22.9493 3.2998 21.1295 3.2998ZM21.1295 8.61366C20.0192 8.61366 19.1156 7.71036 19.1156 6.59975C19.1156 5.48939 20.0192 4.58583 21.1295 4.58583C22.2399 4.58583 23.1434 5.48939 23.1434 6.59975C23.1434 7.71036 22.2399 8.61366 21.1295 8.61366Z" fill="#FFF8EA"/>
+                    <path d="M3.29994 9.89969C5.11967 9.89969 6.59989 8.41922 6.59989 6.59975C6.59989 4.78002 5.11967 3.2998 3.29994 3.2998C1.48022 3.2998 0 4.78002 0 6.59975C0 8.41922 1.48022 9.89969 3.29994 9.89969ZM3.29994 4.58583C4.4103 4.58583 5.31386 5.48939 5.31386 6.59975C5.31386 7.7101 4.4103 8.61366 3.29994 8.61366C2.18959 8.61366 1.28603 7.7101 1.28603 6.59975C1.28603 5.48939 2.18959 4.58583 3.29994 4.58583Z" fill="#FFF8EA"/>
+                    <path d="M4.68325 14.208C2.86352 14.208 1.3833 15.6885 1.3833 17.5079C1.3833 19.3277 2.86352 20.8079 4.68325 20.8079C6.50297 20.8079 7.98319 19.3277 7.98319 17.5079C7.98319 15.6885 6.50297 14.208 4.68325 14.208ZM4.68325 19.5219C3.57289 19.5219 2.66933 18.6186 2.66933 17.5079C2.66933 16.3976 3.57289 15.494 4.68325 15.494C5.7936 15.494 6.69716 16.3976 6.69716 17.5079C6.69716 18.6186 5.7936 19.5219 4.68325 19.5219Z" fill="#FFF8EA"/>
+                    <path d="M19.7462 14.208C17.9265 14.208 16.4463 15.6885 16.4463 17.5079C16.4463 19.3277 17.9265 20.8079 19.7462 20.8079C21.566 20.8079 23.0462 19.3277 23.0462 17.5079C23.0462 15.6885 21.566 14.208 19.7462 14.208ZM19.7462 19.5219C18.6359 19.5219 17.7323 18.6186 17.7323 17.5079C17.7323 16.3976 18.6359 15.494 19.7462 15.494C20.8566 15.494 21.7602 16.3976 21.7602 17.5079C21.7602 18.6186 20.8566 19.5219 19.7462 19.5219Z" fill="#FFF8EA"/>
+                  </g>
+                </svg>
+              </span>
+              <div class="log-entry__meta">
+                <span class="log-entry__name">Management Company Note</span>
+              </div>
+            </div>
+            <p class="log-entry__text">Garbage cans left outside after collection day on 03/20/2025 at 180 Crandon Blvd. This is the first formal notice. Homeowner has until 03/27/2025 to correct the issue&#8230; <button class="committee-note__see-more" type="button"
+                data-note-title="Management Company Note — 03/20/2025"
+                data-note-text="Garbage cans left outside after collection day on 03/20/2025 at 180 Crandon Blvd. This is the first formal notice. Homeowner has until 03/27/2025 to correct the issue. Trash receptacles must be stored out of public view no later than 8pm on collection day per Section 4.1 of the community rules. If no corrective action is taken within the cure period, this case will be escalated and may result in additional notices and fines. All correspondence will be documented in the violation record for reference.">See More</button></p>
+          </div>
+        </div>
+
+      </div><!-- /.log-timeline -->
+
+    </main>
+
+    <!-- ADD Note sticky bar -->
+    <div class="vlog-add-note-bar">
+      <a class="vlog-add-note-btn" href="my-violation-add-note.html">ADD Note</a>
+    </div>
+
+    <!-- Bottom Navigation (My To-Dos active) -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /><span class="bottom-nav__nav-badge">3</span></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">PinBoard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Chat</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div><!-- /.app-frame -->
+
+  <!-- Note detail — ho-sheet pattern (outside .app-frame) -->
+  <div class="ho-sheet-backdrop" id="noteBackdrop"></div>
+  <div class="ho-sheet" id="noteSheet" aria-hidden="true">
+    <div class="ho-sheet__header">
+      <button class="ho-sheet__back" id="noteClose" type="button" aria-label="Back">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+          <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="ho-sheet__title">Note</span>
+    </div>
+    <div class="ho-sheet__body">
+      <h2 class="ho-sheet__detail-title" id="noteSheetTitle"></h2>
+      <p class="ho-sheet__detail-text" id="noteSheetText"></p>
+    </div>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var sheet    = document.getElementById('noteSheet');
+      var backdrop = document.getElementById('noteBackdrop');
+      var closeBtn = document.getElementById('noteClose');
+      var sheetTitle = document.getElementById('noteSheetTitle');
+      var sheetText  = document.getElementById('noteSheetText');
+
+      function openSheet(title, text) {
+        sheetTitle.textContent = title;
+        sheetText.textContent  = text;
+        sheet.querySelector('.ho-sheet__body').scrollTop = 0;
+        sheet.style.display = 'flex';
+        backdrop.classList.add('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            sheet.classList.add('ho-sheet--open');
+          });
+        });
+      }
+
+      function closeSheet() {
+        sheet.classList.remove('ho-sheet--open');
+        backdrop.classList.remove('ho-sheet-backdrop--open');
+        sheet.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { sheet.style.display = 'none'; }, 370);
+      }
+
+      document.querySelectorAll('.committee-note__see-more[data-note-title]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openSheet(btn.getAttribute('data-note-title'), btn.getAttribute('data-note-text'));
+        });
+      });
+
+      closeBtn.addEventListener('click', closeSheet);
+      backdrop.addEventListener('click', closeSheet);
+
+      sheet.addEventListener('touchstart', function (e) {
+        sheet._startY = e.touches[0].clientY;
+      }, { passive: true });
+      sheet.addEventListener('touchend', function (e) {
+        if (e.changedTouches[0].clientY - sheet._startY > 60) closeSheet();
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
