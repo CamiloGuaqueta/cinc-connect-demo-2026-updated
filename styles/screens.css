@@ -776,7 +776,7 @@
 /* Segmented tabs: Amenities / My Reservations */
 .amenities__tabs {
   display: flex;
-  margin: 10px 15px 20px;
+  margin: 10px 20px 20px;
   background: #235237;
   border-radius: 5px;
   padding: 5px;

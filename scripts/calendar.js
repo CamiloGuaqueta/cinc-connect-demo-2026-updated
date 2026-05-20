@@ -41,10 +41,14 @@
   function renderListAll(filter) {
     filter = (filter || '').trim().toLowerCase();
 
-    // Sort all events by start date
-    let sorted = D.EVENTS.slice().sort((a, b) =>
-      a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0
-    );
+    // Only show upcoming events (endDate >= today)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Sort all upcoming events by start date
+    let sorted = D.EVENTS.slice()
+      .filter((e) => D.isoToDate(e.endDate) >= today)
+      .sort((a, b) => a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0);
 
     // Apply search filter if present
     if (filter) {
@@ -55,8 +59,9 @@
     }
 
     if (!sorted.length) {
-      listEmpty.hidden = !filter; // only show "No Events Found" when a search query returned nothing
-      listResults.hidden = true;
+      // Only show the empty state when the user typed something that returned nothing
+      listEmpty.style.display = filter ? '' : 'none';
+      listResults.style.display = 'none';
       listResults.innerHTML = '';
       return;
     }
@@ -100,8 +105,8 @@
     });
 
     listResults.innerHTML = html;
-    listEmpty.hidden = true;
-    listResults.hidden = false;
+    listEmpty.style.display = 'none';
+    listResults.style.display = '';
   }
 
   if (searchInput) {

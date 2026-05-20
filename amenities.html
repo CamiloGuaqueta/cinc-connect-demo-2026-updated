@@ -290,6 +290,37 @@
       let list = [];
       try { list = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (_) {}
 
+      // Seed default reservations for the demo if none exist
+      if (!list.length) {
+        list = [
+          {
+            amenityId: 'bbq-pavilion',
+            name: 'BBQ Pavilion',
+            image: 'assets/images/BBQ-2.png',
+            date: 'Jun 21, 2026',
+            slot: '3:00 PM',
+            timeRange: '3:00 PM – 7:00 PM',
+            guests: 8,
+            paid: true,
+            total: 215,
+            deposit: 75
+          },
+          {
+            amenityId: 'pool-spa',
+            name: 'Pool & Spa',
+            image: 'assets/images/Pool-Spa.jpg',
+            date: 'Jun 28, 2026',
+            slot: '2:00 PM',
+            timeRange: '2:00 PM – 5:00 PM',
+            guests: 4,
+            paid: false,
+            total: 0,
+            deposit: 0
+          }
+        ];
+        localStorage.setItem(KEY, JSON.stringify(list));
+      }
+
       const emptyEl = document.querySelector('[data-reservations-empty]');
       const listEl  = document.querySelector('[data-reservations-list]');
 
@@ -310,7 +341,7 @@
                 ${totalLine}
               </div>
               <h3 class="my-res-card__name">${r.name}</h3>
-              <p class="my-res-card__meta">${r.date} � ${r.timeRange}</p>
+              <p class="my-res-card__meta">${r.date} · ${r.timeRange}</p>
               <p class="my-res-card__meta">Guests: ${r.guests}</p>
             </div>
             <img class="my-res-card__img" src="${r.image}" alt="" />

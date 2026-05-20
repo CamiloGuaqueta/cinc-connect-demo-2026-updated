@@ -12,11 +12,11 @@
 
     // ── February 2026 ──────────────────────────────
     {
-      id: 'board-meeting-feb',
+      id: 'board-meeting-aug',
       title: 'Board Meeting',
       category: 'community',
-      startDate: '2026-02-12',
-      endDate: '2026-02-12',
+      startDate: '2026-08-27',
+      endDate: '2026-08-27',
       startTime: '7:00 PM',
       endTime: '9:00 PM',
       description: 'Monthly Board of Directors meeting. Topics include budget approval, new amenity proposals, and committee reports. Open to all homeowners.'
@@ -25,20 +25,20 @@
     // ── May 2026 ───────────────────────────────────
     {
       id: 'pool-opening',
-      title: 'Pool Season Opening',
+      title: 'Pool Season Kickoff',
       category: 'community',
-      startDate: '2026-05-02',
-      endDate: '2026-05-02',
+      startDate: '2026-05-30',
+      endDate: '2026-05-30',
       startTime: '10:00 AM',
       endTime: '12:00 PM',
-      description: 'Welcome the summer season! Join us at the community pool for the official pool opening. Light refreshments provided. All residents and guests welcome.'
+      description: 'Welcome the summer season! Join us at the community pool for the official pool kickoff. Light refreshments provided. All residents and guests welcome.'
     },
     {
       id: 'landscaping-committee',
       title: 'Landscaping Committee Meeting',
       category: 'community',
-      startDate: '2026-05-14',
-      endDate: '2026-05-14',
+      startDate: '2026-06-11',
+      endDate: '2026-06-11',
       startTime: '6:30 PM',
       endTime: '8:00 PM',
       description: 'Landscaping Committee meeting to review proposals for the summer planting schedule and common area beautification projects. Homeowner input welcome.'
