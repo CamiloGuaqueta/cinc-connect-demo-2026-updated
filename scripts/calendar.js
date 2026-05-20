@@ -55,7 +55,7 @@
     }
 
     if (!sorted.length) {
-      listEmpty.hidden = false;
+      listEmpty.hidden = !filter; // only show "No Events Found" when a search query returned nothing
       listResults.hidden = true;
       listResults.innerHTML = '';
       return;
