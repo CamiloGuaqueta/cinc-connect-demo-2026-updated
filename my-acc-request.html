@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#235237" />
-  <title>CINC Connect — My ACC Request</title>
+  <title>CINC Connect — My ACC Requests</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +35,7 @@
 
       <!-- Title + Filter -->
       <div class="ar-violations__topbar">
-        <h1 class="ar-violations__title">My ACC Request</h1>
+        <h1 class="ar-violations__title">My ACC Requests</h1>
         <a class="acc-filter-btn" href="#" aria-label="Filter">
           <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
         </a>
@@ -43,75 +43,141 @@
 
       <!-- Unit Dropdown -->
       <button class="mv-unit-dropdown" id="unitDropdownBtn" type="button" aria-label="Select unit">
-        <span class="mv-unit-dropdown__label" id="unitLabel">All Units</span>
+        <span class="mv-unit-dropdown__label" id="unitLabel">All units</span>
         <svg class="mv-unit-dropdown__chevron" width="14" height="8" viewBox="0 0 14 8" fill="none">
           <path d="M1 1l6 6 6-6" stroke="#fff8ea" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
 
+      <!-- Status Filter Grid -->
+      <div class="acc-status-grid">
+        <!-- All -->
+        <button class="acc-status-tile" type="button">
+          <div class="acc-status-tile__top">
+            <svg class="acc-status-tile__icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <rect x="3" y="3" width="19" height="19" rx="3" stroke="#b2de61" stroke-width="1.5"/>
+              <path d="M8 9h9M8 13h9M8 17h5" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="19" cy="7" r="4" fill="#b2de61"/>
+              <path d="M17 7l1.3 1.3L21 5.5" stroke="#112719" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="acc-status-tile__count">18</span>
+          </div>
+          <span class="acc-status-tile__label">All</span>
+        </button>
+        <!-- Open -->
+        <button class="acc-status-tile" type="button">
+          <div class="acc-status-tile__top">
+            <svg class="acc-status-tile__icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <circle cx="12.5" cy="12.5" r="9.5" stroke="#EFA41E" stroke-width="1.5"/>
+              <circle cx="8.5" cy="12.5" r="1.5" fill="#EFA41E"/>
+              <circle cx="12.5" cy="12.5" r="1.5" fill="#EFA41E"/>
+              <circle cx="16.5" cy="12.5" r="1.5" fill="#EFA41E"/>
+            </svg>
+            <span class="acc-status-tile__count">1</span>
+          </div>
+          <span class="acc-status-tile__label">Open</span>
+        </button>
+        <!-- Denied -->
+        <button class="acc-status-tile" type="button">
+          <div class="acc-status-tile__top">
+            <svg class="acc-status-tile__icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <circle cx="12.5" cy="12.5" r="9.5" stroke="#df434f" stroke-width="1.5"/>
+              <path d="M9 9l6.5 6.5M15.5 9L9 15.5" stroke="#df434f" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="acc-status-tile__count">2</span>
+          </div>
+          <span class="acc-status-tile__label">Denied</span>
+        </button>
+        <!-- Approved -->
+        <button class="acc-status-tile" type="button">
+          <div class="acc-status-tile__top">
+            <svg class="acc-status-tile__icon" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <circle cx="12.5" cy="12.5" r="9.5" stroke="#3A913F" stroke-width="1.5"/>
+              <path d="M8 12.5l3.2 3.2 5.8-6.4" stroke="#3A913F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="acc-status-tile__count">15</span>
+          </div>
+          <span class="acc-status-tile__label">Approved</span>
+        </button>
+      </div><!-- /.acc-status-grid -->
+
       <!-- ACC Request Cards -->
       <div class="ar-violations__cards">
 
-        <!-- Card 1 — Fence Installation -->
+        <!-- Card 1 — Deck Installation, Open -->
         <div class="ar-vcard">
-          <div class="ar-vcard__top">
-            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
-            <span class="ar-vcard__type">Fence Installation</span>
-            <span class="ar-vcard__badge ar-vcard__badge--open">Pending Review</span>
+          <div class="ar-vcard__header-row">
+            <p class="ar-vcard__acct"><strong>Acct:</strong> 2745369636951</p>
+            <span class="ar-vcard__badge ar-vcard__badge--open">Open</span>
           </div>
           <div class="ar-vcard__meta">
-            <p class="ar-vcard__address">183 Very Long Fellow Tree Rd</p>
-            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 2745369636952</p>
-            <p class="ar-vcard__meta-line"><strong>Submitted:</strong> 02/14/2025</p>
-            <p class="ar-vcard__meta-line"><strong>Status:</strong> Awaiting Committee Decision</p>
-          </div>
-          <div class="ar-vcard__desc">
-            <p class="ar-vcard__desc-text">Request to install a 4-foot cedar privacy fence along the rear and right side property lines. Full site plan and material specifications attached for committee review&#8230; <a class="ar-vcard__desc-more" href="#">See More</a></p>
+            <p class="ar-vcard__address">4567 Washington Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Request Date:</strong> 05/25/25</p>
+            <p class="ar-vcard__meta-line"><strong>Request Type:</strong> Deck Installation</p>
           </div>
           <div class="ar-vcard__divider"></div>
           <a class="ar-vcard__row" href="my-acc-request-log.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
             <span class="ar-vcard__row-label">Log &amp; Notes</span>
-            <span class="ar-vcard__row-count ar-vcard__row-count--badge">4</span>
+            <span class="ar-vcard__row-count">2</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="ar-vcard__divider"></div>
           <a class="ar-vcard__row" href="my-acc-request-attachments.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
-            <span class="ar-vcard__row-label">Attachments</span>
-            <span class="ar-vcard__row-count">5</span>
+            <span class="ar-vcard__row-label">Attachments (2)</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
         </div>
 
-        <!-- Card 2 — Deck Addition -->
+        <!-- Card 2 — Fence Installation, Approved -->
         <div class="ar-vcard">
-          <div class="ar-vcard__top">
-            <img class="ar-vcard__cat-icon" src="assets/icons/icon-todo-3-acc-review.svg" alt="" />
-            <span class="ar-vcard__type">Deck Addition</span>
-            <span class="ar-vcard__badge ar-vcard__badge--lime">Under Review</span>
+          <div class="ar-vcard__header-row">
+            <p class="ar-vcard__acct"><strong>Acct:</strong> 55661</p>
+            <span class="ar-vcard__badge ar-vcard__badge--approved">Approved</span>
           </div>
           <div class="ar-vcard__meta">
-            <p class="ar-vcard__address">180 Crandon Blvd</p>
-            <p class="ar-vcard__meta-line"><strong>Acct:</strong> 2745369636951</p>
-            <p class="ar-vcard__meta-line"><strong>Submitted:</strong> 03/20/2025</p>
-            <p class="ar-vcard__meta-line"><strong>Status:</strong> In Committee Review</p>
-          </div>
-          <div class="ar-vcard__desc">
-            <p class="ar-vcard__desc-text">Request to construct a 12×16 ft pressure-treated wood deck attached to the rear of the home. Deck height will not exceed 18 inches above grade at any point along the structure&#8230; <a class="ar-vcard__desc-more" href="#">See More</a></p>
+            <p class="ar-vcard__address">12345 Lincoln Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Request Date:</strong> 05/25/25</p>
+            <p class="ar-vcard__meta-line"><strong>Request Type:</strong> Deck Installation</p>
           </div>
           <div class="ar-vcard__divider"></div>
           <a class="ar-vcard__row" href="my-acc-request-log.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
             <span class="ar-vcard__row-label">Log &amp; Notes</span>
-            <span class="ar-vcard__row-count ar-vcard__row-count--badge">2</span>
+            <span class="ar-vcard__row-count">2</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
           <div class="ar-vcard__divider"></div>
           <a class="ar-vcard__row" href="my-acc-request-attachments.html">
             <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
-            <span class="ar-vcard__row-label">Attachments</span>
-            <span class="ar-vcard__row-count">3</span>
+            <span class="ar-vcard__row-label">Attachments (2)</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <!-- Card 3 — Pool Installation, Approved -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__header-row">
+            <p class="ar-vcard__acct"><strong>Acct:</strong> 55661</p>
+            <span class="ar-vcard__badge ar-vcard__badge--approved">Approved</span>
+          </div>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address">12345 Lincoln Avenue</p>
+            <p class="ar-vcard__meta-line"><strong>Request Date:</strong> 05/25/25</p>
+            <p class="ar-vcard__meta-line"><strong>Request Type:</strong> Deck Installation</p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-log.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-log-notes.svg" alt="" />
+            <span class="ar-vcard__row-label">Log &amp; Notes</span>
+            <span class="ar-vcard__row-count">2</span>
+            <span class="ar-card__chev" aria-hidden="true"></span>
+          </a>
+          <div class="ar-vcard__divider"></div>
+          <a class="ar-vcard__row" href="my-acc-request-attachments.html">
+            <img class="ar-vcard__row-icon" src="assets/icons/icon-attachments.svg" alt="" />
+            <span class="ar-vcard__row-label">Attachments (2)</span>
             <span class="ar-card__chev" aria-hidden="true"></span>
           </a>
         </div>
@@ -121,7 +187,7 @@
 
     <!-- NEW ACC REQUEST footer bar (above bottom nav) -->
     <div class="acc-list-footer">
-      <a class="pay-continue" href="#">NEW ACC REQUEST</a>
+      <a class="pay-continue" href="#"><span style="text-transform:uppercase;letter-spacing:.48px;">NEW ACC </span>Request</a>
     </div>
 
     <!-- Bottom Navigation (My To-Dos active) -->
@@ -177,7 +243,7 @@
 
     <div class="ho-sheet__body" style="padding:0;">
 
-      <button class="mv-unit-row" type="button" data-unit-name="All Units">
+      <button class="mv-unit-row" type="button" data-unit-name="All units">
         <span class="mv-unit-row__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
             <mask id="mask-acc-unit-0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
@@ -196,7 +262,7 @@
         <span class="filter-radio filter-radio--selected"></span>
       </button>
 
-      <button class="mv-unit-row" type="button" data-unit-name="183 Very Long Fellow Tree Rd">
+      <button class="mv-unit-row" type="button" data-unit-name="4567 Washington Avenue">
         <span class="mv-unit-row__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
             <mask id="mask-acc-unit-1" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
@@ -210,13 +276,13 @@
           </svg>
         </span>
         <span class="mv-unit-row__info">
-          <span class="mv-unit-row__name">183 Very Long Fellow Tree Rd</span>
-          <span class="mv-unit-row__acct">ACC#: 6789</span>
+          <span class="mv-unit-row__name">4567 Washington Avenue</span>
+          <span class="mv-unit-row__acct">Acct: 2745369636951</span>
         </span>
         <span class="filter-radio"></span>
       </button>
 
-      <button class="mv-unit-row" type="button" data-unit-name="180 Crandon Blvd">
+      <button class="mv-unit-row" type="button" data-unit-name="12345 Lincoln Avenue">
         <span class="mv-unit-row__icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25" fill="none">
             <mask id="mask-acc-unit-2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="23" height="25">
@@ -230,8 +296,8 @@
           </svg>
         </span>
         <span class="mv-unit-row__info">
-          <span class="mv-unit-row__name">180 Crandon Blvd</span>
-          <span class="mv-unit-row__acct">ACC#: 12345</span>
+          <span class="mv-unit-row__name">12345 Lincoln Avenue</span>
+          <span class="mv-unit-row__acct">Acct: 55661</span>
         </span>
         <span class="filter-radio"></span>
       </button>

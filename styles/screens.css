@@ -11276,6 +11276,72 @@ a.sub-header__right {
 }
 
 /* ============================================
+   ACC REQUEST — STATUS FILTER TILES GRID
+   ============================================ */
+.acc-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px 16px;
+}
+
+.acc-status-tile {
+  background: #235237;
+  border-radius: 10px;
+  padding: 10px 12px 12px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.acc-status-tile__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.acc-status-tile__icon {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+.acc-status-tile__count {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b2de61;
+  line-height: 1;
+}
+
+.acc-status-tile__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
+}
+
+/* ACC REQUEST — CARD HEADER ROW (acct + badge) */
+.ar-vcard__header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 14px 16px 0;
+  gap: 8px;
+}
+
+.ar-vcard__acct {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff8ea;
+  margin: 0;
+}
+
+.ar-vcard__acct strong {
+  font-weight: 700;
+}
+
+/* ============================================
    ACC REQUEST — FOOTER BAR (above bottom nav)
    ============================================ */
 .acc-list-footer {
