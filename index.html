@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect â€” Sign In</title>
+  <title>CINC Connect — Sign In</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -62,7 +62,7 @@
 
         <button type="submit" class="btn btn--primary login__btn">Sign In</button>
 
-        <p class="login__copyright">Â© 2026 CINC Systems.<br>Confidential â€” for authorized demonstration use only.</p>
+        <p class="login__copyright">© 2026 CINC Systems.<br>Confidential — for authorized demonstration use only.</p>
 
         <button type="button" class="login__biometric" data-biometric aria-label="Sign in with fingerprint">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -80,7 +80,7 @@
     // If already logged in & not idle, skip to feed
     window.CincAuth.bootstrapLoginPage();
 
-    // Biometric (visual only â€” explains it works in the real app)
+    // Biometric (visual only — explains it works in the real app)
     document.querySelector('[data-biometric]')?.addEventListener('click', async () => {
       await window.AppDialog.alert({
         title: 'Biometric Sign-In',

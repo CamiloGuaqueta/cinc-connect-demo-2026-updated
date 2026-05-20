@@ -10487,6 +10487,34 @@ a.sub-header__right {
   text-decoration: none;
 }
 
+/* Photo thumbnail variant */
+.attach-item--photo {
+  height: auto;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+.attach-item--photo .attach-item__thumb {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+.attach-item--photo .attach-item__caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+}
+.attach-item--photo .attach-item__caption-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff8ea;
+  flex: 1;
+}
+
 /* ============================================
    BOARD LOG & MESSAGES (TIMELINE)
    ============================================ */
@@ -11734,7 +11762,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 22px;
   font-weight: 800;
-  color: #fff8ea !important;
+  color: #ffffff !important;
   margin: 0;
   padding: 0 20px 10px;
 }
@@ -11806,7 +11834,7 @@ a.sub-header__right {
   flex: 1;
   overflow-y: auto;
   background: #112719;
-  padding-bottom: calc(var(--bottom-nav-height) + 80px);
+  padding-bottom: 90px; /* room for fixed log-footer-bar */
 }
 
 .vlog-topbar {
@@ -11858,6 +11886,38 @@ a.sub-header__right {
 
 .vlog-header__meta strong {
   font-weight: 700;
+}
+
+.vlog-attach-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  height: 48px;
+  background: #1a3a27;
+  border-top: 1px solid rgba(178,222,97,.12);
+  border-bottom: 1px solid rgba(178,222,97,.12);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+.vlog-attach-row__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.vlog-attach-row__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff8ea;
+  flex: 1;
+}
+.vlog-attach-row__count {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b2de61;
+  margin-right: 4px;
 }
 
 /* Status dot color variants for log entries */

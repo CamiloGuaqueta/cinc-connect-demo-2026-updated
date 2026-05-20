@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect â€” Amenities & Common Areas</title>
+  <title>CINC Connect — Amenities & Common Areas</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -51,7 +51,7 @@
         <button class="amenities__tab" type="button" data-amenity-tab="reservations">My Reservations</button>
       </div>
 
-      <!-- AMENITIES tab pane â€” dynamically rendered from AmenitiesData -->
+      <!-- AMENITIES tab pane — dynamically rendered from AmenitiesData -->
       <section class="amenities__pane" data-amenity-pane="amenities">
         <div class="amenities__section">
           <div class="amenities__section-header">
@@ -187,7 +187,7 @@
             <p class="amenity-card__slots-label">Today's Next Available Time-slots</p>
             <div class="amenity-card__slots">
               ${slots}
-              <span class="amenity-card__slot-more" aria-label="More slots">â€º</span>
+              <span class="amenity-card__slot-more" aria-label="More slots">›</span>
             </div>
           </a>`;
       }
@@ -219,7 +219,7 @@
       });
     });
 
-    // Mouse drag-to-scroll on horizontal scrollers â€” only when intent is clearly horizontal
+    // Mouse drag-to-scroll on horizontal scrollers — only when intent is clearly horizontal
     document.querySelectorAll('.amenity-scroller').forEach((scroller) => {
       let isDown = false;
       let hasMoved = false;
@@ -255,7 +255,7 @@
           // Decide gesture intent before activating drag
           if (Math.abs(dx) < ACTIVATE_THRESHOLD && Math.abs(dy) < ACTIVATE_THRESHOLD) return;
           if (Math.abs(dy) > Math.abs(dx)) {
-            // Vertical intent â†’ bail out, let the page scroll
+            // Vertical intent ? bail out, let the page scroll
             cancelled = true;
             return;
           }
@@ -280,7 +280,7 @@
       });
     });
 
-    // My Reservations â€” load from localStorage and render
+    // My Reservations — load from localStorage and render
     (function () {
       const NS = 'cinc:demo:';
       const KEY = NS + 'reservations';
@@ -307,16 +307,16 @@
                 ${totalLine}
               </div>
               <h3 class="my-res-card__name">${r.name}</h3>
-              <p class="my-res-card__meta">${r.date} Â· ${r.timeRange}</p>
+              <p class="my-res-card__meta">${r.date} · ${r.timeRange}</p>
               <p class="my-res-card__meta">Guests: ${r.guests}</p>
             </div>
             <img class="my-res-card__img" src="${r.image}" alt="" />
-            <span class="my-res-card__chev" aria-hidden="true">â€º</span>
+            <span class="my-res-card__chev" aria-hidden="true">›</span>
           </a>`;
       }).join('');
     })();
 
-    // Search filter â€” hides cards (and sections) that don't match
+    // Search filter — hides cards (and sections) that don't match
     const searchInput = document.querySelector('[data-amenity-search]');
     if (searchInput) {
       searchInput.addEventListener('input', () => {

@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect â€” Ballot</title>
+  <title>CINC Connect — Ballot</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -40,9 +40,9 @@
 
       <!-- Title + description -->
       <div class="ballot__intro">
-        <h1 class="ballot__title" data-ballot-title>â€”</h1>
+        <h1 class="ballot__title" data-ballot-title>—</h1>
         <p class="ballot__description">
-          <span data-ballot-description>â€”</span>
+          <span data-ballot-description>—</span>
           <a href="#" class="ballot-card__see-more" data-see-more>See More</a>
         </p>
 
@@ -52,15 +52,15 @@
               <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
             </svg>
           </span>
-          <span class="ballot-card__doc-name" data-doc-name>â€”</span>
-          <span class="ballot-card__doc-chevron" aria-hidden="true">â€º</span>
+          <span class="ballot-card__doc-name" data-doc-name>—</span>
+          <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
         </button>
       </div>
 
       <!-- Candidates section header -->
       <div class="ballot__candidates-header">
-        <h2 class="ballot__candidates-title" data-candidates-count>Candidates (â€”)</h2>
-        <p class="ballot__candidates-hint" data-candidates-hint>â€”</p>
+        <h2 class="ballot__candidates-title" data-candidates-count>Candidates (—)</h2>
+        <p class="ballot__candidates-hint" data-candidates-hint>—</p>
       </div>
 
       <!-- Candidate list -->
@@ -68,14 +68,14 @@
 
       <div class="ballot__footer">
         <button class="btn btn--primary ballot__submit" type="button" data-ballot-submit disabled>CAST MY VOTE</button>
-        <p class="ballot__counter" data-ballot-counter>â€”</p>
+        <p class="ballot__counter" data-ballot-counter>—</p>
       </div>
     </main>
 
     <!-- PDF viewer modal (full screen white) -->
     <div class="pdf-modal" data-pdf-modal hidden>
       <header class="pdf-modal__header">
-        <h2 class="pdf-modal__filename" data-pdf-modal-title>â€”</h2>
+        <h2 class="pdf-modal__filename" data-pdf-modal-title>—</h2>
         <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -84,8 +84,8 @@
         </button>
       </header>
       <div class="pdf-modal__sheet">
-        <h3 class="pdf-modal__title" data-pdf-heading>â€”</h3>
-        <p class="pdf-modal__subtitle" data-pdf-subheading>â€”</p>
+        <h3 class="pdf-modal__title" data-pdf-heading>—</h3>
+        <p class="pdf-modal__subtitle" data-pdf-subheading>—</p>
         <hr class="pdf-modal__divider" />
         <div class="pdf-modal__content" data-pdf-paragraphs></div>
       </div>
@@ -223,7 +223,7 @@
                     </svg>
                   </span>
                   <span class="ballot-card__doc-name">${escapeHtml(opt.documentName)}</span>
-                  <span class="ballot-card__doc-chevron" aria-hidden="true">â€º</span>
+                  <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
                 </button>
               ` : ''}
             </div>
@@ -352,7 +352,7 @@
         confirmModal.hidden = true;
 
         const email = window.CincAuth.getUserEmail() || 'user@email.com';
-        // Demo unit assignments â€” matches the Figma copy pattern
+        // Demo unit assignments — matches the Figma copy pattern
         const units = '1503, 2701, 2909, PH1';
         thanksText.innerHTML = `Your votes for unit(s) <strong>${units}</strong> have been submitted, and an email confirmation has been sent to <strong>${escapeHtml(email)}</strong>.`;
         thanksModal.hidden = false;

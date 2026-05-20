@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Payment</title>
+  <title>CINC Connect � Payment</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body class="ap-body">
   <div class="app-frame ap-frame">
@@ -93,7 +93,7 @@
     </section>
   </div>
 
-  <!-- ─── Payment Method selector (bottom sheet) ─────────────────────────── -->
+  <!-- --- Payment Method selector (bottom sheet) --------------------------- -->
   <div class="pm-sheet" id="pmSheet" aria-hidden="true" style="display:none">
     <div class="pm-sheet__scrim" id="pmScrim"></div>
     <div class="pm-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="pmSheetTitle">
@@ -164,7 +164,7 @@
     (function () {
       if (!window.CincAuth.requireAuth()) return;
 
-      /* ── Fee calculation ──────────────────────────────────────────────── */
+      /* -- Fee calculation ------------------------------------------------ */
       const params = new URLSearchParams(location.search);
       const id     = params.get('id');
       const D      = window.AmenitiesData;
@@ -195,7 +195,7 @@
         document.querySelector('[data-deposit-rule]').style.display = 'none';
       }
 
-      /* ── Pay & Reserve ────────────────────────────────────────────────── */
+      /* -- Pay & Reserve -------------------------------------------------- */
       document.querySelector('[data-pay-btn]').addEventListener('click', function () {
         const qs = new URLSearchParams({
           id: a.id, date, slot, guests,
@@ -206,7 +206,7 @@
         location.href = 'reservation-confirm.html?' + qs;
       });
 
-      /* ── Payment method bottom sheet ─────────────────────────────────── */
+      /* -- Payment method bottom sheet ----------------------------------- */
       var sheet    = document.getElementById('pmSheet');
       var scrim    = document.getElementById('pmScrim');
       var pmBack   = document.getElementById('pmBack');

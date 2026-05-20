@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect â€” Register Animal</title>
+  <title>CINC Connect — Register Animal</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -145,7 +145,7 @@
           </button>
         </div>
 
-        <!-- Vaccines document (display only â€” upload available in full app) -->
+        <!-- Vaccines document (display only — upload available in full app) -->
         <button class="pet-form__doc-btn" type="button" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
@@ -196,7 +196,7 @@
             <button class="cal-month__arrow" type="button" data-picker-prev aria-label="Previous month">
               <span class="cal-arrow cal-arrow--left" aria-hidden="true"></span>
             </button>
-            <span class="cal-month__title" data-picker-title>â€”</span>
+            <span class="cal-month__title" data-picker-title>—</span>
             <button class="cal-month__arrow" type="button" data-picker-next aria-label="Next month">
               <span class="cal-arrow" aria-hidden="true"></span>
             </button>
@@ -342,7 +342,7 @@
         }
       }
 
-      // Intercept all pet-form selects â†’ open custom picker
+      // Intercept all pet-form selects ? open custom picker
       document.querySelectorAll('.pet-form__select').forEach((sel) => {
         // Replace native select with a visual trigger button
         const trigger = document.createElement('button');
@@ -509,7 +509,7 @@
       });
 
 
-      // ----- Date picker (3 fields share one modal â€” month + year mode) -----
+      // ----- Date picker (3 fields share one modal — month + year mode) -----
       const dateModal = document.querySelector('[data-date-modal]');
       const pickerTitle = document.querySelector('[data-picker-title]');
       const pickerGrid = document.querySelector('[data-picker-grid]');
@@ -577,7 +577,7 @@
         const cur = pickerCursor;
         const startYear = cur.getFullYear() - 11;
         const endYear = startYear + 23;
-        pickerTitle.innerHTML = `${startYear} â€“ ${endYear}`;
+        pickerTitle.innerHTML = `${startYear} – ${endYear}`;
 
         const selYear = pickerField && selectedDates[pickerField]
           ? new Date(selectedDates[pickerField]).getFullYear() : null;

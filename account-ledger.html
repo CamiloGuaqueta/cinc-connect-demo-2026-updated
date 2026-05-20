@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#235237" />
-  <title>CINC Connect â€” Account Ledger</title>
+  <title>CINC Connect — Account Ledger</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -42,12 +42,12 @@
 
       <!-- ============================================================
            LEDGER CAROUSEL
-           3 cards â€” horizontal scroll-snap, peek on sides
+           3 cards — horizontal scroll-snap, peek on sides
            ============================================================ -->
       <div class="ledger-carousel">
         <div class="ledger-carousel__track" id="ledgerTrack">
 
-          <!-- Slide 0 â€” General Ledger -->
+          <!-- Slide 0 — General Ledger -->
           <div class="ledger-carousel__slide" data-idx="0">
             <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
             <div class="ledger-carousel__content">
@@ -58,7 +58,7 @@
             </div>
           </div>
 
-          <!-- Slide 1 â€” Special Assessment -->
+          <!-- Slide 1 — Special Assessment -->
           <div class="ledger-carousel__slide" data-idx="1">
             <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
             <div class="ledger-carousel__content">
@@ -70,7 +70,7 @@
             </div>
           </div>
 
-          <!-- Slide 2 â€” Marina Rental -->
+          <!-- Slide 2 — Marina Rental -->
           <div class="ledger-carousel__slide" data-idx="2">
             <img class="ledger-carousel__logo" src="assets/icons/hoa-logo.png" alt="" />
             <div class="ledger-carousel__content">
@@ -92,7 +92,7 @@
       </div>
 
       <!-- ============================================================
-           BALANCE PANELS â€” one per slide, hidden/shown by JS
+           BALANCE PANELS — one per slide, hidden/shown by JS
            ============================================================ -->
 
       <!-- Panel 0: General Ledger -->
@@ -166,7 +166,7 @@
       <a class="ledger__pay-btn" href="payment-amount.html">Make Payment</a>
 
       <!-- ============================================================
-           TRANSACTION LISTS â€” one per slide
+           TRANSACTION LISTS — one per slide
            ============================================================ -->
 
       <!-- List 0: General Ledger -->
@@ -451,13 +451,13 @@
         }
       }
 
-      // Scroll â†’ update dots + panels
+      // Scroll ? update dots + panels
       track.addEventListener('scroll', function () {
         var idx = Math.min(N - 1, Math.round(track.scrollLeft / SLIDE_W));
         activate(idx);
       }, { passive: true });
 
-      // Dot click â†’ scroll to slide
+      // Dot click ? scroll to slide
       dots.forEach(function (dot) {
         dot.addEventListener('click', function () {
           var idx = parseInt(dot.dataset.dot, 10);

@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect â€” Animals</title>
+  <title>CINC Connect — Animals</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/screens.css?v=3" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
 </head>
 <body>
   <div class="app-frame">
@@ -115,8 +115,8 @@
               <div class="pet-card__avatar">${photoHTML}</div>
               <div class="pet-card__body">
                 <h3 class="pet-card__name">${escapeHtml(pet.name)}</h3>
-                <p class="pet-card__meta">${escapeHtml(P.typeLabel(pet.type))} Â· ${escapeHtml(pet.breed || 'â€”')}</p>
-                <p class="pet-card__meta pet-card__meta--muted">Unit ${escapeHtml(pet.unitNumber || 'â€”')}</p>
+                <p class="pet-card__meta">${escapeHtml(P.typeLabel(pet.type))} · ${escapeHtml(pet.breed || '—')}</p>
+                <p class="pet-card__meta pet-card__meta--muted">Unit ${escapeHtml(pet.unitNumber || '—')}</p>
               </div>
               <span class="pet-card__status pet-card__status--${escapeHtml(pet.status || 'pending')}">${escapeHtml((pet.status || 'pending').replace('-', ' '))}</span>
             </article>
