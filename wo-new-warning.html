@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — New Work Order</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" id="backBtn" href="wo-new-catitem.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">New Work Order</span>
+          <a class="pay-sheet__close" href="my-work-orders.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <div class="wo-warning-body">
+
+            <!-- Warning icon -->
+            <div class="wo-warning-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path d="M16 6L28 26H4L16 6Z" stroke="#EFA41E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(239,164,30,.15)"/>
+                <line x1="16" y1="14" x2="16" y2="20" stroke="#EFA41E" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="16" cy="23.5" r="1.2" fill="#EFA41E"/>
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <h2 class="wo-warning-title">Homeowner Responsibility</h2>
+
+            <!-- Selected category + item pills -->
+            <div class="wo-pills-row" style="justify-content:center;" id="warnPills"></div>
+
+            <!-- Warning text -->
+            <p class="wo-warning-text">
+              Some maintenance items fall under homeowner responsibility and may not be covered by the association. By submitting this work order, you acknowledge that costs may apply if the issue is determined to be the homeowner's responsibility.
+            </p>
+            <p class="wo-warning-text" style="color:rgba(255,248,234,.5);font-size:12px;">
+              Please review your community's maintenance guidelines before proceeding.
+            </p>
+
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- CTA footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" id="startWoBtn" href="wo-new-form.html">Start New Work Order</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var unit   = params.get('unit') || '';
+      var cat    = params.get('cat')  || '';
+      var item   = params.get('item') || '';
+
+      // Back button
+      document.getElementById('backBtn').href =
+        'wo-new-catitem.html?unit=' + encodeURIComponent(unit) +
+        '&cat=' + encodeURIComponent(cat);
+
+      // Forward button
+      document.getElementById('startWoBtn').href =
+        'wo-new-form.html?unit=' + encodeURIComponent(unit) +
+        '&cat='  + encodeURIComponent(cat) +
+        '&item=' + encodeURIComponent(item);
+
+      // Pills
+      var pillRow = document.getElementById('warnPills');
+      if (cat) {
+        var p1 = document.createElement('span');
+        p1.className = 'wo-pill';
+        p1.textContent = cat;
+        pillRow.appendChild(p1);
+      }
+      if (item) {
+        var p2 = document.createElement('span');
+        p2.className = 'wo-pill';
+        p2.textContent = item;
+        pillRow.appendChild(p2);
+      }
+    })();
+  </script>
+</body>
+</html>

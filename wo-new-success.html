@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Work Order Submitted</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <!-- No back on success -->
+          <span class="pay-sheet__back" aria-hidden="true"></span>
+          <span class="pay-sheet__title">New Work Order</span>
+          <a class="pay-sheet__close" href="my-work-orders.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <div class="wo-success-body">
+
+            <!-- Success icon -->
+            <div class="wo-success-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <path d="M10 20l7 7 13-14" stroke="#b2de61" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Title -->
+            <h2 class="wo-success-title">Work Order Submitted Successfully!</h2>
+
+            <!-- Pills showing what was submitted -->
+            <div class="wo-pills-row" style="justify-content:center;" id="successPills"></div>
+
+            <!-- Body copy -->
+            <p class="wo-success-text">
+              Your work order has been submitted and is now under review by the management team. You will receive a notification once it has been assigned to a technician.
+            </p>
+            <p class="wo-success-text" style="color:rgba(255,248,234,.5);font-size:12px;">
+              Track the status of your work order anytime from the My Work Orders section.
+            </p>
+
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Done footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" href="my-work-orders.html">Done</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var cat    = params.get('cat')  || '';
+      var item   = params.get('item') || '';
+      var pillRow = document.getElementById('successPills');
+      [cat, item].filter(Boolean).forEach(function (label) {
+        var p = document.createElement('span');
+        p.className = 'wo-pill';
+        p.textContent = label;
+        pillRow.appendChild(p);
+      });
+    })();
+  </script>
+</body>
+</html>

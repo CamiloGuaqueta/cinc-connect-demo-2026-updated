@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — New Work Order</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" id="backBtn" href="wo-new-category.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">New Work Order</span>
+          <a class="pay-sheet__close" href="my-work-orders.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Selected category pill -->
+          <div class="wo-pills-row" id="catPillRow">
+            <!-- Injected by JS -->
+          </div>
+
+          <p class="filter-section__title">Select Category Item</p>
+          <div class="filter-group" id="itemList">
+            <!-- Injected by JS -->
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var ITEMS = {
+        'Plumbing':            ['Leaks and Drips', 'Clogged Drains', 'Water Heater', 'Toilet Issues', 'Pipe Burst', 'Other'],
+        'Electrical':          ['Outlet / Switch', 'Light Fixtures', 'Circuit Breaker', 'Wiring Issues', 'Power Outage', 'Other'],
+        'HVAC':                ['AC Not Cooling', 'Heating Issue', 'Filter Replacement', 'Thermostat', 'Ductwork', 'Other'],
+        'Landscaping':         ['Lawn Mowing', 'Tree Trimming', 'Irrigation Issue', 'Flower Beds', 'Debris Removal', 'Other'],
+        'Painting':            ['Interior Painting', 'Exterior Painting', 'Touch-Up', 'Fence / Gate', 'Other'],
+        'Roofing':             ['Roof Leak', 'Shingle Damage', 'Gutter Repair', 'Flashing', 'Other'],
+        'Pest Control':        ['Ants', 'Rodents', 'Roaches', 'Termites', 'Other'],
+        'General Maintenance': ['Door / Lock', 'Window', 'Flooring', 'Ceiling / Drywall', 'Appliance', 'Other'],
+        'Security':            ['Gate / Entry', 'Security Camera', 'Lock / Key', 'Alarm System', 'Other']
+      };
+
+      var params = new URLSearchParams(window.location.search);
+      var unit   = params.get('unit') || '';
+      var cat    = params.get('cat')  || 'General Maintenance';
+
+      // Back button
+      document.getElementById('backBtn').href = 'wo-new-category.html?unit=' + encodeURIComponent(unit);
+
+      // Category pill
+      var pillRow = document.getElementById('catPillRow');
+      var pill = document.createElement('span');
+      pill.className = 'wo-pill';
+      pill.textContent = cat;
+      pillRow.appendChild(pill);
+
+      // Item list
+      var items  = ITEMS[cat] || ITEMS['General Maintenance'];
+      var listEl = document.getElementById('itemList');
+      items.forEach(function (item) {
+        var row = document.createElement('div');
+        row.className = 'filter-row';
+        row.style.cursor = 'pointer';
+        row.innerHTML =
+          '<span class="filter-row__label">' + item + '</span>' +
+          '<svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">' +
+            '<path d="M1 1l6 6-6 6" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>';
+        row.addEventListener('click', function () {
+          window.location.href =
+            'wo-new-warning.html?unit=' + encodeURIComponent(unit) +
+            '&cat='  + encodeURIComponent(cat) +
+            '&item=' + encodeURIComponent(item);
+        });
+        listEl.appendChild(row);
+      });
+    })();
+  </script>
+</body>
+</html>

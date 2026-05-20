@@ -197,99 +197,53 @@
         </header>
         <div class="modal-sheet__body modal-sheet__body--scrollable">
 
-          <p class="notif-filter-sheet__section">Notification Type</p>
+          <p class="filter-section__title">Notification Type</p>
+          <div class="filter-group" data-filter-group>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Management Announcements</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Events &amp; Calendar</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Payment Reminders</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Work Order Updates</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Violation Notices</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Community Alerts</span>
+            </div>
+          </div>
 
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3a6 6 0 0 0-6 6v3l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" stroke="#235237" stroke-width="2" stroke-linejoin="round" fill="#235237"/>
-                <path d="M10 18a2 2 0 0 0 4 0" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Management Announcements</span>
-            <input type="checkbox" name="notif-type" value="announcement" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect x="4" y="6" width="16" height="14" rx="2" stroke="#235237" stroke-width="2" fill="#235237"/>
-                <line x1="4" y1="10" x2="20" y2="10" stroke="#235237" stroke-width="2"/>
-                <line x1="9" y1="3" x2="9" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
-                <line x1="15" y1="3" x2="15" y2="7" stroke="#235237" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Events &amp; Calendar</span>
-            <input type="checkbox" name="notif-type" value="event" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <text x="12" y="17" font-family="Montserrat" font-size="14" font-weight="800" fill="#235237" text-anchor="middle">$</text>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Payment Reminders</span>
-            <input type="checkbox" name="notif-type" value="payment" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Work Order Updates</span>
-            <input type="checkbox" name="notif-type" value="workorder" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#235237"/>
-                <line x1="12" y1="9" x2="12" y2="13" stroke="#FFF8EA" stroke-width="2" stroke-linecap="round"/>
-                <line x1="12" y1="17" x2="12.01" y2="17" stroke="#FFF8EA" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Violation Notices</span>
-            <input type="checkbox" name="notif-type" value="violation" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M3 11l19-9-9 19-2-8-8-2z" stroke="#235237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="#235237"/>
-              </svg>
-            </span>
-            <span class="notif-filter-option__label">Community Alerts</span>
-            <input type="checkbox" name="notif-type" value="alert" />
-            <span class="notif-filter-option__check" aria-hidden="true"></span>
-          </label>
-
-          <p class="notif-filter-sheet__section">Read Status</p>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__label">All Notifications</span>
-            <input type="radio" name="notif-read" value="all" checked />
-            <span class="notif-filter-option__radio" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__label">Unread Only</span>
-            <input type="radio" name="notif-read" value="unread" />
-            <span class="notif-filter-option__radio" aria-hidden="true"></span>
-          </label>
-
-          <label class="notif-filter-option">
-            <span class="notif-filter-option__label">Read Only</span>
-            <input type="radio" name="notif-read" value="read" />
-            <span class="notif-filter-option__radio" aria-hidden="true"></span>
-          </label>
+          <p class="filter-section__title">Read Status</p>
+          <div class="filter-group" data-filter-group>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Unread Only</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Read Only</span>
+            </div>
+          </div>
 
         </div>
         <footer class="notif-filter-sheet__footer">
@@ -316,25 +270,43 @@
     }
 
     // Notification filter sheet
-    const notifFilterSheet = document.querySelector('[data-notif-filter-sheet]');
-    document.querySelector('[data-notif-filter-open]')?.addEventListener('click', () => {
-      if (notifFilterSheet) notifFilterSheet.hidden = false;
-    });
-    document.querySelector('[data-notif-filter-close]')?.addEventListener('click', () => {
-      if (notifFilterSheet) notifFilterSheet.hidden = true;
-    });
-    document.querySelector('[data-notif-filter-reset]')?.addEventListener('click', () => {
-      if (!notifFilterSheet) return;
-      notifFilterSheet.querySelectorAll('input[type="checkbox"]').forEach((cb) => { cb.checked = false; });
-      const radios = notifFilterSheet.querySelectorAll('input[type="radio"]');
-      radios.forEach((r, i) => { r.checked = i === 0; });
-    });
-    document.querySelector('[data-notif-filter-apply]')?.addEventListener('click', () => {
-      if (notifFilterSheet) notifFilterSheet.hidden = true;
-    });
-    notifFilterSheet?.addEventListener('click', (e) => {
-      if (e.target === notifFilterSheet) notifFilterSheet.hidden = true;
-    });
+    (function () {
+      var notifFilterSheet = document.querySelector('[data-notif-filter-sheet]');
+
+      document.querySelector('[data-notif-filter-open]').addEventListener('click', function () {
+        notifFilterSheet.hidden = false;
+      });
+      document.querySelector('[data-notif-filter-close]').addEventListener('click', function () {
+        notifFilterSheet.hidden = true;
+      });
+      document.querySelector('[data-notif-filter-reset]').addEventListener('click', function () {
+        notifFilterSheet.querySelectorAll('[data-filter-group]').forEach(function (group) {
+          group.querySelectorAll('.filter-radio').forEach(function (r, i) {
+            r.classList.toggle('filter-radio--selected', i === 0);
+          });
+        });
+      });
+      document.querySelector('[data-notif-filter-apply]').addEventListener('click', function () {
+        notifFilterSheet.hidden = true;
+      });
+      notifFilterSheet.addEventListener('click', function (e) {
+        if (e.target === notifFilterSheet) notifFilterSheet.hidden = true;
+      });
+
+      // Click-based radio selection (same as my-violations-filter.html)
+      notifFilterSheet.querySelectorAll('[data-filter-group]').forEach(function (group) {
+        group.querySelectorAll('.filter-row').forEach(function (row) {
+          row.addEventListener('click', function () {
+            var radio = row.querySelector('.filter-radio');
+            if (!radio) return;
+            group.querySelectorAll('.filter-radio').forEach(function (r) {
+              r.classList.remove('filter-radio--selected');
+            });
+            radio.classList.add('filter-radio--selected');
+          });
+        });
+      });
+    })();
   </script>
 </body>
 </html>

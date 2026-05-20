@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — New Work Order</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" id="backBtn" href="wo-new-warning.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">New Work Order</span>
+          <!-- No close button on form step -->
+          <span class="pay-sheet__back" aria-hidden="true"></span>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Category + item pills (read-only) -->
+          <div class="wo-pills-row" id="formPills"></div>
+
+          <!-- Title -->
+          <label class="nm-field-label">Work Order Title *</label>
+          <input class="nm-input-field" id="woTitle" type="text" placeholder="Brief description of the issue" />
+
+          <!-- Description -->
+          <label class="nm-field-label">Description</label>
+          <textarea class="nm-textarea" placeholder="Provide as much detail as possible — location, severity, how long the issue has been present..."></textarea>
+
+          <!-- Add Attachment -->
+          <button class="nm-attach-btn" type="button" style="
+            display:flex;align-items:center;gap:10px;
+            width:100%;padding:14px 16px;margin-top:4px;
+            border:1.5px dashed rgba(178,222,97,.35);
+            border-radius:10px;background:transparent;
+            color:rgba(255,248,234,.55);font-size:14px;
+            font-family:Montserrat,sans-serif;cursor:pointer;
+            box-sizing:border-box;
+          ">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 4v12M4 10h12" stroke="rgba(178,222,97,.6)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Add Attachment
+          </button>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Submit footer -->
+        <div class="pay-sheet__footer">
+          <a class="pay-continue" id="submitBtn" href="wo-new-success.html">Submit</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var unit   = params.get('unit') || '';
+      var cat    = params.get('cat')  || '';
+      var item   = params.get('item') || '';
+
+      // Back button
+      document.getElementById('backBtn').href =
+        'wo-new-warning.html?unit=' + encodeURIComponent(unit) +
+        '&cat='  + encodeURIComponent(cat) +
+        '&item=' + encodeURIComponent(item);
+
+      // Pills
+      var pillRow = document.getElementById('formPills');
+      [cat, item].filter(Boolean).forEach(function (label) {
+        var p = document.createElement('span');
+        p.className = 'wo-pill';
+        p.textContent = label;
+        pillRow.appendChild(p);
+      });
+
+      // Enable submit only when title is filled
+      var submitBtn = document.getElementById('submitBtn');
+      var titleInput = document.getElementById('woTitle');
+      titleInput.addEventListener('input', function () {
+        submitBtn.style.opacity = titleInput.value.trim() ? '1' : '0.45';
+        submitBtn.style.pointerEvents = titleInput.value.trim() ? '' : 'none';
+      });
+      // Start dimmed
+      submitBtn.style.opacity = '0.45';
+      submitBtn.style.pointerEvents = 'none';
+    })();
+  </script>
+</body>
+</html>

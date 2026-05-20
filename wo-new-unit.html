@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — New Work Order</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="my-work-orders.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">New Work Order</span>
+          <a class="pay-sheet__close" href="my-work-orders.html">Close</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <p class="filter-section__title">Select Unit / Address</p>
+
+          <a class="pay-unit-row" href="wo-new-category.html?unit=12346+Washington+Ave">
+            <span class="pay-unit-row__info">
+              <span class="pay-unit-row__name">12346 Washington Ave</span>
+              <span class="pay-unit-row__acct">Acct: 1588:6523</span>
+            </span>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+              <path d="M1 1l6 6-6 6" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a class="pay-unit-row" href="wo-new-category.html?unit=13490+Avenue+58">
+            <span class="pay-unit-row__info">
+              <span class="pay-unit-row__name">13490 Avenue 58</span>
+              <span class="pay-unit-row__acct">Acct: 89761312</span>
+            </span>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+              <path d="M1 1l6 6-6 6" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a class="pay-unit-row" href="wo-new-category.html?unit=12+Trees+20+43">
+            <span class="pay-unit-row__info">
+              <span class="pay-unit-row__name">12 Trees 20 43</span>
+              <span class="pay-unit-row__acct">Acct: SMM 101</span>
+            </span>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+              <path d="M1 1l6 6-6 6" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <a class="pay-unit-row" href="wo-new-category.html?unit=1+APT22">
+            <span class="pay-unit-row__info">
+              <span class="pay-unit-row__name">1 APT22</span>
+              <span class="pay-unit-row__acct">Acct: PAY022</span>
+            </span>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+              <path d="M1 1l6 6-6 6" stroke="#b2de61" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+        </div><!-- /.pay-sheet__body -->
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div><!-- /.app-frame -->
+
+  <script src="scripts/auth.js"></script>
+  <script>if (!window.CincAuth.requireAuth()) { /* redirected */ }</script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
