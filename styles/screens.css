@@ -4749,13 +4749,12 @@ a.sub-header__right {
 
 /* Amenities inline search bar — below title row */
 .amenities-search-bar {
-  background: #235237;
   padding: 10px 20px;
 }
 
 .amenities-search-bar .messages__search {
   margin: 0;
-  background: var(--color-bg-base);
+  background: #235237;
   height: 40px;
 }
 
