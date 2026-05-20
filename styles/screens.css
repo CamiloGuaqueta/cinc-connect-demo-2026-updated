@@ -9134,6 +9134,14 @@ a.sub-header__right {
   flex-direction: column;
 }
 
+/* Constrain to viewport so body scrolls and footer stays pinned */
+.pay-screen--full {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
 .pay-screen__backdrop {
   height: 70px;
   flex-shrink: 0;
@@ -10980,7 +10988,7 @@ a.sub-header__right {
   margin: 0 0 14px;
 }
 .acc-type-list {
-  background: #235237;
+  background: #112719;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;
