@@ -12421,7 +12421,7 @@ a.sub-header__right {
   border: none;
   outline: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 12px !important;
   font-weight: 500;
   color: #fff8ea;
 }
