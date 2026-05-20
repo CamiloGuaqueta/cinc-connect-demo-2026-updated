@@ -11,10 +11,10 @@
 
   // Dropdown values that match Jessica's spec
   const UNIT_NUMBERS = [
-    '12346 Washington Ave',
-    '13490 Avenue 58',
-    '12 Trees 20 43',
-    '1 APT22'
+    '100 Palm Grove Lane',
+    '127 Palm Grove Lane',
+    '142 Palm Grove Lane',
+    '156 Palm Grove Lane'
   ];
 
   const DESIGNATIONS = [
