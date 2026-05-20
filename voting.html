@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Voting</title>
+  <title>CINC Connect ï¿½ Voting</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,6 +28,13 @@
           <img class="sub-header__logo" src="assets/icons/icon-notification-bell.svg" alt="" />
         </a>
       </header>
+
+      <!-- Property selector -->
+      <button class="property-selector" type="button" aria-haspopup="listbox" data-open-sheet="voting-unit-sheet">
+        <img class="property-selector__door" src="assets/icons/icon-door.svg" alt="" />
+        <span class="property-selector__name" data-property-name>12346 Washington Avenue</span>
+        <img class="property-selector__chevron" src="assets/icons/icon-chevron-down.svg" alt="" />
+      </button>
 
       <!-- Tabs -->
       <div class="voting__tabs">
@@ -56,7 +63,7 @@
     <!-- PDF viewer modal (full screen white) -->
     <div class="pdf-modal" data-pdf-modal hidden>
       <header class="pdf-modal__header">
-        <h2 class="pdf-modal__filename" data-pdf-modal-title>—</h2>
+        <h2 class="pdf-modal__filename" data-pdf-modal-title>ï¿½</h2>
         <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -65,10 +72,73 @@
         </button>
       </header>
       <div class="pdf-modal__sheet">
-        <h3 class="pdf-modal__title" data-pdf-heading>—</h3>
-        <p class="pdf-modal__subtitle" data-pdf-subheading>—</p>
+        <h3 class="pdf-modal__title" data-pdf-heading>ï¿½</h3>
+        <p class="pdf-modal__subtitle" data-pdf-subheading>ï¿½</p>
         <hr class="pdf-modal__divider" />
         <div class="pdf-modal__content" data-pdf-paragraphs></div>
+      </div>
+    </div>
+
+    <!-- Unit / Account selector â€” bottom sheet -->
+    <div class="sheet-overlay" id="voting-unit-sheet" aria-hidden="true" data-sheet-overlay>
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="voting-unit-sheet-title">
+        <header class="sheet__header">
+          <h2 class="sheet__title" id="voting-unit-sheet-title">Select Unit or Account</h2>
+          <button class="sheet__close" type="button" data-close-sheet>Close</button>
+        </header>
+
+        <ul class="unit-list">
+          <li>
+            <button class="unit-list__item is-selected" type="button"
+              data-unit-name="12346 Washington Avenue"
+              data-unit-acct="1588:6523">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">12346 Washington Avenue</div>
+                <div class="unit-list__acct">ACC#: 1588:6523</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="13490 Avenue 58"
+              data-unit-acct="89761312">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">13490 Avenue 58</div>
+                <div class="unit-list__acct">ACC#: 89761312</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="12 Trees 20 43"
+              data-unit-acct="SMM 101">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">12 Trees 20 43</div>
+                <div class="unit-list__acct">ACC#: SMM 101</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button class="unit-list__item" type="button"
+              data-unit-name="1 APT22"
+              data-unit-acct="PAY022">
+              <img class="unit-list__door" src="assets/icons/icon-door.svg" alt="" />
+              <div class="unit-list__text">
+                <div class="unit-list__address">1 APT22</div>
+                <div class="unit-list__acct">ACC#: PAY022</div>
+              </div>
+              <span class="unit-list__radio" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+
+        <button class="sheet__primary" type="button" data-close-sheet>Done</button>
       </div>
     </div>
 
@@ -143,7 +213,7 @@
                   </svg>
                 </span>
                 <span class="ballot-card__doc-name">${escapeHtml(b.documentName || '')}</span>
-                <span class="ballot-card__doc-chevron" aria-hidden="true">›</span>
+                <span class="ballot-card__doc-chevron" aria-hidden="true">ï¿½</span>
               </button>
 
               <p class="ballot-card__close-label">${escapeHtml(closeStr)}</p>
@@ -199,7 +269,7 @@
             <div class="ballot-card__body ballot-card__body--past">
               <h2 class="ballot-card__title">${escapeHtml(b.title)}</h2>
               ${b.description ? `<p class="ballot-card__description">${escapeHtml(b.description)}</p>` : ''}
-              <p class="ballot-card__your-vote"><strong>Your vote:</strong> ${escapeHtml(userOpts.join(', ') || '—')}</p>
+              <p class="ballot-card__your-vote"><strong>Your vote:</strong> ${escapeHtml(userOpts.join(', ') || 'ï¿½')}</p>
               <div class="ballot-card__past-meta">
                 <span class="ballot-card__past-badge">CLOSED</span>
                 <span class="ballot-card__past-date">${escapeHtml(b.decidedAt || '')}</span>
@@ -285,6 +355,7 @@
       renderHistory();
       // Live countdown
       setInterval(tickCountdowns, 1000);
+
     })();
   </script>
   <script src="scripts/app.js"></script>
