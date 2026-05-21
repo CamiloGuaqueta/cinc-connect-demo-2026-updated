@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect — Sign In</title>
+  <title>CINC Connect â€” Sign In</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,7 +62,7 @@
 
         <button type="submit" class="btn btn--primary login__btn">Sign In</button>
 
-        <p class="login__copyright">© 2026 CINC Systems.<br>Confidential — for authorized demonstration use only.</p>
+        <p class="login__copyright">Â© 2026 CINC Systems.<br>Confidential â€” for authorized demonstration use only.</p>
 
         <button type="button" class="login__biometric" data-biometric aria-label="Sign in with fingerprint">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -80,7 +80,7 @@
     // If already logged in & not idle, skip to feed
     window.CincAuth.bootstrapLoginPage();
 
-    // Biometric (visual only — explains it works in the real app)
+    // Biometric (visual only â€” explains it works in the real app)
     document.querySelector('[data-biometric]')?.addEventListener('click', async () => {
       await window.AppDialog.alert({
         title: 'Biometric Sign-In',
@@ -154,8 +154,21 @@
 
       window.CincAuth.login(name, email);
 
-      // Future: POST to HubSpot form endpoint here using the form ID
-      // fetch('https://forms.hubspot.com/...formId.../submissions', { method: 'POST', body: JSON.stringify({ name, email }) });
+      // POST to HubSpot silently â€” fire and forget, never blocks the user
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/40040627/8db41f58-fc0f-4dfd-93d5-00eafc633dec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: [
+            { name: 'firstname', value: name },
+            { name: 'email',     value: email }
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: 'CINC Connect Demo â€” CAI 2026'
+          }
+        })
+      }).catch(function () {}); // Silently ignore network errors
 
       window.location.href = 'feed.html';
     });
