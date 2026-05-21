@@ -29,7 +29,7 @@
 
       <form class="login__form" data-login-form novalidate>
         <div class="login__field-wrap">
-          <label class="input-group login__field" data-field-wrap="name">
+          <label class="input-group login__field" data-field-wrap="firstname">
             <span class="input-group__icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                 <mask id="mask0_91_633" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
@@ -41,9 +41,27 @@
                 </g>
               </svg>
             </span>
-            <input class="input-group__field" type="text" name="name" placeholder="Full Name" autocomplete="name" required />
+            <input class="input-group__field" type="text" name="firstname" placeholder="First Name" autocomplete="given-name" required />
           </label>
-          <span class="login__error" data-error-for="name" hidden></span>
+          <span class="login__error" data-error-for="firstname" hidden></span>
+        </div>
+
+        <div class="login__field-wrap">
+          <label class="input-group login__field" data-field-wrap="lastname">
+            <span class="input-group__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                <mask id="mask1_91_634" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+                  <path d="M0 0.000106812H24.9999V25H0V0.000106812Z" fill="black"/>
+                </mask>
+                <g mask="url(#mask1_91_634)">
+                  <path d="M12.4999 6.86646e-05C5.60716 6.86646e-05 0 5.60723 0 12.5C0 16.2556 1.66293 19.6269 4.29358 21.9221C6.49103 23.8401 9.35924 25 12.4999 25C15.6372 25 18.5089 23.8401 20.7028 21.9256C23.3335 19.6304 24.9999 16.2556 24.9999 12.5C24.9999 5.60723 19.3927 6.86646e-05 12.4999 6.86646e-05ZM6.36526 21.3247C7.44477 18.9736 9.83786 17.3805 12.4999 17.3805C15.162 17.3805 17.5551 18.9736 18.6346 21.3247C16.8948 22.5405 14.7812 23.2532 12.4999 23.2532C10.2187 23.2532 8.10505 22.5405 6.36526 21.3247V21.3247ZM20.0146 20.1823C18.5752 17.4539 15.6896 15.6337 12.4999 15.6337C9.31033 15.6337 6.42814 17.4539 4.98531 20.1789C2.98699 18.2295 1.74678 15.508 1.74678 12.5C1.74678 6.57145 6.57138 1.74685 12.4999 1.74685C18.4285 1.74685 23.2531 6.57145 23.2531 12.5C23.2531 15.508 22.0129 18.2295 20.0146 20.1823Z" fill="#BBBBBB"/>
+                  <path d="M12.4998 3.80106C10.0264 3.80106 8.01758 5.81334 8.01758 8.28329C8.01758 10.7567 10.0264 12.7655 12.4998 12.7655C14.9698 12.7655 16.982 10.7567 16.982 8.28329C16.982 5.81334 14.9698 3.80106 12.4998 3.80106V3.80106ZM12.4998 11.0187C10.9906 11.0187 9.76435 9.7925 9.76435 8.28329C9.76435 6.77407 10.9906 5.54783 12.4998 5.54783C14.009 5.54783 15.2353 6.77407 15.2353 8.28329C15.2353 9.7925 14.009 11.0187 12.4998 11.0187Z" fill="#BBBBBB"/>
+                </g>
+              </svg>
+            </span>
+            <input class="input-group__field" type="text" name="lastname" placeholder="Last Name" autocomplete="family-name" required />
+          </label>
+          <span class="login__error" data-error-for="lastname" hidden></span>
         </div>
 
         <div class="login__field-wrap">
@@ -127,15 +145,22 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
-      const name = String(data.get('name') || '').trim();
-      const email = String(data.get('email') || '').trim();
+      const firstname = String(data.get('firstname') || '').trim();
+      const lastname  = String(data.get('lastname')  || '').trim();
+      const email     = String(data.get('email')     || '').trim();
 
       let firstInvalid = null;
-      if (!name) {
-        setFieldError('name', 'Required');
-        if (!firstInvalid) firstInvalid = 'name';
+      if (!firstname) {
+        setFieldError('firstname', 'Required');
+        if (!firstInvalid) firstInvalid = 'firstname';
       } else {
-        setFieldError('name', null);
+        setFieldError('firstname', null);
+      }
+      if (!lastname) {
+        setFieldError('lastname', 'Required');
+        if (!firstInvalid) firstInvalid = 'lastname';
+      } else {
+        setFieldError('lastname', null);
       }
       if (!email) {
         setFieldError('email', 'Required');
@@ -152,7 +177,7 @@
         return;
       }
 
-      window.CincAuth.login(name, email);
+      window.CincAuth.login(firstname + ' ' + lastname, email);
 
       // POST to HubSpot silently — fire and forget, never blocks the user
       fetch('https://api.hsforms.com/submissions/v3/integration/submit/40040627/8db41f58-fc0f-4dfd-93d5-00eafc633dec', {
@@ -160,8 +185,9 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fields: [
-            { name: 'firstname', value: name },
-            { name: 'email',     value: email }
+            { name: 'firstname', value: firstname },
+            { name: 'lastname',  value: lastname  },
+            { name: 'email',     value: email     }
           ],
           context: {
             pageUri: window.location.href,
