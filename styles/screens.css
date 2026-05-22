@@ -14378,6 +14378,123 @@ a.sub-header__right {
 }
 
 /* ============================================================
+   RATINGS
+   ============================================================ */
+.ratings {
+  min-height: 100dvh;
+  padding-bottom: calc(var(--bottom-nav-height) + 24px);
+  background: var(--color-brand-green-black);
+}
+.ratings__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+.rating-card {
+  background: var(--color-brand-forest);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.rating-card__type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+}
+.rating-card__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.rating-card__label {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-brand-lime);
+}
+.rating-card__body {
+  padding: 14px 16px 16px;
+}
+.rating-card__title {
+  margin: 0 0 8px;
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-brand-lime);
+  line-height: 1.25;
+}
+.rating-card__question {
+  margin: 0 0 20px;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+.rating-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.rating-star {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.rating-star svg {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.1s;
+}
+.rating-star svg path {
+  fill: none;
+  stroke: rgba(255, 248, 234, 0.5);
+  stroke-width: 1.5;
+  transition: fill 0.15s, stroke 0.15s;
+}
+.rating-star.is-filled svg path {
+  fill: #b2de61;
+  stroke: #b2de61;
+}
+.rating-star:active svg {
+  transform: scale(0.9);
+}
+.rating-card__sep {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.1);
+  margin: 0 16px;
+}
+.rating-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 14px 14px;
+  height: 50px;
+  background: #b2de61;
+  color: #235237;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: calc(100% - 28px);
+  margin-top: 14px;
+}
+.rating-card__btn:disabled {
+  background: rgba(178, 222, 97, 0.25);
+  color: rgba(35, 82, 55, 0.5);
+  cursor: default;
+}
+
+/* ============================================================
    SURVEYS
    ============================================================ */
 .surveys {

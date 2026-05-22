@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#082818" />
+  <title>CINC Connect &#8212; Ratings</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="ratings">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title" style="color:#b2de61;">Ratings</h1>
+      </div>
+
+      <!-- Rating cards -->
+      <div class="ratings__list">
+
+        <!-- Card 1: AC Service -->
+        <article class="rating-card">
+          <header class="rating-card__type">
+            <img class="rating-card__icon" src="assets/icons/icon-ratings.svg" alt="" />
+            <span class="rating-card__label">Ratings</span>
+          </header>
+          <img class="ballot-card__hero" src="assets/images/amenity-room.jpg" alt="Air Around The Clock" />
+          <div class="rating-card__body">
+            <h2 class="rating-card__title">Air Around The Clock</h2>
+            <p class="rating-card__question">How would you rate Air Around The Clock as an AC Service Provider?</p>
+            <div class="rating-stars" id="stars-1">
+              <button class="rating-star" type="button" data-card="1" data-value="1" aria-label="1 star">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="1" data-value="2" aria-label="2 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="1" data-value="3" aria-label="3 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="1" data-value="4" aria-label="4 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="1" data-value="5" aria-label="5 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rating-card__sep"></div>
+          <button class="rating-card__btn" id="btn-1" type="button" disabled>SUBMIT RATING</button>
+        </article>
+
+        <!-- Card 2: Landscaping -->
+        <article class="rating-card">
+          <header class="rating-card__type">
+            <img class="rating-card__icon" src="assets/icons/icon-ratings.svg" alt="" />
+            <span class="rating-card__label">Ratings</span>
+          </header>
+          <img class="ballot-card__hero" src="assets/images/Community-aerial.jpg" alt="GreenScape Landscaping" />
+          <div class="rating-card__body">
+            <h2 class="rating-card__title">GreenScape Landscaping</h2>
+            <p class="rating-card__question">How would you rate GreenScape Landscaping's service quality this season?</p>
+            <div class="rating-stars" id="stars-2">
+              <button class="rating-star" type="button" data-card="2" data-value="1" aria-label="1 star">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="2" data-value="2" aria-label="2 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="2" data-value="3" aria-label="3 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="2" data-value="4" aria-label="4 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+              <button class="rating-star" type="button" data-card="2" data-value="5" aria-label="5 stars">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="rating-card__sep"></div>
+          <button class="rating-card__btn" id="btn-2" type="button" disabled>SUBMIT RATING</button>
+        </article>
+
+      </div><!-- /.ratings__list -->
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">Pinboard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>
+    window.CincAuth.requireAuth();
+
+    // Star rating logic — one handler for all cards
+    document.querySelectorAll('.rating-stars').forEach(function (container) {
+      var cardId  = container.id.replace('stars-', '');
+      var stars   = container.querySelectorAll('.rating-star');
+      var btn     = document.getElementById('btn-' + cardId);
+
+      stars.forEach(function (star) {
+        star.addEventListener('click', function () {
+          var val = parseInt(star.dataset.value, 10);
+          stars.forEach(function (s) {
+            var sv = parseInt(s.dataset.value, 10);
+            s.classList.toggle('is-filled', sv <= val);
+          });
+          btn.disabled = false;
+        });
+      });
+
+      btn.addEventListener('click', function () {
+        window.location.href = 'rating-success.html';
+      });
+    });
+  </script>
+</body>
+</html>
