@@ -2728,7 +2728,7 @@
   display: flex;
   background: var(--color-brand-forest);
   border-radius: var(--radius-sm);
-  margin: 14px 10px 18px;
+  margin: 14px 20px 18px;
   padding: 5px;
   height: 40px;
   gap: 4px;
@@ -14117,91 +14117,72 @@ a.sub-header__right {
 
 /* Consent Cards */
 .consent-card {
-  background: var(--color-brand-forest);
-  border-radius: 14px;
+  background: #235237;
+  border-radius: 10px;
   overflow: hidden;
 }
-.consent-card__top {
+.consent-card__header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px 16px 0;
+  gap: 8px;
+  padding: 14px 14px 12px;
 }
 .consent-card__icon {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
 }
 .consent-card__type {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #b2de61;
+  text-transform: capitalize;
 }
-.consent-card__body {
-  padding: 10px 16px 0;
+.consent-card__content {
+  padding: 0 14px 16px;
 }
 .consent-card__title {
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 700;
   color: #fff8ea;
-  margin: 0 0 5px;
-  letter-spacing: 0.3px;
-}
-.consent-card__article {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 4px;
-}
-.consent-card__section-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 2px;
+  margin: 0 0 8px;
+  letter-spacing: 0.1px;
 }
 .consent-card__preview {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff8ea;
   line-height: 1.5;
+  margin: 0;
 }
 .consent-card__see-more {
-  color: var(--color-brand-lime);
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
+  color: #b2de61;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
   margin-left: 4px;
 }
-.consent-card__divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 14px 16px 0;
-}
-.consent-card__footer {
-  padding: 14px 16px 16px;
-}
 .consent-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 14px;
-  background: var(--color-brand-cinc-green);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  height: 50px;
+  background: #b2de61;
+  color: #235237;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
   text-transform: uppercase;
-  cursor: pointer;
-  text-align: center;
-  display: block;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 .consent-card__btn--signed {
   background: transparent;
-  border: 1.5px solid var(--color-brand-lime);
-  color: var(--color-brand-lime);
+  border-top: 1px solid rgba(178,222,97,.25);
+  color: #b2de61;
 }
 
 /* Consent Detail */
