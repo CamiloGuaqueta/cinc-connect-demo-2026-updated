@@ -14181,9 +14181,9 @@ a.sub-header__right {
   cursor: pointer;
 }
 .consent-card__btn--signed {
-  background: transparent;
-  border: 1.5px solid rgba(178,222,97,.4);
-  color: #b2de61;
+  background: #b2de61;
+  border: none;
+  color: #235237;
 }
 
 /* Consent Detail */
