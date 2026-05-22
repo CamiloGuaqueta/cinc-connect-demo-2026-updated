@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Consent Submitted</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+        <div class="pay-sheet__sep"></div>
+        <div class="pay-sheet__body">
+
+          <div class="wo-success-body">
+
+            <!-- Icon -->
+            <div class="wo-success-icon" style="background:rgba(125,219,0,.12);border-color:rgba(125,219,0,.25);">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 10h16l12 12v22a2 2 0 01-2 2H14a2 2 0 01-2-2V12a2 2 0 012-2z" stroke="#b2de61" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M30 10v12h12" stroke="#b2de61" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M19 30h14M19 35h9" stroke="#b2de61" stroke-width="2" stroke-linecap="round"/>
+                <path d="M34 38l4 4" stroke="#b2de61" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="33" cy="37" r="4" stroke="#b2de61" stroke-width="2"/>
+              </svg>
+            </div>
+
+            <h2 class="wo-success-title">Thank You for Consenting</h2>
+
+            <p class="wo-success-text">Your consent has been submitted and a confirmation has been sent to</p>
+            <p class="wo-success-text" id="confirmEmail" style="color:var(--color-brand-lime);font-weight:700;margin-top:-10px;"></p>
+
+            <p class="wo-success-text" style="color:rgba(255,248,234,.5);font-size:12px;margin-top:8px;">
+              This consent is now on record with Magic Views HOA. You can view your signed consents at any time from the Consents &amp; Signatures section.
+            </p>
+
+          </div>
+
+          <!-- Done CTA -->
+          <div style="padding:0 20px 40px;">
+            <a class="btn btn--primary" href="consents.html" style="display:block;text-align:center;">DONE</a>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>
+    window.CincAuth.requireAuth();
+    document.getElementById('confirmEmail').textContent = window.CincAuth.getUserEmail();
+  </script>
+</body>
+</html>

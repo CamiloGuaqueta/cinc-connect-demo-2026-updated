@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#082818" />
+  <title>CINC Connect — Consents &amp; Signatures</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="consents">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title + Filter -->
+      <div class="consents__topbar">
+        <h1 class="consents__title">Consents &amp; Signatures</h1>
+        <a class="acc-filter-btn" href="consent-filter.html" aria-label="Filter">
+          <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
+        </a>
+      </div>
+
+      <!-- Search -->
+      <div class="consents__search">
+        <div class="messages__search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+            <path d="M21 21l-4.35-4.35" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input class="messages__search-input" type="text" placeholder="Search consents…" />
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="consents__tabs">
+        <button class="consents__tab consents__tab--active" data-tab="available" type="button">Available Consents</button>
+        <button class="consents__tab" data-tab="signed" type="button">Signed Consents</button>
+      </div>
+
+      <!-- Available Consents -->
+      <div class="consents__list" data-pane="available">
+
+        <!-- Card 1: Pet Policy -->
+        <div class="consent-card">
+          <div class="consent-card__top">
+            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
+              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+            </svg>
+            <span class="consent-card__type">User Consent</span>
+          </div>
+          <div class="consent-card__body">
+            <p class="consent-card__title">ANIMAL POLICY</p>
+            <p class="consent-card__article">Article II: Ownership and Registration</p>
+            <p class="consent-card__section-label">Section 1: Ownership</p>
+            <p class="consent-card__preview">Homeowners are allowed to own dogs, cats, and other domestic animals within the com…<a class="consent-card__see-more" href="consent-detail.html?type=pet-policy">See more</a></p>
+          </div>
+          <div class="consent-card__divider"></div>
+          <div class="consent-card__footer">
+            <a class="consent-card__btn" href="consent-detail.html?type=pet-policy">SIGN CONSENT</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Rules & Regulations -->
+        <div class="consent-card">
+          <div class="consent-card__top">
+            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
+              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+            </svg>
+            <span class="consent-card__type">Unit Consent</span>
+          </div>
+          <div class="consent-card__body">
+            <p class="consent-card__title">COMMUNITY RULES &amp; REGULATIONS</p>
+            <p class="consent-card__article">Article I: General Provisions</p>
+            <p class="consent-card__section-label">Section 1: Purpose</p>
+            <p class="consent-card__preview">The purpose of these rules and regulations is to maintain the quality, character, and property values of the com…<a class="consent-card__see-more" href="consent-detail.html?type=rules">See more</a></p>
+          </div>
+          <div class="consent-card__divider"></div>
+          <div class="consent-card__footer">
+            <a class="consent-card__btn" href="consent-detail.html?type=rules">SIGN CONSENT</a>
+          </div>
+        </div>
+
+      </div><!-- /.consents__list available -->
+
+      <!-- Signed Consents -->
+      <div class="consents__list" data-pane="signed" hidden>
+
+        <!-- Date Group -->
+        <p class="consents__date-group">Mar, 2025</p>
+
+        <!-- Signed Card -->
+        <div class="consent-card">
+          <div class="consent-card__top">
+            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
+              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+            </svg>
+            <span class="consent-card__type">User Consent</span>
+          </div>
+          <div class="consent-card__body">
+            <p class="consent-card__title">ANIMAL POLICY</p>
+            <p class="consent-card__article">Article II: Ownership and Registration</p>
+            <p class="consent-card__section-label">Section 1: Ownership</p>
+            <p class="consent-card__preview">Homeowners are allowed to own dogs, cats, and other domestic animals within the com…<a class="consent-card__see-more" href="consent-signed-detail.html">See more</a></p>
+          </div>
+          <div class="consent-card__divider"></div>
+          <div class="consent-card__footer">
+            <a class="consent-card__btn consent-card__btn--signed" href="consent-signed-detail.html">SEE SIGNED CONSENT</a>
+          </div>
+        </div>
+
+      </div><!-- /.consents__list signed -->
+
+    </main>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>
+    window.CincAuth.requireAuth();
+
+    // Tabs
+    const tabs = document.querySelectorAll('.consents__tab');
+    const panes = document.querySelectorAll('.consents__list[data-pane]');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) { t.classList.remove('consents__tab--active'); });
+        tab.classList.add('consents__tab--active');
+        const key = tab.dataset.tab;
+        panes.forEach(function (p) { p.hidden = p.dataset.pane !== key; });
+      });
+    });
+  </script>
+</body>
+</html>

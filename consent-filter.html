@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Filter Consents</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen" style="height:100dvh;overflow:hidden;">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="consents.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Filter Consents</span>
+          <a class="pay-sheet__close" href="consents.html">Reset</a>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Consent Type -->
+          <p class="filter-section__title">Consent Type</p>
+          <div class="filter-group" data-filter-group>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All Types</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">User Consent</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Unit Consent</span>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <p class="filter-section__title">Status</p>
+          <div class="filter-group" data-filter-group>
+            <div class="filter-row">
+              <span class="filter-radio filter-radio--selected"></span>
+              <span class="filter-row__label">All</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Available</span>
+            </div>
+            <div class="filter-row">
+              <span class="filter-radio"></span>
+              <span class="filter-row__label">Signed</span>
+            </div>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Apply button -->
+        <div class="acc-list-footer">
+          <a class="btn btn--primary" href="consents.html" style="display:block;text-align:center;margin:0 20px;">APPLY FILTERS</a>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-filter-group]').forEach(function (group) {
+      group.querySelectorAll('.filter-row').forEach(function (row) {
+        row.addEventListener('click', function () {
+          group.querySelectorAll('.filter-radio').forEach(function (r) {
+            r.classList.remove('filter-radio--selected');
+          });
+          row.querySelector('.filter-radio').classList.add('filter-radio--selected');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

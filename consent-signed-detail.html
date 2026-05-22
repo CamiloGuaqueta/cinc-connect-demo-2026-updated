@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Signed Consent</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="consents.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Signed Consent</span>
+          <span></span>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body pay-sheet__body--scrollable">
+
+          <!-- Consent card summary -->
+          <div class="consent-card" style="margin-bottom:20px;">
+            <div class="consent-card__top">
+              <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
+                <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+              </svg>
+              <span class="consent-card__type">User Consent</span>
+            </div>
+            <div class="consent-card__body" style="padding-bottom:16px;">
+              <p class="consent-card__title">ANIMAL POLICY</p>
+              <p class="consent-card__article">Article II: Ownership and Registration</p>
+              <p class="consent-card__section-label">Section 1: Ownership</p>
+              <p class="consent-card__preview">Homeowners are allowed to own dogs, cats, and other domestic animals within the com…</p>
+            </div>
+          </div>
+
+          <!-- Signature metadata -->
+          <div class="consent-detail-meta">
+            <div class="consent-detail-meta__row">
+              <span class="consent-detail-meta__key">Date:</span>
+              <span class="consent-detail-meta__val">03/15/2025</span>
+            </div>
+            <div class="consent-detail-meta__row">
+              <span class="consent-detail-meta__key">Time:</span>
+              <span class="consent-detail-meta__val">10:22 AM</span>
+            </div>
+            <div class="consent-detail-meta__row">
+              <span class="consent-detail-meta__key">Method:</span>
+              <span class="consent-detail-meta__val">APP</span>
+            </div>
+            <div class="consent-detail-meta__row">
+              <span class="consent-detail-meta__key">Consent Check:</span>
+              <span class="consent-detail-meta__val">Yes</span>
+            </div>
+            <div class="consent-detail-meta__row">
+              <span class="consent-detail-meta__key">Print Name:</span>
+              <span class="consent-detail-meta__val" id="printName">Maria Johnson</span>
+            </div>
+          </div>
+
+          <!-- Signature image (SVG handwriting simulation) -->
+          <div class="consent-sig-image">
+            <svg viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+              <path d="M20 70 C30 40 40 30 55 45 C65 55 60 65 70 55 C80 45 85 35 95 50 C100 58 95 68 105 60 C115 52 120 42 135 55 C145 64 140 74 150 65 C162 54 168 44 180 58 C188 68 185 78 195 70 C208 60 215 48 230 62 C238 70 235 80 245 72 C258 62 265 50 278 65 C285 72 283 82 292 75" stroke="#1a1a2e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M25 78 C40 72 55 76 70 74 C90 72 110 75 130 73 C150 71 170 74 190 72 C210 70 230 73 250 71 C265 69 278 72 292 70" stroke="#1a1a2e" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 4"/>
+            </svg>
+          </div>
+
+          <!-- Actions -->
+          <button class="btn btn--primary" type="button" style="width:100%;margin-bottom:12px;" onclick="alert('Email receipt sent.')">EMAIL RECEIPT</button>
+          <button class="consent-opt-out-btn" type="button" onclick="alert('Opt-out request submitted.')">OPT-OUT</button>
+
+        </div><!-- /.pay-sheet__body -->
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>
+    window.CincAuth.requireAuth();
+    // Show logged-in user's name for the demo
+    var name = window.CincAuth.getUserName();
+    if (name) document.getElementById('printName').textContent = name;
+  </script>
+</body>
+</html>
