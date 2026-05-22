@@ -63,11 +63,13 @@
           <!-- I CONSENT toggle -->
           <div class="consent-toggle-row" style="background:#235237;">
             <span class="consent-toggle-label">I CONSENT</span>
-            <label class="consent-toggle">
-              <input type="checkbox" id="consentCheck" checked />
-              <span class="consent-toggle__track"></span>
+            <label class="toggle toggle--labeled" aria-label="I consent">
+              <input class="toggle__input" type="checkbox" id="consentCheck" checked />
+              <span class="toggle__switch">
+                <span class="toggle__yes">Yes</span>
+                <span class="toggle__no">No</span>
+              </span>
             </label>
-            <span class="consent-toggle-off-label" id="toggleLabel">ON</span>
           </div>
 
           <!-- Submit -->
@@ -228,10 +230,7 @@
     });
 
     // Toggle
-    document.getElementById('consentCheck').addEventListener('change', function () {
-      document.getElementById('toggleLabel').textContent = this.checked ? 'ON' : 'OFF';
-      checkReady();
-    });
+    document.getElementById('consentCheck').addEventListener('change', checkReady);
 
     // Submit
     document.getElementById('submitBtn').addEventListener('click', function () {
