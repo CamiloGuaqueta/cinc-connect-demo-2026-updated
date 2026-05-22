@@ -34,17 +34,17 @@
       </header>
 
       <!-- Title + Filter -->
-      <div class="consents__topbar">
-        <h1 class="consents__title">Consents &amp; Signatures</h1>
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title" style="color:#b2de61;">Consents &amp; Signatures</h1>
         <a class="acc-filter-btn" href="consent-filter.html" aria-label="Filter">
           <img src="assets/icons/icon-filter.svg" alt="" width="23" height="25" />
         </a>
       </div>
 
       <!-- Search -->
-      <div class="consents__search">
+      <div class="wo-search-bar" style="padding: 0 20px 10px;">
         <div class="messages__search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <svg class="messages__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="11" cy="11" r="8" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
             <path d="M21 21l-4.35-4.35" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"/>
           </svg>
@@ -59,92 +59,93 @@
       </div>
 
       <!-- Available Consents -->
-      <div class="consents__list" data-pane="available">
+      <div class="consents__list" id="pane-available">
 
-        <!-- Card 1: Pet Policy -->
-        <div class="consent-card">
-          <div class="consent-card__top">
-            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
-              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+        <!-- Card 1: Animal Policy -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="ar-vcard__cat-icon">
+              <rect width="25" height="25" rx="6" fill="rgba(178,222,97,.12)"/>
+              <path d="M7 5h8l5 5v11a1 1 0 01-1 1H7a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M15 5v5h5" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M9 14h7M9 17h5" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
-            <span class="consent-card__type">User Consent</span>
+            <span class="ar-vcard__type">Animal Policy</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">User Consent</span>
           </div>
-          <div class="consent-card__body">
-            <p class="consent-card__title">ANIMAL POLICY</p>
-            <p class="consent-card__article">Article II: Ownership and Registration</p>
-            <p class="consent-card__section-label">Section 1: Ownership</p>
-            <p class="consent-card__preview">Homeowners are allowed to own dogs, cats, and other domestic animals within the com…<a class="consent-card__see-more" href="consent-detail.html?type=pet-policy">See more</a></p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address" style="font-weight:700;font-size:14px;color:#fff8ea;">ANIMAL POLICY</p>
+            <p class="ar-vcard__meta-line">Article II: Ownership and Registration</p>
+            <p class="ar-vcard__meta-line">Section 1: Ownership</p>
           </div>
-          <div class="consent-card__divider"></div>
-          <div class="consent-card__footer">
-            <a class="consent-card__btn" href="consent-detail.html?type=pet-policy">SIGN CONSENT</a>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Homeowners are allowed to own dogs, cats, and other domestic animals within the community, subject to the following rules&#8230; <a class="ar-vcard__desc-more" href="consent-detail.html?type=pet-policy">See more</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <div style="padding:14px 16px 16px;">
+            <a class="btn btn--primary" href="consent-detail.html?type=pet-policy" style="display:block;text-align:center;font-size:13px;letter-spacing:.5px;">SIGN CONSENT</a>
           </div>
         </div>
 
-        <!-- Card 2: Rules & Regulations -->
-        <div class="consent-card">
-          <div class="consent-card__top">
-            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
-              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+        <!-- Card 2: Community Rules -->
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="ar-vcard__cat-icon">
+              <rect width="25" height="25" rx="6" fill="rgba(178,222,97,.12)"/>
+              <path d="M7 5h8l5 5v11a1 1 0 01-1 1H7a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M15 5v5h5" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M9 14h7M9 17h5" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
-            <span class="consent-card__type">Unit Consent</span>
+            <span class="ar-vcard__type">Community Rules</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">Unit Consent</span>
           </div>
-          <div class="consent-card__body">
-            <p class="consent-card__title">COMMUNITY RULES &amp; REGULATIONS</p>
-            <p class="consent-card__article">Article I: General Provisions</p>
-            <p class="consent-card__section-label">Section 1: Purpose</p>
-            <p class="consent-card__preview">The purpose of these rules and regulations is to maintain the quality, character, and property values of the com…<a class="consent-card__see-more" href="consent-detail.html?type=rules">See more</a></p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address" style="font-weight:700;font-size:14px;color:#fff8ea;">COMMUNITY RULES &amp; REGULATIONS</p>
+            <p class="ar-vcard__meta-line">Article I: General Provisions</p>
+            <p class="ar-vcard__meta-line">Section 1: Purpose</p>
           </div>
-          <div class="consent-card__divider"></div>
-          <div class="consent-card__footer">
-            <a class="consent-card__btn" href="consent-detail.html?type=rules">SIGN CONSENT</a>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">The purpose of these rules and regulations is to maintain the quality, character, and property values of the community&#8230; <a class="ar-vcard__desc-more" href="consent-detail.html?type=rules">See more</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <div style="padding:14px 16px 16px;">
+            <a class="btn btn--primary" href="consent-detail.html?type=rules" style="display:block;text-align:center;font-size:13px;letter-spacing:.5px;">SIGN CONSENT</a>
           </div>
         </div>
 
-      </div><!-- /.consents__list available -->
+      </div><!-- /#pane-available -->
 
       <!-- Signed Consents -->
-      <div class="consents__list" data-pane="signed" hidden>
+      <div class="consents__list" id="pane-signed" style="display:none;">
 
-        <!-- Date Group -->
         <p class="consents__date-group">Mar, 2025</p>
 
-        <!-- Signed Card -->
-        <div class="consent-card">
-          <div class="consent-card__top">
-            <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
-              <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
+        <div class="ar-vcard">
+          <div class="ar-vcard__top">
+            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" class="ar-vcard__cat-icon">
+              <rect width="25" height="25" rx="6" fill="rgba(178,222,97,.12)"/>
+              <path d="M7 5h8l5 5v11a1 1 0 01-1 1H7a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M15 5v5h5" stroke="#b2de61" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M9 14h7M9 17h5" stroke="#b2de61" stroke-width="1.4" stroke-linecap="round"/>
             </svg>
-            <span class="consent-card__type">User Consent</span>
+            <span class="ar-vcard__type">Animal Policy</span>
+            <span class="ar-vcard__badge ar-vcard__badge--lime">User Consent</span>
           </div>
-          <div class="consent-card__body">
-            <p class="consent-card__title">ANIMAL POLICY</p>
-            <p class="consent-card__article">Article II: Ownership and Registration</p>
-            <p class="consent-card__section-label">Section 1: Ownership</p>
-            <p class="consent-card__preview">Homeowners are allowed to own dogs, cats, and other domestic animals within the com…<a class="consent-card__see-more" href="consent-signed-detail.html">See more</a></p>
+          <div class="ar-vcard__meta">
+            <p class="ar-vcard__address" style="font-weight:700;font-size:14px;color:#fff8ea;">ANIMAL POLICY</p>
+            <p class="ar-vcard__meta-line">Article II: Ownership and Registration</p>
+            <p class="ar-vcard__meta-line">Section 1: Ownership</p>
           </div>
-          <div class="consent-card__divider"></div>
-          <div class="consent-card__footer">
-            <a class="consent-card__btn consent-card__btn--signed" href="consent-signed-detail.html">SEE SIGNED CONSENT</a>
+          <div class="ar-vcard__desc">
+            <p class="ar-vcard__desc-text">Homeowners are allowed to own dogs, cats, and other domestic animals within the community, subject to the following rules&#8230; <a class="ar-vcard__desc-more" href="consent-signed-detail.html">See more</a></p>
+          </div>
+          <div class="ar-vcard__divider"></div>
+          <div style="padding:14px 16px 16px;">
+            <a class="btn" href="consent-signed-detail.html" style="display:block;text-align:center;font-size:13px;letter-spacing:.5px;border:1.5px solid #b2de61;color:#b2de61;background:transparent;">SEE SIGNED CONSENT</a>
           </div>
         </div>
 
-      </div><!-- /.consents__list signed -->
+      </div><!-- /#pane-signed -->
 
     </main>
   </div>
@@ -153,15 +154,20 @@
   <script>
     window.CincAuth.requireAuth();
 
-    // Tabs
-    const tabs = document.querySelectorAll('.consents__tab');
-    const panes = document.querySelectorAll('.consents__list[data-pane]');
+    var tabs = document.querySelectorAll('.consents__tab');
+    var panes = {
+      available: document.getElementById('pane-available'),
+      signed:    document.getElementById('pane-signed')
+    };
+
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
         tabs.forEach(function (t) { t.classList.remove('consents__tab--active'); });
         tab.classList.add('consents__tab--active');
-        const key = tab.dataset.tab;
-        panes.forEach(function (p) { p.hidden = p.dataset.pane !== key; });
+        var key = tab.dataset.tab;
+        Object.keys(panes).forEach(function (k) {
+          panes[k].style.display = k === key ? 'flex' : 'none';
+        });
       });
     });
   </script>
