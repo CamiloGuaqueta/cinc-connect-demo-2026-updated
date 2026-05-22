@@ -14057,8 +14057,8 @@ a.sub-header__right {
 .consents {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
+  padding-bottom: calc(var(--bottom-nav-height) + 24px);
   background: var(--color-brand-green-black);
 }
 .consents__topbar {
