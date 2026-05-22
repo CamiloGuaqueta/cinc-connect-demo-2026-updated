@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect &#8212; Survey</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <div class="pay-screen pay-screen--full">
+      <div class="pay-screen__backdrop"></div>
+      <div class="pay-sheet">
+
+        <header class="pay-sheet__header">
+          <a class="pay-sheet__back" href="surveys.html" aria-label="Back">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+              <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="pay-sheet__title">Survey</span>
+          <span></span>
+        </header>
+        <div class="pay-sheet__sep"></div>
+
+        <div class="pay-sheet__body">
+
+          <!-- Hero image -->
+          <img class="ballot-card__hero" id="surveyImage" src="" alt=""
+               style="margin:0 -20px 16px;width:calc(100% + 40px);border-radius:0;" />
+
+          <!-- Title + description -->
+          <h2 class="ballot-card__title" id="surveyTitle"></h2>
+          <p class="ballot-card__description" id="surveyDesc" style="margin-bottom:0;"></p>
+
+          <!-- Attachment -->
+          <button class="ballot-card__doc" id="surveyDoc" type="button" style="margin-bottom:4px;">
+            <span class="ballot-card__doc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+              </svg>
+            </span>
+            <span class="ballot-card__doc-name" id="surveyDocName"></span>
+            <span class="ballot-card__doc-chevron">&#8250;</span>
+          </button>
+
+          <!-- Yes / No options -->
+          <div class="survey-options">
+            <label class="survey-option-row">
+              <span class="survey-option-label">Yes</span>
+              <input class="survey-option-input" type="radio" name="survey-answer" value="Yes" />
+              <span class="survey-option-radio"></span>
+            </label>
+            <div class="survey-option-sep"></div>
+            <label class="survey-option-row">
+              <span class="survey-option-label">No</span>
+              <input class="survey-option-input" type="radio" name="survey-answer" value="No" />
+              <span class="survey-option-radio"></span>
+            </label>
+          </div>
+
+        </div><!-- /.pay-sheet__body -->
+
+        <!-- Footer -->
+        <div class="pay-sheet__footer">
+          <button class="pay-continue" id="submitBtn" type="button" disabled>SUBMIT ANSWER</button>
+        </div>
+
+      </div><!-- /.pay-sheet -->
+    </div><!-- /.pay-screen -->
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>
+    window.CincAuth.requireAuth();
+
+    var SURVEYS = {
+      'pool': {
+        title: 'Should we grant access to people outside our association to use the pool area?',
+        description: 'The board was thinking about potentially monetizing the pool area via Outsider reservations, so we would like your input before moving forward with any changes.',
+        image: 'assets/images/amenity-pool.jpg',
+        doc: 'Pool Rules and Regulations.pdf'
+      },
+      'pickleball': {
+        title: 'Should we extend pickleball court hours to 9:00 PM on weekends?',
+        description: 'Several residents have requested extended evening access on Saturdays and Sundays. The board wants your opinion before making any changes to the current court schedule.',
+        image: 'assets/images/amenity-pickleball.jpg',
+        doc: 'Court Usage Policy.pdf'
+      },
+      'room': {
+        title: 'Would you support adding a pet-friendly area to the community room?',
+        description: 'A proposal has been made to designate a section of the community room as pet-friendly during off-peak hours. We want to hear from all residents before making a final decision.',
+        image: 'assets/images/amenity-room.jpg',
+        doc: 'Community Room Guidelines.pdf'
+      }
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get('id') || 'pool';
+    var survey = SURVEYS[id] || SURVEYS['pool'];
+
+    document.getElementById('surveyImage').src = survey.image;
+    document.getElementById('surveyTitle').textContent = survey.title;
+    document.getElementById('surveyDesc').textContent = survey.description;
+    document.getElementById('surveyDocName').textContent = survey.doc;
+
+    // Enable submit when an option is selected
+    var radios = document.querySelectorAll('.survey-option-input');
+    var submitBtn = document.getElementById('submitBtn');
+
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () {
+        submitBtn.disabled = false;
+      });
+    });
+
+    submitBtn.addEventListener('click', function () {
+      var selected = document.querySelector('.survey-option-input:checked');
+      if (!selected) return;
+      window.location.href = 'survey-confirm.html?id=' + encodeURIComponent(id) +
+        '&answer=' + encodeURIComponent(selected.value);
+    });
+  </script>
+</body>
+</html>

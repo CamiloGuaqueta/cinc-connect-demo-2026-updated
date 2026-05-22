@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#082818" />
+  <title>CINC Connect — Surveys</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/screens.css?v=4" />
+</head>
+<body>
+  <div class="app-frame">
+    <main class="surveys">
+
+      <!-- App Header -->
+      <header class="app-header">
+        <a class="app-header__back" href="todos.html" aria-label="Back">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="#b2de61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="app-header__notification" href="notifications.html">
+          <img src="assets/icons/icon-notification-bell.svg" alt="Notifications" />
+          <span class="app-header__badge">3</span>
+        </a>
+      </header>
+
+      <!-- Title -->
+      <div class="ar-violations__topbar">
+        <h1 class="ar-violations__title" style="color:#b2de61;">Surveys</h1>
+      </div>
+
+      <!-- Search -->
+      <div class="ar-list__search-wrap">
+        <input class="ar-list__search" type="text" placeholder="Search surveys&#8230;" />
+        <img class="ar-list__search-icon" src="assets/icons/icon-search.svg" alt="" />
+      </div>
+
+      <!-- Cards -->
+      <div class="surveys__list">
+
+        <!-- Survey 1: Pool Access -->
+        <article class="ballot-card">
+          <header class="ballot-card__type">
+            <span class="ballot-card__category">Surveys</span>
+          </header>
+          <img class="ballot-card__hero" src="assets/images/amenity-pool.jpg" alt="Pool" />
+          <div class="ballot-card__body">
+            <h2 class="ballot-card__title">Should we grant access to people outside our association to use the pool area?</h2>
+            <p class="ballot-card__description">
+              <span class="ballot-card__desc-clamp">The board was thinking about potentially monetizing the pool area via Outsider reservations, so we would like your input before moving forward.</span>
+              <a href="survey-detail.html?id=pool" class="ballot-card__see-more">See More</a>
+            </p>
+            <button class="ballot-card__doc" type="button">
+              <span class="ballot-card__doc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+              </span>
+              <span class="ballot-card__doc-name">Pool Rules and Regulations.pdf</span>
+              <span class="ballot-card__doc-chevron">&#8250;</span>
+            </button>
+          </div>
+          <a class="consent-card__btn" href="survey-detail.html?id=pool">SUBMIT ANSWER</a>
+        </article>
+
+        <!-- Survey 2: Pickleball Hours -->
+        <article class="ballot-card">
+          <header class="ballot-card__type">
+            <span class="ballot-card__category">Surveys</span>
+          </header>
+          <img class="ballot-card__hero" src="assets/images/amenity-pickleball.jpg" alt="Pickleball" />
+          <div class="ballot-card__body">
+            <h2 class="ballot-card__title">Should we extend pickleball court hours to 9:00 PM on weekends?</h2>
+            <p class="ballot-card__description">
+              <span class="ballot-card__desc-clamp">Several residents have requested extended evening access on Saturdays and Sundays. The board wants your opinion before making any changes to the schedule.</span>
+              <a href="survey-detail.html?id=pickleball" class="ballot-card__see-more">See More</a>
+            </p>
+            <button class="ballot-card__doc" type="button">
+              <span class="ballot-card__doc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+              </span>
+              <span class="ballot-card__doc-name">Court Usage Policy.pdf</span>
+              <span class="ballot-card__doc-chevron">&#8250;</span>
+            </button>
+          </div>
+          <a class="consent-card__btn" href="survey-detail.html?id=pickleball">SUBMIT ANSWER</a>
+        </article>
+
+        <!-- Survey 3: Pet-Friendly Room -->
+        <article class="ballot-card">
+          <header class="ballot-card__type">
+            <span class="ballot-card__category">Surveys</span>
+          </header>
+          <img class="ballot-card__hero" src="assets/images/amenity-room.jpg" alt="Community Room" />
+          <div class="ballot-card__body">
+            <h2 class="ballot-card__title">Would you support adding a pet-friendly area to the community room?</h2>
+            <p class="ballot-card__description">
+              <span class="ballot-card__desc-clamp">A proposal has been made to designate a section of the community room as pet-friendly during off-peak hours. We want to hear from all residents before deciding.</span>
+              <a href="survey-detail.html?id=room" class="ballot-card__see-more">See More</a>
+            </p>
+            <button class="ballot-card__doc" type="button">
+              <span class="ballot-card__doc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+              </span>
+              <span class="ballot-card__doc-name">Community Room Guidelines.pdf</span>
+              <span class="ballot-card__doc-chevron">&#8250;</span>
+            </button>
+          </div>
+          <a class="consent-card__btn" href="survey-detail.html?id=room">SUBMIT ANSWER</a>
+        </article>
+
+      </div><!-- /.surveys__list -->
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <a class="bottom-nav__item" href="feed.html" aria-label="Feed">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-1-feed.svg" alt="" /></span>
+        <span class="bottom-nav__label">Feed</span>
+      </a>
+      <a class="bottom-nav__item bottom-nav__item--active" href="todos.html" aria-label="My To-Dos">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-2-todos.svg" alt="" /></span>
+        <span class="bottom-nav__label">My To-Dos</span>
+      </a>
+      <a class="bottom-nav__item" href="concierge.html" aria-label="Concierge">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-3-concierge.svg" alt="" /></span>
+        <span class="bottom-nav__label">Concierge</span>
+      </a>
+      <a class="bottom-nav__item" href="pinboard.html" aria-label="PinBoard">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-4-pinboard.svg" alt="" /></span>
+        <span class="bottom-nav__label">Pinboard</span>
+      </a>
+      <a class="bottom-nav__item" href="financial.html" aria-label="Financial">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-5-financial.svg" alt="" /></span>
+        <span class="bottom-nav__label">Financial</span>
+      </a>
+      <a class="bottom-nav__item" href="messages.html" aria-label="Chat">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-6-messages.svg" alt="" /></span>
+        <span class="bottom-nav__label">Messages</span>
+      </a>
+      <a class="bottom-nav__item" href="more.html" aria-label="More">
+        <span class="bottom-nav__icon-wrap"><img src="assets/icons/nav-7-menu.svg" alt="" /></span>
+        <span class="bottom-nav__label">Menu</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="scripts/auth.js"></script>
+  <script>window.CincAuth.requireAuth();</script>
+</body>
+</html>
