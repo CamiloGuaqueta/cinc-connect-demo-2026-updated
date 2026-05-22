@@ -14362,16 +14362,19 @@ a.sub-header__right {
   margin-bottom: 20px;
 }
 .consent-opt-out-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 14px;
+  height: 50px;
   background: #c0392b;
-  color: #fff;
+  color: #fff8ea;
   border: none;
-  border-radius: 10px;
-  font-family: var(--font);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
   text-transform: uppercase;
   cursor: pointer;
   margin-bottom: 40px;
