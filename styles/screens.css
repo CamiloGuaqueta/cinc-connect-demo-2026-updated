@@ -14308,7 +14308,7 @@ a.sub-header__right {
   transition: transform 0.2s;
 }
 .consent-toggle input:checked + .consent-toggle__track {
-  background: var(--color-brand-cinc-green);
+  background: #b2de61;
 }
 .consent-toggle input:checked + .consent-toggle__track::after {
   transform: translateX(24px);
