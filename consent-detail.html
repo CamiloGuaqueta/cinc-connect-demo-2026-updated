@@ -37,18 +37,7 @@
 
           <!-- Consent card header -->
           <div class="consent-card" style="margin-bottom:20px;">
-            <div class="consent-card__top">
-              <svg class="consent-card__icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="32" height="32" rx="8" fill="rgba(125,219,0,.12)"/>
-                <path d="M10 8h8l6 6v12a1 1 0 01-1 1H10a1 1 0 01-1-1V9a1 1 0 011-1z" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M18 8v6h6" stroke="#b2de61" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M13 17h6M13 20h4" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M22 22l2 2" stroke="#b2de61" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="21" cy="21" r="2" stroke="#b2de61" stroke-width="1.5"/>
-              </svg>
-              <span class="consent-card__type" id="consentType">User Consent</span>
-            </div>
-            <div class="consent-card__body" style="padding-bottom:16px;">
+            <div class="consent-card__body" style="padding:16px;">
               <p class="consent-card__title" id="consentTitle"></p>
               <p class="consent-card__article" id="consentArticle"></p>
             </div>
@@ -56,9 +45,6 @@
 
           <!-- Document text -->
           <div class="consent-doc-text" id="consentText"></div>
-
-          <!-- Disclaimer -->
-          <p class="consent-disclaimer">Please note that these are fictional rules and regulations for illustrative purposes. Always consult legal counsel to ensure compliance with local laws and regulations.</p>
 
           <!-- Email -->
           <p class="consent-field-label">Your Email:</p>
@@ -75,13 +61,13 @@
           <p class="sig-canvas-hint">USE YOUR FINGER TO SIGN IN THE SPACE ABOVE</p>
 
           <!-- I CONSENT toggle -->
-          <div class="consent-toggle-row">
+          <div class="consent-toggle-row" style="background:#235237;">
             <span class="consent-toggle-label">I CONSENT</span>
             <label class="consent-toggle">
-              <input type="checkbox" id="consentCheck" />
+              <input type="checkbox" id="consentCheck" checked />
               <span class="consent-toggle__track"></span>
             </label>
-            <span class="consent-toggle-off-label" id="toggleLabel">OFF</span>
+            <span class="consent-toggle-off-label" id="toggleLabel">ON</span>
           </div>
 
           <!-- Submit -->
@@ -159,7 +145,6 @@
     var data = CONSENTS[type] || CONSENTS['pet-policy'];
 
     document.getElementById('sheetTitle').textContent = 'Sign Consent';
-    document.getElementById('consentType').textContent = data.type;
     document.getElementById('consentTitle').textContent = data.title;
     document.getElementById('consentArticle').textContent = data.article;
     document.getElementById('consentEmail').value = window.CincAuth.getUserEmail();
