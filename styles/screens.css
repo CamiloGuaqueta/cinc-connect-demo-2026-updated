@@ -14166,7 +14166,7 @@ a.sub-header__right {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  margin: 0 14px 14px;
   height: 50px;
   background: #b2de61;
   color: #235237;
@@ -14177,11 +14177,12 @@ a.sub-header__right {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 .consent-card__btn--signed {
   background: transparent;
-  border-top: 1px solid rgba(178,222,97,.25);
+  border: 1.5px solid rgba(178,222,97,.4);
   color: #b2de61;
 }
 
