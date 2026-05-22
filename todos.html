@@ -216,6 +216,29 @@
   <script src="scripts/app.js"></script>
   <script>
     (function () {
+      var panes = {
+        bod:      document.querySelector('[data-todos-pane="bod"]'),
+        personal: document.querySelector('[data-todos-pane="personal"]')
+      };
+      var tabs = document.querySelectorAll('[data-todos-tab]');
+
+      // Inline tab switching — explicit style.display avoids hidden-attr/CSS conflicts
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) { t.classList.remove('todos__tab--active'); });
+          tab.classList.add('todos__tab--active');
+          var key = tab.getAttribute('data-todos-tab');
+          Object.keys(panes).forEach(function (k) {
+            if (panes[k]) panes[k].style.display = k === key ? 'flex' : 'none';
+          });
+        });
+      });
+
+      // Initialise: make sure BOD visible, Personal hidden
+      if (panes.bod)      panes.bod.style.display      = 'flex';
+      if (panes.personal) panes.personal.style.display = 'none';
+
+      // Count items in each pane
       function paneSum(pane) {
         var total = 0;
         pane.querySelectorAll('.todos__item-count').forEach(function (el) {
@@ -225,22 +248,20 @@
         return total;
       }
 
-      var bodPane      = document.querySelector('[data-todos-pane="bod"]');
-      var personalPane = document.querySelector('[data-todos-pane="personal"]');
-      var bodTotal      = bodPane      ? paneSum(bodPane)      : 0;
-      var personalTotal = personalPane ? paneSum(personalPane) : 0;
+      var bodTotal      = panes.bod      ? paneSum(panes.bod)      : 0;
+      var personalTotal = panes.personal ? paneSum(panes.personal) : 0;
       var grandTotal    = bodTotal + personalTotal;
 
-      // Update tab labels dynamically
+      // Update tab labels
       var bodTab      = document.querySelector('[data-todos-tab="bod"]');
       var personalTab = document.querySelector('[data-todos-tab="personal"]');
       if (bodTab)      bodTab.textContent      = 'BOD (' + bodTotal + ')';
       if (personalTab) personalTab.textContent = 'Personal (' + personalTotal + ')';
 
-      // Persist total for all other pages
+      // Persist total for other pages
       localStorage.setItem('cinc-todos-count', grandTotal);
 
-      // Update nav badge on this page immediately
+      // Update nav badge
       document.querySelectorAll('.bottom-nav__nav-badge').forEach(function (el) {
         el.textContent = grandTotal;
       });
