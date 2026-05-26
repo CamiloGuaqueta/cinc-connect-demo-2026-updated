@@ -14637,8 +14637,8 @@ a.sub-header__right {
 }
 .booth-prize__note {
   display: block;
-  font-size: 12px;
-  color: rgba(17,39,25,.55);
+  font-size: 13px;
+  color: #112719;
 }
 
 /* Confirm screen — selected answer box */
