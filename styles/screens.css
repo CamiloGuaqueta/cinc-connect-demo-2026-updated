@@ -2782,6 +2782,9 @@
   background: var(--color-brand-forest);
   border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .ballot-card__type {
@@ -2825,6 +2828,8 @@
   height: 180px;
   object-fit: cover;
   display: block;
+  flex-shrink: 0;
+  align-self: stretch;
 }
 
 .ballot-card__body {
