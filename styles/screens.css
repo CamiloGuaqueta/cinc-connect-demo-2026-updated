@@ -14582,12 +14582,14 @@ a.sub-header__right {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: rgba(178,222,97,.10);
+  background: rgba(178,222,97,.18);
   border: 1.5px solid #b2de61;
+  border-left: 4px solid #b2de61;
   border-radius: 12px;
   padding: 16px;
   margin-top: 24px;
   text-align: left;
+  box-shadow: 0 0 0 1px rgba(178,222,97,.35), 0 4px 16px rgba(178,222,97,.12);
 }
 .booth-prize__icon {
   font-size: 26px;
