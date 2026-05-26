@@ -2829,7 +2829,6 @@
   object-fit: cover;
   display: block;
   flex-shrink: 0;
-  align-self: stretch;
 }
 
 .ballot-card__body {
