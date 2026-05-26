@@ -67,13 +67,26 @@
   <script src="scripts/auth.js"></script>
   <script>
     window.CincAuth.requireAuth();
-    var params = new URLSearchParams(window.location.search);
-    var surveyId = params.get('id') || '';
-    var prize    = params.get('prize') || '';
+    var params   = new URLSearchParams(window.location.search);
+    var surveyId = params.get('id')     || '';
+    var prize    = params.get('prize')  || '';
+    var answer   = params.get('answer') || '';
 
     // Save so the same device can't vote again
     if (surveyId) {
       localStorage.setItem('cinc:demo:voted:' + surveyId, prize || '1');
+    }
+
+    // --- Send vote to HubSpot (fire and forget, only for playlist survey) ---
+    if (surveyId === 'playlist' && answer) {
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/40040627/cd109289-dadb-4255-a214-07497a46cffa', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: [{ objectTypeId: '0-1', name: 'music_survey__cai_2026_party', value: answer }],
+          context: { pageUri: window.location.href, pageName: 'CINC Connect - CAI Playlist Survey' }
+        })
+      }).catch(function () {});
     }
 
     if (prize) {
