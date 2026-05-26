@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect � Amenities & Common Areas</title>
+  <title>CINC Connect &#8212; Amenities &amp; Common Areas</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,7 +54,7 @@
         <button class="amenities__tab" type="button" data-amenity-tab="reservations">My Reservations</button>
       </div>
 
-      <!-- AMENITIES tab pane � dynamically rendered from AmenitiesData -->
+      <!-- AMENITIES tab pane — dynamically rendered from AmenitiesData -->
       <section class="amenities__pane" data-amenity-pane="amenities">
         <div class="amenities__section">
           <div class="amenities__section-header">
@@ -222,7 +222,7 @@
       });
     });
 
-    // Mouse drag-to-scroll on horizontal scrollers � only when intent is clearly horizontal
+    // Mouse drag-to-scroll on horizontal scrollers  only when intent is clearly horizontal
     document.querySelectorAll('.amenity-scroller').forEach((scroller) => {
       let isDown = false;
       let hasMoved = false;
@@ -258,7 +258,7 @@
           // Decide gesture intent before activating drag
           if (Math.abs(dx) < ACTIVATE_THRESHOLD && Math.abs(dy) < ACTIVATE_THRESHOLD) return;
           if (Math.abs(dy) > Math.abs(dx)) {
-            // Vertical intent ? bail out, let the page scroll
+            // Vertical intent — bail out, let the page scroll
             cancelled = true;
             return;
           }
@@ -283,7 +283,7 @@
       });
     });
 
-    // My Reservations � load from localStorage and render
+    // My Reservations  load from localStorage and render
     (function () {
       const NS = 'cinc:demo:';
       const KEY = NS + 'reservations';
@@ -350,7 +350,7 @@
       }).join('');
     })();
 
-    // Search filter � hides cards (and sections) that don't match
+    // Search filter  hides cards (and sections) that don't match
     const searchInput = document.querySelector('[data-amenity-search]');
     if (searchInput) {
       searchInput.addEventListener('input', () => {
@@ -371,3 +371,5 @@
   </script>
 </body>
 </html>
+
+

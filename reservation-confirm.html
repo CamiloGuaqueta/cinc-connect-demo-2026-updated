@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect � Reservation Confirmed</title>
+  <title>CINC Connect &#8212; Reservation Confirmed</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,13 +53,13 @@
 
           <hr class="confirm-sheet__divider" />
 
-          <h2 class="confirm-sheet__amenity-name" data-amenity-name>�</h2>
+          <h2 class="confirm-sheet__amenity-name" data-amenity-name></h2>
           <div class="confirm-sheet__meta">
-            <span data-confirm-date>�</span>
-            <span class="confirm-sheet__meta-sep">�</span>
-            <span data-confirm-slot>�</span>
+            <span data-confirm-date></span>
+            <span class="confirm-sheet__meta-sep">&middot;</span>
+            <span data-confirm-slot></span>
           </div>
-          <div class="confirm-sheet__meta">Guests: <span data-confirm-guests>�</span></div>
+          <div class="confirm-sheet__meta">Guests: <span data-confirm-guests></span></div>
 
           <!-- Reservation Fee Receipt (paid only) -->
           <button class="confirm-sheet__receipt" type="button" data-receipt-row hidden>
@@ -72,7 +72,7 @@
               </svg>
             </span>
             <span class="confirm-sheet__receipt-label">Reservation Fee Receipt</span>
-            <span class="confirm-sheet__receipt-chevron" aria-hidden="true">�</span>
+            <span class="confirm-sheet__receipt-chevron" aria-hidden="true">&#8250;</span>
           </button>
 
           <!-- Info card -->
@@ -84,7 +84,7 @@
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </span>
-              <span data-amenity-address>�</span>
+              <span data-amenity-address></span>
             </li>
             <li>
               <span class="amenity-sheet__info-icon">
@@ -92,7 +92,7 @@
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
                 </svg>
               </span>
-              <span data-amenity-phone>�</span>
+              <span data-amenity-phone></span>
             </li>
             <li>
               <span class="amenity-sheet__info-icon">
@@ -100,11 +100,11 @@
                   <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
                 </svg>
               </span>
-              <span data-pdf-title>�</span>
+              <span data-pdf-title></span>
             </li>
           </ul>
 
-          <div class="booth-prize" style="margin-top:20px;">
+          <div id="boothPrize" class="booth-prize" style="display:none;margin-top:20px;">
             <span class="booth-prize__icon">🏓</span>
             <div>
               <span class="booth-prize__label">CAI Annual 2026</span>
@@ -141,7 +141,7 @@
         const carry = (min + 30) >= 60 ? 1 : 0;
         const endH = ((endH24 + carry - 1) % 12) + 1;
         const endIsPM = ((endH24 + carry) % 24) >= 12;
-        return `${s} � ${endH}:${String(endMin).padStart(2, '0')} ${endIsPM ? 'PM' : 'AM'}`;
+        return `${s} – ${endH}:${String(endMin).padStart(2, '0')} ${endIsPM ? 'PM' : 'AM'}`;
       }
 
       document.querySelector('[data-amenity-image]').src = a.image;
@@ -156,6 +156,11 @@
       // Show receipt row only for paid bookings
       if (params.get('paid') === '1') {
         document.querySelector('[data-receipt-row]').hidden = false;
+      }
+
+      // Show booth prize banner only for clubhouse
+      if (id === 'clubhouse') {
+        document.getElementById('boothPrize').style.display = 'flex';
       }
 
       // -- Save reservation to session storage ------------------------------
@@ -211,3 +216,5 @@
   <script src="scripts/app.js"></script>
 </body>
 </html>
+
+
