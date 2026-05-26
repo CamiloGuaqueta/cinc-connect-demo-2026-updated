@@ -67,7 +67,16 @@
   <script src="scripts/auth.js"></script>
   <script>
     window.CincAuth.requireAuth();
-    if (new URLSearchParams(window.location.search).get('prize')) {
+    var params = new URLSearchParams(window.location.search);
+    var surveyId = params.get('id') || '';
+    var prize    = params.get('prize') || '';
+
+    // Save so the same device can't vote again
+    if (surveyId) {
+      localStorage.setItem('cinc:demo:voted:' + surveyId, prize || '1');
+    }
+
+    if (prize) {
       document.getElementById('boothPrize').style.display = 'flex';
     }
   </script>

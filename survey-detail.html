@@ -103,6 +103,14 @@
     var id = params.get('id') || 'pool';
     var survey = SURVEYS[id] || SURVEYS['pool'];
 
+    // Already voted on this device? Skip straight to the success screen
+    var priorVote = localStorage.getItem('cinc:demo:voted:' + id);
+    if (priorVote) {
+      var redirectUrl = 'survey-success.html?id=' + encodeURIComponent(id);
+      if (priorVote !== '1') redirectUrl += '&prize=' + encodeURIComponent(priorVote);
+      window.location.replace(redirectUrl);
+    }
+
     document.getElementById('surveyImage').src = survey.image;
     document.getElementById('surveyTitle').textContent = survey.title;
     document.getElementById('surveyDesc').textContent = survey.description;

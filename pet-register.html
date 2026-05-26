@@ -665,6 +665,8 @@
       const successSheet   = document.getElementById('petSuccessSheet');
       const successBackdrop = document.getElementById('petSuccessBackdrop');
 
+      const PET_REG_KEY = 'cinc:demo:pet:registered';
+
       function openSuccessSheet() {
         successBackdrop.classList.add('pet-success-backdrop--open');
         successSheet.style.display = 'flex';
@@ -674,6 +676,11 @@
             successSheet.classList.add('pet-success-sheet--open');
           });
         });
+      }
+
+      // Already registered on this device? Show success immediately
+      if (localStorage.getItem(PET_REG_KEY)) {
+        openSuccessSheet();
       }
 
       form.addEventListener('submit', (e) => {
@@ -698,6 +705,7 @@
           createdAt: Date.now()
         };
         P.addPet(pet);
+        localStorage.setItem(PET_REG_KEY, '1');
         openSuccessSheet();
       });
     })();

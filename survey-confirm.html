@@ -75,8 +75,8 @@
     document.getElementById('backBtn').href =
       'survey-detail.html?id=' + encodeURIComponent(id);
 
-    var successHref = 'survey-success.html';
-    if (prize) successHref += '?prize=' + encodeURIComponent(prize);
+    var successHref = 'survey-success.html?id=' + encodeURIComponent(id);
+    if (prize) successHref += '&prize=' + encodeURIComponent(prize);
     document.getElementById('submitBtn').href = successHref;
   </script>
 </body>
