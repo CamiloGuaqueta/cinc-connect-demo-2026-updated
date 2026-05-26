@@ -14578,18 +14578,40 @@ a.sub-header__right {
 /* ============================================
    BOOTH PRIZE CLAIM BANNER
    ============================================ */
+@keyframes prizeShine {
+  0%   { left: -60%; }
+  50%  { left: 120%; }
+  100% { left: 120%; }
+}
+
 .booth-prize {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: rgba(178,222,97,.18);
-  border: 1.5px solid #b2de61;
-  border-left: 4px solid #b2de61;
+  background: linear-gradient(135deg, #fff8ea 0%, #fef3d0 100%);
+  border: none;
   border-radius: 12px;
   padding: 16px;
   margin-top: 24px;
   text-align: left;
-  box-shadow: 0 0 0 1px rgba(178,222,97,.35), 0 4px 16px rgba(178,222,97,.12);
+  box-shadow: 0 0 0 2px rgba(178,222,97,.55),
+              0 4px 20px rgba(178,222,97,.22),
+              0 8px 32px rgba(255,220,80,.12);
+}
+/* Shimmer sweep */
+.booth-prize::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 38%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-15deg);
+  animation: prizeShine 3.2s ease-in-out infinite;
+  pointer-events: none;
 }
 .booth-prize__icon {
   font-size: 26px;
@@ -14601,7 +14623,7 @@ a.sub-header__right {
   display: block;
   font-size: 10px;
   font-weight: 700;
-  color: #b2de61;
+  color: #019F38;
   text-transform: uppercase;
   letter-spacing: 0.7px;
   margin-bottom: 4px;
@@ -14610,13 +14632,13 @@ a.sub-header__right {
   display: block;
   font-size: 15px;
   font-weight: 700;
-  color: #fff8ea;
+  color: #112719;
   margin-bottom: 4px;
 }
 .booth-prize__note {
   display: block;
   font-size: 12px;
-  color: rgba(255,248,234,.55);
+  color: rgba(17,39,25,.55);
 }
 
 /* Confirm screen — selected answer box */
