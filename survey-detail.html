@@ -54,20 +54,8 @@
             <span class="ballot-card__doc-chevron">&#8250;</span>
           </button>
 
-          <!-- Yes / No options -->
-          <div class="survey-options">
-            <label class="survey-option-row">
-              <span class="survey-option-label">Yes</span>
-              <input class="survey-option-input" type="radio" name="survey-answer" value="Yes" />
-              <span class="survey-option-radio"></span>
-            </label>
-            <div class="survey-option-sep"></div>
-            <label class="survey-option-row">
-              <span class="survey-option-label">No</span>
-              <input class="survey-option-input" type="radio" name="survey-answer" value="No" />
-              <span class="survey-option-radio"></span>
-            </label>
-          </div>
+          <!-- Options (rendered by JS) -->
+          <div class="survey-options" id="surveyOptions"></div>
 
         </div><!-- /.pay-sheet__body -->
 
@@ -102,6 +90,13 @@
         description: 'A proposal has been made to designate a section of the community room as pet-friendly during off-peak hours. We want to hear from all residents before making a final decision.',
         image: 'assets/images/Game Room.png',
         doc: 'Community Room Guidelines.pdf'
+      },
+      'playlist': {
+        title: 'Vote for tonight\'s party playlist!',
+        description: 'Help us set the vibe for tonight\'s event. Cast your vote and let the community decide the soundtrack.',
+        image: 'assets/images/ClubHouse-2.png',
+        options: ['House Music', 'Latin Hits', '80s Classics'],
+        prize: 'tote'
       }
     };
 
@@ -112,23 +107,46 @@
     document.getElementById('surveyImage').src = survey.image;
     document.getElementById('surveyTitle').textContent = survey.title;
     document.getElementById('surveyDesc').textContent = survey.description;
-    document.getElementById('surveyDocName').textContent = survey.doc;
+
+    // Show or hide the doc row
+    var docBtn = document.getElementById('surveyDoc');
+    if (survey.doc) {
+      document.getElementById('surveyDocName').textContent = survey.doc;
+    } else {
+      docBtn.style.display = 'none';
+    }
+
+    // Build options dynamically
+    var options = survey.options || ['Yes', 'No'];
+    var optionsContainer = document.getElementById('surveyOptions');
+    options.forEach(function (opt, i) {
+      if (i > 0) {
+        var sep = document.createElement('div');
+        sep.className = 'survey-option-sep';
+        optionsContainer.appendChild(sep);
+      }
+      var label = document.createElement('label');
+      label.className = 'survey-option-row';
+      label.innerHTML =
+        '<span class="survey-option-label">' + opt + '</span>' +
+        '<input class="survey-option-input" type="radio" name="survey-answer" value="' + opt + '" />' +
+        '<span class="survey-option-radio"></span>';
+      optionsContainer.appendChild(label);
+    });
 
     // Enable submit when an option is selected
-    var radios = document.querySelectorAll('.survey-option-input');
     var submitBtn = document.getElementById('submitBtn');
-
-    radios.forEach(function (r) {
-      r.addEventListener('change', function () {
-        submitBtn.disabled = false;
-      });
+    optionsContainer.addEventListener('change', function () {
+      submitBtn.disabled = false;
     });
 
     submitBtn.addEventListener('click', function () {
       var selected = document.querySelector('.survey-option-input:checked');
       if (!selected) return;
-      window.location.href = 'survey-confirm.html?id=' + encodeURIComponent(id) +
-        '&answer=' + encodeURIComponent(selected.value);
+      var qs = 'survey-confirm.html?id=' + encodeURIComponent(id) +
+               '&answer=' + encodeURIComponent(selected.value);
+      if (survey.prize) qs += '&prize=' + encodeURIComponent(survey.prize);
+      window.location.href = qs;
     });
   </script>
 </body>

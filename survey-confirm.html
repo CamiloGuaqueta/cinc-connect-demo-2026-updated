@@ -69,10 +69,15 @@
     var params = new URLSearchParams(window.location.search);
     var id     = params.get('id')     || 'pool';
     var answer = params.get('answer') || 'Yes';
+    var prize  = params.get('prize')  || '';
 
     document.getElementById('confirmAnswer').textContent = answer;
     document.getElementById('backBtn').href =
       'survey-detail.html?id=' + encodeURIComponent(id);
+
+    var successHref = 'survey-success.html';
+    if (prize) successHref += '?prize=' + encodeURIComponent(prize);
+    document.getElementById('submitBtn').href = successHref;
   </script>
 </body>
 </html>

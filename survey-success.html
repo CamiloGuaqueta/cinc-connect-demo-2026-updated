@@ -42,6 +42,16 @@
             <h2 class="wo-success-title">Thank You For Participating!</h2>
             <p class="wo-success-text">Your response has been recorded. The board will share the results once the survey closes.</p>
 
+            <!-- Prize banner (shown only for booth activations) -->
+            <div class="booth-prize" id="boothPrize" style="display:none;">
+              <span class="booth-prize__icon">🎁</span>
+              <div>
+                <span class="booth-prize__label">CAI Annual 2026</span>
+                <span class="booth-prize__title">Claim your CINC Tote &amp; Beach Towel!</span>
+                <span class="booth-prize__note">Show this screen to the CINC team at the booth.</span>
+              </div>
+            </div>
+
           </div>
         </div><!-- /.pay-sheet__body -->
 
@@ -55,6 +65,11 @@
   </div>
 
   <script src="scripts/auth.js"></script>
-  <script>window.CincAuth.requireAuth();</script>
+  <script>
+    window.CincAuth.requireAuth();
+    if (new URLSearchParams(window.location.search).get('prize')) {
+      document.getElementById('boothPrize').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>

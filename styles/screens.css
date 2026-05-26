@@ -14568,6 +14568,48 @@ a.sub-header__right {
   background: #b2de61;
 }
 
+/* ============================================
+   BOOTH PRIZE CLAIM BANNER
+   ============================================ */
+.booth-prize {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(178,222,97,.10);
+  border: 1.5px solid #b2de61;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 24px;
+  text-align: left;
+}
+.booth-prize__icon {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.booth-prize__label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b2de61;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 4px;
+}
+.booth-prize__title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff8ea;
+  margin-bottom: 4px;
+}
+.booth-prize__note {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,248,234,.55);
+}
+
 /* Confirm screen — selected answer box */
 .survey-confirm-box {
   background: #112719;
