@@ -87,8 +87,8 @@
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
 
-  /* ----- Layout (mobile-first, 393px Figma frame) ----- */
-  --max-width-mobile: 393px;
+  /* ----- Layout (mobile-first, capped at 430px for widest iPhones) ----- */
+  --max-width-mobile: 430px;
   --bottom-nav-height: 100px;
   --header-height: 60px;
 }
@@ -112,7 +112,7 @@ body {
   font-size: var(--font-size-md);
   line-height: var(--line-height-base);
   color: var(--color-text-primary);
-  background: var(--color-bg-base); /* Match app bg — no black gaps on mobile */
+  background: var(--color-brand-green-black); /* Match darkest screen bg — no visible side gaps */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
