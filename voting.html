@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#112719" />
-  <title>CINC Connect � Voting</title>
+  <title>CINC Connect &#8212; Voting</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,7 +63,7 @@
     <!-- PDF viewer modal (full screen white) -->
     <div class="pdf-modal" data-pdf-modal hidden>
       <header class="pdf-modal__header">
-        <h2 class="pdf-modal__filename" data-pdf-modal-title>�</h2>
+        <h2 class="pdf-modal__filename" data-pdf-modal-title></h2>
         <button class="pdf-modal__close" type="button" data-pdf-close aria-label="Close">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="6" y1="6" x2="18" y2="18"/>
@@ -72,8 +72,8 @@
         </button>
       </header>
       <div class="pdf-modal__sheet">
-        <h3 class="pdf-modal__title" data-pdf-heading>�</h3>
-        <p class="pdf-modal__subtitle" data-pdf-subheading>�</p>
+        <h3 class="pdf-modal__title" data-pdf-heading></h3>
+        <p class="pdf-modal__subtitle" data-pdf-subheading></p>
         <hr class="pdf-modal__divider" />
         <div class="pdf-modal__content" data-pdf-paragraphs></div>
       </div>
@@ -213,7 +213,7 @@
                   </svg>
                 </span>
                 <span class="ballot-card__doc-name">${escapeHtml(b.documentName || '')}</span>
-                <span class="ballot-card__doc-chevron" aria-hidden="true">�</span>
+                <span class="ballot-card__doc-chevron" aria-hidden="true">&#8250;</span>
               </button>
 
               <p class="ballot-card__close-label">${escapeHtml(closeStr)}</p>
@@ -269,7 +269,7 @@
             <div class="ballot-card__body ballot-card__body--past">
               <h2 class="ballot-card__title">${escapeHtml(b.title)}</h2>
               ${b.description ? `<p class="ballot-card__description">${escapeHtml(b.description)}</p>` : ''}
-              <p class="ballot-card__your-vote"><strong>Your vote:</strong> ${escapeHtml(userOpts.join(', ') || '�')}</p>
+              <p class="ballot-card__your-vote"><strong>Your vote:</strong> ${escapeHtml(userOpts.join(', ') || 'N/A')}</p>
               <div class="ballot-card__past-meta">
                 <span class="ballot-card__past-badge">CLOSED</span>
                 <span class="ballot-card__past-date">${escapeHtml(b.decidedAt || '')}</span>
