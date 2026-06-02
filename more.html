@@ -207,8 +207,8 @@
       document.querySelector('[data-user-email]').textContent = window.CincAuth.getUserEmail() || '';
       document.querySelector('[data-logout-btn]').addEventListener('click', async () => {
         const ok = await window.AppDialog.confirm({
-          title: 'Log out?',
-          message: 'You'll need to sign in again to continue the demo.',
+          title: 'Log out',
+          message: 'You\'ll need to sign in again to continue the demo.',
           confirmLabel: 'Log out',
           cancelLabel: 'Stay'
         });
