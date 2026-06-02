@@ -9,6 +9,9 @@
   <meta name="theme-color" content="#112719" />
   <title>CINC Connect — Sign In</title>
 
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -81,6 +84,11 @@
         <button type="submit" class="btn btn--primary login__btn">Sign In</button>
 
         <p class="login__copyright">© 2026 CINC Systems.<br>Confidential — for authorized demonstration use only.</p>
+
+        <p class="login__add-to-home">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> to save as an app
+        </p>
 
         <button type="button" class="login__biometric" data-biometric aria-label="Sign in with fingerprint">
           <svg viewBox="0 0 24 24" aria-hidden="true">

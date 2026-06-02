@@ -87,6 +87,30 @@
   text-align: center;
 }
 
+.login__add-to-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 4px 20px;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  opacity: 0.38;
+  text-align: center;
+}
+
+.login__add-to-home strong {
+  font-weight: 700;
+}
+
+.login__add-to-home svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .login__biometric {
   display: flex;
   align-items: center;
