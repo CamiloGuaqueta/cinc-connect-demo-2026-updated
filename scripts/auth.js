@@ -11,7 +11,7 @@
   // ─── Demo Usage Tracking ────────────────────────────────────────────────────
   // Paste your Google Apps Script Web App URL here to log logins to a Sheet.
   // Leave empty ('') to disable tracking.
-  const TRACKING_URL = '';
+  const TRACKING_URL = 'https://script.google.com/macros/s/AKfycbyyOGsNFYJm8YEWEoFfBMuWaKmz1FV8XIW8RWGVL0PM5-8pGTTwSYQCOifHe-o-ilgBVA/exec';
   // ────────────────────────────────────────────────────────────────────────────
 
   const NS = 'cinc:demo:';
