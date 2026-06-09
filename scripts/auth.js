@@ -68,17 +68,12 @@
   function trackLogin(user) {
     if (!TRACKING_URL) return;
     try {
-      fetch(TRACKING_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({
-          name: user.name,
-          email: user.email,
-          ts: new Date().toISOString(),
-          ua: navigator.userAgent
-        })
-      }).catch(function () {});
+      var url = TRACKING_URL
+        + '?name='  + encodeURIComponent(user.name)
+        + '&email=' + encodeURIComponent(user.email)
+        + '&ts='    + encodeURIComponent(new Date().toISOString())
+        + '&ua='    + encodeURIComponent((navigator.userAgent || '').substring(0, 120));
+      new Image().src = url;
     } catch (_) {}
   }
 
