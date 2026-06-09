@@ -6,7 +6,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#235237" />
-  <title>CINC Connect — Accounts Receivable</title>
+  <title>CINC Connect ï¿½ Accounts Receivable</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/components.css" />
   <link rel="stylesheet" href="styles/screens.css?v=4" />
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
   <div class="app-frame">
@@ -261,7 +262,7 @@
   </div>
 
   <!-- ============================================================
-       AR FILTER SHEET (outside .app-frame — Green Sheet pattern)
+       AR FILTER SHEET (outside .app-frame ï¿½ Green Sheet pattern)
        ============================================================ -->
   <div class="ar-filter-backdrop" id="arFilterBackdrop"></div>
 
@@ -395,7 +396,7 @@
           <span class="ar-filter-sheet__radio"></span>
           <span class="ar-filter-sheet__option-label">Other (Custom Time Frame)</span>
         </label>
-        <!-- Date range — visible when "Other" is selected -->
+        <!-- Date range ï¿½ visible when "Other" is selected -->
         <div class="ar-filter-sheet__date-range" id="arDateRange">
           <p class="ar-filter-sheet__date-label">From</p>
           <div class="ar-filter-sheet__date-input-wrap">
@@ -570,7 +571,7 @@
       filterBackdrop.addEventListener('click', closeFilterSheet);
       filterApplyBtn.addEventListener('click', closeFilterSheet);
 
-      // Reset — restore all radio groups to their defaults
+      // Reset ï¿½ restore all radio groups to their defaults
       filterResetBtn.addEventListener('click', () => {
         const defaults = {
           'ar-level':   'all-levels',
