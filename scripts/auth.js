@@ -8,6 +8,12 @@
 (function () {
   'use strict';
 
+  // ─── Demo Usage Tracking ────────────────────────────────────────────────────
+  // Paste your Google Apps Script Web App URL here to log logins to a Sheet.
+  // Leave empty ('') to disable tracking.
+  const TRACKING_URL = '';
+  // ────────────────────────────────────────────────────────────────────────────
+
   const NS = 'cinc:demo:';
   const KEY_USER = NS + 'user';
   const KEY_LAST_ACTIVITY = NS + 'lastActivity';
@@ -59,6 +65,23 @@
     }
   }
 
+  function trackLogin(user) {
+    if (!TRACKING_URL) return;
+    try {
+      fetch(TRACKING_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({
+          name: user.name,
+          email: user.email,
+          ts: new Date().toISOString(),
+          ua: navigator.userAgent
+        })
+      }).catch(function () {});
+    } catch (_) {}
+  }
+
   function login(name, email) {
     if (!name || !email) throw new Error('Name and email required');
     const user = {
@@ -67,6 +90,7 @@
       createdAt: now()
     };
     setUser(user);
+    trackLogin(user);
     return user;
   }
 
