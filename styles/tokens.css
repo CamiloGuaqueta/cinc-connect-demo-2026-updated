@@ -143,6 +143,22 @@ html[data-brand="custom"] .app-header,
 html[data-brand="custom"] .bottom-nav {
   background: #c6d8f5;
 }
+
+/* Bottom nav — inactive icons + labels: blue */
+html[data-brand="custom"] .bottom-nav__icon-wrap img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+html[data-brand="custom"] .bottom-nav__label {
+  color: #00297a;
+}
+
+/* Bottom nav — active circle: light gray, icon stays blue */
+html[data-brand="custom"] .bottom-nav__item--active .bottom-nav__icon-wrap {
+  background: #ededef;
+}
+html[data-brand="custom"] .bottom-nav__item--active .bottom-nav__icon-wrap img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
 html[data-brand="custom"] .app-header {
   border-bottom-color: rgba(0, 41, 122, 0.15);
 }
