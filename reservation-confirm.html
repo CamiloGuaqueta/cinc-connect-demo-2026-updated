@@ -105,15 +105,6 @@
             </li>
           </ul>
 
-          <div id="boothPrize" class="booth-prize" style="display:none;margin-top:20px;">
-            <span class="booth-prize__icon">🏓</span>
-            <div>
-              <span class="booth-prize__label">CAI Annual 2026</span>
-              <span class="booth-prize__title">Now go have some fun!</span>
-              <span class="booth-prize__note">Show this screen at the CINC booth to claim your Mini Foosball Table and jump into the game.</span>
-            </div>
-          </div>
-
           <button class="btn btn--primary confirm-sheet__cta" type="button" data-share-btn>SHARE RESERVATION</button>
         </div>
     </section>
@@ -157,11 +148,6 @@
       // Show receipt row only for paid bookings
       if (params.get('paid') === '1') {
         document.querySelector('[data-receipt-row]').hidden = false;
-      }
-
-      // Show booth prize banner only for clubhouse
-      if (id === 'clubhouse') {
-        document.getElementById('boothPrize').style.display = 'flex';
       }
 
       // -- Save reservation to session storage ------------------------------

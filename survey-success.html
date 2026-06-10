@@ -43,16 +43,6 @@
             <h2 class="wo-success-title">Thank You For Participating!</h2>
             <p class="wo-success-text">Your response has been recorded. The board will share the results once the survey closes.</p>
 
-            <!-- Prize banner (shown only for booth activations) -->
-            <div class="booth-prize" id="boothPrize" style="display:none;">
-              <span class="booth-prize__icon">🎁</span>
-              <div>
-                <span class="booth-prize__label">CAI Annual 2026</span>
-                <span class="booth-prize__title">Claim your CINC Tote &amp; Beach Towel!</span>
-                <span class="booth-prize__note">Show this screen to the CINC team at the booth.</span>
-              </div>
-            </div>
-
           </div>
         </div><!-- /.pay-sheet__body -->
 
@@ -70,12 +60,11 @@
     window.CincAuth.requireAuth();
     var params   = new URLSearchParams(window.location.search);
     var surveyId = params.get('id')     || '';
-    var prize    = params.get('prize')  || '';
     var answer   = params.get('answer') || '';
 
     // Save so the same device can't vote again
     if (surveyId) {
-      localStorage.setItem('cinc:demo:voted:' + surveyId, prize || '1');
+      localStorage.setItem('cinc:demo:voted:' + surveyId, '1');
     }
 
     // --- Send vote to HubSpot (fire and forget, only for playlist survey) ---
@@ -90,9 +79,6 @@
       }).catch(function () {});
     }
 
-    if (prize) {
-      document.getElementById('boothPrize').style.display = 'flex';
-    }
   </script>
 </body>
 </html>
