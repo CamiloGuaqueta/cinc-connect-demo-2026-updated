@@ -138,9 +138,24 @@ html[data-brand="custom"] .splash__custom-logo {
   display: block;
 }
 
+/* Login logo + community name for custom brand */
+html[data-brand="custom"] .login__logo {
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+html[data-brand="custom"] .login__logo-mark {
+  width: 120px;
+  height: 120px;
+}
+html[data-brand="custom"] .login__community-name {
+  display: block;
+}
+
 /* Logo image swap for custom brand (works in Chrome/Safari/Edge) */
 html[data-brand="custom"] img[src*="login-cinc-logo"],
-html[data-brand="custom"] img[src*="icon-cinc-logo"] {
+html[data-brand="custom"] img[src*="icon-cinc-logo"],
+html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
 }
 

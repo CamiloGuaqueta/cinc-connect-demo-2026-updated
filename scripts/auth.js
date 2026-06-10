@@ -16,6 +16,15 @@
       document.documentElement.removeAttribute('data-brand');
     }
   } catch (_) {}
+
+  // Swap community name in app-header for custom brand
+  try {
+    if (localStorage.getItem('cinc:demo:brand') === 'custom') {
+      document.querySelectorAll('.app-header__name').forEach(function (el) {
+        el.textContent = 'Lakewood Ridge HOA';
+      });
+    }
+  } catch (_) {}
   // ────────────────────────────────────────────────────────────────────────────
 
   // ─── Demo Usage Tracking ────────────────────────────────────────────────────
