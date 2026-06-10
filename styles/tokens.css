@@ -182,10 +182,14 @@ html[data-brand="custom"] .board-ai__row-chev {
 html[data-brand="custom"] .app-header__logo {
   display: none;
 }
+html[data-brand="custom"] .app-header__notification {
+  width: 56px;
+  height: 56px;
+}
 html[data-brand="custom"] .app-header__notification img {
   content: url('../assets/icons/Your Community app logo.svg');
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
 }
 
 /* Login logo + community name for custom brand */
