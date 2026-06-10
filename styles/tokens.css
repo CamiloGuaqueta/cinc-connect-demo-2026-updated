@@ -184,8 +184,8 @@ html[data-brand="custom"] .app-header__logo {
 }
 html[data-brand="custom"] .app-header__notification img {
   content: url('../assets/icons/Your Community app logo.svg');
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
 }
 
 /* Login logo + community name for custom brand */
