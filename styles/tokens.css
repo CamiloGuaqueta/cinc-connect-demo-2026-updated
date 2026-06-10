@@ -138,6 +138,12 @@ html[data-brand="custom"] .splash__custom-logo {
   display: block;
 }
 
+/* App header logo size for custom brand */
+html[data-brand="custom"] .app-header__logo {
+  width: 60px;
+  height: 60px;
+}
+
 /* Login logo + community name for custom brand */
 html[data-brand="custom"] .login__logo {
   flex-direction: column;
