@@ -147,15 +147,19 @@ html[data-brand="custom"] .app-header__logo {
 /* Login logo + community name for custom brand */
 html[data-brand="custom"] .login__logo {
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   margin-bottom: 24px;
 }
 html[data-brand="custom"] .login__logo-mark {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
 }
 html[data-brand="custom"] .login__community-name {
   display: block;
+  color: var(--color-text-accent);
+}
+html[data-brand="custom"] .login .input-group {
+  background: #c6d8f5;
 }
 
 /* Logo image swap for custom brand (works in Chrome/Safari/Edge) */
