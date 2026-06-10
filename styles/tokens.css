@@ -93,6 +93,16 @@
   --header-height: 60px;
 }
 
+/* ----- Splash custom-logo (hidden by default, shown on custom brand) ----- */
+.splash__custom-logo {
+  display: none;
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* ----- Custom Brand Override ----- */
 /* Activated when <html data-brand="custom"> is set via brand-select or auth.js */
 html[data-brand="custom"] {
@@ -115,6 +125,23 @@ html[data-brand="custom"] {
   --color-border-strong: rgba(0, 41, 122, 0.20);
 
   --shadow-glow-lime: 0 0 24px rgba(0, 41, 122, 0.20);
+}
+
+/* Splash override for custom brand */
+html[data-brand="custom"] .splash {
+  background: #f2f2f2;
+}
+html[data-brand="custom"] .splash__bg {
+  display: none;
+}
+html[data-brand="custom"] .splash__custom-logo {
+  display: block;
+}
+
+/* Logo image swap for custom brand (works in Chrome/Safari/Edge) */
+html[data-brand="custom"] img[src*="login-cinc-logo"],
+html[data-brand="custom"] img[src*="icon-cinc-logo"] {
+  content: url('../assets/icons/Your Community app logo.svg');
 }
 
 /* ----- Base reset & defaults ----- */
