@@ -147,7 +147,7 @@ html[data-brand="custom"] .app-header__logo {
 /* Login logo + community name for custom brand */
 html[data-brand="custom"] .login__logo {
   flex-direction: column;
-  gap: 4px;
+  gap: 0;
   margin-bottom: 24px;
 }
 html[data-brand="custom"] .login__logo-mark {
