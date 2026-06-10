@@ -161,6 +161,9 @@ html[data-brand="custom"] .login__community-name {
 html[data-brand="custom"] .login .input-group {
   background: #c6d8f5;
 }
+html[data-brand="custom"] .input-group__icon path {
+  fill: #00297a;
+}
 
 /* Logo image swap for custom brand (works in Chrome/Safari/Edge) */
 html[data-brand="custom"] img[src*="login-cinc-logo"],
