@@ -8,6 +8,16 @@
 (function () {
   'use strict';
 
+  // ─── Brand Theme — apply immediately before any rendering ───────────────────
+  try {
+    if (localStorage.getItem('cinc:demo:brand') === 'custom') {
+      document.documentElement.setAttribute('data-brand', 'custom');
+    } else {
+      document.documentElement.removeAttribute('data-brand');
+    }
+  } catch (_) {}
+  // ────────────────────────────────────────────────────────────────────────────
+
   // ─── Demo Usage Tracking ────────────────────────────────────────────────────
   // Paste your Google Apps Script Web App URL here to log logins to a Sheet.
   // Leave empty ('') to disable tracking.
@@ -153,6 +163,21 @@
     return n.split(/\s+/).slice(0, 2).map((p) => p[0] || '').join('').toUpperCase();
   }
 
+  function getBrand() {
+    try { return localStorage.getItem('cinc:demo:brand') || 'default'; } catch (_) { return 'default'; }
+  }
+
+  function setBrand(brand) {
+    try {
+      localStorage.setItem('cinc:demo:brand', brand || 'default');
+      if (brand === 'custom') {
+        document.documentElement.setAttribute('data-brand', 'custom');
+      } else {
+        document.documentElement.removeAttribute('data-brand');
+      }
+    } catch (_) {}
+  }
+
   window.CincAuth = {
     NS,
     getUser,
@@ -165,6 +190,8 @@
     getUserName,
     getUserEmail,
     getUserInitials,
-    wipeDemoState
+    wipeDemoState,
+    getBrand,
+    setBrand
   };
 })();

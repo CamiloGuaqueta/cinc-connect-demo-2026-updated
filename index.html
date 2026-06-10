@@ -86,6 +86,8 @@
 
         <p class="login__copyright">© 2026 CINC Systems.<br>Confidential — for authorized demonstration use only.</p>
 
+        <button type="button" class="login__switch-brand" id="switchBrandBtn"></button>
+
         <p class="login__add-to-home">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
           Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> to save as an app
@@ -106,6 +108,16 @@
   <script>
     // If already logged in & not idle, skip to feed
     window.CincAuth.bootstrapLoginPage();
+
+    // Switch brand button
+    (function () {
+      var btn = document.getElementById('switchBrandBtn');
+      var brand = window.CincAuth.getBrand();
+      btn.textContent = brand === 'custom' ? 'Switch to CINC Connect' : 'Switch to Custom Brand';
+      btn.addEventListener('click', function () {
+        window.location.href = 'brand-select.html';
+      });
+    })();
 
     // Biometric (visual only — explains it works in the real app)
     document.querySelector('[data-biometric]')?.addEventListener('click', async () => {

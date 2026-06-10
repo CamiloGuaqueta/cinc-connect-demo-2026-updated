@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, maximum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#112719" />
+  <title>CINC Connect — Choose Experience</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <script defer src="/_vercel/insights/script.js"></script>
+
+  <style>
+    body { background: #082818; }
+
+    .brand-select {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px 48px;
+      gap: 0;
+    }
+
+    .brand-select__logo {
+      width: 160px;
+      margin-bottom: 32px;
+    }
+    .brand-select__logo img { width: 100%; }
+
+    .brand-select__heading {
+      font-family: Montserrat, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff8ea;
+      text-align: center;
+      margin: 0 0 6px;
+    }
+
+    .brand-select__sub {
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255, 248, 234, 0.55);
+      text-align: center;
+      margin: 0 0 32px;
+    }
+
+    .brand-select__options {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+      max-width: 340px;
+      margin-bottom: 28px;
+    }
+
+    .brand-select__card {
+      flex: 1;
+      background: #1A3527;
+      border: 2px solid rgba(255,248,234,0.1);
+      border-radius: 16px;
+      padding: 0 0 16px;
+      cursor: pointer;
+      transition: border-color 200ms ease, transform 150ms ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand-select__card.is-selected {
+      border-color: #b2de61;
+    }
+
+    .brand-select__card:active {
+      transform: scale(0.97);
+    }
+
+    /* Mini phone preview inside card */
+    .brand-select__preview {
+      width: 100%;
+      height: 110px;
+      border-radius: 14px 14px 0 0;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* CINC preview: dark green */
+    .brand-select__preview--cinc {
+      background: #112719;
+    }
+    .brand-select__preview--cinc::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 28px;
+      background: #1A3527;
+    }
+    .brand-select__preview--cinc::after {
+      content: '';
+      position: absolute;
+      top: 8px; left: 12px;
+      width: 50px; height: 12px;
+      background: #b2de61;
+      border-radius: 4px;
+    }
+
+    /* Custom preview: light / blue */
+    .brand-select__preview--custom {
+      background: #f2f2f2;
+    }
+    .brand-select__preview--custom::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 28px;
+      background: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .brand-select__preview--custom::after {
+      content: '';
+      position: absolute;
+      top: 8px; left: 12px;
+      width: 50px; height: 12px;
+      background: #00297a;
+      border-radius: 4px;
+    }
+
+    /* Preview card strips */
+    .brand-select__preview-card {
+      position: absolute;
+      left: 10px; right: 10px;
+      top: 38px;
+      height: 38px;
+      border-radius: 8px;
+    }
+    .brand-select__preview--cinc .brand-select__preview-card  { background: #235237; }
+    .brand-select__preview--custom .brand-select__preview-card { background: #ffffff; border: 1px solid #e0e0e0; }
+
+    .brand-select__preview-btn {
+      position: absolute;
+      left: 10px; right: 10px;
+      bottom: 10px;
+      height: 22px;
+      border-radius: 999px;
+    }
+    .brand-select__preview--cinc .brand-select__preview-btn   { background: #b2de61; }
+    .brand-select__preview--custom .brand-select__preview-btn { background: #00297a; }
+
+    /* Card label */
+    .brand-select__card-name {
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff8ea;
+      text-align: center;
+      margin-bottom: 2px;
+    }
+
+    .brand-select__card-desc {
+      font-family: Montserrat, sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255, 248, 234, 0.45);
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    /* Checkmark badge on selected card */
+    .brand-select__check {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 20px; height: 20px;
+      background: #b2de61;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-select__card.is-selected .brand-select__check {
+      display: flex;
+    }
+
+    .brand-select__continue {
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--color-brand-lime, #b2de61);
+      color: #082818;
+      font-family: Montserrat, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-frame">
+    <main class="brand-select">
+
+      <div class="brand-select__logo">
+        <img src="assets/icons/login-cinc-logo.svg" alt="CINC Connect" />
+      </div>
+
+      <h1 class="brand-select__heading">Choose your experience</h1>
+      <p class="brand-select__sub">Switch at any time from the login screen</p>
+
+      <div class="brand-select__options">
+
+        <button class="brand-select__card is-selected" data-brand="default" type="button">
+          <div class="brand-select__preview brand-select__preview--cinc">
+            <div class="brand-select__preview-card"></div>
+            <div class="brand-select__preview-btn"></div>
+          </div>
+          <div class="brand-select__check" aria-hidden="true">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="brand-select__card-name">CINC Connect</div>
+          <div class="brand-select__card-desc">Default brand</div>
+        </button>
+
+        <button class="brand-select__card" data-brand="custom" type="button">
+          <div class="brand-select__preview brand-select__preview--custom">
+            <div class="brand-select__preview-card"></div>
+            <div class="brand-select__preview-btn"></div>
+          </div>
+          <div class="brand-select__check" aria-hidden="true">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="brand-select__card-name">Custom Brand</div>
+          <div class="brand-select__card-desc">White-labeled</div>
+        </button>
+
+      </div>
+
+      <button class="btn brand-select__continue" id="continueBtn" type="button">Continue</button>
+
+    </main>
+  </div>
+
+  <script>
+    sessionStorage.setItem('cinc-splash-shown', '1');
+
+    var selected = localStorage.getItem('cinc:demo:brand') || 'default';
+
+    var cards = document.querySelectorAll('[data-brand]');
+    cards.forEach(function (card) {
+      if (card.dataset.brand === selected) card.classList.add('is-selected');
+      else card.classList.remove('is-selected');
+
+      card.addEventListener('click', function () {
+        selected = card.dataset.brand;
+        cards.forEach(function (c) { c.classList.remove('is-selected'); });
+        card.classList.add('is-selected');
+      });
+    });
+
+    document.getElementById('continueBtn').addEventListener('click', function () {
+      localStorage.setItem('cinc:demo:brand', selected);
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
