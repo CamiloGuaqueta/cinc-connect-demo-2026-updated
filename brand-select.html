@@ -108,16 +108,11 @@
       box-shadow: 0 0 0 3px #e0e0e0;
     }
 
-    /* Color swatches inside orb */
-    .brand-select__swatches {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      align-items: center;
-    }
-    .brand-select__swatch {
-      width: 26px; height: 9px;
-      border-radius: 999px;
+    /* Logo inside orb */
+    .brand-select__orb img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
     }
 
     /* Card text */
@@ -193,10 +188,7 @@
 
         <button class="brand-select__card is-selected" data-brand="default" type="button">
           <div class="brand-select__orb brand-select__orb--cinc">
-            <div class="brand-select__swatches">
-              <span class="brand-select__swatch" style="background:#235237"></span>
-              <span class="brand-select__swatch" style="background:#b2de61"></span>
-            </div>
+            <img src="assets/icons/icon-cinc-logo.svg" alt="" />
           </div>
           <div class="brand-select__info">
             <div class="brand-select__card-name">CINC Connect</div>
@@ -209,10 +201,7 @@
 
         <button class="brand-select__card" data-brand="custom" type="button">
           <div class="brand-select__orb brand-select__orb--custom">
-            <div class="brand-select__swatches">
-              <span class="brand-select__swatch" style="background:#ededed"></span>
-              <span class="brand-select__swatch" style="background:#00297a"></span>
-            </div>
+            <img src="assets/icons/Your Community app logo.svg" alt="" />
           </div>
           <div class="brand-select__info">
             <div class="brand-select__card-name">Custom Brand</div>
