@@ -138,6 +138,30 @@ html[data-brand="custom"] .splash__custom-logo {
   display: block;
 }
 
+/* App header + bottom nav background */
+html[data-brand="custom"] .app-header,
+html[data-brand="custom"] .bottom-nav {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .app-header {
+  border-bottom-color: rgba(0, 41, 122, 0.15);
+}
+
+/* Header name color */
+html[data-brand="custom"] .app-header__name {
+  color: #00297a;
+}
+
+/* SVG data-URI chevrons — swap lime stroke to brand blue */
+html[data-brand="custom"] .pet-form__select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="%2300297a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+html[data-brand="custom"] .pay-tool-row__chev,
+html[data-brand="custom"] .ledger-balance__autopay-chev,
+html[data-brand="custom"] .board-ai__row-chev {
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L1 9' stroke='%2300297a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
 /* App header logo size for custom brand */
 html[data-brand="custom"] .app-header__logo {
   width: 60px;
