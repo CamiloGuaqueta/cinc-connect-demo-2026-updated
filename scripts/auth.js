@@ -17,9 +17,13 @@
     }
   } catch (_) {}
 
-  // Swap community name in app-header for custom brand
+  // Swap app-header logo + name for custom brand
   try {
     if (localStorage.getItem('cinc:demo:brand') === 'custom') {
+      document.querySelectorAll('.app-header__logo').forEach(function (el) {
+        el.src = 'assets/icons/Your Community app logo.svg';
+        el.alt = 'Lakewood Ridge HOA';
+      });
       document.querySelectorAll('.app-header__name').forEach(function (el) {
         el.textContent = 'Lakewood Ridge HOA';
       });
