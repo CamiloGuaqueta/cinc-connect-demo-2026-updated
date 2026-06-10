@@ -25,13 +25,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 32px 24px 48px;
-      gap: 0;
+      padding: 40px 24px 52px;
     }
 
     .brand-select__logo {
-      width: 160px;
-      margin-bottom: 32px;
+      width: 150px;
+      margin-bottom: 36px;
     }
     .brand-select__logo img { width: 100%; }
 
@@ -41,154 +40,119 @@
       font-weight: 700;
       color: #fff8ea;
       text-align: center;
-      margin: 0 0 6px;
+      margin: 0 0 8px;
     }
 
     .brand-select__sub {
       font-family: Montserrat, sans-serif;
       font-size: 12px;
       font-weight: 400;
-      color: rgba(255, 248, 234, 0.55);
+      color: rgba(255, 248, 234, 0.45);
       text-align: center;
       margin: 0 0 32px;
     }
 
+    /* Stacked full-width cards */
     .brand-select__options {
       display: flex;
-      gap: 14px;
+      flex-direction: column;
+      gap: 12px;
       width: 100%;
       max-width: 340px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .brand-select__card {
-      flex: 1;
+      width: 100%;
       background: #1A3527;
-      border: 2px solid rgba(255,248,234,0.1);
+      border: 2px solid rgba(255, 248, 234, 0.1);
       border-radius: 16px;
-      padding: 0 0 16px;
+      padding: 20px 20px 20px 20px;
       cursor: pointer;
       transition: border-color 200ms ease, transform 150ms ease;
-      overflow: hidden;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 16px;
+      text-align: left;
       -webkit-tap-highlight-color: transparent;
+      position: relative;
     }
 
     .brand-select__card.is-selected {
       border-color: #b2de61;
+      background: #1e3d2a;
     }
 
-    .brand-select__card:active {
-      transform: scale(0.97);
-    }
+    .brand-select__card:active { transform: scale(0.98); }
 
-    /* Mini phone preview inside card */
-    .brand-select__preview {
-      width: 100%;
-      height: 110px;
-      border-radius: 14px 14px 0 0;
-      overflow: hidden;
-      margin-bottom: 12px;
-      position: relative;
+    /* Color palette orb */
+    .brand-select__orb {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
     }
 
-    /* CINC preview: dark green */
-    .brand-select__preview--cinc {
+    .brand-select__orb--cinc {
       background: #112719;
-    }
-    .brand-select__preview--cinc::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 28px;
-      background: #1A3527;
-    }
-    .brand-select__preview--cinc::after {
-      content: '';
-      position: absolute;
-      top: 8px; left: 12px;
-      width: 50px; height: 12px;
-      background: #b2de61;
-      border-radius: 4px;
+      box-shadow: 0 0 0 3px #235237;
     }
 
-    /* Custom preview: light / blue */
-    .brand-select__preview--custom {
-      background: #f2f2f2;
-    }
-    .brand-select__preview--custom::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 28px;
+    .brand-select__orb--custom {
       background: #ffffff;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .brand-select__preview--custom::after {
-      content: '';
-      position: absolute;
-      top: 8px; left: 12px;
-      width: 50px; height: 12px;
-      background: #00297a;
-      border-radius: 4px;
+      box-shadow: 0 0 0 3px #e0e0e0;
     }
 
-    /* Preview card strips */
-    .brand-select__preview-card {
-      position: absolute;
-      left: 10px; right: 10px;
-      top: 38px;
-      height: 38px;
-      border-radius: 8px;
+    /* Color swatches inside orb */
+    .brand-select__swatches {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
     }
-    .brand-select__preview--cinc .brand-select__preview-card  { background: #235237; }
-    .brand-select__preview--custom .brand-select__preview-card { background: #ffffff; border: 1px solid #e0e0e0; }
-
-    .brand-select__preview-btn {
-      position: absolute;
-      left: 10px; right: 10px;
-      bottom: 10px;
-      height: 22px;
+    .brand-select__swatch {
+      width: 26px; height: 9px;
       border-radius: 999px;
     }
-    .brand-select__preview--cinc .brand-select__preview-btn   { background: #b2de61; }
-    .brand-select__preview--custom .brand-select__preview-btn { background: #00297a; }
 
-    /* Card label */
+    /* Card text */
+    .brand-select__info { flex: 1; }
+
     .brand-select__card-name {
       font-family: Montserrat, sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       color: #fff8ea;
-      text-align: center;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .brand-select__card-desc {
       font-family: Montserrat, sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 400;
       color: rgba(255, 248, 234, 0.45);
-      text-align: center;
-      padding: 0 8px;
+      line-height: 1.4;
     }
 
-    /* Checkmark badge on selected card */
-    .brand-select__check {
-      position: absolute;
-      top: 8px; right: 8px;
-      width: 20px; height: 20px;
-      background: #b2de61;
+    /* Radio indicator */
+    .brand-select__radio {
+      width: 22px; height: 22px;
       border-radius: 50%;
-      display: none;
+      border: 2px solid rgba(255, 248, 234, 0.25);
+      flex-shrink: 0;
+      display: flex;
       align-items: center;
       justify-content: center;
+      transition: border-color 200ms, background 200ms;
     }
-    .brand-select__card.is-selected .brand-select__check {
-      display: flex;
+    .brand-select__card.is-selected .brand-select__radio {
+      background: #b2de61;
+      border-color: #b2de61;
     }
 
     .brand-select__continue {
@@ -199,8 +163,8 @@
     .btn {
       display: block;
       width: 100%;
-      padding: 14px 24px;
-      background: var(--color-brand-lime, #b2de61);
+      padding: 15px 24px;
+      background: #b2de61;
       color: #082818;
       font-family: Montserrat, sans-serif;
       font-size: 14px;
@@ -228,27 +192,35 @@
       <div class="brand-select__options">
 
         <button class="brand-select__card is-selected" data-brand="default" type="button">
-          <div class="brand-select__preview brand-select__preview--cinc">
-            <div class="brand-select__preview-card"></div>
-            <div class="brand-select__preview-btn"></div>
+          <div class="brand-select__orb brand-select__orb--cinc">
+            <div class="brand-select__swatches">
+              <span class="brand-select__swatch" style="background:#235237"></span>
+              <span class="brand-select__swatch" style="background:#b2de61"></span>
+            </div>
           </div>
-          <div class="brand-select__check" aria-hidden="true">
-            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="brand-select__info">
+            <div class="brand-select__card-name">CINC Connect</div>
+            <div class="brand-select__card-desc">Default brand · Dark green theme</div>
           </div>
-          <div class="brand-select__card-name">CINC Connect</div>
-          <div class="brand-select__card-desc">Default brand</div>
+          <div class="brand-select__radio" aria-hidden="true">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
         </button>
 
         <button class="brand-select__card" data-brand="custom" type="button">
-          <div class="brand-select__preview brand-select__preview--custom">
-            <div class="brand-select__preview-card"></div>
-            <div class="brand-select__preview-btn"></div>
+          <div class="brand-select__orb brand-select__orb--custom">
+            <div class="brand-select__swatches">
+              <span class="brand-select__swatch" style="background:#ededed"></span>
+              <span class="brand-select__swatch" style="background:#00297a"></span>
+            </div>
           </div>
-          <div class="brand-select__check" aria-hidden="true">
-            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="brand-select__info">
+            <div class="brand-select__card-name">Custom Brand</div>
+            <div class="brand-select__card-desc">White-labeled · Light blue theme</div>
           </div>
-          <div class="brand-select__card-name">Custom Brand</div>
-          <div class="brand-select__card-desc">White-labeled</div>
+          <div class="brand-select__radio" aria-hidden="true">
+            <svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4l3 3 6-6" stroke="#082818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
         </button>
 
       </div>
