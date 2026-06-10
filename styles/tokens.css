@@ -178,10 +178,14 @@ html[data-brand="custom"] .board-ai__row-chev {
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L1 9' stroke='%2300297a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-/* App header logo size for custom brand */
+/* App header: hide left logo, show brand logo on notification icon instead */
 html[data-brand="custom"] .app-header__logo {
-  width: 60px;
-  height: 60px;
+  display: none;
+}
+html[data-brand="custom"] .app-header__notification img {
+  content: url('../assets/icons/Your Community app logo.svg');
+  width: 44px;
+  height: 44px;
 }
 
 /* Login logo + community name for custom brand */
