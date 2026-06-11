@@ -183,13 +183,13 @@ html[data-brand="custom"] .app-header__logo {
   display: none;
 }
 html[data-brand="custom"] .app-header__notification {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
 }
 html[data-brand="custom"] .app-header__notification img {
   content: url('../assets/icons/Your Community app logo.svg');
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
 }
 
 /* Login logo + community name for custom brand */
