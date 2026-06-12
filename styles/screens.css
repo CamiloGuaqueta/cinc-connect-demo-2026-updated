@@ -1,5 +1,5 @@
 /* ============================================
-   CINC Connect Demo — Screen Styles
+   CINC Connect Demo ï¿½ Screen Styles
    Page-specific layouts.
    ============================================ */
 
@@ -158,7 +158,7 @@
 }
 
 .login__biometric:hover {
-  background: rgba(255, 248, 234, 0.08);
+  background: var(--color-text-muted);
 }
 
 .login__biometric:active {
@@ -249,7 +249,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
   font-family: inherit;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
@@ -285,9 +285,9 @@
   filter: brightness(0) saturate(100%) invert(86%) sepia(28%) saturate(569%) hue-rotate(28deg) brightness(91%) contrast(85%);
 }
 
-/* Balance card (cream / ivory) — Figma 373x259 */
+/* Balance card (cream / ivory) ï¿½ Figma 373x259 */
 .balance-card {
-  background: #FFF8EA;
+  background: var(--color-bg-surface);
   margin: 17px 10px 0;
   width: 373px;
   max-width: calc(100% - 20px);
@@ -392,7 +392,7 @@
   color: #112719;
 }
 
-/* MAKE A PAYMENT — solid dark forest green bg, lime text */
+/* MAKE A PAYMENT ï¿½ solid dark forest green bg, lime text */
 .balance-card__btn {
   margin-top: auto;
   background: #235237;
@@ -470,7 +470,7 @@
   padding: 17px 10px;
 }
 
-/* Post card — dark green over forest feed background */
+/* Post card ï¿½ dark green over forest feed background */
 .post {
   background: var(--color-bg-base);
   border-radius: 10px;
@@ -564,7 +564,7 @@
 }
 
 .post__body {
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -746,7 +746,7 @@
 
 .todos__item-label {
   flex: 1;
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -768,7 +768,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  /* Tint to lime by overlaying — keep stroke color via mask alternative */
+  /* Tint to lime by overlaying ï¿½ keep stroke color via mask alternative */
   /* For now use the white version and CSS filter to lime */
   filter: brightness(0) saturate(100%) invert(85%) sepia(45%) saturate(427%) hue-rotate(31deg) brightness(95%) contrast(94%);
 }
@@ -1015,7 +1015,7 @@
 
 .amenity-card__slot {
   flex: 1;
-  background: #FFF8EA;
+  background: var(--color-bg-surface);
   color: var(--color-bg-base);
   border: none;
   border-radius: 5px;
@@ -1106,7 +1106,7 @@
   font-family: Montserrat, sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.55);
+  color: var(--color-text-secondary);
 }
 
 .my-res-card__name {
@@ -1325,7 +1325,7 @@
   bottom: 16px;
   top: auto;
   right: 16px;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .amenity-detail__favorite svg {
@@ -1666,7 +1666,7 @@
 
 .amenity-payment__summary-divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
   margin: 4px 0;
 }
 
@@ -1738,7 +1738,7 @@
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 248, 234, 0.4);
+  border: 2px solid var(--color-text-muted);
   flex-shrink: 0;
   position: relative;
 }
@@ -1835,7 +1835,7 @@
 .reservation-confirm__qr {
   width: 140px;
   height: 140px;
-  background: #fff8ea;
+  background: var(--color-bg-surface);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1851,7 +1851,7 @@
   background:
     radial-gradient(circle at 12% 12%, #112719 26%, transparent 28%) 0 0 / 18px 18px,
     radial-gradient(circle at 12% 12%, #112719 22%, transparent 24%) 9px 9px / 18px 18px;
-  background-color: #fff8ea;
+  background-color: var(--color-text-primary);
   border-radius: 4px;
 }
 
@@ -1985,13 +1985,13 @@
   min-height: 0;
   overflow-y: auto;
   padding: 16px;
-  /* Stack messages from the bottom up — newest at the bottom edge */
+  /* Stack messages from the bottom up ï¿½ newest at the bottom edge */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-/* Composer bar (sticky bottom) — forest tray with cream input field */
+/* Composer bar (sticky bottom) ï¿½ forest tray with cream input field */
 .chat-composer {
   display: flex;
   align-items: center;
@@ -2067,7 +2067,7 @@
 }
 
 .chat-composer__input::placeholder {
-  color: rgba(255, 248, 234, 0.45);
+  color: var(--color-text-muted);
 }
 
 /* Message bubbles */
@@ -2202,7 +2202,7 @@
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: var(--color-text-secondary);
   cursor: pointer;
 }
 
@@ -2215,7 +2215,7 @@
   display: inline-block;
   width: 10px;
   height: 6px;
-  background: rgba(255, 248, 234, 0.6);
+  background: var(--color-text-muted);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
@@ -2337,10 +2337,10 @@
 }
 
 .notif-list li {
-  border-top: 1px solid rgba(255, 248, 234, 0.1);
+  border-top: 1px solid var(--color-text-muted);
 }
 .notif-list li:last-child {
-  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .notif-item {
@@ -2365,7 +2365,7 @@
   border-radius: 50%;
   display: block;
   object-fit: cover;
-  background: #FFF8EA;
+  background: var(--color-bg-surface);
 }
 
 /* Badge on avatar corner */
@@ -2647,7 +2647,7 @@
   margin: 20px 20px 30px;
   height: 50px;
   background: #DF434F;
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 800;
@@ -2674,7 +2674,7 @@
   font-weight: 600;
   letter-spacing: 0.4px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 248, 234, 0.2);
+  border: 1px solid var(--color-text-muted);
   cursor: pointer;
   opacity: 0.75;
 }
@@ -2684,7 +2684,7 @@
 }
 
 /* ============================================
-   APP DIALOGS — on-brand confirm/alert replacement
+   APP DIALOGS ï¿½ on-brand confirm/alert replacement
    ============================================ */
 .app-dialog__backdrop {
   z-index: 400; /* above everything else */
@@ -2756,7 +2756,7 @@
 .app-dialog__btn--cancel {
   background: transparent;
   color: var(--color-text-primary);
-  border: 1px solid rgba(255, 248, 234, 0.25);
+  border: 1px solid var(--color-text-muted);
 }
 
 .app-dialog__btn--confirm {
@@ -2766,11 +2766,11 @@
 
 .app-dialog__btn--danger {
   background: #DF434F;
-  color: #FFF8EA;
+  color: var(--color-text-primary);
 }
 
 /* ============================================
-   VOTING — list page (Available + History)
+   VOTING ï¿½ list page (Available + History)
    ============================================ */
 .voting {
   min-height: 100vh;
@@ -2855,7 +2855,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 11px;
   font-weight: 400;
@@ -2935,8 +2935,8 @@
   margin-top: 20px;
   background: transparent;
   border: none;
-  border-top: 1px solid rgba(255, 248, 234, 0.12);
-  border-bottom: 1px solid rgba(255, 248, 234, 0.12);
+  border-top: 1px solid var(--color-text-muted);
+  border-bottom: 1px solid var(--color-text-muted);
   padding: 12px 0;
   color: var(--color-brand-lime);
   font-family: Montserrat, sans-serif;
@@ -3044,7 +3044,7 @@
 
 .ballot-card__cta--receipt {
   background: #2E81C2;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ballot-card__status {
@@ -3087,7 +3087,7 @@
 }
 
 .ballot-card__past-badge {
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
   color: var(--color-text-primary);
   border-radius: 999px;
   padding: 4px 10px;
@@ -3105,7 +3105,7 @@
 }
 
 /* ============================================
-   BALLOT DETAIL — voting page (Figma)
+   BALLOT DETAIL ï¿½ voting page (Figma)
    ============================================ */
 .ballot {
   min-height: 100vh;
@@ -3237,7 +3237,7 @@
   width: 22px;
   height: 22px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 248, 234, 0.35);
+  border: 2px solid var(--color-text-muted);
   position: relative;
   transition: all 150ms ease;
 }
@@ -3298,7 +3298,7 @@
   padding: 8px 0 0;
   margin-top: 4px;
   border: none;
-  border-top: 1px solid rgba(255, 248, 234, 0.12);
+  border-top: 1px solid var(--color-text-muted);
   background: transparent;
   width: 100%;
   text-align: left;
@@ -3351,7 +3351,7 @@
 .ballot-thanks {
   padding: 0 0 20px;
   background: var(--color-brand-forest);
-  /* Take most of the viewport height — matches Figma */
+  /* Take most of the viewport height ï¿½ matches Figma */
   min-height: calc(100vh - 56px);
   max-height: 100vh;
   display: flex;
@@ -3363,7 +3363,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .ballot-confirm__title {
@@ -3509,7 +3509,7 @@
 .ballot-thanks__receipt {
   width: 100%;
   background: #2E81C2;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-decoration: none;
   margin-bottom: 10px;
 }
@@ -3535,7 +3535,7 @@
 }
 
 /* ============================================
-   PETS — landing, policy, register, success
+   PETS ï¿½ landing, policy, register, success
    ============================================ */
 .pets {
   min-height: 100vh;
@@ -3797,7 +3797,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
   border: none;
   color: var(--color-text-primary);
   border-radius: 999px;
@@ -3838,7 +3838,7 @@
 .pet-form__textarea {
   width: 100%;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
   color: var(--color-text-primary);
@@ -3849,7 +3849,7 @@
 
 .pet-form__input::placeholder,
 .pet-form__textarea::placeholder {
-  color: rgba(255, 248, 234, 0.4);
+  color: var(--color-text-muted);
 }
 
 .pet-form__select {
@@ -3874,10 +3874,10 @@
   align-items: center;
   gap: 10px;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
-  color: rgba(255, 248, 234, 0.4);
+  color: var(--color-text-muted);
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   cursor: pointer;
@@ -3930,7 +3930,7 @@
 /* ============================================
    PET REGISTRATION SUCCESS modal
    ============================================ */
-/* Pet Registration Success — Green Sheet */
+/* Pet Registration Success ï¿½ Green Sheet */
 .pet-success-backdrop {
   position: fixed;
   inset: 0;
@@ -4108,7 +4108,7 @@
   justify-content: space-between;
   width: 100%;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
   color: var(--color-text-primary);
@@ -4126,7 +4126,7 @@
 
 .pet-form__select-trigger-text {
   flex: 1;
-  color: rgba(255, 248, 234, 0.45);
+  color: var(--color-text-muted);
 }
 
 .pet-form__select-trigger[data-filled] .pet-form__select-trigger-text,
@@ -4312,7 +4312,7 @@
    COMPOSE POST + COMMENTS (feed)
    ============================================ */
 
-/* User post styling — distinguish from seed posts */
+/* User post styling ï¿½ distinguish from seed posts */
 .post--mine {
   border: 1px solid rgba(178, 222, 97, 0.25);
 }
@@ -4350,7 +4350,7 @@
   filter: brightness(0) saturate(100%) invert(45%) sepia(78%) saturate(2178%) hue-rotate(327deg) brightness(92%) contrast(94%);
 }
 
-/* Compose modal — bottom-sheet style under the app-header */
+/* Compose modal ï¿½ bottom-sheet style under the app-header */
 .modal-backdrop.modal-backdrop--top {
   top: 90px;                    /* keep the app-header visible above */
   align-items: stretch;
@@ -4423,7 +4423,7 @@
   cursor: not-allowed;
 }
 
-/* The "draft" card — mirrors feed post card styling exactly */
+/* The "draft" card ï¿½ mirrors feed post card styling exactly */
 .compose-card {
   margin: 16px;
   padding: 16px;
@@ -4488,7 +4488,7 @@
 }
 
 .compose-card__title::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: var(--color-text-muted);
   font-weight: 700;
 }
 
@@ -4507,7 +4507,7 @@
 }
 
 .compose-card__body::placeholder {
-  color: rgba(255, 248, 234, 0.4);
+  color: var(--color-text-muted);
 }
 
 .compose-card__footer {
@@ -4517,7 +4517,7 @@
   gap: 10px;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 248, 234, 0.08);
+  border-top: 1px solid var(--color-text-muted);
   font-family: Montserrat, sans-serif;
   font-size: 11px;
 }
@@ -4582,8 +4582,8 @@
   height: 28px;
   border-radius: 999px;
   background: rgba(17, 39, 25, 0.85);
-  border: 1px solid rgba(255, 248, 234, 0.25);
-  color: #fff8ea;
+  border: 1px solid var(--color-text-muted);
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4681,7 +4681,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 18px 18px;
-  border-top: 1px solid rgba(255, 248, 234, 0.08);
+  border-top: 1px solid var(--color-text-muted);
   background: var(--color-brand-forest);
 }
 
@@ -4703,7 +4703,7 @@
 .comments-sheet__input {
   flex: 1;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid var(--color-text-muted);
   border-radius: 999px;
   padding: 9px 14px;
   color: var(--color-text-primary);
@@ -4713,7 +4713,7 @@
 }
 
 .comments-sheet__input::placeholder {
-  color: rgba(255, 248, 234, 0.4);
+  color: var(--color-text-muted);
 }
 
 .comments-sheet__send {
@@ -4898,7 +4898,7 @@ a.sub-header__right {
   object-fit: contain;
 }
 
-/* Calendar inline search — sits below the tabs, same horizontal margin */
+/* Calendar inline search ï¿½ sits below the tabs, same horizontal margin */
 .cal-search {
   margin: 10px 18px 0;
 }
@@ -4909,7 +4909,7 @@ a.sub-header__right {
   height: 40px;
 }
 
-/* Amenities inline search bar — below title row */
+/* Amenities inline search bar ï¿½ below title row */
 .amenities-search-bar {
   padding: 10px 20px;
 }
@@ -4920,7 +4920,7 @@ a.sub-header__right {
   height: 40px;
 }
 
-/* Tabs (List / Month / Year) — segmented control style */
+/* Tabs (List / Month / Year) ï¿½ segmented control style */
 .cal-tabs {
   display: flex;
   margin: 18px 18px 0;
@@ -5199,13 +5199,13 @@ a.sub-header__right {
   text-decoration: none;
 }
 
-/* In month view day panel — cap height and allow scroll */
+/* In month view day panel ï¿½ cap height and allow scroll */
 .cal-month__selected .cal-month__events {
   max-height: 240px;
   overflow-y: auto;
 }
 
-/* In list view — no height cap, full scroll of the page */
+/* In list view ï¿½ no height cap, full scroll of the page */
 .cal-view--list .cal-month__events {
   max-height: none;
   overflow-y: visible;
@@ -5216,9 +5216,9 @@ a.sub-header__right {
   margin-bottom: 28px;
 }
 
-/* Personal event — cream bar to distinguish from community (lime) */
+/* Personal event ï¿½ cream bar to distinguish from community (lime) */
 .cal-month__event--personal .cal-month__event-bar {
-  background: #FFF8EA;
+  background: var(--color-bg-surface);
 }
 
 /* "Personal" label badge */
@@ -5227,7 +5227,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.6px;
   margin-bottom: 4px;
@@ -5357,7 +5357,7 @@ a.sub-header__right {
   font-weight: 700;
 }
 
-/* Year picker — centered modal */
+/* Year picker ï¿½ centered modal */
 .cal-year-modal {
   position: fixed;
   inset: 0;
@@ -5426,7 +5426,7 @@ a.sub-header__right {
 
 .cal-year-modal__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.2);
+  background: var(--color-text-muted);
   margin: 0 -22px 4px;
 }
 
@@ -5447,7 +5447,7 @@ a.sub-header__right {
   padding: 14px 4px;
   text-align: left;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.15);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .cal-year-modal__list li:last-child button {
@@ -5515,7 +5515,7 @@ a.sub-header__right {
   display: flex;
   gap: 10px;
   padding: 18px 20px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid var(--color-text-muted);
   cursor: pointer;
   align-items: flex-start;
 }
@@ -5615,7 +5615,7 @@ a.sub-header__right {
   opacity: 0.6;
 }
 
-/* Cephai item — special with longer description and chevron */
+/* Cephai item ï¿½ special with longer description and chevron */
 .chat-item--cephai .chat-item__name {
   margin-bottom: 4px;
 }
@@ -5799,7 +5799,7 @@ a.sub-header__right {
 }
 
 .financial__tile-label {
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -5869,7 +5869,7 @@ a.sub-header__right {
 
 .concierge__tile-label,
 .pinboard__tile-label {
-  color: #FFF8EA;
+  color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -5879,7 +5879,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   AMENITY DETAIL V2 — Bottom-sheet style
+   AMENITY DETAIL V2 ï¿½ Bottom-sheet style
    ============================================ */
 .amenity-detail-body {
   background: #000;
@@ -5936,7 +5936,7 @@ a.sub-header__right {
   width: 32px;
   height: 32px;
   border-radius: 999px;
-  background: rgba(255, 248, 234, 0.9);
+  background: var(--color-text-muted);
   color: var(--color-bg-base);
   display: flex;
   align-items: center;
@@ -5958,7 +5958,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 24px;
   font-weight: 800;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   line-height: 1.1;
 }
@@ -5972,7 +5972,7 @@ a.sub-header__right {
   border-radius: 999px;
   background: transparent;
   border: none;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6088,7 +6088,7 @@ a.sub-header__right {
   opacity: 0.7;
 }
 
-/* Date trigger button — two-line display */
+/* Date trigger button ï¿½ two-line display */
 .amenity-sheet__date-wrap {
   width: 100%;
   position: relative;
@@ -6096,7 +6096,7 @@ a.sub-header__right {
   align-items: center;
   gap: 12px;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.15);
+  border: 1px solid var(--color-text-muted);
   border-radius: 10px;
   padding: 12px 14px;
   cursor: pointer;
@@ -6131,7 +6131,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
   line-height: 1.2;
 }
 
@@ -6243,7 +6243,7 @@ a.sub-header__right {
 
 .time-pill {
   flex-shrink: 0;
-  background: #FFF8EA;
+  background: var(--color-bg-surface);
   color: var(--color-bg-base);
   border: none;
   border-radius: 8px;
@@ -6272,7 +6272,7 @@ a.sub-header__right {
   height: 34px;
   border-radius: 999px;
   background: var(--color-bg-base);
-  border: 1px solid rgba(255, 248, 234, 0.15);
+  border: 1px solid var(--color-text-muted);
   color: var(--color-text-primary);
   font-family: Montserrat, sans-serif;
   font-size: 13px;
@@ -6295,7 +6295,7 @@ a.sub-header__right {
   width: 100%;
   min-height: 96px;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.15);
+  border: 1px solid var(--color-text-muted);
   border-radius: 10px;
   padding: 12px 14px;
   color: var(--color-text-primary);
@@ -6306,15 +6306,15 @@ a.sub-header__right {
 }
 
 .amenity-sheet__textarea::placeholder {
-  color: rgba(255, 248, 234, 0.45);
+  color: var(--color-text-muted);
 }
 
-/* CTA — inactive (disabled) state */
+/* CTA ï¿½ inactive (disabled) state */
 .amenity-sheet__cta {
   width: calc(100% - 32px);
   margin: 4px 16px 24px;
   background: var(--color-bg-base);
-  color: rgba(255, 248, 234, 0.35);
+  color: var(--color-text-muted);
   height: 50px;
   border-radius: 8px;
   font-weight: 700;
@@ -6324,7 +6324,7 @@ a.sub-header__right {
   transition: background 0.2s, color 0.2s;
 }
 
-/* CTA — ready (all fields filled) */
+/* CTA ï¿½ ready (all fields filled) */
 .amenity-sheet__cta.btn--primary {
   background: var(--color-brand-lime);
   color: var(--color-brand-forest);
@@ -6349,7 +6349,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   color: var(--color-text-primary);
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .amenity-sheet__info li:last-child {
@@ -6383,7 +6383,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   MODAL (bottom sheet) — used by disclosure + hours
+   MODAL (bottom sheet) ï¿½ used by disclosure + hours
    ============================================ */
 .modal-backdrop {
   position: fixed;
@@ -6544,7 +6544,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   PDF MODAL — full screen white sheet
+   PDF MODAL ï¿½ full screen white sheet
    ============================================ */
 .pdf-modal {
   position: fixed;
@@ -6643,7 +6643,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   PDF MODAL — IMAGE VIEWER VARIANT
+   PDF MODAL ï¿½ IMAGE VIEWER VARIANT
    ============================================ */
 .pdf-modal--img .pdf-modal__sheet { display: none; }
 
@@ -6673,7 +6673,7 @@ a.sub-header__right {
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px 12px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .payment-sheet__back {
@@ -6728,7 +6728,7 @@ a.sub-header__right {
   gap: 12px;
   align-items: center;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.08);
+  border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 22px;
@@ -6773,7 +6773,7 @@ a.sub-header__right {
 /* Breakdown rows */
 .payment-sheet__breakdown {
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.08);
+  border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 4px 16px;
   margin-bottom: 22px;
@@ -6784,7 +6784,7 @@ a.sub-header__right {
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid var(--color-text-muted);
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   color: var(--color-text-primary);
@@ -6827,7 +6827,7 @@ a.sub-header__right {
   gap: 12px;
   width: 100%;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.08);
+  border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 14px;
   margin-bottom: 20px;
@@ -6974,7 +6974,7 @@ a.sub-header__right {
   margin: 0 -20px 18px;
 }
 
-/* Card illustration — centered */
+/* Card illustration ï¿½ centered */
 .ap-card-visual {
   display: flex;
   justify-content: center;
@@ -7127,7 +7127,7 @@ a.sub-header__right {
   margin: 0 0 20px;
 }
 
-/* CTA — uses .btn .btn--primary, just set height */
+/* CTA ï¿½ uses .btn .btn--primary, just set height */
 .ap-cta {
   width: 100%;
   height: 50px;
@@ -7253,7 +7253,7 @@ a.sub-header__right {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 248, 234, 0.35);
+  border: 2px solid var(--color-text-muted);
   flex-shrink: 0;
   position: relative;
   transition: border-color 0.15s;
@@ -7374,7 +7374,7 @@ a.sub-header__right {
 
 .confirm-sheet__divider {
   border: 0;
-  border-top: 1px solid rgba(255, 248, 234, 0.12);
+  border-top: 1px solid var(--color-text-muted);
   margin: 0 0 16px;
 }
 
@@ -7409,7 +7409,7 @@ a.sub-header__right {
   align-items: center;
   gap: 12px;
   background: rgba(17, 39, 25, 0.6);
-  border: 1px solid rgba(255, 248, 234, 0.08);
+  border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 14px 16px;
   cursor: pointer;
@@ -7463,7 +7463,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   MY PROFILE (edit user info) — Figma 55:530
+   MY PROFILE (edit user info) ï¿½ Figma 55:530
    ============================================ */
 .profile {
   min-height: 100vh;
@@ -7588,7 +7588,7 @@ a.sub-header__right {
 }
 
 .profile__input::placeholder {
-  color: rgba(255, 248, 234, 0.55);
+  color: var(--color-text-secondary);
 }
 
 .profile__input:focus {
@@ -7843,7 +7843,7 @@ a.sub-header__right {
 
 .ar-card__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
   margin: 0 20px;
 }
 
@@ -8071,7 +8071,7 @@ a.sub-header__right {
   overflow-y: auto;
 }
 
-/* Detail content inside any ho-sheet — for free-text descriptions */
+/* Detail content inside any ho-sheet ï¿½ for free-text descriptions */
 .ho-sheet__detail-title {
   font-family: Montserrat, sans-serif;
   font-size: 22px;
@@ -8147,12 +8147,12 @@ a.sub-header__right {
 
 .ho-sheet__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.1);
+  background: var(--color-text-muted);
   margin: 0 20px;
 }
 
 /* ============================================
-   AR HOMEOWNER DETAIL (standalone page — legacy)
+   AR HOMEOWNER DETAIL (standalone page ï¿½ legacy)
    ============================================ */
 .ar-homeowner {
   display: flex;
@@ -8309,7 +8309,7 @@ a.sub-header__right {
 
 .ar-homeowner__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.1);
+  background: var(--color-text-muted);
   margin: 0 20px;
 }
 
@@ -8333,7 +8333,7 @@ a.sub-header__right {
 }
 
 .notif-pref__row {
-  /* Extends .more__row — toggle replaces chevron */
+  /* Extends .more__row ï¿½ toggle replaces chevron */
   cursor: default;
 }
 
@@ -8675,7 +8675,7 @@ a.sub-header__right {
 
 .ar-ledger__row-divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
 }
 
 .ar-ledger__row-icon {
@@ -8826,7 +8826,7 @@ a.sub-header__right {
 }
 
 .ar-vcard__badge--closed {
-  background: rgba(255, 248, 234, 0.18);
+  background: var(--color-text-muted);
   color: var(--color-text-primary);
 }
 
@@ -8876,7 +8876,7 @@ a.sub-header__right {
 .ar-vcard__person-role {
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: block;
   margin-top: 2px;
 }
@@ -8924,7 +8924,7 @@ a.sub-header__right {
 
 .ar-vcard__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: var(--color-text-muted);
   margin: 0 16px;
 }
 
@@ -9245,7 +9245,7 @@ a.sub-header__right {
 .ar-filter-sheet__section-title {
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 10px 0;
 }
 
@@ -9298,7 +9298,7 @@ a.sub-header__right {
 .ar-filter-sheet__option-label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* Date range (shown when "Other" is selected) */
@@ -9316,7 +9316,7 @@ a.sub-header__right {
 .ar-filter-sheet__date-label {
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 8px;
 }
 .ar-filter-sheet__date-input-wrap {
@@ -9340,7 +9340,7 @@ a.sub-header__right {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
   text-transform: uppercase;
   width: 100%;
 }
@@ -9474,7 +9474,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 12px;
 }
 
@@ -9507,7 +9507,7 @@ a.sub-header__right {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 248, 234, 0.4);
+  border: 2px solid var(--color-text-muted);
   flex-shrink: 0;
   position: relative;
   transition: border-color 0.15s ease;
@@ -9540,7 +9540,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-radio-option__sub {
@@ -9554,7 +9554,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 300;
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
 }
 
 /* Divider between radio options */
@@ -9580,7 +9580,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-amount-input {
@@ -9592,7 +9592,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   outline: none;
 }
 
@@ -9601,7 +9601,7 @@ a.sub-header__right {
 }
 
 .pay-amount-input::placeholder {
-  color: rgba(255, 248, 234, 0.3);
+  color: var(--color-text-muted);
 }
 
 /* Tool rows card */
@@ -9623,7 +9623,7 @@ a.sub-header__right {
   cursor: pointer;
   text-align: left;
   text-decoration: none;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-tool-row__icon {
@@ -9638,7 +9638,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-tool-row__chev {
@@ -9703,7 +9703,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-review-row__sub {
@@ -9717,7 +9717,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-align: right;
   flex-shrink: 0;
 }
@@ -9743,7 +9743,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .pay-info-card__value {
@@ -9785,7 +9785,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
   max-width: 320px;
@@ -9815,12 +9815,12 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   opacity: 0.7;
 }
 
 /* ============================================
-   PAYMENT — FORM FIELDS (individual inputs)
+   PAYMENT ï¿½ FORM FIELDS (individual inputs)
    ============================================ */
 
 /* Each field is a standalone dark pill */
@@ -9846,12 +9846,12 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   caret-color: var(--color-brand-lime);
 }
 
 .pay-input__field::placeholder {
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
 }
 
 .pay-input__field::-webkit-outer-spin-button,
@@ -9892,12 +9892,12 @@ a.sub-header__right {
 .pay-input__vdivider {
   width: 1px;
   height: 16px;
-  background: rgba(255, 248, 234, 0.2);
+  background: var(--color-text-muted);
   flex-shrink: 0;
 }
 
 /* ============================================
-   PAYMENT — DANGER / REMOVE BUTTON
+   PAYMENT ï¿½ DANGER / REMOVE BUTTON
    ============================================ */
 .pay-btn--danger {
   display: block;
@@ -9936,7 +9936,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   PAYMENT — WARNING HERO (remove confirmation)
+   PAYMENT ï¿½ WARNING HERO (remove confirmation)
    ============================================ */
 .pay-warning {
   display: flex;
@@ -9970,7 +9970,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
   line-height: 1.55;
   max-width: 300px;
@@ -10057,7 +10057,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-align: right;
   line-height: 1.6;
 }
@@ -10104,7 +10104,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ledger-balance__amount {
@@ -10126,7 +10126,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ledger-balance__info-value {
@@ -10137,7 +10137,7 @@ a.sub-header__right {
 }
 
 .ledger-balance__info-value--white {
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ledger-balance__sep {
@@ -10163,7 +10163,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ledger-balance__autopay-badge {
@@ -10171,7 +10171,7 @@ a.sub-header__right {
   font-size: 13px;
   font-weight: 500;
   background: #112719;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   border-radius: 5px;
   padding: 3px 8px;
 }
@@ -10219,7 +10219,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 20px;
   margin: 16px 0 8px;
 }
@@ -10274,7 +10274,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: block;
   line-height: 1.35;
 }
@@ -10296,7 +10296,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   white-space: nowrap;
   text-transform: uppercase;
 }
@@ -10330,7 +10330,7 @@ a.sub-header__right {
   padding: 0;
 }
 
-/* 2×2 stat grid */
+/* 2ï¿½2 stat grid */
 .board-ai__stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10366,7 +10366,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* Action item cards */
@@ -10396,7 +10396,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .board-ai__card-due strong {
@@ -10420,7 +10420,7 @@ a.sub-header__right {
   align-self: center;
 }
 
-.board-ai__badge--not-started { background: #df434f; color: #fff8ea; }
+.board-ai__badge--not-started { background: #df434f; color: var(--color-text-primary); }
 .board-ai__badge--in-progress { background: #f5c518; }
 .board-ai__badge--completed   { background: var(--color-brand-lime); }
 
@@ -10428,7 +10428,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-bottom: 8px;
 }
 
@@ -10447,7 +10447,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.6;
   margin-bottom: 4px;
   display: -webkit-box;
@@ -10468,7 +10468,7 @@ a.sub-header__right {
 
 /* Rows inside card (attachment, account, messages) */
 .board-ai__rows {
-  border-top: 1px solid rgba(255,248,234,0.08);
+  border-top: 1px solid var(--color-text-muted);
 }
 
 .board-ai__row {
@@ -10477,7 +10477,7 @@ a.sub-header__right {
   gap: 10px;
   padding: 10px 2px;
   min-height: 48px;
-  border-bottom: 1px solid rgba(255,248,234,0.08);
+  border-bottom: 1px solid var(--color-text-muted);
   text-decoration: none;
 }
 
@@ -10503,7 +10503,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: block;
   line-height: 1.3;
 }
@@ -10593,7 +10593,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 12px;
 }
 
@@ -10609,7 +10609,7 @@ a.sub-header__right {
   align-items: center;
   gap: 12px;
   padding: 14px 10px;
-  border-bottom: 1px solid rgba(255,248,234,0.08);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 .filter-row:last-child { border-bottom: none; }
 
@@ -10635,7 +10635,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   flex: 1;
 }
 
@@ -10676,11 +10676,11 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   outline: none;
 }
 .vendor-picker-search__input::placeholder {
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   text-transform: capitalize;
 }
 .vendor-picker-card {
@@ -10712,7 +10712,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* ============================================
@@ -10776,7 +10776,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   flex: 1;
 }
 
@@ -10841,7 +10841,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-bottom: 8px;
 }
 
@@ -10902,7 +10902,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: block;
   margin-top: 2px;
 }
@@ -10911,7 +10911,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.6;
 }
 
@@ -10934,7 +10934,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .log-footer-bar {
@@ -10958,7 +10958,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   display: block;
   margin: 0 0 8px;
 }
@@ -10976,7 +10976,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   border: none;
   outline: none;
   box-sizing: border-box;
@@ -11002,7 +11002,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-transform: capitalize;
 }
 
@@ -11027,7 +11027,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   border: none;
   outline: none;
   resize: none;
@@ -11057,12 +11057,12 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-decoration: underline;
 }
 
 /* ============================================
-   NEW ACC REQUEST FORM — Extra field types
+   NEW ACC REQUEST FORM ï¿½ Extra field types
    ============================================ */
 
 /* Actual <input> text element (5px radius matching Figma) */
@@ -11076,7 +11076,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   border: none;
   outline: none;
   box-sizing: border-box;
@@ -11132,7 +11132,7 @@ a.sub-header__right {
   text-align: left;
 }
 .nm-acc-type-btn__text--selected {
-  color: #fff8ea;
+  color: var(--color-text-primary);
   opacity: 1;
 }
 
@@ -11174,7 +11174,7 @@ a.sub-header__right {
 .nm-currency-input::placeholder {
   color: rgba(209,209,209,.5);
 }
-.nm-currency-input:focus { color: #fff8ea; }
+.nm-currency-input:focus { color: var(--color-text-primary); }
 
 /* Toggle rows */
 .nm-toggles {
@@ -11217,7 +11217,7 @@ a.sub-header__right {
   position: absolute;
   width: 26px;
   height: 26px;
-  background: #fff8ea;
+  background: var(--color-bg-surface);
   border-radius: 50%;
   top: 4px;
   left: 4px;
@@ -11231,17 +11231,17 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   flex: 1;
 }
 
-/* ACC TYPE PICKER — ho-sheet list */
+/* ACC TYPE PICKER ï¿½ ho-sheet list */
 .acc-type-heading {
   font-family: Montserrat, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 14px;
 }
 .acc-type-list {
@@ -11264,7 +11264,7 @@ a.sub-header__right {
 .acc-type-row:active { background: rgba(255,255,255,.04); }
 .acc-type-divider {
   height: 1px;
-  background: rgba(255,248,234,.12);
+  background: var(--color-text-muted);
   margin: 0 14px;
 }
 .acc-type-radio {
@@ -11296,7 +11296,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .acc-type-other {
   background: #112719;
@@ -11332,7 +11332,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 12px;
 }
 
@@ -11340,7 +11340,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255,248,234,0.7);
+  color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.6;
 }
@@ -11383,7 +11383,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 4px;
 }
 
@@ -11393,7 +11393,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 6px;
 }
 
@@ -11401,14 +11401,14 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
 .acct-info__balance strong { font-weight: 700; }
 .acct-info__balance span   { color: var(--color-brand-lime); }
 
-/* Owner row — inside .acct-info__top, no independent border */
+/* Owner row ï¿½ inside .acct-info__top, no independent border */
 .acct-info__owner {
   display: flex;
   align-items: center;
@@ -11449,7 +11449,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-top: 2px;
 }
 
@@ -11530,13 +11530,13 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   outline: none;
   text-transform: capitalize;
 }
 
 .acc-search__input::placeholder {
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
 }
 
 /* Stats grid */
@@ -11575,7 +11575,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* ============================================================
@@ -11605,7 +11605,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
@@ -11644,14 +11644,14 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .committee-decision__text {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -11700,7 +11700,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 8px 8px;
   display: block;
 }
@@ -11756,7 +11756,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-top: 2px;
 }
 
@@ -11764,7 +11764,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -11784,7 +11784,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   ACC REQUEST — STATUS FILTER TILES GRID
+   ACC REQUEST ï¿½ STATUS FILTER TILES GRID
    ============================================ */
 .acc-status-grid {
   display: grid;
@@ -11826,10 +11826,10 @@ a.sub-header__right {
 .acc-status-tile__label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
-/* ACC REQUEST — CARD HEADER ROW (acct + badge) */
+/* ACC REQUEST ï¿½ CARD HEADER ROW (acct + badge) */
 .ar-vcard__header-row {
   display: flex;
   align-items: flex-start;
@@ -11841,7 +11841,7 @@ a.sub-header__right {
 .ar-vcard__acct {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
@@ -11850,7 +11850,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   ACC REQUEST — FOOTER BAR (above bottom nav)
+   ACC REQUEST ï¿½ FOOTER BAR (above bottom nav)
    ============================================ */
 .acc-list-footer {
   position: fixed;
@@ -11925,7 +11925,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   margin: 0 0 3px;
 }
 
@@ -11933,7 +11933,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 14px;
 }
 
@@ -11948,7 +11948,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,.55);
+  color: var(--color-text-muted);
 }
 
 .ledger-sum-card__balance-amount {
@@ -11968,7 +11968,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255,248,234,.45);
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: .07em;
   margin: 0 0 6px 2px;
@@ -11995,14 +11995,14 @@ a.sub-header__right {
 
 .ar-ledger__row-sep {
   height: 1px;
-  background: rgba(255,248,234,.07);
+  background: var(--color-text-muted);
   margin: 0 14px;
 }
 
 .ar-ledger__row-sep--dashed {
   height: 0;
   border: none;
-  border-top: 1px dashed rgba(255,248,234,.18);
+  border-top: 1px dashed var(--color-text-muted);
   margin: 0 14px;
 }
 
@@ -12037,7 +12037,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -12050,7 +12050,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
@@ -12066,7 +12066,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .ar-ledger__row-amount--lime { color: var(--color-brand-lime); }
@@ -12075,7 +12075,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color: rgba(255,248,234,.4);
+  color: var(--color-text-muted);
 }
 
 /* ============================================================
@@ -12183,13 +12183,13 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: .08em;
   margin-top: -8px;
 }
 
-/* Name card — charge / adjustment */
+/* Name card ï¿½ charge / adjustment */
 .detail-sheet__name-card {
   background: #112719;
   border-radius: 10px;
@@ -12203,7 +12203,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .detail-sheet__name-sub {
@@ -12211,7 +12211,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   margin-top: 3px;
 }
 
@@ -12232,14 +12232,14 @@ a.sub-header__right {
 }
 
 .detail-sheet__info-row + .detail-sheet__info-row {
-  border-top: 1px solid rgba(255,248,234,.07);
+  border-top: 1px solid var(--color-text-muted);
 }
 
 .detail-sheet__info-key {
   font-family: Montserrat, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   flex-shrink: 0;
 }
 
@@ -12247,7 +12247,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-align: right;
   display: flex;
   align-items: center;
@@ -12257,7 +12257,7 @@ a.sub-header__right {
 .detail-sheet__info-val--lime { color: var(--color-brand-lime); }
 
 /* ============================================
-   ACC LOG NOTES — extra entry types
+   ACC LOG NOTES ï¿½ extra entry types
    ============================================ */
 
 /* Photo avatar (Thomas Bravo, homeowner) inside log-entry__person */
@@ -12317,7 +12317,7 @@ a.sub-header__right {
 /* The ? arrow between pills */
 .log-entry__status-arrow {
   font-size: 16px;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   flex-shrink: 0;
 }
 
@@ -12372,7 +12372,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .vitem-list {
@@ -12404,7 +12404,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255,248,234,.75);
+  color: var(--color-text-muted);
   line-height: 1.65;
   margin: 0;
 }
@@ -12455,7 +12455,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   text-transform: capitalize;
 }
 
@@ -12475,7 +12475,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 3px;
 }
 
@@ -12504,7 +12504,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   flex: 1;
 }
 .vlog-attach-row__count {
@@ -12519,7 +12519,7 @@ a.sub-header__right {
 .log-entry__status-dot--blue   { background: #4a9fd4; }
 .log-entry__status-dot--yellow { background: #e8b84b; }
 
-/* "Violation" lime label — used in violation-type log entries */
+/* "Violation" lime label ï¿½ used in violation-type log entries */
 .log-entry__violation-label {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
@@ -12530,7 +12530,7 @@ a.sub-header__right {
 
 
 /* ============================================
-   BOARD WORK ORDERS — stat grid
+   BOARD WORK ORDERS ï¿½ stat grid
    ============================================ */
 
 .wo-stat-grid {
@@ -12572,11 +12572,11 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* ============================================
-   BOARD WORK ORDERS — section title
+   BOARD WORK ORDERS ï¿½ section title
    ============================================ */
 
 .wo-section-title {
@@ -12640,7 +12640,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .wo-total-card__amount {
@@ -12671,7 +12671,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .inv-card__amount-value {
@@ -12961,7 +12961,7 @@ a.sub-header__right {
 .approvers-entry__time {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 8px;
 }
 .approvers-card {
@@ -13009,7 +13009,7 @@ a.sub-header__right {
   display: block;
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-top: 2px;
 }
 .approvers-card__verdict {
@@ -13076,10 +13076,10 @@ a.sub-header__right {
   font-family: 'Montserrat', sans-serif;
   font-size: 12px !important;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .vph-search__input::placeholder {
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
 }
 .vph-search__icon {
   flex-shrink: 0;
@@ -13118,7 +13118,7 @@ a.sub-header__right {
 .vph-card__meta-line {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 4px;
 }
 .vph-card__meta-line:last-child {
@@ -13135,7 +13135,7 @@ a.sub-header__right {
 .vph-card__amount-label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .vph-card__amount {
   font-size: 22px;
@@ -13188,13 +13188,13 @@ a.sub-header__right {
 .bank-card__name {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 4px;
 }
 .bank-card__acct {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 4px;
 }
 .bank-card__acct strong {
@@ -13203,7 +13203,7 @@ a.sub-header__right {
 .bank-card__type {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
 }
 .bank-card__body {
@@ -13220,7 +13220,7 @@ a.sub-header__right {
 .bank-card__label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 .bank-card__dots {
@@ -13249,7 +13249,7 @@ a.sub-header__right {
 .bank-card__date {
   font-size: 10px;
   font-weight: 400;
-  color: rgba(255,248,234,.6);
+  color: var(--color-text-muted);
 }
 
 /* --- Invoice Action Sheets -------------------------------------------- */
@@ -13340,7 +13340,7 @@ a.sub-header__right {
 .inv-sheet__invoice-num {
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 12px;
 }
 .inv-sheet__amount-divider {
@@ -13356,7 +13356,7 @@ a.sub-header__right {
 .inv-sheet__amount-label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .inv-sheet__amount-value {
   font-size: 18px;
@@ -13376,20 +13376,20 @@ a.sub-header__right {
 .inv-sheet__bank-name {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 3px;
 }
 .inv-sheet__bank-acct {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 3px;
 }
 .inv-sheet__bank-acct strong { font-weight: 700; }
 .inv-sheet__bank-type {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0;
 }
 .inv-sheet__bank-body { padding: 10px 16px 12px; }
@@ -13401,7 +13401,7 @@ a.sub-header__right {
 .inv-sheet__bank-label {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 .inv-sheet__bank-dots {
@@ -13472,7 +13472,7 @@ a.sub-header__right {
 .inv-sheet__result-body {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -13537,7 +13537,7 @@ a.sub-header__right {
 .hol-card__owner-role {
   font-size: 10px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .hol-card__address {
@@ -13551,7 +13551,7 @@ a.sub-header__right {
 .hol-card__acct {
   font-size: 14px;
   font-weight: 400;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 12px;
 }
 
@@ -13582,7 +13582,7 @@ a.sub-header__right {
   flex: 1;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -13607,7 +13607,7 @@ a.sub-header__right {
 .aging-title {
   font-size: 22px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 16px;
   letter-spacing: -.3px;
 }
@@ -13622,13 +13622,13 @@ a.sub-header__right {
 
 .aging-card__header {
   padding: 14px 16px 10px;
-  border-bottom: 1px solid rgba(255,248,234,.08);
+  border-bottom: 1px solid var(--color-text-muted);
 }
 
 .aging-card__address {
   font-size: 14px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 6px;
   line-height: 1.3;
 }
@@ -13636,13 +13636,13 @@ a.sub-header__right {
 .aging-card__meta-line {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,.65);
+  color: var(--color-text-muted);
   margin: 0 0 2px;
   line-height: 1.5;
 }
 
 .aging-card__meta-line strong {
-  color: rgba(255,248,234,.85);
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
@@ -13690,7 +13690,7 @@ a.sub-header__right {
 .aging-card__owner-role {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
 }
 
 .aging-card__owner-chevron {
@@ -13728,7 +13728,7 @@ a.sub-header__right {
   flex: 1;
   font-size: 13px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 .aging-row__amount {
@@ -13814,11 +13814,11 @@ a.sub-header__right {
 .aging-row--total .aging-row__label {
   font-size: 14px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 
 /* ============================================
-   MY VIOLATIONS — unit dropdown + stats
+   MY VIOLATIONS ï¿½ unit dropdown + stats
    ============================================ */
 .mv-unit-dropdown {
   display: flex;
@@ -13837,7 +13837,7 @@ a.sub-header__right {
   flex: 1;
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .mv-unit-dropdown__chevron {
   flex-shrink: 0;
@@ -13867,12 +13867,12 @@ a.sub-header__right {
 .mv-stat__count {
   font-size: 22px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .mv-stat__label {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,.6);
+  color: var(--color-text-muted);
   margin-left: 2px;
 }
 
@@ -13894,9 +13894,9 @@ a.sub-header__right {
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
-.mv-unit-picker-search__input::placeholder { color: rgba(255,248,234,.5); }
+.mv-unit-picker-search__input::placeholder { color: var(--color-text-muted); }
 
 .mv-unit-row {
   display: flex;
@@ -13914,7 +13914,7 @@ a.sub-header__right {
 .mv-unit-row:last-child { border-bottom: none; }
 .mv-unit-row__icon { flex-shrink: 0; opacity: .7; }
 .mv-unit-row__info { flex: 1; }
-.mv-unit-row__name { display: block; font-size: 14px; font-weight: 600; color: #fff8ea; }
+.mv-unit-row__name { display: block; font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
 .mv-unit-row__acct { display: block; font-size: 11px; font-weight: 500; color: var(--color-brand-lime); margin-top: 2px; }
 .mv-unit-radio {
   flex-shrink: 0;
@@ -13937,7 +13937,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   MY VIOLATION LOG — Add Note sticky bar
+   MY VIOLATION LOG ï¿½ Add Note sticky bar
    ============================================ */
 .vlog-add-note-bar {
   position: fixed;
@@ -13967,7 +13967,7 @@ a.sub-header__right {
 }
 
 /* ============================================
-   MY VIOLATION LOG — owner photo in timeline
+   MY VIOLATION LOG ï¿½ owner photo in timeline
    ============================================ */
 .log-entry__photo {
   width: 36px;
@@ -13980,12 +13980,12 @@ a.sub-header__right {
   display: block;
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255,248,234,.5);
+  color: var(--color-text-muted);
   margin-top: 2px;
 }
 
 /* ============================================
-   WORK ORDERS — Pay-unit rows, WO pills, WO screens
+   WORK ORDERS ï¿½ Pay-unit rows, WO pills, WO screens
    ============================================ */
 
 /* Unit nav rows inside pay-sheet */
@@ -14015,7 +14015,7 @@ a.sub-header__right {
 }
 .pay-unit-row__acct {
   font-size: 12px;
-  color: rgba(255, 248, 234, 0.5);
+  color: var(--color-text-muted);
   margin-top: 3px;
   display: block;
 }
@@ -14074,7 +14074,7 @@ a.sub-header__right {
 .wo-warning-text {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin: 0;
 }
@@ -14108,7 +14108,7 @@ a.sub-header__right {
 .wo-success-text {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin: 0;
 }
@@ -14206,14 +14206,14 @@ a.sub-header__right {
 .consent-card__title {
   font-size: 16px;
   font-weight: 700;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin: 0 0 8px;
   letter-spacing: 0.1px;
 }
 .consent-card__preview {
   font-size: 14px;
   font-weight: 500;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   line-height: 1.5;
   margin: 0;
 }
@@ -14260,7 +14260,7 @@ a.sub-header__right {
 }
 .consent-doc-section-text {
   font-size: 13px;
-  color: rgba(255, 248, 234, 0.7);
+  color: var(--color-text-secondary);
   line-height: 1.65;
   margin: 0;
 }
@@ -14334,7 +14334,7 @@ a.sub-header__right {
 .consent-toggle-label {
   font-size: 14px;
   font-weight: 800;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   letter-spacing: 0.5px;
   flex: 1;
 }
@@ -14415,7 +14415,7 @@ a.sub-header__right {
 }
 .consent-detail-meta__val {
   font-size: 12px;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .consent-sig-image {
   background: #fff;
@@ -14430,7 +14430,7 @@ a.sub-header__right {
   width: 100%;
   height: 50px;
   background: #c0392b;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   border: none;
   border-radius: var(--radius-sm);
   font-family: var(--font-family-base);
@@ -14517,7 +14517,7 @@ a.sub-header__right {
   transition: transform 0.1s;
 }
 .rating-star svg path {
-  fill: rgba(255, 248, 234, 0.35);
+  fill: var(--color-text-muted);
   transition: fill 0.15s;
 }
 .rating-star.is-filled svg path {
@@ -14528,7 +14528,7 @@ a.sub-header__right {
 }
 .rating-card__sep {
   height: 1px;
-  background: rgba(255, 248, 234, 0.1);
+  background: var(--color-text-muted);
   margin: 0 16px;
 }
 .rating-card__btn {
@@ -14587,14 +14587,14 @@ a.sub-header__right {
 }
 .survey-option-sep {
   height: 1px;
-  background: rgba(255, 248, 234, 0.08);
+  background: var(--color-text-muted);
   margin: 0 16px;
 }
 .survey-option-label {
   font-family: Montserrat, sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
 }
 .survey-option-input {
   position: absolute;
@@ -14606,7 +14606,7 @@ a.sub-header__right {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 248, 234, 0.3);
+  border: 2px solid var(--color-text-muted);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14695,7 +14695,7 @@ a.sub-header__right {
   color: #112719;
 }
 
-/* Confirm screen — selected answer box */
+/* Confirm screen ï¿½ selected answer box */
 .survey-confirm-box {
   background: #112719;
   border-radius: 10px;
@@ -14703,7 +14703,7 @@ a.sub-header__right {
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #fff8ea;
+  color: var(--color-text-primary);
   margin-top: 8px;
   width: 100%;
 }
