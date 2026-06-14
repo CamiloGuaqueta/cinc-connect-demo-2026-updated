@@ -196,6 +196,13 @@ html[data-brand="custom"] .pinboard__tile-icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
+/* Tile labels → dark blue */
+html[data-brand="custom"] .financial__tile-label,
+html[data-brand="custom"] .concierge__tile-label,
+html[data-brand="custom"] .pinboard__tile-label {
+  color: #00297a;
+}
+
 /* Inline SVG lime strokes/fills — attribute selectors override presentation attributes */
 html[data-brand="custom"] [stroke="#b2de61"],
 html[data-brand="custom"] [stroke="#B2DE61"] {
