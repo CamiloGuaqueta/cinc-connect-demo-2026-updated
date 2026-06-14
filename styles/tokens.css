@@ -196,6 +196,11 @@ html[data-brand="custom"] .pinboard__tile-icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
+/* Balance card — white surface on custom brand light theme */
+html[data-brand="custom"] .balance-card {
+  background: #ffffff;
+}
+
 /* Tile labels → dark blue */
 html[data-brand="custom"] .financial__tile-label,
 html[data-brand="custom"] .concierge__tile-label,

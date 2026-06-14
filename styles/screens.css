@@ -287,7 +287,7 @@
 
 /* Balance card (cream / ivory) � Figma 373x259 */
 .balance-card {
-  background: var(--color-bg-surface);
+  background: #fff8ea;
   margin: 17px 10px 0;
   width: 373px;
   max-width: calc(100% - 20px);
