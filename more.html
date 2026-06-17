@@ -144,6 +144,20 @@
           <span class="more__row-title">Languages</span>
           <span class="more__row-chevron" aria-hidden="true"></span>
         </button>
+        <div class="more__divider"></div>
+        <button class="more__row" type="button" id="switchBrandBtn">
+          <span class="more__row-icon more__row-icon--inline" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M17 15l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="more__row-text">
+            <span class="more__row-title">Switch app version</span>
+            <span class="more__row-subtitle" id="currentBrandLabel"></span>
+          </div>
+          <span class="more__row-chevron" aria-hidden="true"></span>
+        </button>
       </section>
 
       <button class="more__logout" type="button" data-logout-btn>Log out</button>
@@ -207,6 +221,13 @@
       if (!window.CincAuth.requireAuth()) return;
       document.querySelector('[data-user-name]').textContent = window.CincAuth.getUserName() || 'Demo User';
       document.querySelector('[data-user-email]').textContent = window.CincAuth.getUserEmail() || '';
+      var brand = window.CincAuth.getBrand();
+      document.getElementById('currentBrandLabel').textContent =
+        brand === 'custom' ? 'Currently: Lakewood Ridge HOA' : 'Currently: CINC Connect';
+      document.getElementById('switchBrandBtn').addEventListener('click', function () {
+        window.location.href = 'brand-select.html';
+      });
+
       document.querySelector('[data-logout-btn]').addEventListener('click', async () => {
         const ok = await window.AppDialog.confirm({
           title: 'Log out',
