@@ -266,6 +266,21 @@ html[data-brand="custom"] .feed {
   background: #c6d8f5;
 }
 
+/* Notifications page — hardcoded dark green inputs/filter button/filter group */
+html[data-brand="custom"] .notif-search-bar .messages__search {
+  background: var(--color-bg-input);
+}
+html[data-brand="custom"] .notif-filter {
+  background: var(--color-bg-surface);
+  border-color: rgba(0, 41, 122, 0.25);
+}
+html[data-brand="custom"] .filter-group {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .filter-row {
+  border-bottom-color: rgba(0, 41, 122, 0.1);
+}
+
 /* App header: hide left logo, show brand logo on notification icon instead */
 html[data-brand="custom"] .app-header__logo {
   display: none;
