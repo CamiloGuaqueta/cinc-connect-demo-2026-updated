@@ -238,6 +238,8 @@ html[data-brand="custom"] .app-header__notification img {
 }
 html[data-brand="custom"] .app-header__badge {
   box-shadow: 0 0 0 2px #c6d8f5;
+  top: 6px;
+  right: 6px;
 }
 
 /* Login logo + community name for custom brand */
