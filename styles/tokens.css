@@ -281,6 +281,14 @@ html[data-brand="custom"] .filter-row {
   border-bottom-color: rgba(0, 41, 122, 0.1);
 }
 
+/* My Todos */
+html[data-brand="custom"] .todos__tabs {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .todos__item {
+  background: #c6d8f5;
+}
+
 /* ============================================================
    AR / BOD / MY-TODOS — page, card, sheet backgrounds
    ============================================================ */
@@ -297,7 +305,7 @@ html[data-brand="custom"] .ar-workorders {
 html[data-brand="custom"] .ar-card,
 html[data-brand="custom"] .ar-coll-card,
 html[data-brand="custom"] .ar-ledger__card {
-  background: var(--color-bg-surface);
+  background: #c6d8f5;
 }
 html[data-brand="custom"] .ar-list__search {
   background: var(--color-bg-input);
@@ -382,9 +390,12 @@ html[data-brand="custom"] .ar-filter-sheet__date-input-wrap {
 html[data-brand="custom"] .ho-sheet-backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
-html[data-brand="custom"] .ho-sheet,
-html[data-brand="custom"] .ho-sheet__header {
-  background: var(--color-bg-surface);
+html[data-brand="custom"] .ho-sheet {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .ho-sheet__header,
+html[data-brand="custom"] .ho-sheet__body {
+  background: #c6d8f5;
 }
 html[data-brand="custom"] .ho-sheet__hero-overlay {
   background: rgba(0, 41, 122, 0.35);
