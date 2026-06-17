@@ -196,9 +196,24 @@ html[data-brand="custom"] .pinboard__tile-icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
-/* Balance card — white surface on custom brand light theme */
+/* Balance card — dark blue bg, white text, light blue button */
 html[data-brand="custom"] .balance-card {
-  background: #ffffff;
+  background: #00297a;
+  color: #ffffff;
+}
+html[data-brand="custom"] .balance-card__btn {
+  background: #c6d8f5;
+  color: #00297a;
+}
+html[data-brand="custom"] .balance-card__btn--lime {
+  background: #c6d8f5;
+  color: #00297a;
+}
+
+/* Feed reaction icons and pencil → dark blue */
+html[data-brand="custom"] .post__reaction img,
+html[data-brand="custom"] .feed__engage-pencil {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
 /* Tile labels → dark blue */
@@ -238,8 +253,8 @@ html[data-brand="custom"] .app-header__notification img {
 }
 html[data-brand="custom"] .app-header__badge {
   box-shadow: 0 0 0 2px #c6d8f5;
-  top: 14px;
-  right: 10px;
+  top: 16px;
+  right: 14px;
 }
 
 /* Login logo + community name for custom brand */
