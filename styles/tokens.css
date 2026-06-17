@@ -196,15 +196,35 @@ html[data-brand="custom"] .pinboard__tile-icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
-/* Balance card — dark blue bg, white text, light blue button */
+/* Balance card — dark blue bg */
 html[data-brand="custom"] .balance-card {
   background: #00297a;
+}
+
+/* Balance card text — all hardcoded #112719 → white */
+html[data-brand="custom"] .balance-card__acct,
+html[data-brand="custom"] .balance-card__address,
+html[data-brand="custom"] .balance-card__label,
+html[data-brand="custom"] .balance-card__amount,
+html[data-brand="custom"] .balance-card__autopay span,
+html[data-brand="custom"] .balance-card__note {
   color: #ffffff;
 }
-html[data-brand="custom"] .balance-card__btn {
-  background: #c6d8f5;
-  color: #00297a;
+html[data-brand="custom"] .balance-card__leader {
+  border-bottom-color: rgba(255, 255, 255, 0.4);
 }
+html[data-brand="custom"] .balance-card__divider {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+html[data-brand="custom"] .balance-card__chevron {
+  filter: brightness(0) invert(1);
+}
+html[data-brand="custom"] .balance-card__autopay img {
+  filter: brightness(0) invert(1);
+}
+
+/* Balance card button — light blue bg, dark blue text */
+html[data-brand="custom"] .balance-card__btn,
 html[data-brand="custom"] .balance-card__btn--lime {
   background: #c6d8f5;
   color: #00297a;
@@ -214,6 +234,14 @@ html[data-brand="custom"] .balance-card__btn--lime {
 html[data-brand="custom"] .post__reaction img,
 html[data-brand="custom"] .feed__engage-pencil {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* Carousel dots — active: dark blue, inactive: white */
+html[data-brand="custom"] .feed__dot {
+  background: #ffffff;
+}
+html[data-brand="custom"] .feed__dot--active {
+  background: #00297a;
 }
 
 /* Tile labels → dark blue */
