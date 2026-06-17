@@ -281,6 +281,151 @@ html[data-brand="custom"] .filter-row {
   border-bottom-color: rgba(0, 41, 122, 0.1);
 }
 
+/* ============================================================
+   AR / BOD / MY-TODOS — page, card, sheet backgrounds
+   ============================================================ */
+
+/* AR page backgrounds */
+html[data-brand="custom"] .ar-violations,
+html[data-brand="custom"] .ar-ledger,
+html[data-brand="custom"] .ar-collections,
+html[data-brand="custom"] .ar-workorders {
+  background: var(--color-bg-base);
+}
+
+/* AR cards */
+html[data-brand="custom"] .ar-card,
+html[data-brand="custom"] .ar-coll-card,
+html[data-brand="custom"] .ar-ledger__card {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .ar-list__search {
+  background: var(--color-bg-input);
+}
+
+/* AR card: initials/badge text on lime bg → white (lime = dark blue in custom) */
+html[data-brand="custom"] .ar-card__owner-avatar--initials,
+html[data-brand="custom"] .ar-card__link-badge {
+  color: #ffffff;
+}
+
+/* AR Violation cards */
+html[data-brand="custom"] .ar-vcard {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .ar-vcard__person-initials {
+  color: #ffffff;
+}
+html[data-brand="custom"] .ar-vcard__badge--lime,
+html[data-brand="custom"] .ar-vcard__badge--denied {
+  color: #ffffff;
+}
+
+/* AR Violations filter icon — lime filter → dark blue */
+html[data-brand="custom"] .ar-violations__filter img,
+html[data-brand="custom"] .ar-collections__filter img,
+html[data-brand="custom"] .ar-workorders__filter img,
+html[data-brand="custom"] .ar-ledger__filter img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* AR Homeowner page */
+html[data-brand="custom"] .ar-homeowner,
+html[data-brand="custom"] .ar-homeowner__header,
+html[data-brand="custom"] .ar-homeowner__body {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .ar-homeowner__card {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .ar-homeowner__hero-overlay {
+  background: rgba(0, 41, 122, 0.35);
+}
+
+/* AR Ledger balance summary card */
+html[data-brand="custom"] .ar-ledger__balance-card {
+  background: #00297a;
+}
+html[data-brand="custom"] .ar-ledger__balance-label {
+  color: #ffffff;
+}
+html[data-brand="custom"] .ar-ledger__balance-amount {
+  color: #c6d8f5;
+}
+
+/* AR Filter sheet */
+html[data-brand="custom"] .ar-filter-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+html[data-brand="custom"] .ar-filter-sheet {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .ar-filter-sheet__top-divider,
+html[data-brand="custom"] .ar-filter-sheet__footer-divider {
+  background: rgba(0, 41, 122, 0.15);
+}
+html[data-brand="custom"] .ar-filter-sheet__card {
+  background: var(--color-bg-input);
+}
+html[data-brand="custom"] .ar-filter-sheet__option {
+  border-bottom-color: rgba(0, 41, 122, 0.1);
+}
+html[data-brand="custom"] .ar-filter-sheet__date-range {
+  background: var(--color-bg-input);
+  border-top-color: rgba(0, 41, 122, 0.1);
+}
+html[data-brand="custom"] .ar-filter-sheet__date-input-wrap {
+  background: var(--color-bg-surface);
+}
+
+/* HO Sheet (homeowner slide-up) */
+html[data-brand="custom"] .ho-sheet-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+html[data-brand="custom"] .ho-sheet,
+html[data-brand="custom"] .ho-sheet__header {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .ho-sheet__hero-overlay {
+  background: rgba(0, 41, 122, 0.35);
+}
+html[data-brand="custom"] .ho-sheet__card {
+  background: var(--color-bg-input);
+}
+html[data-brand="custom"] .ho-sheet__avatar-initials {
+  color: #ffffff;
+}
+
+/* Board Action Items */
+html[data-brand="custom"] .board-ai {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .board-ai__stat,
+html[data-brand="custom"] .board-ai__card {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .board-ai__badge {
+  color: #ffffff;
+}
+html[data-brand="custom"] .board-ai__badge--completed {
+  color: #ffffff;
+}
+
+/* Pay Screen / Pay Sheet */
+html[data-brand="custom"] .pay-screen,
+html[data-brand="custom"] .pay-screen__backdrop {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .pay-sheet {
+  background: var(--color-bg-surface);
+}
+html[data-brand="custom"] .pay-radio-card {
+  background: var(--color-bg-input);
+}
+html[data-brand="custom"] .pay-radio-option input:checked + .pay-radio-option__radio::after {
+  background: #ffffff;
+}
+
 /* App header: hide left logo, show brand logo on notification icon instead */
 html[data-brand="custom"] .app-header__logo {
   display: none;
