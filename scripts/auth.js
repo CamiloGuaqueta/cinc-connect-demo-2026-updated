@@ -42,7 +42,7 @@
   const KEY_LAST_ACTIVITY = NS + 'lastActivity';
   const IDLE_TIMEOUT_MS = 15 * 60 * 1000; // 15 minutes
 
-  const LOGIN_PAGE = 'index.html';
+  const LOGIN_PAGE = 'brand-select.html';
   const HOME_PAGE = 'feed.html';
 
   function now() { return Date.now(); }

@@ -35,8 +35,7 @@
     // Mark splash as shown for this session, then redirect to login
     sessionStorage.setItem('cinc-splash-shown', '1');
     setTimeout(() => {
-      var brandSet = localStorage.getItem('cinc:demo:brand');
-      window.location.href = brandSet ? 'index.html' : 'brand-select.html';
+      window.location.href = 'brand-select.html';
     }, 2000);
   </script>
 </body>
