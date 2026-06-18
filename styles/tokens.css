@@ -517,9 +517,9 @@ html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
 }
 
-/* Account Ledger page */
+/* Account Ledger / Payment History page */
 html[data-brand="custom"] .ledger {
-  background: var(--color-bg-base);
+  background: #c6d8f5;
 }
 
 html[data-brand="custom"] .ledger__pay-btn {
@@ -533,6 +533,19 @@ html[data-brand="custom"] .ledger-row__pay-icon path {
 
 /* Pay tool row icons → dark blue filter */
 html[data-brand="custom"] .pay-tool-row__icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* Payment success checkmark icon → white (on dark blue circle) */
+html[data-brand="custom"] .pay-success__icon path {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+
+/* Door icon + property selector chevron → dark blue filter */
+html[data-brand="custom"] .unit-list__door,
+html[data-brand="custom"] .property-selector__door,
+html[data-brand="custom"] .property-selector__chevron {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
@@ -730,7 +743,7 @@ html[data-brand="custom"] .ledger-carousel__slide {
   background: #c6d8f5;
 }
 html[data-brand="custom"] .ledger-group__card {
-  background: #c6d8f5;
+  background: #ffffff;
 }
 html[data-brand="custom"] .ledger-balance {
   background: #00297a;
