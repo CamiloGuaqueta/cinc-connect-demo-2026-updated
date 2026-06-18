@@ -880,6 +880,17 @@ html[data-brand="custom"] .confirm-sheet__receipt {
 html[data-brand="custom"] .amenity-sheet__info {
   background: #f2f2f2;
 }
+html[data-brand="custom"] .amenity-detail__footer {
+  background: #f2f2f2;
+  border-top-color: #00297a30;
+}
+html[data-brand="custom"] .amenity-sheet__date-wrap {
+  background: #ffffff;
+  border-color: var(--color-border-strong);
+}
+html[data-brand="custom"] .time-pill {
+  color: #00297a;
+}
 
 /* ----- Base reset & defaults ----- */
 *,
