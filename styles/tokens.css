@@ -577,6 +577,22 @@ html[data-brand="custom"] .pay-continue {
   color: #ffffff;
 }
 
+/* pets__empty-icon → dark blue filter */
+html[data-brand="custom"] .pets__empty-icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* sub-header logo → swap to community logo (pet-register and similar sub-header pages) */
+html[data-brand="custom"] .sub-header__logo {
+  content: url('../assets/icons/Your Community app logo.svg');
+  filter: none;
+}
+
+/* csel-modal (pet type/breed picker) → light blue */
+html[data-brand="custom"] .csel-modal {
+  background: #c6d8f5;
+}
+
 /* More page dividers → dark blue tint */
 html[data-brand="custom"] .more__divider {
   background: rgba(0, 41, 122, 0.18);
