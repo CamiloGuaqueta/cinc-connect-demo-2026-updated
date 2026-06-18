@@ -785,6 +785,15 @@ html[data-brand="custom"] .pay-sheet__footer {
 html[data-brand="custom"] .pay-input {
   background: var(--color-bg-input);
 }
+html[data-brand="custom"] .pay-section__title {
+  color: #00297a;
+}
+html[data-brand="custom"] .pay-option-divider {
+  background: #00297a30;
+}
+html[data-brand="custom"] .pay-tool-row__sub {
+  color: rgba(0, 41, 122, 0.55) !important;
+}
 
 /* ============================================================
    LEDGER — carousel slides, group cards, balance card
