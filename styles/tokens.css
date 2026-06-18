@@ -604,6 +604,9 @@ html[data-brand="custom"] .more__divider {
 html[data-brand="custom"] .chat-composer__plus svg line {
   stroke: #c6d8f5;
 }
+html[data-brand="custom"] .chat-item {
+  border-bottom-color: #00297a30;
+}
 
 /* ============================================================
    SEARCH ICONS — all pages, convert to dark blue
