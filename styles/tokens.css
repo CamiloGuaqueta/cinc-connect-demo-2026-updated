@@ -722,6 +722,10 @@ html[data-brand="custom"] .more__hero-overlay,
 html[data-brand="custom"] .profile__hero-overlay {
   background: #00297aa1;
 }
+html[data-brand="custom"] .profile__heads-up-title,
+html[data-brand="custom"] .profile__heads-up-body {
+  color: rgba(0, 41, 122, 0.75);
+}
 
 /* ============================================================
    PET REGISTER — page, footer, form fields, success sheet
