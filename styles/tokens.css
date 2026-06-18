@@ -542,6 +542,15 @@ html[data-brand="custom"] .pay-success__icon path {
   stroke: #ffffff;
 }
 
+/* Property selector bar + unit-sheet → white on light blue page bg */
+html[data-brand="custom"] .property-selector {
+  background: #ffffff;
+}
+
+html[data-brand="custom"] .sheet {
+  background: #ffffff;
+}
+
 /* Door icon + property selector chevron → dark blue filter */
 html[data-brand="custom"] .unit-list__door,
 html[data-brand="custom"] .property-selector__door,
