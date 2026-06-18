@@ -515,6 +515,113 @@ html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
 }
 
+/* ============================================================
+   MORE / PROFILE — hero overlays (dark green → dark blue tint)
+   ============================================================ */
+html[data-brand="custom"] .more__hero-overlay,
+html[data-brand="custom"] .profile__hero-overlay {
+  background: rgba(0, 41, 122, 0.35);
+}
+
+/* ============================================================
+   PET REGISTER — page, footer, form fields, success sheet
+   ============================================================ */
+html[data-brand="custom"] .pet-register {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .pet-register-footer {
+  background: var(--color-bg-base);
+  border-top-color: var(--color-border-strong);
+}
+html[data-brand="custom"] .pet-form__input,
+html[data-brand="custom"] .pet-form__select,
+html[data-brand="custom"] .pet-form__textarea,
+html[data-brand="custom"] .pet-form__date-trigger {
+  background: var(--color-bg-input);
+  border-color: var(--color-border-strong);
+}
+html[data-brand="custom"] .pet-form__select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="%2300297a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+html[data-brand="custom"] .pet-success-backdrop {
+  background: rgba(0, 20, 60, 0.82);
+}
+html[data-brand="custom"] .pet-success-sheet {
+  background: #c6d8f5;
+}
+
+/* Paw icons — lime filter → dark blue */
+html[data-brand="custom"] .pet-card__avatar-paw,
+html[data-brand="custom"] .pet-form__avatar-paw {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* ============================================================
+   AMENITIES — search bar (hardcoded #235237)
+   ============================================================ */
+html[data-brand="custom"] .amenities-search-bar .messages__search {
+  background: var(--color-bg-input);
+}
+
+/* ============================================================
+   PAYMENT — tool card, footer, review/info/confirm cards, inputs
+   ============================================================ */
+html[data-brand="custom"] .pay-tool-card,
+html[data-brand="custom"] .pay-review-card,
+html[data-brand="custom"] .pay-info-card,
+html[data-brand="custom"] .pay-confirm-card {
+  background: var(--color-bg-input);
+}
+html[data-brand="custom"] .pay-sheet__footer {
+  background: var(--color-bg-base);
+  border-top-color: var(--color-border-strong);
+}
+html[data-brand="custom"] .pay-input {
+  background: var(--color-bg-input);
+}
+
+/* ============================================================
+   LEDGER — carousel slides, group cards, balance card
+   ============================================================ */
+html[data-brand="custom"] .ledger-carousel__slide {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .ledger-group__card {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .ledger-balance {
+  background: #00297a;
+}
+html[data-brand="custom"] .ledger-balance__label,
+html[data-brand="custom"] .ledger-balance__info-label,
+html[data-brand="custom"] .ledger-balance__info-value--white,
+html[data-brand="custom"] .ledger-balance__autopay-label {
+  color: #ffffff;
+}
+html[data-brand="custom"] .ledger-balance__amount,
+html[data-brand="custom"] .ledger-balance__info-value {
+  color: #c6d8f5;
+}
+html[data-brand="custom"] .ledger-balance__autopay-badge {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+html[data-brand="custom"] .ledger-balance__autopay-badge--on {
+  background: #c6d8f5;
+  color: #00297a;
+}
+
+/* ============================================================
+   INVOICE SHEET
+   ============================================================ */
+html[data-brand="custom"] .inv-sheet {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .inv-sheet__btn--yes,
+html[data-brand="custom"] .inv-sheet__btn--done {
+  color: #ffffff;
+}
+
 /* ----- Base reset & defaults ----- */
 *,
 *::before,

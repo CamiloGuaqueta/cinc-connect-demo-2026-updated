@@ -224,6 +224,10 @@
       var brand = window.CincAuth.getBrand();
       document.getElementById('currentBrandLabel').textContent =
         brand === 'custom' ? 'Currently: Lakewood Ridge HOA' : 'Currently: CINC Connect';
+      if (brand === 'custom') {
+        var hoaTitle = document.querySelector('.more__row-title--lime');
+        if (hoaTitle) hoaTitle.textContent = 'Lakewood Ridge HOA';
+      }
       document.getElementById('switchBrandBtn').addEventListener('click', function () {
         window.location.href = 'brand-select.html';
       });
