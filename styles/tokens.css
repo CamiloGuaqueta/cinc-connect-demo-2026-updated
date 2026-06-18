@@ -876,6 +876,9 @@ html[data-brand="custom"] .confirm-sheet__receipt {
 html[data-brand="custom"] .amenity-sheet__info {
   background: #f2f2f2;
 }
+html[data-brand="custom"] .ap-card-visual img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
 html[data-brand="custom"] .amenity-detail__footer {
   background: #c6d8f5;
   border-top-color: #00297a30;
