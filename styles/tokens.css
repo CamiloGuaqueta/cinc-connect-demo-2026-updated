@@ -806,6 +806,12 @@ html[data-brand="custom"] .pay-sheet__footer {
 html[data-brand="custom"] .pay-input {
   background: #ffffff;
 }
+html[data-brand="custom"] .pay-input__edit circle {
+  fill: #00297a;
+}
+html[data-brand="custom"] .pay-input__edit path {
+  stroke: #ffffff;
+}
 html[data-brand="custom"] .pay-btn--danger {
   color: #c6d8f5;
 }
