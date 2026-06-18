@@ -197,7 +197,7 @@ html[data-brand="custom"] .financial__tile-icon,
 html[data-brand="custom"] .concierge__tile-icon,
 html[data-brand="custom"] .pinboard__tile-icon,
 html[data-brand="custom"] img.more__row-icon:not(.more__row-icon--hoa) {
-  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%) !important;
 }
 
 /* AR card chevron — hardcoded cream SVG data-URI → dark blue */
@@ -350,7 +350,7 @@ html[data-brand="custom"] .ar-card__link-badge {
 
 /* AR Violation cards */
 html[data-brand="custom"] .ar-vcard {
-  background: var(--color-bg-surface);
+  background: #c6d8f5;
 }
 html[data-brand="custom"] .ar-vcard__person-initials {
   color: #ffffff;
@@ -444,7 +444,7 @@ html[data-brand="custom"] .board-ai {
 }
 html[data-brand="custom"] .board-ai__stat,
 html[data-brand="custom"] .board-ai__card {
-  background: var(--color-bg-surface);
+  background: #c6d8f5;
 }
 html[data-brand="custom"] .board-ai__badge {
   color: #ffffff;
@@ -513,6 +513,107 @@ html[data-brand="custom"] img[src*="login-cinc-logo"],
 html[data-brand="custom"] img[src*="icon-cinc-logo"],
 html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
+}
+
+/* ============================================================
+   SEARCH ICONS — all pages, convert to dark blue
+   (cream #fff8ea strokes + white fills → dark blue filter)
+   ============================================================ */
+html[data-brand="custom"] .messages__search-icon,
+html[data-brand="custom"] .acc-search__icon,
+html[data-brand="custom"] .vph-search__icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+  opacity: 1;
+}
+
+html[data-brand="custom"] [stroke="#fff8ea"],
+html[data-brand="custom"] [stroke="#FFF8EA"] {
+  stroke: #00297a;
+}
+
+/* ============================================================
+   FILTER APPLY BUTTON — white text on dark blue bg
+   ============================================================ */
+html[data-brand="custom"] .ar-filter-sheet__apply {
+  color: #ffffff;
+}
+
+/* ============================================================
+   BOARD-AI msg badge + violation/workorder category icons
+   ============================================================ */
+html[data-brand="custom"] .board-ai__msg-badge {
+  color: #ffffff;
+}
+
+html[data-brand="custom"] .ar-vcard__cat-icon,
+html[data-brand="custom"] .vlog-topbar__icon,
+html[data-brand="custom"] .vph-card__icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* Filter icon circle fill in custom brand (was #112719 = dark green dot) */
+html[data-brand="custom"] .vph-filter-btn [fill="#112719"] {
+  fill: var(--color-bg-base);
+}
+
+/* ============================================================
+   VPH / HOL / AGING screens (vendor-payment, homeowner-list, board-aging)
+   ============================================================ */
+html[data-brand="custom"] .vph-screen,
+html[data-brand="custom"] .hol-screen,
+html[data-brand="custom"] .aging-screen {
+  background: var(--color-bg-base);
+}
+
+html[data-brand="custom"] .vph-card,
+html[data-brand="custom"] .hol-card,
+html[data-brand="custom"] .aging-card {
+  background: #c6d8f5;
+}
+
+/* ============================================================
+   BANK SUMMARY
+   ============================================================ */
+html[data-brand="custom"] .bank-card {
+  background: #c6d8f5;
+}
+
+/* ============================================================
+   VLOG SCREEN (board-violation-log)
+   ============================================================ */
+html[data-brand="custom"] .vlog-screen {
+  background: var(--color-bg-base);
+}
+
+html[data-brand="custom"] .log-entry__card {
+  background: #c6d8f5;
+}
+
+/* ============================================================
+   ACCT-INFO (board-account-info)
+   ============================================================ */
+html[data-brand="custom"] .acct-info {
+  background: var(--color-bg-base);
+}
+
+html[data-brand="custom"] .acct-info__card {
+  background: #c6d8f5;
+}
+
+/* ============================================================
+   BOD LEDGER (board-account-ledger) + detail-sheet modal
+   ============================================================ */
+html[data-brand="custom"] .bod-ledger-screen {
+  background: var(--color-bg-base);
+}
+
+html[data-brand="custom"] .ledger-sum-card,
+html[data-brand="custom"] .bod-ledger-group__card {
+  background: #c6d8f5;
+}
+
+html[data-brand="custom"] .detail-sheet {
+  background: #c6d8f5;
 }
 
 /* ============================================================
