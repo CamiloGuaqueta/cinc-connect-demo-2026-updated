@@ -470,18 +470,10 @@ html[data-brand="custom"] .pay-radio-option input:checked + .pay-radio-option__r
   background: #ffffff;
 }
 
-/* App header: hide left logo, show brand logo on notification icon instead */
+/* App header: swap HOA logo to community SVG, bump size for visual weight */
 html[data-brand="custom"] .app-header__logo {
-  display: none;
-}
-html[data-brand="custom"] .app-header__notification {
-  width: 84px;
-  height: 84px;
-}
-html[data-brand="custom"] .app-header__notification img {
-  content: url('../assets/icons/Your Community app logo.svg');
-  width: 84px;
-  height: 84px;
+  width: 52px;
+  height: 52px;
 }
 html[data-brand="custom"] .app-header__badge {
   box-shadow: 0 0 0 2px #c6d8f5;
