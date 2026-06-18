@@ -189,6 +189,8 @@ html[data-brand="custom"] .sub-header__logo,
 html[data-brand="custom"] .cal-arrow,
 html[data-brand="custom"] .ar-list__filter img,
 html[data-brand="custom"] .ar-card__link-icon,
+html[data-brand="custom"] .ar-ledger__row-icon,
+html[data-brand="custom"] .ar-vcard__row-icon,
 html[data-brand="custom"] .ho-sheet__row-icon,
 html[data-brand="custom"] .ar-homeowner__row-icon,
 html[data-brand="custom"] .financial__tile-icon,
@@ -196,6 +198,17 @@ html[data-brand="custom"] .concierge__tile-icon,
 html[data-brand="custom"] .pinboard__tile-icon,
 html[data-brand="custom"] img.more__row-icon:not(.more__row-icon--hoa) {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* AR card chevron — hardcoded cream SVG data-URI → dark blue */
+html[data-brand="custom"] .ar-card__chev {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='17' viewBox='0 0 9 17' fill='none'%3E%3Cpath d='M1.00037 16L7.19922 8.50006L1.00037 1' stroke='%2300297a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+/* AR vcard row count badge — dark text on dark blue bg → white */
+html[data-brand="custom"] .ar-vcard__row-count {
+  color: #ffffff;
 }
 
 /* Balance card — dark blue bg */
@@ -268,7 +281,13 @@ html[data-brand="custom"] .feed {
   background: #c6d8f5;
 }
 
-/* Notifications page search bar — already handled by --color-bg-input token now */
+/* Hardcoded #235237 search bars not covered by the token */
+html[data-brand="custom"] .acc-search,
+html[data-brand="custom"] .notif-search-bar .messages__search,
+html[data-brand="custom"] .wo-search-bar .messages__search {
+  background: #c6d8f5;
+}
+
 html[data-brand="custom"] .notif-filter {
   background: var(--color-bg-surface);
   border-color: rgba(0, 41, 122, 0.25);
