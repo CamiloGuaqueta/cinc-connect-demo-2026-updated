@@ -454,9 +454,11 @@ html[data-brand="custom"] .board-ai__badge--completed {
 }
 
 /* Pay Screen / Pay Sheet */
-html[data-brand="custom"] .pay-screen,
-html[data-brand="custom"] .pay-screen__backdrop {
+html[data-brand="custom"] .pay-screen {
   background: var(--color-bg-base);
+}
+html[data-brand="custom"] .pay-screen__backdrop {
+  background: rgba(0, 20, 60, 0.82);
 }
 html[data-brand="custom"] .pay-sheet {
   background: var(--color-bg-surface);
@@ -513,6 +515,30 @@ html[data-brand="custom"] img[src*="login-cinc-logo"],
 html[data-brand="custom"] img[src*="icon-cinc-logo"],
 html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
+}
+
+/* Account Ledger page */
+html[data-brand="custom"] .ledger {
+  background: var(--color-bg-base);
+}
+
+html[data-brand="custom"] .ledger__pay-btn {
+  color: #c6d8f5;
+}
+
+/* Checkmark icon inside pay-icon circle → light blue */
+html[data-brand="custom"] .ledger-row__pay-icon path {
+  stroke: #c6d8f5;
+}
+
+/* Pay tool row icons → dark blue filter */
+html[data-brand="custom"] .pay-tool-row__icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* Pay sheet body → base bg */
+html[data-brand="custom"] .pay-sheet__body {
+  background: var(--color-bg-base);
 }
 
 /* More page dividers → dark blue tint */
@@ -684,7 +710,7 @@ html[data-brand="custom"] .pay-confirm-card {
   background: var(--color-bg-input);
 }
 html[data-brand="custom"] .pay-sheet__footer {
-  background: var(--color-bg-base);
+  background: #c6d8f5;
   border-top-color: var(--color-border-strong);
 }
 html[data-brand="custom"] .pay-input {
