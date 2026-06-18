@@ -515,6 +515,16 @@ html[data-brand="custom"] img[src*="hoa-logo"] {
   content: url('../assets/icons/Your Community app logo.svg');
 }
 
+/* More page dividers → dark blue tint */
+html[data-brand="custom"] .more__divider {
+  background: rgba(0, 41, 122, 0.18);
+}
+
+/* Chat composer + button icon → light blue on dark blue button */
+html[data-brand="custom"] .chat-composer__plus svg line {
+  stroke: #c6d8f5;
+}
+
 /* ============================================================
    SEARCH ICONS — all pages, convert to dark blue
    (cream #fff8ea strokes + white fills → dark blue filter)
