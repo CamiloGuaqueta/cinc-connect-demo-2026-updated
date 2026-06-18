@@ -458,13 +458,13 @@ html[data-brand="custom"] .pay-screen {
   background: var(--color-bg-base);
 }
 html[data-brand="custom"] .pay-screen__backdrop {
-  background: rgba(0, 20, 60, 0.82);
+  background: var(--color-bg-base);
 }
 html[data-brand="custom"] .pay-sheet {
   background: var(--color-bg-surface);
 }
 html[data-brand="custom"] .pay-radio-card {
-  background: var(--color-bg-input);
+  background: var(--color-bg-base);
 }
 html[data-brand="custom"] .pay-radio-option input:checked + .pay-radio-option__radio::after {
   background: #ffffff;
@@ -536,9 +536,15 @@ html[data-brand="custom"] .pay-tool-row__icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
-/* Pay sheet body → base bg */
+/* Pay sheet header + body → light blue; cards inside → base bg */
+html[data-brand="custom"] .pay-sheet__header {
+  background: #c6d8f5;
+}
 html[data-brand="custom"] .pay-sheet__body {
-  background: var(--color-bg-base);
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .pay-continue {
+  color: #ffffff;
 }
 
 /* More page dividers → dark blue tint */
@@ -707,7 +713,7 @@ html[data-brand="custom"] .pay-tool-card,
 html[data-brand="custom"] .pay-review-card,
 html[data-brand="custom"] .pay-info-card,
 html[data-brand="custom"] .pay-confirm-card {
-  background: var(--color-bg-input);
+  background: var(--color-bg-base);
 }
 html[data-brand="custom"] .pay-sheet__footer {
   background: #c6d8f5;
