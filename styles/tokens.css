@@ -266,7 +266,12 @@ html[data-brand="custom"] .feed {
   background: #c6d8f5;
 }
 
-/* Notifications page — hardcoded dark green inputs/filter button/filter group */
+/* All search bars → light blue (notif bar has its own more-specific rule below) */
+html[data-brand="custom"] .messages__search {
+  background: #c6d8f5;
+}
+
+/* Notifications page — keeps its own search bar slightly different */
 html[data-brand="custom"] .notif-search-bar .messages__search {
   background: var(--color-bg-input);
 }
@@ -281,12 +286,32 @@ html[data-brand="custom"] .filter-row {
   border-bottom-color: rgba(0, 41, 122, 0.1);
 }
 
-/* My Todos */
-html[data-brand="custom"] .todos__tabs {
+/* All segmented tab containers → light blue */
+html[data-brand="custom"] .todos__tabs,
+html[data-brand="custom"] .amenities__tabs,
+html[data-brand="custom"] .voting__tabs,
+html[data-brand="custom"] .cal-tabs,
+html[data-brand="custom"] .consents__tabs {
   background: #c6d8f5;
 }
+
+/* My Todos items */
 html[data-brand="custom"] .todos__item {
   background: #c6d8f5;
+}
+
+/* Amenity cards */
+html[data-brand="custom"] .amenity-card {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .amenity-card__slot {
+  background: #00297a;
+  color: #c6d8f5;
+}
+
+/* Modal backdrop overlay — dark blue instead of dark green */
+html[data-brand="custom"] .modal-backdrop {
+  background: rgba(0, 20, 60, 0.82);
 }
 
 /* ============================================================
