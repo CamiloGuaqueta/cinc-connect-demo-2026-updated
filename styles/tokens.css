@@ -589,8 +589,8 @@ html[data-brand="custom"] .pets__empty-icon {
 html[data-brand="custom"] .sub-header__logo {
   content: url('../assets/icons/Your Community app logo.svg');
   filter: none !important;
-  width: 52px;
-  height: 52px;
+  width: 65px;
+  height: 65px;
 }
 
 /* csel-modal (pet type/breed picker) → light blue */
@@ -890,6 +890,9 @@ html[data-brand="custom"] .amenity-sheet__date-wrap {
 }
 html[data-brand="custom"] .time-pill {
   color: #00297a;
+}
+html[data-brand="custom"] .time-pill--active {
+  color: #f2f2f2;
 }
 
 /* ----- Base reset & defaults ----- */
