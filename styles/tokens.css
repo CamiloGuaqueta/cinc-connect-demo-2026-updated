@@ -740,7 +740,11 @@ html[data-brand="custom"] .pay-input {
    LEDGER — carousel slides, group cards, balance card
    ============================================================ */
 html[data-brand="custom"] .ledger-carousel__slide {
-  background: #c6d8f5;
+  background: #f2f2f2;
+}
+
+html[data-brand="custom"] .ledger-section__title {
+  color: #00297a !important;
 }
 html[data-brand="custom"] .ledger-group__card {
   background: #ffffff;
