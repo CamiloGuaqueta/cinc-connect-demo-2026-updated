@@ -108,13 +108,13 @@
 html[data-brand="custom"] {
   --color-bg-base:    #f2f2f2;
   --color-bg-surface: #ffffff;
-  --color-bg-input:   #ededed;
+  --color-bg-input:   #c6d8f5;
   --color-bg-overlay: rgba(242, 242, 242, 0.92);
 
   --color-brand-lime:        #00297a;
   --color-brand-lime-soft:   #1a3faa;
-  --color-brand-forest:      #e8e8f0;
-  --color-brand-forest-deep: #f5f5fa;
+  --color-brand-forest:      #c6d8f5;
+  --color-brand-forest-deep: #dde8f8;
 
   --color-text-primary:   #1a1a2e;
   --color-text-secondary: #4a4a6a;
@@ -185,6 +185,7 @@ html[data-brand="custom"] .feed__filter img,
 html[data-brand="custom"] .notif-item__chevron,
 html[data-brand="custom"] .more__row-chevron,
 html[data-brand="custom"] .sub-header__back-icon,
+html[data-brand="custom"] .sub-header__logo,
 html[data-brand="custom"] .cal-arrow,
 html[data-brand="custom"] .ar-list__filter img,
 html[data-brand="custom"] .ar-card__link-icon,
@@ -192,7 +193,8 @@ html[data-brand="custom"] .ho-sheet__row-icon,
 html[data-brand="custom"] .ar-homeowner__row-icon,
 html[data-brand="custom"] .financial__tile-icon,
 html[data-brand="custom"] .concierge__tile-icon,
-html[data-brand="custom"] .pinboard__tile-icon {
+html[data-brand="custom"] .pinboard__tile-icon,
+html[data-brand="custom"] img.more__row-icon:not(.more__row-icon--hoa) {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
@@ -266,15 +268,7 @@ html[data-brand="custom"] .feed {
   background: #c6d8f5;
 }
 
-/* All search bars → light blue (notif bar has its own more-specific rule below) */
-html[data-brand="custom"] .messages__search {
-  background: #c6d8f5;
-}
-
-/* Notifications page — keeps its own search bar slightly different */
-html[data-brand="custom"] .notif-search-bar .messages__search {
-  background: var(--color-bg-input);
-}
+/* Notifications page search bar — already handled by --color-bg-input token now */
 html[data-brand="custom"] .notif-filter {
   background: var(--color-bg-surface);
   border-color: rgba(0, 41, 122, 0.25);
@@ -286,12 +280,8 @@ html[data-brand="custom"] .filter-row {
   border-bottom-color: rgba(0, 41, 122, 0.1);
 }
 
-/* All segmented tab containers → light blue */
-html[data-brand="custom"] .todos__tabs,
-html[data-brand="custom"] .amenities__tabs,
-html[data-brand="custom"] .voting__tabs,
-html[data-brand="custom"] .cal-tabs,
-html[data-brand="custom"] .consents__tabs {
+/* Segmented tab containers — amenities uses hardcoded #235237, needs explicit override */
+html[data-brand="custom"] .amenities__tabs {
   background: #c6d8f5;
 }
 
@@ -300,10 +290,7 @@ html[data-brand="custom"] .todos__item {
   background: #c6d8f5;
 }
 
-/* Amenity cards */
-html[data-brand="custom"] .amenity-card {
-  background: #c6d8f5;
-}
+/* Amenity cards — bg handled by --color-brand-forest token; slots need explicit override */
 html[data-brand="custom"] .amenity-card__slot {
   background: #00297a;
   color: #c6d8f5;
