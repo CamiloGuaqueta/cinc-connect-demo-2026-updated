@@ -748,6 +748,10 @@ html[data-brand="custom"] .pet-success-sheet {
 html[data-brand="custom"] .pet-success__icon img {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
+html[data-brand="custom"] .pet-card__status--pending {
+  background: #e89b00b3;
+  color: #f2f2f2;
+}
 
 /* Paw icons — lime filter → dark blue */
 html[data-brand="custom"] .pet-card__avatar-paw,
