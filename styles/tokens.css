@@ -573,6 +573,17 @@ html[data-brand="custom"] .pay-sheet__header {
 html[data-brand="custom"] .pay-sheet__body {
   background: #c6d8f5;
 }
+html[data-brand="custom"] .pay-sheet__title,
+html[data-brand="custom"] .pay-sheet__close {
+  color: #00297a;
+}
+html[data-brand="custom"] .pay-sheet__sep {
+  background: #00297a30;
+}
+html[data-brand="custom"] .pay-tool-row,
+html[data-brand="custom"] .pay-tool-row__label {
+  color: #1a1a2e;
+}
 html[data-brand="custom"] .pay-continue {
   color: #ffffff;
 }
