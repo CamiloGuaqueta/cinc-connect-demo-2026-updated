@@ -585,7 +585,9 @@ html[data-brand="custom"] .pets__empty-icon {
 /* sub-header logo → swap to community logo (pet-register and similar sub-header pages) */
 html[data-brand="custom"] .sub-header__logo {
   content: url('../assets/icons/Your Community app logo.svg');
-  filter: none;
+  filter: none !important;
+  width: 52px;
+  height: 52px;
 }
 
 /* csel-modal (pet type/breed picker) → light blue */
