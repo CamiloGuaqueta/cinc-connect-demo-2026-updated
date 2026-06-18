@@ -542,6 +542,11 @@ html[data-brand="custom"] .pay-success__icon path {
   stroke: #ffffff;
 }
 
+/* Ledger carousel inactive dot → white */
+html[data-brand="custom"] .ledger-dot {
+  background: #f2f2f2;
+}
+
 /* Property selector bar + unit-sheet → white on light blue page bg */
 html[data-brand="custom"] .property-selector {
   background: #ffffff;
