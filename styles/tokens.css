@@ -804,7 +804,10 @@ html[data-brand="custom"] .pay-sheet__footer {
   border-top-color: var(--color-border-strong);
 }
 html[data-brand="custom"] .pay-input {
-  background: var(--color-bg-input);
+  background: #ffffff;
+}
+html[data-brand="custom"] .pay-btn--danger {
+  color: #c6d8f5;
 }
 html[data-brand="custom"] .pay-section__title {
   color: #00297a;
