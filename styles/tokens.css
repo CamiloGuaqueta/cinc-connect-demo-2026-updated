@@ -470,15 +470,23 @@ html[data-brand="custom"] .pay-radio-option input:checked + .pay-radio-option__r
   background: #ffffff;
 }
 
-/* App header: swap HOA logo to community SVG, bump size for visual weight */
+/* App header: hide HOA logo, show community SVG on notification slot */
 html[data-brand="custom"] .app-header__logo {
-  width: 52px;
-  height: 52px;
+  display: none;
+}
+html[data-brand="custom"] .app-header__notification {
+  width: 60px;
+  height: 60px;
+}
+html[data-brand="custom"] .app-header__notification img {
+  content: url('../assets/icons/Your Community app logo.svg');
+  width: 60px;
+  height: 60px;
 }
 html[data-brand="custom"] .app-header__badge {
   box-shadow: 0 0 0 2px #c6d8f5;
-  top: 16px;
-  right: 14px;
+  top: 12px;
+  right: 10px;
 }
 
 /* Login logo + community name for custom brand */
