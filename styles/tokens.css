@@ -639,6 +639,9 @@ html[data-brand="custom"] .vph-search__icon {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
   opacity: 1;
 }
+html[data-brand="custom"] .vph-search {
+  background: #c6d8f5;
+}
 
 html[data-brand="custom"] [stroke="#fff8ea"],
 html[data-brand="custom"] [stroke="#FFF8EA"] {
