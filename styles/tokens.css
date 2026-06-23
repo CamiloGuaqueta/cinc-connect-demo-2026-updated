@@ -913,6 +913,128 @@ html[data-brand="custom"] .time-pill--active {
   color: #f2f2f2;
 }
 
+/* ============================================================
+   INVOICE APPROVAL SCREEN (board-invoice-approval)
+   ============================================================ */
+html[data-brand="custom"] .inv-approval-screen {
+  background: var(--color-bg-base);
+}
+
+/* ============================================================
+   WORKORDER STAT TILES + VENDOR TOTAL CARD + VENDOR SCREEN
+   ============================================================ */
+html[data-brand="custom"] .wo-stat-tile {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .wo-total-card {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .vendor-screen {
+  background: var(--color-bg-base);
+}
+
+/* ============================================================
+   ACC-REVIEW — stats cards + filter icon
+   ============================================================ */
+html[data-brand="custom"] .acc-stats-card {
+  background: #c6d8f5;
+}
+html[data-brand="custom"] .acc-filter-btn img,
+html[data-brand="custom"] .acc-filter-btn svg {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* ============================================================
+   LOG FOOTER BAR (vlog, log-screen, committee-screen pages)
+   ============================================================ */
+html[data-brand="custom"] .log-footer-bar {
+  background: #c6d8f5;
+  border-top-color: rgba(0, 41, 122, 0.2);
+}
+
+/* ============================================================
+   COMMITTEE AVATARS IN LOG ENTRIES
+   ============================================================ */
+html[data-brand="custom"] .log-entry__avatar-committee {
+  background: #c6d8f5;
+  border-color: rgba(0, 41, 122, 0.3);
+}
+html[data-brand="custom"] .committee-note__avatar-initials {
+  background: #c6d8f5;
+  color: #00297a;
+}
+
+/* ============================================================
+   ATTACH SCREEN (board-workorder-attachments, board-violation-attachments, acc-attachments)
+   ============================================================ */
+html[data-brand="custom"] .attach-screen {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .attach-item {
+  background: #ffffff;
+}
+
+/* ============================================================
+   VIOLATION ITEMS SCREEN (board-violation-items)
+   ============================================================ */
+html[data-brand="custom"] .vitem-screen {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .vitem-screen__title {
+  color: #00297a !important;
+}
+html[data-brand="custom"] .vitem-card {
+  background: #c6d8f5;
+  border-color: rgba(0, 41, 122, 0.15);
+}
+html[data-brand="custom"] .vitem-type-row img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* ============================================================
+   LOG SCREEN (acc-log-notes, acc-attachments, board-log-messages)
+   ============================================================ */
+html[data-brand="custom"] .log-screen {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .log-screen__title {
+  color: #00297a;
+}
+
+/* ============================================================
+   COMMITTEE SCREEN (acc-review-committee)
+   ============================================================ */
+html[data-brand="custom"] .committee-screen {
+  background: var(--color-bg-base);
+}
+html[data-brand="custom"] .committee-decision {
+  background: #c6d8f5;
+}
+
+/* ============================================================
+   NEW MESSAGE INPUTS (board-new-message)
+   ============================================================ */
+html[data-brand="custom"] .nm-input,
+html[data-brand="custom"] .nm-textarea,
+html[data-brand="custom"] .nm-select-wrap {
+  background: #f2f2f2;
+}
+
+/* ============================================================
+   POST CONFIRM ICON — checkmark SVG with hardcoded fill="#235237"
+   ============================================================ */
+html[data-brand="custom"] .post-confirm__icon path {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+
+/* ============================================================
+   ROW ICON SVGs — board-ai__row-icon (fill="#FFF8EA" invisible on light bg)
+   ============================================================ */
+html[data-brand="custom"] .board-ai__row-icon svg {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
 /* ----- Base reset & defaults ----- */
 *,
 *::before,
