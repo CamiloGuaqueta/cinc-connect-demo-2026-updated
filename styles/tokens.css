@@ -24,6 +24,11 @@
   --color-text-secondary: #B8D4C0;
   --color-text-muted: rgba(255, 248, 234, 0.5);
   --color-text-accent: var(--color-brand-lime);
+  --color-text-dark: #112719;          /* dark text on lime/accent + light card surfaces */
+  --color-text-on-accent: #235237;     /* text ON lime/accent color (buttons, badges) */
+
+  /* Brand primary */
+  --color-brand-green: #3A913F;        /* CINC primary green — buttons, status icons */
 
   /* Status / Semantic */
   --color-danger: #E84A4A;
@@ -125,6 +130,10 @@ html[data-brand="custom"] {
   --color-border-strong: rgba(0, 41, 122, 0.20);
 
   --shadow-glow-lime: 0 0 24px rgba(0, 41, 122, 0.20);
+
+  --color-text-dark: #1a1a2e;          /* dark text on light card surfaces */
+  --color-text-on-accent: #ffffff;     /* text ON dark blue accent buttons */
+  --color-brand-green: #00297a;        /* custom brand primary blue */
 }
 
 /* Splash override for custom brand */
