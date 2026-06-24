@@ -895,6 +895,44 @@ html[data-brand="custom"] .board-ai__row-icon svg {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
+/* ============================================================
+   MISC OVERRIDES — items missed by variable cascade
+   ============================================================ */
+
+/* ar-violations__title uses var(--color-brand-lime) — force dark blue explicitly */
+html[data-brand="custom"] .ar-violations__title {
+  color: #00297a !important;
+}
+
+/* filter-results count label uses var(--color-brand-lime) */
+html[data-brand="custom"] .filter-results {
+  color: #00297a;
+}
+
+/* filter-radio circle border + selected dot use var(--color-brand-lime) */
+html[data-brand="custom"] .filter-radio {
+  border-color: #00297a;
+}
+html[data-brand="custom"] .filter-radio--selected::after {
+  background: #00297a;
+}
+
+/* log-entry__avatar-committee SVG icon — stroke="#b2de61" in HTML; use filter for reliability */
+html[data-brand="custom"] .log-entry__avatar-committee svg {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+}
+
+/* nm-select-check — checkmark SVG has inline stroke="#112719" (dark green on dark blue circle) */
+html[data-brand="custom"] .nm-select-check path {
+  stroke: #ffffff !important;
+}
+
+/* ar-list__search-icon — white icon invisible on light bg */
+html[data-brand="custom"] .ar-list__search-icon {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
+  opacity: 1;
+}
+
 /* ----- Base reset & defaults ----- */
 *,
 *::before,
