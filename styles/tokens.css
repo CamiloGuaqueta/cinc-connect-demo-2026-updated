@@ -922,8 +922,9 @@ html[data-brand="custom"] .log-entry__avatar-committee svg {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
 }
 
-/* nm-select-check — checkmark SVG has inline stroke="#112719" (dark green on dark blue circle) */
-html[data-brand="custom"] .nm-select-check path {
+/* nm-select-check / nm-input-check — checkmark SVG has inline stroke="#112719" (dark green on dark blue circle) */
+html[data-brand="custom"] .nm-select-check path,
+html[data-brand="custom"] .nm-input-check path {
   stroke: #ffffff !important;
 }
 

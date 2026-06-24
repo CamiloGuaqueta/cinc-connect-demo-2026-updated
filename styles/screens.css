@@ -11006,7 +11006,8 @@ a.sub-header__right {
   text-transform: capitalize;
 }
 
-.nm-select-check {
+.nm-select-check,
+.nm-input-check {
   width: 20px;
   height: 20px;
   border-radius: 50%;
