@@ -1308,7 +1308,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(17, 39, 25, 0.55);
+  background: color-mix(in srgb, var(--color-bg-base) 55%, transparent);
   backdrop-filter: blur(6px);
   border-radius: 999px;
   border: none;
@@ -2472,7 +2472,7 @@
 .more__hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(17, 39, 25, 0.66);
+  background: color-mix(in srgb, var(--color-bg-base) 66%, transparent);
 }
 
 .more__avatar-wrap {
@@ -3837,7 +3837,7 @@
 .pet-form__select,
 .pet-form__textarea {
   width: 100%;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
@@ -3873,7 +3873,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
@@ -4107,7 +4107,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 8px;
   padding: 12px 14px;
@@ -4419,7 +4419,7 @@
 
 .compose-shell__send:disabled {
   background: rgba(178, 222, 97, 0.3);
-  color: rgba(17, 39, 25, 0.5);
+  color: color-mix(in srgb, var(--color-text-dark) 50%, transparent);
   cursor: not-allowed;
 }
 
@@ -4581,7 +4581,7 @@
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: rgba(17, 39, 25, 0.85);
+  background: var(--color-bg-overlay);
   border: 1px solid var(--color-text-muted);
   color: var(--color-text-primary);
   display: flex;
@@ -4641,7 +4641,7 @@
 
 .comment__body {
   flex: 1;
-  background: rgba(17, 39, 25, 0.55);
+  background: color-mix(in srgb, var(--color-bg-base) 55%, transparent);
   border-radius: 10px;
   padding: 8px 12px;
 }
@@ -4702,7 +4702,7 @@
 
 .comments-sheet__input {
   flex: 1;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 999px;
   padding: 9px 14px;
@@ -6095,7 +6095,7 @@ a.sub-header__right {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 10px;
   padding: 12px 14px;
@@ -6294,7 +6294,7 @@ a.sub-header__right {
 .amenity-sheet__textarea {
   width: 100%;
   min-height: 96px;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 10px;
   padding: 12px 14px;
@@ -6336,7 +6336,7 @@ a.sub-header__right {
   list-style: none;
   margin: 0 16px;
   padding: 0;
-  background: rgba(17, 39, 25, 0.5);
+  background: color-mix(in srgb, var(--color-bg-base) 50%, transparent);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -6388,7 +6388,7 @@ a.sub-header__right {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(17, 39, 25, 0.88);
+  background: color-mix(in srgb, var(--color-bg-base) 88%, transparent);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -6554,7 +6554,7 @@ a.sub-header__right {
   transform: translateX(-50%);
   width: 100%;
   max-width: var(--max-width-mobile);
-  background: rgba(17, 39, 25, 0.92);
+  background: color-mix(in srgb, var(--color-bg-base) 92%, transparent);
   z-index: 300;
   display: flex;
   flex-direction: column;
@@ -6727,7 +6727,7 @@ a.sub-header__right {
   display: flex;
   gap: 12px;
   align-items: center;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 12px 14px;
@@ -6772,7 +6772,7 @@ a.sub-header__right {
 
 /* Breakdown rows */
 .payment-sheet__breakdown {
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 4px 16px;
@@ -6826,7 +6826,7 @@ a.sub-header__right {
   align-items: center;
   gap: 12px;
   width: 100%;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 14px;
@@ -7408,7 +7408,7 @@ a.sub-header__right {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(17, 39, 25, 0.6);
+  background: color-mix(in srgb, var(--color-bg-base) 60%, transparent);
   border: 1px solid var(--color-text-muted);
   border-radius: 12px;
   padding: 14px 16px;
@@ -7511,7 +7511,7 @@ a.sub-header__right {
 .profile__hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(17, 39, 25, 0.66);
+  background: color-mix(in srgb, var(--color-bg-base) 66%, transparent);
 }
 
 .profile__avatar-wrap {
@@ -8010,7 +8010,7 @@ a.sub-header__right {
 .ho-sheet__hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(17, 39, 25, 0.66);
+  background: color-mix(in srgb, var(--color-bg-base) 66%, transparent);
 }
 
 .ho-sheet__avatar {
@@ -8213,7 +8213,7 @@ a.sub-header__right {
 .ar-homeowner__hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(17, 39, 25, 0.66);
+  background: color-mix(in srgb, var(--color-bg-base) 66%, transparent);
 }
 
 .ar-homeowner__avatar {
@@ -14552,7 +14552,7 @@ a.sub-header__right {
 }
 .rating-card__btn:disabled {
   background: rgba(178, 222, 97, 0.25);
-  color: rgba(35, 82, 55, 0.5);
+  color: color-mix(in srgb, var(--color-brand-forest) 50%, transparent);
   cursor: default;
 }
 
