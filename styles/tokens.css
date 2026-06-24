@@ -285,18 +285,6 @@ html[data-brand="custom"] [fill="#B2DE61"] {
   fill: #00297a;
 }
 
-/* Feed background — light blue for contrast against white cards */
-html[data-brand="custom"] .feed {
-  background: #c6d8f5;
-}
-
-/* Hardcoded #235237 search bars not covered by the token */
-html[data-brand="custom"] .acc-search,
-html[data-brand="custom"] .notif-search-bar .messages__search,
-html[data-brand="custom"] .wo-search-bar .messages__search {
-  background: #c6d8f5;
-}
-
 html[data-brand="custom"] .notif-filter {
   background: var(--color-bg-surface);
   border-color: rgba(0, 41, 122, 0.25);
@@ -306,16 +294,6 @@ html[data-brand="custom"] .filter-group {
 }
 html[data-brand="custom"] .filter-row {
   border-bottom-color: rgba(0, 41, 122, 0.1);
-}
-
-/* Segmented tab containers — amenities uses hardcoded #235237, needs explicit override */
-html[data-brand="custom"] .amenities__tabs {
-  background: #c6d8f5;
-}
-
-/* My Todos items */
-html[data-brand="custom"] .todos__item {
-  background: #c6d8f5;
 }
 
 /* Amenity cards — bg handled by --color-brand-forest token; slots need explicit override */
@@ -333,20 +311,6 @@ html[data-brand="custom"] .modal-backdrop {
    AR / BOD / MY-TODOS — page, card, sheet backgrounds
    ============================================================ */
 
-/* AR page backgrounds */
-html[data-brand="custom"] .ar-violations,
-html[data-brand="custom"] .ar-ledger,
-html[data-brand="custom"] .ar-collections,
-html[data-brand="custom"] .ar-workorders {
-  background: var(--color-bg-base);
-}
-
-/* AR cards */
-html[data-brand="custom"] .ar-card,
-html[data-brand="custom"] .ar-coll-card,
-html[data-brand="custom"] .ar-ledger__card {
-  background: #c6d8f5;
-}
 html[data-brand="custom"] .ar-list__search {
   background: var(--color-bg-input);
 }
@@ -358,9 +322,6 @@ html[data-brand="custom"] .ar-card__link-badge {
 }
 
 /* AR Violation cards */
-html[data-brand="custom"] .ar-vcard {
-  background: #c6d8f5;
-}
 html[data-brand="custom"] .ar-vcard__person-initials {
   color: #ffffff;
 }
@@ -378,11 +339,6 @@ html[data-brand="custom"] .ar-ledger__filter img {
 }
 
 /* AR Homeowner page */
-html[data-brand="custom"] .ar-homeowner,
-html[data-brand="custom"] .ar-homeowner__header,
-html[data-brand="custom"] .ar-homeowner__body {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .ar-homeowner__card {
   background: var(--color-bg-surface);
 }
@@ -448,13 +404,6 @@ html[data-brand="custom"] .ho-sheet__avatar-initials {
 }
 
 /* Board Action Items */
-html[data-brand="custom"] .board-ai {
-  background: var(--color-bg-base);
-}
-html[data-brand="custom"] .board-ai__stat,
-html[data-brand="custom"] .board-ai__card {
-  background: #c6d8f5;
-}
 html[data-brand="custom"] .board-ai__badge {
   color: #ffffff;
 }
@@ -463,17 +412,8 @@ html[data-brand="custom"] .board-ai__badge--completed {
 }
 
 /* Pay Screen / Pay Sheet */
-html[data-brand="custom"] .pay-screen {
-  background: var(--color-bg-base);
-}
-html[data-brand="custom"] .pay-screen__backdrop {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .pay-sheet {
   background: var(--color-bg-surface);
-}
-html[data-brand="custom"] .pay-radio-card {
-  background: var(--color-bg-base);
 }
 html[data-brand="custom"] .pay-radio-option input:checked + .pay-radio-option__radio::after {
   background: #ffffff;
@@ -615,9 +555,6 @@ html[data-brand="custom"] .sub-header__logo {
 }
 
 /* csel-modal (pet type/breed picker) → light blue */
-html[data-brand="custom"] .csel-modal {
-  background: #c6d8f5;
-}
 
 /* More page dividers → dark blue tint */
 html[data-brand="custom"] .more__divider {
@@ -685,58 +622,22 @@ html[data-brand="custom"] .vph-filter-btn [fill="#112719"] {
 /* ============================================================
    VPH / HOL / AGING screens (vendor-payment, homeowner-list, board-aging)
    ============================================================ */
-html[data-brand="custom"] .vph-screen,
-html[data-brand="custom"] .hol-screen,
-html[data-brand="custom"] .aging-screen {
-  background: var(--color-bg-base);
-}
-
-html[data-brand="custom"] .vph-card,
-html[data-brand="custom"] .hol-card,
-html[data-brand="custom"] .aging-card {
-  background: #c6d8f5;
-}
 
 /* ============================================================
    BANK SUMMARY
    ============================================================ */
-html[data-brand="custom"] .bank-card {
-  background: #c6d8f5;
-}
 
 /* ============================================================
    VLOG SCREEN (board-violation-log)
    ============================================================ */
-html[data-brand="custom"] .vlog-screen {
-  background: var(--color-bg-base);
-}
-
-html[data-brand="custom"] .log-entry__card {
-  background: #c6d8f5;
-}
 
 /* ============================================================
    ACCT-INFO (board-account-info)
    ============================================================ */
-html[data-brand="custom"] .acct-info {
-  background: var(--color-bg-base);
-}
-
-html[data-brand="custom"] .acct-info__card {
-  background: #c6d8f5;
-}
 
 /* ============================================================
    BOD LEDGER (board-account-ledger) + detail-sheet modal
    ============================================================ */
-html[data-brand="custom"] .bod-ledger-screen {
-  background: var(--color-bg-base);
-}
-
-html[data-brand="custom"] .ledger-sum-card,
-html[data-brand="custom"] .bod-ledger-group__card {
-  background: #c6d8f5;
-}
 
 html[data-brand="custom"] .detail-sheet {
   background: #c6d8f5;
@@ -757,11 +658,7 @@ html[data-brand="custom"] .profile__heads-up-body {
 /* ============================================================
    PET REGISTER — page, footer, form fields, success sheet
    ============================================================ */
-html[data-brand="custom"] .pet-register {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .pet-register-footer {
-  background: var(--color-bg-base);
   border-top-color: var(--color-border-strong);
 }
 html[data-brand="custom"] .pet-form {
@@ -809,14 +706,7 @@ html[data-brand="custom"] .amenities-search-bar .messages__search {
 /* ============================================================
    PAYMENT — tool card, footer, review/info/confirm cards, inputs
    ============================================================ */
-html[data-brand="custom"] .pay-tool-card,
-html[data-brand="custom"] .pay-review-card,
-html[data-brand="custom"] .pay-info-card,
-html[data-brand="custom"] .pay-confirm-card {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .pay-sheet__footer {
-  background: #c6d8f5;
   border-top-color: var(--color-border-strong);
 }
 html[data-brand="custom"] .pay-input {
@@ -879,9 +769,6 @@ html[data-brand="custom"] .ledger-balance__autopay-badge--on {
 /* ============================================================
    INVOICE SHEET
    ============================================================ */
-html[data-brand="custom"] .inv-sheet {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .inv-sheet__btn--yes,
 html[data-brand="custom"] .inv-sheet__btn--done {
   color: #ffffff;
@@ -925,29 +812,14 @@ html[data-brand="custom"] .time-pill--active {
 /* ============================================================
    INVOICE APPROVAL SCREEN (board-invoice-approval)
    ============================================================ */
-html[data-brand="custom"] .inv-approval-screen {
-  background: var(--color-bg-base);
-}
 
 /* ============================================================
    WORKORDER STAT TILES + VENDOR TOTAL CARD + VENDOR SCREEN
    ============================================================ */
-html[data-brand="custom"] .wo-stat-tile {
-  background: #c6d8f5;
-}
-html[data-brand="custom"] .wo-total-card {
-  background: #c6d8f5;
-}
-html[data-brand="custom"] .vendor-screen {
-  background: var(--color-bg-base);
-}
 
 /* ============================================================
    ACC-REVIEW — stats cards + filter icon
    ============================================================ */
-html[data-brand="custom"] .acc-stats-card {
-  background: #c6d8f5;
-}
 html[data-brand="custom"] .acc-filter-btn img,
 html[data-brand="custom"] .acc-filter-btn svg {
   filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(1100%) hue-rotate(217deg) brightness(91%);
@@ -976,9 +848,6 @@ html[data-brand="custom"] .committee-note__avatar-initials {
 /* ============================================================
    ATTACH SCREEN (board-workorder-attachments, board-violation-attachments, acc-attachments)
    ============================================================ */
-html[data-brand="custom"] .attach-screen {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .attach-item {
   background: #ffffff;
 }
@@ -986,14 +855,10 @@ html[data-brand="custom"] .attach-item {
 /* ============================================================
    VIOLATION ITEMS SCREEN (board-violation-items)
    ============================================================ */
-html[data-brand="custom"] .vitem-screen {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .vitem-screen__title {
   color: #00297a !important;
 }
 html[data-brand="custom"] .vitem-card {
-  background: #c6d8f5;
   border-color: rgba(0, 41, 122, 0.15);
 }
 html[data-brand="custom"] .vitem-type-row img {
@@ -1003,9 +868,6 @@ html[data-brand="custom"] .vitem-type-row img {
 /* ============================================================
    LOG SCREEN (acc-log-notes, acc-attachments, board-log-messages)
    ============================================================ */
-html[data-brand="custom"] .log-screen {
-  background: var(--color-bg-base);
-}
 html[data-brand="custom"] .log-screen__title {
   color: #00297a;
 }
@@ -1013,21 +875,10 @@ html[data-brand="custom"] .log-screen__title {
 /* ============================================================
    COMMITTEE SCREEN (acc-review-committee)
    ============================================================ */
-html[data-brand="custom"] .committee-screen {
-  background: var(--color-bg-base);
-}
-html[data-brand="custom"] .committee-decision {
-  background: #c6d8f5;
-}
 
 /* ============================================================
    NEW MESSAGE INPUTS (board-new-message)
    ============================================================ */
-html[data-brand="custom"] .nm-input,
-html[data-brand="custom"] .nm-textarea,
-html[data-brand="custom"] .nm-select-wrap {
-  background: #f2f2f2;
-}
 
 /* ============================================================
    POST CONFIRM ICON — checkmark SVG with hardcoded fill="#235237"
