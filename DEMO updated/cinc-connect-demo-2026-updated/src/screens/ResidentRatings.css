@@ -1,0 +1,114 @@
+/* ── ResidentRatings.css ─────────────────────────────────────────────────── */
+
+.resident-ratings {
+  background: var(--res-bg1);
+  min-height: 100%;
+  font-family: var(--font);
+  padding-bottom: 40px;
+}
+
+.resident-ratings__header {
+  padding: 18px 16px 4px;
+}
+
+.resident-ratings__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 0;
+}
+
+.resident-ratings__subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 16px 20px;
+  line-height: 1.55;
+}
+
+/* ── List ── */
+
+.ratings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 16px;
+}
+
+/* ── Card ── */
+
+.rating-card {
+  background: var(--res-bg2);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+.rating-card__category {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+  margin: 0 0 8px;
+}
+
+.rating-card__question {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  margin: 0 0 18px;
+}
+
+/* ── Stars ── */
+
+.rating-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+
+.rating-star {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.12s;
+  display: flex;
+  align-items: center;
+}
+
+.rating-star:active {
+  transform: scale(0.88);
+}
+
+/* ── Footer ── */
+
+.rating-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 18px;
+}
+
+.rating-card__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.rating-card__label--filled {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+.rating-card__num {
+  font-weight: 500;
+  color: var(--lime);
+}
+
+.rating-card__change {
+  font-size: 11px;
+  color: var(--lime);
+}

@@ -1,0 +1,342 @@
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useMode } from '../ModeContext'
+import './Header.css'
+
+const CINC_ICON = '/images/cinc-icon.png'
+
+const SUB_PAGES = ['/meeting', '/broadcast', '/broadcast/audience', '/pulse/violations', '/members-list', '/member-detail']
+
+const NOTIFICATIONS = [
+  {
+    id: 1,
+    title: 'New Invoice Pending Approval',
+    body: 'Green Valley Landscaping submitted Invoice #GVL_042026 for $6,200.00 — Landscaping Monthly Contract. Due April 15. Your approval is required before payment can be processed.',
+    time: '10 min ago',
+    unread: true,
+  },
+  {
+    id: 2,
+    title: 'Violation Hearing Decision Required',
+    body: '9 violation hearings are scheduled for tonight\'s board meeting at 5:30 PM. Cases include Tang, Chen, Ahluwalia and 6 others. Fine amounts and decisions need board vote.',
+    time: '45 min ago',
+    unread: true,
+  },
+  {
+    id: 3,
+    title: 'ACC Request — Auto Approval Approaching',
+    body: '88 Oak Ln solar panel installation request will auto-approve on April 29 if no board decision is made. Please review the application and submit your decision.',
+    time: '2 hrs ago',
+    unread: true,
+  },
+  {
+    id: 4,
+    title: 'Delinquency Threshold Exceeded',
+    body: 'Total community delinquency has reached $84,210 — up $19,400 from last month. 4 accounts are now eligible for lien or foreclosure proceedings per CC&R Section 12.4.',
+    time: '3 hrs ago',
+    unread: true,
+  },
+  {
+    id: 5,
+    title: 'New Work Order Submitted',
+    body: 'A new work order has been submitted for pool pump replacement at the main amenity center. Estimated cost is $3,850. Review and approve before the contractor can be scheduled.',
+    time: '5 hrs ago',
+    unread: true,
+  },
+  {
+    id: 6,
+    title: 'Board Meeting Tonight — Zoom Link Ready',
+    body: 'Your April 19 board meeting begins at 5:30 PM via Zoom. The board packet has been uploaded. Executive session starts at 6:30 PM. Quorum requires 3 of 5 members.',
+    time: 'Yesterday',
+    unread: false,
+  },
+  {
+    id: 7,
+    title: 'Reserve Study Update Available',
+    body: 'The 2026 Reserve Study has been completed and is ready for board review. Key findings include a 78% funded status and recommended contribution increase of 6% for next fiscal year.',
+    time: '2 days ago',
+    unread: false,
+  },
+  {
+    id: 8,
+    title: 'Homeowner Appeal Filed',
+    body: 'Resident at 204 Maple Drive has filed a formal appeal against the $250 fine issued for unauthorized fence modification. The appeal hearing must be scheduled within 30 days per CC&Rs.',
+    time: '3 days ago',
+    unread: false,
+  },
+  {
+    id: 9,
+    title: 'Insurance Renewal Due',
+    body: 'The community\'s general liability and D&O insurance policies are up for renewal on May 31. Three quotes have been received. Board approval required before binding coverage.',
+    time: '4 days ago',
+    unread: false,
+  },
+  {
+    id: 10,
+    title: 'Contractor Bid Received — Parking Lot',
+    body: 'All three bids for the parking lot resurfacing project have been received. Bids range from $41,000 to $67,500. Full comparison document has been uploaded to the board portal.',
+    time: '1 week ago',
+    unread: false,
+  },
+]
+
+export default function Header() {
+  const { isBoard, setIsBoard, residentViewStack, popResidentView, navGuard } = useMode()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const [notifOpen, setNotifOpen] = useState(false)
+  const [notifIsBoard, setNotifIsBoard] = useState(true)
+  const [selected, setSelected] = useState(null)
+  const [readIds, setReadIds] = useState(new Set())
+
+  const isResidentSubPage = !isBoard && residentViewStack.length > 0
+  const isSubPage = SUB_PAGES.includes(pathname) || isResidentSubPage
+
+  function handleLogoReset() {
+    setIsBoard(false)
+    localStorage.removeItem('boardWelcomeDismissed')
+    navigate('/')
+  }
+
+  function handleBack() {
+    if (navGuard) { navGuard(); return }
+    if (isResidentSubPage) popResidentView()
+    else navigate(-1)
+  }
+
+  const screenTitle = {
+    '/':       null,
+    '/pulse':  'Community Pulse',
+    '/tasks':   'Board Action Items',
+    '/more':    'More',
+  }[pathname] ?? null
+
+  return (
+    <header className="app-header">
+      <div className="app-header__inner">
+        <div className="app-header__left">
+          {isSubPage ? (
+            <button className="app-header__back" onClick={handleBack} aria-label="Back">
+              <ChevronLeftIcon />
+            </button>
+          ) : (
+            <>
+              <button className="app-header__logo" onClick={handleLogoReset} aria-label="Reset app">
+                <img src={CINC_ICON} alt="CINC" />
+              </button>
+              <div className="app-header__hoa">
+                <span className="app-header__hoa-name">Cardinal Hills HOA</span>
+                {screenTitle && <span className="app-header__screen">{screenTitle}</span>}
+              </div>
+            </>
+          )}
+        </div>
+
+        <div className="app-header__right">
+          <button
+            className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`}
+            onClick={() => {
+              if (isBoard) navigate('/')
+              setIsBoard(b => !b)
+            }}
+            aria-label="Switch mode"
+          >
+            <div className="mode-toggle__thumb" />
+            <div className="mode-toggle__icon">
+              {isBoard ? <BoardSvgIcon /> : <UserSvgIcon />}
+            </div>
+          </button>
+
+          <button className="notif-btn" aria-label="Notifications" onClick={() => { setNotifIsBoard(isBoard); setNotifOpen(true) }}>
+            <BellIcon />
+            {(() => {
+              const count = NOTIFICATIONS.filter(n => n.unread && !readIds.has(n.id)).length
+              return count > 0 ? <span className="notif-btn__badge">{count}</span> : null
+            })()}
+          </button>
+        </div>
+      </div>
+      <div className="app-header__divider" />
+
+      {notifOpen && createPortal(
+        <NotificationCenter
+          notifications={NOTIFICATIONS}
+          readIds={readIds}
+          selected={selected}
+          isBoard={notifIsBoard}
+          onSelect={n => {
+            setSelected(n)
+            setReadIds(prev => new Set([...prev, n.id]))
+          }}
+          onBack={() => setSelected(null)}
+          onClose={() => { setNotifOpen(false); setSelected(null) }}
+        />,
+        document.querySelector('.phone-frame') || document.body
+      )}
+    </header>
+  )
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg width="43" height="43" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  )
+}
+
+function UserSvgIcon() {
+  return (
+    <svg width="12" height="17" viewBox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#clip0_user)">
+        <path d="M6.00019 9.92822C3.15651 9.92822 0.649013 12.0712 0.0365938 15.0234C-0.0640486 15.5113 0.0451591 16.0128 0.33638 16.4004C0.623318 16.7811 1.05158 17 1.51197 17H10.4884C10.9467 17 11.3749 16.7811 11.664 16.4004C11.9552 16.0128 12.0666 15.5113 11.9638 15.0234C11.3514 12.0712 8.84387 9.92822 6.00019 9.92822ZM10.8289 15.6868C10.7796 15.7507 10.6704 15.8601 10.4884 15.8601H1.51197C1.32996 15.8601 1.22075 15.7507 1.1715 15.6868C1.0837 15.5706 1.05158 15.4178 1.08156 15.2696C1.58692 12.8349 3.6533 11.0681 6.00019 11.0681C8.34709 11.0681 10.4135 12.8349 10.9188 15.2696C10.9488 15.4178 10.9188 15.5706 10.8289 15.6868Z" fill="currentColor"/>
+        <path d="M6.00021 8.38259C8.17152 8.38259 9.93812 6.50181 9.93812 4.19016C9.93812 1.8785 8.17152 0 6.00021 0C3.82891 0 2.06445 1.88078 2.06445 4.19244C2.06445 6.50409 3.83105 8.38487 6.00235 8.38487L6.00021 8.38259ZM6.00021 1.13987C7.58051 1.13987 8.86745 2.50771 8.86745 4.19244C8.86745 5.87716 7.58266 7.245 6.00021 7.245C4.41777 7.245 3.13298 5.87716 3.13298 4.19244C3.13298 2.50771 4.41777 1.13987 6.00021 1.13987Z" fill="currentColor"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_user">
+          <rect width="12" height="17" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
+function BoardSvgIcon() {
+  return (
+    <svg width="17" height="15" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.0952 12.9606H7.90484C7.61426 12.9606 7.37842 13.1993 7.37842 13.4933C7.37842 13.7873 7.61426 14.0259 7.90484 14.0259H12.0952C12.3858 14.0259 12.6216 13.7873 12.6216 13.4933C12.6216 13.1993 12.3858 12.9606 12.0952 12.9606Z" fill="currentColor"/>
+      <path d="M5.66022 8.30939L4.86637 10.1737C4.75056 10.4443 4.8748 10.7575 5.14222 10.8747C5.2096 10.9045 5.2812 10.9173 5.35069 10.9173C5.55494 10.9173 5.74866 10.7958 5.835 10.5955L6.49198 9.05298H13.6893L14.1652 10.2653C14.2726 10.538 14.5779 10.6722 14.8495 10.5636C15.119 10.4549 15.2517 10.146 15.1443 9.87114L14.5358 8.32217C14.4557 8.11976 14.262 7.98553 14.0472 7.98553H6.14243C5.93186 7.98553 5.74235 8.11124 5.65812 8.30726L5.66022 8.30939Z" fill="currentColor"/>
+      <path d="M9.99996 5.46718C11.4887 5.46718 12.7016 4.23994 12.7016 2.73359C12.7016 1.22724 11.4887 0 9.99996 0C8.51123 0 7.29834 1.22724 7.29834 2.73359C7.29834 4.23994 8.51123 5.46718 9.99996 5.46718ZM9.99996 1.06531C10.9096 1.06531 11.6487 1.81316 11.6487 2.73359C11.6487 3.65402 10.9096 4.40186 9.99996 4.40186C9.09029 4.40186 8.35119 3.65402 8.35119 2.73359C8.35119 1.81316 9.09029 1.06531 9.99996 1.06531Z" fill="currentColor"/>
+      <path d="M17.2983 2.73364C15.8096 2.73364 14.5967 3.96088 14.5967 5.46723C14.5967 6.97358 15.8096 8.20082 17.2983 8.20082C18.787 8.20082 19.9999 6.97358 19.9999 5.46723C19.9999 3.96088 18.787 2.73364 17.2983 2.73364ZM17.2983 7.13551C16.3886 7.13551 15.6495 6.38766 15.6495 5.46723C15.6495 4.5468 16.3886 3.79895 17.2983 3.79895C18.208 3.79895 18.9471 4.5468 18.9471 5.46723C18.9471 6.38766 18.208 7.13551 17.2983 7.13551Z" fill="currentColor"/>
+      <path d="M2.70162 8.20082C4.19035 8.20082 5.40324 6.97358 5.40324 5.46723C5.40324 3.96088 4.19035 2.73364 2.70162 2.73364C1.21289 2.73364 0 3.96088 0 5.46723C0 6.97358 1.21289 8.20082 2.70162 8.20082ZM2.70162 3.79895C3.61128 3.79895 4.35038 4.5468 4.35038 5.46723C4.35038 6.38766 3.61128 7.13551 2.70162 7.13551C1.79195 7.13551 1.05285 6.38766 1.05285 5.46723C1.05285 4.5468 1.79195 3.79895 2.70162 3.79895Z" fill="currentColor"/>
+      <path d="M3.83443 11.7696C2.3457 11.7696 1.13281 12.9968 1.13281 14.5032C1.13281 16.0095 2.3457 17.2368 3.83443 17.2368C5.32316 17.2368 6.53605 16.0095 6.53605 14.5032C6.53605 12.9968 5.32316 11.7696 3.83443 11.7696ZM3.83443 16.1715C2.92477 16.1715 2.18566 15.4236 2.18566 14.5032C2.18566 13.5828 2.92477 12.8349 3.83443 12.8349C4.74409 12.8349 5.4832 13.5828 5.4832 14.5032C5.4832 15.4236 4.74409 16.1715 3.83443 16.1715Z" fill="currentColor"/>
+      <path d="M16.1655 11.7696C14.6768 11.7696 13.4639 12.9968 13.4639 14.5032C13.4639 16.0095 14.6768 17.2368 16.1655 17.2368C17.6542 17.2368 18.8671 16.0095 18.8671 14.5032C18.8671 12.9968 17.6542 11.7696 16.1655 11.7696ZM16.1655 16.1715C15.2558 16.1715 14.5167 15.4236 14.5167 14.5032C14.5167 13.5828 15.2558 12.8349 16.1655 12.8349C17.0751 12.8349 17.8143 13.5828 17.8143 14.5032C17.8143 15.4236 17.0751 16.1715 16.1655 16.1715Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function NotificationCenter({ notifications, readIds, selected, isBoard, onSelect, onBack, onClose }) {
+  const [query, setQuery] = useState('')
+  const [unreadOnly, setUnreadOnly] = useState(false)
+
+  const unreadCount = notifications.filter(n => n.unread && !readIds.has(n.id)).length
+
+  const visible = notifications.filter(n => {
+    if (unreadOnly && !(n.unread && !readIds.has(n.id))) return false
+    if (query && !n.title.toLowerCase().includes(query.toLowerCase()) &&
+        !n.body.toLowerCase().includes(query.toLowerCase())) return false
+    return true
+  })
+
+  return (
+    <div className="notif-center" data-mode={isBoard ? 'board' : 'resident'}>
+      <div className="notif-center__header">
+        <div className="notif-center__header-left">
+          <button className="app-header__back" onClick={selected ? onBack : onClose} aria-label="Back">
+            <ChevronLeftIcon />
+          </button>
+        </div>
+        <div className="notif-center__header-right">
+          <div className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`} style={{pointerEvents:'none'}}>
+            <div className="mode-toggle__thumb" />
+            <div className="mode-toggle__icon">{isBoard ? <BoardSvgIcon /> : <UserSvgIcon />}</div>
+          </div>
+          <button className="notif-btn" aria-label="Notifications">
+            <BellIcon />
+            {unreadCount > 0 && <span className="notif-btn__badge">{unreadCount}</span>}
+          </button>
+        </div>
+      </div>
+      <div className="app-header__divider" />
+
+      {selected ? (
+        <div className="notif-detail">
+          <div className="notif-detail__icon"><img src={CINC_ICON} alt="CINC" /></div>
+          <p className="notif-detail__time">{selected.time}</p>
+          <h2 className="notif-detail__title">{selected.title}</h2>
+          <p className="notif-detail__body">{selected.body}</p>
+        </div>
+      ) : (
+        <>
+          <div className="notif-toolbar">
+            <div className="notif-search">
+              <SearchIcon />
+              <input
+                className="notif-search__input"
+                type="text"
+                placeholder="Search notifications…"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+              />
+              {query && (
+                <button className="notif-search__clear" onClick={() => setQuery('')} aria-label="Clear">
+                  <CloseIcon />
+                </button>
+              )}
+            </div>
+            <button
+              className={`notif-filter${unreadOnly ? ' notif-filter--active' : ''}`}
+              onClick={() => setUnreadOnly(v => !v)}
+              aria-label={unreadOnly ? 'Show all' : 'Show unread only'}
+            >
+              <UnreadFilterIcon />
+              {unreadCount > 0 && <span className="notif-filter__count">{unreadCount}</span>}
+            </button>
+          </div>
+          <div className="notif-list">
+            {visible.length === 0 ? (
+              <p className="notif-empty">No notifications found.</p>
+            ) : visible.map(n => {
+              const unread = n.unread && !readIds.has(n.id)
+              return (
+                <button key={n.id} className="notif-item" onClick={() => onSelect(n)}>
+                  <img className="notif-item__icon" src={CINC_ICON} alt="CINC" />
+                  <div className="notif-item__body">
+                    <span className="notif-item__title">{n.title}</span>
+                    <p className="notif-item__preview">{n.body}</p>
+                  </div>
+                  {unread && <span className="notif-item__dot" />}
+                </button>
+              )
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+function UnreadFilterIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="12" r="6"/>
+    </svg>
+  )
+}
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  )
+}
+
+function BellIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  )
+}

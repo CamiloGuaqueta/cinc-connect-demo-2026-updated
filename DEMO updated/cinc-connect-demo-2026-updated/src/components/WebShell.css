@@ -1,0 +1,553 @@
+/* ── Web Shell Layout ─────────────────────────────────── */
+.web-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  align-self: stretch;
+  background: var(--bg-page);
+  font-family: var(--font, system-ui, sans-serif);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Top Nav (pill) ───────────────────────────────────── */
+.web-top-nav {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: var(--res-bg1);
+  border-radius: 50px;
+  position: relative;
+  margin: 14px 20px 0 20px;
+  padding: 0 20px;
+  flex-shrink: 0;
+  gap: 0;
+  z-index: 100;
+  box-shadow: 0 3px 12px 2px rgba(0,0,0,0.35);
+}
+
+.web-top-nav__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.web-top-nav__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.web-top-nav__hoa {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Center tabs */
+.web-top-nav__tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 47px;
+}
+
+.web-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 20px 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: color-mix(in srgb, var(--text) 55%, transparent);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.web-tab:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+.web-tab--active {
+  color: var(--lime);
+}
+
+.web-tab__icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.web-tab__icon > svg,
+.web-tab__icon > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+.web-tab__label {
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Right: toggle + bell + avatar */
+.web-top-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+/* Mode toggle — reuses .mode-toggle classes from Header.css */
+
+/* Notification bell */
+.web-notif-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.web-notif-btn:hover { background: rgba(255,255,255,0.08); }
+.web-notif-btn__badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #e85d5d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 8px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+}
+
+/* Avatar */
+.web-avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #555;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: none;
+}
+
+/* ── Body: left + content + right ─────────────────────── */
+.web-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  background: var(--bg-page);
+}
+
+/* ── Left Nav ─────────────────────────────────────────── */
+.web-left-nav {
+  width: 25%;
+  min-width: 25%;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 16px 12px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.web-left-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: color-mix(in srgb, var(--text) 60%, transparent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s, background 0.15s;
+}
+
+.web-left-item:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+.web-left-item--active {
+  color: var(--lime);
+}
+
+.web-left-item__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  justify-content: center;
+}
+
+/* Sub-menu with vertical line */
+.web-left-sub-group {
+  position: relative;
+  margin-left: 36px;
+  padding-left: 12px;
+}
+
+.web-left-sub-group::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--lime) 50%, transparent);
+}
+
+.web-left-sub__item {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  background: transparent;
+  color: color-mix(in srgb, var(--text) 55%, transparent);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.web-left-sub__item:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+.web-left-sub__item--active {
+  color: var(--lime);
+}
+
+/* ── Main Content ─────────────────────────────────────── */
+.web-main {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+  background: var(--bg-page);
+  /* Creates a containing block for position:fixed children (screens designed for phone-frame) */
+  transform: translateZ(0);
+  isolation: isolate;
+  padding-left: clamp(0px, 45%, 360px);
+  padding-right: clamp(0px, 45%, 360px);
+}
+
+/* Strip mobile chrome from screens rendered in web mode */
+.web-main .screen {
+  padding-top: 16px !important;
+}
+
+/* Community feed uses bg1 in web layout */
+.web-main .feed-screen {
+  background: var(--res-bg1);
+}
+
+/* Engage bar and filter button use bg1 in web layout */
+.web-main .engage-bar,
+.web-main .engage-filter-btn {
+  background: var(--res-bg1);
+}
+
+/* Post cards use bg2 so they stand out against the bg1 feed */
+.web-main .post-card {
+  background: var(--res-bg1);
+  border-radius: 12px;
+}
+
+/* Hide in-screen tab navs that are replaced by the left side nav in web mode */
+.web-main .amenities-tab-nav {
+  display: none;
+}
+
+/* Amenity stats: don't stretch, just 40px gap between items, 30% bigger */
+.web-main .amenity-list-card__stats {
+  gap: 40px;
+}
+.web-main .amenity-stat {
+  flex: none;
+  font-size: 13px;
+}
+.web-main .amenity-stat__icon {
+  width: 21px;
+  height: 21px;
+}
+.web-main .phone-frame,
+.web-main .resident-mode {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  background: var(--bg-page) !important;
+}
+
+/* ── Right More Panel ─────────────────────────────────── */
+.web-right-panel {
+  width: 25%;
+  min-width: 25%;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 16px 40px 16px 12px;
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.web-right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.web-right-divider {
+  height: 1px;
+  background: color-mix(in srgb, var(--text) 15%, transparent);
+  margin: 10px 4px;
+}
+
+.web-right-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.web-right-item:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
+
+.web-right-item__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  justify-content: center;
+}
+
+.web-right-version {
+  padding: 8px 12px 4px;
+  font-size: 11px;
+  color: color-mix(in srgb, var(--text) 30%, transparent);
+  letter-spacing: 0.03em;
+}
+
+/* ── Layout Toggle (fixed, bottom-left) ──────────────── */
+.layout-toggle {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  border: 1.5px solid rgba(178,222,97,0.4);
+  background: #1d1d1d;
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 500;
+  transition: all 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  letter-spacing: 0.02em;
+}
+
+.layout-toggle:hover {
+  background: #252525;
+  border-color: rgba(178,222,97,0.7);
+  box-shadow: 0 4px 24px rgba(178,222,97,0.15);
+}
+
+.layout-toggle__icon {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Pull-up sheets in web mode ───────────────────────── */
+
+/* All pull-up sheets: fill full height of content area */
+.web-main :is(
+  .amenity-detail-sheet,
+  .ptheme-sheet,
+  .consent-sheet,
+  .filter-sheet,
+  .atp-sheet,
+  .cpn-sheet,
+  .ml-export-sheet,
+  .rdl-export-sheet,
+  .anim-sheet,
+  .myu-sheet,
+  .fh-sheet,
+  .rp-modal-sheet,
+  .survey-sheet,
+  .nmi-blog-sheet
+) {
+  max-height: 100% !important;
+  border-radius: 0 !important;
+}
+
+/* Sheet drop-shadow on top edge */
+.web-main :is(
+  .amenity-detail-sheet,
+  .ptheme-sheet,
+  .consent-sheet,
+  .filter-sheet,
+  .atp-sheet,
+  .cpn-sheet,
+  .ml-export-sheet,
+  .rdl-export-sheet,
+  .anim-sheet,
+  .myu-sheet,
+  .fh-sheet,
+  .rp-modal-sheet,
+  .survey-sheet,
+  .nmi-blog-sheet
+) {
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.55) !important;
+}
+
+/* Backdrop selector — all known pull-up backdrops */
+.web-body:has(:is(
+  .amenity-detail-backdrop,
+  .ptheme-backdrop,
+  .ballot-overlay__backdrop,
+  .consent-overlay__backdrop,
+  .nmi-blog-overlay__backdrop,
+  .res-detail-backdrop,
+  .fh-sheet-overlay,
+  .ml-sheet-overlay,
+  .rdl-sheet-overlay,
+  .myu-overlay,
+  .myu-rel-overlay,
+  .anim-sheet-backdrop,
+  .moi-overlay,
+  .survey-overlay,
+  .rp-modal-overlay,
+  .atp-overlay,
+  .cpn-overlay
+)) .web-left-nav::after,
+.web-body:has(:is(
+  .amenity-detail-backdrop,
+  .ptheme-backdrop,
+  .ballot-overlay__backdrop,
+  .consent-overlay__backdrop,
+  .nmi-blog-overlay__backdrop,
+  .res-detail-backdrop,
+  .fh-sheet-overlay,
+  .ml-sheet-overlay,
+  .rdl-sheet-overlay,
+  .myu-overlay,
+  .myu-rel-overlay,
+  .anim-sheet-backdrop,
+  .moi-overlay,
+  .survey-overlay,
+  .rp-modal-overlay,
+  .atp-overlay,
+  .cpn-overlay
+)) .web-right-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 200;
+  pointer-events: none;
+}
+
+/* Blur/darken the top nav when a sheet is open — same treatment as side navs */
+.web-shell:has(:is(
+  .amenity-detail-backdrop,
+  .ptheme-backdrop,
+  .ballot-overlay__backdrop,
+  .consent-overlay__backdrop,
+  .nmi-blog-overlay__backdrop,
+  .res-detail-backdrop,
+  .fh-sheet-overlay,
+  .ml-sheet-overlay,
+  .rdl-sheet-overlay,
+  .myu-overlay,
+  .myu-rel-overlay,
+  .anim-sheet-backdrop,
+  .moi-overlay,
+  .survey-overlay,
+  .rp-modal-overlay,
+  .atp-overlay,
+  .cpn-overlay
+)) .web-top-nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 200;
+  pointer-events: none;
+}

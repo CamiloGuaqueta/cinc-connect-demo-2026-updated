@@ -1,0 +1,268 @@
+/* ── Screen ───────────────────────────────────────────── */
+.resident-more {
+  padding-left: 0;
+  padding-right: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--res-bg2);
+}
+
+.more-content {
+  padding: 0 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: -48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Hero header ──────────────────────────────────────── */
+.more-hero {
+  position: relative;
+  height: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+}
+
+.more-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.more-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17,39,25,0.4) 0%, rgba(17,39,25,1.0) 100%);
+}
+
+.more-hero__avatar-wrap {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.more-hero__avatar-frame {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--res-accent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.more-hero__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform: scale(1.35);
+  transform-origin: center top;
+}
+
+.more-hero__edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: var(--res-accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--res-bg1);
+  cursor: pointer;
+  padding: 0;
+}
+
+.more-hero__name {
+  position: absolute;
+  top: 162px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--res-accent);
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Cards ────────────────────────────────────────────── */
+.more-card {
+  background: var(--res-bg1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ── HOA row (special first row) ─────────────────────── */
+.more-hoa-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.more-hoa-row__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.more-hoa-row__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.more-hoa-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.more-hoa-row__sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Standard row ─────────────────────────────────────── */
+.more-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.more-row__icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--res-text);
+}
+
+.more-row__label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.more-row__chevron {
+  flex-shrink: 0;
+  color: #9ab89e;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.more-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 16px;
+}
+
+/* ── Log out ──────────────────────────────────────────── */
+.more-logout {
+  width: 100%;
+  padding: 15px;
+  background: #D94040;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.more-logout:active {
+  opacity: 0.85;
+}
+
+.more-proto-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.more-proto-sep {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.more-reset,
+.more-theme-btn {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.45;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.more-reset:active,
+.more-theme-btn:active {
+  opacity: 0.8;
+}
+
+.more-theme-btn--active {
+  opacity: 1;
+  color: var(--lime);
+}
+
+.more-version {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text);
+  opacity: 0.3;
+  text-align: center;
+  margin: 4px 0 0;
+  letter-spacing: 0.04em;
+}

@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Design Tokens ──────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-page:      #313131;
+  --bg-card:      #1e1e1e;
+  --bg-card-alt:  #1d1d1d;
+  --bg-header:    #313131;
+  --bg-nav:       #1e1e1e;
+
+  /* Accent */
+  --lime:         #b2de61;
+  --lime-border:  #9ac93c;
+  --lime-dim:     #aedbbe;
+
+  /* Text */
+  --text:         #fff8ea;
+  --text-muted:   #8e8e8e;
+  --text-dark:    #112719;
+
+  /* Status */
+  --amber:        #efa41e;
+  --red:          #df434f;
+  --green:        #3a913f;
+  --green-cure:   #319245;
+
+  /* UI */
+  --border:       rgba(255,255,255,0.08);
+  --shadow:       0px 3px 6px rgba(0,0,0,0.16);
+  --shadow-md:    0px 4px 12px rgba(0,0,0,0.32);
+
+  --radius-sm:    5px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+  --radius-full:  999px;
+
+  --header-h:     106px;
+  --nav-h:        94px;
+
+  --font:         'Montserrat', sans-serif;
+
+  /* Phone frame */
+  --phone-w:      390px;
+  --phone-h:      844px;
+}
+
+/* ── Resident palette tokens (Dark theme defaults) ──── */
+:root {
+  --res-bg1:    #313131;
+  --res-bg2:    #1D1D1D;
+  --res-text:   #D1D1D1;
+  --res-accent: #B0DB61;
+}
+
+
+/* ── Resident icon color ────────────────────────────── */
+.resident-mode svg { color: var(--lime); }
+/* ── Resident mode palette (also applied to web shell) ── */
+.resident-mode,
+.web-shell {
+  --bg-page:      var(--res-bg2);
+  --bg-card:      var(--res-bg2);
+  --bg-card-alt:  var(--res-bg2);
+  --bg-header:    var(--res-bg1);
+  --bg-nav:       var(--res-bg1);
+  --lime:         var(--res-accent);
+  --text:         var(--res-text);
+  --text-dark:    var(--res-bg1);
+  --text-muted:   color-mix(in srgb, var(--text) 70%, transparent);
+  --border:       rgba(255,255,255,0.10);
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: #1a1a1a;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  overflow: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; }
+p { margin: 0; }
+
+/* filter icon color — text color normally, bg1 when active (lime bg) */
+.filter-svg-icon { display: flex; align-items: center; justify-content: center; }
+.filter-svg-icon svg { color: var(--text); width: 18px; height: 18px; }
+.engage-filter-btn--active .filter-svg-icon svg { color: var(--text-dark); }
+
+/* ── Standalone flow (no header/nav) ───────────────── */
+.standalone-view {
+  position: fixed;
+  inset: 0;
+  background: var(--res-bg2);
+  overflow: hidden;
+}
+
+.standalone-view .screen {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+/* ── Phone Frame (desktop wrapper) ─────────────────── */
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+.phone-frame {
+  position: relative;
+  width: min(100vw, var(--phone-w));
+  height: min(100dvh, var(--phone-h));
+  background: var(--bg-page);
+  overflow: hidden;
+  /* On desktop show as phone emulator */
+  border-radius: 44px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+
+/* ── Mobile: full screen, no frame ─────────────────── */
+@media (max-width: 500px) {
+  .phone-frame {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* ── Screen layout ──────────────────────────────────── */
+.screen {
+  position: absolute;
+  inset: 0;
+  padding-top: var(--header-h);
+  padding-bottom: var(--nav-h);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.screen::-webkit-scrollbar { display: none; }
+
+.screen-inner {
+  padding: 16px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ── Section label ──────────────────────────────────── */
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+/* ── Card ───────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+/* ── Divider ────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── CTA Button (LET'S DO THIS) ─────────────────────── */
+.cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px;
+  border: 1.5px solid var(--lime);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--lime);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background 0.15s;
+}
+.cta-btn:active { background: rgba(178,222,97,0.1); }
+
+/* ── Scroll row ─────────────────────────────────────── */
+.scroll-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-row::-webkit-scrollbar { display: none; }
+
+/* ── Nav 2.0: pill-shaped buttons across all screens ─── */
+.nav-v2 .cta-btn,
+.nav-v2 .more-logout,
+.nav-v2 .acct-card__cta,
+.nav-v2 .amenity-time-pill,
+.nav-v2 .amenity-no-times,
+.nav-v2 .amenity-confirm__cancel-btn,
+.nav-v2 .amenity-confirm__share-btn,
+.nav-v2 .amenity-confirm__calendar-btn,
+.nav-v2 .ptheme-sheet__apply,
+.nav-v2 .acc-btn,
+.nav-v2 .fh-pay-btn,
+.nav-v2 .fh-cta,
+.nav-v2 .atp-sheet__confirm,
+.nav-v2 .cpn-submit,
+.nav-v2 .myu-submit,
+.nav-v2 .rp-modal__submit,
+.nav-v2 .rdl-export-btn,
+.nav-v2 .ml-export-btn,
+.nav-v2 .ballot-submit,
+.nav-v2 .survey-submit,
+.nav-v2 .consent-submit,
+.nav-v2 .rating-submit,
+.nav-v2 .res-fee-screen__download-btn {
+  border-radius: 999px !important;
+}

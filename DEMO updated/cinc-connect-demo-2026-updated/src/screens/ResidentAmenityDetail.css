@@ -1,0 +1,1867 @@
+@keyframes amenity-backdrop-in {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.62); }
+}
+
+@keyframes amenity-sheet-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* Pull-up modal overlay */
+.amenity-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: amenity-backdrop-in 0.3s ease forwards;
+}
+
+.amenity-detail-sheet {
+  width: 100%;
+  max-height: 90%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 48px rgba(0, 0, 0, 0.55);
+  animation: amenity-sheet-up 0.38s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.amenity-detail-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-detail-sheet__handle {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--res-bg1);
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 6px;
+}
+
+.amenity-detail-sheet__handle::after {
+  content: '';
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 248, 234, 0.25);
+}
+
+/* Detail content */
+.resident-amenity-detail {
+  background: var(--res-bg1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.amenity-view-slider {
+  display: flex;
+  flex-direction: row;
+  width: 200%;
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.amenity-view-slider--hours {
+  transform: translateX(-50%);
+}
+
+.amenity-view-main,
+.amenity-view-hours {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+/* Hero */
+.amenity-detail__hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 420 / 236;
+  flex-shrink: 0;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.amenity-detail__handle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: transparent;
+  padding: 12px 0 6px;
+}
+
+.amenity-detail__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.amenity-detail__hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,0.65) 100%);
+}
+
+.amenity-detail__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amenity-detail__hero-name {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--res-text);
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+.amenity-detail__bookmark {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 3;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amenity-detail__hero-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+/* Panel */
+.amenity-detail__panel {
+  background: var(--res-bg2);
+  border-radius: 20px 20px 0 0;
+  margin-top: -18px;
+  padding: 34px 20px 40px;
+  flex: 1;
+}
+
+/* Stats */
+.amenity-detail__stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.amenity-stat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--res-text);
+  flex: 1;
+  min-width: 0;
+}
+
+.amenity-stat:nth-child(2),
+.amenity-stat:nth-child(3) {
+  justify-content: center;
+}
+
+.amenity-stat:nth-child(4) {
+  justify-content: flex-end;
+}
+
+.amenity-stat__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+}
+
+.amenity-stat span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Description */
+.amenity-detail__desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  line-height: 1.55;
+  margin: 0 0 20px;
+}
+
+.amenity-detail__see-more {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lime);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Section labels */
+.amenity-detail__section-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+/* Date field */
+.amenity-detail__date-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--res-bg1);
+  border-radius: 10px;
+  padding: 0 16px;
+  min-height: 48px;
+  margin-bottom: 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: left;
+}
+
+.amenity-detail__date-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 0;
+}
+
+.amenity-detail__date-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.5);
+  letter-spacing: 1.26px;
+}
+
+.amenity-detail__date-input--filled {
+  color: var(--res-text);
+  letter-spacing: 0.5px;
+}
+
+.amenity-detail__date-written {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.4);
+  letter-spacing: 0.2px;
+}
+
+/* Time pills */
+.amenity-detail__times {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0 -20px 16px;
+  padding: 0 20px 2px 20px;
+}
+
+.amenity-detail__times::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-time-pill {
+  flex-shrink: 0;
+  height: 31px;
+  min-width: 70px;
+  padding: 0 8px;
+  border-radius: 5px;
+  border: none;
+  background: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--res-bg2);
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.amenity-time-pill--active {
+  background: var(--lime);
+  color: var(--res-bg2);
+}
+
+/* Guest count */
+.amenity-detail__guests {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0 -20px 20px;
+  padding: 0 20px 2px 20px;
+}
+
+.amenity-detail__guests::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-guest-btn {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--res-text);
+  text-transform: uppercase;
+  letter-spacing: 0.42px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.amenity-guest-btn--active {
+  background: var(--lime);
+  color: var(--res-bg2);
+}
+
+/* ── Disclosure Agreement Modal ───────────────────────── */
+/* ── Disclosure Agreement ─────────────────────────────── */
+.amenity-disclosure-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.61);
+  backdrop-filter: blur(2px);
+}
+
+.amenity-disclosure-modal {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  transform: translateY(-50%);
+  height: 75%;
+  background: var(--res-bg2);
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.amenity-disclosure-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+.amenity-disclosure-modal__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.36px;
+  text-transform: uppercase;
+  padding: 18px 20px 10px;
+  flex-shrink: 0;
+}
+
+.amenity-disclosure-modal__sep {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.12);
+  flex-shrink: 0;
+  margin: 0 0px;
+}
+
+.amenity-disclosure-modal__body-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.amenity-disclosure-modal__body {
+  height: 100%;
+  overflow-y: auto;
+  padding: 16px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.amenity-disclosure-modal__body::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-disclosure-modal__body-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, var(--res-bg2));
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.amenity-disclosure-modal__para {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--res-text);
+  line-height: 15px;
+}
+
+.amenity-disclosure-modal__rules-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--res-text);
+  line-height: 15px;
+  margin-top: 4px;
+}
+
+.amenity-disclosure-modal__rules-list {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.amenity-disclosure-modal__rule {
+  font-size: 12px;
+  color: var(--res-text);
+  line-height: 15px;
+}
+
+.amenity-disclosure-modal__footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px 20px;
+}
+
+.amenity-disclosure-modal__pdf-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--res-text);
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+}
+
+.amenity-disclosure-modal__checkbox-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.amenity-disclosure-modal__checkbox {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: var(--res-accent);
+  cursor: pointer;
+  border: 1px solid var(--res-accent);
+  border-radius: 3px;
+}
+
+.amenity-disclosure-modal__checkbox-label {
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 18px;
+}
+
+.amenity-disclosure-modal__cta {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: rgba(255, 248, 234, 0.1);
+  color: rgba(255, 248, 234, 0.25);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.18s, color 0.18s;
+}
+
+.amenity-disclosure-modal__cta--active {
+  background: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+/* Additional Details */
+.amenity-detail__required {
+  color: var(--res-accent);
+  font-size: 11px;
+}
+
+.amenity-detail__details-hint {
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+
+.amenity-detail__details-input {
+  width: 100%;
+  background: var(--res-bg1);
+  border: 1px solid rgba(255, 248, 234, 0.12);
+  border-radius: 10px;
+  color: var(--res-text);
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 14px 16px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.amenity-detail__details-input::placeholder {
+  color: rgba(255, 248, 234, 0.3);
+}
+
+.amenity-detail__details-input:focus {
+  border-color: rgba(178, 222, 97, 0.5);
+}
+
+/* Continue */
+.amenity-detail__continue {
+  width: 100%;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+  background: var(--lime);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--res-bg1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  margin-bottom: 20px;
+  transition: opacity 0.15s;
+}
+
+.amenity-detail__continue:active {
+  opacity: 0.85;
+}
+
+.amenity-detail__continue--disabled {
+  background: rgba(255, 248, 234, 0.1);
+  color: rgba(255, 248, 234, 0.25);
+  cursor: default;
+}
+
+.amenity-detail__continue--disabled:active {
+  opacity: 1;
+}
+
+/* Info card */
+.amenity-detail__info-card {
+  background: var(--res-bg1);
+  border-radius: 10px;
+  padding: 0 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 200px;
+}
+
+.amenity-detail__info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.amenity-detail__info-row svg {
+  flex-shrink: 0;
+  filter: none;
+}
+
+.amenity-detail__info-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(97%) sepia(8%) saturate(500%) hue-rotate(300deg) brightness(103%) contrast(95%);
+}
+
+.amenity-detail__info-row span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--res-text);
+  line-height: 1.4;
+}
+
+.amenity-detail__info-divider {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.12);
+  margin: 0;
+}
+
+.amenity-detail__rules-link {
+  color: var(--res-text);
+  text-decoration: none;
+}
+
+.amenity-detail__info-row--tappable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.amenity-detail__info-row--tappable:active {
+  opacity: 0.6;
+}
+
+/* Hours of Operation panel — slides in from left */
+@keyframes hours-panel-in {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+.amenity-hours-panel {
+  background: var(--res-bg1);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.amenity-hours-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+}
+
+.amenity-hours-panel__back {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amenity-hours-panel__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--res-text);
+  letter-spacing: 0.2px;
+}
+
+.amenity-hours-panel__close {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+.amenity-hours-panel__name {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 16px 20px 8px;
+}
+
+.amenity-hours-panel__list {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 20px 40px;
+}
+
+.amenity-hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+}
+
+.amenity-hours-row__blocks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.amenity-hours-row:last-child {
+  border-bottom: none;
+}
+
+.amenity-hours-row__day {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.7);
+}
+
+.amenity-hours-row__time {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+
+.amenity-hours-row--today .amenity-hours-row__day,
+.amenity-hours-row--today .amenity-hours-row__time {
+  color: var(--lime);
+}
+
+/* PDF webview panel — slides up from bottom */
+@keyframes pdf-panel-in {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.amenity-pdf-panel {
+  position: absolute;
+  inset: 0;
+  background: #2a2a2a;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  animation: pdf-panel-in 0.38s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.amenity-pdf-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 54px 20px 16px;
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.amenity-pdf-panel__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.2px;
+  flex: 1;
+  margin-right: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amenity-pdf-panel__close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.amenity-pdf-panel__doc {
+  flex: 1;
+  overflow-y: auto;
+  background: #e8e8e8;
+  padding: 20px 16px 40px;
+}
+
+.amenity-pdf-doc__page {
+  background: #fff;
+  border-radius: 4px;
+  padding: 32px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  min-height: 100%;
+}
+
+.amenity-pdf-doc__heading {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.amenity-pdf-doc__subheading {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin: 0 0 20px;
+}
+
+.amenity-pdf-doc__divider {
+  height: 1px;
+  background: #ddd;
+  margin-bottom: 20px;
+}
+
+.amenity-pdf-doc__body {
+  font-size: 13px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+/* Court picker carousel */
+.amenity-court-carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0 -20px 20px;
+  padding: 0 20px 8px;
+}
+
+.amenity-court-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-court-card {
+  flex-shrink: 0;
+  width: 220px;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  background: #0d1f14;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 0.2s, opacity 0.2s, outline-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  outline: 2.5px solid transparent;
+  outline-offset: -1px;
+}
+
+.amenity-court-card__img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.amenity-court-card__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 55%);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.amenity-court-card__name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--res-text);
+  letter-spacing: 0.2px;
+  pointer-events: none;
+}
+
+/* Dim non-selected cards when one is selected */
+.amenity-court-carousel--has-selection .amenity-court-card:not(.amenity-court-card--active) {
+  opacity: 0.4;
+}
+
+.amenity-court-card--active {
+  outline-color: var(--res-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.amenity-no-times {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 31px;
+  padding: 0 12px;
+  border-radius: 5px;
+  background: #FF5550;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #1d1d1d;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+}
+
+/* Calendar portal — overlays the sheet like the PDF panel */
+@keyframes amenity-cal-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.amenity-cal-portal {
+  position: absolute;
+  inset: 0;
+  background: var(--res-bg1);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: amenity-cal-in 0.32s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.amenity-cal-portal__header {
+  flex-shrink: 0;
+  background: var(--res-bg1);
+}
+
+.amenity-cal-portal__body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 16px 20px 40px;
+}
+
+.amenity-cal-portal__body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Calendar picker — scrollable month list */
+.amenity-cal-picker {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.amenity-cal-month-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.amenity-cal-month-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--res-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.amenity-cal-dow-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.amenity-cal-dow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 248, 234, 0.4);
+  padding: 4px 0;
+}
+
+.amenity-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px 0;
+}
+
+.amenity-cal-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.amenity-cal-cell--empty {
+  pointer-events: none;
+}
+
+.amenity-cal-cell--past {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.amenity-cal-cell__num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+}
+
+.amenity-cal-cell--today .amenity-cal-cell__num {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+.amenity-cal-cell--selected {
+  background: var(--lime);
+}
+
+.amenity-cal-cell--selected .amenity-cal-cell__num {
+  color: var(--res-bg1);
+  font-weight: 800;
+}
+
+/* Year grid */
+.amenity-cal-year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.amenity-cal-year-cell {
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--res-bg2);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--res-text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amenity-cal-year-cell--past {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ── Payment portal ─────────────────────────────────────────── */
+.amenity-pay-portal {
+  position: absolute;
+  inset: 0;
+  background: var(--res-bg1);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: amenity-cal-in 0.32s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.amenity-pay-portal__header {
+  flex-shrink: 0;
+  background: var(--res-bg1);
+}
+
+.amenity-pay-timer {
+  position: sticky;
+  top: -20px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  margin: -20px -20px 16px;
+  background: rgba(22,30,10,0.95);
+  border-bottom: 1px solid rgba(178,222,97,0.2);
+  color: var(--lime);
+  font-size: 12px;
+  line-height: 1.4;
+  backdrop-filter: blur(8px);
+}
+
+
+.amenity-pay-timer strong {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.amenity-pay-portal__body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 20px 20px 48px;
+}
+
+.amenity-pay-portal__body::-webkit-scrollbar { display: none; }
+
+/* Section label spacing inside payment portal */
+.amenity-pay__section-label {
+  margin-top: 20px !important;
+}
+
+/* Summary card */
+.amenity-pay-summary-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--res-bg2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.amenity-pay-summary-card__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+  margin-top: 1px;
+}
+
+.amenity-pay-summary-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.amenity-pay-summary-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--res-text);
+  margin-bottom: 2px;
+}
+
+.amenity-pay-summary-card__court {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lime);
+}
+
+.amenity-pay-summary-card__date {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.6);
+}
+
+.amenity-pay-summary-card__guests {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+  margin-top: 2px;
+}
+
+/* Fee breakdown */
+.amenity-pay-breakdown {
+  background: var(--res-bg2);
+  border-radius: 12px;
+  padding: 4px 16px;
+}
+
+.amenity-pay-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.amenity-pay-row__label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.7);
+}
+
+.amenity-pay-row__value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+
+.amenity-pay-row__value--dim {
+  color: rgba(255, 248, 234, 0.35);
+}
+
+.amenity-pay-row--total .amenity-pay-row__label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--res-text);
+}
+
+.amenity-pay-row--total .amenity-pay-row__value {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--lime);
+}
+
+.amenity-pay-divider {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.08);
+}
+
+.amenity-pay-divider--strong {
+  background: rgba(255, 248, 234, 0.15);
+  margin: 4px 0;
+}
+
+/* Security deposit */
+.amenity-pay-deposit-card {
+  background: var(--res-bg2);
+  border-radius: 12px;
+  padding: 4px 16px 16px;
+}
+
+.amenity-pay-deposit-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 12px;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  margin-bottom: 12px;
+}
+
+.amenity-pay-deposit-card__label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.7);
+}
+
+.amenity-pay-deposit-card__amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+
+.amenity-pay-deposit-card__note {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Payment method — pre-selected row + switcher */
+.amenity-pay-selected-method {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.amenity-pay-selected-method:active { opacity: 0.8; }
+
+.amenity-pay-selected-method__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.amenity-pay-selected-method__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.amenity-pay-selected-method__name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+
+.amenity-pay-selected-method__sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+}
+
+/* Picker dropdown — alternatives */
+.amenity-pay-method-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.amenity-pay-method-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(35, 82, 55, 0.7);
+  border: 1px solid rgba(255, 248, 234, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.amenity-pay-method-option:active { opacity: 0.7; }
+
+.amenity-pay-method-option__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.amenity-pay-method-option__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.amenity-pay-method-option__name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.7);
+}
+
+.amenity-pay-method-option__sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.35);
+}
+
+.amenity-pay-method__apple-pay {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.65);
+  letter-spacing: -0.2px;
+  flex-shrink: 0;
+}
+
+/* CTA */
+.amenity-pay-cta {
+  display: block;
+  width: 100%;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 248, 234, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: rgba(255, 248, 234, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: default;
+  margin-top: 28px;
+  transition: background 0.22s, color 0.22s;
+}
+
+.amenity-pay-cta--active {
+  background: var(--lime);
+  color: var(--res-bg1);
+  cursor: pointer;
+}
+
+.amenity-pay-cta--active:active { opacity: 0.85; }
+
+/* ── Confirmation ────────────────────────────────────────────── */
+.amenity-confirm {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--res-bg2);
+  scrollbar-width: none;
+}
+
+.amenity-confirm::-webkit-scrollbar { display: none; }
+
+.amenity-confirm__photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  height: 210px;
+  overflow: visible;
+}
+
+.amenity-confirm__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.amenity-confirm__photo-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+.amenity-confirm__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.amenity-confirm__icon-ring {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--res-bg1);
+  border: 5px solid var(--res-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.amenity-confirm__icon-ring--cancelled {
+  border-color: #FF6B62;
+}
+
+.amenity-confirm__icon {
+  width: 72px;
+  height: 72px;
+  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+}
+
+.amenity-confirm__body {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px 48px;
+  margin-top: -55px;
+}
+
+.amenity-confirm__main-card {
+  position: relative;
+  background: var(--res-bg1);
+  border-radius: 12px;
+  padding: 82px 20px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.amenity-confirm__share-icon-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amenity-confirm__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--res-accent);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.amenity-confirm__title--cancelled {
+  color: #FF6B62;
+}
+
+.amenity-confirm__sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.amenity-confirm__sep {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.12);
+  margin: 0 0 16px;
+}
+
+.amenity-confirm__amenity-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-text);
+  margin: 0 0 4px;
+}
+
+.amenity-confirm__detail--court {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lime);
+  margin: 0 0 2px;
+}
+
+.amenity-confirm__datetime {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.65);
+  line-height: 1.5;
+  margin: 0 0 2px;
+}
+
+.amenity-confirm__guests {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.65);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.amenity-confirm__row-card {
+  width: 100%;
+  background: var(--res-bg1);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.amenity-confirm__row-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.amenity-confirm__row-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--res-text);
+  text-align: left;
+}
+
+.amenity-confirm__row-chevron {
+  flex-shrink: 0;
+}
+
+.amenity-confirm__contact-card {
+  width: 100%;
+  background: var(--res-bg1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.amenity-confirm__contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+}
+
+.amenity-confirm__contact-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  opacity: 0.85;
+}
+
+.amenity-confirm__contact-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--res-text);
+  line-height: 1.45;
+}
+
+.amenity-confirm__divider {
+  height: 1px;
+  background: rgba(255, 248, 234, 0.08);
+  margin: 0 20px;
+}
+
+.amenity-confirm__share-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 10px;
+  border: none;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.amenity-confirm__share-btn:active { opacity: 0.85; }
+
+.amenity-confirm__calendar-btn {
+  margin-top: 12px;
+  width: 100%;
+  height: 52px;
+  border-radius: 10px;
+  background: none;
+  border: 1px solid rgba(255, 248, 234, 0.45);
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.amenity-confirm__calendar-btn:active { opacity: 0.75; }
+
+
+/* ── Payment Method Selector portal ─────────────────────────── */
+.amenity-method-sel {
+  position: absolute;
+  inset: 0;
+  background: var(--res-bg1);
+  z-index: 160;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: amenity-cal-in 0.32s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+.amenity-method-sel__header {
+  flex-shrink: 0;
+  background: var(--res-bg1);
+}
+
+.amenity-method-sel__body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 20px 20px 48px;
+}
+
+.amenity-method-sel__body::-webkit-scrollbar { display: none; }
+
+.amenity-method-sel__list {
+  background: var(--res-bg2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.amenity-method-sel__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.amenity-method-sel__row:last-child { border-bottom: none; }
+.amenity-method-sel__row:active { opacity: 0.7; }
+
+.amenity-method-sel__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  width: 28px;
+  justify-content: center;
+}
+
+.amenity-method-sel__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.amenity-method-sel__label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+}
+
+.amenity-method-sel__sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--lime);
+}
+
+.amenity-method-sel__radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 248, 234, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.amenity-method-sel__radio--active {
+  border-color: var(--lime);
+}
+
+.amenity-method-sel__radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+.amenity-method-sel__brand-img {
+  width: 22px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0.5;
+}
+
+.amenity-method-sel__brand-img--bank {
+  width: 20px;
+  filter: brightness(0) saturate(100%) invert(97%) sepia(8%) saturate(500%) hue-rotate(300deg) brightness(103%) contrast(95%);
+  opacity: 0.5;
+}
+
+.amenity-method-sel__brand-img--apple {
+  width: 34px;
+  filter: brightness(0) invert(1);
+  opacity: 0.5;
+}
+
+/* ── Booking Fee / Security Deposit slide-in screens ─── */
+.res-fee-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  border-radius: 0;
+  overflow: hidden;
+  animation: res-fee-screen-in 0.28s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+@keyframes res-fee-screen-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.res-fee-screen__back {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  color: #fff8ea;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.res-fee-screen__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 8px;
+}
+.res-fee-screen__row-label { font-size: 15px; font-weight: 500; color: var(--text); }
+.res-fee-screen__row-sub { font-size: 10px; font-weight: 300; color: var(--text-muted); margin-top: 2px; }
+.res-fee-screen__row-value { font-size: 15px; font-weight: 500; color: var(--text); white-space: nowrap; }
+.res-fee-screen__divider { height: 1px; background: rgba(255,255,255,0.1); }
+.res-fee-screen__divider--strong { background: rgba(255,255,255,0.18); }
+.res-fee-screen__total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0 4px;
+  gap: 8px;
+}
+.res-fee-screen__total-label { font-size: 14px; font-weight: 400; color: var(--text); }
+.res-fee-screen__total-value { font-size: 30px; font-weight: 700; color: var(--lime); line-height: 1; }
+.res-fee-screen__download-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--lime);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+.res-fee-screen__deposit-note {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+  width: 100%;
+  margin-top: 8px;
+}

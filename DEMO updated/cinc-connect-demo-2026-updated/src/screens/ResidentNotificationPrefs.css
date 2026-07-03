@@ -1,0 +1,340 @@
+/* ── Screen ───────────────────────────────────────────── */
+.np-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.np-content {
+  padding: 16px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Section title ────────────────────────────────────── */
+.np-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-accent);
+  margin: 8px 0 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.np-section-title:first-child {
+  margin-top: 0;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.np-card {
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ── Row ──────────────────────────────────────────────── */
+.np-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  height: 60px;
+}
+
+.np-row__icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--res-text);
+}
+
+.np-row__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Toggle ───────────────────────────────────────────── */
+.np-toggle {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.np-toggle--on {
+  background: var(--res-accent);
+}
+
+.np-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+
+.np-toggle--on .np-toggle__thumb {
+  transform: translateX(18px);
+}
+
+/* ── Label wrap ───────────────────────────────────────── */
+.np-row__label-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* ── All-caps section label (matches amenity-detail style) */
+.np-caps-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Email section block ──────────────────────────────── */
+.np-email-section {
+  padding: 0 16px 14px;
+}
+
+.np-email-section--secondary {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.np-email-address {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Secondary email row (address + toggle + remove) ──── */
+.np-secondary-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.np-secondary-row .np-email-address {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Remove secondary button ──────────────────────────── */
+.np-remove-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.4);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ── Add secondary email trigger ─────────────────────── */
+.np-add-secondary-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+  height: 44px;
+  cursor: pointer;
+  color: var(--res-accent);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
+
+.np-add-secondary-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Add secondary email input row ───────────────────── */
+.np-add-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.np-email-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(178, 222, 97, 0.4);
+  border-radius: 8px;
+  color: var(--res-text);
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 10px;
+  outline: none;
+  min-width: 0;
+}
+
+.np-email-input::placeholder {
+  color: rgba(255, 248, 234, 0.35);
+}
+
+.np-add-confirm {
+  background: var(--res-accent);
+  border: none;
+  border-radius: 6px;
+  color: var(--res-bg1);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  padding: 6px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.np-add-cancel {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.4);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ── Unit rows (mailing address list) ────────────────── */
+.np-unit-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.np-unit-row--bordered {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.np-unit-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.np-unit-address {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-unit-account {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.5);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Delivery Method picker ───────────────────────────── */
+.np-delivery-picker {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.np-delivery-opt {
+  flex: 1;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(178, 222, 97, 0.3);
+  background: transparent;
+  color: rgba(255, 248, 234, 0.5);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.np-delivery-opt--active {
+  background: var(--res-accent);
+  border-color: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+/* ── Edit address button ──────────────────────────────── */
+.np-edit-btn {
+  background: none;
+  border: 1px solid rgba(178, 222, 97, 0.35);
+  border-radius: 6px;
+  color: var(--res-accent);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  padding: 4px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── SMS disclaimer ───────────────────────────────────── */
+.np-disclaimer {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--res-text);
+  line-height: 1.5;
+  padding: 0 16px 10px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.np-disclaimer-links {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--res-text);
+  padding: 0 16px 14px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.np-link {
+  color: var(--res-accent);
+  text-decoration: underline;
+}

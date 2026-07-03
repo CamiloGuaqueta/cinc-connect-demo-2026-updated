@@ -1,0 +1,788 @@
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useMode } from '../ModeContext'
+import CephAIChat from './CephAIChat'
+import MembershipOptInModal from './MembershipOptInModal'
+import profileImg from '../images/profile.jpg'
+import { PROTOTYPE_VERSION } from '../theme'
+import './WebShell.css'
+import myPropertyIconRaw from '../ICONS/my-property.svg?raw'
+import boardRoomIconRaw from '../ICONS/board-room.svg?raw'
+
+/* ── Tab config ──────────────────────────────────────── */
+const BASE_RESIDENT_TABS = [
+  { id: 'Feed',          label: 'Community Feed', Icon: FeedIcon },
+  { id: 'My Community',  label: 'My Community',   Icon: CommunityIcon },
+  { id: 'Financial Hub', label: 'Financial Hub',  Icon: FinancialIcon },
+  { id: 'My Properties', label: 'My Properties',  Icon: PropertyIcon },
+]
+
+const BOARD_ROOM_TAB = { id: 'Board Room', label: 'Board Room', Icon: BoardRoomIcon }
+
+const BOARD_TABS = [
+  { id: '/',       label: 'Board Feed',   Icon: FeedIcon },
+  { id: '/pulse',  label: 'Pulse',        Icon: PulseIcon },
+  { id: '/tasks',  label: 'Action Items', Icon: TasksIcon },
+  { id: '/more',   label: 'More',         Icon: MoreDotsIcon },
+]
+
+/* ── Left nav sections ───────────────────────────────── */
+const LEFT_NAV = {
+  'Feed': [],
+  'My Community': [
+    {
+      label: 'Amenities & Common Areas',
+      view: 'amenities',
+      Icon: AmenitiesIcon,
+      sub: [
+        { label: 'Reserve',         view: 'amenities', data: { tab: 'reserve' } },
+        { label: 'My Reservations', view: 'amenities', data: { tab: 'my-reservations' } },
+      ],
+    },
+    { label: 'Community Calendar',    view: 'calendar',     Icon: CalendarIcon },
+    { label: 'Community Marketplace', view: null,           Icon: MarketplaceIcon },
+    { label: 'Home Value Insights',   view: 'market-index', Icon: HVIIcon },
+  ],
+  'Financial Hub': [],
+  'My Properties': [
+    { label: 'Work Orders',            view: null, Icon: WorkOrderIcon },
+    { label: 'Architectural Requests', view: null, Icon: ArchIcon },
+    { label: 'Violations',             view: null, Icon: ViolationIcon },
+  ],
+}
+
+/* ── Right panel sections ─────────────────────────────── */
+const RIGHT_COMMUNITY = [
+  { label: 'Ask CephAi',         action: 'chat',   Icon: CephAIIcon },
+  { label: 'Documents',          view: null,       Icon: DocumentIcon },
+  { label: 'Groups',             view: null,       Icon: GroupIcon },
+  { label: 'Parking & Vehicles', view: null,       Icon: ParkingIcon },
+  { label: 'Animals',            view: 'animals',  Icon: AnimalIcon },
+  { label: 'FAQs',               view: null,       Icon: FaqIcon },
+]
+const RIGHT_PARTICIPATION = [
+  { label: 'Ballots & Votes',        view: 'ballot-votes',        Icon: BallotIcon },
+  { label: 'Signatures & Consents',  view: 'signatures-consents', Icon: SignatureIcon },
+  { label: 'Surveys',                view: 'surveys',             Icon: SurveyIcon },
+  { label: 'Ratings',                view: 'ratings',             Icon: RatingIcon },
+]
+const RIGHT_ACCOUNT = [
+  { label: 'My Profile',                view: 'my-profile',        Icon: ProfileIcon },
+  { label: 'My Units',                  view: 'my-units',           Icon: UnitIcon },
+  { label: 'My Billing Information',    view: 'my-billing',         Icon: BillingIcon },
+  { label: 'Password',                  view: null,                 Icon: LockIcon },
+  { label: 'Membership List Opt-In/Out', view: 'membership-opt-in', Icon: ListSmallIcon },
+  { label: 'Notification Preferences', view: 'notification-prefs', Icon: BellSmallIcon },
+  { label: 'Privacy',                   view: null,                 Icon: EyeIcon },
+  { label: 'Languages',                 view: null,                 Icon: GlobeIcon },
+]
+
+/* ── Main Shell ──────────────────────────────────────── */
+export default function WebShell({ children, showMembershipOptIn, onMembershipContinue }) {
+  return (
+    <div className="web-shell">
+      <WebTopNav />
+      <div className="web-body">
+        <WebLeftNav />
+        <main className="web-main">
+          {children}
+        </main>
+        <WebRightPanel />
+      </div>
+      <CephAIChat />
+      {showMembershipOptIn && (
+        <MembershipOptInModal onContinue={onMembershipContinue} />
+      )}
+    </div>
+  )
+}
+
+/* ── Top Nav ──────────────────────────────────────────── */
+function WebTopNav() {
+  const { isBoard, setIsBoard, residentTab, navigateResident, showBoardRoom } = useMode()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const residentTabs = showBoardRoom
+    ? [BASE_RESIDENT_TABS[0], BOARD_ROOM_TAB, ...BASE_RESIDENT_TABS.slice(1)]
+    : BASE_RESIDENT_TABS
+  const tabs = isBoard ? BOARD_TABS : residentTabs
+
+  function handleTabClick(tab) {
+    if (isBoard) {
+      navigate(tab.id)
+    } else {
+      // Default My Community to Amenities / Reserve tab
+      if (tab.id === 'My Community') {
+        navigateResident('My Community', 'amenities', { tab: 'reserve' })
+      } else {
+        navigateResident(tab.id)
+      }
+    }
+  }
+
+  function handleModeToggle() {
+    if (isBoard) navigate('/')
+    setIsBoard(b => !b)
+  }
+
+  return (
+    <nav className="web-top-nav">
+      {/* Left: logo + name */}
+      <div className="web-top-nav__left">
+        <img
+          className="web-top-nav__logo"
+          src="/images/cinc-icon.png"
+          alt="CINC"
+          onError={e => { e.target.style.display = 'none' }}
+        />
+        <span className="web-top-nav__hoa">Cardinal Hills HOA</span>
+      </div>
+
+      {/* Center tabs */}
+      <div className="web-top-nav__tabs">
+        {tabs.map(tab => {
+          const isActive = isBoard
+            ? pathname === tab.id || (tab.id === '/' && pathname === '/')
+            : residentTab === tab.id
+          return (
+            <button
+              key={tab.id}
+              className={`web-tab${isActive ? ' web-tab--active' : ''}`}
+              onClick={() => handleTabClick(tab)}
+            >
+              <span className="web-tab__icon"><tab.Icon /></span>
+              <span className="web-tab__label">{tab.label}</span>
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Right: mode toggle + bell + avatar */}
+      <div className="web-top-nav__right">
+        <button
+          className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`}
+          onClick={handleModeToggle}
+          aria-label="Switch mode"
+        >
+          <div className="mode-toggle__thumb" />
+          <div className="mode-toggle__icon">
+            {isBoard ? <BoardIcon /> : <ResidentIcon />}
+          </div>
+        </button>
+
+        <button className="web-notif-btn" aria-label="Notifications">
+          <BellIcon />
+          <span className="web-notif-btn__badge">5</span>
+        </button>
+
+        <img className="web-avatar-initials" src={profileImg} alt="Profile" />
+      </div>
+    </nav>
+  )
+}
+
+/* ── Left Nav ─────────────────────────────────────────── */
+function WebLeftNav() {
+  const { isBoard, residentTab, residentViewStack, navigateResident } = useMode()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+
+  if (isBoard) {
+    return (
+      <aside className="web-left-nav">
+        {BOARD_TABS.map(tab => (
+          <button
+            key={tab.id}
+            className={`web-left-item${pathname === tab.id ? ' web-left-item--active' : ''}`}
+            onClick={() => navigate(tab.id)}
+          >
+            <span className="web-left-item__icon"><tab.Icon /></span>
+            {tab.label}
+          </button>
+        ))}
+      </aside>
+    )
+  }
+
+  const items = LEFT_NAV[residentTab] || []
+  if (!items.length) return <aside className="web-left-nav" />
+
+  const currentView = residentViewStack[0]?.screen ?? null
+  const currentData = residentViewStack[0]?.data ?? null
+
+  return (
+    <aside className="web-left-nav">
+      {items.map(item => {
+        const viewMatch = item.view != null && currentView === item.view
+        const hasSub = item.sub?.length > 0
+        // Parent is active only when no sub-item is taking the active state
+        const anySubActive = hasSub && item.sub.some(sub =>
+          sub.view === currentView &&
+          (!sub.data?.tab || sub.data?.tab === currentData?.tab)
+        )
+        const isActive = viewMatch && !anySubActive
+
+        return (
+          <div key={item.label}>
+            <button
+              className={`web-left-item${isActive ? ' web-left-item--active' : ''}`}
+              onClick={() => item.view
+                ? navigateResident(residentTab, item.view, item.sub?.[0]?.data ?? null)
+                : navigateResident(residentTab)
+              }
+            >
+              <span className="web-left-item__icon"><item.Icon /></span>
+              {item.label}
+            </button>
+
+            {viewMatch && hasSub && (
+              <div className="web-left-sub-group">
+                {item.sub.map(sub => {
+                  const subActive = sub.view === currentView &&
+                    (!sub.data?.tab || sub.data?.tab === currentData?.tab)
+                  return (
+                    <button
+                      key={sub.label}
+                      className={`web-left-sub__item${subActive ? ' web-left-sub__item--active' : ''}`}
+                      onClick={() => navigateResident(residentTab, sub.view, sub.data)}
+                    >
+                      {sub.label}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </aside>
+  )
+}
+
+/* ── Right Panel ──────────────────────────────────────── */
+function WebRightPanel() {
+  const { navigateResident, setChatOpen, isWeb, setIsWeb } = useMode()
+
+  function go(item) {
+    if (item.action === 'chat') { setChatOpen(true); return }
+    if (item.view) navigateResident('More', item.view)
+  }
+
+  function resetPrototype() {
+    localStorage.clear()
+    window.location.href = '/'
+  }
+
+  return (
+    <aside className="web-right-panel">
+      <div className="web-right-section">
+        {RIGHT_COMMUNITY.map(item => (
+          <button key={item.label} className="web-right-item" onClick={() => go(item)}>
+            <span className="web-right-item__icon"><item.Icon /></span>
+            {item.label}
+          </button>
+        ))}
+      </div>
+      <div className="web-right-divider" />
+      <div className="web-right-section">
+        {RIGHT_PARTICIPATION.map(item => (
+          <button key={item.label} className="web-right-item" onClick={() => go(item)}>
+            <span className="web-right-item__icon"><item.Icon /></span>
+            {item.label}
+          </button>
+        ))}
+      </div>
+      <div className="web-right-divider" />
+      <div className="web-right-section">
+        {RIGHT_ACCOUNT.map(item => (
+          <button key={item.label} className="web-right-item" onClick={() => go(item)}>
+            <span className="web-right-item__icon"><item.Icon /></span>
+            {item.label}
+          </button>
+        ))}
+      </div>
+      <div className="web-right-divider" />
+      {/* Prototype utilities */}
+      <div className="web-right-section">
+        <button className="web-right-item" onClick={() => {}}>
+          <span className="web-right-item__icon"><LogoutIcon /></span>
+          Log Out
+        </button>
+        <button className="web-right-item" onClick={resetPrototype}>
+          <span className="web-right-item__icon"><ResetIcon /></span>
+          Reset Prototype
+        </button>
+        <button className="web-right-item" onClick={() => navigateResident('More', 'prototype-theme')}>
+          <span className="web-right-item__icon"><ThemeIcon /></span>
+          Prototype Theme
+        </button>
+        <button className="web-right-item web-right-item--toggle-layout" onClick={() => setIsWeb(v => !v)}>
+          <span className="web-right-item__icon"><LayoutIcon /></span>
+          Switch to Mobile
+        </button>
+        <div className="web-right-version">{PROTOTYPE_VERSION}</div>
+      </div>
+    </aside>
+  )
+}
+
+/* ════════════════════════════════════════════════════════
+   ICONS
+════════════════════════════════════════════════════════ */
+
+function FeedIcon() {
+  return (
+    <svg width="18" height="24" viewBox="0 0 22 30" fill="none">
+      <path d="M6.75293 0.0131558C7.51302 0.111728 8.11648 0.723646 8.20898 1.49948V28.4985C8.1527 29.3807 7.4091 30.0502 6.54492 29.9975C5.68139 30.0493 4.93895 29.3761 4.88672 28.4985V1.49948C4.99531 0.563504 5.83593 -0.101789 6.75293 0.0131558ZM14.3623 4.92722C14.5111 3.99124 15.376 3.35052 16.293 3.50241C17.0088 3.62151 17.5718 4.19654 17.6885 4.92722V25.0708C17.6161 25.9369 16.8761 26.5856 16.0234 26.52C15.1749 26.5857 14.4349 25.9416 14.3623 25.0757V4.92722ZM9.47949 9.38523C9.70872 8.44932 10.6378 7.875 11.5547 8.10886C12.17 8.26485 12.6528 8.75717 12.8057 9.38523V20.6128C12.6971 21.442 11.9571 22.0332 11.1406 21.9428C10.3242 22.0331 9.58808 21.442 9.47949 20.6128V9.38523ZM1.66504 10.4194C2.58606 10.4194 3.33008 11.1795 3.33008 12.1196V17.8911C3.33008 18.8271 2.58594 19.5903 1.66895 19.5903L1.66113 19.5864C0.744134 19.5864 0 18.8271 0 17.8911V12.1196C0 11.1836 0.744036 10.4194 1.66504 10.4194ZM20.335 11.0971C21.2558 11.0972 21.9998 11.8565 22 12.7964V17.2094C22 18.1454 21.2559 18.9096 20.3389 18.9096L20.3311 18.9048C19.4141 18.9048 18.6699 18.1454 18.6699 17.2094V12.7964C18.6701 11.8605 19.414 11.0971 20.335 11.0971Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function CommunityIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 73.45 76.22" fill="none">
+      <path fill="currentColor" d="M70.91,43l-15.31-12.98c-2.69-2.28-6.6-2.28-9.3,0l-15.32,12.98c-1.62,1.37-2.54,3.37-2.54,5.48v18.92c0,4.86,3.95,8.81,8.81,8.81h27.38c4.86,0,8.81-3.95,8.81-8.81v-18.92c0-2.12-.93-4.11-2.54-5.48ZM46.54,70.9v-8.91h8.76v8.91h-8.76ZM68.45,67.41c0,2.1-1.71,3.81-3.81,3.81h-4.34v-11.73c0-1.38-1.12-2.5-2.5-2.5h-13.76c-1.38,0-2.5,1.12-2.5,2.5v11.73h-4.28c-2.1,0-3.81-1.71-3.81-3.81v-18.92c0-.64.28-1.25.77-1.67l15.32-12.98c.41-.35.91-.52,1.42-.52s1.01.17,1.42.52l15.31,12.98c.49.42.77,1.02.77,1.67v18.92Z"/>
+      <path fill="currentColor" d="M14.82,71.22H5V11.17c0-3.4,2.59-6.17,5.77-6.17h40.37c3.18,0,5.77,2.77,5.77,6.17v17.36c0,1.38,1.12,2.5,2.5,2.5s2.5-1.12,2.5-2.5V11.17C61.91,5.01,57.08,0,51.14,0H10.77C4.83,0,0,5.01,0,11.17v62.55c0,1.38,1.12,2.5,2.5,2.5h12.32c1.38,0,2.5-1.12,2.5-2.5s-1.12-2.5-2.5-2.5Z"/>
+      <path fill="currentColor" d="M35.79,8.75c-1.38,0-2.5,1.12-2.5,2.5v8.91c0,1.38,1.12,2.5,2.5,2.5h13.76c1.38,0,2.5-1.12,2.5-2.5v-8.91c0-1.38-1.12-2.5-2.5-2.5h-13.76ZM47.04,17.66h-8.76v-3.91h8.76v3.91Z"/>
+      <path fill="currentColor" d="M12.35,8.75c-1.38,0-2.5,1.12-2.5,2.5v8.91c0,1.38,1.12,2.5,2.5,2.5h13.76c1.38,0,2.5-1.12,2.5-2.5v-8.91c0-1.38-1.12-2.5-2.5-2.5h-13.76ZM23.61,17.66h-8.76v-3.91h8.76v3.91Z"/>
+      <path fill="currentColor" d="M28.61,31.71c0-1.38-1.12-2.5-2.5-2.5h-13.76c-1.38,0-2.5,1.12-2.5,2.5v8.91c0,1.38,1.12,2.5,2.5,2.5h13.76c1.38,0,2.5-1.12,2.5-2.5v-8.91ZM23.61,38.12h-8.76v-3.91h8.76v3.91Z"/>
+    </svg>
+  )
+}
+
+function FinancialIcon() {
+  return (
+    <svg width="24" height="20" viewBox="0 0 30 25" fill="none">
+      <path d="M15.3276 25C15.0654 25 14.8112 24.8945 14.6245 24.7039C14.4299 24.5052 14.3227 24.2295 14.3346 23.9456L14.4816 20.3244C14.4935 20.0689 14.5968 19.8296 14.7715 19.6472L24.1969 10.0243C25.5235 8.67394 27.6763 8.66988 29.0029 10.0243C29.6464 10.6812 29.9999 11.5491 29.9999 12.4777C29.9999 13.4063 29.6464 14.2741 29.0029 14.931L19.5775 24.5539C19.4027 24.7323 19.1644 24.8378 18.9182 24.85L15.3713 25C15.3713 25 15.3434 25 15.3315 25H15.3276ZM16.4516 20.7988L16.3643 22.9238L18.4455 22.8345L27.5969 13.4915C27.863 13.2198 28.0099 12.8589 28.0099 12.4736C28.0099 12.0884 27.863 11.7275 27.5969 11.4558C27.0448 10.8962 26.1511 10.8921 25.599 11.4558L16.4477 20.7988H16.4516Z" fill="currentColor"/>
+      <path d="M9.1354 25H3.94408C1.76747 25 0 23.1914 0 20.9732V4.02673C0 1.80451 1.77145 0 3.94408 0H23.6964C25.873 0 27.6405 1.80857 27.6405 4.02673V6.16381C27.6405 6.72342 27.1956 7.17759 26.6475 7.17759C26.0994 7.17759 25.6545 6.72342 25.6545 6.16381V4.02673C25.6545 2.92373 24.7768 2.02757 23.6964 2.02757H3.94408C2.86372 2.02757 1.98596 2.92373 1.98596 4.02673V20.9732C1.98596 22.0762 2.86372 22.9724 3.94408 22.9724H9.1354C9.68353 22.9724 10.1284 23.4266 10.1284 23.9862C10.1284 24.5458 9.68353 25 9.1354 25Z" fill="currentColor"/>
+      <path d="M22.1672 7.17357H16.2888C15.7407 7.17357 15.2958 6.71939 15.2958 6.15978C15.2958 5.60017 15.7407 5.146 16.2888 5.146H22.1672C22.7153 5.146 23.1601 5.60017 23.1601 6.15978C23.1601 6.71939 22.7153 7.17357 22.1672 7.17357Z" fill="currentColor"/>
+      <path d="M6.14056 14.3472C6.57747 14.3472 6.97068 14.6229 7.11764 15.0406C7.35992 15.7259 7.93185 16.1963 9.07179 16.1963C10.2117 16.1963 10.9664 15.6529 10.9664 14.5702C10.9664 13.5523 10.4143 13.017 8.6746 12.3926C6.07299 11.4883 4.98865 10.657 4.98865 8.82405C4.98865 6.99113 6.57345 5.7624 8.96454 5.7624C10.9267 5.7624 12.0428 6.35039 12.579 7.27902C12.9762 7.96839 12.4241 8.83618 11.6416 8.83618C11.2047 8.83618 10.8313 8.54828 10.6606 8.13871C10.4342 7.59532 9.92183 7.20199 8.93283 7.20199C7.75714 7.20199 7.23681 7.79401 7.23681 8.68614C7.23681 9.57827 7.82862 10.069 9.71528 10.73C12.2811 11.614 13.2423 12.6318 13.2423 14.3633C13.2423 16.3342 11.8839 17.6359 8.98044 17.6278C6.87533 17.6278 5.68775 16.9627 5.13565 15.9084C4.76627 15.2028 5.29051 14.3431 6.07695 14.3431H6.13658L6.14056 14.3472ZM8.20196 6.06247V5.40554C8.20196 4.91487 8.59119 4.51343 9.07576 4.51343C9.55636 4.51343 9.94956 4.91081 9.94956 5.40554V6.06247H8.20594H8.20196ZM8.20196 18.0414V17.2831H9.94559V18.0414C9.94559 18.5321 9.55636 18.9335 9.07179 18.9335C8.59119 18.9335 8.19798 18.5361 8.19798 18.0414H8.20196Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function BoardRoomIcon() {
+  const svg = boardRoomIconRaw
+    .replace('<svg ', '<svg fill="currentColor" ')
+  return <span style={{display:'contents'}} dangerouslySetInnerHTML={{__html: svg}} />
+}
+
+function PropertyIcon() {
+  const svg = myPropertyIconRaw
+    .replace(/fill="#FFF8EA"/g, 'fill="currentColor"')
+    .replace(/width="71"/, 'width="100%"')
+    .replace(/height="76"/, 'height="100%"')
+  return <span style={{display:'contents'}} dangerouslySetInnerHTML={{__html: svg}} />
+}
+
+function PulseIcon() {
+  return (
+    <svg width="26" height="22" viewBox="0 0 77.42 65.9" fill="none">
+      <path d="M74.42,29.95h-18.73c-1.33,0-2.51.88-2.88,2.16l-5.81,19.9L33.01,2.19c-.36-1.29-1.54-2.19-2.89-2.19h0c-1.35,0-2.53.9-2.88,2.2l-7.46,27.03H3c-1.66,0-3,1.34-3,3s1.34,3,3,3h19.06c1.35,0,2.53-.9,2.89-2.2l5.2-18.84,13.9,49.52c.36,1.29,1.53,2.18,2.87,2.19h.02c1.33,0,2.51-.88,2.88-2.16l8.12-27.79h16.48c1.66,0,3-1.34,3-3s-1.34-3-3-3Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function TasksIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 30 30" fill="none">
+      <path d="M28.8057 27.6338C29.4649 27.6339 30.0001 28.1644 30.0001 28.8174C29.9998 29.4701 29.4647 29.9999 28.8057 30H1.19733C0.538201 30 0.00323075 29.4702 0.00298994 28.8174C0.00298994 28.1643 0.538053 27.6338 1.19733 27.6338H28.8057ZM12.3858 11.8144C12.854 11.3507 13.6081 11.3507 14.0762 11.8144C14.5444 12.2782 14.5444 13.0255 14.0762 13.4892L6.05572 21.4346C5.83123 21.6569 5.53004 21.7802 5.21002 21.7803L5.20514 21.7754C4.88983 21.7754 4.58397 21.6521 4.35944 21.4297L0.351623 17.46C-0.116557 16.9962 -0.116557 16.2479 0.351623 15.7842C0.81971 15.3208 1.57395 15.3208 2.04205 15.7842L5.21002 18.9219L12.3858 11.8144ZM28.8057 16.1631C29.4647 16.1633 29.9999 16.6929 30.0001 17.3457C30.0001 17.9986 29.4648 18.5291 28.8057 18.5293H18.2042C17.545 18.5291 17.0098 17.9987 17.0098 17.3457C17.01 16.6929 17.5451 16.1632 18.2042 16.1631H28.8057ZM12.3858 0.347646C12.8539 -0.115738 13.6081 -0.1157 14.0762 0.347646C14.5444 0.811405 14.5444 1.55967 14.0762 2.02343L6.05572 9.96874C5.8312 10.1911 5.53008 10.3144 5.21002 10.3144L5.20514 10.3096C4.88985 10.3095 4.58396 10.1863 4.35944 9.96386L0.351623 5.99315C-0.116557 5.5294 -0.116557 4.78211 0.351623 4.31835C0.819803 3.85461 1.57486 3.8546 2.04303 4.31835L5.21002 7.45604L12.3858 0.347646ZM28.8057 4.69237C29.4648 4.69259 30 5.22212 30.0001 5.87499C30.0001 6.5279 29.4648 7.05836 28.8057 7.05858H18.2042C17.545 7.05844 17.0098 6.52795 17.0098 5.87499C17.0099 5.22208 17.545 4.69252 18.2042 4.69237H28.8057Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function MoreDotsIcon() {
+  return (
+    <svg width="24" height="23" viewBox="0 0 30 29" fill="none">
+      <path d="M1.07776 9.65151L12.6418 15.3068C13.3793 15.6668 14.1897 15.8489 15 15.8489C15.8104 15.8489 16.6207 15.6668 17.3582 15.3068L28.9222 9.65151C29.5867 9.32384 30 8.66446 30 7.92417C30 7.18389 29.5867 6.52046 28.9222 6.19684L17.3582 0.541561C15.8833 -0.182542 14.1167 -0.178496 12.6418 0.541561L1.07776 6.19684C0.413256 6.5245 0 7.18389 0 7.92417C0 8.66446 0.413256 9.32789 1.07776 9.65151ZM13.5292 2.35383C14.4489 1.90481 15.5429 1.90481 16.4627 2.35383L27.8445 7.92417L16.4627 13.4945C15.5429 13.9435 14.4489 13.9435 13.5292 13.4945L2.14741 7.92417L13.5292 2.35383Z" fill="currentColor"/>
+      <path d="M28.432 20.784L16.4709 26.6376C15.5309 27.0906 14.4571 27.0947 13.5292 26.6376L1.56403 20.78C1.06159 20.5333 0.453873 20.7436 0.206708 21.2412C-0.0404561 21.7428 0.166146 22.3496 0.668579 22.5963L12.6338 28.4539C13.3793 28.818 14.1816 29 14.9879 29C15.7943 29 16.6005 28.818 17.3542 28.4539L29.3194 22.5963C29.8218 22.3496 30.0285 21.7428 29.7813 21.2412C29.5342 20.7395 28.9304 20.5333 28.4239 20.78L28.432 20.784Z" fill="currentColor"/>
+      <path d="M28.432 14.2106L16.4709 20.0641C15.5309 20.5171 14.4571 20.5212 13.5292 20.0641L1.56403 14.2065C1.06159 13.9598 0.453873 14.1661 0.206708 14.6677C-0.0404561 15.1693 0.166146 15.7761 0.668579 16.0229L12.6338 21.8804C13.3793 22.2445 14.1816 22.4265 14.9879 22.4265C15.7943 22.4265 16.6005 22.2445 17.3542 21.8804L29.3194 16.0229C29.8218 15.7761 30.0285 15.1693 29.7813 14.6677C29.5342 14.1661 28.9304 13.9598 28.4239 14.2065L28.432 14.2106Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function AmenitiesIcon() {
+  return (
+    <svg width="22" height="16" viewBox="0 0 117 87" fill="none">
+      <path d="M35.21 21.35H2.5C1.12 21.35 0 20.23 0 18.85C0 8.45001 8.45998 0 18.85 0C29.24 0 37.71 8.46001 37.71 18.85C37.71 20.23 36.59 21.35 35.21 21.35ZM5.22998 16.35H32.49C31.31 9.90001 25.65 5 18.86 5C12.07 5 6.40998 9.90001 5.22998 16.35Z" fill="currentColor"/>
+      <path d="M26.72 21.35C25.34 21.35 24.22 20.23 24.22 18.85C24.22 10.39 21.04 5 18.85 5C16.66 5 13.48 10.4 13.48 18.85C13.48 20.23 12.36 21.35 10.98 21.35C9.59998 21.35 8.47998 20.23 8.47998 18.85C8.47998 8.10001 12.94 0 18.85 0C24.76 0 29.22 8.11001 29.22 18.85C29.22 20.23 28.1 21.35 26.72 21.35Z" fill="currentColor"/>
+      <path d="M18.8599 48.64C17.4799 48.64 16.3599 47.52 16.3599 46.14V3.20996C16.3599 1.82996 17.4799 0.709961 18.8599 0.709961C20.2399 0.709961 21.3599 1.82996 21.3599 3.20996V46.14C21.3599 47.52 20.2399 48.64 18.8599 48.64Z" fill="currentColor"/>
+      <path d="M60.22 44.09H32.4C31.74 44.09 31.1001 43.83 30.6301 43.36L25.9201 38.65C24.9401 37.67 24.9401 36.09 25.9201 35.11C26.9001 34.13 28.48 34.13 29.46 35.11L33.4401 39.09H60.2301C61.6101 39.09 62.7301 40.21 62.7301 41.59C62.7301 42.97 61.6101 44.09 60.2301 44.09H60.22Z" fill="currentColor"/>
+      <path d="M38.0898 49.4498C36.7098 49.4498 35.5898 48.3298 35.5898 46.9498V41.5898C35.5898 40.2098 36.7098 39.0898 38.0898 39.0898C39.4698 39.0898 40.5898 40.2098 40.5898 41.5898V46.9498C40.5898 48.3298 39.4698 49.4498 38.0898 49.4498Z" fill="currentColor"/>
+      <path d="M50.0898 49.4498C48.7098 49.4498 47.5898 48.3298 47.5898 46.9498V41.5898C47.5898 40.2098 48.7098 39.0898 50.0898 39.0898C51.4698 39.0898 52.5898 40.2098 52.5898 41.5898V46.9498C52.5898 48.3298 51.4698 49.4498 50.0898 49.4498Z" fill="currentColor"/>
+      <path d="M51.9297 27.5201C47.8097 27.5201 44.4697 24.1701 44.4697 20.0601C44.4697 15.9501 47.8197 12.6001 51.9297 12.6001C56.0397 12.6001 59.3897 15.9501 59.3897 20.0601C59.3897 24.1701 56.0397 27.5201 51.9297 27.5201ZM51.9297 17.5901C50.5697 17.5901 49.4697 18.6901 49.4697 20.0501C49.4697 21.4101 50.5697 22.5101 51.9297 22.5101C53.2897 22.5101 54.3897 21.4101 54.3897 20.0501C54.3897 18.6901 53.2797 17.5901 51.9297 17.5901Z" fill="currentColor"/>
+      <path d="M67.3301 73.0799C65.9501 73.0799 64.8301 71.9599 64.8301 70.5799V25.2299C64.8301 19.5399 69.4601 14.9099 75.1501 14.9099C80.8401 14.9099 85.4701 19.5399 85.4701 25.2299C85.4701 26.6099 84.3501 27.7299 82.9701 27.7299C81.5901 27.7299 80.4701 26.6099 80.4701 25.2299C80.4701 22.2999 78.0801 19.9099 75.1501 19.9099C72.2201 19.9099 69.8301 22.2999 69.8301 25.2299V70.5799C69.8301 71.9599 68.7101 73.0799 67.3301 73.0799Z" fill="currentColor"/>
+      <path d="M89.5498 73.0799C88.1698 73.0799 87.0498 71.9599 87.0498 70.5799V25.2299C87.0498 19.5399 91.6798 14.9099 97.3698 14.9099C103.06 14.9099 107.69 19.5399 107.69 25.2299V40.3199C107.69 41.6999 106.57 42.8199 105.19 42.8199C103.81 42.8199 102.69 41.6999 102.69 40.3199V25.2299C102.69 22.2999 100.3 19.9099 97.3698 19.9099C94.4398 19.9099 92.0498 22.2999 92.0498 25.2299V70.5799C92.0498 71.9599 90.9298 73.0799 89.5498 73.0799Z" fill="currentColor"/>
+      <path d="M112.59 51.3601H96.1602C94.7802 51.3601 93.6602 50.2401 93.6602 48.8601C93.6602 47.4801 94.7802 46.3601 96.1602 46.3601H112.59C113.97 46.3601 115.09 47.4801 115.09 48.8601C115.09 50.2401 113.97 51.3601 112.59 51.3601Z" fill="currentColor"/>
+      <path d="M87.8198 51.3601H73.3599C71.9799 51.3601 70.8599 50.2401 70.8599 48.8601C70.8599 47.4801 71.9799 46.3601 73.3599 46.3601H87.8198C89.1998 46.3601 90.3198 47.4801 90.3198 48.8601C90.3198 50.2401 89.1998 51.3601 87.8198 51.3601Z" fill="currentColor"/>
+      <path d="M81.9302 42.5201C80.5502 42.5201 79.4302 41.4001 79.4302 40.0201V37.8301C79.4302 36.4501 80.5502 35.3301 81.9302 35.3301C83.3102 35.3301 84.4302 36.4501 84.4302 37.8301V40.0201C84.4302 41.4001 83.3102 42.5201 81.9302 42.5201Z" fill="currentColor"/>
+      <path d="M66.6001 51.3601H5.83008C4.45008 51.3601 3.33008 50.2401 3.33008 48.8601C3.33008 47.4801 4.45008 46.3601 5.83008 46.3601H66.6001C67.9801 46.3601 69.1001 47.4801 69.1001 48.8601C69.1001 50.2401 67.9801 51.3601 66.6001 51.3601Z" fill="currentColor"/>
+      <path d="M113.76 86.8301C107.67 86.8301 104.49 84.9201 101.68 83.2401C99.1001 81.6901 96.88 80.3601 92.17 80.3601C87.46 80.3601 85.24 81.7001 82.66 83.2401C79.85 84.9201 76.67 86.8301 70.58 86.8301C64.49 86.8301 61.3101 84.9201 58.5001 83.2401C55.9201 81.6901 53.7001 80.3601 48.9901 80.3601C44.2801 80.3601 42.06 81.7001 39.48 83.2401C36.67 84.9201 33.49 86.8301 27.4 86.8301C21.31 86.8301 18.13 84.9201 15.32 83.2401C12.74 81.6901 10.5201 80.3601 5.81006 80.3601C4.43006 80.3601 3.31006 79.2401 3.31006 77.8601C3.31006 76.4801 4.43006 75.3601 5.81006 75.3601C11.9001 75.3601 15.08 77.2701 17.89 78.9501C20.47 80.5001 22.69 81.8301 27.4 81.8301C32.11 81.8301 34.33 80.4901 36.91 78.9501C39.72 77.2701 42.9001 75.3601 48.9901 75.3601C55.0801 75.3601 58.26 77.2701 61.07 78.9501C63.65 80.5001 65.87 81.8301 70.58 81.8301C75.29 81.8301 77.51 80.4901 80.09 78.9501C82.9 77.2701 86.08 75.3601 92.17 75.3601C98.26 75.3601 101.44 77.2701 104.25 78.9501C106.83 80.5001 109.05 81.8301 113.76 81.8301C115.14 81.8301 116.26 82.9501 116.26 84.3301C116.26 85.7101 115.14 86.8301 113.76 86.8301Z" fill="currentColor"/>
+      <path d="M87.63 35.1299H69C67.62 35.1299 66.5 34.0099 66.5 32.6299C66.5 31.2499 67.62 30.1299 69 30.1299H87.63C89.01 30.1299 90.13 31.2499 90.13 32.6299C90.13 34.0099 89.01 35.1299 87.63 35.1299Z" fill="currentColor"/>
+      <path d="M87.63 65.8501H69C67.62 65.8501 66.5 64.7301 66.5 63.3501C66.5 61.9701 67.62 60.8501 69 60.8501H87.63C89.01 60.8501 90.13 61.9701 90.13 63.3501C90.13 64.7301 89.01 65.8501 87.63 65.8501Z" fill="currentColor"/>
+      <path d="M62.8301 62.8C62.2401 62.48 61.6701 62.14 61.0901 61.79C58.2801 60.11 55.1001 58.2 49.0101 58.2C42.9201 58.2 39.7401 60.11 36.9301 61.79C34.3501 63.34 32.1301 64.67 27.4201 64.67C22.7101 64.67 20.4901 63.33 17.9101 61.79C15.1001 60.11 11.9201 58.2 5.83008 58.2C4.45008 58.2 3.33008 59.32 3.33008 60.7C3.33008 62.08 4.45008 63.2 5.83008 63.2C10.5401 63.2 12.7601 64.54 15.3401 66.08C18.1501 67.76 21.3301 69.67 27.4201 69.67C33.5101 69.67 36.6901 67.76 39.5001 66.08C42.0801 64.53 44.3001 63.2 49.0101 63.2C53.7201 63.2 55.9401 64.54 58.5201 66.08C59.8001 66.85 61.1601 67.6599 62.8401 68.3199V62.8H62.8301Z" fill="currentColor"/>
+      <path d="M113.76 64.67C109.06 64.67 106.83 63.33 104.25 61.79C101.69 60.26 98.8202 58.54 93.7402 58.25V63.2599C97.4102 63.5199 99.4102 64.72 101.68 66.09C104.49 67.77 107.67 69.68 113.76 69.68C115.14 69.68 116.26 68.56 116.26 67.18C116.26 65.8 115.14 64.68 113.76 64.68V64.67Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function CalendarIcon() {
+  return (
+    <svg width="22" height="20" viewBox="0 0 81 73" fill="none">
+      <path d="M33.2002 60.56H9.93994C7.21994 60.56 5.01025 58.35 5.01025 55.63V25.35H71.7202C73.1002 25.35 74.2202 24.23 74.2202 22.85V17.58C74.2202 12.1 69.76 7.64996 64.29 7.64996H51.4102V2.5C51.4102 1.12 50.2902 0 48.9102 0C47.5302 0 46.4102 1.12 46.4102 2.5V7.64996H27.8101V2.5C27.8101 1.12 26.6901 0 25.3101 0C23.9301 0 22.8101 1.12 22.8101 2.5V7.64996H9.93018C4.45018 7.64996 0 12.11 0 17.58V55.63C0 61.11 4.46018 65.56 9.93018 65.56H33.1899C34.5699 65.56 35.6899 64.44 35.6899 63.06C35.6899 61.68 34.5699 60.56 33.1899 60.56H33.2002ZM5 17.58C5 14.86 7.21018 12.65 9.93018 12.65H64.2803C67.0003 12.65 69.21 14.86 69.21 17.58V20.35H5V17.58Z" fill="currentColor"/>
+      <path d="M59.5703 30.28C47.9603 30.28 38.52 39.72 38.52 51.33C38.52 62.94 47.9603 72.3801 59.5703 72.3801C71.1803 72.3801 80.6201 62.94 80.6201 51.33C80.6201 39.72 71.1803 30.28 59.5703 30.28ZM59.5703 67.3701C50.7203 67.3701 43.52 60.1701 43.52 51.3201C43.52 42.4701 50.7203 35.27 59.5703 35.27C68.4203 35.27 75.6201 42.4701 75.6201 51.3201C75.6201 60.1701 68.4203 67.3701 59.5703 67.3701Z" fill="currentColor"/>
+      <path d="M63.6603 45.65L57.6203 51.6901L55.4904 49.5601C54.5104 48.5801 52.9303 48.5801 51.9503 49.5601C50.9703 50.5401 50.9703 52.1201 51.9503 53.1001L55.8502 57.0001C56.3202 57.4701 56.9503 57.7301 57.6203 57.7301C58.2903 57.7301 58.9203 57.4701 59.3903 57.0001L67.2003 49.2C68.1803 48.22 68.1803 46.64 67.2003 45.66C66.2203 44.68 64.6403 44.68 63.6603 45.66V45.65Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function MarketplaceIcon() {
+  return (
+    <svg width="20" height="18" viewBox="0 0 65 58" fill="none">
+      <path d="M55.2931 58H9.71564C4.36353 58 0 53.8891 0 48.828V19.437C0 16.5282 2.51111 14.1574 5.59236 14.1574H59.4074C62.4887 14.1574 65 16.5282 65 19.437V48.828C65 53.8806 60.6452 58 55.2841 58H55.2931ZM5.60127 18.3609C4.96899 18.3609 4.46136 18.8401 4.46136 19.437V48.828C4.46136 51.5687 6.82141 53.7965 9.72455 53.7965H55.302C58.2051 53.7965 60.5649 51.5687 60.5649 48.828V19.437C60.5649 18.8401 60.0575 18.3609 59.4253 18.3609H5.61018H5.60127Z" fill="currentColor"/>
+      <path d="M45.043 25.6162C43.8141 25.6162 42.8167 24.6746 42.8167 23.5144V13.9305C42.8167 8.56681 38.1948 4.20351 32.5132 4.20351C26.8316 4.20351 22.2099 8.56681 22.2099 13.9305V23.5144C22.2099 24.6746 21.2125 25.6162 19.9835 25.6162C18.7546 25.6162 17.7572 24.6746 17.7572 23.5144V13.9305C17.7572 6.24647 24.3737 0 32.5132 0C40.6527 0 47.2694 6.24647 47.2694 13.9305V23.5144C47.2694 24.6746 46.272 25.6162 45.043 25.6162Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function HVIIcon() {
+  return (
+    <svg width="20" height="21" viewBox="0 0 71.12 73.93" fill="none">
+      <path fill="currentColor" d="M69.2,41.86c-2.94-3.75-8.3-4.54-12.2-1.8l-9.96,7c-1.45-2.18-3.93-3.62-6.74-3.62H14.25c-7.99,0-14.25,4.73-14.25,10.76v8.96c0,6.03,6.26,10.76,14.25,10.76h20.05c3.65,0,7.11-1.02,9.75-2.87,3.36-2.36,15.88-11.15,23.27-16.34,2.03-1.42,3.35-3.56,3.71-6.01.36-2.42-.31-4.92-1.82-6.85ZM66.07,47.98c-.16,1.08-.74,2.02-1.63,2.65-7.39,5.19-19.91,13.98-23.27,16.34-1.78,1.25-4.28,1.96-6.87,1.96H14.25c-5.01,0-9.25-2.64-9.25-5.76v-8.96c0-3.12,4.24-5.76,9.25-5.76h26.04c1.71,0,3.1,1.39,3.1,3.1s-1.39,3.1-3.1,3.1h-17.39c-1.38,0-2.5,1.12-2.5,2.5s1.12,2.5,2.5,2.5h17.39c4.23,0,7.71-3.26,8.07-7.4l11.51-8.09c1.72-1.21,4.09-.86,5.39.79.68.87.97,1.94.81,3.03Z"/>
+      <path fill="currentColor" d="M18.94,34.1h20.32c3.21,0,5.83-2.61,5.83-5.83v-14.05c0-1.36-.6-2.65-1.63-3.53L32.09,1.06c-1.67-1.42-4.32-1.41-5.98,0l-11.37,9.63c-1.04.88-1.63,2.17-1.63,3.53v14.04c0,3.21,2.62,5.83,5.83,5.83ZM19.11,14.86l9.99-8.47,9.98,8.47v13.24h-19.98v-13.24Z"/>
+    </svg>
+  )
+}
+
+function WorkOrderIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+    </svg>
+  )
+}
+
+function ArchIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="3 9 12 2 21 9"/><path d="M9 22V12h6v10"/><path d="M3 9v13h18V9"/>
+    </svg>
+  )
+}
+
+function ViolationIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+      <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+  )
+}
+
+function CephAIIcon() {
+  return <img src="/images/cephai-logo.svg" alt="CephAI" width="25" height="25" />
+}
+
+function DocumentIcon() {
+  return (
+    <svg width="16" height="20" viewBox="0 0 20 25" fill="none">
+      <mask id="web-docs-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="25">
+        <path d="M0 0H19.9344V25H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-docs-mask)">
+        <path d="M15.678 16.6004V6.33617C15.678 5.82795 15.5636 5.31904 15.3512 4.87311C15.2654 4.68725 15.1643 4.51092 15.0486 4.3448C14.9329 4.17869 14.8025 4.02278 14.6585 3.87845L13.2264 2.44909L11.7937 1.01803C11.7045 0.929183 11.6112 0.848166 11.5152 0.770895C11.2939 0.591842 11.0591 0.444106 10.8208 0.33824L10.8116 0.334496C10.3323 0.109488 9.84689 -0.00012207 9.3373 -0.00012207H4.3868C1.96788 -0.00012207 0 1.96776 0 4.38633V16.6045C0 19.0214 1.96584 20.9872 4.38237 20.9872H11.2909C13.7098 20.9872 15.678 19.0193 15.678 16.6004ZM12.7502 4.37884H11.2987V2.92974L12.4711 4.10005L12.7502 4.37884ZM1.70202 16.6045V4.38633C1.70202 2.90625 2.90638 1.7019 4.3868 1.7019H9.3373C9.42512 1.7019 9.51125 1.71041 9.59669 1.72335V5.22986C9.59669 5.69995 9.97794 6.08087 10.4477 6.08087H13.9545C13.9671 6.16529 13.976 6.25039 13.976 6.33617V16.6004C13.976 18.0808 12.7716 19.2852 11.2909 19.2852H4.38237C2.90433 19.2852 1.70202 18.0829 1.70202 16.6045Z" fill="currentColor"/>
+        <path d="M19.0835 7.53784C18.6134 7.53784 18.2324 7.91875 18.2324 8.38885V17.5978C18.2324 20.7408 15.675 23.2982 12.5317 23.2982H5.86725C5.39715 23.2982 5.01624 23.6791 5.01624 24.1492C5.01624 24.6193 5.39715 25.0003 5.86725 25.0003H12.5317C16.6138 25.0003 19.9345 21.6796 19.9345 17.5978V8.38885C19.9345 7.91875 19.5536 7.53784 19.0835 7.53784Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function GroupIcon() {
+  return (
+    <svg width="22" height="20" viewBox="0 0 25 23" fill="none">
+      <mask id="web-users-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+        <path d="M0 0H25V23.0022H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-users-mask)">
+        <path d="M7.48299 14.6052C3.93805 14.6052 0.811286 17.1146 0.0482334 20.5718C-0.0839538 21.1714 0.0591969 21.7884 0.44135 22.2643C0.818177 22.7332 1.37919 23.0019 1.98092 23.0019H12.9854C13.5871 23.0019 14.1481 22.7332 14.5246 22.2646C14.9071 21.7884 15.0506 21.1717 14.9181 20.5718C14.1553 17.1146 11.0282 14.6052 7.48299 14.6052ZM13.3036 21.2835C13.2579 21.3405 13.1558 21.4357 12.9854 21.4357H1.98092C1.81052 21.4357 1.70841 21.3405 1.66267 21.2835C1.57904 21.1795 1.54803 21.0433 1.57778 20.9092C2.18359 18.1639 4.66696 16.1714 7.48299 16.1714C10.2993 16.1714 12.783 18.1639 13.3885 20.9092C13.4183 21.0429 13.3872 21.1795 13.3036 21.2835Z" fill="currentColor"/>
+        <path d="M7.48298 12.0338C9.69916 12.0338 11.5019 10.2308 11.5019 8.01496C11.5019 5.79879 9.69916 3.99609 7.48298 3.99609C5.26681 3.99609 3.46411 5.79879 3.46411 8.01496C3.46411 10.2308 5.26681 12.0338 7.48298 12.0338ZM7.48298 5.56229C8.83524 5.56229 9.93565 6.66239 9.93565 8.01496C9.93565 9.36722 8.83524 10.4676 7.48298 10.4676C6.13073 10.4676 5.03031 9.36722 5.03031 8.01496C5.03031 6.66239 6.13073 5.56229 7.48298 5.56229Z" fill="currentColor"/>
+        <path d="M24.9517 16.5762C24.1887 13.1189 21.0619 10.6093 17.5167 10.6093C15.4769 10.6093 13.5611 11.4052 12.1218 12.8508C11.8167 13.1575 11.8176 13.6533 12.1239 13.9584C12.4303 14.2635 12.9265 14.2623 13.2316 13.9562C14.3749 12.8082 15.8966 12.1755 17.5167 12.1755C20.3327 12.1755 22.8167 14.1683 23.4222 16.9135C23.4516 17.0473 23.4209 17.1839 23.3373 17.2878C23.2916 17.3449 23.1895 17.4404 23.0191 17.4404H17.2244C16.7918 17.4404 16.4413 17.7909 16.4413 18.2235C16.4413 18.6561 16.7918 19.0066 17.2244 19.0066H23.0191C23.6205 19.0066 24.1815 18.7375 24.5583 18.2689C24.9405 17.7931 25.0839 17.176 24.9517 16.5762Z" fill="currentColor"/>
+        <path d="M17.5167 8.03786C19.7328 8.03786 21.5356 6.23485 21.5356 4.01899C21.5356 1.80282 19.7328 0.00012207 17.5167 0.00012207C15.3005 0.00012207 13.4978 1.80282 13.4978 4.01899C13.4978 6.23485 15.3005 8.03786 17.5167 8.03786ZM17.5167 1.56632C18.8689 1.56632 19.9694 2.66673 19.9694 4.01899C19.9694 5.37125 18.8689 6.47166 17.5167 6.47166C16.1644 6.47166 15.064 5.37125 15.064 4.01899C15.064 2.66673 16.1644 1.56632 17.5167 1.56632Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function ParkingIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 25 25" fill="none">
+      <mask id="web-parking-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+        <path d="M0 0H25V25H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-parking-mask)">
+        <path d="M12.4997 0.00012207C5.60715 0.00012207 0 5.60762 0 12.5001C0 19.3926 5.60715 25.0001 12.4997 25.0001C19.3925 25.0001 24.9997 19.3926 24.9997 12.5001C24.9997 5.60762 19.3925 0.00012207 12.4997 0.00012207ZM12.4997 23.2532C6.57038 23.2532 1.74688 18.4294 1.74688 12.5001C1.74688 6.57085 6.57038 1.74701 12.4997 1.74701C18.4293 1.74701 23.2528 6.57085 23.2528 12.5001C23.2528 18.4294 18.4293 23.2532 12.4997 23.2532Z" fill="currentColor"/>
+        <path d="M12.4923 7.38342H8.06323V17.6163H10.4313V14.7951H12.4923C15.2262 14.7951 16.9364 13.377 16.9364 11.0966C16.9364 8.80154 15.2262 7.38342 12.4923 7.38342ZM12.3609 12.8655H10.4313V9.31338H12.3609C13.8084 9.31338 14.5389 9.97126 14.5389 11.0966C14.5389 12.2076 13.8084 12.8655 12.3609 12.8655Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function AnimalIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 25 25" fill="none">
+      <mask id="web-animals-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+        <path d="M0 0H25V24.309H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-animals-mask)">
+        <path d="M18.6534 15.3143L18.6177 15.2967C18.435 15.1994 18.1359 14.7561 17.8712 14.3631C17.0153 13.0982 15.7218 11.1873 12.9981 11.1873L12.2983 11.1883C9.5759 11.1886 8.28276 13.0999 7.42646 14.3648C7.14918 14.7755 6.86239 15.1997 6.6916 15.2909L6.63921 15.3174C5.51243 15.8886 2.88193 17.4669 2.78531 19.7861C2.74822 21.0564 3.23303 22.3097 4.10566 23.2137C4.75615 23.9108 5.67403 24.3092 6.6273 24.3092C6.67425 24.3092 6.72086 24.3068 6.76747 24.3C7.22675 24.2316 7.6629 24.0795 8.06299 23.8475C8.93461 23.4273 10.1315 22.8609 12.6007 22.8609H12.712C14.23 22.8316 15.7613 23.1712 17.1316 23.8325C17.5681 24.0676 18.0376 24.2248 18.5268 24.2996C18.5779 24.3071 18.6289 24.3092 18.6799 24.3092C19.6318 24.3092 20.547 23.9104 21.1835 23.2242C22.0664 22.3091 22.5505 21.0561 22.5131 19.7755C22.4165 17.4692 19.7859 15.8896 18.6534 15.3143ZM19.9479 22.0549C19.6308 22.3968 19.1872 22.5965 18.7221 22.6078C18.4438 22.5581 18.1764 22.4645 17.9267 22.3285C17.9148 22.322 17.9025 22.3159 17.8906 22.3097C16.3335 21.5548 14.6025 21.1581 12.8844 21.1581C12.8225 21.1581 12.7599 21.1588 12.6977 21.1598H12.6007C9.72049 21.1598 8.20588 21.8903 7.29343 22.3302C7.27064 22.3407 7.24921 22.3523 7.22777 22.3649C7.02705 22.4846 6.80829 22.5659 6.57763 22.6074C6.11256 22.5942 5.66689 22.3938 5.33926 22.043C4.77282 21.4558 4.46152 20.6516 4.48534 19.8466C4.53331 18.693 6.09011 17.5033 7.40638 16.8358L7.47442 16.8011C8.03577 16.5017 8.4066 15.9526 8.83561 15.3177C9.60618 14.1794 10.4792 12.8893 12.2996 12.8893H12.3006L12.9994 12.8883C14.8192 12.8883 15.6919 14.1784 16.4621 15.3161C16.8911 15.9519 17.2613 16.501 17.8386 16.8086L17.8896 16.8337C19.2083 17.5036 20.7651 18.6947 20.813 19.8361C20.8369 20.6512 20.5259 21.4555 19.9479 22.0549Z" fill="currentColor"/>
+        <path d="M5.08411 14.5329C5.88735 14.1117 6.45482 13.3255 6.60043 12.4362C6.9386 10.4572 5.98635 8.47308 4.2125 7.48851C3.77363 7.25853 3.27896 7.13265 2.78225 7.12415C2.75844 7.12415 2.73326 7.12449 2.70911 7.12619C2.33624 7.13231 1.96269 7.2194 1.62452 7.3793C1.61363 7.38441 1.60308 7.38951 1.59254 7.39529C0.788962 7.81681 0.221492 8.60304 0.0786034 9.4767C-0.10579 10.448 0.037438 11.469 0.474608 12.3379C1.20402 13.8579 2.58935 14.7949 3.92128 14.7949C4.31966 14.7949 4.71397 14.7108 5.08411 14.5329ZM2.00113 11.5874C1.7242 11.0369 1.63472 10.4 1.75312 9.77302C1.81299 9.40831 2.04162 9.08682 2.36618 8.91025C2.49001 8.8548 2.62508 8.82384 2.76014 8.8269C2.77171 8.82758 2.78361 8.8269 2.79484 8.82656C3.01394 8.83608 3.22963 8.89392 3.40552 8.98577C4.53025 9.61006 5.14059 10.8818 4.92285 12.1555C4.86196 12.5263 4.62687 12.8519 4.32102 13.0128C3.61271 13.352 2.53254 12.6937 2.00113 11.5874Z" fill="currentColor"/>
+        <path d="M23.3551 7.76944C23.2078 7.70004 23.0523 7.64458 22.8938 7.6041L22.8696 7.59797C21.339 7.22238 19.6277 8.23553 18.7986 10.0039C18.3622 10.8915 18.2285 11.9139 18.4173 12.8614C18.5721 13.7561 19.146 14.5372 19.9805 14.9639C20.3309 15.1282 20.713 15.2098 21.1053 15.2098C21.6071 15.2098 22.1266 15.0765 22.6199 14.8121C23.4296 14.3784 24.1127 13.6333 24.5428 12.7151C25.4722 10.7316 24.9388 8.51348 23.3551 7.76944ZM23.0026 11.9935C22.7308 12.5735 22.2984 13.0546 21.8167 13.3128C21.5809 13.439 21.1236 13.6207 20.7293 13.4367C20.3952 13.2655 20.1578 12.9423 20.0897 12.5508C19.9693 11.9459 20.0527 11.308 20.3316 10.7402C20.8011 9.73993 21.6108 9.22281 22.23 9.22281C22.3144 9.22281 22.3957 9.23268 22.4716 9.25173L22.4858 9.25547C22.5362 9.26909 22.5852 9.28745 22.6318 9.30889C23.3554 9.64876 23.5252 10.8783 23.0026 11.9935Z" fill="currentColor"/>
+        <path d="M15.0781 9.55526C15.2598 9.60288 15.4445 9.62602 15.6309 9.62602C16.3277 9.62602 17.0442 9.2984 17.6964 8.67207C17.7076 8.66084 17.7192 8.64962 17.7297 8.63805C19.3471 6.89992 19.9775 4.48476 19.4161 2.17848C19.4124 2.16317 19.4083 2.14786 19.4039 2.13289C19.0708 1.03435 18.4128 0.305963 17.5491 0.0810846C17.3711 0.0351562 17.1884 0.0116817 17.0057 0.0116817C16.986 0.0113415 16.9639 0.0120219 16.9421 0.013723C16.1542 0.0691772 15.4265 0.421295 14.9117 0.985363C14.0881 1.83215 13.5091 2.8868 13.2413 4.01629C12.9365 5.18424 12.9188 6.37905 13.1927 7.38199C13.5067 8.5319 14.1932 9.32459 15.0781 9.55526ZM14.892 4.42727C15.0934 3.5781 15.5217 2.798 16.1491 2.15228C16.3794 1.89985 16.6914 1.74505 17.0302 1.71307C17.0615 1.71511 17.0925 1.72022 17.1221 1.72736C17.3776 1.79438 17.6188 2.12132 17.7692 2.60408C18.1829 4.33813 17.7096 6.15043 16.5009 7.46126C16.1331 7.80896 15.7616 7.97634 15.5075 7.90932C15.2366 7.83855 14.9784 7.465 14.8335 6.93394C14.6399 6.2246 14.6593 5.3176 14.892 4.42727Z" fill="currentColor"/>
+        <path d="M7.24619 8.65094C7.89837 9.29666 8.62302 9.63517 9.33134 9.63517C9.50519 9.63517 9.67801 9.6151 9.84846 9.57393C10.714 9.36539 11.3838 8.64618 11.7431 7.52145C12.0619 6.39127 12.0711 5.19543 11.7696 4.06151C11.5114 2.91602 10.9497 1.85967 10.1621 1.0265C9.63106 0.425004 8.89757 0.0616593 8.09672 0.00348337C8.07528 0.00144211 8.05385 -0.00195999 8.03241 0.0011019C7.85959 0.00178232 7.68744 0.0225351 7.51768 0.0637006C6.65354 0.275311 5.98469 0.993835 5.63495 2.08659C5.62985 2.1019 5.62543 2.11755 5.62169 2.1332C5.027 4.43166 5.62203 6.85565 7.21353 8.61658C7.22408 8.62883 7.23496 8.64006 7.24619 8.65094ZM7.26218 2.58296C7.42038 2.1019 7.66635 1.7787 7.92049 1.7161C7.94941 1.7093 7.979 1.70487 8.00928 1.70317C8.34983 1.73719 8.66112 1.89641 8.90642 2.17334C9.50655 2.80886 9.9233 3.59576 10.1131 4.44833C10.1159 4.46092 10.1186 4.47282 10.122 4.48507C10.3486 5.32811 10.3435 6.21878 10.1145 7.03154C9.9563 7.52553 9.70761 7.85791 9.44939 7.92017C9.18981 7.98277 8.82102 7.81062 8.45938 7.45817C7.27001 6.13033 6.82331 4.31122 7.26218 2.58296Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function FaqIcon() {
+  return (
+    <svg width="22" height="21" viewBox="0 0 25 24" fill="none">
+      <mask id="web-faqs-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
+        <path d="M0 0H25V23.1755H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-faqs-mask)">
+        <path d="M21.1044 -0.00012207H3.89559C1.74735 -0.00012207 0 1.74758 0 3.89547V15.824C0 17.9723 1.74735 19.7196 3.89559 19.7196H6.53642C7.11308 19.7196 7.65535 19.944 8.06283 20.3518L9.74522 22.0342C10.4813 22.7703 11.4592 23.1757 12.5 23.1757C13.5408 23.1757 14.519 22.7703 15.2544 22.0342L16.9372 20.3518C17.345 19.944 17.8869 19.7196 18.4636 19.7196H21.1044C23.2526 19.7196 25 17.9723 25 15.824V3.89547C25 1.74758 23.2526 -0.00012207 21.1044 -0.00012207ZM23.2631 15.824C23.2631 17.0142 22.2946 17.9827 21.1044 17.9827H18.4636C17.4232 17.9827 16.4449 18.3877 15.7092 19.1238L14.0264 20.8062C13.6186 21.2141 13.0767 21.4388 12.5 21.4388C11.9233 21.4388 11.3814 21.2141 10.9739 20.8062L9.29119 19.1238C8.55543 18.3877 7.57719 17.9827 6.53642 17.9827H3.89559C2.7051 17.9827 1.73693 17.0142 1.73693 15.824V3.89547C1.73693 2.70532 2.7051 1.73681 3.89559 1.73681H21.1044C22.2946 1.73681 23.2631 2.70532 23.2631 3.89547V15.824Z" fill="currentColor"/>
+        <path d="M12.2908 4.39294C9.93799 4.39294 8.29971 5.29927 7.35864 6.72842L9.46728 7.96581C10.0252 7.16405 10.8791 6.67597 11.9942 6.67597C13.1273 6.67597 13.8766 7.21615 13.8766 8.07038C13.8766 9.58672 11.1577 10.1269 11.1577 12.5669H13.7895C13.7895 10.7195 16.7176 10.4059 16.7176 7.61738C16.7176 5.56051 14.9049 4.39294 12.2908 4.39294Z" fill="currentColor"/>
+        <path d="M12.4826 13.8047C11.5064 13.8047 10.8096 14.4668 10.8096 15.3558C10.8096 16.2274 11.5064 16.9419 12.4826 16.9419C13.4587 16.9419 14.1556 16.2274 14.1556 15.3558C14.1556 14.4668 13.4587 13.8047 12.4826 13.8047Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function BallotIcon() {
+  return (
+    <svg width="22" height="18" viewBox="0 0 65 53.61" fill="none">
+      <path fill="currentColor" d="M63.23,50.07h-4.49V17.42c0-.98-.79-1.77-1.77-1.77h-12.84L31.42,2.95C29.53,1.06,26.96,0,24.28,0h-14.2C4.52,0,0,4.52,0,10.09v9.02c0,5.57,4.52,10.08,10.09,10.09h16.88s.22.01.57,0v20.86h-6.34c-.98,0-1.77.79-1.77,1.77s.79,1.77,1.77,1.77h42.04c.98,0,1.77-.79,1.77-1.77s-.79-1.77-1.77-1.77M30.81,22.2s-.01.09-.02.14c-.27,1.91-1.91,3.32-3.83,3.32H10.09c-3.62,0-6.55-2.94-6.55-6.55v-9.02c0-3.61,2.93-6.54,6.55-6.55h14.2c1.74,0,3.4.69,4.63,1.92l10.2,10.19h-7.72c-1.31-.88-2.86-1.33-4.43-1.27h-10.75c-.98,0-1.77.79-1.77,1.77,0,.98.79,1.77,1.77,1.77h10.75c2.14,0,3.87,1.73,3.87,3.87,0,.13,0,.27-.02.4M55.2,49.66h-24.13v-21.41c1.71-.94,3.3-2.8,3.3-6.46-.03-.88-.19-1.76-.47-2.6h21.3v30.47Z"/>
+      <path fill="currentColor" d="M34.37,37.85l4.73,4.73c.33.33.78.52,1.25.52h.09c.5-.03.97-.26,1.28-.65l8.7-10.69c.61-.76.48-1.88-.28-2.49-.75-.6-1.85-.49-2.46.25l-7.46,9.16-3.35-3.35c-.73-.66-1.84-.6-2.5.13-.61.67-.61,1.7,0,2.37"/>
+    </svg>
+  )
+}
+
+function SignatureIcon() {
+  return (
+    <svg width="22" height="19" viewBox="0 0 64.99 57.34" fill="none">
+      <path fill="currentColor" d="M20.37,46.89h.09l8.07-.33c.56-.02,1.1-.26,1.5-.66L62.74,13.18c3.01-3.03,3-7.92-.03-10.93-3.01-3-7.88-3-10.9,0L19.1,34.96c-.4.4-.63.94-.66,1.5l-.33,8.07c-.06,1.25.91,2.3,2.16,2.36.03,0,.07,0,.1,0M22.92,37.54L55.01,5.45c1.29-1.21,3.32-1.15,4.54.14,1.16,1.24,1.16,3.17,0,4.4L27.45,42.07l-4.74.2.2-4.74Z"/>
+      <path fill="currentColor" d="M62.74,52.82H2.26c-1.25.03-2.24,1.06-2.21,2.31.03,1.21,1,2.19,2.21,2.21h60.48c1.25-.03,2.24-1.06,2.21-2.31-.03-1.21-1-2.19-2.21-2.21"/>
+      <path fill="currentColor" d="M.66,46.22c.88.88,2.31.88,3.19,0,0,0,0,0,0,0l2.57-2.57,2.57,2.57c.88.88,2.31.88,3.19,0s.88-2.31,0-3.19l-2.57-2.57,2.57-2.57c.88-.88.88-2.31,0-3.19s-2.31-.88-3.19,0l-2.57,2.57-2.57-2.57c-.88-.88-2.31-.88-3.19,0-.88.88-.88,2.31,0,3.19l2.57,2.57-2.57,2.57c-.88.88-.88,2.31,0,3.19,0,0,0,0,0,0"/>
+    </svg>
+  )
+}
+
+function SurveyIcon() {
+  return (
+    <svg width="20" height="22" viewBox="0 0 58.69 65" fill="none">
+      <path fill="currentColor" d="M11.51,30.8c-1.14,0-2.07.93-2.07,2.07s.93,2.07,2.07,2.07h9.41c1.14,0,2.07-.93,2.07-2.07s-.93-2.07-2.07-2.07h-9.41Z"/>
+      <path fill="currentColor" d="M33.88,23.01c0-1.14-.93-2.07-2.07-2.07H11.51c-1.14,0-2.07.93-2.07,2.07s.93,2.07,2.07,2.07h20.3c1.14,0,2.07-.93,2.07-2.07"/>
+      <path fill="currentColor" d="M31.81,11.08H11.51c-1.14,0-2.07.93-2.07,2.07s.93,2.07,2.07,2.07h20.3c1.14,0,2.07-.93,2.07-2.07s-.93-2.07-2.07-2.07"/>
+      <path fill="currentColor" d="M22.63,54.21h-10.01c-4.68,0-8.47-3.8-8.48-8.48V12.62c0-4.68,3.8-8.47,8.48-8.48h18.09c4.68,0,8.47,3.8,8.48,8.48v13.16c0,1.14.93,2.07,2.07,2.07s2.07-.93,2.07-2.07v-13.16c0-6.97-5.65-12.61-12.62-12.62H12.62C5.65,0,0,5.65,0,12.62v33.12c0,6.97,5.65,12.61,12.62,12.62h10.01c1.14,0,2.07-.93,2.07-2.07s-.93-2.07-2.07-2.07"/>
+      <path fill="currentColor" d="M41.26,30.14c-9.63,0-17.43,7.8-17.43,17.43s7.8,17.43,17.43,17.43,17.43-7.8,17.43-17.43c-.01-9.62-7.81-17.42-17.43-17.43M41.26,60.86c-7.34,0-13.29-5.95-13.29-13.29,0-7.34,5.95-13.29,13.29-13.29,7.34,0,13.29,5.95,13.29,13.29h0c0,7.34-5.95,13.28-13.29,13.29"/>
+      <path fill="currentColor" d="M44.64,42.87l-5,5-1.77-1.77c-.79-.83-2.1-.86-2.93-.08s-.86,2.1-.08,2.93c.02.03.05.05.07.07l3.23,3.24c.81.81,2.12.81,2.93,0h0s6.47-6.46,6.47-6.46c.81-.81.81-2.12,0-2.93s-2.12-.81-2.93,0"/>
+    </svg>
+  )
+}
+
+function RatingIcon() {
+  return (
+    <svg width="22" height="21" viewBox="0 0 65 62.47" fill="none">
+      <path fillRule="evenodd" fill="currentColor" d="M63.02,30.11c2.59-2.53,2.65-6.68.12-9.28-1.01-1.03-2.33-1.71-3.75-1.91l-13.7-1.99c-.51-.07-.95-.4-1.18-.86l-6.12-12.41c-1.6-3.25-5.54-4.58-8.78-2.98-1.3.64-2.34,1.69-2.98,2.98l-6.12,12.41c-.23.46-.67.78-1.18.86l-13.7,1.99c-3.59.52-6.07,3.85-5.55,7.44.21,1.43.88,2.75,1.91,3.75l9.91,9.66c.37.36.54.88.45,1.39l-2.34,13.64c-.62,3.56,1.76,6.96,5.33,7.58,1.43.25,2.91.02,4.19-.66l12.25-6.44c.46-.24,1-.24,1.46,0l12.25,6.44c3.21,1.68,7.17.45,8.86-2.76.67-1.28.9-2.74.66-4.16l-2.34-13.64c-.09-.51.08-1.03.45-1.39l9.92-9.66ZM49.62,36.19c-1.55,1.51-2.25,3.68-1.88,5.81l2.34,13.64c.15.85-.43,1.66-1.28,1.81-.34.06-.69,0-.99-.16l-12.25-6.44c-1.91-1-4.19-1-6.11,0l-12.25,6.44c-.77.4-1.71.11-2.11-.66-.16-.3-.22-.65-.16-.99l2.34-13.64c.37-2.13-.34-4.3-1.89-5.81l-9.91-9.66c-.62-.6-.63-1.6-.03-2.22.24-.25.56-.41.9-.46l13.7-1.99c2.14-.31,3.99-1.65,4.94-3.59l6.12-12.41c.38-.78,1.32-1.1,2.09-.71.31.15.56.4.71.71l6.12,12.41c.96,1.94,2.8,3.28,4.94,3.59l13.7,1.99c.86.12,1.45.92,1.33,1.78-.05.34-.21.66-.46.9l-9.92,9.66Z"/>
+    </svg>
+  )
+}
+
+function ProfileIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 25 25" fill="none">
+      <mask id="web-profile-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+        <path d="M0 0.00012207H24.9999V25H0V0.00012207Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-profile-mask)">
+        <path d="M12.4999 0.00012207C5.60716 0.00012207 0 5.60728 0 12.5001C0 16.2556 1.66293 19.6269 4.29358 21.9222C6.49103 23.8402 9.35924 25 12.4999 25C15.6372 25 18.5089 23.8402 20.7028 21.9257C23.3335 19.6304 24.9999 16.2556 24.9999 12.5001C24.9999 5.60728 19.3927 0.00012207 12.4999 0.00012207ZM6.36526 21.3248C7.44477 18.9736 9.83786 17.3806 12.4999 17.3806C15.162 17.3806 17.5551 18.9736 18.6346 21.3248C16.8948 22.5406 14.7812 23.2532 12.4999 23.2532C10.2187 23.2532 8.10505 22.5406 6.36526 21.3248ZM20.0146 20.1824C18.5752 17.4539 15.6896 15.6338 12.4999 15.6338C9.31033 15.6338 6.42814 17.4539 4.98531 20.1789C2.98699 18.2295 1.74678 15.508 1.74678 12.5001C1.74678 6.5715 6.57138 1.7469 12.4999 1.7469C18.4285 1.7469 23.2531 6.5715 23.2531 12.5001C23.2531 15.508 22.0129 18.2295 20.0146 20.1824Z" fill="currentColor"/>
+        <path d="M12.4999 3.80103C10.0265 3.80103 8.0177 5.81331 8.0177 8.28326C8.0177 10.7567 10.0265 12.7655 12.4999 12.7655C14.9699 12.7655 16.9822 10.7567 16.9822 8.28326C16.9822 5.81331 14.9699 3.80103 12.4999 3.80103ZM12.4999 11.0187C10.9907 11.0187 9.76447 9.79247 9.76447 8.28326C9.76447 6.77404 10.9907 5.5478 12.4999 5.5478C14.0091 5.5478 15.2354 6.77404 15.2354 8.28326C15.2354 9.79247 14.0091 11.0187 12.4999 11.0187Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function UnitIcon() {
+  return (
+    <svg width="16" height="20" viewBox="0 0 20 25" fill="none">
+      <mask id="web-unit-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="25">
+        <path d="M0 0H19.6237V25H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-unit-mask)">
+        <path d="M11.3831 0.00012207C11.3495 0.00012207 11.3159 0.00275048 11.2826 0.00800731L2.3866 1.42589C1.06538 1.45918 0 2.70593 0 4.23304V20.7669C0 22.294 1.06538 23.5405 2.38631 23.5741L11.2826 24.9922C11.3159 24.9975 11.3495 25.0001 11.3831 25.0001C12.7291 25.0001 13.8243 23.7405 13.8243 22.1918V2.80814C13.8243 1.25972 12.7291 0.00012207 11.3831 0.00012207ZM12.3641 22.1918C12.3641 22.7972 11.9473 23.2934 11.4266 23.3197L2.54138 21.9033C2.50809 21.898 2.4748 21.8954 2.44121 21.8954C1.90005 21.8954 1.46023 21.389 1.46023 20.7669V4.23304C1.46023 3.61069 1.90005 3.10457 2.44121 3.10457C2.4748 3.10457 2.50809 3.10194 2.54138 3.09668L11.4266 1.68055C11.9473 1.70684 12.3641 2.20273 12.3641 2.80814V22.1918Z" fill="currentColor"/>
+        <path d="M17.1823 2.35864H15.0465C14.6429 2.35864 14.3164 2.73451 14.3164 3.19827C14.3164 3.66234 14.6429 4.0382 15.0465 4.0382H17.1823C17.7237 4.0382 18.1635 4.54431 18.1635 5.16666V19.8332C18.1635 20.4556 17.7237 20.9617 17.1823 20.9617H15.0465C14.6429 20.9617 14.3164 21.3375 14.3164 21.8013C14.3164 22.2651 14.6429 22.6412 15.0465 22.6412H17.1823C18.5286 22.6412 19.6235 21.3813 19.6235 19.8332V5.16666C19.6235 3.61824 18.5286 2.35864 17.1823 2.35864Z" fill="currentColor"/>
+        <path d="M10.0032 12.5195C9.47078 12.5195 9.03943 13.0157 9.03943 13.6281C9.03943 14.2403 9.47078 14.7367 10.0032 14.7367C10.5356 14.7367 10.9669 14.2403 10.9669 13.6281C10.9669 13.0157 10.5356 12.5195 10.0032 12.5195Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function BillingIcon() {
+  return (
+    <svg width="22" height="23" viewBox="0 0 25 26" fill="none">
+      <mask id="web-invoice-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="26">
+        <path d="M0 0H24.5684V25.7742H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-invoice-mask)">
+        <path d="M17.683 25.7742H3.76278C1.68794 25.7742 0 24.0895 0 22.0185V3.76349C0 1.6883 1.68794 0 3.76278 0H10.6318C11.4798 0 12.2867 0.184036 13.0296 0.546422C13.5931 0.797251 14.1359 1.17349 14.6141 1.65206L19.7941 6.82388C20.2613 7.29143 20.6383 7.83288 20.9161 8.43437C21.1218 8.87989 20.9271 9.40784 20.4812 9.61319C20.035 9.81855 19.5081 9.6235 19.3028 9.17833C19.1162 8.77366 18.8523 8.39422 18.5386 8.08051L13.3586 2.90869C13.0342 2.58396 12.6707 2.33064 12.2782 2.15584C11.7523 1.89969 11.2073 1.7764 10.6318 1.7764H3.76278C2.66745 1.7764 1.7764 2.6678 1.7764 3.76349V22.0185C1.7764 23.11 2.66745 23.9978 3.76278 23.9978H17.683C18.1737 23.9978 18.5712 24.3954 18.5712 24.886C18.5712 25.3767 18.1737 25.7742 17.683 25.7742Z" fill="currentColor"/>
+        <path d="M20.1096 9.69455H12.6402C12.1495 9.69455 11.752 9.29699 11.752 8.80635V1.34474C11.752 1.04346 11.9044 0.763143 12.157 0.599359C12.4092 0.435574 12.7276 0.410704 13.0022 0.533632C13.5937 0.797605 14.1362 1.17385 14.6145 1.65206L19.7941 6.82424C20.2602 7.29037 20.6375 7.83181 20.9157 8.4333C21.0429 8.70865 21.0212 9.02947 20.8582 9.28491C20.6951 9.54 20.4126 9.69455 20.1096 9.69455ZM13.5284 7.91815H18.3755L13.5284 3.0778V7.91815Z" fill="currentColor"/>
+        <path d="M18.2099 19.9054C18.5997 19.9054 18.9521 20.1463 19.0835 20.5129C19.2985 21.1123 19.8115 21.5265 20.8322 21.5265C21.8992 21.5265 22.5266 21.0487 22.5266 20.1004C22.5266 19.2094 22.0345 18.7397 20.4773 18.1936C18.1488 17.4003 17.1807 16.6748 17.1807 15.0675C17.1807 13.44 18.5993 12.3866 20.7388 12.3866C22.4932 12.3866 23.4912 12.9007 23.9722 13.7153C24.3282 14.3182 23.8344 15.0803 23.1341 15.0803C22.7419 15.0803 22.4108 14.8284 22.2566 14.4678C22.053 13.991 21.594 13.6478 20.7125 13.6478C19.6616 13.6478 19.1937 14.1655 19.1937 14.9492C19.1937 15.7255 19.7227 16.1607 21.4121 16.7395C23.7075 17.5158 24.5684 18.4043 24.5684 19.9214C24.5684 21.6473 23.3526 22.7874 20.7551 22.7828C18.8711 22.7796 17.8095 22.1998 17.315 21.2757C16.9835 20.6568 17.4532 19.9054 18.1552 19.9054H18.2099ZM20.0535 12.647V12.0707C20.0535 11.6398 20.4031 11.2902 20.834 11.2902C21.265 11.2902 21.6146 11.6398 21.6146 12.0707V12.647H20.0535ZM20.0535 23.1395V22.4748H21.6146V23.1395C21.6146 23.5704 21.265 23.9201 20.834 23.9201C20.4031 23.9201 20.0535 23.5704 20.0535 23.1395Z" fill="currentColor"/>
+        <path d="M8.04499 7.43143H4.78493C4.29429 7.43143 3.89673 7.03423 3.89673 6.54323C3.89673 6.05259 4.29429 5.65503 4.78493 5.65503H8.04499C8.53563 5.65503 8.93319 6.05259 8.93319 6.54323C8.93319 7.03423 8.53563 7.43143 8.04499 7.43143Z" fill="currentColor"/>
+        <path d="M8.04499 11.7616H4.78493C4.29429 11.7616 3.89673 11.3641 3.89673 10.8734C3.89673 10.3828 4.29429 9.98523 4.78493 9.98523H8.04499C8.53563 9.98523 8.93319 10.3828 8.93319 10.8734C8.93319 11.3641 8.53563 11.7616 8.04499 11.7616Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function LockIcon() {
+  return (
+    <svg width="20" height="21" viewBox="0 0 24 25" fill="none">
+      <mask id="web-lock-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+        <path d="M0 0H23.5675V25H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-lock-mask)">
+        <path d="M20.6093 6.85332H19.5794V3.91516C19.5794 1.75621 17.8231 -0.00012207 15.6642 -0.00012207H7.90333C5.74438 -0.00012207 3.98804 1.75621 3.98804 3.91516V6.85332H2.95814C1.32696 6.85332 0 8.18028 0 9.81146V22.0421C0 23.6733 1.32696 25.0003 2.95814 25.0003H20.6093C22.2405 25.0003 23.5675 23.6733 23.5675 22.0421V9.81146C23.5675 8.18028 22.2405 6.85332 20.6093 6.85332ZM5.87293 3.91516C5.87293 2.79554 6.78371 1.88476 7.90333 1.88476H15.6642C16.7838 1.88476 17.6946 2.79554 17.6946 3.91516V6.85332H5.87293V3.91516ZM21.6826 22.0421C21.6826 22.6336 21.2012 23.1154 20.6093 23.1154H2.95814C2.36629 23.1154 1.88489 22.6336 1.88489 22.0421V9.81146C1.88489 9.21961 2.36629 8.73821 2.95814 8.73821H20.6093C21.2012 8.73821 21.6826 9.21961 21.6826 9.81146V22.0421Z" fill="currentColor"/>
+        <path d="M11.7835 13.0477C11.2629 13.0477 10.8411 13.4696 10.8411 13.9902V17.8621C10.8411 18.3827 11.2629 18.8045 11.7835 18.8045C12.3041 18.8045 12.726 18.3827 12.726 17.8621V13.9902C12.726 13.4696 12.3041 13.0477 11.7835 13.0477Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function BellSmallIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 25 25" fill="none">
+      <mask id="web-bell-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+        <path d="M0 0H25V24.7343H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-bell-mask)">
+        <path d="M20.7309 10.8363C20.235 10.8363 19.8333 11.2381 19.8333 11.7339V19.6966C19.8333 21.4843 18.3787 22.9392 16.5907 22.9392H5.03784C3.24977 22.9392 1.79525 21.4843 1.79525 19.6966V8.14343C1.79525 6.35572 3.24977 4.90085 5.03784 4.90085H13.0002C13.496 4.90085 13.8978 4.49907 13.8978 4.00322C13.8978 3.50737 13.496 3.10559 13.0002 3.10559H5.03784C2.25987 3.10559 0 5.36546 0 8.14343V19.6966C0 22.4746 2.25987 24.7345 5.03784 24.7345H16.5907C19.3686 24.7345 21.6285 22.4746 21.6285 19.6966V11.7339C21.6285 11.2381 21.2267 10.8363 20.7309 10.8363Z" fill="currentColor"/>
+        <path d="M19.8153 0.00012207C16.9565 0.00012207 14.6306 2.32605 14.6306 5.18482C14.6306 8.04358 16.9565 10.3695 19.8153 10.3695C22.6741 10.3695 25 8.04358 25 5.18482C25 2.32605 22.6741 0.00012207 19.8153 0.00012207ZM19.8153 8.57426C17.9464 8.57426 16.4259 7.05368 16.4259 5.18482C16.4259 3.31596 17.9464 1.79538 19.8153 1.79538C21.6842 1.79538 23.2048 3.31596 23.2048 5.18482C23.2048 7.05368 21.6842 8.57426 19.8153 8.57426Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function EyeIcon() {
+  return (
+    <svg width="22" height="16" viewBox="0 0 25 18" fill="none">
+      <mask id="web-eye-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="18">
+        <path d="M0 0H25V17.8864H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-eye-mask)">
+        <path d="M12.5002 4.19385C9.88141 4.19385 7.75085 6.32409 7.75085 8.94318C7.75085 11.562 9.88141 13.6925 12.5002 13.6925C15.119 13.6925 17.2498 11.562 17.2498 8.94318C17.2498 6.32409 15.119 4.19385 12.5002 4.19385V4.19385ZM12.5002 12.1176C10.7498 12.1176 9.32578 10.6936 9.32578 8.94318C9.32578 7.19281 10.7498 5.76877 12.5002 5.76877C14.2506 5.76877 15.6749 7.19281 15.6749 8.94318C15.6749 10.6936 14.2506 12.1176 12.5002 12.1176Z" fill="currentColor"/>
+        <path d="M24.8895 8.54017C21.6133 3.03298 17.2133 0 12.5002 0C7.78709 0 3.38707 3.03298 0.110918 8.54017C-0.0368099 8.78838 -0.0368099 9.09738 0.110918 9.34559C3.38707 14.8531 7.78709 17.8864 12.5002 17.8864C17.2133 17.8864 21.6133 14.8531 24.8895 9.34559C25.0372 9.09738 25.0372 8.78838 24.8895 8.54017ZM12.5002 16.3115C8.47659 16.3115 4.65803 13.6993 1.70883 8.94272C4.65803 4.18677 8.47659 1.57492 12.5002 1.57492C16.5238 1.57492 20.3424 4.18677 23.2916 8.94272C20.3424 13.6993 16.5238 16.3115 12.5002 16.3115Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function ListSmallIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="5" width="20" height="14" rx="2"/>
+      <circle cx="8" cy="10.5" r="2"/>
+      <path d="M4 19v-1a4 4 0 014-4h0a4 4 0 014 4v1"/>
+      <line x1="14" y1="9" x2="19" y2="9"/>
+      <line x1="14" y1="13" x2="19" y2="13"/>
+    </svg>
+  )
+}
+
+function GlobeIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 25 25" fill="none">
+      <mask id="web-globe-mask" style={{maskType:'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="25">
+        <path d="M0 0H25V25H0V0Z" fill="black"/>
+      </mask>
+      <g mask="url(#web-globe-mask)">
+        <path d="M12.5 0.000244141C5.60751 0.000244141 0 5.60775 0 12.5002C0 19.3927 5.60751 24.9999 12.5 24.9999C19.3925 24.9999 25 19.3927 25 12.5002C25 5.60775 19.3925 0.000244141 12.5 0.000244141ZM12.5 23.3419C11.4415 23.3419 10.0832 21.2156 9.40111 17.5301C10.4228 17.6345 11.4667 17.6889 12.5 17.6889C13.5336 17.6889 14.5775 17.6345 15.5992 17.5301C14.9171 21.2156 13.5585 23.3419 12.5 23.3419ZM12.5 16.0309C11.2979 16.0309 10.1804 15.9639 9.15307 15.8475C9.03634 14.8198 8.96969 13.7027 8.96969 12.5002C8.96969 11.2978 9.03634 10.1803 9.15307 9.15298C10.1804 9.03626 11.2979 8.9696 12.5 8.9696C13.7024 8.9696 14.8199 9.03626 15.8473 9.15298C15.964 10.1803 16.0306 11.2978 16.0306 12.5002C16.0306 13.7027 15.964 14.8198 15.8473 15.8472C14.8199 15.9639 13.7024 16.0309 12.5 16.0309ZM7.47016 15.5991C3.78465 14.917 1.65804 13.5587 1.65804 12.5002C1.65804 11.4417 3.78465 10.0831 7.47016 9.40103C7.3657 10.4227 7.31165 11.4666 7.31165 12.5002C7.31165 13.5335 7.3657 14.5774 7.47016 15.5991ZM12.5 1.65829C13.5585 1.65829 14.9171 3.78457 15.5992 7.47007C14.5775 7.36561 13.5336 7.31156 12.5 7.31156C11.4667 7.31156 10.4228 7.36561 9.40111 7.47007C10.0832 3.78457 11.4415 1.65829 12.5 1.65829ZM17.5302 9.40103C21.2157 10.0831 23.342 11.4417 23.342 12.5002C23.342 13.5587 21.2157 14.917 17.5302 15.5991C17.6346 14.5774 17.6887 13.5335 17.6887 12.5002C17.6887 11.467 17.6346 10.4227 17.5302 9.40103ZM22.9301 9.5476C21.5227 8.68342 19.5195 8.06166 17.3037 7.69656C16.9386 5.48075 16.3168 3.47716 15.4526 2.07015C19.0606 3.09316 21.9071 5.93969 22.9301 9.5476ZM9.54769 2.07015C8.68351 3.47716 8.06175 5.48041 7.69664 7.69656C5.4805 8.06166 3.47725 8.68342 2.07023 9.5476C3.09292 5.93969 5.93978 3.09316 9.54769 2.07015ZM2.07023 15.4529C3.47725 16.3171 5.4805 16.9388 7.69664 17.3039C8.06175 19.5197 8.68351 21.523 9.54769 22.93C5.93978 21.9073 3.09292 19.0605 2.07023 15.4529ZM15.4526 22.93C16.3168 21.523 16.9386 19.5197 17.3037 17.3039C19.5195 16.9388 21.5227 16.3171 22.9301 15.4529C21.9071 19.0605 19.0606 21.907 15.4526 22.93Z" fill="currentColor"/>
+      </g>
+    </svg>
+  )
+}
+
+function BellIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  )
+}
+
+function ResidentIcon() {
+  return (
+    <svg width="12" height="17" viewBox="0 0 12 17" fill="none">
+      <g clipPath="url(#clip0_web_user)">
+        <path d="M6.00019 9.92822C3.15651 9.92822 0.649013 12.0712 0.0365938 15.0234C-0.0640486 15.5113 0.0451591 16.0128 0.33638 16.4004C0.623318 16.7811 1.05158 17 1.51197 17H10.4884C10.9467 17 11.3749 16.7811 11.664 16.4004C11.9552 16.0128 12.0666 15.5113 11.9638 15.0234C11.3514 12.0712 8.84387 9.92822 6.00019 9.92822ZM10.8289 15.6868C10.7796 15.7507 10.6704 15.8601 10.4884 15.8601H1.51197C1.32996 15.8601 1.22075 15.7507 1.1715 15.6868C1.0837 15.5706 1.05158 15.4178 1.08156 15.2696C1.58692 12.8349 3.6533 11.0681 6.00019 11.0681C8.34709 11.0681 10.4135 12.8349 10.9188 15.2696C10.9488 15.4178 10.9188 15.5706 10.8289 15.6868Z" fill="currentColor"/>
+        <path d="M6.00021 8.38259C8.17152 8.38259 9.93812 6.50181 9.93812 4.19016C9.93812 1.8785 8.17152 0 6.00021 0C3.82891 0 2.06445 1.88078 2.06445 4.19244C2.06445 6.50409 3.83105 8.38487 6.00235 8.38487L6.00021 8.38259ZM6.00021 1.13987C7.58051 1.13987 8.86745 2.50771 8.86745 4.19244C8.86745 5.87716 7.58266 7.245 6.00021 7.245C4.41777 7.245 3.13298 5.87716 3.13298 4.19244C3.13298 2.50771 4.41777 1.13987 6.00021 1.13987Z" fill="currentColor"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_web_user">
+          <rect width="12" height="17" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
+function BoardIcon() {
+  return (
+    <svg width="17" height="15" viewBox="0 0 20 18" fill="none">
+      <path d="M12.0952 12.9606H7.90484C7.61426 12.9606 7.37842 13.1993 7.37842 13.4933C7.37842 13.7873 7.61426 14.0259 7.90484 14.0259H12.0952C12.3858 14.0259 12.6216 13.7873 12.6216 13.4933C12.6216 13.1993 12.3858 12.9606 12.0952 12.9606Z" fill="currentColor"/>
+      <path d="M5.66022 8.30939L4.86637 10.1737C4.75056 10.4443 4.8748 10.7575 5.14222 10.8747C5.2096 10.9045 5.2812 10.9173 5.35069 10.9173C5.55494 10.9173 5.74866 10.7958 5.835 10.5955L6.49198 9.05298H13.6893L14.1652 10.2653C14.2726 10.538 14.5779 10.6722 14.8495 10.5636C15.119 10.4549 15.2517 10.146 15.1443 9.87114L14.5358 8.32217C14.4557 8.11976 14.262 7.98553 14.0472 7.98553H6.14243C5.93186 7.98553 5.74235 8.11124 5.65812 8.30726L5.66022 8.30939Z" fill="currentColor"/>
+      <path d="M9.99996 5.46718C11.4887 5.46718 12.7016 4.23994 12.7016 2.73359C12.7016 1.22724 11.4887 0 9.99996 0C8.51123 0 7.29834 1.22724 7.29834 2.73359C7.29834 4.23994 8.51123 5.46718 9.99996 5.46718ZM9.99996 1.06531C10.9096 1.06531 11.6487 1.81316 11.6487 2.73359C11.6487 3.65402 10.9096 4.40186 9.99996 4.40186C9.09029 4.40186 8.35119 3.65402 8.35119 2.73359C8.35119 1.81316 9.09029 1.06531 9.99996 1.06531Z" fill="currentColor"/>
+      <path d="M17.2983 2.73364C15.8096 2.73364 14.5967 3.96088 14.5967 5.46723C14.5967 6.97358 15.8096 8.20082 17.2983 8.20082C18.787 8.20082 19.9999 6.97358 19.9999 5.46723C19.9999 3.96088 18.787 2.73364 17.2983 2.73364ZM17.2983 7.13551C16.3886 7.13551 15.6495 6.38766 15.6495 5.46723C15.6495 4.5468 16.3886 3.79895 17.2983 3.79895C18.208 3.79895 18.9471 4.5468 18.9471 5.46723C18.9471 6.38766 18.208 7.13551 17.2983 7.13551Z" fill="currentColor"/>
+      <path d="M2.70162 8.20082C4.19035 8.20082 5.40324 6.97358 5.40324 5.46723C5.40324 3.96088 4.19035 2.73364 2.70162 2.73364C1.21289 2.73364 0 3.96088 0 5.46723C0 6.97358 1.21289 8.20082 2.70162 8.20082ZM2.70162 3.79895C3.61128 3.79895 4.35038 4.5468 4.35038 5.46723C4.35038 6.38766 3.61128 7.13551 2.70162 7.13551C1.79195 7.13551 1.05285 6.38766 1.05285 5.46723C1.05285 4.5468 1.79195 3.79895 2.70162 3.79895Z" fill="currentColor"/>
+      <path d="M3.83443 11.7696C2.3457 11.7696 1.13281 12.9968 1.13281 14.5032C1.13281 16.0095 2.3457 17.2368 3.83443 17.2368C5.32316 17.2368 6.53605 16.0095 6.53605 14.5032C6.53605 12.9968 5.32316 11.7696 3.83443 11.7696ZM3.83443 16.1715C2.92477 16.1715 2.18566 15.4236 2.18566 14.5032C2.18566 13.5828 2.92477 12.8349 3.83443 12.8349C4.74409 12.8349 5.4832 13.5828 5.4832 14.5032C5.4832 15.4236 4.74409 16.1715 3.83443 16.1715Z" fill="currentColor"/>
+      <path d="M16.1655 11.7696C14.6768 11.7696 13.4639 12.9968 13.4639 14.5032C13.4639 16.0095 14.6768 17.2368 16.1655 17.2368C17.6542 17.2368 18.8671 16.0095 18.8671 14.5032C18.8671 12.9968 17.6542 11.7696 16.1655 11.7696ZM16.1655 16.1715C15.2558 16.1715 14.5167 15.4236 14.5167 14.5032C14.5167 13.5828 15.2558 12.8349 16.1655 12.8349C17.0751 12.8349 17.8143 13.5828 17.8143 14.5032C17.8143 15.4236 17.0751 16.1715 16.1655 16.1715Z" fill="currentColor"/>
+    </svg>
+  )
+}
+
+function LogoutIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+  )
+}
+
+function ResetIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="1 4 1 10 7 10"/>
+      <path d="M3.51 15a9 9 0 1 0 .49-4.5"/>
+    </svg>
+  )
+}
+
+function ThemeIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+  )
+}
+
+function LayoutIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2"/>
+      <line x1="12" y1="18" x2="12.01" y2="18"/>
+    </svg>
+  )
+}

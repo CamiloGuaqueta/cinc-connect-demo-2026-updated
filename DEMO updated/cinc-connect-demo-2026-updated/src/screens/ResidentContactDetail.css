@@ -1,0 +1,247 @@
+.rcd-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0;
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+.rcd-hero {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rcd-hero__blur-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(1.2);
+}
+
+.rcd-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17,39,25,0.3) 0%, rgba(17,39,25,0.85) 100%);
+}
+
+.rcd-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+/* ── Photo ──────────────────────────────────────────── */
+.rcd-photo-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.rcd-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--res-accent);
+}
+
+.rcd-photo--initials {
+  background: var(--res-bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rcd-photo--initials span {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--res-accent);
+  text-transform: uppercase;
+}
+
+/* ── BM Badge ───────────────────────────────────────── */
+.rcd-bm-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--res-bg1);
+}
+
+/* ── Hero name / role ────────────────────────────────── */
+.rcd-hero__name {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.rcd-hero__role {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.rcd-cards {
+  position: relative;
+  z-index: 2;
+  margin-top: -24px;
+  padding: 0 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rcd-card {
+  background: var(--res-bg2);
+  border-radius: 10px;
+  min-height: 57px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.rcd-card__icon {
+  flex-shrink: 0;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rcd-card__body {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.rcd-card__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.5);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.rcd-card__value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rcd-card__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+/* ── Multi-unit card ────────────────────────────────── */
+.rcd-card--units {
+  align-items: flex-start;
+  height: auto;
+  min-height: 57px;
+  padding: 0 16px;
+}
+
+.rcd-unit-row {
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rcd-unit-row__icon {
+  width: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rcd-unit-row + .rcd-unit-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.rcd-units-more {
+  width: 100%;
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border-top: 1px solid rgba(178, 222, 97, 0.3);
+}
+
+.rcd-units-more span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.55);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Phone rows ─────────────────────────────────────── */
+.rcd-phone-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 57px;
+  padding: 0 16px;
+  margin: 0 -16px;
+}
+
+.rcd-phone-row__icon {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rcd-phone-row + .rcd-phone-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  margin-top: 4px;
+}
+
+.rcd-phone-type {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2px;
+}

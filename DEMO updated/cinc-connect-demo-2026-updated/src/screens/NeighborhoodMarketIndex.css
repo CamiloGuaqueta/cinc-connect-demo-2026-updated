@@ -1,0 +1,893 @@
+.nmi-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0;
+  overflow-y: auto;
+}
+
+.nmi-inner {
+  padding: 20px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Property header ─────────────────────────────────── */
+.nmi-prop-header {
+  padding: 4px 0 6px;
+}
+.nmi-prop-address {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-accent);
+  line-height: 1.2;
+}
+.nmi-prop-sub {
+  font-size: 12px;
+  color: rgba(255, 248, 234, 0.55);
+  margin-top: 4px;
+}
+
+/* ── Section label ───────────────────────────────────── */
+.nmi-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 234, 0.45);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.nmi-section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.nmi-sales-total {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--res-accent);
+  letter-spacing: 0.04em;
+}
+
+/* ── At a Glance KPI row ─────────────────────────────── */
+.nmi-kpi-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.nmi-kpi-tile {
+  background: var(--res-bg2);
+  border-radius: 10px;
+  padding: 13px 10px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+.nmi-kpi-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+}
+.nmi-kpi-value {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1.1;
+}
+.nmi-kpi-value--lime { color: var(--res-accent); }
+.nmi-kpi-delta {
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* ── Shared delta colors ─────────────────────────────── */
+.nmi-delta--up   { color: #6bcb77; }
+.nmi-delta--down { color: #e05c5c; }
+
+/* ── Score badges ────────────────────────────────────── */
+.nmi-score-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 20px;
+  padding: 3px 8px;
+  align-self: flex-start;
+}
+.nmi-score-badge--good { background: rgba(178, 222, 97, 0.18); color: var(--res-accent); }
+.nmi-score-badge--fair { background: rgba(255, 183, 77, 0.18); color: #ffb74d; }
+.nmi-score-badge--bad  { background: rgba(224,  92, 92, 0.18); color: #e05c5c; }
+
+/* ── Base card ───────────────────────────────────────── */
+.nmi-card {
+  background: var(--res-bg2);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* ── AVM Card ────────────────────────────────────────── */
+.nmi-avm-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 16px 0;
+}
+
+.nmi-avm-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.nmi-avm-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+
+.nmi-avm-lower {
+  padding: 14px 16px 16px;
+}
+
+.nmi-avm-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1.1;
+}
+
+.nmi-avm-updated {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.4);
+}
+
+.nmi-change-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.nmi-change-badge--up   { background: rgba(107, 203, 119, 0.15); color: #6bcb77; }
+.nmi-change-badge--down { background: rgba(224,  92,  92, 0.15); color: #e05c5c; }
+.nmi-field-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+
+/* ── Range bar ───────────────────────────────────────── */
+.nmi-range-wrap { margin-bottom: 14px; }
+.nmi-range-bar {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 8px;
+  overflow: visible;
+}
+.nmi-range-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(178, 222, 97, 0.25), rgba(178, 222, 97, 0.7));
+  border-radius: 3px;
+}
+.nmi-range-needle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--res-text);
+  border: 2px solid var(--res-bg2);
+  box-shadow: 0 0 0 2px rgba(178, 222, 97, 0.55);
+}
+.nmi-range-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.45);
+}
+.nmi-range-center {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--res-accent);
+}
+
+/* ── Confidence dots ─────────────────────────────────── */
+.nmi-conf-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nmi-conf-dots { display: flex; gap: 5px; }
+.nmi-conf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+.nmi-conf-dot--on { background: var(--res-accent); }
+.nmi-conf-label {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.5);
+}
+
+/* ── NMI Score card ──────────────────────────────────── */
+.nmi-score-card { padding: 20px 16px 18px; }
+.nmi-gauge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.nmi-gauge-wrap .nmi-score-badge {
+  align-self: center;
+}
+.nmi-gauge-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -2px;
+}
+.nmi-gauge-score {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1;
+}
+.nmi-percentile {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.5);
+  margin: 10px 0 16px;
+}
+.nmi-sub-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.nmi-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nmi-sub-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.6);
+  width: 76px;
+  flex-shrink: 0;
+}
+.nmi-sub-track {
+  flex: 1;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.nmi-sub-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.nmi-sub-val {
+  font-size: 11px;
+  font-weight: 700;
+  width: 24px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Market stats card ───────────────────────────────── */
+.nmi-stat-card { overflow: hidden; }
+.nmi-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.nmi-stat-cell {
+  background: var(--res-bg2);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.nmi-stat-cell--highlight {
+  grid-column: 1 / -1;
+  background: rgba(178, 222, 97, 0.05);
+}
+.nmi-stat-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1.1;
+}
+.nmi-stat-val--sm { font-size: 16px; }
+.nmi-stat-unit {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.5);
+}
+.nmi-stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.5);
+}
+.nmi-stat-sub {
+  font-size: 9px;
+  color: rgba(255, 248, 234, 0.4);
+  margin-top: 1px;
+  line-height: 1.4;
+}
+.nmi-stat-delta {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── Area profile ────────────────────────────────────── */
+.nmi-profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+}
+.nmi-profile-row--border {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-profile-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.6);
+}
+.nmi-profile-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--res-text);
+  text-align: right;
+  max-width: 55%;
+}
+
+/* ── Neighborhood Insights card ──────────────────────── */
+.nmi-insights-card { padding: 16px; }
+.nmi-insights-agent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.nmi-agent-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(178, 222, 97, 0.18);
+  border: 2px solid rgba(178, 222, 97, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--res-accent);
+  flex-shrink: 0;
+}
+.nmi-agent-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+.nmi-agent-sub {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.5);
+  margin-top: 2px;
+}
+.nmi-insights-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.nmi-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.nmi-tag--lime  { background: rgba(178, 222, 97, 0.15); color: var(--res-accent); }
+.nmi-tag--amber { background: rgba(255, 183,  77, 0.15); color: #ffb74d; }
+.nmi-tag--blue  { background: rgba(100, 160, 255, 0.15); color: #64a0ff; }
+.nmi-insights-body {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.7);
+  line-height: 1.6;
+}
+
+/* ── Blog preview list ───────────────────────────────── */
+.nmi-blog-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+}
+.nmi-blog-row--border {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-blog-tag {
+  margin-bottom: 7px;
+  display: inline-block;
+}
+.nmi-blog-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.nmi-blog-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nmi-blog-main {
+  flex: 1;
+  min-width: 0;
+}
+.nmi-blog-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1.35;
+  margin: 0 0 5px;
+}
+.nmi-blog-excerpt {
+  font-size: 11px;
+  color: rgba(255, 248, 234, 0.55);
+  line-height: 1.5;
+  margin: 0 0 7px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.nmi-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nmi-blog-date,
+.nmi-blog-read {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.4);
+}
+.nmi-blog-sep {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.2);
+}
+.nmi-blog-arrow {
+  font-size: 22px;
+  color: rgba(255, 248, 234, 0.2);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.nmi-blog-cta-wrap {
+  padding: 12px 16px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-see-more-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid rgba(178, 222, 97, 0.25);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--res-accent);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+/* ── Realtor card ────────────────────────────────────── */
+.nmi-realtor-card { padding: 16px; }
+.nmi-realtor-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.nmi-realtor-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(178, 222, 97, 0.18);
+  border: 2px solid var(--res-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--res-accent);
+  flex-shrink: 0;
+}
+.nmi-realtor-avatar--photo {
+  object-fit: cover;
+  border: none;
+}
+.nmi-realtor-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--res-text);
+}
+.nmi-realtor-title {
+  font-size: 11px;
+  color: rgba(255, 248, 234, 0.5);
+  margin-top: 2px;
+}
+.nmi-realtor-brokerage {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--res-accent);
+  margin-top: 2px;
+}
+.nmi-realtor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 12px;
+  margin-bottom: 14px;
+}
+.nmi-realtor-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(209, 209, 209, 0.6);
+}
+.nmi-realtor-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nmi-realtor-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  transition: opacity 0.15s;
+}
+.nmi-realtor-btn:active { opacity: 0.85; }
+.nmi-realtor-btn--primary {
+  background: var(--res-accent);
+  color: #112719;
+}
+.nmi-realtor-btn--secondary {
+  background: var(--res-bg2);
+  color: var(--res-accent);
+  border: 1.5px solid var(--res-accent);
+}
+
+/* ── Recent Sales ────────────────────────────────────── */
+.nmi-sale-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+}
+.nmi-sale-row--border {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-sale-info {
+  flex: 1;
+  min-width: 0;
+}
+.nmi-sale-address {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--res-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nmi-sale-details {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.45);
+  margin-top: 2px;
+}
+.nmi-sale-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.nmi-sale-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--res-text);
+}
+.nmi-sale-date {
+  font-size: 10px;
+  color: rgba(255, 248, 234, 0.4);
+}
+
+/* ── Status badges ───────────────────────────────────── */
+.nmi-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+.nmi-badge--active  { background: rgba(178, 222, 97, 0.18); color: var(--res-accent); }
+.nmi-badge--pending { background: rgba(107, 203, 119, 0.18); color: #6bcb77; }
+.nmi-badge--sold    { background: rgba(255, 248, 234, 0.08); color: rgba(255, 248, 234, 0.55); }
+
+/* ── Pagination ──────────────────────────────────────── */
+.nmi-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-page-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--res-text);
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nmi-page-btn:disabled { opacity: 0.3; }
+.nmi-page-info {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.55);
+}
+
+/* ── Blog pull-up sheet ──────────────────────────────── */
+@keyframes nmi-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.nmi-blog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.nmi-blog-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.nmi-blog-sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 92%;
+  border-radius: 20px 20px 0 0;
+  background: var(--res-bg1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+  animation: nmi-slide-up 0.38s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  overflow: hidden;
+}
+.nmi-blog-sheet__handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+.nmi-blog-sheet__scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nmi-blog-sheet__hero {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.nmi-blog-sheet__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nmi-blog-sheet__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 60%);
+}
+.nmi-blog-sheet__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.nmi-blog-sheet__top-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px 0;
+}
+.nmi-blog-sheet__close-plain {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 248, 234, 0.7);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.nmi-blog-sheet__body {
+  padding: 18px 20px 32px;
+}
+.nmi-blog-sheet__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.3;
+  margin: 10px 0 12px;
+}
+.nmi-blog-sheet__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.nmi-blog-sheet__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.nmi-blog-sheet__author {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+.nmi-blog-sheet__sub {
+  font-size: 11px;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2px;
+}
+.nmi-blog-sheet__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+}
+.nmi-blog-sheet__para {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 248, 234, 0.75);
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 14px;
+}
+
+/* ── Legal ─────────────────────────────────────────── */
+.nmi-legal {
+  padding: 20px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nmi-legal p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: rgba(209, 209, 209, 0.35);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+.nmi-legal a {
+  color: rgba(209, 209, 209, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Neighborhood Note card ─────────────────────────── */
+.nmi-note-card {
+  padding: 16px;
+}
+.nmi-note-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.nmi-note-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(176, 219, 97, 0.35);
+  flex-shrink: 0;
+}
+.nmi-note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 2px;
+}
+.nmi-note-body {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(209, 209, 209, 0.75);
+  line-height: 1.65;
+  margin: 0 0 10px;
+}
+.nmi-note-attribution {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(209, 209, 209, 0.35);
+  margin: 0;
+}

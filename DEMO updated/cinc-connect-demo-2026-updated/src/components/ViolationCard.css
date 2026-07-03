@@ -1,0 +1,188 @@
+/* ── Shared violation card body ──────────────────────── */
+.viol-address-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.viol-address-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Owner / Contact panel ───────────────────────────── */
+.viol-contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 20px;
+}
+
+.viol-contact-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1e3a22;
+  border: 2px solid var(--lime);
+  color: var(--lime);
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.viol-contact-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.viol-contact-role {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Violation items panel ───────────────────────────── */
+.vi-category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0 18px;
+}
+
+.vi-category-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.vi-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vi-item-card {
+  background: #1c2a1c;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.vi-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.vi-item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+.vi-item-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0;
+}
+
+.vi-see-more {
+  background: none;
+  border: none;
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── Log & Notes panel ───────────────────────────────── */
+.viol-log-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2a3a2a;
+  border: 2px solid #3a4a3a;
+  color: var(--lime);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.viol-log-avatar--owner {
+  background: #1e3a22;
+  color: #a8e6b8;
+}
+
+/* ── Attachment panel ────────────────────────────────── */
+.viol-attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.viol-attachment-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.viol-attach-filename {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+.viol-evidence-img {
+  width: 100%;
+  display: block;
+}
+
+.viol-evidence-caption {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 8px;
+}
+
+.viol-pdf-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.viol-pdf-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.viol-pdf-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.viol-pdf-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}

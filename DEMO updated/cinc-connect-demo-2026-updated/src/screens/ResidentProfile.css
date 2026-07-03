@@ -1,0 +1,420 @@
+/* ── Screen ───────────────────────────────────────────── */
+.rp-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rp-content {
+  padding: 20px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-x: hidden;   /* prevent hero bleed from creating h-scroll */
+}
+
+/* ── Hero header ──────────────────────────────────────── */
+.rp-hero {
+  position: relative;
+  height: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: -20px -16px 0;        /* bleed to screen edges */
+}
+
+.rp-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.rp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17, 39, 25, 0.4) 0%, rgba(17, 39, 25, 1.0) 100%);
+}
+
+.rp-hero__avatar-wrap {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.rp-hero__avatar-frame {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--res-accent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rp-hero__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform: scale(1.35);
+  transform-origin: center top;
+}
+
+.rp-hero__edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--res-accent);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.rp-hero__name {
+  position: absolute;
+  top: 162px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Cards overlap wrapper ────────────────────────────── */
+.rp-cards-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  margin-top: -52px;   /* pull up into the hero */
+}
+
+/* ── Section title ────────────────────────────────────── */
+.rp-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 8px 0 2px 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.rp-card {
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Field section ────────────────────────────────────── */
+.rp-field-section {
+  padding: 12px 16px;
+}
+
+.rp-section-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Caps label ───────────────────────────────────────── */
+.rp-caps-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rp-caps-label--no-mb {
+  margin-bottom: 0;
+}
+
+.rp-optional-tag {
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(255, 248, 234, 0.3);
+  margin-left: 4px;
+}
+
+/* ── Toggle row ───────────────────────────────────────── */
+.rp-field-section--toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 16px 12px;
+  transition: opacity 0.2s;
+}
+
+.rp-field-section--disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.rp-toggle-label {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.4;
+}
+
+/* ── Toggle ───────────────────────────────────────────── */
+.rp-toggle {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.rp-toggle--on {
+  background: var(--res-accent);
+}
+
+.rp-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+
+.rp-toggle--on .rp-toggle__thumb {
+  transform: translateX(18px);
+}
+
+/* ── Field header (label + remove button) ─────────────── */
+.rp-field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+/* ── Input ────────────────────────────────────────────── */
+.rp-field-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(178, 222, 97, 0.4);
+  border-radius: 8px;
+  color: var(--res-text);
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.rp-field-input::placeholder {
+  color: rgba(255, 248, 234, 0.35);
+}
+
+/* used when input sits directly under a .rp-field-header */
+.rp-field-input--top {
+  margin-top: 0;
+}
+
+/* ── Remove button ────────────────────────────────────── */
+.rp-remove-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.4);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ── Add button ───────────────────────────────────────── */
+.rp-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+  height: 48px;
+  cursor: pointer;
+  color: var(--res-accent);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
+
+.rp-add-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Modals ───────────────────────────────────────────── */
+.rp-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.61);
+  backdrop-filter: blur(2px);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+}
+
+.rp-modal-sheet {
+  position: relative;
+  width: 100%;
+  background: var(--res-bg2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.rp-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.rp-modal-body {
+  padding: 28px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.rp-modal-icon {
+  margin-bottom: 4px;
+}
+
+.rp-modal-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(209, 209, 209, 0.56);
+  margin: 0;
+  padding-right: 24px;
+}
+
+.rp-modal-copy {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.8);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.rp-modal-footer {
+  padding: 4px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 248, 234, 0.1);
+}
+
+.rp-modal-accept-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.rp-modal-accept-btn:active {
+  opacity: 0.88;
+}
+
+.rp-modal-cancel-link {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.45);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Save button ──────────────────────────────────────── */
+.rp-save-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.rp-save-btn--inactive {
+  opacity: 0.35;
+  cursor: default;
+}

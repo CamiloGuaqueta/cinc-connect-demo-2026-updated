@@ -1,0 +1,263 @@
+.md-screen {
+  background: #313131;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.md-screen::-webkit-scrollbar { display: none; }
+
+/* ── Hero ───────────────────────────────────────────── */
+.md-hero {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-hero__blur-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(1.2);
+}
+
+.md-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(49,49,49,0.3) 0%, rgba(49,49,49,0.85) 100%);
+}
+
+.md-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+/* ── Photo ──────────────────────────────────────────── */
+.md-photo-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.md-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--res-accent);
+}
+
+.md-photo--initials {
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-photo--initials span {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--res-accent);
+  text-transform: uppercase;
+}
+
+/* ── BM Badge ───────────────────────────────────────── */
+.md-bm-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--res-accent);
+  color: #313131;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #313131;
+}
+
+/* ── Hero name / role ────────────────────────────────── */
+.md-hero__name {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.md-hero__role {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.md-cards {
+  position: relative;
+  z-index: 2;
+  margin-top: -24px;
+  padding: 0 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.md-card {
+  background: #1e1e1e;
+  border-radius: 10px;
+  min-height: 57px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+
+.md-card__label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,248,234,0.5);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0;
+  padding: 10px 0 0;
+}
+
+.md-card--units {
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto;
+  padding: 10px 16px 0;
+}
+
+.md-card--units .md-card__body {
+  width: 100%;
+}
+
+.md-card__body {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.md-card__body--inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.md-card__icon {
+  flex-shrink: 0;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-card__value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+.md-card__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+/* ── Multi-unit rows ────────────────────────────────── */
+.md-unit-row {
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.md-unit-row__icon {
+  width: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-unit-row + .md-unit-row {
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.md-units-more {
+  width: 100%;
+  min-height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border-top: 1px solid rgba(178,222,97,0.3);
+}
+
+.md-units-more span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,248,234,0.55);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Phone rows ─────────────────────────────────────── */
+.md-phone-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 57px;
+  padding: 0 16px;
+  margin: 0 -16px;
+}
+
+.md-phone-row__icon {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.md-phone-row + .md-phone-row {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 4px;
+}
+
+.md-phone-type {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255,248,234,0.45);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2px;
+}

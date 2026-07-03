@@ -1,0 +1,206 @@
+.login-screen {
+  position: absolute;
+  inset: 0;
+  background: var(--res-bg1);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: 'Montserrat', sans-serif;
+  animation: login-fade-in 0.45s ease both;
+  overflow: hidden;
+}
+
+@keyframes login-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Logo area ───────────────────────────────────────── */
+.login-logo-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 40px 36px;
+}
+
+.login-logo-lockup {
+  position: relative;
+  width: 260px;
+  height: 97px;
+}
+
+.login-logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 97px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.login-connecplus {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  width: 96px;
+  height: 12px;
+}
+
+/* ── Form ────────────────────────────────────────────── */
+.login-form {
+  padding: 0 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Input ───────────────────────────────────────────── */
+.login-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--res-bg2);
+  border-radius: 5px;
+  height: 50px;
+  padding: 0 14px;
+  gap: 10px;
+}
+
+.login-input-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.login-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 248, 234, 0.5);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.login-eye-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Remember me row ─────────────────────────────────── */
+.login-remember-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: -4px;
+}
+
+.login-toggle {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  border-radius: 18px;
+  background: #8e8e8e;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.login-toggle--on {
+  background: var(--res-accent);
+}
+
+.login-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.login-toggle--on .login-toggle__thumb {
+  transform: translateX(26px);
+}
+
+.login-remember-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+}
+
+/* ── Sign in button ──────────────────────────────────── */
+.login-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background: var(--res-accent);
+  color: var(--res-bg2);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.login-btn:active {
+  opacity: 0.88;
+}
+
+/* ── Forgot ──────────────────────────────────────────── */
+.login-forgot {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-accent);
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ── Biometric ───────────────────────────────────────── */
+.login-biometric {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.login-faceid-wrap {
+  width: 56px;
+  height: 56px;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.login-faceid {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}

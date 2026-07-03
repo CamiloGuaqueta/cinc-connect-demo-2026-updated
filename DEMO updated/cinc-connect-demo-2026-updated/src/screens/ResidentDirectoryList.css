@@ -1,0 +1,450 @@
+/* Override .screen's overflow and bottom padding (nav is hidden on sub-screens) */
+.rdl-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+/* ── Title ──────────────────────────────────────────── */
+.rdl-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--res-accent);
+  padding: 20px 20px 0;
+  margin: 0 0 16px;
+}
+
+/* ── Search row ──────────────────────────────────────── */
+.rdl-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.rdl-search-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--res-bg2);
+  border-radius: 5px;
+  padding: 0 14px;
+  height: 48px;
+  gap: 10px;
+}
+
+.rdl-download-btn {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 248, 234, 0.65);
+}
+
+.rdl-download-btn:active {
+  background: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+.rdl-search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rdl-search::placeholder {
+  color: rgba(255, 248, 234, 0.45);
+  font-weight: 400;
+}
+
+/* ── Body: position:relative container for absolute children ── */
+.rdl-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* ── Single scroll container (everything scrolls) ───── */
+.rdl-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.rdl-scroll::-webkit-scrollbar { display: none; }
+
+/* ── Content area (contact rows) ────────────────────── */
+.rdl-content {
+  padding: 0 8px 24px 20px;
+}
+
+/* ── Section header (letter) ────────────────────────── */
+.rdl-section-header {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--res-accent);
+  padding: 12px 0 6px;
+  scroll-margin-top: 20px;
+}
+
+/* ── Contact row ────────────────────────────────────── */
+.rdl-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.rdl-row + .rdl-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Avatar wrapper (relative for badge positioning) ── */
+.rdl-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ── BM Badge ───────────────────────────────────────── */
+.rdl-bm-badge {
+  position: absolute;
+  bottom: -3px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  font-size: 7px;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--res-bg1);
+}
+
+/* ── Avatar ─────────────────────────────────────────── */
+.rdl-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--res-bg2);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rdl-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rdl-avatar__initials {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+/* ── Row info ───────────────────────────────────────── */
+.rdl-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.rdl-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rdl-row__addr {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rdl-row__role {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.6);
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Group divider (between letter groups) ──────────── */
+.rdl-group-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 4px 0;
+}
+
+/* ── Empty state ────────────────────────────────────── */
+.rdl-empty {
+  color: rgba(255, 248, 234, 0.45);
+  font-size: 14px;
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ── A-Z Scrubber ───────────────────────────────────── */
+.rdl-scrubber {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: 0 6px 0 4px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rdl-scrubber__btn {
+  pointer-events: all;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--res-text);
+  opacity: 0.7;
+  font-family: 'Montserrat', sans-serif;
+  background: none;
+  border: none;
+  padding: 0 4px;
+  cursor: pointer;
+  line-height: 1.6;
+  border-radius: 3px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.rdl-scrubber__btn:active {
+  background: rgba(178, 222, 97, 0.2);
+  color: var(--res-accent);
+  opacity: 1;
+}
+
+/* ── Scroll-to-top button ───────────────────────────── */
+.rdl-scroll-top-btn {
+  position: absolute;
+  bottom: 28px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(17, 39, 25, 0.92);
+  border: 1.5px solid rgba(178, 222, 97, 0.5);
+  color: var(--res-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.rdl-scroll-top-btn:active {
+  background: rgba(178, 222, 97, 0.15);
+}
+
+/* ── Export sheet ───────────────────────────────────── */
+.rdl-sheet-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 200;
+}
+
+.rdl-export-sheet {
+  position: absolute;
+  top: 82px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 201;
+  background: var(--res-bg2);
+  border-radius: 20px 20px 0 0;
+  padding: 0 20px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  animation: rdl-slide-up 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rdl-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.rdl-sheet-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 248, 234, 0.15);
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+.rdl-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+}
+
+.rdl-sheet-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rdl-sheet-close {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 248, 234, 0.6);
+  border: none;
+  cursor: pointer;
+}
+
+.rdl-format-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rdl-format-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.rdl-format-options {
+  display: flex;
+  gap: 10px;
+}
+
+.rdl-format-opt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 12px;
+  background: var(--res-bg1);
+  border: 2px solid rgba(255, 248, 234, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.rdl-format-opt--active {
+  border-color: var(--res-accent);
+  background: rgba(178, 222, 97, 0.08);
+}
+
+.rdl-format-opt__name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rdl-format-opt--active .rdl-format-opt__name {
+  color: var(--res-accent);
+}
+
+.rdl-format-opt__desc {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rdl-export-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rdl-export-btn:active {
+  opacity: 0.85;
+}
+
+.rdl-export-cancel {
+  background: none;
+  border: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.45);
+  cursor: pointer;
+  padding: 0 0 4px;
+  margin-top: -8px;
+}

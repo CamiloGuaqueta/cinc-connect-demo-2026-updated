@@ -1,0 +1,320 @@
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ── Arch background ────────────────────────────────── */
+.bottom-nav__bg {
+  position: absolute;
+  inset: 0;
+  /* Arch shape using radial gradient to cut out center */
+  background:
+    radial-gradient(ellipse 96px 62px at 50% 0%, var(--bg-page) 98%, var(--bg-nav) 100%)
+    center top / 100% 100% no-repeat,
+    var(--bg-nav);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Sides (2 items each) ───────────────────────────── */
+.bottom-nav__side {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 94px;
+  z-index: 1;
+  padding-bottom: 8px;
+}
+
+/* ── Center slot ────────────────────────────────────── */
+.bottom-nav__center-slot {
+  position: relative;
+  width: 100px;
+  height: 94px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+/* ── Center CINC button ─────────────────────────────── */
+.center-btn {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--bg-page);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+.center-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.center-btn::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  z-index: -1;
+}
+
+.center-btn__logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Resident flat nav ──────────────────────────────── */
+.resident-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px 8px;
+}
+
+.resident-nav__bg {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-nav);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.resident-nav__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+  padding: 4px 2px;
+}
+
+/* Inactive: cream icon */
+.resident-nav__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: background 0.15s, color 0.15s;
+}
+.resident-nav__icon svg { color: var(--text); }
+
+/* Active: lime circle + dark icon */
+.resident-nav__item--active .resident-nav__icon {
+  background: var(--lime);
+  color: var(--text-dark);
+  width: 38px;
+  height: 38px;
+}
+.resident-nav__item--active .resident-nav__icon svg { color: var(--text-dark); }
+
+.resident-nav__label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  visibility: hidden;
+}
+
+.resident-nav__item--active .resident-nav__label {
+  visibility: visible;
+}
+
+/* ── Nav items ──────────────────────────────────────── */
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 4px;
+  -webkit-tap-highlight-color: transparent;
+  min-width: 0;
+}
+
+/* Inactive: larger slot, cream color, no background */
+.nav-item__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, width 0.15s, height 0.15s;
+  color: var(--text);
+}
+
+/* Active: lime circle, dark icon — same size as inactive */
+.nav-item--active .nav-item__icon {
+  background: var(--lime);
+  color: var(--text-dark);
+  width: 42px;
+  height: 42px;
+}
+
+/* Label — always reserves space, only visible when active */
+.nav-item__label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--text);
+  visibility: hidden;
+  line-height: 1;
+}
+
+.nav-item--active .nav-item__label {
+  visibility: visible;
+}
+
+/* ── CephAI ring-trace overlay ──────────────────────── */
+.center-btn-ring {
+  position: absolute;
+  top: -24px;          /* button top: -20px, minus 4px for ring clearance */
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ring-circle {
+  stroke-dasharray: 276.46;
+  stroke-dashoffset: 276.46;
+  animation: ring-draw 1.5s ease-in-out forwards;
+}
+
+.ring-circle--long {
+  animation-duration: 6.3s;
+}
+
+@keyframes ring-draw {
+  0% {
+    stroke-dashoffset: 276.46;
+    opacity: 1;
+    filter: none;
+  }
+  65% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    filter: none;
+  }
+  82% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(178, 222, 97, 0.95));
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+    filter: drop-shadow(0 0 2px rgba(178, 222, 97, 0));
+  }
+}
+
+/* ── Resident Nav V2 — floating pill ─────────────────── */
+.resident-nav-v2 {
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  right: 10px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6px 8px;
+  background: var(--res-bg1);
+  border-radius: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.rnv2-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  height: 44px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.rnv2-item--active {
+  background: var(--lime);
+  color: var(--text-dark);
+}
+
+.rnv2-icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text);
+}
+
+.rnv2-icon svg { width: 100%; height: 100%; color: inherit; }
+
+.rnv2-item--active .rnv2-icon {
+  color: var(--text-dark);
+}
+
+.rnv2-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-width 0.2s ease;
+  text-align: left;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.rnv2-item--active .rnv2-label {
+  max-width: 64px;
+}

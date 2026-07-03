@@ -1,0 +1,959 @@
+/* ── Long-press hold animation ───────────────────────── */
+@keyframes hold-glow {
+  0%   { box-shadow: var(--shadow), 0 0 0 0px rgba(178,222,97,0);    border-color: transparent; }
+  30%  { box-shadow: var(--shadow), 0 0 0 2px rgba(178,222,97,0.25); }
+  100% { box-shadow: var(--shadow), 0 0 0 4px rgba(178,222,97,0.55); border-color: rgba(178,222,97,0.55); }
+}
+
+.card--holding {
+  animation: hold-glow 2.5s ease-out forwards;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Pulse title actions ─────────────────────────────── */
+.pulse-title-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.pulse-title-row .engage-filter-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+/* ── Period dropdown ─────────────────────────────────── */
+.period-dropdown {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.period-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: border-color 0.15s;
+}
+.period-trigger--open {
+  border-color: var(--lime);
+  color: var(--lime);
+}
+
+.period-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 50;
+  min-width: 160px;
+  background: #1a2b1d;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  padding: 6px 0;
+}
+
+.period-menu__group {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 14px 3px;
+}
+
+.period-menu__item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.1s;
+}
+.period-menu__item:active {
+  background: rgba(255,255,255,0.05);
+}
+.period-menu__item--active {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+/* ── Page header ─────────────────────────────────────── */
+.pulse-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.pulse-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lime);
+  line-height: 1.3;
+}
+.pulse-sub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.pulse-filter-btn {
+  color: var(--text-muted);
+  padding: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Export sheet ────────────────────────────────────── */
+.export-sheet__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: -4px 0 12px;
+}
+.export-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.export-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.export-option:active {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--lime);
+}
+.export-option__icon {
+  color: var(--lime);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+.export-option__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.export-option__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.export-option__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── Section label ───────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* ── Card footer CTA ─────────────────────────────────── */
+.card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 11px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lime);
+  letter-spacing: 0.02em;
+}
+
+/* ── KPI card tap indicator ──────────────────────────── */
+.pulse-stat__arrow {
+  align-self: flex-end;
+  color: var(--text-muted);
+  margin-top: 4px;
+  opacity: 0.55;
+}
+
+/* ── Section header (label only, no See all) ─────────── */
+.pulse-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.pulse-see-all {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--lime);
+  letter-spacing: 0.02em;
+}
+
+/* ── KPI stat scroll row ─────────────────────────────── */
+.pulse-glance-scroll {
+  margin: 0 -16px;
+  padding: 0 16px;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.pulse-glance-scroll::-webkit-scrollbar { display: none; }
+
+.pulse-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-right: 16px;
+  width: max-content;
+}
+
+.pulse-stat {
+  width: 148px;
+  height: 116px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  flex-shrink: 0;
+}
+.pulse-stat__label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.pulse-stat__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+.pulse-stat__delta {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.pulse-stat__delta--red   { color: #b87a7a; }
+.pulse-stat__delta--green { color: #7daa85; }
+.pulse-stat__delta--amber { color: #c49a4a; }
+
+/* ── Expenses vs Budget ──────────────────────────────── */
+.expenses-card {
+  overflow: hidden;
+  padding: 14px 16px 0;
+}
+
+.expenses-card .card-cta,
+.invoices-card .card-cta {
+  margin: 0 -16px;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.expenses-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+}
+.expenses-row--border {
+  border-bottom: 1px solid var(--border);
+}
+
+.expenses-row__left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.expenses-row__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.expenses-row__proj {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+.expenses-row__proj--red   { color: #e05c5c; }
+.expenses-row__proj--amber { color: #ffb74d; }
+
+.expenses-row__actual {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  flex-shrink: 0;
+  min-width: 64px;
+  text-align: right;
+}
+
+.expenses-row__pill {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 5px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+  min-width: 72px;
+  text-align: center;
+}
+.expenses-row__pill--red   { background: rgba(224,92,92,0.18);   color: #e05c5c; }
+.expenses-row__pill--amber { background: rgba(255,183,77,0.18);  color: #ffb74d; }
+.expenses-row__pill--green { background: rgba(107,203,119,0.18); color: #6bcb77; }
+.expenses-row__pill--muted { background: rgba(255,255,255,0.07); color: var(--text-muted); font-weight: 500; }
+
+/* ── Approved Invoices ───────────────────────────────── */
+.invoices-card {
+  overflow: hidden;
+  padding: 14px 16px 0;
+}
+
+.invoices-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.invoices-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lime);
+  letter-spacing: 0.02em;
+}
+
+.invoices-total {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.invoices-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoices-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+.invoices-row--border {
+  border-bottom: 1px solid var(--border);
+}
+
+.invoices-row__vendor {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.invoices-row__amount {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+/* ── Bank Balance card ───────────────────────────────── */
+.bank-card {
+  padding: 14px 16px 0;
+  overflow: hidden;
+  min-height: 236px;
+}
+
+/* ── Reserve Fund Health ─────────────────────────────── */
+.reserve-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 176px;
+  padding-bottom: 16px;
+}
+.reserve-hero {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 8px 0 0;
+}
+.reserve-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reserve-pct {
+  line-height: 1;
+}
+.reserve-pct__num {
+  font-size: 88px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -3px;
+}
+.reserve-pct__unit {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+.reserve-qoq {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6bcb77;
+  background: rgba(107,203,119,0.13);
+  border-radius: 12px;
+  padding: 4px 10px;
+  margin-top: 8px;
+  white-space: nowrap;
+}
+.reserve-bar {
+  position: relative;
+  height: 12px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px;
+  overflow: visible;
+}
+.reserve-bar__fill {
+  height: 100%;
+  border-radius: 6px;
+  background: var(--lime);
+  opacity: 0.85;
+  transition: width 0.6s ease;
+}
+.reserve-bar__tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1.5px;
+  background: rgba(255,255,255,0.2);
+  transform: translateX(-50%);
+}
+.reserve-labels {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.reserve-labels__funded {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.reserve-labels__word {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.reserve-labels__target {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.reserve-labels__target strong {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.bank-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.bank-card__all-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.bank-card__total {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.bank-accounts {
+  display: flex;
+  flex-direction: column;
+}
+
+.bank-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.bank-account--border {
+  border-bottom: 1px solid var(--border);
+}
+
+.bank-account__left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bank-account__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.bank-account__pending {
+  font-size: 10px;
+  font-weight: 500;
+}
+.bank-account__pending--debit  { color: #e05c5c; }
+.bank-account__pending--credit { color: #6bcb77; }
+
+.bank-account__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.bank-account__balance {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bank-account__reg-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bank-account__reg-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.bank-account__reg-val {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ── Violations card (tabbed) ────────────────────────── */
+.viol-card {
+  padding: 14px 16px 0;
+  overflow: hidden;
+}
+
+/* Segmented tab strip */
+.viol-tabs {
+  display: flex;
+  background: rgba(0,0,0,0.25);
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+  margin-bottom: 14px;
+}
+.viol-tab {
+  flex: 1;
+  padding: 6px 4px;
+  border-radius: 17px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.viol-tab--active {
+  background: var(--bg-card);
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+/* Body — fixed height keeps all tabs equal */
+.viol-body {
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* "By type" header elements */
+.viol-period-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+.viol-period-name {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.viol-delta-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #6bcb77;
+  background: rgba(107,203,119,0.13);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+.viol-delta-badge--red {
+  color: #e05c5c;
+  background: rgba(224,92,92,0.13);
+}
+.viol-total-line {
+  flex-shrink: 0;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+.viol-total-num {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text);
+}
+.viol-total-word {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 5px;
+}
+.viol-cat-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+
+/* Bar rows — shared */
+.viol-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.viol-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.viol-bar-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  width: 110px;
+  flex-shrink: 0;
+}
+.viol-bar-month {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  width: 32px;
+  flex-shrink: 0;
+}
+.viol-bar-row--current .viol-bar-month {
+  font-weight: 700;
+  color: var(--text);
+}
+.viol-bar-row--current .viol-bar-count {
+  font-weight: 700;
+  color: var(--lime);
+}
+.viol-bar-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.viol-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.viol-bar-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Status row (Cured / Open / Escalated) */
+.viol-status {
+  flex-shrink: 0;
+  display: flex;
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+  padding-top: 8px;
+  padding-bottom: 2px;
+}
+.viol-status-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.viol-status-item + .viol-status-item {
+  border-left: 1px solid var(--border);
+}
+.viol-status-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.viol-status-val {
+  font-size: 22px;
+  font-weight: 700;
+}
+.viol-status-val--green  { color: #6bcb77; }
+.viol-status-val--orange { color: #c06030; }
+.viol-status-val--red    { color: #e05c5c; }
+
+/* Footer — always shown */
+.viol-footer {
+  display: flex;
+  align-items: flex-end;
+  border-top: 1px solid var(--border);
+  padding: 10px 0 14px;
+  margin-top: 10px;
+  gap: 4px;
+}
+.viol-footer-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.viol-footer-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.viol-footer-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+.viol-footer-val--good { color: #6bcb77; }
+
+.viol-card .card-cta {
+  margin: 0 -16px;
+}
+
+/* ── Agenda card ─────────────────────────────────────── */
+.agenda-card {
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+
+.agenda-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  color: var(--text-muted);
+}
+
+.agenda-card__date {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 0 16px;
+  margin-bottom: 4px;
+}
+
+.agenda-card__meeting {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+
+.agenda-card__items {
+  list-style: disc;
+  padding: 0 16px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.agenda-card__items li {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.agenda-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 14px;
+}
+
+.agenda-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.agenda-tag--amber {
+  background: rgba(255, 183, 77, 0.15);
+  color: #ffb74d;
+}
+.agenda-tag--blue {
+  background: rgba(100, 160, 255, 0.15);
+  color: #64a0ff;
+}
+.agenda-tag--red {
+  background: rgba(224, 92, 92, 0.15);
+  color: #e05c5c;
+}
+
+/* ── Delinquency list ────────────────────────────────── */
+.delinquency-list {
+  overflow: hidden;
+  padding: 0;
+}
+
+.delinquency-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.delinquency-row--border {
+  border-bottom: 1px solid var(--border);
+}
+
+.delinquency-row__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.delinquency-row__address {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delinquency-row__name {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delinquency-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+.delinquency-tag--red {
+  background: rgba(224, 92, 92, 0.15);
+  color: #e05c5c;
+}
+.delinquency-tag--amber {
+  background: rgba(255, 183, 77, 0.15);
+  color: #ffb74d;
+}
+
+/* filter-sheet, filter-chip, mini-cal styles are defined globally in Feed.css */
+
+/* ── Print / PDF export ──────────────────────────────── */
+@media print {
+  .app-header, nav, .pulse-title-actions, .period-dropdown,
+  .card-cta, .pulse-tour-modal, .cephai-chat { display: none !important; }
+  .screen { overflow: visible !important; height: auto !important; }
+  .screen-inner { padding: 0 !important; gap: 16px !important; }
+  .card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ccc !important; }
+  body { background: white !important; color: black !important; }
+  .pulse-title { color: black !important; }
+  .pulse-sub, .section-label { color: #555 !important; }
+}

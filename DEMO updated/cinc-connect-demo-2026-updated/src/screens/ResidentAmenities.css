@@ -1,0 +1,855 @@
+.resident-amenities {
+  padding: var(--header-h) 20px var(--nav-h);
+  background: var(--res-bg1);
+}
+
+/* ── Upcoming reservation pull-up sheet ───────────────────── */
+@keyframes res-backdrop-in {
+  from { background: rgba(0, 0, 0, 0); }
+  to   { background: rgba(0, 0, 0, 0.62); }
+}
+
+@keyframes res-sheet-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.res-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.62);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  animation: res-backdrop-in 0.3s ease forwards;
+}
+
+.res-detail-sheet {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 48px rgba(0, 0, 0, 0.55);
+  animation: res-sheet-up 0.38s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  overflow: hidden;
+}
+
+/* ── Fee / Deposit slide-in screen ───────────────────── */
+@keyframes res-fee-screen-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.res-fee-screen {
+  position: absolute;
+  z-index: 100;
+  overflow: hidden;
+  animation: res-fee-screen-in 0.28s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+/* In the My Reservations backdrop, match the detail sheet dimensions */
+.res-detail-backdrop .res-fee-screen {
+  inset: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90%;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 48px rgba(0, 0, 0, 0.55);
+  background: var(--res-bg2);
+}
+
+.res-detail-backdrop .res-fee-screen .amenity-confirm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.res-fee-screen__back {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  color: #fff8ea;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.res-fee-screen__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 8px;
+}
+
+.res-fee-screen__row-label { font-size: 15px; font-weight: 500; color: var(--text); }
+.res-fee-screen__row-sub { font-size: 10px; font-weight: 300; color: var(--text-muted); margin-top: 2px; }
+.res-fee-screen__row-value { font-size: 15px; font-weight: 500; color: var(--text); white-space: nowrap; }
+.res-fee-screen__divider { height: 1px; background: rgba(255,255,255,0.1); }
+.res-fee-screen__divider--strong { background: rgba(255,255,255,0.18); }
+
+.res-fee-screen__total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 12px 0 4px;
+  gap: 8px;
+}
+.res-fee-screen__total-label { font-size: 14px; font-weight: 400; color: var(--text); }
+.res-fee-screen__total-value { font-size: 30px; font-weight: 700; color: var(--lime); line-height: 1; }
+
+.res-fee-screen__download-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--lime);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.res-notes__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.res-note-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.res-note-item__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 2px;
+}
+
+.res-note-item__type-tag {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 300;
+  color: rgba(255, 248, 234, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.res-note-item__approval-tag {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--lime);
+  background: rgba(178, 222, 97, 0.15);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  display: table;
+  margin: 0 0 10px auto;
+}
+
+.res-note-item__date {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.res-note-card {
+  background: var(--res-bg1);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.res-note-card--approval {
+  border: 1px solid rgba(178, 222, 97, 0.2);
+}
+
+.res-note-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.res-note-card__avatar-wrap {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.res-note-card__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.res-note-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.res-note-card__author-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--lime);
+}
+
+.res-note-card__time {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.res-note-card__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.res-note-card__title span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+.res-note-card__title--fee span { color: var(--lime); }
+.res-note-card__title--deposit span { color: #F5C842; }
+
+.res-fee-typed-note {
+  width: 100%;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+.res-fee-typed-note--fee { background: rgba(178,222,97,0.07); border: 1px solid rgba(178,222,97,0.18); }
+.res-fee-typed-note--deposit { background: rgba(245,200,66,0.07); border: 1px solid rgba(245,200,66,0.18); }
+.res-fee-typed-note__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.res-fee-typed-note__title {
+  font-size: 13px;
+  font-weight: 700;
+}
+.res-fee-typed-note--fee .res-fee-typed-note__title { color: var(--lime); }
+.res-fee-typed-note--deposit .res-fee-typed-note__title { color: #F5C842; }
+.res-fee-typed-note__text {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0 0 6px;
+}
+.res-fee-typed-note__time {
+  font-size: 10px;
+  color: rgba(255,248,234,0.4);
+}
+
+.res-note-card__text {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.res-fee-screen__deposit-note {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.55;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.resident-amenities__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 16px 0 14px;
+}
+
+/* Tab nav */
+.amenities-tab-nav {
+  display: flex;
+  background: var(--res-bg2);
+  border-radius: 5px;
+  height: 40px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.amenities-tab {
+  flex: 1;
+  border-radius: 3px;
+  border: none;
+  background: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--res-accent);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.amenities-tab--active {
+  background: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+/* Search */
+.amenities-search {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.amenities-search__input {
+  width: 100%;
+  height: 48px;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: 5px;
+  padding: 0 44px 0 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.amenities-search__input::placeholder {
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+
+.amenities-search__icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+
+/* List */
+.amenities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Card */
+.amenity-list-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.amenity-list-card__photo-btn {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 380 / 214;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+}
+
+.amenity-list-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.amenity-list-card__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.75) 100%);
+  border-radius: 10px;
+}
+
+.amenity-list-card__name {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-text);
+  line-height: 1.2;
+}
+
+.amenity-list-card__bookmark {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Dots — overlaid inside photo */
+.amenity-list-card__dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.amenity-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(178, 222, 97, 0.3);
+}
+
+.amenity-dot--active {
+  background: var(--lime);
+}
+
+/* Stats */
+.amenity-list-card__stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  flex-wrap: nowrap;
+}
+
+.amenity-stat {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--res-text);
+  flex: 1;
+  min-width: 0;
+}
+
+.amenity-stat:nth-child(2),
+.amenity-stat:nth-child(3) {
+  justify-content: center;
+}
+
+.amenity-stat:nth-child(4) {
+  justify-content: flex-end;
+}
+
+.amenity-stat__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  color: var(--lime);
+}
+
+.amenity-stat span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Times */
+.amenity-list-card__times-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  letter-spacing: 0.3px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.amenity-list-card__times {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 20px 2px 20px;
+  margin: 0 -20px;
+}
+
+.amenity-list-card__times::-webkit-scrollbar {
+  display: none;
+}
+
+.amenity-time-pill {
+  flex-shrink: 0;
+  height: 31px;
+  min-width: 70px;
+  padding: 0 8px;
+  border-radius: 5px;
+  border: none;
+  background: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--res-bg2);
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.amenity-time-pill--active {
+  background: var(--lime);
+  color: var(--res-bg2);
+}
+
+/* My Reservations */
+.my-res__section-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.my-res__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.my-res__card {
+  position: relative;
+  width: 100%;
+  height: 214px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.my-res__card--past {
+  opacity: 0.5;
+}
+
+.my-res__card-outer {
+  position: relative;
+}
+
+.my-res__status-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  z-index: 1;
+}
+
+.my-res__status-badge--completed {
+  background: rgba(30, 40, 15, 0.82);
+  color: var(--lime);
+  backdrop-filter: blur(4px);
+}
+
+.my-res__status-badge--cancelled {
+  background: rgba(40, 15, 15, 0.82);
+  color: #FF6B62;
+  backdrop-filter: blur(4px);
+}
+
+.my-res__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.my-res__card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8) 100%);
+}
+
+.my-res__card-info {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  right: 16px;
+}
+
+.my-res__card-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--res-text);
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.my-res__card-details {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--res-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.my-res__empty {
+  font-size: 13px;
+  color: rgba(255, 248, 234, 0.4);
+  margin: 0;
+}
+
+.amenity-confirm__cancel-btn {
+  display: block;
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  border: none;
+  background: #FF6B62;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #1d1d1d;
+  cursor: pointer;
+  margin-top: 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── All Past Reservations button ──────────────────────── */
+.all-past-res-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  background: none;
+  border: 1px solid rgba(255, 248, 234, 0.15);
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255, 248, 234, 0.5);
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── All Past Reservations screen ──────────────────────── */
+.all-past-res {
+  padding: var(--header-h) 20px var(--nav-h);
+  background: var(--res-bg1);
+  min-height: 100%;
+}
+
+.all-past-res__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.all-past-res__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.all-past-res__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 0;
+}
+
+.all-past-res__search-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.all-past-res__search {
+  width: 100%;
+  height: 44px;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: 8px;
+  padding: 0 40px 0 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.all-past-res__search::placeholder { color: rgba(255,248,234,0.35); }
+
+.all-past-res__search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,248,234,0.35);
+}
+
+.all-past-res__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.all-past-res__status-chips {
+  display: flex;
+  gap: 8px;
+}
+
+.all-past-res__chip {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,248,234,0.2);
+  background: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,248,234,0.5);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.all-past-res__chip--active { border-color: transparent; }
+.all-past-res__chip--completed { background: rgba(30,40,15,0.9); color: var(--lime); border-color: rgba(178,222,97,0.4); }
+.all-past-res__chip--cancelled { background: rgba(40,15,15,0.9); color: #FF6B62; border-color: rgba(255,107,98,0.4); }
+.all-past-res__chip--active:not(.all-past-res__chip--completed):not(.all-past-res__chip--cancelled) {
+  background: rgba(255,248,234,0.12);
+  color: var(--text);
+}
+
+.all-past-res__dropdowns {
+  display: flex;
+  gap: 10px;
+}
+
+.all-past-res__drop-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.all-past-res__drop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,248,234,0.6);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  gap: 6px;
+}
+
+.all-past-res__drop-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.all-past-res__drop-item {
+  display: block;
+  width: 100%;
+  padding: 11px 14px;
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,248,234,0.7);
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.all-past-res__drop-item:last-child { border-bottom: none; }
+.all-past-res__drop-item.active { color: var(--lime); }
+
+.all-past-res__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.amenity-no-times {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 31px;
+  padding: 0 12px;
+  border-radius: 5px;
+  background: #FF5550;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #1d1d1d;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+}

@@ -1,0 +1,654 @@
+.mad-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mad-content {
+  padding: 16px 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Unit header ─────────────────────────────────────── */
+.mad-unit-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+}
+
+.mad-unit-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mad-unit-address {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--res-text);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mad-unit-account {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.5);
+  margin: 0;
+}
+
+/* ── Card ───────────────────────────────────────────── */
+.mad-card {
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ── Generic row (icon + label + optional toggle) ─────── */
+.mad-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  height: 60px;
+}
+
+.mad-row__icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--res-text);
+}
+
+.mad-row__label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ── Address section ─────────────────────────────────── */
+.mad-addr-section {
+  padding: 12px 16px;
+}
+
+.mad-addr-section--bordered {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Inline row (address text + toggle + remove) ──────── */
+.mad-inline-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mad-inline-row .mad-addr-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Delivery Method picker ──────────────────────────── */
+.mad-delivery-picker {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 16px;
+}
+
+.mad-delivery-opt {
+  flex: 1;
+  height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(178, 222, 97, 0.3);
+  background: transparent;
+  color: rgba(255, 248, 234, 0.5);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.mad-delivery-opt--active {
+  background: var(--res-accent);
+  border-color: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+.mad-caps-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(209, 209, 209, 0.56);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mad-addr-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  margin: 0;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+/* ── Toggle ─────────────────────────────────────────── */
+.mad-toggle {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.mad-toggle--on {
+  background: var(--res-accent);
+}
+
+.mad-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+
+.mad-toggle--on .mad-toggle__thumb {
+  transform: translateX(18px);
+}
+
+/* ── Delete address button ───────────────────────────── */
+.mad-delete-addr-btn {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e05c5c;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Edit button ─────────────────────────────────────── */
+.mad-edit-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Remove button ──────────────────────────────────── */
+.mad-remove-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.4);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ── Input row ──────────────────────────────────────── */
+.mad-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mad-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(178, 222, 97, 0.4);
+  border-radius: 8px;
+  color: var(--res-text);
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 10px;
+  outline: none;
+  min-width: 0;
+}
+
+.mad-input::placeholder {
+  color: rgba(255, 248, 234, 0.35);
+}
+
+.mad-confirm-btn {
+  background: var(--res-accent);
+  border: none;
+  border-radius: 6px;
+  color: var(--res-bg1);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  padding: 6px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mad-cancel-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.4);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* ── Address form ───────────────────────────────────── */
+.mad-addr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.mad-addr-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.mad-input--city {
+  flex: 2;
+}
+
+.mad-input--state {
+  flex: 1;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.mad-input--zip {
+  flex: 1.5;
+  min-width: 0;
+}
+
+.mad-addr-form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.mad-confirm-btn--full {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.mad-addr-cancel-link {
+  background: none;
+  border: none;
+  color: rgba(255, 248, 234, 0.45);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ── Statements card ─────────────────────────────────── */
+.mad-stmt-copy-section {
+  padding: 0 16px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mad-stmt-copy {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.6);
+  line-height: 1.55;
+  margin: 10px 0 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mad-stmt-toggle-row {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 52px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mad-stmt-toggle-row .mad-row__label {
+  flex: 1;
+}
+
+/* ── Add trigger ────────────────────────────────────── */
+.mad-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+  height: 48px;
+  cursor: pointer;
+  color: var(--res-accent);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+}
+
+.mad-add-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Change Communication Preferences notice modal ─────── */
+.cpn-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.61);
+  backdrop-filter: blur(2px);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+}
+
+.cpn-sheet {
+  position: relative;
+  width: 100%;
+  background: var(--res-bg2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cpn-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.cpn-body {
+  padding: 24px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cpn-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(209, 209, 209, 0.56);
+  margin: 0;
+  padding-right: 32px;
+}
+
+.cpn-copy {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.8);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cpn-footer {
+  padding: 4px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 248, 234, 0.1);
+}
+
+.cpn-accept-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
+  background: var(--res-accent);
+  color: var(--res-bg1);
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.cpn-accept-btn:active {
+  opacity: 0.88;
+}
+
+.cpn-cancel-link {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.45);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cpn-cancel-link:active {
+  color: rgba(255, 248, 234, 0.7);
+}
+
+/* ── Address Type field ─────────────────────────────────── */
+.mad-addr-type-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.mad-addr-type-placeholder {
+  color: rgba(255, 248, 234, 0.35);
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mad-addr-type-btn--selected span:first-child {
+  color: var(--res-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── Address Type picker overlay ────────────────────────── */
+.atp-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 400;
+}
+
+.atp-sheet {
+  position: absolute;
+  top: 82px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 401;
+  background: var(--res-bg2);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: atp-slide-up 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes atp-slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.atp-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 248, 234, 0.15);
+  margin: 12px auto 0;
+  flex-shrink: 0;
+}
+
+.atp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 14px;
+  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  flex-shrink: 0;
+}
+
+.atp-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(209, 209, 209, 0.56);
+  margin: 0;
+}
+
+.atp-close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atp-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.atp-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px 20px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 248, 234, 0.75);
+}
+
+.atp-option--selected {
+  color: var(--res-text);
+}
+
+.atp-option:active {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Radio circle ── */
+.atp-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 248, 234, 0.3);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.atp-radio--on {
+  border-color: var(--res-accent);
+  background: var(--res-accent);
+}
+
+.atp-radio__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--res-bg2);
+}
+
+/* ── State picker search ─────────────────────────────────── */
+.stp-search-wrap {
+  padding: 10px 16px 6px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stp-search {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(178, 222, 97, 0.3);
+  border-radius: 8px;
+  color: var(--res-text);
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 9px 12px;
+  outline: none;
+}
+
+.stp-search::placeholder {
+  color: rgba(255, 248, 234, 0.35);
+}
+
+/* ── ADD ADDRESS inactive state ──────────────────────────── */
+.mad-confirm-btn--inactive {
+  opacity: 0.35;
+  cursor: default;
+}

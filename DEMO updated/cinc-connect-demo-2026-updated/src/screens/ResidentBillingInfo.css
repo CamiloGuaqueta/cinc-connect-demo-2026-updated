@@ -1,0 +1,237 @@
+/* ── Screen ───────────────────────────────────────────── */
+.rb-screen {
+  background: var(--res-bg1);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rb-content {
+  padding: 20px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Section title ────────────────────────────────────── */
+.rb-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--res-accent);
+  margin: 8px 0 4px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Hint ─────────────────────────────────────────────── */
+.rb-hint {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  margin: 2px 0 6px;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+.rb-card {
+  background: var(--res-bg2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ── Row ──────────────────────────────────────────────── */
+.rb-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  min-height: 52px;
+}
+
+.rb-row--toggle {
+  padding: 14px 16px;
+  align-items: center;
+}
+
+.rb-row--half {
+  padding: 0;
+  gap: 0;
+}
+
+.rb-half {
+  flex: 1;
+}
+
+.rb-half .rb-row {
+  padding: 0 14px;
+}
+
+.rb-half-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.rb-row__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 248, 234, 0.55);
+  font-family: 'Montserrat', sans-serif;
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.rb-row__label--wrap {
+  width: auto;
+  flex: 1;
+  font-weight: 500;
+  color: var(--res-text);
+  font-size: 14px;
+}
+
+.rb-row__value {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-text);
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+}
+
+/* ── Input ────────────────────────────────────────────── */
+.rb-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  caret-color: var(--res-accent);
+}
+
+.rb-input::placeholder {
+  color: rgba(255, 248, 234, 0.25);
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.rb-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 16px;
+}
+
+/* ── Toggle ───────────────────────────────────────────── */
+.rb-toggle {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.rb-toggle--on {
+  background: var(--res-accent);
+}
+
+.rb-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  pointer-events: none;
+}
+
+.rb-toggle--on .rb-toggle__thumb {
+  transform: translateX(18px);
+}
+
+/* ── Delivery pills ───────────────────────────────────── */
+.rb-delivery-row {
+  display: flex;
+  gap: 10px;
+  padding: 14px 16px;
+}
+
+.rb-delivery-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(178, 222, 97, 0.3);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--res-accent);
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.rb-delivery-pill--active {
+  background: var(--res-accent);
+  border-color: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+/* ── Same address note ────────────────────────────────── */
+.rb-addr-note {
+  padding: 0 16px 14px;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 248, 234, 0.45);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.4;
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+.rb-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.rb-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.rb-btn--edit {
+  background: var(--res-bg2);
+  color: var(--res-accent);
+  margin-top: 8px;
+}
+
+.rb-btn--save {
+  background: var(--res-accent);
+  color: var(--res-bg1);
+}
+
+.rb-btn--cancel {
+  background: transparent;
+  color: rgba(255, 248, 234, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
