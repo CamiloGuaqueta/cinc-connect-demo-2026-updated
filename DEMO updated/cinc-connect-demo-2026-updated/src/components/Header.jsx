@@ -224,10 +224,6 @@ function NotificationCenter({ notifications, readIds, selected, isBoard, onSelec
           </button>
         </div>
         <div className="notif-center__header-right">
-          <div className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`} style={{pointerEvents:'none'}}>
-            <div className="mode-toggle__thumb" />
-            <div className="mode-toggle__icon">{isBoard ? <BoardSvgIcon /> : <UserSvgIcon />}</div>
-          </div>
           <button className="notif-btn" aria-label="Notifications">
             <BellIcon />
             {unreadCount > 0 && <span className="notif-btn__badge">{unreadCount}</span>}
