@@ -16,7 +16,7 @@ export function ModeProvider({ children }) {
   const [isBoard,           setIsBoard]           = useState(false)
   const [isWeb,             setIsWeb]             = useState(() => localStorage.getItem('layoutMode') === 'web')
   const [navStyle,          setNavStyleState]     = useState(() => localStorage.getItem('navStyle') || 'v1')
-  const [showBoardRoom,     setShowBoardRoomState] = useState(() => localStorage.getItem('showBoardRoom') === 'true')
+  const [showBoardRoom,     setShowBoardRoomState] = useState(() => localStorage.getItem('showBoardRoom') !== 'false')
   const [chatOpen,          setChatOpen]          = useState(false)
   const [activeTask,        setActiveTask]        = useState(null)
   const [cephAIPulseCount,  setCephAIPulseCount]  = useState(0)

@@ -302,11 +302,6 @@ export default function ResidentMore() {
           <button className="more-theme-btn" onClick={() => pushResidentView('prototype-theme')}>Prototype Theme</button>
           <span className="more-proto-sep">|</span>
           <button
-            className={`more-theme-btn${navStyle === 'v2' ? ' more-theme-btn--active' : ''}`}
-            onClick={() => setNavStyle(navStyle === 'v2' ? 'v1' : 'v2')}
-          >Nav 2.0</button>
-          <span className="more-proto-sep">|</span>
-          <button
             className={`more-theme-btn${showBoardRoom ? ' more-theme-btn--active' : ''}`}
             onClick={() => setShowBoardRoom(!showBoardRoom)}
           >Nav + Board</button>

@@ -134,20 +134,6 @@ export default function Header() {
         </div>
 
         <div className="app-header__right">
-          <button
-            className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`}
-            onClick={() => {
-              if (isBoard) navigate('/')
-              setIsBoard(b => !b)
-            }}
-            aria-label="Switch mode"
-          >
-            <div className="mode-toggle__thumb" />
-            <div className="mode-toggle__icon">
-              {isBoard ? <BoardSvgIcon /> : <UserSvgIcon />}
-            </div>
-          </button>
-
           <button className="notif-btn" aria-label="Notifications" onClick={() => { setNotifIsBoard(isBoard); setNotifOpen(true) }}>
             <BellIcon />
             {(() => {
