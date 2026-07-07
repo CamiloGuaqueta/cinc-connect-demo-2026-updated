@@ -43,6 +43,7 @@ import ResidentRatings from './screens/ResidentRatings'
 import ResidentConsents from './screens/ResidentConsents'
 import ResidentAnimals, { ResidentAnimalPolicy, AnimalsStandaloneFlow } from './screens/ResidentAnimals'
 import ResidentMembershipOptIn from './screens/ResidentMembershipOptIn'
+import BoardRoom from './screens/BoardRoom'
 import MembersList from './screens/MembersList'
 import MemberDetail from './screens/MemberDetail'
 import MembershipOptInModal from './components/MembershipOptInModal'
@@ -52,7 +53,7 @@ const RESIDENT_TAB_SCREENS = {
   'My Community':  ResidentCommunity,
   'My Properties': ResidentParticipation,
   'Financial Hub': ResidentFinancialHub,
-  'Board Room':    Feed,
+  'Board Room':    BoardRoom,
   More:            ResidentMore,
 }
 
@@ -105,7 +106,10 @@ function ResidentContent({ popResidentView }) {
       </>
     )
   }
-  if (topView) return renderResidentSubScreen(topView)
+  if (topView) {
+    const sub = renderResidentSubScreen(topView)
+    if (sub) return sub
+  }
   if (TabScreen) return <TabScreen />
   return <Feed />
 }
