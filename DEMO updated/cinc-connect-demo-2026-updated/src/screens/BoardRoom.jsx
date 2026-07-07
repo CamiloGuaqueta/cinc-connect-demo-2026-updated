@@ -26,6 +26,7 @@ export default function BoardRoom() {
 
   return (
     <div className="screen br-screen" ref={ref}>
+      <h1 className="br-title">Board Room</h1>
       <div className="br-card">
         {ROWS.map((row, i) => (
           <div key={row.key}>

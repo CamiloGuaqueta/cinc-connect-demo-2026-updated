@@ -9,9 +9,8 @@
 .br-title {
   font-size: 22px;
   font-weight: 700;
-  color: var(--res-accent);
-  margin: 24px 0 16px;
-  letter-spacing: 0.01em;
+  color: var(--lime);
+  margin: 16px 0 24px;
 }
 
 .br-card {
