@@ -1316,10 +1316,8 @@ function NmiPreviewCard({ onViewMore }) {
 }
 
 const ACCT_UNITS = [
-  { id: 1, address: '2545 North Point Hill, 179 Street',          acct: '1588:6523', balance: '$750.41', autopay: '03/01/2026' },
-  { id: 2, address: '254 SE Very Long Address Road, 1234 Street', acct: '1588:7841', balance: '$320.00', autopay: null         },
-  { id: 3, address: '3rd Unit Road, 179 Street',                  acct: '1588:9902', balance: '$0.00',   autopay: '03/15/2026' },
-  { id: 4, address: '4th Unit Road, 179 Street',                  acct: '1588:4417', balance: '$125.50', autopay: null         },
+  { id: 1, address: '319 Cardinal Hills Dr', acct: 'CH:6523', balance: '$750.41', autopay: '03/01/2026' },
+  { id: 2, address: '47 Pinecrest Loop',     acct: 'CH:7841', balance: '$320.00', autopay: null         },
 ]
 
 function ResidentFeed() {

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
+import { CURRENT_USER } from '../data/userData'
 import dogImg from '../images/dog.jpg'
 import catImg from '../images/cat.jpg'
 import hoaImg from '../images/hoa.jpg'
@@ -248,7 +249,7 @@ function InfoDivider() {
 const ANIMAL_TYPES   = ['Dog', 'Cat', 'Bird', 'Fish', 'Rodent', 'Other']
 const DESIGNATIONS   = ['Pet', 'Service Animal', 'ESA', 'Other']
 const WEIGHT_OPTIONS = ['0-5', '5-10', '12-20', '20-50', '50-100', '100+']
-const UNITS          = ['123 Oak Lane', '456 Elm St']
+const UNITS          = CURRENT_USER.units.map(u => u.address)
 
 function RegisterSheet({ onClose }) {
   const photoRef = useRef(null)

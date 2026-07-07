@@ -13,9 +13,9 @@ export const CURRENT_USER = {
   role:           'Board Member at Large',
   community:      'Cardinal Hills HOA',
 
-  // Units owned — used in MembershipOptInModal, ResidentMyUnits, etc.
+  // Units owned — single source of truth for all unit dropdowns and lists
   units: [
-    { id: 1, address: '319 Cardinal Hills Dr', account: 'Acc# CH-319', optedIn: true },
-    { id: 2, address: '47 Pinecrest Loop',      account: 'Acc# CH-047', optedIn: true },
+    { id: 1, address: '319 Cardinal Hills Dr', account: 'Acc# CH-319', acct: 'CH:6523', optedIn: true, relationship: 'Homeowner', status: 'active' },
+    { id: 2, address: '47 Pinecrest Loop',      account: 'Acc# CH-047', acct: 'CH:7841', optedIn: true, relationship: 'Homeowner', status: 'active' },
   ],
 }

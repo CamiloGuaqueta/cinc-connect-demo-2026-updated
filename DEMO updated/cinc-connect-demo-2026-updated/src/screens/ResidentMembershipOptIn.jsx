@@ -1,13 +1,9 @@
 import { useState } from 'react'
 import { useMode } from '../ModeContext'
+import { CURRENT_USER } from '../data/userData'
 import './ResidentMembershipOptIn.css'
 
-const INITIAL_UNITS = [
-  { id: 1, address: '2545 North Point Hill, 179 Street',          account: 'Acc# 134565435666', optedIn: true  },
-  { id: 2, address: '254 SE very long Addresa road, 1234 street', account: 'Acc# 134565435666', optedIn: true  },
-  { id: 3, address: '3rd unit road, 179 Street',                  account: 'Acc# 134565435666', optedIn: true  },
-  { id: 4, address: '4th unit road, 179 Street',                  account: 'Acc# 134565435666', optedIn: true  },
-]
+const INITIAL_UNITS = CURRENT_USER.units
 
 function BackIcon() {
   return (

@@ -58,8 +58,8 @@ const RESERVE_FUND_CONTENT = {
 const UNITS = [
   {
     id: 1,
-    label: '2545 North Point Hill, 179 Street',
-    account: '1588:6523',
+    label: '319 Cardinal Hills Dr',
+    account: 'CH:6523',
     balance: 750.41,
     futureBalance: 2368.00,
     lineItems: [
@@ -70,36 +70,12 @@ const UNITS = [
   },
   {
     id: 2,
-    label: '254 SE Very Long Address Road, 1234 Street',
-    account: '1588:7841',
+    label: '47 Pinecrest Loop',
+    account: 'CH:7841',
     balance: 320.00,
     futureBalance: 960.00,
     lineItems: [
       { label: 'Regular Charges',    autopay: false, amount: 320.00 },
-      { label: 'Special Assessment', autopay: false, amount: 0.00   },
-      { label: 'Violations',         autopay: false, amount: 0.00   },
-    ],
-  },
-  {
-    id: 3,
-    label: '3rd Unit Road, 179 Street',
-    account: '1588:9902',
-    balance: 0.00,
-    futureBalance: 500.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: true,  amount: 0.00   },
-      { label: 'Special Assessment', autopay: false, amount: 0.00   },
-      { label: 'Violations',         autopay: false, amount: 0.00   },
-    ],
-  },
-  {
-    id: 4,
-    label: '4th Unit Road, 179 Street',
-    account: '1588:4417',
-    balance: 125.50,
-    futureBalance: 750.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: false, amount: 125.50 },
       { label: 'Special Assessment', autopay: false, amount: 0.00   },
       { label: 'Violations',         autopay: false, amount: 0.00   },
     ],

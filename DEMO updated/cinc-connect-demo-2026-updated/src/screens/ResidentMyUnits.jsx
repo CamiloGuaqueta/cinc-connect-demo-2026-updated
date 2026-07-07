@@ -1,13 +1,8 @@
 import { useState, useRef } from 'react'
+import { CURRENT_USER } from '../data/userData'
 import './ResidentMyUnits.css'
 
-/* ── Seed data (same 4 units as Communication Preferences) ── */
-const INITIAL_UNITS = [
-  { id: 1, address: '2545 North Point Hill, 179 Street',          account: 'Acc# 134565435666', relationship: 'Homeowner', status: 'active'  },
-  { id: 2, address: '254 SE very long Address road, 1234 Street', account: 'Acc# 134565435666', relationship: 'Homeowner', status: 'active'  },
-  { id: 3, address: '3rd Unit Road, 179 Street',                  account: 'Acc# 134565435666', relationship: 'Tenant',    status: 'active'  },
-  { id: 4, address: '4th Unit Road, 179 Street',                  account: 'Acc# 134565435666', relationship: 'Resident',  status: 'active'  },
-]
+const INITIAL_UNITS = CURRENT_USER.units
 
 /* ── HOA address pool (search list) ──────────────────────── */
 const HOA_ADDRESSES = [

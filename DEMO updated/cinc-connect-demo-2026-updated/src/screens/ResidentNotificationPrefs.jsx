@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useMode } from '../ModeContext'
+import { CURRENT_USER } from '../data/userData'
 import './ResidentNotificationPrefs.css'
 
-const PRIMARY_EMAIL = 'johnd@email.com'
+const PRIMARY_EMAIL = CURRENT_USER.primaryEmail
 
 const INITIAL = {
   email:             true,
@@ -40,12 +41,7 @@ function Row({ icon, label, sublabel, on, onToggle, action }) {
   )
 }
 
-const UNITS = [
-  { id: 1, address: '2545 North Point Hill, 179 Street',          account: 'Acc# 134565435666' },
-  { id: 2, address: '254 SE very long Addresa road, 1234 street', account: 'Acc# 134565435666' },
-  { id: 3, address: '3rd unit road, 179 Street',                  account: 'Acc# 134565435666' },
-  { id: 4, address: '4th unit road, 179 Street',                  account: 'Acc# 134565435666' },
-]
+const UNITS = CURRENT_USER.units
 
 export default function ResidentNotificationPrefs() {
   const { pushResidentView } = useMode()
