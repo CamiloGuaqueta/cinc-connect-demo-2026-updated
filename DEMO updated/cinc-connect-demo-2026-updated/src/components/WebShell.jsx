@@ -98,7 +98,7 @@ export default function WebShell({ children, showMembershipOptIn, onMembershipCo
 
 /* ── Top Nav ──────────────────────────────────────────── */
 function WebTopNav() {
-  const { isBoard, setIsBoard, residentTab, navigateResident, showBoardRoom } = useMode()
+  const { isBoard, residentTab, navigateResident, showBoardRoom } = useMode()
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
@@ -111,18 +111,12 @@ function WebTopNav() {
     if (isBoard) {
       navigate(tab.id)
     } else {
-      // Default My Community to Amenities / Reserve tab
       if (tab.id === 'My Community') {
         navigateResident('My Community', 'amenities', { tab: 'reserve' })
       } else {
         navigateResident(tab.id)
       }
     }
-  }
-
-  function handleModeToggle() {
-    if (isBoard) navigate('/')
-    setIsBoard(b => !b)
   }
 
   return (
@@ -157,19 +151,8 @@ function WebTopNav() {
         })}
       </div>
 
-      {/* Right: mode toggle + bell + avatar */}
+      {/* Right: bell + avatar */}
       <div className="web-top-nav__right">
-        <button
-          className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`}
-          onClick={handleModeToggle}
-          aria-label="Switch mode"
-        >
-          <div className="mode-toggle__thumb" />
-          <div className="mode-toggle__icon">
-            {isBoard ? <BoardIcon /> : <ResidentIcon />}
-          </div>
-        </button>
-
         <button className="web-notif-btn" aria-label="Notifications">
           <BellIcon />
           <span className="web-notif-btn__badge">5</span>
