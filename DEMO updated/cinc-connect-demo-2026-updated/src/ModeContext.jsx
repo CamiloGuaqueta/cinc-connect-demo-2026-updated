@@ -1,15 +1,16 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { CURRENT_USER } from './data/userData'
 
 const ModeContext = createContext()
 
 const INITIAL_RESIDENT_PROFILE = {
-  firstName:         'John',
-  lastName:          'Doe',
-  primaryEmail:      'john.doe@cardinalHills.com',
-  secondaryEmail:    '',
-  useSecondaryEmail: false,
-  mobile:            '(512) 555-0123',
-  home:              '',
+  firstName:         CURRENT_USER.firstName,
+  lastName:          CURRENT_USER.lastName,
+  primaryEmail:      CURRENT_USER.primaryEmail,
+  secondaryEmail:    CURRENT_USER.secondaryEmail,
+  useSecondaryEmail: CURRENT_USER.useSecondaryEmail,
+  mobile:            CURRENT_USER.mobile,
+  home:              CURRENT_USER.home,
 }
 
 export function ModeProvider({ children }) {

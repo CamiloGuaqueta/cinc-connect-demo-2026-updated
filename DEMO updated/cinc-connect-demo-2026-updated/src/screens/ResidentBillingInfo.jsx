@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import { CURRENT_USER } from '../data/userData'
 import './ResidentBillingInfo.css'
 
 const DELIVERY_OPTIONS = ['Email', 'Paper', 'Both']
 
 const INITIAL = {
-  billingName:  'John Doe',
-  billingEmail: 'john.doe@cardinalHills.com',
+  billingName:  CURRENT_USER.fullName,
+  billingEmail: CURRENT_USER.primaryEmail,
   delivery:     'Email',
   sameAsUnit:   true,
   street:       '',

@@ -103,7 +103,7 @@ const hoa = [
   { id: 'hoa-27', firstName: 'Janet',     lastName: 'Wood',        address: '168 Zinnia Ct',    email: 'jwood@email.com',               phone: { mobile: '(555) 200-2027' } },
   { id: 'hoa-28', firstName: 'Timothy',   lastName: 'Wright',      address: '312 Acorn Way',    email: 'twright@email.com',             phone: { mobile: '(555) 200-2028' } },
   { id: 'hoa-29', firstName: 'Nancy',     lastName: 'Young',       address: '78 Birchwood Ct',  email: 'nyoung@email.com',              phone: { mobile: '(555) 200-2029' } },
-  { id: 'hoa-30', firstName: 'Alan',      lastName: 'Adams',       address: ['23 Cherry Blossom Ln', '2545 North Point Hill, 179 Street', '1569 South Hill, 13 Terrace', '1256 NE, Main Hill Blvd', '88 Oakridge Ct', '14 Riverside Dr', '501 Maple Grove Ave', '77 Sunset Blvd'], email: 'aadams@email.com', phone: { mobile: '(555) 200-2030' } },
+  { id: 'hoa-30', firstName: 'Alan',      lastName: 'Adams',       address: '23 Cherry Blossom Ln',  email: 'aadams@email.com',              phone: { mobile: '(555) 200-2030' } },
   { id: 'hoa-31', firstName: 'Brenda',    lastName: 'Alexander',   address: '105 Dogwood Dr',   email: 'balexander@email.com',          phone: { mobile: '(555) 200-2031' } },
   { id: 'hoa-32', firstName: 'Craig',     lastName: 'Anderson',    address: '248 Edgewood Rd',  email: 'canderson@email.com',           phone: { mobile: '(555) 200-2032' } },
   { id: 'hoa-33', firstName: 'Donna',     lastName: 'Bailey',      address: '61 Ferndale Ave',  email: 'dbailey@email.com',             phone: { mobile: '(555) 200-2033' } },
