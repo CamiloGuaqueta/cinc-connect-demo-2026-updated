@@ -80,6 +80,30 @@ const UNITS = [
       { label: 'Violations',         autopay: false, amount: 0.00   },
     ],
   },
+  {
+    id: 3,
+    label: '200 Cardinal Hills Dr, Unit 3',
+    account: 'CH:9902',
+    balance: 0.00,
+    futureBalance: 500.00,
+    lineItems: [
+      { label: 'Regular Charges',    autopay: true,  amount: 0.00   },
+      { label: 'Special Assessment', autopay: false, amount: 0.00   },
+      { label: 'Violations',         autopay: false, amount: 0.00   },
+    ],
+  },
+  {
+    id: 4,
+    label: '400 Cardinal Point Rd, Unit 2',
+    account: 'CH:4417',
+    balance: 125.50,
+    futureBalance: 750.00,
+    lineItems: [
+      { label: 'Regular Charges',    autopay: false, amount: 125.50 },
+      { label: 'Special Assessment', autopay: false, amount: 0.00   },
+      { label: 'Violations',         autopay: false, amount: 0.00   },
+    ],
+  },
 ]
 
 function ReserveFundIcon() {
