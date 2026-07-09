@@ -2,17 +2,18 @@ import { useEffect, useRef } from 'react'
 import { useMode } from '../ModeContext'
 import './BoardRoom.css'
 
+// Rows with screen: null are placeholders until their sub-screen exists
 const ROWS = [
-  { key: 'board-accounts-receivable', label: 'Accounts Receivable',      count: 2,    icon: <ARIcon /> },
-  { key: 'board-action-items',        label: 'Board Action Items Review', count: 3,    icon: <ChecklistIcon /> },
-  { key: 'board-acc-review',          label: 'Board ACC Review',          count: 2,    icon: <ACCIcon /> },
-  { key: 'board-violations-review',   label: 'Board Violations Review',   count: 2,    icon: <ViolationsIcon /> },
-  { key: 'board-work-order-review',   label: 'Board Work Order Review',   count: 2,    icon: <WOIcon /> },
-  { key: 'board-invoice-approval',    label: 'Invoice Approval',          count: 2,    icon: <InvoiceIcon /> },
-  { key: 'board-bank-summary',        label: 'Bank Summary',              count: 2,    icon: <BankIcon /> },
-  { key: 'board-vendor-payment',      label: 'Vendor Payment History',    count: 2,    icon: <VendorPaymentIcon /> },
-  { key: 'board-aging',               label: 'Board Aging',               count: 2,    icon: <AgingIcon /> },
-  { key: 'board-homeowner-list',      label: 'Homeowner List',            count: null, icon: <HomeownersIcon /> },
+  { screen: null,           label: 'Accounts Receivable',       count: 2,    icon: <ARIcon /> },
+  { screen: null,           label: 'Board Action Items Review', count: 3,    icon: <ChecklistIcon /> },
+  { screen: null,           label: 'Board ACC Review',          count: 2,    icon: <ACCIcon /> },
+  { screen: null,           label: 'Board Violations Review',   count: 2,    icon: <ViolationsIcon /> },
+  { screen: null,           label: 'Board Work Order Review',   count: 2,    icon: <WOIcon /> },
+  { screen: null,           label: 'Invoice Approval',          count: 2,    icon: <InvoiceIcon /> },
+  { screen: null,           label: 'Bank Summary',              count: 2,    icon: <BankIcon /> },
+  { screen: null,           label: 'Vendor Payment History',    count: 2,    icon: <VendorPaymentIcon /> },
+  { screen: null,           label: 'Board Aging',               count: 2,    icon: <AgingIcon /> },
+  { screen: 'members-list', label: 'Homeowner List',            count: null, icon: <HomeownersIcon /> },
 ]
 
 export default function BoardRoom() {
@@ -29,11 +30,11 @@ export default function BoardRoom() {
       <h1 className="br-title">Board Room</h1>
       <div className="br-card">
         {ROWS.map((row, i) => (
-          <div key={row.key}>
+          <div key={row.label}>
             {i > 0 && <div className="br-divider" />}
             <button
               className="br-row"
-              onClick={() => pushResidentView(row.key)}
+              onClick={() => { if (row.screen) pushResidentView(row.screen) }}
             >
               <span className="br-row__icon">{row.icon}</span>
               <span className="br-row__label">{row.label}</span>
