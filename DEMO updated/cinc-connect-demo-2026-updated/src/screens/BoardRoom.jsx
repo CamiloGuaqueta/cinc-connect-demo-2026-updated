@@ -10,9 +10,9 @@ const ROWS = [
   { screen: null,           label: 'Board Violations Review',   count: 2,    icon: <ViolationsIcon /> },
   { screen: null,           label: 'Board Work Order Review',   count: 2,    icon: <WOIcon /> },
   { screen: null,           label: 'Invoice Approval',          count: 2,    icon: <InvoiceIcon /> },
-  { screen: null,           label: 'Bank Summary',              count: 2,    icon: <BankIcon /> },
+  { screen: 'bank-summary',  label: 'Bank Summary',              count: 3,    icon: <BankIcon /> },
   { screen: null,           label: 'Vendor Payment History',    count: 2,    icon: <VendorPaymentIcon /> },
-  { screen: null,           label: 'Board Aging',               count: 2,    icon: <AgingIcon /> },
+  { screen: 'board-aging',   label: 'Board Aging',               count: 3,    icon: <AgingIcon /> },
   { screen: 'members-list', label: 'Homeowner List',            count: null, icon: <HomeownersIcon /> },
 ]
 
