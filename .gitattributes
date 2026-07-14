@@ -1,0 +1,22 @@
+# Normalizar finales de línea: evita diffs falsos por CRLF vs LF.
+# Todo lo que Git detecte como texto se guarda con LF en el repo.
+* text=auto eol=lf
+
+# Tipos de texto del proyecto (por si la autodetección falla)
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.svg  text eol=lf
+*.md   text eol=lf
+
+# Binarios: no tocar
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.woff  binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary
