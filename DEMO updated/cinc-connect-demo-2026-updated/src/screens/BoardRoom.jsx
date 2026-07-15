@@ -11,7 +11,7 @@ const ROWS = [
   { screen: null,           label: 'Board Work Order Review',   count: 2,    icon: <WOIcon /> },
   { screen: null,           label: 'Invoice Approval',          count: 2,    icon: <InvoiceIcon /> },
   { screen: 'bank-summary',  label: 'Bank Summary',              count: 3,    icon: <BankIcon /> },
-  { screen: null,           label: 'Vendor Payment History',    count: 2,    icon: <VendorPaymentIcon /> },
+  { screen: 'vendor-payment', label: 'Vendor Payment History',   count: 7,    icon: <VendorPaymentIcon /> },
   { screen: 'board-aging',   label: 'Board Aging',               count: 3,    icon: <AgingIcon /> },
   { screen: 'members-list', label: 'Homeowner List',            count: null, icon: <HomeownersIcon /> },
 ]

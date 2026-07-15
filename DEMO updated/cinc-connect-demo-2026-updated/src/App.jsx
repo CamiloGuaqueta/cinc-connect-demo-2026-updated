@@ -46,6 +46,7 @@ import ResidentMembershipOptIn from './screens/ResidentMembershipOptIn'
 import BoardRoom from './screens/BoardRoom'
 import BankSummary from './screens/BankSummary'
 import BoardAging from './screens/BoardAging'
+import VendorPaymentHistory from './screens/VendorPaymentHistory'
 import MembersList from './screens/MembersList'
 import MemberDetail from './screens/MemberDetail'
 import MembershipOptInModal from './components/MembershipOptInModal'
@@ -69,6 +70,7 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'bank-summary')       return <BankSummary />
   if (view.screen === 'board-aging')        return <BoardAging />
+  if (view.screen === 'vendor-payment')     return <VendorPaymentHistory />
   if (view.screen === 'directory-list')    return <ResidentDirectoryList dirId={view.data.dirId} title={view.data.title} />
   if (view.screen === 'contact-detail')   return <ResidentContactDetail contact={view.data.contact} dirId={view.data.dirId} />
   if (view.screen === 'market-index')     return <NeighborhoodMarketIndex />
