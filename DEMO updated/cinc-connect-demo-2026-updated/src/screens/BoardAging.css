@@ -273,11 +273,37 @@
 }
 
 .ba-sheet__hero {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 16px 24px;
+  justify-content: center;
+  padding: 24px 16px 26px;
   flex-shrink: 0;
+}
+
+.ba-sheet__hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4) saturate(1.2);
+}
+
+.ba-sheet__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(29, 29, 29, 0.35) 0%, var(--res-bg2) 100%);
+}
+
+.ba-sheet__hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ba-sheet__avatar,

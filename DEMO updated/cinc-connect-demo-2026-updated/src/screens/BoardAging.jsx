@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import hoaBg from '../images/hoa.jpg'
 import './BoardAging.css'
 
 // Delinquent homeowners — Cardinal Hills HOA (consistent with the community).
@@ -224,10 +225,14 @@ export default function BoardAging() {
               <span className="ba-sheet__title">Home Owner</span>
             </div>
             <div className="ba-sheet__hero">
-              {owner.photo
-                ? <img className="ba-sheet__avatar" src={owner.photo} alt={owner.name} />
-                : <span className="ba-sheet__avatar-initials">{owner.name.split(' ').map(n => n[0]).join('')}</span>}
-              <h2 className="ba-sheet__name">{owner.name}</h2>
+              <img src={hoaBg} alt="" className="ba-sheet__hero-bg" aria-hidden="true" />
+              <div className="ba-sheet__hero-overlay" />
+              <div className="ba-sheet__hero-content">
+                {owner.photo
+                  ? <img className="ba-sheet__avatar" src={owner.photo} alt={owner.name} />
+                  : <span className="ba-sheet__avatar-initials">{owner.name.split(' ').map(n => n[0]).join('')}</span>}
+                <h2 className="ba-sheet__name">{owner.name}</h2>
+              </div>
             </div>
             <div className="ba-sheet__body">
               <div className="ba-sheet__card">
