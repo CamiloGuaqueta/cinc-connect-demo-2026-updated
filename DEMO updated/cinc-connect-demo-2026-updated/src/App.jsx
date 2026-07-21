@@ -44,6 +44,7 @@ import ResidentConsents from './screens/ResidentConsents'
 import ResidentAnimals, { ResidentAnimalPolicy, AnimalsStandaloneFlow } from './screens/ResidentAnimals'
 import ResidentMembershipOptIn from './screens/ResidentMembershipOptIn'
 import BoardRoom from './screens/BoardRoom'
+import AccountsReceivable from './screens/AccountsReceivable'
 import BankSummary from './screens/BankSummary'
 import BoardAging from './screens/BoardAging'
 import VendorPaymentHistory from './screens/VendorPaymentHistory'
@@ -68,6 +69,7 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'mailing-address-detail') return <ResidentMailingAddressDetail unitAddress={view.data.unitAddress} account={view.data.account} />
   if (view.screen === 'directories')        return <ResidentDirectories />
   if (view.screen === 'members-list')       return <ResidentMembersList />
+  if (view.screen === 'accounts-receivable') return <AccountsReceivable />
   if (view.screen === 'bank-summary')       return <BankSummary />
   if (view.screen === 'board-invoices')     return <Tasks types={['Invoice']} title="Invoice Approval" />
   if (view.screen === 'board-action-items') return <Tasks types={['Task']} title="Board Action Items Review" />
