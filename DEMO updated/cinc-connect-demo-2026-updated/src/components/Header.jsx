@@ -26,7 +26,7 @@ const NOTIFICATIONS = [
   {
     id: 3,
     title: 'ACC Request — Auto Approval Approaching',
-    body: '88 Oak Ln solar panel installation request will auto-approve on April 29 if no board decision is made. Please review the application and submit your decision.',
+    body: '88 Cardinal Heights solar panel installation request will auto-approve on April 29 if no board decision is made. Please review the application and submit your decision.',
     time: '2 hrs ago',
     unread: true,
   },
@@ -54,14 +54,14 @@ const NOTIFICATIONS = [
   {
     id: 7,
     title: 'Reserve Study Update Available',
-    body: 'The 2026 Reserve Study has been completed and is ready for board review. Key findings include a 78% funded status and recommended contribution increase of 6% for next fiscal year.',
+    body: 'The 2026 Reserve Study has been completed and is ready for board review. Key findings include a 59.4% funded status and a recommended $18 monthly increase per unit starting January 2027.',
     time: '2 days ago',
     unread: false,
   },
   {
     id: 8,
     title: 'Homeowner Appeal Filed',
-    body: 'Resident at 204 Maple Drive has filed a formal appeal against the $250 fine issued for unauthorized fence modification. The appeal hearing must be scheduled within 30 days per CC&Rs.',
+    body: 'Resident at 61 Cardinal Way has filed a formal appeal against the $250 fine issued for unauthorized fence modification. The appeal hearing must be scheduled within 30 days per CC&Rs.',
     time: '3 days ago',
     unread: false,
   },
