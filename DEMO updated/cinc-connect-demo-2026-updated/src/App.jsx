@@ -69,6 +69,7 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'directories')        return <ResidentDirectories />
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'bank-summary')       return <BankSummary />
+  if (view.screen === 'board-invoices')     return <Tasks types={['Invoice']} title="Invoice Approval" />
   if (view.screen === 'board-aging')        return <BoardAging />
   if (view.screen === 'vendor-payment')     return <VendorPaymentHistory />
   if (view.screen === 'directory-list')    return <ResidentDirectoryList dirId={view.data.dirId} title={view.data.title} />

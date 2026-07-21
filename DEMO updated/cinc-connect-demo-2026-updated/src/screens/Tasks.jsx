@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { useMode } from '../ModeContext'
-import { useNavigate } from 'react-router-dom'
 import './Tasks.css'
 import VendorSvg    from '../ICONS/Vendor.svg'
 import AttachSvg    from '../ICONS/Attachment.svg'
@@ -182,8 +181,12 @@ const TYPE_META = {
 
 const SWIPE_THRESHOLD = 80
 
-export default function Tasks() {
-  const [queue,      setQueue]      = useState(TASKS.map(t => t.id))
+// `types` (array) limits the deck to those card types and `title` overrides the
+// header — used by Board Room category rows. Without props it's the full
+// Board Action Items deck.
+export default function Tasks({ types, title }) {
+  const POOL = types ? TASKS.filter(t => types.includes(t.type)) : TASKS
+  const [queue,      setQueue]      = useState(POOL.map(t => t.id))
   const [doneIds,    setDoneIds]    = useState(new Set())
   const [isDragging, setIsDragging] = useState(false)
   const [dragX,      setDragX]      = useState(0)
@@ -309,21 +312,23 @@ export default function Tasks() {
         {/* Header */}
         <div className="tasks-header">
           <div>
-            <h1 className="tasks-title">Board Action Items</h1>
+            <h1 className="tasks-title">{title || 'Board Action Items'}</h1>
             <p className="tasks-sub">
               {pendingTasks.length > 0
                 ? `${pendingTasks.length} pending · ${doneIds.size} completed`
                 : `All ${doneIds.size} tasks completed`}
             </p>
           </div>
-          <div className="tasks-header-actions">
-            <button
-              className={`engage-filter-btn${filterTypes.size > 0 ? ' engage-filter-btn--active' : ''}`}
-              onClick={() => { setDraftFilter(new Set(filterTypes)); setFilterOpen(true) }}
-            >
-              <SlidersIcon />
-            </button>
-          </div>
+          {!types && (
+            <div className="tasks-header-actions">
+              <button
+                className={`engage-filter-btn${filterTypes.size > 0 ? ' engage-filter-btn--active' : ''}`}
+                onClick={() => { setDraftFilter(new Set(filterTypes)); setFilterOpen(true) }}
+              >
+                <SlidersIcon />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Card stack or list view or empty state */}
@@ -377,7 +382,7 @@ export default function Tasks() {
         {/* Position dots — card view only */}
         {viewMode === 'card' && pendingTasks.length > 0 && (
           <div className="tasks-progress">
-            {(filterTypes.size > 0 ? TASKS.filter(t => filterTypes.has(t.type)) : TASKS).map(t => {
+            {(filterTypes.size > 0 ? POOL.filter(t => filterTypes.has(t.type)) : POOL).map(t => {
               const isCurrent = t.id === topTask?.id
               const isDone    = doneIds.has(t.id)
               return (
@@ -914,8 +919,6 @@ function TaskCardContent({ task, flyCard, flyOff }) {
 
 /* ── Shared panel header ──────────────────────────────── */
 function PanelHeader({ title, hideTitle, onClose }) {
-  const { isBoard, setIsBoard } = useMode()
-  const navigate = useNavigate()
   return (
     <header className="app-header inv-panel__appheader">
       <div className="app-header__inner">
@@ -930,16 +933,6 @@ function PanelHeader({ title, hideTitle, onClose }) {
           )}
         </div>
         <div className="app-header__right">
-          <button
-            className={`mode-toggle ${isBoard ? 'mode-toggle--board' : 'mode-toggle--resident'}`}
-            onClick={() => { if (isBoard) navigate('/'); setIsBoard(b => !b) }}
-            aria-label="Switch mode"
-          >
-            <div className="mode-toggle__thumb" />
-            <div className="mode-toggle__icon">
-              {isBoard ? <PanelBoardIcon /> : <PanelUserIcon />}
-            </div>
-          </button>
           <button className="notif-btn" aria-label="Notifications">
             <PanelBellIcon />
             <span className="notif-btn__badge">5</span>
@@ -1608,27 +1601,6 @@ function PanelBellIcon() {
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
       <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-    </svg>
-  )
-}
-function PanelUserIcon() {
-  return (
-    <svg width="12" height="17" viewBox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.00019 9.92822C3.15651 9.92822 0.649013 12.0712 0.0365938 15.0234C-0.0640486 15.5113 0.0451591 16.0128 0.33638 16.4004C0.623318 16.7811 1.05158 17 1.51197 17H10.4884C10.9467 17 11.3749 16.7811 11.664 16.4004C11.9552 16.0128 12.0666 15.5113 11.9638 15.0234C11.3514 12.0712 8.84387 9.92822 6.00019 9.92822Z" fill="#235237"/>
-      <path d="M6.00021 8.38259C8.17152 8.38259 9.93812 6.50181 9.93812 4.19016C9.93812 1.8785 8.17152 0 6.00021 0C3.82891 0 2.06445 1.88078 2.06445 4.19244C2.06445 6.50409 3.83105 8.38487 6.00235 8.38487L6.00021 8.38259Z" fill="#235237"/>
-    </svg>
-  )
-}
-function PanelBoardIcon() {
-  return (
-    <svg width="17" height="15" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12.0952 12.9606H7.90484C7.61426 12.9606 7.37842 13.1993 7.37842 13.4933C7.37842 13.7873 7.61426 14.0259 7.90484 14.0259H12.0952C12.3858 14.0259 12.6216 13.7873 12.6216 13.4933C12.6216 13.1993 12.3858 12.9606 12.0952 12.9606Z" fill="currentColor"/>
-      <path d="M5.66022 8.30939L4.86637 10.1737C4.75056 10.4443 4.8748 10.7575 5.14222 10.8747C5.2096 10.9045 5.2812 10.9173 5.35069 10.9173C5.55494 10.9173 5.74866 10.7958 5.835 10.5955L6.49198 9.05298H13.6893L14.1652 10.2653C14.2726 10.538 14.5779 10.6722 14.8495 10.5636C15.119 10.4549 15.2517 10.146 15.1443 9.87114L14.5358 8.32217C14.4557 8.11976 14.262 7.98553 14.0472 7.98553H6.14243C5.93186 7.98553 5.74235 8.11124 5.65812 8.30726L5.66022 8.30939Z" fill="currentColor"/>
-      <path d="M9.99996 5.46718C11.4887 5.46718 12.7016 4.23994 12.7016 2.73359C12.7016 1.22724 11.4887 0 9.99996 0C8.51123 0 7.29834 1.22724 7.29834 2.73359C7.29834 4.23994 8.51123 5.46718 9.99996 5.46718Z" fill="currentColor"/>
-      <path d="M17.2983 2.73364C15.8096 2.73364 14.5967 3.96088 14.5967 5.46723C14.5967 6.97358 15.8096 8.20082 17.2983 8.20082C18.787 8.20082 19.9999 6.97358 19.9999 5.46723C19.9999 3.96088 18.787 2.73364 17.2983 2.73364Z" fill="currentColor"/>
-      <path d="M2.70162 8.20082C4.19035 8.20082 5.40324 6.97358 5.40324 5.46723C5.40324 3.96088 4.19035 2.73364 2.70162 2.73364C1.21289 2.73364 0 3.96088 0 5.46723C0 6.97358 1.21289 8.20082 2.70162 8.20082Z" fill="currentColor"/>
-      <path d="M3.83443 11.7696C2.3457 11.7696 1.13281 12.9968 1.13281 14.5032C1.13281 16.0095 2.3457 17.2368 3.83443 17.2368C5.32316 17.2368 6.53605 16.0095 6.53605 14.5032C6.53605 12.9968 5.32316 11.7696 3.83443 11.7696Z" fill="currentColor"/>
-      <path d="M16.1655 11.7696C14.6768 11.7696 13.4639 12.9968 13.4639 14.5032C13.4639 16.0095 14.6768 17.2368 16.1655 17.2368C17.6542 17.2368 18.8671 16.0095 18.8671 14.5032C18.8671 12.9968 17.6542 11.7696 16.1655 11.7696Z" fill="currentColor"/>
     </svg>
   )
 }
