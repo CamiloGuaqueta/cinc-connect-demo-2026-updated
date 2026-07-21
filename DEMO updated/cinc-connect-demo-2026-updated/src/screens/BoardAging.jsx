@@ -16,7 +16,7 @@ const HOMEOWNERS = [
     lastPayment: '$240.00',
     lastPaymentDate: '02/02/2026',
     email: 'dalton.thomson@email.com',
-    phone: '(555) 345-0567',
+    phone: '(555) 421-0889',
     emergency: { name: 'Laura Thomson', email: 'laura.thomson@email.com', phone: '(555) 421-0890' },
     charges: [
       {
