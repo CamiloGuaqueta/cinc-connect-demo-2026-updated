@@ -5,10 +5,10 @@ import './BoardRoom.css'
 // Rows with screen: null are placeholders until their sub-screen exists
 const ROWS = [
   { screen: null,           label: 'Accounts Receivable',       count: 2,    icon: <ARIcon /> },
-  { screen: null,           label: 'Board Action Items Review', count: 3,    icon: <ChecklistIcon /> },
-  { screen: null,           label: 'Board ACC Review',          count: 2,    icon: <ACCIcon /> },
-  { screen: null,           label: 'Board Violations Review',   count: 2,    icon: <ViolationsIcon /> },
-  { screen: null,           label: 'Board Work Order Review',   count: 2,    icon: <WOIcon /> },
+  { screen: 'board-action-items', label: 'Board Action Items Review', count: 2, icon: <ChecklistIcon /> },
+  { screen: 'board-acc',          label: 'Board ACC Review',          count: 2, icon: <ACCIcon /> },
+  { screen: 'board-violations',   label: 'Board Violations Review',   count: 1, icon: <ViolationsIcon /> },
+  { screen: 'board-work-orders',  label: 'Board Work Order Review',   count: 1, icon: <WOIcon /> },
   { screen: 'board-invoices', label: 'Invoice Approval',        count: 3,    icon: <InvoiceIcon /> },
   { screen: 'bank-summary',  label: 'Bank Summary',              count: 3,    icon: <BankIcon /> },
   { screen: 'vendor-payment', label: 'Vendor Payment History',   count: 7,    icon: <VendorPaymentIcon /> },

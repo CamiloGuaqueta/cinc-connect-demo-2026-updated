@@ -70,6 +70,10 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'bank-summary')       return <BankSummary />
   if (view.screen === 'board-invoices')     return <Tasks types={['Invoice']} title="Invoice Approval" />
+  if (view.screen === 'board-action-items') return <Tasks types={['Task']} title="Board Action Items Review" />
+  if (view.screen === 'board-acc')          return <Tasks types={['ACC']} title="Board ACC Review" />
+  if (view.screen === 'board-violations')   return <Tasks types={['Violation']} title="Board Violations Review" />
+  if (view.screen === 'board-work-orders')  return <Tasks types={['WorkOrder']} title="Board Work Order Review" />
   if (view.screen === 'board-aging')        return <BoardAging />
   if (view.screen === 'vendor-payment')     return <VendorPaymentHistory />
   if (view.screen === 'directory-list')    return <ResidentDirectoryList dirId={view.data.dirId} title={view.data.title} />
