@@ -141,6 +141,25 @@ const TASKS = [
     attachmentCount: 4,
     due: 'Due today',
     actionLabel: 'Mark Done',
+    vendorInfo: { contact: 'Michael Reed', email: 'info@greenvalley.com', phone: '305.555.0142', website: 'www.greenvalleylandscaping.com', address: '245 Green Way, Miami, FL 33131', type: 'Landscaping', recentPayments: 8, currentWOs: 2, woAll: 29, woOpen: 1, woInProgress: 3, woCompleted: 25, totalInvoices: 23, totalAmount: '$25,568.00' },
+  },
+  {
+    id: 14,
+    type: 'WorkOrder',
+    woNumber: '#4822',
+    vendor: 'Pacific Pool Services',
+    created: '04/18/2026',
+    printed: '04/18/2026',
+    dueDate: '05/02/2026',
+    urgency: 'normal',
+    status: 'New Work Order',
+    location: 'Main amenity center — pool equipment room',
+    description: 'Pool pump replacement. Existing pump failing intermittently; estimated cost $3,850. Review and approve before the contractor can be scheduled.',
+    logCount: 2,
+    attachmentCount: 2,
+    due: 'Due May 2',
+    actionLabel: 'Mark Done',
+    vendorInfo: { contact: 'Sandra Kim', email: 'contact@pacificpool.com', phone: '305.555.0187', website: 'www.pacificpoolsvc.com', address: '78 Blue Wave Dr, Miami, FL 33139', type: 'Pool Maintenance', recentPayments: 6, currentWOs: 1, woAll: 14, woOpen: 1, woInProgress: 1, woCompleted: 12, totalInvoices: 11, totalAmount: '$18,320.00' },
   },
   {
     id: 8,
@@ -152,6 +171,15 @@ const TASKS = [
     description: 'Review a submitted ownership record update. No sale has occurred, however, ownership is now held under a new LLC, and supporting documentation has been provided. Please review and advise.',
     attachment: 'Violations 2025-2026',
     acctInfo: 'Acct: 2024-3096  |  150 Cardinal Point Rd',
+    acctDetail: {
+      address: '150 Cardinal Point Rd',
+      acct: '2024-3096',
+      ownerName: 'James Roberts',
+      ownerPhoto: '/images/personas/james-roberts.png',
+      status: 'Tenant Occupied',
+      balance: '$1,195.00',
+      collections: '60 Days Notice',
+    },
     logCount: 2,
     due: 'Due Apr 24',
     urgency: 'urgent',
@@ -170,6 +198,70 @@ const TASKS = [
     logCount: 2,
     due: 'Due Apr 24',
     urgency: 'urgent',
+    actionLabel: 'Complete',
+  },
+  {
+    id: 10,
+    type: 'ACC',
+    address: '132 Cardinal Way',
+    accType: 'Fence Installation',
+    formReceived: '04/05/2026',
+    toCommittee: '04/08/2026',
+    response: '05/20/2026',
+    autoApproval: '05/08/2026',
+    autoApprovalUrgent: false,
+    status: 'Open',
+    logCount: 2,
+    attachment: 'acc_fence_132.pdf',
+    due: 'Decision due May 2',
+    urgency: 'normal',
+    actionLabel: 'Approve',
+  },
+  {
+    id: 11,
+    type: 'ACC',
+    address: '347 Cardinal Heights',
+    accType: 'Exterior Paint Change',
+    formReceived: '04/12/2026',
+    toCommittee: '04/15/2026',
+    response: '05/30/2026',
+    autoApproval: '05/15/2026',
+    autoApprovalUrgent: false,
+    status: 'Open',
+    logCount: 1,
+    attachment: 'acc_paint_347.pdf',
+    due: 'Decision due May 9',
+    urgency: 'normal',
+    actionLabel: 'Approve',
+  },
+  {
+    id: 12,
+    type: 'Task',
+    title: 'Review Annual Budget Draft 2027',
+    dueDate: '05/01/2026',
+    category: 'Financial',
+    taskStatus: 'Not Started',
+    description: 'Management has submitted the first draft of the 2027 operating budget. Maintenance is projected 76% over the current-year budget and requires board direction before the draft can move to the May meeting.',
+    attachment: 'Budget Draft 2027',
+    acctInfo: null,
+    logCount: 2,
+    due: 'Due May 1',
+    urgency: 'normal',
+    actionLabel: 'Complete',
+  },
+  {
+    id: 13,
+    type: 'Task',
+    title: 'Approve Pool Renovation Change Order',
+    dueDate: '04/28/2026',
+    category: 'Capital Projects',
+    taskStatus: null,
+    description: 'AC&M Construction Services submitted Change Order #2 for the pool renovation: additional plaster repair discovered after draining, adding $4,800 to the contract. Board approval required to keep the August 15 completion date.',
+    attachment: 'Change Order #2 — AC&M',
+    acctInfo: null,
+    logCount: 3,
+    due: 'Due Apr 28',
+    urgency: 'normal',
     actionLabel: 'Complete',
   },
 ]
@@ -407,6 +499,12 @@ export default function Tasks({ types, title }) {
       {panel?.type === 'acc-committee'  && <AccCommitteePanel  task={panel.task} onClose={closePanel} />}
       {panel?.type === 'acc-attachment' && <AccAttachmentPanel task={panel.task} onClose={closePanel} />}
       {panel?.type === 'acc-decision'   && <AccDecisionPanel   task={panel.task} onClose={closePanel} />}
+      {panel?.type === 'wo-vendor'      && <VendorInfoPanel task={{ ...panel.task, title: panel.task.vendor }} onClose={closePanel} />}
+      {panel?.type === 'wo-log'         && <WoLogPanel        task={panel.task} onClose={closePanel} />}
+      {panel?.type === 'wo-attachments' && <WoAttachmentsPanel task={panel.task} onClose={closePanel} />}
+      {panel?.type === 'task-attachment' && <TaskAttachmentPanel task={panel.task} onClose={closePanel} />}
+      {panel?.type === 'task-acct'      && <TaskAcctPanel      task={panel.task} onClose={closePanel} />}
+      {panel?.type === 'task-log'       && <TaskLogPanel       task={panel.task} onClose={closePanel} />}
       {panel?.type === 'viol-owner'      && <ViolOwnerPanel      violation={panel.task} onClose={closePanel} />}
       {panel?.type === 'viol-items'      && <ViolItemsPanel      violation={panel.task} onClose={closePanel} />}
       {panel?.type === 'viol-log'        && <ViolLogPanel        violation={panel.task} onClose={closePanel} />}
@@ -523,10 +621,10 @@ function CardHero({ type }) {
 /* ── Card dispatcher ──────────────────────────────────── */
 function CardContent({ task, flyCard, flyOff, onOpenPanel }) {
   if (task.type === 'Invoice')   return <InvoiceCardContent   task={task} flyCard={flyCard} flyOff={flyOff} onOpenPanel={onOpenPanel} />
-  if (task.type === 'WorkOrder') return <WorkOrderCardContent task={task} flyCard={flyCard} flyOff={flyOff} />
+  if (task.type === 'WorkOrder') return <WorkOrderCardContent task={task} flyCard={flyCard} flyOff={flyOff} onOpenPanel={onOpenPanel} />
   if (task.type === 'Violation') return <ViolationCardContent task={task} onOpenPanel={onOpenPanel} />
   if (task.type === 'ACC')       return <ACCCardContent       task={task} onOpenPanel={onOpenPanel} />
-  if (task.type === 'Task')      return <TaskCardContent      task={task} flyCard={flyCard} flyOff={flyOff} />
+  if (task.type === 'Task')      return <TaskCardContent      task={task} flyCard={flyCard} flyOff={flyOff} onOpenPanel={onOpenPanel} />
   return null
 }
 
@@ -640,7 +738,7 @@ function InvoiceCardContent({ task, flyCard, flyOff, onOpenPanel }) {
 }
 
 /* ── Work Order card ──────────────────────────────────── */
-function WorkOrderCardContent({ task, flyCard, flyOff }) {
+function WorkOrderCardContent({ task, flyCard, flyOff, onOpenPanel }) {
   function stopDrag(e) { e.stopPropagation() }
 
   return (
@@ -685,7 +783,7 @@ function WorkOrderCardContent({ task, flyCard, flyOff }) {
 
         {/* Info rows */}
         <div className="inv-rows">
-          <button className="inv-row" onPointerDown={stopDrag}>
+          <button className="inv-row" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('wo-vendor', task)}>
             <span className="inv-row__icon"><img src={VendorSvg} className="inv-row__svg" alt="" /></span>
             <span className="inv-row__content">
               <span className="inv-row__title">{task.vendor}</span>
@@ -694,7 +792,7 @@ function WorkOrderCardContent({ task, flyCard, flyOff }) {
             <ChevronRowIcon />
           </button>
 
-          <button className="inv-row" onPointerDown={stopDrag}>
+          <button className="inv-row" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('wo-log', task)}>
             <span className="inv-row__icon"><img src={LogSvg} className="inv-row__svg" alt="" /></span>
             <span className="inv-row__content">
               <span className="inv-row__title">Log &amp; Notes</span>
@@ -705,7 +803,7 @@ function WorkOrderCardContent({ task, flyCard, flyOff }) {
             <ChevronRowIcon />
           </button>
 
-          <button className="inv-row inv-row--last" onPointerDown={stopDrag}>
+          <button className="inv-row inv-row--last" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('wo-attachments', task)}>
             <span className="inv-row__icon"><img src={AttachSvg} className="inv-row__svg" alt="" /></span>
             <span className="inv-row__content">
               <span className="inv-row__title">Attachments ({task.attachmentCount})</span>
@@ -839,7 +937,7 @@ function ACCCardContent({ task, onOpenPanel }) {
 }
 
 /* ── Task card ────────────────────────────────────────── */
-function TaskCardContent({ task, flyCard, flyOff }) {
+function TaskCardContent({ task, flyCard, flyOff, onOpenPanel }) {
   function stopDrag(e) { e.stopPropagation() }
 
   return (
@@ -874,7 +972,7 @@ function TaskCardContent({ task, flyCard, flyOff }) {
         {/* Info rows */}
         <div className="inv-rows">
           {task.attachment && (
-            <button className="inv-row" onPointerDown={stopDrag}>
+            <button className="inv-row" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('task-attachment', task)}>
               <span className="inv-row__icon"><img src={AttachSvg} className="inv-row__svg" alt="" /></span>
               <span className="inv-row__content">
                 <span className="inv-row__title">{task.attachment}</span>
@@ -883,7 +981,7 @@ function TaskCardContent({ task, flyCard, flyOff }) {
             </button>
           )}
           {task.acctInfo && (
-            <button className="inv-row" onPointerDown={stopDrag}>
+            <button className="inv-row" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('task-acct', task)}>
               <span className="inv-row__icon"><img src={BankSvg} className="inv-row__svg" alt="" /></span>
               <span className="inv-row__content">
                 <span className="inv-row__title">Account Info</span>
@@ -892,7 +990,7 @@ function TaskCardContent({ task, flyCard, flyOff }) {
               <ChevronRowIcon />
             </button>
           )}
-          <button className="inv-row inv-row--last" onPointerDown={stopDrag}>
+          <button className="inv-row inv-row--last" onPointerDown={stopDrag} onClick={() => onOpenPanel?.('task-log', task)}>
             <span className="inv-row__icon"><img src={LogSvg} className="inv-row__svg" alt="" /></span>
             <span className="inv-row__content">
               <span className="inv-row__title">Log &amp; Messages</span>
@@ -1202,21 +1300,35 @@ const ACC_LOG_MESSAGES = {
     { id: 4, from: 'committee', name: 'Committee',    avatar: '/images/cinc-icon.png', time: 'Apr 8 \u00b7 4:00 PM',  text: "We're targeting a decision by April 24. The main question is roof penetration \u2014 please have your contractor confirm the waterproofing method in writing." },
     { id: 5, from: 'homeowner', name: 'Jordan Kim',   avatar: '/images/avatar-3.jpg', time: 'Apr 10 \u00b7 9:22 AM', text: "Attached the contractor's waterproofing statement. Let me know if you need anything else." },
   ],
+  10: [
+    { id: 1, from: 'homeowner', name: 'Carol Green',  avatar: '/images/personas/carol-green.png', time: 'Apr 5 \u00b7 11:20 AM', text: "Submitted my fence application with the site plan. It's a 6 ft wood fence along the rear property line, stopping at the front building line per the guidelines." },
+    { id: 2, from: 'committee', name: 'Committee',    avatar: '/images/cinc-icon.png', time: 'Apr 8 \u00b7 9:40 AM',  text: 'Thank you Carol \u2014 application received and forwarded to the committee. Review is scheduled within the standard window; decision expected by May 2.' },
+  ],
+  11: [
+    { id: 1, from: 'homeowner', name: 'Ethan Young',  avatar: '/images/personas/ethan-young.png', time: 'Apr 12 \u00b7 4:15 PM', text: "Requesting approval to repaint the exterior in Sage Green with Warm White trim \u2014 both from the approved palette. Color samples attached." },
+  ],
 }
 
 const ACC_COMMITTEE_MESSAGES = {
   3: [
     { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Apr 10 \u00b7 6:05 PM', text: 'I reviewed the site plan. Deck footprint is well within setback limits. Structure looks solid.' },
     { id: 2, name: 'Marcus Chen',     role: 'Vice President', avatar: '/images/avatar-3.jpg',      time: 'Apr 10 \u00b7 6:22 PM', text: "Agreed on setbacks. My concern is the material \u2014 the color swatch in the application is hard to read. I'd like a proper spec sheet before we vote." },
-    { id: 3, name: 'Lisa Thompson',   role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 11 \u00b7 8:40 AM', text: "Concur with David. Let's hold approval pending the spec sheet. We can vote at the next meeting once we have it." },
-    { id: 4, name: 'John Parker',     role: 'Secretary',      avatar: '/images/avatar-1.jpg',      time: 'Apr 11 \u00b7 9:15 AM', text: "Makes sense. I'll draft the clarification request to the homeowner today." },
+    { id: 3, name: 'Thomas Lowes',    role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 11 \u00b7 8:40 AM', text: "Concur with Marcus. Let's hold approval pending the spec sheet. We can vote at the next meeting once we have it." },
+    { id: 4, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 11 \u00b7 9:15 AM', text: "Makes sense. I'll draft the clarification request to the homeowner today." },
   ],
   5: [
-    { id: 1, name: 'Maria Garcia',    role: 'Director',       avatar: '/images/avatar-3.jpg',      time: 'Mar 21 \u00b7 3:10 PM', text: 'Solar application looks comprehensive. Engineering drawings are well done. Flush-mounted so street visibility is a non-issue.' },
+    { id: 1, name: 'Rachel Park',     role: 'Member at Large', avatar: '/images/avatar-4.jpg',     time: 'Mar 21 \u00b7 3:10 PM', text: 'Solar application looks comprehensive. Engineering drawings are well done. Flush-mounted so street visibility is a non-issue.' },
     { id: 2, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Mar 21 \u00b7 3:45 PM', text: "Agree. My only flag is the roof penetration method \u2014 we've had leaks in this HOA before. Need contractor waterproofing confirmation before we approve." },
     { id: 3, name: 'Marcus Chen',     role: 'Vice President', avatar: '/images/avatar-3.jpg',      time: 'Mar 22 \u00b7 10:00 AM', text: "That's fair. Auto-approval deadline is Apr 29 so we have time. Let's request it." },
-    { id: 4, name: 'Lisa Thompson',   role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 10 \u00b7 2:15 PM', text: "Waterproofing statement just came in \u2014 looks good. TPO membrane, fully bonded. I'm comfortable approving once JP confirms the doc is complete." },
-    { id: 5, name: 'John Parker',     role: 'Secretary',      avatar: '/images/avatar-1.jpg',      time: 'Apr 10 \u00b7 4:30 PM', text: 'Reviewed. Doc is complete and meets our standards. Ready to vote.' },
+    { id: 4, name: 'Thomas Lowes',    role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 10 \u00b7 2:15 PM', text: "Waterproofing statement just came in \u2014 looks good. TPO membrane, fully bonded. I'm comfortable approving once Lisa confirms the doc is complete." },
+    { id: 5, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 10 \u00b7 4:30 PM', text: 'Reviewed. Doc is complete and meets our standards. Ready to vote.' },
+  ],
+  10: [
+    { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Apr 14 \u00b7 5:40 PM', text: 'Fence spec is wood, 6 ft, rear property line \u2014 within \u00a75.2 limits. No issues from my side.' },
+    { id: 2, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 15 \u00b7 9:05 AM', text: "Site plan shows it stops at the front building line, which is correct. Ready to vote whenever it's agendized." },
+  ],
+  11: [
+    { id: 1, name: 'Marcus Chen',     role: 'Vice President', avatar: '/images/avatar-3.jpg',      time: 'Apr 18 \u00b7 7:20 PM', text: 'Requested color is Sage Green \u2014 already on the approved palette. This one should be quick.' },
   ],
 }
 
@@ -1303,8 +1415,44 @@ function AccCommitteePanel({ task, onClose }) {
 }
 
 /* ── ACC Attachment panel ─────────────────────────────── */
+// Application details per ACC request type — used by the attachment PDF view
+const ACC_PDF = {
+  'Deck Installation': {
+    owner: 'Alex Rivera', phone: '305.555.0198', email: 'a.rivera@email.com',
+    start: 'May 10, 2026', complete: 'Jun 14, 2026', contractor: 'Sunrise Deck Co.',
+    desc: 'Proposed installation of a 12×16 ft composite deck off the rear sliding door, pressure-treated frame, Trex Transcend composite boards in Tiki Torch color. Footings per local code.',
+    materials: [['Decking', 'Trex Transcend — Tiki Torch'], ['Frame', 'Pressure-treated lumber'], ['Railing', 'Aluminum — Charcoal Black']],
+    sketch: <>Deck<br/>12×16</>,
+    sketchClass: 'acc-sketch-deck',
+  },
+  'Solar Panel Installation': {
+    owner: 'Jordan Kim', phone: '305.555.0234', email: 'j.kim@email.com',
+    start: 'May 5, 2026', complete: 'Jun 1, 2026', contractor: 'SolarBright LLC',
+    desc: 'Roof-mounted photovoltaic system, 18 panels (400W each), flush-mounted on rear south-facing slope. Fully permitted. TPO waterproofing membrane, no street visibility.',
+    materials: [['Panels', 'SunPower M-Series 400W'], ['Mounting', 'IronRidge flush rail'], ['Waterproof', 'TPO membrane, fully bonded']],
+    sketch: <>Solar Panels<br/>(Rear Roof)</>,
+    sketchClass: 'acc-sketch-solar',
+  },
+  'Fence Installation': {
+    owner: 'Carol Green', phone: '305.555.0271', email: 'carol.green@email.com',
+    start: 'May 15, 2026', complete: 'May 29, 2026', contractor: 'Cardinal Fence & Gate',
+    desc: '6 ft cedar privacy fence along the rear property line, stopping at the front building line per CC&R §5.2. Posts set in concrete, stained to match home exterior.',
+    materials: [['Fencing', 'Cedar — natural stain'], ['Posts', '4×4 cedar, concrete set'], ['Hardware', 'Galvanized black']],
+    sketch: <>Fence<br/>(Rear Line)</>,
+    sketchClass: 'acc-sketch-deck',
+  },
+  'Exterior Paint Change': {
+    owner: 'Ethan Young', phone: '305.555.0312', email: 'ethan.young@email.com',
+    start: 'May 20, 2026', complete: 'Jun 5, 2026', contractor: 'ProCoat Painting',
+    desc: 'Full exterior repaint. Body: Sage Green; trim: Warm White; front door: Forest Green — all colors from the community-approved palette.',
+    materials: [['Body', 'Sage Green — approved palette'], ['Trim', 'Warm White'], ['Door', 'Forest Green']],
+    sketch: <>Paint<br/>(Full Exterior)</>,
+    sketchClass: 'acc-sketch-solar',
+  },
+}
+
 function AccAttachmentPanel({ task, onClose }) {
-  const isDeck = task.id === 3
+  const pdf = ACC_PDF[task.accType] ?? ACC_PDF['Deck Installation']
   return (
     <div className="inv-panel">
       <PanelHeader title="Attachment" hideTitle onClose={onClose} />
@@ -1321,40 +1469,26 @@ function AccAttachmentPanel({ task, onClose }) {
           <div className="pdf-divider" />
           <div className="acc-pdf-section">
             <p className="acc-pdf-label">HOMEOWNER INFORMATION</p>
-            <div className="acc-pdf-row"><span>Owner</span><span>{isDeck ? 'Alex Rivera' : 'Jordan Kim'}</span></div>
+            <div className="acc-pdf-row"><span>Owner</span><span>{pdf.owner}</span></div>
             <div className="acc-pdf-row"><span>Property</span><span>{task.address}, Miami, FL 33130</span></div>
-            <div className="acc-pdf-row"><span>Phone</span><span>{isDeck ? '305.555.0198' : '305.555.0234'}</span></div>
-            <div className="acc-pdf-row"><span>Email</span><span>{isDeck ? 'a.rivera@email.com' : 'j.kim@email.com'}</span></div>
+            <div className="acc-pdf-row"><span>Phone</span><span>{pdf.phone}</span></div>
+            <div className="acc-pdf-row"><span>Email</span><span>{pdf.email}</span></div>
           </div>
           <div className="pdf-divider" />
           <div className="acc-pdf-section">
             <p className="acc-pdf-label">PROJECT DESCRIPTION</p>
             <div className="acc-pdf-row"><span>Type</span><span>{task.accType}</span></div>
-            <div className="acc-pdf-row"><span>Est. Start</span><span>{isDeck ? 'May 10, 2026' : 'May 5, 2026'}</span></div>
-            <div className="acc-pdf-row"><span>Est. Complete</span><span>{isDeck ? 'Jun 14, 2026' : 'Jun 1, 2026'}</span></div>
-            <div className="acc-pdf-row"><span>Contractor</span><span>{isDeck ? 'Sunrise Deck Co.' : 'SolarBright LLC'}</span></div>
-            <p className="acc-pdf-desc">
-              {isDeck
-                ? 'Proposed installation of a 12×16 ft composite deck off the rear sliding door, pressure-treated frame, Trex Transcend composite boards in Tiki Torch color. Footings per local code.'
-                : 'Roof-mounted photovoltaic system, 18 panels (400W each), flush-mounted on rear south-facing slope. Fully permitted. TPO waterproofing membrane, no street visibility.'}
-            </p>
+            <div className="acc-pdf-row"><span>Est. Start</span><span>{pdf.start}</span></div>
+            <div className="acc-pdf-row"><span>Est. Complete</span><span>{pdf.complete}</span></div>
+            <div className="acc-pdf-row"><span>Contractor</span><span>{pdf.contractor}</span></div>
+            <p className="acc-pdf-desc">{pdf.desc}</p>
           </div>
           <div className="pdf-divider" />
           <div className="acc-pdf-section">
             <p className="acc-pdf-label">MATERIALS &amp; FINISHES</p>
-            {isDeck ? (
-              <>
-                <div className="acc-pdf-row"><span>Decking</span><span>Trex Transcend — Tiki Torch</span></div>
-                <div className="acc-pdf-row"><span>Frame</span><span>Pressure-treated lumber</span></div>
-                <div className="acc-pdf-row"><span>Railing</span><span>Aluminum — Charcoal Black</span></div>
-              </>
-            ) : (
-              <>
-                <div className="acc-pdf-row"><span>Panels</span><span>SunPower M-Series 400W</span></div>
-                <div className="acc-pdf-row"><span>Mounting</span><span>IronRidge flush rail</span></div>
-                <div className="acc-pdf-row"><span>Waterproof</span><span>TPO membrane, fully bonded</span></div>
-              </>
-            )}
+            {pdf.materials.map(([label, value]) => (
+              <div className="acc-pdf-row" key={label}><span>{label}</span><span>{value}</span></div>
+            ))}
           </div>
         </div>
 
@@ -1364,8 +1498,7 @@ function AccAttachmentPanel({ task, onClose }) {
           <div className="acc-pdf-sketch">
             <div className="acc-sketch-house">
               <div className="acc-sketch-label">House</div>
-              {isDeck && <div className="acc-sketch-deck">Deck<br/>12×16</div>}
-              {!isDeck && <div className="acc-sketch-solar">Solar Panels<br/>(Rear Roof)</div>}
+              <div className={pdf.sketchClass}>{pdf.sketch}</div>
             </div>
             <div className="acc-sketch-yard">Rear Yard</div>
           </div>
@@ -1406,6 +1539,284 @@ function AccAttachmentPanel({ task, onClose }) {
           <p className="pdf-footer" style={{marginTop:16}}>Cardinal Hills HOA · Architectural Review Committee · 1200 Cardinal Dr, Miami FL 33130</p>
         </div>
 
+      </div>
+    </div>
+  )
+}
+
+/* ── Work Order panels ────────────────────────────────── */
+const WO_LOG_MESSAGES = {
+  7: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 1 · 8:40 AM',  text: 'Work order created from resident report — standing water on the pool deck near the east gate. Green Valley notified and asked to assess this week.' },
+    { id: 2, from: 'homeowner', name: 'Green Valley Landscaping', avatar: '/images/avatar-3.jpg', time: 'Apr 2 · 2:15 PM', text: 'Crew inspected today. Confirmed a cracked lateral line on zone 4. We can repair Thursday; deck area will be cordoned off for ~4 hours.' },
+    { id: 3, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 3 · 9:05 AM',  text: 'Approved to proceed Thursday. Please photograph the line before and after repair for the file.' },
+  ],
+  14: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 18 · 10:12 AM', text: 'Pump tripping intermittently since Monday. Pacific Pool quoted $3,850 for a like-for-like replacement, 2-year warranty. Board approval needed before scheduling.' },
+    { id: 2, from: 'homeowner', name: 'Pacific Pool Services', avatar: '/images/avatar-3.jpg', time: 'Apr 18 · 3:40 PM', text: 'Quote attached. Unit is in stock — we can install within 3 business days of approval. Pool would be closed one morning only.' },
+  ],
+}
+
+const WO_ATTACHMENT_IMAGES = [
+  '/images/card-workorder.jpg',
+  '/images/card-violation.jpg',
+  '/images/card-task.jpg',
+  '/images/card-acc.jpg',
+]
+
+function WoLogPanel({ task, onClose }) {
+  const messages = WO_LOG_MESSAGES[task.id] || []
+  const [draft, setDraft] = useState('')
+  return (
+    <div className="inv-panel">
+      <PanelHeader title="Log & Notes" hideTitle onClose={onClose} />
+      <div className="inv-panel__body acc-chat-body">
+        <h2 className="inv-panel__page-title">Log &amp; Notes</h2>
+        <p className="acc-chat-meta">{task.woNumber} · {task.vendor}</p>
+        <div className="acc-chat-log">
+          {messages.map(msg => (
+            <div key={msg.id} className={`acc-bubble-row acc-bubble-row--${msg.from}`}>
+              {msg.from !== 'homeowner' && (
+                <img className="acc-bubble-avatar" src={msg.avatar} alt={msg.name} />
+              )}
+              <div className="acc-bubble-wrap">
+                <span className="acc-bubble-name">{msg.name} · {msg.time}</span>
+                <div className={`acc-bubble acc-bubble--${msg.from}`}>{msg.text}</div>
+              </div>
+              {msg.from === 'homeowner' && (
+                <img className="acc-bubble-avatar" src={msg.avatar} alt={msg.name} />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="acc-chat-input">
+        <input
+          className="acc-chat-input__field"
+          placeholder="Add a note…"
+          value={draft}
+          onChange={e => setDraft(e.target.value)}
+        />
+        <button className="acc-chat-input__send" disabled={!draft.trim()} aria-label="Send">
+          <SendIcon />
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function WoAttachmentsPanel({ task, onClose }) {
+  const files = Array.from({ length: task.attachmentCount }, (_, i) =>
+    `${task.woNumber.replace('#', 'wo_')}_photo_${i + 1}.jpg`)
+  return (
+    <div className="inv-panel">
+      <PanelHeader title="Attachments" hideTitle onClose={onClose} />
+      <div className="inv-panel__body inv-panel__body--pdf">
+        <h2 className="inv-panel__page-title">Attachments ({files.length})</h2>
+        <div className="viol-attachments-list">
+          {files.map((filename, i) => (
+            <div key={filename} className="viol-attachment-item">
+              <p className="viol-attach-filename">{filename}</p>
+              <img src={WO_ATTACHMENT_IMAGES[i % WO_ATTACHMENT_IMAGES.length]} className="viol-evidence-img" alt={`Attachment ${i + 1}`} />
+              <p className="viol-evidence-caption">Site photo {i + 1} of {files.length} · {task.created}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── Board Task panels ────────────────────────────────── */
+const TASK_LOG_MESSAGES = {
+  8: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 18 · 9:30 AM', text: 'Ownership record update submitted for 150 Cardinal Point Rd — title moved to Roberts Family Holdings LLC. No sale occurred; supporting documentation attached. Board review requested.' },
+    { id: 2, from: 'committee', name: 'Thomas Lowes · Treasurer', avatar: '/images/avatar-linkedin.jpg', time: 'Apr 20 · 6:45 PM', text: 'Note: this account carries a $1,195 delinquent balance at 60 Days Notice. Confirm with counsel that the LLC transfer does not affect the collection track before we approve the record change.' },
+  ],
+  9: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 15 · 11:00 AM', text: 'Violation trend report for Jan–Apr attached. Cure rate is up to 73% but landscaping cases doubled with spring inspections. Recommendations included for board review.' },
+    { id: 2, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/avatar-1.jpg', time: 'Apr 17 · 8:20 PM', text: "Let's discuss the direct-letter protocol at the May meeting — the cure-rate lift looks worth expanding to home exterior cases." },
+  ],
+  12: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 22 · 10:15 AM', text: '2027 budget draft uploaded. Key decision: Maintenance line — current run rate projects $127K vs $72K budgeted this year. Draft proposes $96K plus a reserve-funded deferred repairs plan.' },
+    { id: 2, from: 'committee', name: 'Thomas Lowes · Treasurer', avatar: '/images/avatar-linkedin.jpg', time: 'Apr 23 · 7:50 PM', text: 'I support the split approach. Flagging that the insurance renewal quotes (due May 31) could move the total ±3% — we should hold final adoption until those land.' },
+  ],
+  13: [
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 21 · 9:00 AM', text: 'AC&M submitted Change Order #2: additional plaster repair found after draining, +$4,800. Without approval this week, the plaster crew moves to another job and completion slips ~3 weeks.' },
+    { id: 2, from: 'committee', name: 'Marcus Chen · Vice President', avatar: '/images/avatar-3.jpg', time: 'Apr 21 · 6:30 PM', text: 'Scope looks legitimate — the photos show real delamination. Reserve fund has capacity per the 2026 study.' },
+    { id: 3, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/avatar-1.jpg', time: 'Apr 22 · 8:10 AM', text: 'Agreed. Adding to this week’s agenda for a vote so we protect the August 15 completion date.' },
+  ],
+}
+
+// Attachment documents for board tasks — rendered as a simple report PDF
+const TASK_REPORTS = {
+  8: {
+    title: 'Violation History — 150 Cardinal Point Rd',
+    sub: 'Violations 2025-2026 · Acct 2024-3096',
+    sections: [
+      { label: 'OPEN ITEMS', rows: [['None', '—']] },
+      { label: 'HISTORY', rows: [
+        ['Trash / bins — 1st notice', 'Sep 2025 · Cured'],
+        ['Parking — 1st notice', 'Jan 2026 · Cured'],
+      ]},
+      { label: 'ACCOUNT STATUS', rows: [
+        ['Balance', '$1,195.00'],
+        ['Collections', '60 Days Notice'],
+        ['Occupancy', 'Tenant Occupied'],
+      ]},
+    ],
+    note: 'Compiled by management for the ownership record review. Violation history follows the property, not the owner of record.',
+  },
+  9: {
+    title: 'Violation Trend Analysis',
+    sub: 'January – April 2026 · Cardinal Hills HOA',
+    sections: [
+      { label: 'SUMMARY', rows: [
+        ['Total violations YTD', '97'],
+        ['April total', '15 (−21% vs March)'],
+        ['Cure rate (April)', '73%'],
+        ['Cure rate (YTD avg)', '65%'],
+      ]},
+      { label: 'TOP TYPES YTD', rows: [
+        ['Landscaping', '38 (39%)'],
+        ['Parking', '24 (25%)'],
+        ['Home Exterior', '19 (20%)'],
+        ['Architectural', '11 (11%)'],
+      ]},
+    ],
+    note: 'Direct owner letters correlate with a 31% higher cure rate. Recommendation: expand the protocol to home exterior cases and send a spring landscaping broadcast.',
+  },
+  12: {
+    title: 'Budget Draft 2027',
+    sub: 'First draft · Prepared by management, April 2026',
+    sections: [
+      { label: 'KEY LINES (ANNUAL)', rows: [
+        ['Maintenance', '$96,000 (was $72,000)'],
+        ['Landscaping', '$148,000'],
+        ['Insurance', '$162,000 (pending quotes)'],
+        ['Total operating', '$588,400 (+7.1%)'],
+      ]},
+      { label: 'ASSESSMENT IMPACT', rows: [
+        ['Monthly increase per unit', '+$14'],
+        ['Reserve contribution', '+$18 (per 2026 study)'],
+      ]},
+    ],
+    note: 'Deferred pool-era repairs move to the reserve fund per the 2026 Reserve Study recommendation. Final adoption targeted for the June meeting.',
+  },
+  13: {
+    title: 'Change Order #2 — AC&M Construction',
+    sub: 'Pool Renovation · Contract CH-2026-011',
+    sections: [
+      { label: 'CHANGE ORDER', rows: [
+        ['Scope', 'Additional plaster repair — 340 sq ft'],
+        ['Amount', '+$4,800.00'],
+        ['Revised contract total', '$41,520.00'],
+        ['Schedule impact', 'None if approved by Apr 28'],
+      ]},
+      { label: 'FUNDING', rows: [
+        ['Source', 'Reserve fund — pool resurfacing line'],
+        ['Reserve balance', '$1,245,360.00'],
+      ]},
+    ],
+    note: 'Delamination discovered after draining, documented with photos on file. Approval this week preserves the August 15 completion date.',
+  },
+}
+
+function TaskAttachmentPanel({ task, onClose }) {
+  const report = TASK_REPORTS[task.id]
+  if (!report) return null
+  return (
+    <div className="inv-panel">
+      <PanelHeader title="Attachment" hideTitle onClose={onClose} />
+      <div className="inv-panel__body inv-panel__body--pdf">
+        <h2 className="inv-panel__page-title">{task.attachment}</h2>
+        <div className="pdf-doc acc-pdf-doc">
+          <div className="acc-pdf-header">
+            <div className="acc-pdf-logo">Cardinal Hills HOA</div>
+            <div className="acc-pdf-title">{report.title}</div>
+            <div className="acc-pdf-sub">{report.sub}</div>
+          </div>
+          {report.sections.map(section => (
+            <div key={section.label}>
+              <div className="pdf-divider" />
+              <div className="acc-pdf-section">
+                <p className="acc-pdf-label">{section.label}</p>
+                {section.rows.map(([label, value]) => (
+                  <div className="acc-pdf-row" key={label}><span>{label}</span><span>{value}</span></div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div className="pdf-divider" />
+          <div className="acc-pdf-section">
+            <p className="acc-pdf-desc">{report.note}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TaskAcctPanel({ task, onClose }) {
+  const d = task.acctDetail
+  if (!d) return null
+  return (
+    <div className="inv-panel">
+      <PanelHeader title="Account Info" hideTitle onClose={onClose} />
+      <div className="inv-panel__body">
+        <h2 className="inv-panel__page-title">Account Info</h2>
+        <div className="viol-contact-card">
+          <div className="viol-contact-avatar">
+            <img src={d.ownerPhoto} alt={d.ownerName} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+          </div>
+          <div className="viol-contact-name">{d.ownerName}</div>
+          <div className="viol-contact-role">Owner of Record</div>
+        </div>
+        <div className="vend-card" style={{ marginTop: 16 }}>
+          <div className="vend-fields">
+            <div className="vend-field"><span className="vend-field__label">Address:</span><span className="vend-field__value">{d.address}</span></div>
+            <div className="vend-field"><span className="vend-field__label">Account #:</span><span className="vend-field__value">{d.acct}</span></div>
+            <div className="vend-field"><span className="vend-field__label">Occupancy:</span><span className="vend-field__value">{d.status}</span></div>
+            <div className="vend-field"><span className="vend-field__label">Balance:</span><span className="vend-field__value">{d.balance}</span></div>
+            <div className="vend-field"><span className="vend-field__label">Collections:</span><span className="vend-field__value">{d.collections}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TaskLogPanel({ task, onClose }) {
+  const messages = TASK_LOG_MESSAGES[task.id] || []
+  const [draft, setDraft] = useState('')
+  return (
+    <div className="inv-panel">
+      <PanelHeader title="Log & Messages" hideTitle onClose={onClose} />
+      <div className="inv-panel__body acc-chat-body">
+        <h2 className="inv-panel__page-title">Log &amp; Messages</h2>
+        <p className="acc-chat-meta">{task.title}</p>
+        <div className="acc-chat-log">
+          {messages.map(msg => (
+            <div key={msg.id} className="acc-bubble-row acc-bubble-row--committee">
+              <img className="acc-bubble-avatar" src={msg.avatar} alt={msg.name} />
+              <div className="acc-bubble-wrap">
+                <span className="acc-bubble-name">{msg.name} · {msg.time}</span>
+                <div className="acc-bubble acc-bubble--committee">{msg.text}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="acc-chat-input">
+        <input
+          className="acc-chat-input__field"
+          placeholder="Add a message…"
+          value={draft}
+          onChange={e => setDraft(e.target.value)}
+        />
+        <button className="acc-chat-input__send" disabled={!draft.trim()} aria-label="Send">
+          <SendIcon />
+        </button>
       </div>
     </div>
   )
