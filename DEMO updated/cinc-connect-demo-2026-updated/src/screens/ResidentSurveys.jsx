@@ -53,7 +53,7 @@ const SURVEYS = [
       { id: 'yes', label: 'YES' },
       { id: 'no',  label: 'NO' },
     ],
-    description: 'The current Lovera Premier quiet hours policy prohibits excessive noise between 10:00 PM and 8:00 AM on weekdays, and 11:00 PM and 9:00 AM on weekends. The Board is reviewing whether these hours continue to reflect the needs and preferences of our residents.\n\nSeveral homeowners have requested extending quiet hours on weekends to better accommodate families with young children. Others have noted that the current policy is adequate and enforced fairly. The Board wants to hear directly from the community before making any changes.\n\nDo you feel the current quiet hours policy is adequate for the community?',
+    description: 'The current Cardinal Hills quiet hours policy prohibits excessive noise between 10:00 PM and 8:00 AM on weekdays, and 11:00 PM and 9:00 AM on weekends. The Board is reviewing whether these hours continue to reflect the needs and preferences of our residents.\n\nSeveral homeowners have requested extending quiet hours on weekends to better accommodate families with young children. Others have noted that the current policy is adequate and enforced fairly. The Board wants to hear directly from the community before making any changes.\n\nDo you feel the current quiet hours policy is adequate for the community?',
   },
 ]
 
