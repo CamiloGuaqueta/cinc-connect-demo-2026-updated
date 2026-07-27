@@ -270,5 +270,7 @@ export function getPaymentHistory(unit) {
     byDate.get(entry.date).push(entry)
   }
 
-  return [...byDate.entries()].map(([date, items]) => ({ date, items }))
+  return [...byDate.entries()]
+    .map(([date, items]) => ({ date, items }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 }
