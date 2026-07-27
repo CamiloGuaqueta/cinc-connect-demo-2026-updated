@@ -1088,10 +1088,18 @@ function BoardFeed() {
 /* ── Resident Feed ────────────────────────────────── */
 const RESIDENT_POSTS = [
   {
+    id: 'r7', name: 'Darren Wilson', initials: 'DW', time: '6 hours ago',
+    isBoardMember: true, subtitle: 'Board President',
+    title: '2027 Board of Directors Election — Voting Is Open',
+    body: 'Voting is now open for three seats on the Board of Directors. Review each candidate’s platform and cast your ballot before it closes June 29. Results will be announced at the Annual Meeting on July 12.',
+    image: null, likes: 19, comments: 6, avatarImg: AVATAR_1,
+    ctaLabel: 'CAST YOUR VOTE', ctaScreen: 'ballot-votes',
+  },
+  {
     id: 'r1', name: 'Dalton Thomson', initials: 'DT', time: '5 minutes ago',
-    isBoardMember: true, title: 'Board Of Directors Election',
-    body: 'The deadline to cast your vote is February 12. Just click in the button below and cast your vote.',
-    image: RV_PHOTO, likes: 8, comments: 14, avatarImg: DALTON_PHOTO,
+    isBoardMember: false, title: 'Just cast my vote!',
+    body: 'Took two minutes to vote in the Board of Directors election — if you haven’t yet, don’t forget before it closes June 29.',
+    image: null, likes: 8, comments: 14, avatarImg: DALTON_PHOTO,
   },
   {
     id: 'sarah-market', name: 'Sarah Mitchell', initials: 'SM', time: '2 hours ago',
@@ -1377,6 +1385,9 @@ function ResidentFeed() {
           { screen: 'blog-post', data: blog },
         ])
       }
+    }
+    if (post.ctaScreen) {
+      pushResidentViews([{ screen: post.ctaScreen, data: null }])
     }
   }
 
