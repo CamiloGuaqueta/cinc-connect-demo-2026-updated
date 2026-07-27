@@ -55,7 +55,7 @@ export const UNITS = [
     id: 1,
     label: '319 Cardinal Hills Dr',
     account: 'CH:6523',
-    balance: 750.41,
+    balance: 650.41,
     futureBalance: 2368.00,
     lineItems: [
       {
@@ -74,6 +74,14 @@ export const UNITS = [
             { label: 'Online Payment', sub: 'Thank you', amount: '-$500.00' },
             { label: 'Monthly Assessment — March', sub: 'Recurrent Charge', amount: '$500.00' },
           ] },
+          { date: 'Feb 15, 2026', items: [
+            { label: 'Online Payment', sub: 'Thank you', amount: '-$500.00' },
+            { label: 'Monthly Assessment — February', sub: 'Recurrent Charge', amount: '$500.00' },
+          ] },
+          { date: 'Jan 15, 2026', items: [
+            { label: 'Online Payment', sub: 'Thank you', amount: '-$500.00' },
+            { label: 'Monthly Assessment — January', sub: 'Recurrent Charge', amount: '$500.00' },
+          ] },
         ],
       },
       {
@@ -87,6 +95,10 @@ export const UNITS = [
           { date: 'Apr 01, 2026', items: [
             { label: 'AutoPay Payment', sub: 'Thank you', amount: '-$70.41' },
             { label: '2026 Special Assessment 4/12', sub: 'Recurrent Charge', amount: '$70.41' },
+          ] },
+          { date: 'Mar 01, 2026', items: [
+            { label: 'AutoPay Payment', sub: 'Thank you', amount: '-$70.41' },
+            { label: '2026 Special Assessment 3/12', sub: 'Recurrent Charge', amount: '$70.41' },
           ] },
         ],
       },
@@ -210,6 +222,33 @@ export const STATEMENTS = {
     { month: 'Feb 2026', date: '02/15/2026', amount: 125.50, filename: 'Statement_2026-02.pdf' },
     { month: 'Jan 2026', date: '01/15/2026', amount: 125.50, filename: 'Statement_2026-01.pdf' },
   ],
+}
+
+// Applies a payment made through the Make a Payment wizard: reduces the unit's
+// balance and its line items in order (Regular Charges, then Special Assessment,
+// then Violations), and records an "Online Payment" entry in whichever line
+// items were actually paid down, so the Ledger and Payment History pick it up too.
+const PAYMENT_TODAY = 'May 19, 2026'
+
+export function applyPayment(unit, amountMode, amount) {
+  let remaining = amountMode === 'total' ? unit.balance : Math.min(amount, unit.balance)
+
+  for (const li of unit.lineItems) {
+    if (remaining <= 0) break
+    const paid = Math.min(li.amount, remaining)
+    if (paid <= 0) continue
+
+    li.ledger.unshift({
+      date: PAYMENT_TODAY,
+      items: [{ label: 'Online Payment', sub: 'Thank you', amount: `-${fmt(paid)}` }],
+    })
+    li.amount = Math.round((li.amount - paid) * 100) / 100
+    remaining = Math.round((remaining - paid) * 100) / 100
+  }
+
+  // Balance is always derived from the line items, never tracked independently —
+  // that's what kept it in sync after a payment (or any future data edit).
+  unit.balance = Math.round(unit.lineItems.reduce((sum, li) => sum + li.amount, 0) * 100) / 100
 }
 
 // Derives a flat, date-grouped payment history (all "-" ledger entries) for a unit,

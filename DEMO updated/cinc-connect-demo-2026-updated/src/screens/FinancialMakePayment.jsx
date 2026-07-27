@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMode } from '../ModeContext'
-import { UNITS, PAYMENT_METHODS, fmt } from '../data/financialData'
+import { UNITS, PAYMENT_METHODS, fmt, applyPayment } from '../data/financialData'
 import './FinancialMakePayment.css'
 
 const NOW = new Date(2026, 4, 19)
@@ -32,19 +32,26 @@ function ChevronRightIcon() {
 }
 
 export default function FinancialMakePayment({ unitId }) {
-  const { pushResidentView, popResidentView } = useMode()
+  const { pushResidentView, popResidentView, defaultPaymentMethodId } = useMode()
   const unit = UNITS.find(u => u.id === unitId) || UNITS[0]
 
   const [step, setStep] = useState('amount') // amount | method | review | success
   const [amountMode, setAmountMode] = useState('total')
   const [otherAmount, setOtherAmount] = useState('')
-  const [methodId, setMethodId] = useState(PAYMENT_METHODS[0].id)
+  const [methodId, setMethodId] = useState(defaultPaymentMethodId || PAYMENT_METHODS[0].id)
+  const [receipt, setReceipt] = useState(null)
 
   const method = PAYMENT_METHODS.find(m => m.id === methodId) || PAYMENT_METHODS[0]
   const amount = amountMode === 'total' ? unit.balance : (parseFloat(otherAmount) || 0)
   const isCard = method.type === 'card'
   const fee = isCard ? amount * 0.04 : 0
   const total = amount + fee
+
+  function submitPayment() {
+    setReceipt({ amount, fee, total, amountMode, method })
+    applyPayment(unit, amountMode, amount)
+    setStep('success')
+  }
 
   return (
     <div className="screen fmp-screen">
@@ -180,7 +187,7 @@ export default function FinancialMakePayment({ unitId }) {
             <span className="fmp-info-card__value">{method.label} - {method.sub}</span>
           </div>
 
-          <button className="fmp-continue" onClick={() => setStep('success')}>Submit Payment</button>
+          <button className="fmp-continue" onClick={submitPayment}>Submit Payment</button>
         </>
       )}
 
@@ -201,22 +208,22 @@ export default function FinancialMakePayment({ unitId }) {
             <div className="fmp-review-row">
               <div className="fmp-review-row__info">
                 <span className="fmp-review-row__label">Amount</span>
-                <span className="fmp-review-row__sub">{amountMode === 'total' ? 'Total Balance' : 'Other Amount'}</span>
+                <span className="fmp-review-row__sub">{receipt.amountMode === 'total' ? 'Total Balance' : 'Other Amount'}</span>
               </div>
-              <span className="fmp-review-row__value">{fmt(amount)}</span>
+              <span className="fmp-review-row__value">{fmt(receipt.amount)}</span>
             </div>
             <div className="fmp-divider" />
             <div className="fmp-review-row">
               <div className="fmp-review-row__info">
                 <span className="fmp-review-row__label">Processing Fee</span>
-                <span className="fmp-review-row__sub">{isCard ? 'Credit Card 4%' : 'No fee (bank account)'}</span>
+                <span className="fmp-review-row__sub">{receipt.method.type === 'card' ? 'Credit Card 4%' : 'No fee (bank account)'}</span>
               </div>
-              <span className="fmp-review-row__value">{fmt(fee)}</span>
+              <span className="fmp-review-row__value">{fmt(receipt.fee)}</span>
             </div>
             <div className="fmp-divider" />
             <div className="fmp-review-row">
               <span className="fmp-review-row__label">Total</span>
-              <span className="fmp-review-row__value fmp-review-row__value--total">{fmt(total)}</span>
+              <span className="fmp-review-row__value fmp-review-row__value--total">{fmt(receipt.total)}</span>
             </div>
           </div>
 
@@ -226,7 +233,7 @@ export default function FinancialMakePayment({ unitId }) {
           </div>
           <div className="fmp-info-card">
             <span className="fmp-info-card__label">Payment Method</span>
-            <span className="fmp-info-card__value">{method.label} - {method.sub}</span>
+            <span className="fmp-info-card__value">{receipt.method.label} - {receipt.method.sub}</span>
           </div>
 
           <button className="fmp-continue" onClick={popResidentView}>Done</button>

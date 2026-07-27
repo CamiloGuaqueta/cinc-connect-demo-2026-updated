@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMode } from '../ModeContext'
 import { PAYMENT_METHODS } from '../data/financialData'
 import applePayIcon from '../ICONS/applepay.svg'
 import './FinancialPaymentMethods.css'
@@ -52,6 +53,7 @@ function CheckIcon() {
 }
 
 export default function FinancialPaymentMethods() {
+  const { defaultPaymentMethodId, setDefaultPaymentMethodId } = useMode()
   const [methods, setMethods] = useState(PAYMENT_METHODS)
   const [step, setStep] = useState('list') // list | add | edit | remove | removed | updated
   const [nickname, setNickname] = useState('')
@@ -92,6 +94,7 @@ export default function FinancialPaymentMethods() {
 
   function handleRemove() {
     setMethods(m => m.filter(x => x.id !== card.id))
+    if (defaultPaymentMethodId === card.id) setDefaultPaymentMethodId('bank1')
     setStep('removed')
   }
 
@@ -111,24 +114,29 @@ export default function FinancialPaymentMethods() {
             {methods.map((m, i) => (
               <div key={m.id}>
                 {i > 0 && <div className="fpm-divider" />}
-                {m.editable ? (
-                  <button className="fpm-row" onClick={() => setStep('edit')}>
-                    <MethodIcon method={m} />
-                    <div className="fpm-row__text">
-                      <span className="fpm-row__label">{m.label}</span>
-                      <span className="fpm-row__sub">{m.sub}</span>
-                    </div>
-                    <ChevronRightIcon />
+                <div className="fpm-row">
+                  <button
+                    className={`fpm-row__default${m.id === defaultPaymentMethodId ? ' fpm-row__default--selected' : ''}`}
+                    onClick={() => setDefaultPaymentMethodId(m.id)}
+                    aria-pressed={m.id === defaultPaymentMethodId}
+                    aria-label={`Set ${m.label} as default payment method`}
+                  >
+                    <span className="fpm-row__default-dot" />
                   </button>
-                ) : (
-                  <div className="fpm-row fpm-row--static">
-                    <MethodIcon method={m} />
-                    <div className="fpm-row__text">
-                      <span className="fpm-row__label">{m.label}</span>
-                      <span className="fpm-row__sub">{m.sub}</span>
-                    </div>
+                  <MethodIcon method={m} />
+                  <div className="fpm-row__text">
+                    <span className="fpm-row__label">
+                      {m.label}
+                      {m.id === defaultPaymentMethodId && <span className="fpm-row__default-badge">Default</span>}
+                    </span>
+                    <span className="fpm-row__sub">{m.sub}</span>
                   </div>
-                )}
+                  {m.editable && (
+                    <button className="fpm-row__edit" onClick={() => setStep('edit')} aria-label={`Edit ${m.label}`}>
+                      <ChevronRightIcon />
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>

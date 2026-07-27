@@ -54,14 +54,33 @@
   align-items: center;
   gap: 12px;
   padding: 14px 0;
+}
+
+.fpm-row__default {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
   background: none;
-  border: none;
+  padding: 0;
   cursor: pointer;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   -webkit-tap-highlight-color: transparent;
 }
 
-.fpm-row--static { opacity: 0.5; cursor: default; }
+.fpm-row__default--selected { border-color: var(--lime); }
+
+.fpm-row__default-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.fpm-row__default--selected .fpm-row__default-dot { background: var(--lime); }
 
 .fpm-row__text {
   flex: 1;
@@ -71,15 +90,39 @@
 }
 
 .fpm-row__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   font-weight: 600;
   color: var(--res-text);
+}
+
+.fpm-row__default-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--res-bg1);
+  background: var(--lime);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .fpm-row__sub {
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
+}
+
+.fpm-row__edit {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .fpm-row__chev { flex-shrink: 0; }
@@ -94,8 +137,7 @@
 
 .fpm-brand-img--apple {
   width: 34px;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
+  border-radius: 4px;
 }
 
 .fpm-gpay-badge {

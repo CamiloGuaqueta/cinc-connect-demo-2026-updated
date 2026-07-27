@@ -27,6 +27,7 @@ export function ModeProvider({ children }) {
   const [residentViewStack, setResidentViewStack] = useState([])
   const [residentProfile,   setResidentProfile]   = useState(INITIAL_RESIDENT_PROFILE)
   const [navGuard,          setNavGuardState]     = useState(null)
+  const [defaultPaymentMethodId, setDefaultPaymentMethodId] = useState('visa1')
 
   useEffect(() => {
     localStorage.setItem('layoutMode', isWeb ? 'web' : 'mobile')
@@ -77,6 +78,7 @@ export function ModeProvider({ children }) {
       navGuard,          setNavGuard,
       navStyle,          setNavStyle,
       showBoardRoom,     setShowBoardRoom,
+      defaultPaymentMethodId, setDefaultPaymentMethodId,
     }}>
       {children}
     </ModeContext.Provider>
