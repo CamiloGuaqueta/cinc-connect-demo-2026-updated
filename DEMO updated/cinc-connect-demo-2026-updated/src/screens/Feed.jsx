@@ -4,6 +4,7 @@ import { useMode } from '../ModeContext'
 import { BLOGS } from '../data/blogs'
 import sarahPhoto from '../images/sarah1.jpg'
 import soldPhoto from '../images/SOLD.jpg'
+import courtsPhoto from '../images/Amenities/courts.jpg'
 import './Feed.css'
 import CalendarCheckSvg from '../ICONS/calendar-check.svg'
 import filterIcon from '../ICONS/filter.svg?raw'
@@ -22,6 +23,10 @@ const AVATAR_2      = '/images/avatar-2.jpg'
 const AVATAR_3      = '/images/avatar-3.jpg'
 const AVATAR_4      = '/images/avatar-4.jpg'
 const LINKEDIN_AVT  = '/images/avatar-linkedin.jpg'
+const DALTON_PHOTO  = '/images/personas/dalton-thomson.png'
+const ETHAN_PHOTO   = '/images/personas/ethan-young.png'
+const WILLIAM_PHOTO = '/images/personas/william-walker.png'
+const SOPHIA_PHOTO  = '/images/personas/sophia-diaz.png'
 
 /* ── Board Members ────────────────────────────────── */
 const BOARD_MEMBERS = [
@@ -1086,7 +1091,7 @@ const RESIDENT_POSTS = [
     id: 'r1', name: 'Dalton Thomson', initials: 'DT', time: '5 minutes ago',
     isBoardMember: true, title: 'Board Of Directors Election',
     body: 'The deadline to cast your vote is February 12. Just click in the button below and cast your vote.',
-    image: RV_PHOTO, likes: 8, comments: 14, avatarImg: AVATAR_1,
+    image: RV_PHOTO, likes: 8, comments: 14, avatarImg: DALTON_PHOTO,
   },
   {
     id: 'sarah-market', name: 'Sarah Mitchell', initials: 'SM', time: '2 hours ago',
@@ -1097,10 +1102,34 @@ const RESIDENT_POSTS = [
     ctaLabel: 'READ FULL REPORT', ctaBlogId: 1,
   },
   {
+    id: 'r3', name: 'Ethan Young', initials: 'EY', time: '3 hours ago',
+    isBoardMember: false, title: 'Exterior Refresh Complete!',
+    body: 'Thrilled to share our home just got final ACC sign-off for the new Sage Green exterior with Warm White trim — painters start next week. Thanks to the board for the quick turnaround!',
+    image: null, likes: 12, comments: 4, avatarImg: ETHAN_PHOTO,
+  },
+  {
     id: 'r2', name: 'Lisa Thomas', initials: 'LT', time: '1 Day Ago',
     isBoardMember: true, title: 'Community Pool Opening Soon',
     body: 'The pool will reopen May 1st with new hours: 8 AM – 9 PM daily. Please review the updated pool rules before your first visit.',
     image: null, likes: 5, comments: 11, avatarImg: AVATAR_2,
+  },
+  {
+    id: 'r4', name: 'William Walker', initials: 'WW', time: '1 Day Ago',
+    isBoardMember: false, title: 'Anyone up for pickleball Saturday morning?',
+    body: 'A few of us are getting a doubles game going at the Ridgeline Pass courts, 9 AM Saturday. All skill levels welcome — bring water!',
+    image: courtsPhoto, likes: 14, comments: 9, avatarImg: WILLIAM_PHOTO,
+  },
+  {
+    id: 'r5', name: 'Sophia Diaz', initials: 'SD', time: '2 Days Ago',
+    isBoardMember: false, title: "Found: kids' bike helmet near the mailboxes",
+    body: 'Picked up a blue bike helmet with dinosaur stickers by the mailboxes on Ridgeline Pass. Message me if it\'s yours!',
+    image: null, likes: 3, comments: 2, avatarImg: SOPHIA_PHOTO,
+  },
+  {
+    id: 'r6', name: 'Rachel Park', initials: 'RP', time: '3 Days Ago',
+    isBoardMember: true, title: 'Reminder: Landscaping Committee applications close Friday',
+    body: "If you're interested in joining the Landscaping Committee for the 2026-27 term, applications are due this Friday at 5 PM. Email the HOA office or drop off a paper form at the clubhouse.",
+    image: null, likes: 9, comments: 3, avatarImg: AVATAR_4,
   },
 ]
 
@@ -1389,7 +1418,12 @@ function ResidentFeed() {
                   </span>
                   <ChevronRightSmallIcon />
                 </div>
-                <button className="acct-card__cta">MAKE A PAYMENT</button>
+                <button
+                  className="acct-card__cta"
+                  onClick={() => pushResidentViews([{ screen: 'fh-make-payment', data: { unitId: unit.id } }])}
+                >
+                  MAKE A PAYMENT
+                </button>
                 <p className="acct-card__private">Only you can see this</p>
               </div>
               </div>
