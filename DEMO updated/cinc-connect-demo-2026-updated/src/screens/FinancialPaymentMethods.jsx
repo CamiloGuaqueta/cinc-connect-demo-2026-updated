@@ -52,19 +52,33 @@ function CheckIcon() {
   )
 }
 
+// Word used in "Edit ___" / "Remove ___" / "___ Updated!" copy for each type.
+function typeLabel(m) {
+  if (m.type === 'card') return 'Credit Card'
+  if (m.type === 'bank') return 'Bank Account'
+  return m.label
+}
+
 export default function FinancialPaymentMethods() {
   const { defaultPaymentMethodId, setDefaultPaymentMethodId } = useMode()
   const [methods, setMethods] = useState(PAYMENT_METHODS)
   const [step, setStep] = useState('list') // list | add | edit | remove | removed | updated
+  const [editingId, setEditingId] = useState(null)
+  const [actionLabel, setActionLabel] = useState('')
   const [nickname, setNickname] = useState('')
   const [cardNumber, setCardNumber] = useState('')
   const [expiry, setExpiry] = useState('')
 
-  const card = methods.find(m => m.type === 'card')
+  const editing = methods.find(m => m.id === editingId)
 
   function formatExpiry(raw) {
     const digits = raw.replace(/\D/g, '').slice(0, 4)
     return digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits
+  }
+
+  function openEdit(m) {
+    setEditingId(m.id)
+    setStep('edit')
   }
 
   function handleAddCard() {
@@ -76,7 +90,6 @@ export default function FinancialPaymentMethods() {
         label: `Visa - ${last4}`,
         sub: nickname || 'Credit Card',
         type: 'card',
-        editable: true,
         nickname: nickname || 'New Card',
         number: `**** ****** *${last4}`,
         expiry: expiry || '01/30',
@@ -92,9 +105,15 @@ export default function FinancialPaymentMethods() {
     setStep('list')
   }
 
+  function handleSave() {
+    setActionLabel(typeLabel(editing))
+    setStep('updated')
+  }
+
   function handleRemove() {
-    setMethods(m => m.filter(x => x.id !== card.id))
-    if (defaultPaymentMethodId === card.id) setDefaultPaymentMethodId('bank1')
+    setActionLabel(typeLabel(editing))
+    setMethods(m => m.filter(x => x.id !== editing.id))
+    if (defaultPaymentMethodId === editing.id) setDefaultPaymentMethodId('bank1')
     setStep('removed')
   }
 
@@ -131,11 +150,9 @@ export default function FinancialPaymentMethods() {
                     </span>
                     <span className="fpm-row__sub">{m.sub}</span>
                   </div>
-                  {m.editable && (
-                    <button className="fpm-row__edit" onClick={() => setStep('edit')} aria-label={`Edit ${m.label}`}>
-                      <ChevronRightIcon />
-                    </button>
-                  )}
+                  <button className="fpm-row__edit" onClick={() => openEdit(m)} aria-label={`Edit ${m.label}`}>
+                    <ChevronRightIcon />
+                  </button>
                 </div>
               </div>
             ))}
@@ -189,53 +206,89 @@ export default function FinancialPaymentMethods() {
         </>
       )}
 
-      {step === 'edit' && card && (
+      {step === 'edit' && editing && (
         <>
-          <p className="fpm-section-title">Edit Credit Card</p>
-          <div className="fpm-field-card">
-            <div className="fpm-field">
-              <span className="fpm-field__label">Nickname</span>
-              <input className="fpm-field__input" type="text" value={card.nickname} readOnly />
+          <p className="fpm-section-title">Edit {typeLabel(editing)}</p>
+
+          {editing.type === 'card' && (
+            <>
+              <div className="fpm-field-card">
+                <div className="fpm-field">
+                  <span className="fpm-field__label">Nickname</span>
+                  <input className="fpm-field__input" type="text" value={editing.nickname} readOnly />
+                </div>
+              </div>
+              <div className="fpm-field-card">
+                <div className="fpm-field fpm-field--card-row">
+                  <CardIcon />
+                  <input className="fpm-field__input fpm-field__input--num" type="text" value={editing.number} readOnly />
+                  <div className="fpm-field__divider" />
+                  <input className="fpm-field__input fpm-field__input--exp" type="text" value={editing.expiry} readOnly />
+                  <div className="fpm-field__divider" />
+                  <input className="fpm-field__input fpm-field__input--cvc" type="text" value={editing.cvc} readOnly />
+                </div>
+              </div>
+              <div className="fpm-field-card">
+                <div className="fpm-field">
+                  <span className="fpm-field__label">Address</span>
+                  <input className="fpm-field__input" type="text" value={editing.address} readOnly />
+                </div>
+                <div className="fpm-field">
+                  <span className="fpm-field__label">State</span>
+                  <input className="fpm-field__input" type="text" value={editing.state} readOnly />
+                </div>
+                <div className="fpm-field">
+                  <span className="fpm-field__label">Zip Code</span>
+                  <input className="fpm-field__input" type="text" value={editing.zip} readOnly />
+                </div>
+              </div>
+            </>
+          )}
+
+          {editing.type === 'bank' && (
+            <div className="fpm-field-card">
+              <div className="fpm-field">
+                <span className="fpm-field__label">Account Name</span>
+                <input className="fpm-field__input" type="text" value={editing.label} readOnly />
+              </div>
+              <div className="fpm-field">
+                <span className="fpm-field__label">Account Number</span>
+                <input className="fpm-field__input" type="text" value={`•••• ${editing.last4}`} readOnly />
+              </div>
+              <div className="fpm-field">
+                <span className="fpm-field__label">Account Type</span>
+                <input className="fpm-field__input" type="text" value={editing.sub} readOnly />
+              </div>
             </div>
-          </div>
-          <div className="fpm-field-card">
-            <div className="fpm-field fpm-field--card-row">
-              <CardIcon />
-              <input className="fpm-field__input fpm-field__input--num" type="text" value={card.number} readOnly />
-              <div className="fpm-field__divider" />
-              <input className="fpm-field__input fpm-field__input--exp" type="text" value={card.expiry} readOnly />
-              <div className="fpm-field__divider" />
-              <input className="fpm-field__input fpm-field__input--cvc" type="text" value={card.cvc} readOnly />
+          )}
+
+          {editing.type === 'wallet' && (
+            <div className="fpm-field-card">
+              <div className="fpm-field">
+                <span className="fpm-field__label">Payment Method</span>
+                <input className="fpm-field__input" type="text" value={editing.label} readOnly />
+              </div>
+              <div className="fpm-field">
+                <span className="fpm-field__label">Linked Cards</span>
+                <input className="fpm-field__input" type="text" value={editing.sub} readOnly />
+              </div>
             </div>
-          </div>
-          <div className="fpm-field-card">
-            <div className="fpm-field">
-              <span className="fpm-field__label">Address</span>
-              <input className="fpm-field__input" type="text" value={card.address} readOnly />
-            </div>
-            <div className="fpm-field">
-              <span className="fpm-field__label">State</span>
-              <input className="fpm-field__input" type="text" value={card.state} readOnly />
-            </div>
-            <div className="fpm-field">
-              <span className="fpm-field__label">Zip Code</span>
-              <input className="fpm-field__input" type="text" value={card.zip} readOnly />
-            </div>
-          </div>
+          )}
+
           <div className="fpm-footer--stack">
-            <button className="fpm-danger" onClick={() => setStep('remove')}>Remove Credit Card</button>
-            <button className="fpm-continue" onClick={() => setStep('updated')}>Save</button>
+            <button className="fpm-danger" onClick={() => setStep('remove')}>Remove {typeLabel(editing)}</button>
+            <button className="fpm-continue" onClick={handleSave}>Save</button>
           </div>
         </>
       )}
 
-      {step === 'remove' && card && (
+      {step === 'remove' && editing && (
         <>
           <div className="fpm-warning">
             <div className="fpm-warning__icon">!</div>
-            <h2 className="fpm-warning__title">Remove Credit Card?</h2>
+            <h2 className="fpm-warning__title">Remove {typeLabel(editing)}?</h2>
             <p className="fpm-warning__text">
-              Are you sure you want to remove the <strong>{card.label}</strong> card from your payment methods? This action cannot be undone.
+              Are you sure you want to remove <strong>{editing.label}</strong> from your payment methods? This action cannot be undone.
             </p>
           </div>
           <button className="fpm-danger" onClick={handleRemove}>Remove</button>
@@ -246,8 +299,8 @@ export default function FinancialPaymentMethods() {
         <>
           <div className="fpm-success">
             <div className="fpm-success__icon"><CheckIcon /></div>
-            <h2 className="fpm-success__title">Credit Card Removed!</h2>
-            <p className="fpm-success__text">The card has been removed from your payment methods.</p>
+            <h2 className="fpm-success__title">{actionLabel} Removed!</h2>
+            <p className="fpm-success__text">It has been removed from your payment methods.</p>
           </div>
           <button className="fpm-continue" onClick={() => setStep('list')}>Done</button>
         </>
@@ -257,8 +310,8 @@ export default function FinancialPaymentMethods() {
         <>
           <div className="fpm-success">
             <div className="fpm-success__icon"><CheckIcon /></div>
-            <h2 className="fpm-success__title">Credit Card Updated!</h2>
-            <p className="fpm-success__text">Your card has been updated successfully.</p>
+            <h2 className="fpm-success__title">{actionLabel} Updated!</h2>
+            <p className="fpm-success__text">Your changes have been saved successfully.</p>
           </div>
           <button className="fpm-continue" onClick={() => setStep('list')}>Done</button>
         </>

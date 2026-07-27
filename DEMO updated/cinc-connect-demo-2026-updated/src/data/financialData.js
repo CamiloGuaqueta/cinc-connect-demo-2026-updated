@@ -11,21 +11,20 @@ export const PAYMENT_METHODS = [
     label: 'Bank Account 1 - 5695',
     sub: 'Checking BOA',
     type: 'bank',
-    editable: false,
+    last4: '5695',
   },
   {
     id: 'bank2',
     label: 'Bank Account 2 - 8698',
     sub: 'Joint Bank Account Checking',
     type: 'bank',
-    editable: false,
+    last4: '8698',
   },
   {
     id: 'visa1',
     label: 'Visa - 2564',
     sub: 'Credit Card Business',
     type: 'card',
-    editable: true,
     nickname: 'Personal CC Chase',
     number: '**** ****** *2564',
     expiry: '02/28',
@@ -39,14 +38,12 @@ export const PAYMENT_METHODS = [
     label: 'Apple Pay',
     sub: 'Amex, Discover, Mastercard, Visa',
     type: 'wallet',
-    editable: false,
   },
   {
     id: 'googlepay',
     label: 'Google Pay',
     sub: 'Amex, Discover, Mastercard, Visa',
     type: 'wallet',
-    editable: false,
   },
 ]
 
