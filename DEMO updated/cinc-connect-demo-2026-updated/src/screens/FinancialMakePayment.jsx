@@ -23,6 +23,14 @@ function CheckIcon() {
   )
 }
 
+function ChevronRightIcon() {
+  return (
+    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" className="fmp-tool-row__chev">
+      <path d="M1 1l6 6-6 6" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export default function FinancialMakePayment({ unitId }) {
   const { pushResidentView, popResidentView } = useMode()
   const unit = UNITS.find(u => u.id === unitId) || UNITS[0]
@@ -93,12 +101,12 @@ export default function FinancialMakePayment({ unitId }) {
           <div className="fmp-tool-card">
             <button className="fmp-tool-row" onClick={() => pushResidentView('fh-autopay', { unitId: unit.id })}>
               <span className="fmp-tool-row__label">AutoPay</span>
-              <span className="fmp-tool-row__chev" />
+              <ChevronRightIcon />
             </button>
             <div className="fmp-divider" />
             <button className="fmp-tool-row" onClick={() => pushResidentView('fh-payment-methods')}>
               <span className="fmp-tool-row__label">Manage Payment Methods</span>
-              <span className="fmp-tool-row__chev" />
+              <ChevronRightIcon />
             </button>
           </div>
 
@@ -128,7 +136,7 @@ export default function FinancialMakePayment({ unitId }) {
           <div className="fmp-tool-card">
             <button className="fmp-tool-row" onClick={() => pushResidentView('fh-payment-methods')}>
               <span className="fmp-tool-row__label">Manage Payment Methods</span>
-              <span className="fmp-tool-row__chev" />
+              <ChevronRightIcon />
             </button>
           </div>
 

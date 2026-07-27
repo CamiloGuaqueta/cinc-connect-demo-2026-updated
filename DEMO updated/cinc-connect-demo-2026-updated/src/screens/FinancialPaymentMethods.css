@@ -82,13 +82,43 @@
   margin-top: 2px;
 }
 
-.fpm-row__chev {
+.fpm-row__chev { flex-shrink: 0; }
+
+/* ── Brand icons (Apple Pay / Google Pay) ────────────────── */
+.fpm-brand-img {
+  width: 26px;
+  height: auto;
+  object-fit: contain;
   flex-shrink: 0;
-  width: 7px;
-  height: 12px;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
-  transform: rotate(-45deg);
+}
+
+.fpm-brand-img--apple {
+  width: 34px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.fpm-gpay-badge {
+  flex-shrink: 0;
+  width: 40px;
+  height: 24px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #5f6368;
+  letter-spacing: -0.02em;
+}
+
+.fpm-gpay-badge__g {
+  color: #4285F4;
+  font-weight: 800;
+  margin-right: 0.5px;
 }
 
 /* ── Form fields ────────────────────────────────────────── */
@@ -138,8 +168,8 @@
 }
 
 .fpm-field__input--num { flex: 1; min-width: 0; }
-.fpm-field__input--exp { width: 46px; }
-.fpm-field__input--cvc { width: 36px; }
+.fpm-field__input--exp { width: 58px; flex-shrink: 0; }
+.fpm-field__input--cvc { width: 36px; flex-shrink: 0; }
 
 .fpm-field__divider {
   width: 1px;

@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import { PAYMENT_METHODS } from '../data/financialData'
+import applePayIcon from '../ICONS/applepay.svg'
 import './FinancialPaymentMethods.css'
 
 function BackIcon() {
   return (
     <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
       <path d="M9 1L1 9L9 17" stroke="var(--lime)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" className="fpm-row__chev">
+      <path d="M1 1l6 6-6 6" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -18,6 +27,20 @@ function CardIcon() {
       <rect x="3" y="13" width="8" height="2" rx="1" fill="rgba(255,255,255,0.3)" />
     </svg>
   )
+}
+
+function GooglePayBadge() {
+  return (
+    <span className="fpm-gpay-badge">
+      <span className="fpm-gpay-badge__g">G</span>Pay
+    </span>
+  )
+}
+
+function MethodIcon({ method }) {
+  if (method.id === 'applepay') return <img src={applePayIcon} alt="Apple Pay" className="fpm-brand-img fpm-brand-img--apple" />
+  if (method.id === 'googlepay') return <GooglePayBadge />
+  return <CardIcon />
 }
 
 function CheckIcon() {
@@ -33,8 +56,14 @@ export default function FinancialPaymentMethods() {
   const [step, setStep] = useState('list') // list | add | edit | remove | removed | updated
   const [nickname, setNickname] = useState('')
   const [cardNumber, setCardNumber] = useState('')
+  const [expiry, setExpiry] = useState('')
 
   const card = methods.find(m => m.type === 'card')
+
+  function formatExpiry(raw) {
+    const digits = raw.replace(/\D/g, '').slice(0, 4)
+    return digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits
+  }
 
   function handleAddCard() {
     const last4 = cardNumber.replace(/\D/g, '').slice(-4) || '4321'
@@ -48,7 +77,7 @@ export default function FinancialPaymentMethods() {
         editable: true,
         nickname: nickname || 'New Card',
         number: `**** ****** *${last4}`,
-        expiry: '01/30',
+        expiry: expiry || '01/30',
         cvc: '000',
         address: '',
         state: '',
@@ -57,6 +86,7 @@ export default function FinancialPaymentMethods() {
     ])
     setNickname('')
     setCardNumber('')
+    setExpiry('')
     setStep('list')
   }
 
@@ -83,16 +113,16 @@ export default function FinancialPaymentMethods() {
                 {i > 0 && <div className="fpm-divider" />}
                 {m.editable ? (
                   <button className="fpm-row" onClick={() => setStep('edit')}>
-                    <CardIcon />
+                    <MethodIcon method={m} />
                     <div className="fpm-row__text">
                       <span className="fpm-row__label">{m.label}</span>
                       <span className="fpm-row__sub">{m.sub}</span>
                     </div>
-                    <span className="fpm-row__chev" aria-hidden="true" />
+                    <ChevronRightIcon />
                   </button>
                 ) : (
                   <div className="fpm-row fpm-row--static">
-                    <CardIcon />
+                    <MethodIcon method={m} />
                     <div className="fpm-row__text">
                       <span className="fpm-row__label">{m.label}</span>
                       <span className="fpm-row__sub">{m.sub}</span>
@@ -120,7 +150,15 @@ export default function FinancialPaymentMethods() {
               <CardIcon />
               <input className="fpm-field__input fpm-field__input--num" type="tel" inputMode="numeric" placeholder="Card number" maxLength={19} value={cardNumber} onChange={e => setCardNumber(e.target.value)} />
               <div className="fpm-field__divider" />
-              <input className="fpm-field__input fpm-field__input--exp" type="tel" inputMode="numeric" placeholder="MM/YY" maxLength={5} />
+              <input
+                className="fpm-field__input fpm-field__input--exp"
+                type="tel"
+                inputMode="numeric"
+                placeholder="MM/YY"
+                maxLength={5}
+                value={expiry}
+                onChange={e => setExpiry(formatExpiry(e.target.value))}
+              />
               <div className="fpm-field__divider" />
               <input className="fpm-field__input fpm-field__input--cvc" type="tel" inputMode="numeric" placeholder="CVC" maxLength={4} />
             </div>

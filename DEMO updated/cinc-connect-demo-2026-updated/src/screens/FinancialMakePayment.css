@@ -152,14 +152,7 @@
   color: var(--res-text);
 }
 
-.fmp-tool-row__chev {
-  flex-shrink: 0;
-  width: 7px;
-  height: 12px;
-  border-right: 2px solid var(--text-muted);
-  border-bottom: 2px solid var(--text-muted);
-  transform: rotate(-45deg);
-}
+.fmp-tool-row__chev { flex-shrink: 0; }
 
 /* ── Review ─────────────────────────────────────────────── */
 .fmp-review-card {

@@ -34,6 +34,20 @@ export const PAYMENT_METHODS = [
     state: 'FL',
     zip: '33138',
   },
+  {
+    id: 'applepay',
+    label: 'Apple Pay',
+    sub: 'Amex, Discover, Mastercard, Visa',
+    type: 'wallet',
+    editable: false,
+  },
+  {
+    id: 'googlepay',
+    label: 'Google Pay',
+    sub: 'Amex, Discover, Mastercard, Visa',
+    type: 'wallet',
+    editable: false,
+  },
 ]
 
 export const UNITS = [
