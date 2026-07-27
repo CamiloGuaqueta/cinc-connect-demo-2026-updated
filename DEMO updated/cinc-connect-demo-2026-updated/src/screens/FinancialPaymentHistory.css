@@ -1,0 +1,91 @@
+.fph-screen {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 32px;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--res-bg1);
+}
+
+.fph-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 16px 0 4px;
+}
+
+.fph-subtitle {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.fph-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 32px 0;
+}
+
+.fph-date {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 14px 0 6px;
+}
+
+.fph-card {
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+  padding: 4px 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.fph-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.fph-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.fph-row__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fph-row__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fph-row__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--lime);
+}
+
+.fph-row__sub {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.fph-row__amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lime);
+  flex-shrink: 0;
+}

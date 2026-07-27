@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useMode } from '../ModeContext'
 import unitIconRaw from '../ICONS/Unit.svg?raw'
 import invoiceIconRaw from '../ICONS/Invoice.svg?raw'
 import timeMoneyIconRaw from '../ICONS/time-money.svg?raw'
@@ -9,6 +10,7 @@ import CustomContentSheet from '../components/CustomContentSheet'
 import roadImg from '../images/road.jpg'
 import hoaImg from '../images/hoa.jpg'
 import boardImg from '../images/board.jpg'
+import { UNITS, fmt } from '../data/financialData'
 import './ResidentFinancialHub.css'
 
 // Layout: hero image + two data tables
@@ -55,57 +57,6 @@ const RESERVE_FUND_CONTENT = {
   ],
 }
 
-const UNITS = [
-  {
-    id: 1,
-    label: '319 Cardinal Hills Dr',
-    account: 'CH:6523',
-    balance: 750.41,
-    futureBalance: 2368.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: false, amount: 500.00 },
-      { label: 'Special Assessment', autopay: true,  amount: 70.41  },
-      { label: 'Violations',         autopay: false, amount: 80.00  },
-    ],
-  },
-  {
-    id: 2,
-    label: '47 Pinecrest Loop',
-    account: 'CH:7841',
-    balance: 320.00,
-    futureBalance: 960.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: false, amount: 320.00 },
-      { label: 'Special Assessment', autopay: false, amount: 0.00   },
-      { label: 'Violations',         autopay: false, amount: 0.00   },
-    ],
-  },
-  {
-    id: 3,
-    label: '200 Cardinal Hills Dr, Unit 3',
-    account: 'CH:9902',
-    balance: 0.00,
-    futureBalance: 500.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: true,  amount: 0.00   },
-      { label: 'Special Assessment', autopay: false, amount: 0.00   },
-      { label: 'Violations',         autopay: false, amount: 0.00   },
-    ],
-  },
-  {
-    id: 4,
-    label: '400 Cardinal Point Rd, Unit 2',
-    account: 'CH:4417',
-    balance: 125.50,
-    futureBalance: 750.00,
-    lineItems: [
-      { label: 'Regular Charges',    autopay: false, amount: 125.50 },
-      { label: 'Special Assessment', autopay: false, amount: 0.00   },
-      { label: 'Violations',         autopay: false, amount: 0.00   },
-    ],
-  },
-]
-
 function ReserveFundIcon() {
   return (
     <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
@@ -116,17 +67,6 @@ function ReserveFundIcon() {
       <polyline points="10 9 9 9 8 9"/>
     </svg>
   )
-}
-
-const BASE_TILES = [
-  { label: 'Statements',       icon: <StatementsIcon /> },
-  { label: 'Payment\nHistory', icon: <PaymentHistoryIcon /> },
-  { label: 'Payment\nMethods', icon: <PaymentMethodsIcon /> },
-  { label: 'Autopay',          icon: <AutopayIcon /> },
-]
-
-function fmt(n) {
-  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 /* ── Unit selector sheet ─────────────────────────────────── */
@@ -208,9 +148,13 @@ export default function ResidentFinancialHub() {
   const [selectedId,     setSelectedId]     = useState(UNITS[0].id)
   const [sheetOpen,      setSheetOpen]      = useState(false)
   const [customSheet,    setCustomSheet]    = useState(null)
+  const { pushResidentView } = useMode()
 
   const TILES = [
-    ...BASE_TILES,
+    { label: 'Statements',       icon: <StatementsIcon />,      onTap: () => pushResidentView('fh-statements', { unitId: selectedId }) },
+    { label: 'Payment\nHistory', icon: <PaymentHistoryIcon />,  onTap: () => pushResidentView('fh-payment-history', { unitId: selectedId }) },
+    { label: 'Payment\nMethods', icon: <PaymentMethodsIcon />,  onTap: () => pushResidentView('fh-payment-methods') },
+    { label: 'Autopay',          icon: <AutopayIcon />,         onTap: () => pushResidentView('fh-autopay', { unitId: selectedId }) },
     { label: 'Reserve Fund\nStudy 2026', icon: <ReserveFundIcon />, onTap: () => setCustomSheet(RESERVE_FUND_CONTENT) },
   ]
 
@@ -233,7 +177,10 @@ export default function ResidentFinancialHub() {
 
         {unit.lineItems.map((item, i) => (
           <div key={item.label}>
-            <div className="fh-line-item">
+            <button
+              className="fh-line-item fh-line-item--tap"
+              onClick={() => pushResidentView('fh-ledger', { unitId: unit.id, lineItemLabel: item.label })}
+            >
               <div className="fh-line-item__left">
                 <span className="fh-line-item__label">{item.label}</span>
                 <span className={`fh-line-item__autopay${item.autopay ? ' fh-line-item__autopay--on' : ''}`}>
@@ -244,7 +191,7 @@ export default function ResidentFinancialHub() {
                 <span className="fh-line-item__amount">{fmt(item.amount)}</span>
                 <ChevronRightIcon />
               </div>
-            </div>
+            </button>
             {i < unit.lineItems.length - 1 && <div className="fh-divider" />}
           </div>
         ))}
@@ -262,7 +209,12 @@ export default function ResidentFinancialHub() {
           <span className="fh-balance-row__future">{fmt(unit.futureBalance)}</span>
         </div>
 
-        <button className="fh-pay-btn">MAKE A PAYMENT</button>
+        <button
+          className="fh-pay-btn"
+          onClick={() => pushResidentView('fh-make-payment', { unitId: unit.id })}
+        >
+          MAKE A PAYMENT
+        </button>
       </div>
 
       {/* Tile grid */}

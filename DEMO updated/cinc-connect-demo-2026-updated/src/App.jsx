@@ -19,6 +19,12 @@ import ResidentPinboard from './screens/ResidentPinboard'
 import ResidentConcierge from './screens/ResidentConcierge'
 import ResidentCommunity from './screens/ResidentCommunity'
 import ResidentFinancialHub from './screens/ResidentFinancialHub'
+import FinancialLedger from './screens/FinancialLedger'
+import FinancialMakePayment from './screens/FinancialMakePayment'
+import FinancialStatements from './screens/FinancialStatements'
+import FinancialPaymentHistory from './screens/FinancialPaymentHistory'
+import FinancialPaymentMethods from './screens/FinancialPaymentMethods'
+import FinancialAutopay from './screens/FinancialAutopay'
 import ResidentMore from './screens/ResidentMore'
 import ResidentAmenities from './screens/ResidentAmenities'
 import ResidentAmenityDetail from './screens/ResidentAmenityDetail'
@@ -78,6 +84,12 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'board-work-orders')  return <Tasks types={['WorkOrder']} title="Board Work Order Review" />
   if (view.screen === 'board-aging')        return <BoardAging />
   if (view.screen === 'vendor-payment')     return <VendorPaymentHistory />
+  if (view.screen === 'fh-ledger')          return <FinancialLedger unitId={view.data.unitId} lineItemLabel={view.data.lineItemLabel} />
+  if (view.screen === 'fh-make-payment')    return <FinancialMakePayment unitId={view.data.unitId} />
+  if (view.screen === 'fh-statements')      return <FinancialStatements unitId={view.data.unitId} />
+  if (view.screen === 'fh-payment-history') return <FinancialPaymentHistory unitId={view.data.unitId} />
+  if (view.screen === 'fh-payment-methods') return <FinancialPaymentMethods />
+  if (view.screen === 'fh-autopay')         return <FinancialAutopay unitId={view.data.unitId} />
   if (view.screen === 'directory-list')    return <ResidentDirectoryList dirId={view.data.dirId} title={view.data.title} />
   if (view.screen === 'contact-detail')   return <ResidentContactDetail contact={view.data.contact} dirId={view.data.dirId} />
   if (view.screen === 'market-index')     return <NeighborhoodMarketIndex />

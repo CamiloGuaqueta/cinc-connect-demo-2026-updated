@@ -263,6 +263,18 @@
   padding: 6px 0;
 }
 
+.fh-line-item--tap {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.fh-line-item--tap:active { opacity: 0.7; }
+
 .fh-line-item__left {
   display: flex;
   flex-direction: column;
