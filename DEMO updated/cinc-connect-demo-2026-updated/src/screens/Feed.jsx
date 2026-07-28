@@ -5,6 +5,7 @@ import { BLOGS } from '../data/blogs'
 import sarahPhoto from '../images/sarah1.jpg'
 import soldPhoto from '../images/SOLD.jpg'
 import courtsPhoto from '../images/Amenities/courts.jpg'
+import boardImg from '../images/board.jpg'
 import './Feed.css'
 import CalendarCheckSvg from '../ICONS/calendar-check.svg'
 import filterIcon from '../ICONS/filter.svg?raw'
@@ -24,13 +25,14 @@ const AVATAR_3      = '/images/avatar-3.jpg'
 const AVATAR_4      = '/images/avatar-4.jpg'
 const LINKEDIN_AVT  = '/images/avatar-linkedin.jpg'
 const DALTON_PHOTO  = '/images/personas/dalton-thomson.png'
+const DARREN_PHOTO  = '/images/personas/darren-wilson.jpg'
 const ETHAN_PHOTO   = '/images/personas/ethan-young.png'
 const WILLIAM_PHOTO = '/images/personas/william-walker.png'
 const SOPHIA_PHOTO  = '/images/personas/sophia-diaz.png'
 
 /* ── Board Members ────────────────────────────────── */
 const BOARD_MEMBERS = [
-  { id: 'DW', name: 'Darren Wilson',  initials: 'DW', title: 'President',             avatarImg: AVATAR_1    },
+  { id: 'DW', name: 'Darren Wilson',  initials: 'DW', title: 'President',             avatarImg: DARREN_PHOTO    },
   { id: 'LT', name: 'Lisa Thomas',    initials: 'LT', title: 'Secretary',             avatarImg: AVATAR_2    },
   { id: 'TL', name: 'Thomas Lowes',   initials: 'TL', title: 'Treasurer',             avatarImg: LINKEDIN_AVT},
   { id: 'MC', name: 'Marcus Chen',    initials: 'MC', title: 'Vice President',        avatarImg: AVATAR_3    },
@@ -805,7 +807,7 @@ const FEED_ITEMS = [
   /* ── Posts ── */
   {
     id: 'p1', type: 'post', name: 'Darren Wilson', initials: 'DW', date: '2026-04-24', time: '2 days ago',
-    isBoardMember: true, avatarImg: AVATAR_1, image: null, likes: 7, comments: 4,
+    isBoardMember: true, avatarImg: DARREN_PHOTO, image: null, likes: 7, comments: 4,
     title: 'April Board Meeting Recap — Key Decisions Made',
     body: 'Last night\'s board meeting was productive. We voted on the new landscaping contract, approved the Q1 financial audit, and passed the pool reopening plan. Full minutes will be published within 5 business days. Thank you to everyone who attended.',
   },
@@ -841,7 +843,7 @@ const FEED_ITEMS = [
   },
   {
     id: 'p7', type: 'post', name: 'Darren Wilson', initials: 'DW', date: '2026-04-07', time: 'Apr 7',
-    isBoardMember: true, avatarImg: AVATAR_1, image: null, likes: 5, comments: 2,
+    isBoardMember: true, avatarImg: DARREN_PHOTO, image: null, likes: 5, comments: 2,
     title: 'April 17 Board Meeting Agenda Now Available',
     body: 'The agenda for our April 17 board meeting has been posted to the community portal. Key items include the landscaping vendor vote, Q1 financials review, pool reopening approval, and an update on the Oak Lane street light replacements. Meeting is at 6 PM via Zoom — link in the portal.',
   },
@@ -871,7 +873,7 @@ const FEED_ITEMS = [
   },
   {
     id: 'p12', type: 'post', name: 'Darren Wilson', initials: 'DW', date: '2026-03-17', time: 'Mar 17',
-    isBoardMember: true, avatarImg: AVATAR_1, image: null, likes: 6, comments: 5,
+    isBoardMember: true, avatarImg: DARREN_PHOTO, image: null, likes: 6, comments: 5,
     title: 'March Board Meeting — 6 Items Voted, 2 Tabled',
     body: 'We had a productive March board meeting last night. We approved the emergency reserve fund transfer, the updated CC&R enforcement policy, three ARC requests, and the landscaping bid shortlist. Two items — the vendor contract award and pool reopening plan — were tabled pending additional information. Minutes coming soon.',
   },
@@ -901,7 +903,7 @@ const FEED_ITEMS = [
   },
   {
     id: 'p17', type: 'post', name: 'Darren Wilson', initials: 'DW', date: '2026-02-14', time: 'Feb 14',
-    isBoardMember: true, avatarImg: AVATAR_1, image: null, likes: 21, comments: 13,
+    isBoardMember: true, avatarImg: DARREN_PHOTO, image: null, likes: 21, comments: 13,
     title: 'Board Election Results — Welcome Marcus and Rachel!',
     body: 'The results are in! I\'m thrilled to welcome Marcus Chen as our new Vice President and Rachel Park as our new Board Member at Large. Both bring fresh perspectives and a genuine commitment to our community. We look forward to working together to continue delivering for Cardinal Hills HOA.',
   },
@@ -1092,7 +1094,7 @@ const RESIDENT_POSTS = [
     isBoardMember: true, subtitle: 'Board President',
     title: '2027 Board of Directors Election — Voting Is Open',
     body: 'Voting is now open for three seats on the Board of Directors. Review each candidate’s platform and cast your ballot before it closes June 29. Results will be announced at the Annual Meeting on July 12.',
-    image: null, likes: 19, comments: 6, avatarImg: AVATAR_1,
+    image: boardImg, likes: 19, comments: 6, avatarImg: DARREN_PHOTO,
     ctaLabel: 'CAST YOUR VOTE', ctaScreen: 'ballot-votes',
   },
   {

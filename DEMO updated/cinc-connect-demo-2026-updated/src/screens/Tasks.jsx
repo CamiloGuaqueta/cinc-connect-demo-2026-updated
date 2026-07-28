@@ -1311,20 +1311,20 @@ const ACC_LOG_MESSAGES = {
 
 const ACC_COMMITTEE_MESSAGES = {
   3: [
-    { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Apr 10 \u00b7 6:05 PM', text: 'I reviewed the site plan. Deck footprint is well within setback limits. Structure looks solid.' },
+    { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/personas/darren-wilson.jpg',      time: 'Apr 10 \u00b7 6:05 PM', text: 'I reviewed the site plan. Deck footprint is well within setback limits. Structure looks solid.' },
     { id: 2, name: 'Marcus Chen',     role: 'Vice President', avatar: '/images/avatar-3.jpg',      time: 'Apr 10 \u00b7 6:22 PM', text: "Agreed on setbacks. My concern is the material \u2014 the color swatch in the application is hard to read. I'd like a proper spec sheet before we vote." },
     { id: 3, name: 'Thomas Lowes',    role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 11 \u00b7 8:40 AM', text: "Concur with Marcus. Let's hold approval pending the spec sheet. We can vote at the next meeting once we have it." },
     { id: 4, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 11 \u00b7 9:15 AM', text: "Makes sense. I'll draft the clarification request to the homeowner today." },
   ],
   5: [
     { id: 1, name: 'Rachel Park',     role: 'Member at Large', avatar: '/images/avatar-4.jpg',     time: 'Mar 21 \u00b7 3:10 PM', text: 'Solar application looks comprehensive. Engineering drawings are well done. Flush-mounted so street visibility is a non-issue.' },
-    { id: 2, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Mar 21 \u00b7 3:45 PM', text: "Agree. My only flag is the roof penetration method \u2014 we've had leaks in this HOA before. Need contractor waterproofing confirmation before we approve." },
+    { id: 2, name: 'Darren Wilson',   role: 'President',      avatar: '/images/personas/darren-wilson.jpg',      time: 'Mar 21 \u00b7 3:45 PM', text: "Agree. My only flag is the roof penetration method \u2014 we've had leaks in this HOA before. Need contractor waterproofing confirmation before we approve." },
     { id: 3, name: 'Marcus Chen',     role: 'Vice President', avatar: '/images/avatar-3.jpg',      time: 'Mar 22 \u00b7 10:00 AM', text: "That's fair. Auto-approval deadline is Apr 29 so we have time. Let's request it." },
     { id: 4, name: 'Thomas Lowes',    role: 'Treasurer',      avatar: '/images/avatar-linkedin.jpg', time: 'Apr 10 \u00b7 2:15 PM', text: "Waterproofing statement just came in \u2014 looks good. TPO membrane, fully bonded. I'm comfortable approving once Lisa confirms the doc is complete." },
     { id: 5, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 10 \u00b7 4:30 PM', text: 'Reviewed. Doc is complete and meets our standards. Ready to vote.' },
   ],
   10: [
-    { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/avatar-1.jpg',      time: 'Apr 14 \u00b7 5:40 PM', text: 'Fence spec is wood, 6 ft, rear property line \u2014 within \u00a75.2 limits. No issues from my side.' },
+    { id: 1, name: 'Darren Wilson',   role: 'President',      avatar: '/images/personas/darren-wilson.jpg',      time: 'Apr 14 \u00b7 5:40 PM', text: 'Fence spec is wood, 6 ft, rear property line \u2014 within \u00a75.2 limits. No issues from my side.' },
     { id: 2, name: 'Lisa Thomas',     role: 'Secretary',      avatar: '/images/avatar-2.jpg',      time: 'Apr 15 \u00b7 9:05 AM', text: "Site plan shows it stops at the front building line, which is correct. Ready to vote whenever it's agendized." },
   ],
   11: [
@@ -1635,7 +1635,7 @@ const TASK_LOG_MESSAGES = {
   ],
   9: [
     { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 15 · 11:00 AM', text: 'Violation trend report for Jan–Apr attached. Cure rate is up to 73% but landscaping cases doubled with spring inspections. Recommendations included for board review.' },
-    { id: 2, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/avatar-1.jpg', time: 'Apr 17 · 8:20 PM', text: "Let's discuss the direct-letter protocol at the May meeting — the cure-rate lift looks worth expanding to home exterior cases." },
+    { id: 2, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/personas/darren-wilson.jpg', time: 'Apr 17 · 8:20 PM', text: "Let's discuss the direct-letter protocol at the May meeting — the cure-rate lift looks worth expanding to home exterior cases." },
   ],
   12: [
     { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 22 · 10:15 AM', text: '2027 budget draft uploaded. Key decision: Maintenance line — current run rate projects $127K vs $72K budgeted this year. Draft proposes $96K plus a reserve-funded deferred repairs plan.' },
@@ -1644,7 +1644,7 @@ const TASK_LOG_MESSAGES = {
   13: [
     { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 21 · 9:00 AM', text: 'AC&M submitted Change Order #2: additional plaster repair found after draining, +$4,800. Without approval this week, the plaster crew moves to another job and completion slips ~3 weeks.' },
     { id: 2, from: 'committee', name: 'Marcus Chen · Vice President', avatar: '/images/avatar-3.jpg', time: 'Apr 21 · 6:30 PM', text: 'Scope looks legitimate — the photos show real delamination. Reserve fund has capacity per the 2026 study.' },
-    { id: 3, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/avatar-1.jpg', time: 'Apr 22 · 8:10 AM', text: 'Agreed. Adding to this week’s agenda for a vote so we protect the August 15 completion date.' },
+    { id: 3, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/personas/darren-wilson.jpg', time: 'Apr 22 · 8:10 AM', text: 'Agreed. Adding to this week’s agenda for a vote so we protect the August 15 completion date.' },
   ],
 }
 

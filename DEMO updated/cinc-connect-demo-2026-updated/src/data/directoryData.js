@@ -1,5 +1,5 @@
 const bod = [
-  { id: 'bod-1', firstName: 'Darren',  lastName: 'Wilson', role: 'President',            photo: '/images/avatar-1.jpg',        address: '142 Cardinal Hills Dr', email: 'dwilson@cardinalhills.org',  phone: { mobile: '(555) 210-3847', office: '(555) 210-0001' } },
+  { id: 'bod-1', firstName: 'Darren',  lastName: 'Wilson', role: 'President',            photo: '/images/personas/darren-wilson.jpg', address: '142 Cardinal Hills Dr', email: 'dwilson@cardinalhills.org',  phone: { mobile: '(555) 210-3847', office: '(555) 210-0001' } },
   { id: 'bod-2', firstName: 'Marcus',  lastName: 'Chen',   role: 'Vice President',        photo: '/images/avatar-3.jpg',        address: '88 Cardinal Hills Dr',  email: 'mchen@cardinalhills.org',    phone: { mobile: '(555) 321-4958' } },
   { id: 'bod-3', firstName: 'Lisa',    lastName: 'Thomas', role: 'Secretary',             photo: '/images/avatar-2.jpg',        address: '210 Cardinal Hills Dr', email: 'lthomas@cardinalhills.org',  phone: { mobile: '(555) 432-5069', home: '(555) 432-1122' } },
   { id: 'bod-4', firstName: 'Thomas',  lastName: 'Lowes',  role: 'Treasurer',             photo: '/images/avatar-linkedin.jpg', address: '55 Cardinal Hills Dr',  email: 'tlowes@cardinalhills.org',   phone: { mobile: '(555) 543-6170', office: '(555) 543-0002' } },
