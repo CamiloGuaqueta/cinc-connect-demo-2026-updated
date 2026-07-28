@@ -249,7 +249,7 @@ function AmenityCard({ amenity, onTap }) {
   )
 }
 
-const MY_RESERVATIONS_DATA = [
+export const MY_RESERVATIONS_DATA = [
   {
     id: 'r1', amenityId: 'clubhouse', amenityName: 'Club House', img: clubhouseImg,
     date: '06/15/2026', startTime: '3:00 PM', endTime: '6:00 PM', guests: 10, status: 'upcoming',
@@ -301,6 +301,12 @@ const MY_RESERVATIONS_DATA = [
     ],
   },
 ]
+
+// Called from ResidentAmenityDetail when a booking is confirmed, so it shows
+// up under "My Reservations" without needing a page reload.
+export function addReservation(reservation) {
+  MY_RESERVATIONS_DATA.unshift(reservation)
+}
 
 function ResLocationIcon() {
   return (

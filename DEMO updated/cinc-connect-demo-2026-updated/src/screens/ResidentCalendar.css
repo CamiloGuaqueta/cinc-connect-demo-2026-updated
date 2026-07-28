@@ -101,7 +101,8 @@
   font-family: inherit;
 }
 
-.cal-filter-btn {
+.cal-filter-btn,
+.cal-add-btn {
   width: 42px;
   height: 42px;
   flex-shrink: 0;
@@ -112,6 +113,22 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--res-text);
+}
+
+.cal-add-btn { color: var(--lime); }
+
+/* ── Add Event sheet ──────────────────────────────────────── */
+.cal-add-textarea {
+  min-height: 90px;
+  resize: none;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.filter-apply--disabled {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 /* ── List view ────────────────────────────────────────────── */

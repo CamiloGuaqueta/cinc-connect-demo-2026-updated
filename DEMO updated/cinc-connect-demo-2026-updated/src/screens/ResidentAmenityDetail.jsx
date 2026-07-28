@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
+import { addReservation } from './ResidentAmenities'
 import usersIcon from '../ICONS/Users.svg'
 import depositIcon from '../ICONS/deposit.svg'
 import moneyIcon from '../ICONS/Money.svg'
@@ -820,7 +821,30 @@ export default function ResidentAmenityDetail({ amenity }) {
 
                 <button
                   className={`amenity-pay-cta${canPay ? ' amenity-pay-cta--active' : ''}`}
-                  onClick={() => canPay && setConfirmed(true)}
+                  onClick={() => {
+                    if (!canPay) return
+                    addReservation({
+                      id: 'r-' + confirmationNum,
+                      amenityId: amenity.id,
+                      amenityName: selectedCourt ? `${amenity.name} — ${selectedCourt.name}` : amenity.name,
+                      img: amenity.img,
+                      date,
+                      startTime: selectedStart,
+                      endTime: selectedEnd,
+                      guests,
+                      status: 'upcoming',
+                      notes: [
+                        {
+                          id: 'n-' + confirmationNum,
+                          text: `Your reservation for the ${amenity.name} has been approved.`,
+                          timestamp: `${date}  9:00 AM`,
+                          isApproval: true,
+                          author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' },
+                        },
+                      ],
+                    })
+                    setConfirmed(true)
+                  }}
                 >
                   {requiresPayment ? 'PAY & RESERVE NOW' : 'RESERVE NOW'}
                 </button>

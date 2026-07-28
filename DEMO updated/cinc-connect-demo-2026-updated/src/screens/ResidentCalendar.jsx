@@ -12,7 +12,7 @@ export const CATEGORIES = [
   { name: 'Trash Pickup',       color: '#E06030' },
 ]
 
-const EVENTS = [
+const INITIAL_EVENTS = [
   { id: 1,  title: 'May Board Of Directors Meeting', category: 'Board Of Directors', location: 'Clubhouse',     date: '2026-05-04', start: '12:00 PM', end: '3:00 PM',  image: 'https://picsum.photos/seed/boardroom1/800/400', description: 'Monthly Board of Directors meeting covering financial updates, community projects, and homeowner compliance matters.' },
   { id: 2,  title: 'Pool Party',                     category: 'Community Calendar', location: 'Pool Area',     date: '2026-05-04', start: '4:00 PM',  end: '7:00 PM',  image: 'https://picsum.photos/seed/poolparty2/800/400', description: 'Community pool party! Enjoy warm weather with your neighbors. Drinks and snacks will be provided.' },
   { id: 3,  title: 'Trash Day',                      category: 'Trash Pickup',       location: 'Curbside',      date: '2026-05-06', start: '7:00 AM',  end: '9:00 AM',  image: 'https://picsum.photos/seed/street3/800/400', recurrenceId: 'trash-weekly', description: 'Regular trash and recycling pickup. Please have all bins at the curb by 7:00 AM.' },
@@ -43,8 +43,10 @@ function formatDateHeader(dateStr) {
 /* ── Main Calendar Screen ─────────────────────────────── */
 export function ResidentCalendar() {
   const { pushResidentView } = useMode()
+  const [events,           setEvents]           = useState(INITIAL_EVENTS)
   const [view,             setView]             = useState(_lastCalView)
   const [filterOpen,       setFilterOpen]       = useState(false)
+  const [addEventOpen,     setAddEventOpen]     = useState(false)
   const [activeCats,       setActiveCats]       = useState(new Set(CATEGORIES.map(c => c.name)))
   const [search,           setSearch]           = useState('')
   const [startDate,        setStartDate]        = useState('')
@@ -53,7 +55,7 @@ export function ResidentCalendar() {
   const [selectedDate,     setSelectedDate]     = useState(TODAY)
 
   const filteredEvents = useMemo(() => {
-    return EVENTS.filter(e => {
+    return events.filter(e => {
       if (!activeCats.has(e.category)) return false
       if (search && !e.title.toLowerCase().includes(search.toLowerCase())) return false
       if (startDate && e.date < startDate) return false
@@ -61,7 +63,15 @@ export function ResidentCalendar() {
       if (!startDate && !endDate && e.date < TODAY) return false
       return true
     }).sort((a, b) => a.date !== b.date ? a.date.localeCompare(b.date) : a.start.localeCompare(b.start))
-  }, [activeCats, search, startDate, endDate])
+  }, [events, activeCats, search, startDate, endDate])
+
+  function handleAddEvent(newEvent) {
+    setEvents(prev => [...prev, newEvent])
+    setAddEventOpen(false)
+    setSearch('')
+    setSelectedDate(newEvent.date)
+    setCalMonth(new Date(newEvent.date + 'T12:00:00'))
+  }
 
   function handleEventTap(event) {
     pushResidentView('event-detail', event)
@@ -115,6 +125,9 @@ export function ResidentCalendar() {
           <button className="cal-filter-btn" onClick={() => setFilterOpen(true)} aria-label="Filter">
             <span className="filter-svg-icon" dangerouslySetInnerHTML={{__html: filterIcon}} />
           </button>
+          <button className="cal-add-btn" onClick={() => setAddEventOpen(true)} aria-label="Add Event">
+            <PlusIcon />
+          </button>
         </div>
 
         {/* Content */}
@@ -124,7 +137,7 @@ export function ResidentCalendar() {
           <>
             <CalendarMonthView
               month={calMonth}
-              allEvents={EVENTS.filter(e => activeCats.has(e.category))}
+              allEvents={events.filter(e => activeCats.has(e.category))}
               selectedDate={selectedDate}
               onPrev={() => setCalMonth(m => new Date(m.getFullYear(), m.getMonth() - 1, 1))}
               onNext={() => setCalMonth(m => new Date(m.getFullYear(), m.getMonth() + 1, 1))}
@@ -134,7 +147,7 @@ export function ResidentCalendar() {
             {selectedDate && (
               <SelectedDayEvents
                 date={selectedDate}
-                events={EVENTS.filter(e => e.date === selectedDate && activeCats.has(e.category))}
+                events={events.filter(e => e.date === selectedDate && activeCats.has(e.category))}
                 onEventTap={handleEventTap}
               />
             )}
@@ -155,6 +168,14 @@ export function ResidentCalendar() {
             setFilterOpen(false)
           }}
           onClose={() => setFilterOpen(false)}
+        />
+      )}
+
+      {addEventOpen && (
+        <AddEventSheet
+          defaultDate={selectedDate}
+          onSave={handleAddEvent}
+          onClose={() => setAddEventOpen(false)}
         />
       )}
     </div>
@@ -667,6 +688,158 @@ function FilterPanel({ activeCats, startDate, endDate, onApply, onClose }) {
         <button className="filter-clear" onClick={handleReset}>Reset to Default</button>
       </div>
     </>
+  )
+}
+
+/* ── Add Event Sheet ──────────────────────────────────── */
+function timeInputTo12h(hhmm) {
+  if (!hhmm) return ''
+  let [h, m] = hhmm.split(':').map(Number)
+  const ampm = h >= 12 ? 'PM' : 'AM'
+  h = h % 12
+  if (h === 0) h = 12
+  return `${h}:${String(m).padStart(2, '0')} ${ampm}`
+}
+
+function AddEventSheet({ defaultDate, onSave, onClose }) {
+  const [title,       setTitle]       = useState('')
+  const [category,    setCategory]    = useState(CATEGORIES[1].name) // Community Calendar
+  const [date,        setDate]        = useState(defaultDate || TODAY)
+  const [startInput,  setStartInput]  = useState('')
+  const [endInput,    setEndInput]    = useState('')
+  const [location,    setLocation]    = useState('')
+  const [description, setDescription] = useState('')
+
+  const canSave = title.trim() && date && startInput && endInput
+
+  function handleSave() {
+    if (!canSave) return
+    onSave({
+      id: Date.now(),
+      title: title.trim(),
+      category,
+      location: location.trim() || 'Clubhouse',
+      date,
+      start: timeInputTo12h(startInput),
+      end: timeInputTo12h(endInput),
+      image: null,
+      description: description.trim() || 'No additional details provided.',
+    })
+  }
+
+  return (
+    <>
+      <div className="filter-scrim" onClick={onClose} />
+      <div className="filter-sheet">
+        <div className="filter-sheet__handle" />
+        <div className="filter-sheet__header">
+          <span className="filter-sheet__title">Add Event</span>
+          <button className="filter-sheet__close" onClick={onClose} aria-label="Close"><CalCloseIcon /></button>
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Event Title</p>
+          <input
+            type="text"
+            className="filter-date-input"
+            placeholder="e.g. July Board Meeting"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Category</p>
+          <div className="filter-chips">
+            {CATEGORIES.map(cat => {
+              const isOn = category === cat.name
+              return (
+                <button
+                  key={cat.name}
+                  className="filter-chip"
+                  onClick={() => setCategory(cat.name)}
+                  style={isOn
+                    ? { background: cat.color, borderColor: cat.color, color: contrastColor(cat.color) }
+                    : { background: 'transparent', borderColor: cat.color, color: cat.color }
+                  }
+                >
+                  {cat.name}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Date</p>
+          <input
+            type="date"
+            className="filter-date-input"
+            value={date}
+            onChange={e => setDate(e.target.value)}
+          />
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Time</p>
+          <div className="filter-date-row">
+            <div className="filter-date-field">
+              <span className="filter-date-label">Start</span>
+              <input
+                type="time"
+                className="filter-date-input"
+                value={startInput}
+                onChange={e => setStartInput(e.target.value)}
+              />
+            </div>
+            <div className="filter-date-field">
+              <span className="filter-date-label">End</span>
+              <input
+                type="time"
+                className="filter-date-input"
+                value={endInput}
+                onChange={e => setEndInput(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Location</p>
+          <input
+            type="text"
+            className="filter-date-input"
+            placeholder="e.g. Clubhouse, Pool Area, or a video call link"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+          />
+        </div>
+
+        <div className="filter-section">
+          <p className="filter-section__label">Description</p>
+          <textarea
+            className="filter-date-input cal-add-textarea"
+            placeholder="What should residents know about this event?"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            rows={4}
+          />
+        </div>
+
+        <button className={`filter-apply${canSave ? '' : ' filter-apply--disabled'}`} onClick={handleSave} disabled={!canSave}>
+          Save Event
+        </button>
+        <button className="filter-clear" onClick={onClose}>Cancel</button>
+      </div>
+    </>
+  )
+}
+
+function PlusIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+    </svg>
   )
 }
 
