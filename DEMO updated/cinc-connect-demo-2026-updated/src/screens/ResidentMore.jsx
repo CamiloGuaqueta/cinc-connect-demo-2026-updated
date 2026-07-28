@@ -237,7 +237,7 @@ export default function ResidentMore() {
           <div className="more-divider" />
           <Row icon={<DocumentsIcon />} label="Documents" onTap={() => pushResidentView('documents')} />
           <div className="more-divider" />
-          <Row icon={<GroupsIcon />}    label="Groups" />
+          <Row icon={<GroupsIcon />}    label="Groups" onTap={() => pushResidentView('groups')} />
           <div className="more-divider" />
           <Row icon={<DirectoryIcon />} label="Directories" onTap={() => pushResidentView('directories')} />
           <div className="more-divider" />

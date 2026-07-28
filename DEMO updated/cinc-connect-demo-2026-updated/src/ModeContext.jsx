@@ -28,6 +28,8 @@ export function ModeProvider({ children }) {
   const [residentProfile,   setResidentProfile]   = useState(INITIAL_RESIDENT_PROFILE)
   const [navGuard,          setNavGuardState]     = useState(null)
   const [defaultPaymentMethodId, setDefaultPaymentMethodId] = useState('visa1')
+  const [notifOpen,         setNotifOpen]         = useState(false)
+  const [notifInitialChatId, setNotifInitialChatId] = useState(null)
 
   useEffect(() => {
     localStorage.setItem('layoutMode', isWeb ? 'web' : 'mobile')
@@ -62,6 +64,15 @@ export function ModeProvider({ children }) {
     setResidentViewStack(view ? [{ screen: view, data }] : [])
   }
 
+  const openMessagesThread = (chatId) => {
+    setNotifInitialChatId(chatId)
+    setNotifOpen(true)
+  }
+  const closeNotifCenter = () => {
+    setNotifOpen(false)
+    setNotifInitialChatId(null)
+  }
+
   return (
     <ModeContext.Provider value={{
       isBoard,           setIsBoard,
@@ -79,6 +90,8 @@ export function ModeProvider({ children }) {
       navStyle,          setNavStyle,
       showBoardRoom,     setShowBoardRoom,
       defaultPaymentMethodId, setDefaultPaymentMethodId,
+      notifOpen,         setNotifOpen,
+      notifInitialChatId, openMessagesThread, closeNotifCenter,
     }}>
       {children}
     </ModeContext.Provider>

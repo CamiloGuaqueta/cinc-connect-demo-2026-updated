@@ -10,10 +10,12 @@ const CINC_ICON = '/images/cinc-icon.png'
 const SUB_PAGES = ['/meeting', '/broadcast', '/broadcast/audience', '/pulse/violations', '/members-list', '/member-detail']
 
 export default function Header() {
-  const { isBoard, setIsBoard, residentViewStack, popResidentView, navGuard, setChatOpen } = useMode()
+  const {
+    isBoard, setIsBoard, residentViewStack, popResidentView, navGuard, setChatOpen,
+    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter,
+  } = useMode()
   const { pathname } = useLocation()
   const navigate = useNavigate()
-  const [notifOpen, setNotifOpen] = useState(false)
   const [notifIsBoard, setNotifIsBoard] = useState(true)
 
   const isResidentSubPage = !isBoard && residentViewStack.length > 0
@@ -71,7 +73,8 @@ export default function Header() {
       {notifOpen && createPortal(
         <NotificationCenter
           isBoard={notifIsBoard}
-          onClose={() => setNotifOpen(false)}
+          initialChatId={notifInitialChatId}
+          onClose={closeNotifCenter}
           onOpenCephai={() => setChatOpen(true)}
         />,
         document.querySelector('.phone-frame') || document.body

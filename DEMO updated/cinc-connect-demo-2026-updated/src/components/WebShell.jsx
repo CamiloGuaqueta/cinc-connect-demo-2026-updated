@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useMode } from '../ModeContext'
@@ -56,8 +55,8 @@ const LEFT_NAV = {
 /* ── Right panel sections ─────────────────────────────── */
 const RIGHT_COMMUNITY = [
   { label: 'Ask CephAi',         action: 'chat',   Icon: CephAIIcon },
-  { label: 'Documents',          view: null,       Icon: DocumentIcon },
-  { label: 'Groups',             view: null,       Icon: GroupIcon },
+  { label: 'Documents',          view: 'documents', Icon: DocumentIcon },
+  { label: 'Groups',             view: 'groups',   Icon: GroupIcon },
   { label: 'Parking & Vehicles', view: null,       Icon: ParkingIcon },
   { label: 'Animals',            view: 'animals',  Icon: AnimalIcon },
   { label: 'FAQs',               view: null,       Icon: FaqIcon },
@@ -101,10 +100,12 @@ export default function WebShell({ children, showMembershipOptIn, onMembershipCo
 
 /* ── Top Nav ──────────────────────────────────────────── */
 function WebTopNav() {
-  const { isBoard, residentTab, navigateResident, showBoardRoom, setChatOpen } = useMode()
+  const {
+    isBoard, residentTab, navigateResident, showBoardRoom, setChatOpen,
+    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter,
+  } = useMode()
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const [notifOpen, setNotifOpen] = useState(false)
 
   const residentTabs = showBoardRoom
     ? [BASE_RESIDENT_TABS[0], BOARD_ROOM_TAB, ...BASE_RESIDENT_TABS.slice(1)]
@@ -168,7 +169,8 @@ function WebTopNav() {
       {notifOpen && createPortal(
         <NotificationCenter
           isBoard={isBoard}
-          onClose={() => setNotifOpen(false)}
+          initialChatId={notifInitialChatId}
+          onClose={closeNotifCenter}
           onOpenCephai={() => setChatOpen(true)}
         />,
         document.querySelector('.web-shell') || document.body

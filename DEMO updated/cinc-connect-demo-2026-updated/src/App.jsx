@@ -27,6 +27,7 @@ import FinancialPaymentMethods from './screens/FinancialPaymentMethods'
 import FinancialAutopay from './screens/FinancialAutopay'
 import ResidentMore from './screens/ResidentMore'
 import ResidentDocuments from './screens/ResidentDocuments'
+import ResidentGroups from './screens/ResidentGroups'
 import ResidentAmenities from './screens/ResidentAmenities'
 import ResidentAmenityDetail from './screens/ResidentAmenityDetail'
 import { AllPastReservations } from './screens/ResidentAmenities'
@@ -76,6 +77,7 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'mailing-address-detail') return <ResidentMailingAddressDetail unitAddress={view.data.unitAddress} account={view.data.account} />
   if (view.screen === 'directories')        return <ResidentDirectories />
   if (view.screen === 'documents')          return <ResidentDocuments />
+  if (view.screen === 'groups')             return <ResidentGroups />
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'accounts-receivable') return <AccountsReceivable />
   if (view.screen === 'bank-summary')       return <BankSummary />

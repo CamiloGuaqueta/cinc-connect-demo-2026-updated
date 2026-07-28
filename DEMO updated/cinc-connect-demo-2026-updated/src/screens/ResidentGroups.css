@@ -1,0 +1,92 @@
+.res-groups {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 32px;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--res-bg1);
+}
+
+.res-groups__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 16px 0 16px;
+}
+
+.res-groups__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.res-groups__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--res-bg2);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.res-groups__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(178,222,97,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.res-groups__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.res-groups__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--res-text);
+}
+
+.res-groups__desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.res-groups__members {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.res-groups__action {
+  flex-shrink: 0;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.res-groups__action--join {
+  background: var(--lime);
+  color: var(--res-bg1);
+}
+
+.res-groups__action--message {
+  background: transparent;
+  border: 1.5px solid var(--lime);
+  color: var(--lime);
+}

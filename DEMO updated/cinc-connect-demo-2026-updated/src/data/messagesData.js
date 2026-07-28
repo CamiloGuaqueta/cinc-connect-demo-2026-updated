@@ -162,3 +162,51 @@ export function sendMessage(id, text) {
 export function lastMessage(convo) {
   return convo.messages[convo.messages.length - 1]
 }
+
+// ─── Groups ──────────────────────────────────────────────────────────────────
+
+export const GROUPS = [
+  {
+    id: 'pickleball',
+    name: 'Pickleball Group',
+    description: 'Open play, doubles matchups, and court scheduling at the Ridgeline Pass courts.',
+    memberCount: 24,
+    joined: true,
+  },
+  {
+    id: 'landscaping-committee',
+    name: 'Landscaping Committee',
+    description: 'Volunteers shaping the community landscaping plan and joining vendor walkthroughs.',
+    memberCount: 9,
+    joined: false,
+  },
+  {
+    id: 'book-club',
+    name: 'Cardinal Hills Book Club',
+    description: 'Monthly book picks with a discussion get-together at the clubhouse.',
+    memberCount: 15,
+    joined: false,
+  },
+  {
+    id: 'walking-club',
+    name: 'Morning Walking Club',
+    description: 'Casual walks around the Ridgeline Pass loop, weekday mornings at 7 AM.',
+    memberCount: 11,
+    joined: false,
+  },
+]
+
+export function joinGroup(id) {
+  const g = GROUPS.find(g => g.id === id)
+  if (!g || g.joined) return
+  g.joined = true
+  CONVERSATIONS.push({
+    id: g.id,
+    name: g.name,
+    isGroup: true,
+    read: false,
+    messages: [
+      { fromMe: false, from: g.name, text: `Welcome to ${g.name}! Say hi and introduce yourself.`, time: 'Just now' },
+    ],
+  })
+}

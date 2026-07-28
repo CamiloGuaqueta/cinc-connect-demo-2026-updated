@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   NOTIFICATIONS, markNotificationRead,
   CONVERSATIONS, markConversationRead, sendMessage, lastMessage,
@@ -14,15 +14,20 @@ export function unreadBadgeCount() {
   return notifs + msgs
 }
 
-export default function NotificationCenter({ isBoard, onClose, onOpenCephai }) {
-  const [view, setView] = useState('notif-list') // notif-list | notif-detail | msg-list | chat-thread
+export default function NotificationCenter({ isBoard, initialChatId, onClose, onOpenCephai }) {
+  const [view, setView] = useState(initialChatId ? 'chat-thread' : 'notif-list') // notif-list | notif-detail | msg-list | chat-thread
   const [selectedNotif, setSelectedNotif] = useState(null)
-  const [activeChatId, setActiveChatId] = useState(null)
+  const [activeChatId, setActiveChatId] = useState(initialChatId || null)
   const [query, setQuery] = useState('')
   const [unreadOnly, setUnreadOnly] = useState(false)
   const [draft, setDraft] = useState('')
   const [, bump] = useState(0)
   const rerender = () => bump(x => x + 1)
+
+  useEffect(() => {
+    if (initialChatId) markConversationRead(initialChatId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const unreadNotifCount = NOTIFICATIONS.filter(n => !n.read).length
   const unreadMsgCount = CONVERSATIONS.filter(c => !c.read).length
