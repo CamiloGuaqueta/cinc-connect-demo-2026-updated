@@ -1,6 +1,9 @@
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useMode } from '../ModeContext'
 import CephAIChat from './CephAIChat'
+import NotificationCenter, { unreadBadgeCount } from './NotificationCenter'
 import MembershipOptInModal from './MembershipOptInModal'
 import profileImg from '../images/profile.jpg'
 import { PROTOTYPE_VERSION } from '../theme'
@@ -98,9 +101,10 @@ export default function WebShell({ children, showMembershipOptIn, onMembershipCo
 
 /* ── Top Nav ──────────────────────────────────────────── */
 function WebTopNav() {
-  const { isBoard, residentTab, navigateResident, showBoardRoom } = useMode()
+  const { isBoard, residentTab, navigateResident, showBoardRoom, setChatOpen } = useMode()
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const [notifOpen, setNotifOpen] = useState(false)
 
   const residentTabs = showBoardRoom
     ? [BASE_RESIDENT_TABS[0], BOARD_ROOM_TAB, ...BASE_RESIDENT_TABS.slice(1)]
@@ -153,13 +157,22 @@ function WebTopNav() {
 
       {/* Right: bell + avatar */}
       <div className="web-top-nav__right">
-        <button className="web-notif-btn" aria-label="Notifications">
+        <button className="web-notif-btn" aria-label="Notifications" onClick={() => setNotifOpen(true)}>
           <BellIcon />
-          <span className="web-notif-btn__badge">5</span>
+          {unreadBadgeCount() > 0 && <span className="web-notif-btn__badge">{unreadBadgeCount()}</span>}
         </button>
 
         <img className="web-avatar-initials" src={profileImg} alt="Profile" />
       </div>
+
+      {notifOpen && createPortal(
+        <NotificationCenter
+          isBoard={isBoard}
+          onClose={() => setNotifOpen(false)}
+          onOpenCephai={() => setChatOpen(true)}
+        />,
+        document.querySelector('.web-shell') || document.body
+      )}
     </nav>
   )
 }

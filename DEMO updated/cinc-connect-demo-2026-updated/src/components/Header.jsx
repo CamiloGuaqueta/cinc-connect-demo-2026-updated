@@ -2,93 +2,19 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useMode } from '../ModeContext'
+import NotificationCenter, { unreadBadgeCount } from './NotificationCenter'
 import './Header.css'
 
 const CINC_ICON = '/images/cinc-icon.png'
 
 const SUB_PAGES = ['/meeting', '/broadcast', '/broadcast/audience', '/pulse/violations', '/members-list', '/member-detail']
 
-const NOTIFICATIONS = [
-  {
-    id: 1,
-    title: 'New Invoice Pending Approval',
-    body: 'Green Valley Landscaping submitted Invoice #GVL_042026 for $6,200.00 — Landscaping Monthly Contract. Due April 15. Your approval is required before payment can be processed.',
-    time: '10 min ago',
-    unread: true,
-  },
-  {
-    id: 2,
-    title: 'Violation Hearing Decision Required',
-    body: '9 violation hearings are scheduled for tonight\'s board meeting at 5:30 PM. Cases include Tang, Chen, Ahluwalia and 6 others. Fine amounts and decisions need board vote.',
-    time: '45 min ago',
-    unread: true,
-  },
-  {
-    id: 3,
-    title: 'ACC Request — Auto Approval Approaching',
-    body: '88 Cardinal Heights solar panel installation request will auto-approve on April 29 if no board decision is made. Please review the application and submit your decision.',
-    time: '2 hrs ago',
-    unread: true,
-  },
-  {
-    id: 4,
-    title: 'Delinquency Threshold Exceeded',
-    body: 'Total community delinquency has reached $84,210 — up $19,400 from last month. 4 accounts are now eligible for lien or foreclosure proceedings per CC&R Section 12.4.',
-    time: '3 hrs ago',
-    unread: true,
-  },
-  {
-    id: 5,
-    title: 'New Work Order Submitted',
-    body: 'A new work order has been submitted for pool pump replacement at the main amenity center. Estimated cost is $3,850. Review and approve before the contractor can be scheduled.',
-    time: '5 hrs ago',
-    unread: true,
-  },
-  {
-    id: 6,
-    title: 'Board Meeting Tonight — Zoom Link Ready',
-    body: 'Your April 19 board meeting begins at 5:30 PM via Zoom. The board packet has been uploaded. Executive session starts at 6:30 PM. Quorum requires 3 of 5 members.',
-    time: 'Yesterday',
-    unread: false,
-  },
-  {
-    id: 7,
-    title: 'Reserve Study Update Available',
-    body: 'The 2026 Reserve Study has been completed and is ready for board review. Key findings include a 59.4% funded status and a recommended $18 monthly increase per unit starting January 2027.',
-    time: '2 days ago',
-    unread: false,
-  },
-  {
-    id: 8,
-    title: 'Homeowner Appeal Filed',
-    body: 'Resident at 61 Cardinal Way has filed a formal appeal against the $250 fine issued for unauthorized fence modification. The appeal hearing must be scheduled within 30 days per CC&Rs.',
-    time: '3 days ago',
-    unread: false,
-  },
-  {
-    id: 9,
-    title: 'Insurance Renewal Due',
-    body: 'The community\'s general liability and D&O insurance policies are up for renewal on May 31. Three quotes have been received. Board approval required before binding coverage.',
-    time: '4 days ago',
-    unread: false,
-  },
-  {
-    id: 10,
-    title: 'Contractor Bid Received — Parking Lot',
-    body: 'All three bids for the parking lot resurfacing project have been received. Bids range from $41,000 to $67,500. Full comparison document has been uploaded to the board portal.',
-    time: '1 week ago',
-    unread: false,
-  },
-]
-
 export default function Header() {
-  const { isBoard, setIsBoard, residentViewStack, popResidentView, navGuard } = useMode()
+  const { isBoard, setIsBoard, residentViewStack, popResidentView, navGuard, setChatOpen } = useMode()
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const [notifOpen, setNotifOpen] = useState(false)
   const [notifIsBoard, setNotifIsBoard] = useState(true)
-  const [selected, setSelected] = useState(null)
-  const [readIds, setReadIds] = useState(new Set())
 
   const isResidentSubPage = !isBoard && residentViewStack.length > 0
   const isSubPage = SUB_PAGES.includes(pathname) || isResidentSubPage
@@ -136,10 +62,7 @@ export default function Header() {
         <div className="app-header__right">
           <button className="notif-btn" aria-label="Notifications" onClick={() => { setNotifIsBoard(isBoard); setNotifOpen(true) }}>
             <BellIcon />
-            {(() => {
-              const count = NOTIFICATIONS.filter(n => n.unread && !readIds.has(n.id)).length
-              return count > 0 ? <span className="notif-btn__badge">{count}</span> : null
-            })()}
+            {unreadBadgeCount() > 0 && <span className="notif-btn__badge">{unreadBadgeCount()}</span>}
           </button>
         </div>
       </div>
@@ -147,16 +70,9 @@ export default function Header() {
 
       {notifOpen && createPortal(
         <NotificationCenter
-          notifications={NOTIFICATIONS}
-          readIds={readIds}
-          selected={selected}
           isBoard={notifIsBoard}
-          onSelect={n => {
-            setSelected(n)
-            setReadIds(prev => new Set([...prev, n.id]))
-          }}
-          onBack={() => setSelected(null)}
-          onClose={() => { setNotifOpen(false); setSelected(null) }}
+          onClose={() => setNotifOpen(false)}
+          onOpenCephai={() => setChatOpen(true)}
         />,
         document.querySelector('.phone-frame') || document.body
       )}
@@ -198,119 +114,6 @@ function BoardSvgIcon() {
       <path d="M2.70162 8.20082C4.19035 8.20082 5.40324 6.97358 5.40324 5.46723C5.40324 3.96088 4.19035 2.73364 2.70162 2.73364C1.21289 2.73364 0 3.96088 0 5.46723C0 6.97358 1.21289 8.20082 2.70162 8.20082ZM2.70162 3.79895C3.61128 3.79895 4.35038 4.5468 4.35038 5.46723C4.35038 6.38766 3.61128 7.13551 2.70162 7.13551C1.79195 7.13551 1.05285 6.38766 1.05285 5.46723C1.05285 4.5468 1.79195 3.79895 2.70162 3.79895Z" fill="currentColor"/>
       <path d="M3.83443 11.7696C2.3457 11.7696 1.13281 12.9968 1.13281 14.5032C1.13281 16.0095 2.3457 17.2368 3.83443 17.2368C5.32316 17.2368 6.53605 16.0095 6.53605 14.5032C6.53605 12.9968 5.32316 11.7696 3.83443 11.7696ZM3.83443 16.1715C2.92477 16.1715 2.18566 15.4236 2.18566 14.5032C2.18566 13.5828 2.92477 12.8349 3.83443 12.8349C4.74409 12.8349 5.4832 13.5828 5.4832 14.5032C5.4832 15.4236 4.74409 16.1715 3.83443 16.1715Z" fill="currentColor"/>
       <path d="M16.1655 11.7696C14.6768 11.7696 13.4639 12.9968 13.4639 14.5032C13.4639 16.0095 14.6768 17.2368 16.1655 17.2368C17.6542 17.2368 18.8671 16.0095 18.8671 14.5032C18.8671 12.9968 17.6542 11.7696 16.1655 11.7696ZM16.1655 16.1715C15.2558 16.1715 14.5167 15.4236 14.5167 14.5032C14.5167 13.5828 15.2558 12.8349 16.1655 12.8349C17.0751 12.8349 17.8143 13.5828 17.8143 14.5032C17.8143 15.4236 17.0751 16.1715 16.1655 16.1715Z" fill="currentColor"/>
-    </svg>
-  )
-}
-
-function NotificationCenter({ notifications, readIds, selected, isBoard, onSelect, onBack, onClose }) {
-  const [query, setQuery] = useState('')
-  const [unreadOnly, setUnreadOnly] = useState(false)
-
-  const unreadCount = notifications.filter(n => n.unread && !readIds.has(n.id)).length
-
-  const visible = notifications.filter(n => {
-    if (unreadOnly && !(n.unread && !readIds.has(n.id))) return false
-    if (query && !n.title.toLowerCase().includes(query.toLowerCase()) &&
-        !n.body.toLowerCase().includes(query.toLowerCase())) return false
-    return true
-  })
-
-  return (
-    <div className="notif-center" data-mode={isBoard ? 'board' : 'resident'}>
-      <div className="notif-center__header">
-        <div className="notif-center__header-left">
-          <button className="app-header__back" onClick={selected ? onBack : onClose} aria-label="Back">
-            <ChevronLeftIcon />
-          </button>
-        </div>
-        <div className="notif-center__header-right">
-          <button className="notif-btn" aria-label="Notifications">
-            <BellIcon />
-            {unreadCount > 0 && <span className="notif-btn__badge">{unreadCount}</span>}
-          </button>
-        </div>
-      </div>
-      <div className="app-header__divider" />
-
-      {selected ? (
-        <div className="notif-detail">
-          <div className="notif-detail__icon"><img src={CINC_ICON} alt="CINC" /></div>
-          <p className="notif-detail__time">{selected.time}</p>
-          <h2 className="notif-detail__title">{selected.title}</h2>
-          <p className="notif-detail__body">{selected.body}</p>
-        </div>
-      ) : (
-        <>
-          <div className="notif-toolbar">
-            <div className="notif-search">
-              <SearchIcon />
-              <input
-                className="notif-search__input"
-                type="text"
-                placeholder="Search notifications…"
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-              />
-              {query && (
-                <button className="notif-search__clear" onClick={() => setQuery('')} aria-label="Clear">
-                  <CloseIcon />
-                </button>
-              )}
-            </div>
-            <button
-              className={`notif-filter${unreadOnly ? ' notif-filter--active' : ''}`}
-              onClick={() => setUnreadOnly(v => !v)}
-              aria-label={unreadOnly ? 'Show all' : 'Show unread only'}
-            >
-              <UnreadFilterIcon />
-              {unreadCount > 0 && <span className="notif-filter__count">{unreadCount}</span>}
-            </button>
-          </div>
-          <div className="notif-list">
-            {visible.length === 0 ? (
-              <p className="notif-empty">No notifications found.</p>
-            ) : visible.map(n => {
-              const unread = n.unread && !readIds.has(n.id)
-              return (
-                <button key={n.id} className="notif-item" onClick={() => onSelect(n)}>
-                  <img className="notif-item__icon" src={CINC_ICON} alt="CINC" />
-                  <div className="notif-item__body">
-                    <span className="notif-item__title">{n.title}</span>
-                    <p className="notif-item__preview">{n.body}</p>
-                  </div>
-                  {unread && <span className="notif-item__dot" />}
-                </button>
-              )
-            })}
-          </div>
-        </>
-      )}
-    </div>
-  )
-}
-
-function UnreadFilterIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="12" r="6"/>
-    </svg>
-  )
-}
-
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="7"/>
-      <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-    </svg>
-  )
-}
-
-function CloseIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"/>
-      <line x1="6" y1="6" x2="18" y2="18"/>
     </svg>
   )
 }
