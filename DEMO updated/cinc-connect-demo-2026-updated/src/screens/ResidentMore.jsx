@@ -23,7 +23,7 @@ const PROFILE_IMG = profileImg
 const HOA_LOGO    = '/images/cinc-icon.png'
 const BG_IMG      = bgImg
 
-const CUSTOM_TILES = [
+export const CUSTOM_TILES = [
   {
     // Layout: no hero — starts with title, then progress status table
     label: 'Pool Renovation\nUpdate',
@@ -235,7 +235,7 @@ export default function ResidentMore() {
           <div className="more-divider" />
           <Row icon={<MarketIndexIcon />} label="Home Value Insights" onTap={() => pushResidentView('market-index')} />
           <div className="more-divider" />
-          <Row icon={<DocumentsIcon />} label="Documents" />
+          <Row icon={<DocumentsIcon />} label="Documents" onTap={() => pushResidentView('documents')} />
           <div className="more-divider" />
           <Row icon={<GroupsIcon />}    label="Groups" />
           <div className="more-divider" />

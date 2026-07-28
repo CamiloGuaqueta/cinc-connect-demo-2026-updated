@@ -14,7 +14,7 @@ import { UNITS, fmt } from '../data/financialData'
 import './ResidentFinancialHub.css'
 
 // Layout: hero image + two data tables
-const RESERVE_FUND_CONTENT = {
+export const RESERVE_FUND_CONTENT = {
   hero: roadImg,
   tag: 'Financial Report',
   title: 'Reserve Fund Study 2026',

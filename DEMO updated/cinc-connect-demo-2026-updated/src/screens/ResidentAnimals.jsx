@@ -43,7 +43,7 @@ const MOCK_ANIMALS = [
   },
 ]
 
-const POLICY_TEXT = `1. REGISTRATION REQUIREMENT
+export const POLICY_TEXT = `1. REGISTRATION REQUIREMENT
 All animals residing in or regularly visiting the community must be registered with the HOA Management office within 30 days of move-in or acquisition. Registration requires current vaccination documentation, a clear photo of the animal, and applicable fees.
 
 2. PERMITTED ANIMALS

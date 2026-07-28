@@ -28,6 +28,18 @@ const CONTENT = {
       'Prepared by: Cardinal Hills HOA Board of Directors — Date: May 20, 2026 — Document ID: CH-2026-ASSESSMENT-SR-001',
     ],
   },
+  bylaws: {
+    heading: 'Cardinal Hills HOA',
+    subheading: 'Declaration of Bylaws — Restated and Amended',
+    body: [
+      "These Bylaws govern the internal affairs of the Cardinal Hills Homeowners Association and supplement the Association's Declaration of Covenants, Conditions, and Restrictions (CC&Rs). In the event of a conflict between these Bylaws and the CC&Rs, the CC&Rs control.",
+      'ARTICLE III — BOARD OF DIRECTORS: The Association is governed by a five (5) member Board of Directors, each serving a two-year term. Officers consist of a President, Vice President, Secretary, Treasurer, and one Member at Large, elected annually by the Board from among its members.',
+      'ARTICLE IV — MEETINGS: Regular Board meetings are held monthly and are open to all members in good standing. The Annual Meeting, at which election results are certified and the budget is ratified, is held each July.',
+      'ARTICLE V — ASSESSMENTS: Regular assessments are levied monthly and are due on the 1st of each month. Special assessments require a majority vote of the Board and, where required by the Declaration, approval of the membership.',
+      'ARTICLE VI — ARCHITECTURAL REVIEW: No exterior alteration, addition, or landscaping change may be made without prior written approval from the Architectural Review Committee, as detailed in the Architectural Guidelines.',
+      'Adopted by the Board of Directors — Restated May 1, 2024 — Document ID: CH-BYLAWS-2024-R1',
+    ],
+  },
 }
 
 function candidateContent(name) {
@@ -50,6 +62,7 @@ function candidateContent(name) {
 export default function ResidentPDFViewer({ filename, docType, candidateName, onClose }) {
   const content = docType === 'ballot'     ? CONTENT.ballot
     : docType === 'assessment'             ? CONTENT.assessment
+    : docType === 'bylaws'                 ? CONTENT.bylaws
     : candidateContent(candidateName || filename?.replace(/_/g, ' ').replace('.pdf', '') || 'Candidate')
 
   const displayName = filename || 'Document.pdf'

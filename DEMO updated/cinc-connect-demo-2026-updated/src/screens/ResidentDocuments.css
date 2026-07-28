@@ -1,0 +1,119 @@
+.res-docs {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 32px;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--res-bg1);
+}
+
+.res-docs__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--lime);
+  margin: 16px 0 16px;
+}
+
+.res-docs__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--res-bg2);
+  border-radius: var(--radius-full);
+  padding: 0 14px;
+  height: 44px;
+  margin-bottom: 18px;
+  color: var(--res-text);
+}
+
+.res-docs__search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--res-text);
+}
+
+.res-docs__search-input::placeholder { color: var(--text-muted); }
+
+.res-docs__search-clear {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.res-docs__back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 14px;
+  color: var(--lime);
+  font-size: 14px;
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.res-docs__folder-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--res-text);
+  margin: 0 0 14px;
+}
+
+.res-docs__empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 32px 0;
+}
+
+.res-docs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.res-docs__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  background: var(--res-bg2);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s;
+}
+
+.res-docs__row:active { opacity: 0.75; }
+
+.res-docs__row-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.res-docs__row-name {
+  flex: 1;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--res-text);
+}
+
+.res-docs__row-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
