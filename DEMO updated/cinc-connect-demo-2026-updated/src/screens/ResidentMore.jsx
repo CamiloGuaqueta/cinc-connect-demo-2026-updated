@@ -199,7 +199,7 @@ function Row({ icon, label, onTap }) {
 }
 
 export default function ResidentMore() {
-  const { pushResidentView, residentProfile, navStyle, setNavStyle, showBoardRoom, setShowBoardRoom } = useMode()
+  const { pushResidentView, residentProfile, navStyle, setNavStyle, showBoardRoom, setShowBoardRoom, setChatOpen } = useMode()
   const [customSheet, setCustomSheet] = useState(null)
   return (
     <div className="screen resident-more">
@@ -231,7 +231,7 @@ export default function ResidentMore() {
           </button>
 
           <div className="more-divider" />
-          <Row icon={<CephAIIcon />}    label="Ask CephAI" />
+          <Row icon={<CephAIIcon />}    label="Ask CephAI" onTap={() => setChatOpen(true)} />
           <div className="more-divider" />
           <Row icon={<MarketIndexIcon />} label="Home Value Insights" onTap={() => pushResidentView('market-index')} />
           <div className="more-divider" />
