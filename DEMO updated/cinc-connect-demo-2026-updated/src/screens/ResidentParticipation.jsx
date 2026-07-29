@@ -43,11 +43,18 @@ export const SMARTHOME_CONTENT = {
 
 function SmartHomeIcon() {
   return (
-    <svg width="71" height="76" viewBox="0 0 71 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M35 3L4 28v40a6 6 0 0 0 6 6h13V52h24v22h13a6 6 0 0 0 6-6V28L35 3Z" fill="currentColor"/>
-      <circle cx="45" cy="20" r="3.5" fill="currentColor"/>
-      <path d="M39 13a12 12 0 0 1 17 0" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/>
-      <path d="M43 17a6 6 0 0 1 9 0" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/>
+    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clipPath="url(#smart-home-clip)">
+        <path d="M8.75 26.2502L35 5.8335L61.25 26.2502V58.3335C61.25 59.8806 60.6354 61.3643 59.5415 62.4583C58.4475 63.5522 56.9638 64.1668 55.4167 64.1668H14.5833C13.0362 64.1668 11.5525 63.5522 10.4585 62.4583C9.36458 61.3643 8.75 59.8806 8.75 58.3335V26.2502Z" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M26.25 64.1667V35H43.75V64.1667" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M56.2917 15.2284C57.9025 15.2284 59.2083 13.9225 59.2083 12.3117C59.2083 10.7009 57.9025 9.39502 56.2917 9.39502C54.6808 9.39502 53.375 10.7009 53.375 12.3117C53.375 13.9225 54.6808 15.2284 56.2917 15.2284Z" fill="currentColor" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M49 5.02031C50.9339 3.08644 53.5568 2 56.2917 2C59.0266 2 61.6495 3.08644 63.5833 5.02031C65.5172 6.95418 66.6036 9.57707 66.6036 12.312C66.6036 15.0469 65.5172 17.6698 63.5833 19.6036" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="smart-home-clip">
+          <rect width="70" height="70" fill="white"/>
+        </clipPath>
+      </defs>
     </svg>
   )
 }
