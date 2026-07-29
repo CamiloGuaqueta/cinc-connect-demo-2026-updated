@@ -43,18 +43,11 @@ export const SMARTHOME_CONTENT = {
 
 function SmartHomeIcon() {
   return (
-    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clipPath="url(#smart-home-clip)">
-        <path d="M8.75 26.2502L35 5.8335L61.25 26.2502V58.3335C61.25 59.8806 60.6354 61.3643 59.5415 62.4583C58.4475 63.5522 56.9638 64.1668 55.4167 64.1668H14.5833C13.0362 64.1668 11.5525 63.5522 10.4585 62.4583C9.36458 61.3643 8.75 59.8806 8.75 58.3335V26.2502Z" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M26.25 64.1667V35H43.75V64.1667" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M56.2917 15.2284C57.9025 15.2284 59.2083 13.9225 59.2083 12.3117C59.2083 10.7009 57.9025 9.39502 56.2917 9.39502C54.6808 9.39502 53.375 10.7009 53.375 12.3117C53.375 13.9225 54.6808 15.2284 56.2917 15.2284Z" fill="currentColor" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M49 5.02031C50.9339 3.08644 53.5568 2 56.2917 2C59.0266 2 61.6495 3.08644 63.5833 5.02031C65.5172 6.95418 66.6036 9.57707 66.6036 12.312C66.6036 15.0469 65.5172 17.6698 63.5833 19.6036" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
-      </g>
-      <defs>
-        <clipPath id="smart-home-clip">
-          <rect width="70" height="70" fill="white"/>
-        </clipPath>
-      </defs>
+    <svg width="62" height="67" viewBox="0 0 62 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.04175 26.2917L28.2917 5.875L54.5417 26.2917V58.375C54.5417 59.9221 53.9272 61.4058 52.8332 62.4998C51.7392 63.5938 50.2555 64.2083 48.7084 64.2083H7.87508C6.32799 64.2083 4.84425 63.5938 3.75029 62.4998C2.65633 61.4058 2.04175 59.9221 2.04175 58.375V26.2917Z" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M19.5417 64.2082V35.0415H37.0417V64.2082" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M49.5834 15.2699C51.1942 15.2699 52.5001 13.964 52.5001 12.3532C52.5001 10.7424 51.1942 9.43652 49.5834 9.43652C47.9726 9.43652 46.6667 10.7424 46.6667 12.3532C46.6667 13.964 47.9726 15.2699 49.5834 15.2699Z" fill="currentColor" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M42.2917 5.06181C44.2256 3.12794 46.8485 2.0415 49.5834 2.0415C52.3183 2.0415 54.9412 3.12794 56.8751 5.06181C58.809 6.99568 59.8954 9.61857 59.8954 12.3535C59.8954 15.0884 58.809 17.7113 56.8751 19.6451" stroke="currentColor" strokeWidth="4.08333" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
