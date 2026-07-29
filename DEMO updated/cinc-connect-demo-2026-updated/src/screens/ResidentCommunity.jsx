@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import calendarIcon from '../ICONS/calendar-check.svg?raw'
-import shoppingBagIcon from '../ICONS/shopping-bag.svg?raw'
 import amenitiesIcon from '../ICONS/amenities.svg?raw'
 import { useMode } from '../ModeContext'
 import AdditionalContentSheet from '../components/AdditionalContentSheet'
@@ -22,7 +21,6 @@ export default function ResidentCommunity() {
   const TILES = [
     { label: 'Amenities &\nCommon Areas',  icon: amenitiesIcon,   onTap: () => pushResidentView('amenities') },
     { label: 'Community\nCalendar',        icon: calendarIcon,    onTap: () => pushResidentView('calendar') },
-    { label: 'Community\nMarketplace',     icon: shoppingBagIcon, onTap: null },
     { label: 'Additional\nContent',        icon: null,            onTap: () => setShowAdditional(true), customIcon: <LinkIcon /> },
   ]
 
