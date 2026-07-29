@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useMode } from '../ModeContext'
+import { submitViolationReport } from '../data/propertiesData'
 import './ReportViolation.css'
 
 const VIOLATION_IMAGE = '/images/violation.png'
@@ -35,8 +35,7 @@ const CEPHAI_LINES = [
 // step 1 = CephAI analysis
 // step 2 = confirmed
 
-export default function ReportViolation() {
-  const { popResidentView } = useMode()
+export default function ReportViolation({ onClose }) {
   const [step, setStep] = useState(0)
 
   const [photoReady, setPhotoReady] = useState(false)
@@ -97,7 +96,7 @@ export default function ReportViolation() {
           <div className="rv-header">
             <button
               className="app-header__back"
-              onClick={step === 0 ? popResidentView : undefined}
+              onClick={step === 0 ? onClose : undefined}
               aria-label="Back"
               style={analysisBack ? { opacity: 0, pointerEvents: 'none' } : undefined}
             >
@@ -256,7 +255,7 @@ export default function ReportViolation() {
               <p className="rv-confirmed-detail__ref">CC&amp;R § 7.2</p>
             </div>
           </div>
-          <button className="rv-done-btn" onClick={popResidentView}>Done</button>
+          <button className="rv-done-btn" onClick={onClose}>Done</button>
         </div>
       )}
 
@@ -274,7 +273,13 @@ export default function ReportViolation() {
       )}
       {step === 1 && aiDone && (
         <div className="rv-footer">
-          <button className="rv-next-btn rv-next-btn--active" onClick={() => setStep(2)}>
+          <button
+            className="rv-next-btn rv-next-btn--active"
+            onClick={() => {
+              submitViolationReport({ address: selectedAddress || '12 Cardinal Hills Dr' })
+              setStep(2)
+            }}
+          >
             Submit Violation
           </button>
         </div>

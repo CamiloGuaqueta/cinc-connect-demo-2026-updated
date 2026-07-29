@@ -102,3 +102,18 @@ export function submitArchRequest({ unitId, projectType, description }) {
   ARCH_REQUESTS.unshift(request)
   return request
 }
+
+// ─── Violations reported by the resident ────────────────────────────────────
+
+export const REPORTED_VIOLATIONS = []
+
+export function submitViolationReport({ address, violationType = 'Overgrown Lawn', ccrRef = 'CC&R § 7.2' }) {
+  const id = `v-${REPORTED_VIOLATIONS.length + 1}`
+  const report = {
+    id, address, violationType, ccrRef,
+    status: 'Pending Board Review',
+    submittedDate: TODAY,
+  }
+  REPORTED_VIOLATIONS.unshift(report)
+  return report
+}
