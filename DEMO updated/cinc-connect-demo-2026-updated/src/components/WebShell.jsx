@@ -46,9 +46,10 @@ const LEFT_NAV = {
   ],
   'Financial Hub': [],
   'My Properties': [
-    { label: 'Work Orders',            view: null, Icon: WorkOrderIcon },
-    { label: 'Architectural Requests', view: null, Icon: ArchIcon },
-    { label: 'Violations',             view: null, Icon: ViolationIcon },
+    { label: 'Work Orders',            view: 'work-orders',      Icon: WorkOrderIcon },
+    { label: 'Architectural Requests', view: 'arch-requests',    Icon: ArchIcon },
+    { label: 'Violations',             view: 'report-violation', Icon: ViolationIcon },
+    { label: 'Smart Home Upgrade',     view: 'smart-home',       Icon: SmartHomeNavIcon },
   ],
 }
 
@@ -473,6 +474,16 @@ function ViolationIcon() {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
       <line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+  )
+}
+
+function SmartHomeNavIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <path d="M9 21v-6h6v6"/>
+      <path d="M13.5 5a5 5 0 0 1 7 7"/>
     </svg>
   )
 }

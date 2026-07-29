@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import woIcon from '../ICONS/wo.svg?raw'
 import houseCheckIcon from '../ICONS/house-check.svg?raw'
 import violationIcon from '../ICONS/violation.svg?raw'
@@ -10,7 +9,7 @@ import poolImg from '../images/Amenities/pool.jpg'
 import mediaRoomImg from '../images/Amenities/Media room.jpg'
 import './ResidentParticipation.css'
 
-const SMARTHOME_CONTENT = {
+export const SMARTHOME_CONTENT = {
 // Layout: hero + pricing table + second inline image + short text
   hero: houseImg,
   tag: 'HOA Partner Program',
@@ -44,26 +43,30 @@ const SMARTHOME_CONTENT = {
 
 function SmartHomeIcon() {
   return (
-    <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-      <polyline points="9 22 9 12 15 12 15 22"/>
-      <circle cx="17" cy="8" r="1" fill="currentColor"/>
-      <path d="M14.5 5.5a3.5 3.5 0 0 1 5 5"/>
+    <svg width="71" height="76" viewBox="0 0 71 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M35 3L4 28v40a6 6 0 0 0 6 6h13V52h24v22h13a6 6 0 0 0 6-6V28L35 3Z" fill="currentColor"/>
+      <circle cx="45" cy="20" r="3.5" fill="currentColor"/>
+      <path d="M39 13a12 12 0 0 1 17 0" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/>
+      <path d="M43 17a6 6 0 0 1 9 0" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/>
     </svg>
   )
 }
 
+export function SmartHomeSheetScreen() {
+  const { popResidentView } = useMode()
+  return <CustomContentSheet content={SMARTHOME_CONTENT} onClose={popResidentView} />
+}
+
 export default function ResidentParticipation() {
   const { pushResidentView, isWeb } = useMode()
-  const [customSheet, setCustomSheet] = useState(null)
 
   const fix = svg => svg.replace(/fill="#FFF8EA"/gi, 'fill="currentColor"')
 
   const TILES = [
-    { label: 'Work\nOrders',             icon: fix(woIcon),         onTap: null },
-    { label: 'Architectural\nRequests',  icon: fix(houseCheckIcon), onTap: null },
-    { label: 'Violations',               icon: fix(violationIcon),  onTap: null },
-    { label: 'Smart Home\nUpgrade',      icon: null,                onTap: () => setCustomSheet(SMARTHOME_CONTENT), customIcon: <SmartHomeIcon /> },
+    { label: 'Work\nOrders',             icon: fix(woIcon),         onTap: () => pushResidentView('work-orders') },
+    { label: 'Architectural\nRequests',  icon: fix(houseCheckIcon), onTap: () => pushResidentView('arch-requests') },
+    { label: 'Violations',               icon: fix(violationIcon),  onTap: () => pushResidentView('report-violation') },
+    { label: 'Smart Home\nUpgrade',      icon: null,                onTap: () => pushResidentView('smart-home'), customIcon: <SmartHomeIcon /> },
   ]
 
   return (
@@ -83,10 +86,6 @@ export default function ResidentParticipation() {
             </button>
           ))}
         </div>
-      )}
-
-      {customSheet && (
-        <CustomContentSheet content={customSheet} onClose={() => setCustomSheet(null)} />
       )}
     </div>
   )

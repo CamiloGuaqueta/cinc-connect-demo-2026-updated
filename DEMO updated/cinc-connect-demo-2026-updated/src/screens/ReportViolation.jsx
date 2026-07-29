@@ -1,24 +1,25 @@
 import { useState, useEffect } from 'react'
+import { useMode } from '../ModeContext'
 import './ReportViolation.css'
 
 const VIOLATION_IMAGE = '/images/violation.png'
 
 const ADDRESSES = [
   '12 Cardinal Hills Dr',
-  '45 Oak Lane',
-  '88 Oak Ln',
-  '102 Maple Court',
-  '204 Maple Drive',
-  '316 Birchwood Blvd',
-  '421 Pine Ridge Rd',
-  '507 Elm Street',
-  '614 Cedar Way',
-  '728 Willow Creek Ln',
-  '815 Sycamore Ave',
-  '933 Laurel Hill Rd',
-  '1048 Rosewood Dr',
-  '1156 Ivy Gate Ct',
-  '1212 Thornberry Ln',
+  '204 Cardinal Hills Dr',
+  '88 Cardinal Point Rd',
+  '150 Cardinal Point Rd',
+  '203 Cardinal Point Rd',
+  '34 Cardinal Way',
+  '61 Cardinal Way',
+  '9 Cardinal Heights',
+  '22 Cardinal Heights',
+  '76 Pinecrest Loop',
+  '140 Pinecrest Loop',
+  '18 Hillcrest Loop',
+  '95 Hillcrest Loop',
+  '47 Ridgeline Pass',
+  '112 Ridgeline Pass',
 ]
 
 const CEPHAI_LINES = [
@@ -34,7 +35,8 @@ const CEPHAI_LINES = [
 // step 1 = CephAI analysis
 // step 2 = confirmed
 
-export default function ReportViolation({ onClose }) {
+export default function ReportViolation() {
+  const { popResidentView } = useMode()
   const [step, setStep] = useState(0)
 
   const [photoReady, setPhotoReady] = useState(false)
@@ -95,7 +97,7 @@ export default function ReportViolation({ onClose }) {
           <div className="rv-header">
             <button
               className="app-header__back"
-              onClick={step === 0 ? onClose : undefined}
+              onClick={step === 0 ? popResidentView : undefined}
               aria-label="Back"
               style={analysisBack ? { opacity: 0, pointerEvents: 'none' } : undefined}
             >
@@ -254,7 +256,7 @@ export default function ReportViolation({ onClose }) {
               <p className="rv-confirmed-detail__ref">CC&amp;R § 7.2</p>
             </div>
           </div>
-          <button className="rv-done-btn" onClick={onClose}>Done</button>
+          <button className="rv-done-btn" onClick={popResidentView}>Done</button>
         </div>
       )}
 

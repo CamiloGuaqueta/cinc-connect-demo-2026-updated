@@ -28,6 +28,10 @@ import FinancialAutopay from './screens/FinancialAutopay'
 import ResidentMore from './screens/ResidentMore'
 import ResidentDocuments from './screens/ResidentDocuments'
 import ResidentGroups from './screens/ResidentGroups'
+import ReportViolation from './screens/ReportViolation'
+import ResidentWorkOrders from './screens/ResidentWorkOrders'
+import ResidentArchRequests from './screens/ResidentArchRequests'
+import { SmartHomeSheetScreen } from './screens/ResidentParticipation'
 import ResidentAmenities from './screens/ResidentAmenities'
 import ResidentAmenityDetail from './screens/ResidentAmenityDetail'
 import { AllPastReservations } from './screens/ResidentAmenities'
@@ -78,6 +82,10 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'directories')        return <ResidentDirectories />
   if (view.screen === 'documents')          return <ResidentDocuments />
   if (view.screen === 'groups')             return <ResidentGroups />
+  if (view.screen === 'report-violation')   return <ReportViolation />
+  if (view.screen === 'work-orders')        return <ResidentWorkOrders />
+  if (view.screen === 'arch-requests')      return <ResidentArchRequests />
+  if (view.screen === 'smart-home')         return <SmartHomeSheetScreen />
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'accounts-receivable') return <AccountsReceivable />
   if (view.screen === 'bank-summary')       return <BankSummary />
