@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMode } from '../ModeContext'
-import { GROUPS, joinGroup } from '../data/messagesData'
+import { GROUPS, joinGroup, applyToGroup } from '../data/messagesData'
 import './ResidentGroups.css'
 
 export default function ResidentGroups() {
@@ -10,6 +10,11 @@ export default function ResidentGroups() {
 
   function handleJoin(id) {
     joinGroup(id)
+    rerender()
+  }
+
+  function handleApply(id) {
+    applyToGroup(id)
     rerender()
   }
 
@@ -23,12 +28,25 @@ export default function ResidentGroups() {
             <div className="res-groups__body">
               <span className="res-groups__name">{g.name}</span>
               <p className="res-groups__desc">{g.description}</p>
-              <span className="res-groups__members">{g.memberCount} members</span>
+              <span className="res-groups__members">
+                {g.memberCount} members
+                {g.requiresApproval && !g.joined && ' · Board approval required'}
+              </span>
             </div>
             {g.joined ? (
               <button className="res-groups__action res-groups__action--message" onClick={() => openMessagesThread(g.id)}>
                 Message
               </button>
+            ) : g.requiresApproval ? (
+              g.pending ? (
+                <button className="res-groups__action res-groups__action--pending" disabled>
+                  Pending
+                </button>
+              ) : (
+                <button className="res-groups__action res-groups__action--join" onClick={() => handleApply(g.id)}>
+                  Apply
+                </button>
+              )
             ) : (
               <button className="res-groups__action res-groups__action--join" onClick={() => handleJoin(g.id)}>
                 Join

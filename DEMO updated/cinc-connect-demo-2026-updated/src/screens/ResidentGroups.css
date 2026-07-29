@@ -90,3 +90,10 @@
   border: 1.5px solid var(--lime);
   color: var(--lime);
 }
+
+.res-groups__action--pending {
+  background: transparent;
+  border: 1.5px solid var(--text-muted);
+  color: var(--text-muted);
+  cursor: default;
+}

@@ -179,6 +179,8 @@ export const GROUPS = [
     description: 'Volunteers shaping the community landscaping plan and joining vendor walkthroughs.',
     memberCount: 9,
     joined: false,
+    requiresApproval: true,
+    pending: false,
   },
   {
     id: 'book-club',
@@ -209,4 +211,10 @@ export function joinGroup(id) {
       { fromMe: false, from: g.name, text: `Welcome to ${g.name}! Say hi and introduce yourself.`, time: 'Just now' },
     ],
   })
+}
+
+export function applyToGroup(id) {
+  const g = GROUPS.find(g => g.id === id)
+  if (!g || g.joined || g.pending) return
+  g.pending = true
 }
