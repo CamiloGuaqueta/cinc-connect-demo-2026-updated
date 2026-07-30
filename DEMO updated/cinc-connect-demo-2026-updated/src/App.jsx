@@ -32,6 +32,9 @@ import ResidentViolations from './screens/ResidentViolations'
 import ResidentWorkOrders from './screens/ResidentWorkOrders'
 import ResidentArchRequests from './screens/ResidentArchRequests'
 import { SmartHomeSheetScreen } from './screens/ResidentParticipation'
+import ResidentPassword from './screens/ResidentPassword'
+import ResidentPrivacy from './screens/ResidentPrivacy'
+import ResidentLanguages from './screens/ResidentLanguages'
 import ResidentAmenities from './screens/ResidentAmenities'
 import ResidentAmenityDetail from './screens/ResidentAmenityDetail'
 import { AllPastReservations } from './screens/ResidentAmenities'
@@ -86,6 +89,9 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'work-orders')        return <ResidentWorkOrders />
   if (view.screen === 'arch-requests')      return <ResidentArchRequests />
   if (view.screen === 'smart-home')         return <SmartHomeSheetScreen />
+  if (view.screen === 'password')           return <ResidentPassword />
+  if (view.screen === 'privacy')            return <ResidentPrivacy />
+  if (view.screen === 'languages')          return <ResidentLanguages />
   if (view.screen === 'members-list')       return <ResidentMembersList />
   if (view.screen === 'accounts-receivable') return <AccountsReceivable />
   if (view.screen === 'bank-summary')       return <BankSummary />

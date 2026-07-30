@@ -277,15 +277,15 @@ export default function ResidentMore() {
           <div className="more-divider" />
           <Row icon={<BillingIcon />}   label="My Billing Information" onTap={() => pushResidentView('my-billing')} />
           <div className="more-divider" />
-          <Row icon={<LockIcon />}      label="Password" />
+          <Row icon={<LockIcon />}      label="Password" onTap={() => pushResidentView('password')} />
           <div className="more-divider" />
           <Row icon={<ListIcon />}      label="Membership List Opt-In/Out" onTap={() => pushResidentView('membership-opt-in')} />
           <div className="more-divider" />
           <Row icon={<BellIcon />}      label="Communication Preferences" onTap={() => pushResidentView('notification-prefs')} />
           <div className="more-divider" />
-          <Row icon={<EyeIcon />}       label="Privacy" />
+          <Row icon={<EyeIcon />}       label="Privacy" onTap={() => pushResidentView('privacy')} />
           <div className="more-divider" />
-          <Row icon={<GlobeIcon />}     label="Languages" />
+          <Row icon={<GlobeIcon />}     label="Languages" onTap={() => pushResidentView('languages')} />
         </div>
 
         <button className="more-logout" onClick={() => window.dispatchEvent(new CustomEvent('app-logout'))}>LOG OUT</button>

@@ -69,11 +69,11 @@ const RIGHT_ACCOUNT = [
   { label: 'My Profile',                view: 'my-profile',        Icon: ProfileIcon },
   { label: 'My Units',                  view: 'my-units',           Icon: UnitIcon },
   { label: 'My Billing Information',    view: 'my-billing',         Icon: BillingIcon },
-  { label: 'Password',                  view: null,                 Icon: LockIcon },
+  { label: 'Password',                  view: 'password',           Icon: LockIcon },
   { label: 'Membership List Opt-In/Out', view: 'membership-opt-in', Icon: ListSmallIcon },
   { label: 'Notification Preferences', view: 'notification-prefs', Icon: BellSmallIcon },
-  { label: 'Privacy',                   view: null,                 Icon: EyeIcon },
-  { label: 'Languages',                 view: null,                 Icon: GlobeIcon },
+  { label: 'Privacy',                   view: 'privacy',            Icon: EyeIcon },
+  { label: 'Languages',                 view: 'languages',          Icon: GlobeIcon },
 ]
 
 /* ── Main Shell ──────────────────────────────────────── */
