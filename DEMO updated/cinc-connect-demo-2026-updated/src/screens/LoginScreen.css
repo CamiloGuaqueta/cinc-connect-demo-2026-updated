@@ -204,3 +204,21 @@
   height: 56px;
   object-fit: contain;
 }
+
+/* ── Legal ───────────────────────────────────────────── */
+.login-legal {
+  padding: 0 34px 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.login-legal p {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: rgba(255, 248, 234, 0.4);
+  margin: 0 0 8px;
+}
+
+.login-legal p:last-child {
+  margin-bottom: 0;
+}

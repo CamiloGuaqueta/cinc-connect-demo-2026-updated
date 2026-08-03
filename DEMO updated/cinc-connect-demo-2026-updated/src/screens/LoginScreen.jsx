@@ -4,6 +4,38 @@ import connecPlus from '../images/connecplus-wordmark.svg'
 import faceIdIcon from '../images/face-id.svg'
 import './LoginScreen.css'
 
+const HUBSPOT_PORTAL_ID = '40040627'
+const HUBSPOT_FORM_ID = '8db41f58-fc0f-4dfd-93d5-00eafc633dec'
+const LEAD_CAPTURED_KEY = 'hubspotLeadCaptured'
+
+function submitHubspotLead(name, email) {
+  if (localStorage.getItem(LEAD_CAPTURED_KEY) === 'true') return
+  if (!email.trim()) return
+
+  const fields = [{ name: 'email', value: email.trim() }]
+  if (name.trim()) fields.push({ name: 'firstname', value: name.trim() })
+
+  fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fields,
+      context: { pageUri: window.location.href, pageName: document.title },
+    }),
+  }).catch(() => {})
+
+  localStorage.setItem(LEAD_CAPTURED_KEY, 'true')
+}
+
+function UserIcon() {
+  return (
+    <svg width="15" height="16" viewBox="0 0 20 21" fill="none" stroke="rgba(255,248,234,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/>
+      <circle cx="10" cy="5" r="4"/>
+    </svg>
+  )
+}
+
 function EnvelopeIcon() {
   return (
     <svg width="16" height="13" viewBox="0 0 20 16" fill="none" stroke="rgba(255,248,234,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -50,10 +82,16 @@ function EyeIcon() {
 }
 
 export default function LoginScreen({ onLogin }) {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
+
+  function handleSignIn() {
+    submitHubspotLead(name, email)
+    onLogin()
+  }
 
   return (
     <div className="login-screen">
@@ -65,6 +103,18 @@ export default function LoginScreen({ onLogin }) {
       </div>
 
       <div className="login-form">
+        <div className="login-input-wrap">
+          <span className="login-input-icon"><UserIcon /></span>
+          <input
+            className="login-input"
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            autoComplete="name"
+          />
+        </div>
+
         <div className="login-input-wrap">
           <span className="login-input-icon"><EnvelopeIcon /></span>
           <input
@@ -109,7 +159,7 @@ export default function LoginScreen({ onLogin }) {
           <span className="login-remember-label">Remember me</span>
         </div>
 
-        <button className="login-btn" onClick={onLogin}>
+        <button className="login-btn" onClick={handleSignIn}>
           Sign in
         </button>
 
@@ -122,6 +172,11 @@ export default function LoginScreen({ onLogin }) {
         <div className="login-faceid-wrap">
           <img src={faceIdIcon} alt="Face ID" className="login-faceid" />
         </div>
+      </div>
+
+      <div className="login-legal">
+        <p>Demo environment. All data is fictional. By signing in, you agree CINC Systems may contact you about our products and services.</p>
+        <p>© 2026 CINC Systems.<br />Confidential — for authorized demonstration use only.</p>
       </div>
     </div>
   )
