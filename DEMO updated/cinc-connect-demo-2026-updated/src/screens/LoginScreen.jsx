@@ -28,6 +28,22 @@ function submitHubspotLead(name, email) {
   localStorage.setItem(LEAD_CAPTURED_KEY, 'true')
 }
 
+// Same Google Apps Script Web App the old HTML demo used to log every
+// sign-in to a Sheet (independent of the HubSpot contact dedup above).
+const SHEET_TRACKING_URL = 'https://script.google.com/macros/s/AKfycbyyOGsNFYJm8YEWEoFfBMuWaKmz1FV8XIW8RWGVL0PM5-8pGTTwSYQCOifHe-o-ilgBVA/exec'
+
+function trackLoginToSheet(name, email) {
+  if (!SHEET_TRACKING_URL) return
+  try {
+    const url = SHEET_TRACKING_URL
+      + '?name=' + encodeURIComponent(name.trim())
+      + '&email=' + encodeURIComponent(email.trim())
+      + '&ts=' + encodeURIComponent(new Date().toISOString())
+      + '&ua=' + encodeURIComponent((navigator.userAgent || '').substring(0, 120))
+    new Image().src = url
+  } catch (_) {}
+}
+
 function UserIcon() {
   return (
     <svg width="15" height="16" viewBox="0 0 20 21" fill="none" stroke="rgba(255,248,234,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -92,6 +108,7 @@ export default function LoginScreen({ onLogin }) {
 
   function handleSignIn() {
     submitHubspotLead(name, email)
+    trackLoginToSheet(name, email)
     onLogin()
   }
 
