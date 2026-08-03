@@ -1,16 +1,23 @@
 import { useState, useRef } from 'react'
 import housePhoto from '../images/house.jpg'
+import { CURRENT_USER } from '../data/userData'
 import './HomeValuationCarousel.css'
 
 const $full = v => '$' + v.toLocaleString()
 const $K    = v => v >= 1000000 ? '$' + (v / 1000000).toFixed(1) + 'M' : '$' + Math.round(v / 1000) + 'K'
 
-export const VALUATION_UNITS = [
-  { id: 1, address: '2545 North Point Hill',      estimatedValue: 425000, valueChange: 12000,  rangeLow: 398000, rangeHigh: 452000, confidenceScore: 0.85, confidenceLabel: 'Very High', updatedDate: 'Apr 1, 2026' },
-  { id: 2, address: '254 SE Very Long Address Rd', estimatedValue: 318000, valueChange: -4500,  rangeLow: 300000, rangeHigh: 335000, confidenceScore: 0.75, confidenceLabel: 'High',      updatedDate: 'Apr 1, 2026' },
-  { id: 3, address: '3rd Unit Road',               estimatedValue: 540000, valueChange: 22000,  rangeLow: 510000, rangeHigh: 570000, confidenceScore: 0.75, confidenceLabel: 'High',      updatedDate: 'Apr 1, 2026' },
-  { id: 4, address: '4th Unit Road',               estimatedValue: 275000, valueChange: 3100,   rangeLow: 260000, rangeHigh: 290000, confidenceScore: 0.50, confidenceLabel: 'Medium',    updatedDate: 'Apr 1, 2026' },
+const VALUATION_STATS = [
+  { estimatedValue: 425000, valueChange: 12000,  rangeLow: 398000, rangeHigh: 452000, confidenceScore: 0.85, confidenceLabel: 'Very High', updatedDate: 'Apr 1, 2026' },
+  { estimatedValue: 318000, valueChange: -4500,  rangeLow: 300000, rangeHigh: 335000, confidenceScore: 0.75, confidenceLabel: 'High',      updatedDate: 'Apr 1, 2026' },
+  { estimatedValue: 540000, valueChange: 22000,  rangeLow: 510000, rangeHigh: 570000, confidenceScore: 0.75, confidenceLabel: 'High',      updatedDate: 'Apr 1, 2026' },
+  { estimatedValue: 275000, valueChange: 3100,   rangeLow: 260000, rangeHigh: 290000, confidenceScore: 0.50, confidenceLabel: 'Medium',    updatedDate: 'Apr 1, 2026' },
 ]
+
+export const VALUATION_UNITS = CURRENT_USER.units.map((unit, i) => ({
+  id: unit.id,
+  address: unit.address,
+  ...VALUATION_STATS[i],
+}))
 
 function RangeBar({ low, value, high }) {
   const pos = Math.max(4, Math.min(96, ((value - low) / (high - low)) * 100))

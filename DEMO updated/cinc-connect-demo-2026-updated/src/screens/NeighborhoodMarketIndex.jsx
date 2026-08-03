@@ -16,7 +16,7 @@ const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { mon
 /* ── Mock data ──────────────────────────────────────── */
 const MOCK = {
   meta: {
-    address: '12346 Washington Avenue',
+    address: '319 Cardinal Hills Dr',
     city: 'Cardinal Hills',
     state: 'FL',
     zip: '32801',
@@ -66,18 +66,18 @@ const MOCK = {
     vacancyRate: 4.2,
   },
   recentSales: [
-    { address: '101 Maple Ridge Dr',     beds: 3, baths: 2, sqft: 1820, status: 'Sold',    salePrice: 415000, saleDate: '2026-04-12' },
-    { address: '234 Birchwood Ct',       beds: 4, baths: 3, sqft: 2240, status: 'Sold',    salePrice: 498000, saleDate: '2026-04-08' },
-    { address: '57 Oakridge Ln',         beds: 3, baths: 2, sqft: 1650, status: 'Active',  salePrice: 389000, saleDate: '2026-04-05' },
-    { address: '89 Willowbrook Way',     beds: 5, baths: 4, sqft: 3100, status: 'Sold',    salePrice: 621000, saleDate: '2026-03-28' },
-    { address: '412 Cherry Blossom Pl',  beds: 3, baths: 2, sqft: 1710, status: 'Pending', salePrice: 402000, saleDate: '2026-03-22' },
-    { address: '63 Ferndale Ave',        beds: 4, baths: 2, sqft: 1990, status: 'Sold',    salePrice: 441000, saleDate: '2026-03-18' },
-    { address: '175 Glen Park Rd',       beds: 3, baths: 3, sqft: 2050, status: 'Sold',    salePrice: 459000, saleDate: '2026-03-14' },
-    { address: '28 Juniper Ct',          beds: 2, baths: 2, sqft: 1300, status: 'Sold',    salePrice: 325000, saleDate: '2026-03-10' },
-    { address: '501 Ivy Crossing',       beds: 4, baths: 3, sqft: 2380, status: 'Active',  salePrice: 512000, saleDate: '2026-03-06' },
-    { address: '37 Brookhaven Ln',       beds: 3, baths: 2, sqft: 1740, status: 'Sold',    salePrice: 427000, saleDate: '2026-03-01' },
-    { address: '99 Lakeside Dr',         beds: 4, baths: 4, sqft: 2800, status: 'Sold',    salePrice: 589000, saleDate: '2026-02-24' },
-    { address: '14 Sunrise Blvd',        beds: 3, baths: 2, sqft: 1580, status: 'Sold',    salePrice: 371000, saleDate: '2026-02-18' },
+    { address: '68 Cardinal Hills Dr',   beds: 3, baths: 2, sqft: 1820, status: 'Sold',    salePrice: 415000, saleDate: '2026-04-12' },
+    { address: '230 Cardinal Point Rd',  beds: 4, baths: 3, sqft: 2240, status: 'Sold',    salePrice: 498000, saleDate: '2026-04-08' },
+    { address: '17 Cardinal Way',        beds: 3, baths: 2, sqft: 1650, status: 'Active',  salePrice: 389000, saleDate: '2026-04-05' },
+    { address: '58 Ridgeline Pass',      beds: 5, baths: 4, sqft: 3100, status: 'Sold',    salePrice: 621000, saleDate: '2026-03-28' },
+    { address: '112 Pinecrest Loop',     beds: 3, baths: 2, sqft: 1710, status: 'Pending', salePrice: 402000, saleDate: '2026-03-22' },
+    { address: '41 Cardinal Heights',    beds: 4, baths: 2, sqft: 1990, status: 'Sold',    salePrice: 441000, saleDate: '2026-03-18' },
+    { address: '73 Hillcrest Loop',      beds: 3, baths: 3, sqft: 2050, status: 'Sold',    salePrice: 459000, saleDate: '2026-03-14' },
+    { address: '96 Cardinal Way',        beds: 2, baths: 2, sqft: 1300, status: 'Sold',    salePrice: 325000, saleDate: '2026-03-10' },
+    { address: '184 Cardinal Point Rd',  beds: 4, baths: 3, sqft: 2380, status: 'Active',  salePrice: 512000, saleDate: '2026-03-06' },
+    { address: '29 Cardinal Heights',    beds: 3, baths: 2, sqft: 1740, status: 'Sold',    salePrice: 427000, saleDate: '2026-03-01' },
+    { address: '154 Ridgeline Pass',     beds: 4, baths: 4, sqft: 2800, status: 'Sold',    salePrice: 589000, saleDate: '2026-02-24' },
+    { address: '52 Hillcrest Loop',      beds: 3, baths: 2, sqft: 1580, status: 'Sold',    salePrice: 371000, saleDate: '2026-02-18' },
   ],
 }
 
