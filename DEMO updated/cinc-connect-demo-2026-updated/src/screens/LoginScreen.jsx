@@ -2,6 +2,7 @@ import { useState } from 'react'
 import loginLogo from '../images/login-logo.svg'
 import connecPlus from '../images/connecplus-wordmark.svg'
 import faceIdIcon from '../images/face-id.svg'
+import Toast from '../components/Toast'
 import './LoginScreen.css'
 
 const HUBSPOT_PORTAL_ID = '40040627'
@@ -87,6 +88,7 @@ export default function LoginScreen({ onLogin }) {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
+  const [toast, setToast] = useState(null)
 
   function handleSignIn() {
     submitHubspotLead(name, email)
@@ -163,7 +165,7 @@ export default function LoginScreen({ onLogin }) {
           Sign in
         </button>
 
-        <button className="login-forgot" onClick={() => {}}>
+        <button className="login-forgot" onClick={() => setToast("Demo mode — any password works, just tap Sign In")}>
           Forgot username or password?
         </button>
       </div>
@@ -178,6 +180,8 @@ export default function LoginScreen({ onLogin }) {
         <p>Demo environment. All data is fictional. By signing in, you agree CINC Systems may contact you about our products and services.</p>
         <p>© 2026 CINC Systems.<br />Confidential — for authorized demonstration use only.</p>
       </div>
+
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }
