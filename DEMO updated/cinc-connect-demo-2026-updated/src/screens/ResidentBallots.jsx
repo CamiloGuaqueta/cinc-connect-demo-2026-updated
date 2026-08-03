@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
 import ResidentPDFViewer from './ResidentPDFViewer'
+import Toast from '../components/Toast'
 import boardImg from '../images/board.jpg'
 import newChImg from '../images/new-ch.png'
 import roadImg from '../images/road.jpg'
@@ -100,6 +101,7 @@ function SheetHeader({ title, onBack, onClose }) {
 // ─── Success Screen ───────────────────────────────────────────────────────────
 
 function SuccessScreen({ note, onClose }) {
+  const [toast, setToast] = useState(null)
   return (
     <div className="ballot-success">
       <div className="ballot-success__icon">
@@ -115,9 +117,10 @@ function SuccessScreen({ note, onClose }) {
       {note && <p className="ballot-success__note">{note}</p>}
       <p className="ballot-success__hint">Access your receipt anytime in the Participation section.</p>
       <div className="ballot-success__actions">
-        <button className="ballot-btn ballot-btn--outline">DOWNLOAD RECEIPT</button>
+        <button className="ballot-btn ballot-btn--outline" onClick={() => setToast('Receipt downloaded')}>DOWNLOAD RECEIPT</button>
         <button className="ballot-btn ballot-btn--solid" onClick={onClose}>CLOSE</button>
       </div>
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }

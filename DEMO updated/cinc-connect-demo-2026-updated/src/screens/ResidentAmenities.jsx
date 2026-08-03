@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
+import Toast from '../components/Toast'
 function UsersIcon({ className }) {
   return (
     <svg className={className} width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -374,6 +375,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
   const [showFeeReceipt, setShowFeeReceipt]       = useState(false)
   const [showDepositDetail, setShowDepositDetail] = useState(false)
   const [confirmingCancel, setConfirmingCancel]   = useState(false)
+  const [toast, setToast] = useState(null)
 
   const hasAmenityFee = amenity?.hourlyRate != null
   const hasDeposit    = amenity?.deposit != null
@@ -412,7 +414,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
 
           <div className="amenity-confirm__body">
             <div className="amenity-confirm__main-card">
-              <button className="amenity-confirm__share-icon-btn" aria-label="Share">
+              <button className="amenity-confirm__share-icon-btn" aria-label="Share" onClick={() => setToast('Reservation link copied')}>
                 <img src={shareIcon} alt="" width="20" height="20" style={{ filter: 'brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%)' }} />
               </button>
               <h2 className={`amenity-confirm__title${reservation.status === 'cancelled' ? ' amenity-confirm__title--cancelled' : ''}`}>
@@ -583,7 +585,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
         <FeeScreen
           img={reservation.img} icon={invoiceIcon} title="Booking Fee"
           onBack={() => setShowFeeReceipt(false)}
-          footer={<button className="res-fee-screen__download-btn">DOWNLOAD RECEIPT</button>}
+          footer={<button className="res-fee-screen__download-btn" onClick={() => setToast('Receipt downloaded')}>DOWNLOAD RECEIPT</button>}
         >
           <div className="res-fee-screen__row">
             <span className="res-fee-screen__row-label">Amenity Fee</span>
@@ -647,6 +649,8 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
           ))}
         </FeeScreen>
       )}
+
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }

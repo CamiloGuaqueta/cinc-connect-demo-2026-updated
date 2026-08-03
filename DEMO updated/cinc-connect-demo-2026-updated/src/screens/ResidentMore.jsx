@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useMode } from '../ModeContext'
 import { PROTOTYPE_VERSION } from '../theme'
 import './ResidentMore.css'
@@ -201,6 +201,15 @@ function Row({ icon, label, onTap }) {
 export default function ResidentMore() {
   const { pushResidentView, residentProfile, navStyle, setNavStyle, showBoardRoom, setShowBoardRoom, setChatOpen } = useMode()
   const [customSheet, setCustomSheet] = useState(null)
+  const [photoPreview, setPhotoPreview] = useState(null)
+  const photoRef = useRef(null)
+
+  function handlePhotoChange(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    setPhotoPreview(URL.createObjectURL(file))
+  }
+
   return (
     <div className="screen resident-more">
       {/* Hero / profile header */}
@@ -209,11 +218,12 @@ export default function ResidentMore() {
         <div className="more-hero__overlay" />
         <div className="more-hero__avatar-wrap">
           <div className="more-hero__avatar-frame">
-            <img src={PROFILE_IMG} alt="Profile" className="more-hero__avatar" />
+            <img src={photoPreview || PROFILE_IMG} alt="Profile" className="more-hero__avatar" />
           </div>
-          <button className="more-hero__edit-btn" aria-label="Edit photo">
+          <button className="more-hero__edit-btn" aria-label="Edit photo" onClick={() => photoRef.current?.click()}>
             <PencilIcon />
           </button>
+          <input ref={photoRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handlePhotoChange} />
         </div>
         <p className="more-hero__name">{residentProfile.firstName} {residentProfile.lastName}</p>
       </div>

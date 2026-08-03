@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
 import ResidentPDFViewer from './ResidentPDFViewer'
+import Toast from '../components/Toast'
 import ratingImg from '../images/rating.jpg'
 import shImg from '../images/sh.jpg'
 import gimImg from '../images/gim.jpg'
@@ -95,6 +96,7 @@ function SheetHeader({ title, onBack, onClose }) {
 // ─── Success Screen ───────────────────────────────────────────────────────────
 
 function SurveySuccessScreen({ onClose }) {
+  const [toast, setToast] = useState(null)
   return (
     <div className="survey-success">
       <div className="survey-success__icon">
@@ -110,9 +112,10 @@ function SurveySuccessScreen({ onClose }) {
       <p className="survey-success__note">You can change your answer until the survey closes.</p>
       <p className="survey-success__hint">Access your receipt anytime in the Participation section.</p>
       <div className="survey-success__actions">
-        <button className="survey-btn survey-btn--outline">DOWNLOAD RECEIPT</button>
+        <button className="survey-btn survey-btn--outline" onClick={() => setToast('Receipt downloaded')}>DOWNLOAD RECEIPT</button>
         <button className="survey-btn survey-btn--solid" onClick={onClose}>CLOSE</button>
       </div>
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }

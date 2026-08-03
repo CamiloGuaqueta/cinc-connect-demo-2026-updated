@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useMode } from '../ModeContext'
 import profileImg from '../images/profile.jpg'
 import bgImg from '../images/hoa.jpg'
@@ -28,6 +28,14 @@ export default function ResidentProfile() {
   const [showSecondaryEmail, setShowSecondaryEmail] = useState(!!residentProfile.secondaryEmail)
   const [useBusinessName, setUseBusinessName] = useState(residentProfile.useBusinessName || false)
   const [showSaveConfirm,    setShowSaveConfirm]    = useState(false)
+  const [photoPreview, setPhotoPreview] = useState(null)
+  const photoRef = useRef(null)
+
+  function handlePhotoChange(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    setPhotoPreview(URL.createObjectURL(file))
+  }
   const [showUnsavedWarning, setShowUnsavedWarning] = useState(false)
 
   const isDirty = JSON.stringify(draft) !== JSON.stringify(getOriginal())
@@ -98,11 +106,12 @@ export default function ResidentProfile() {
           <div className="rp-hero__overlay" />
           <div className="rp-hero__avatar-wrap">
             <div className="rp-hero__avatar-frame">
-              <img src={profileImg} alt="Profile" className="rp-hero__avatar" />
+              <img src={photoPreview || profileImg} alt="Profile" className="rp-hero__avatar" />
             </div>
-            <button className="rp-hero__edit-btn" aria-label="Change photo">
+            <button className="rp-hero__edit-btn" aria-label="Change photo" onClick={() => photoRef.current?.click()}>
               <CameraIcon />
             </button>
+            <input ref={photoRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handlePhotoChange} />
           </div>
           <p className="rp-hero__name">
             {draft.firstName} {draft.lastName}

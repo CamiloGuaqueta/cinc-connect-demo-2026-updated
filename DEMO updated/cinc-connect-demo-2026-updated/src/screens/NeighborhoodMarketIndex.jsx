@@ -5,6 +5,7 @@ import { BLOGS } from '../data/blogs'
 import sarahPhoto from '../images/sarah1.jpg'
 import housePhoto from '../images/house.jpg'
 import HomeValuationCarousel from '../components/HomeValuationCarousel'
+import Toast from '../components/Toast'
 import './NeighborhoodMarketIndex.css'
 
 /* ── Formatters ─────────────────────────────────────── */
@@ -259,6 +260,7 @@ export default function NeighborhoodMarketIndex() {
   const { pushResidentView } = useMode()
   const { meta, avm, nmiScore, realtorCard, market, areaProfile, recentSales } = MOCK
   const [activeBlog, setActiveBlog] = useState(null)
+  const [toast, setToast] = useState(null)
 
   const updatedDate = meta.avmAsOf.split(' ')[0]
   const pageSales   = recentSales.slice(0, 5)
@@ -310,8 +312,15 @@ export default function NeighborhoodMarketIndex() {
             </div>
           </div>
           <div className="nmi-realtor-actions">
-            <button className="nmi-realtor-btn nmi-realtor-btn--primary">Schedule a Call</button>
-            <button className="nmi-realtor-btn nmi-realtor-btn--secondary">See Listings</button>
+            <button
+              className="nmi-realtor-btn nmi-realtor-btn--primary"
+              onClick={() => { window.location.href = `tel:${realtorCard.phone.replace(/[^+\d]/g, '')}` }}
+            >
+              Schedule a Call
+            </button>
+            <button className="nmi-realtor-btn nmi-realtor-btn--secondary" onClick={() => setToast('No active listings right now')}>
+              See Listings
+            </button>
           </div>
         </div>
 
@@ -420,6 +429,7 @@ export default function NeighborhoodMarketIndex() {
         <p>Realtors interested in contributing: <a href="mailto:[email protected]">[email protected]</a></p>
       </div>
 
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }

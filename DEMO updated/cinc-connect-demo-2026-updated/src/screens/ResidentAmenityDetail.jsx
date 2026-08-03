@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
 import { addReservation } from './ResidentAmenities'
+import Toast from '../components/Toast'
 import usersIcon from '../ICONS/Users.svg'
 import depositIcon from '../ICONS/deposit.svg'
 import moneyIcon from '../ICONS/Money.svg'
@@ -278,6 +279,7 @@ export default function ResidentAmenityDetail({ amenity }) {
   const [disclosureAgreed, setDisclosureAgreed] = useState(false)
   const [confirmationNum] = useState(() => 'CHC-' + Math.random().toString(36).substr(2, 6).toUpperCase())
   const [timeLeft, setTimeLeft] = useState(null)
+  const [toast, setToast] = useState(null)
 
   useEffect(() => {
     if (!showPayment || confirmed) { setTimeLeft(null); return }
@@ -709,8 +711,8 @@ export default function ResidentAmenityDetail({ amenity }) {
                   </div>
                 </div>
 
-                <button className="amenity-confirm__share-btn">SHARE RESERVATION</button>
-                <button className="amenity-confirm__calendar-btn">ADD TO CALENDAR</button>
+                <button className="amenity-confirm__share-btn" onClick={() => setToast('Reservation link copied')}>SHARE RESERVATION</button>
+                <button className="amenity-confirm__calendar-btn" onClick={() => setToast('Added to your calendar')}>ADD TO CALENDAR</button>
               </div>
             </div>
           ) : (
@@ -898,7 +900,7 @@ export default function ResidentAmenityDetail({ amenity }) {
                       <span className="res-fee-screen__total-value">{fmt(totalDue)}</span>
                     </div>
                   </div>
-                  <button className="res-fee-screen__download-btn">DOWNLOAD RECEIPT</button>
+                  <button className="res-fee-screen__download-btn" onClick={() => setToast('Receipt downloaded')}>DOWNLOAD RECEIPT</button>
                 </div>
               </div>
             </div>
@@ -1123,6 +1125,8 @@ export default function ResidentAmenityDetail({ amenity }) {
         </div>,
         document.querySelector('.phone-frame') || document.body
       )}
+
+      {toast && <Toast message={toast} onDone={() => setToast(null)} />}
     </div>
   )
 }
