@@ -656,6 +656,46 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.amenity-confirm__cancel-confirm {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 107, 98, 0.1);
+  border: 1px solid rgba(255, 107, 98, 0.35);
+}
+
+.amenity-confirm__cancel-confirm-text {
+  font-size: 13px;
+  color: #fff8ea;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.amenity-confirm__cancel-confirm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.amenity-confirm__cancel-confirm-actions .amenity-confirm__cancel-btn {
+  margin-top: 0;
+  flex: 1;
+}
+
+.amenity-confirm__cancel-keep-btn {
+  flex: 1;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 248, 234, 0.25);
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff8ea;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ── All Past Reservations button ──────────────────────── */
 .all-past-res-btn {
   display: block;

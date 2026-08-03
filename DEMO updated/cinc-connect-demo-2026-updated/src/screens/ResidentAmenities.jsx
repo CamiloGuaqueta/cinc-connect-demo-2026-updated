@@ -308,6 +308,22 @@ export function addReservation(reservation) {
   MY_RESERVATIONS_DATA.unshift(reservation)
 }
 
+export function cancelReservation(id) {
+  const r = MY_RESERVATIONS_DATA.find(r => r.id === id)
+  if (!r || r.status !== 'upcoming') return null
+  const amenity = AMENITIES_DATA.find(a => a.id === r.amenityId)
+  const hasFee = amenity?.hourlyRate != null
+  r.status = 'cancelled'
+  const text = hasFee
+    ? `Reservation has been cancelled per your request. Your $${amenity.hourlyRate}.00 amenity fee will be refunded to your original payment method within 3–5 business days.${amenity.deposit != null ? ` The $${amenity.deposit}.00 security deposit hold will also be released.` : ''}`
+    : 'Reservation has been cancelled per your request.'
+  r.notes = [
+    { id: `${r.id}-cancel`, text, timestamp: '05/19/2026  2:00 PM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
+    ...(r.notes || []),
+  ]
+  return { ...r }
+}
+
 function ResLocationIcon() {
   return (
     <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
@@ -353,10 +369,11 @@ function FeeScreen({ img, icon, title, onBack, children, footer, hideSep }) {
   )
 }
 
-function ReservationDetailSheet({ reservation, amenity, onClose }) {
+function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) {
   const [showNotes, setShowNotes]                 = useState(false)
   const [showFeeReceipt, setShowFeeReceipt]       = useState(false)
   const [showDepositDetail, setShowDepositDetail] = useState(false)
+  const [confirmingCancel, setConfirmingCancel]   = useState(false)
 
   const hasAmenityFee = amenity?.hourlyRate != null
   const hasDeposit    = amenity?.deposit != null
@@ -478,7 +495,34 @@ function ReservationDetailSheet({ reservation, amenity, onClose }) {
               </div>
             )}
 
-            {!reservation.status && <button className="amenity-confirm__cancel-btn">CANCEL RESERVATION</button>}
+            {reservation.status === 'upcoming' && !confirmingCancel && (
+              <button className="amenity-confirm__cancel-btn" onClick={() => setConfirmingCancel(true)}>
+                CANCEL RESERVATION
+              </button>
+            )}
+            {confirmingCancel && (
+              <div className="amenity-confirm__cancel-confirm">
+                <p className="amenity-confirm__cancel-confirm-text">
+                  Cancel this reservation?
+                  {hasAmenityFee && ` Your $${amenity.hourlyRate}.00 fee will be refunded.`}
+                </p>
+                <div className="amenity-confirm__cancel-confirm-actions">
+                  <button className="amenity-confirm__cancel-keep-btn" onClick={() => setConfirmingCancel(false)}>
+                    Keep Reservation
+                  </button>
+                  <button
+                    className="amenity-confirm__cancel-btn"
+                    onClick={() => {
+                      const updated = cancelReservation(reservation.id)
+                      setConfirmingCancel(false)
+                      if (updated) onCancelled(updated)
+                    }}
+                  >
+                    Yes, Cancel
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -729,6 +773,7 @@ export default function ResidentAmenities() {
           reservation={selectedReservation}
           amenity={AMENITIES_DATA.find(a => a.id === selectedReservation.amenityId)}
           onClose={() => setSelectedReservation(null)}
+          onCancelled={setSelectedReservation}
         />,
         document.querySelector('.phone-frame') || document.body
       )}
@@ -855,6 +900,7 @@ export function AllPastReservations() {
           reservation={selectedReservation}
           amenity={AMENITIES_DATA.find(a => a.id === selectedReservation.amenityId)}
           onClose={() => setSelectedReservation(null)}
+          onCancelled={setSelectedReservation}
         />,
         document.querySelector('.phone-frame') || document.body
       )}
