@@ -18,6 +18,18 @@ const TYPE_ILLUSTRATIONS = {
   Task:      { src: '/images/card-task.jpg'      },
 }
 
+const ACC_TYPE_ILLUSTRATIONS = {
+  'Deck Installation':        '/images/acc-deck.jpg',
+  'Fence Installation':       '/images/acc-fence.jpg',
+  'Exterior Paint Change':    '/images/acc-paint.jpg',
+  'Solar Panel Installation': '/images/card-acc.jpg',
+}
+
+const WO_ILLUSTRATIONS = {
+  7:  '/images/wo-irrigation.jpg',
+  14: '/images/wo-pool-pump.jpg',
+}
+
 const TASKS = [
   {
     id: 1,
@@ -608,12 +620,18 @@ function TaskListView({ tasks }) {
 }
 
 /* ── Card hero image ──────────────────────────────────── */
-function CardHero({ type }) {
-  const illus = TYPE_ILLUSTRATIONS[type]
-  if (!illus) return null
+function CardHero({ type, task }) {
+  let src = TYPE_ILLUSTRATIONS[type]?.src
+  if (type === 'ACC' && ACC_TYPE_ILLUSTRATIONS[task?.accType]) {
+    src = ACC_TYPE_ILLUSTRATIONS[task.accType]
+  }
+  if (type === 'WorkOrder' && WO_ILLUSTRATIONS[task?.id]) {
+    src = WO_ILLUSTRATIONS[task.id]
+  }
+  if (!src) return null
   return (
     <div className="card-hero">
-      <img src={illus.src} className="card-hero__img" alt="" />
+      <img src={src} className="card-hero__img" alt="" />
     </div>
   )
 }
@@ -744,7 +762,7 @@ function WorkOrderCardContent({ task, flyCard, flyOff, onOpenPanel }) {
   return (
     <div className="card-body invoice-body">
       <div className="inv-scroll">
-        <CardHero type="WorkOrder" />
+        <CardHero type="WorkOrder" task={task} />
 
         {/* WO header */}
         <div className="inv-vendor">
@@ -861,7 +879,7 @@ function ACCCardContent({ task, onOpenPanel }) {
   return (
     <div className="card-body invoice-body">
       <div className="inv-scroll">
-        <CardHero type="ACC" />
+        <CardHero type="ACC" task={task} />
 
         {/* Address header */}
         <div className="inv-vendor">
@@ -1557,13 +1575,6 @@ const WO_LOG_MESSAGES = {
   ],
 }
 
-const WO_ATTACHMENT_IMAGES = [
-  '/images/card-workorder.jpg',
-  '/images/card-violation.jpg',
-  '/images/card-task.jpg',
-  '/images/card-acc.jpg',
-]
-
 function WoLogPanel({ task, onClose }) {
   const messages = WO_LOG_MESSAGES[task.id] || []
   const [draft, setDraft] = useState('')
@@ -1617,7 +1628,7 @@ function WoAttachmentsPanel({ task, onClose }) {
           {files.map((filename, i) => (
             <div key={filename} className="viol-attachment-item">
               <p className="viol-attach-filename">{filename}</p>
-              <img src={WO_ATTACHMENT_IMAGES[i % WO_ATTACHMENT_IMAGES.length]} className="viol-evidence-img" alt={`Attachment ${i + 1}`} />
+              <img src={WO_ILLUSTRATIONS[task.id] ?? '/images/card-workorder.jpg'} className="viol-evidence-img" alt={`Attachment ${i + 1}`} />
               <p className="viol-evidence-caption">Site photo {i + 1} of {files.length} · {task.created}</p>
             </div>
           ))}

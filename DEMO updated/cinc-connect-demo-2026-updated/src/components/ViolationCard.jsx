@@ -14,11 +14,11 @@ export const TYPE_COLOR = {
 }
 
 export const TYPE_HERO = {
-  'Parking':          '/images/card-workorder.jpg',
-  'Landscaping':      '/images/card-violation.jpg',
-  'Architectural':    '/images/card-acc.jpg',
-  'Noise / nuisance': '/images/card-invoice.jpg',
-  'Trash / bins':     '/images/card-task.jpg',
+  'Parking':          '/images/violation-parking.jpg',
+  'Landscaping':      '/images/violation-landscaping.jpg',
+  'Architectural':    '/images/violation-architectural.jpg',
+  'Noise / nuisance': '/images/violation-noise.jpg',
+  'Trash / bins':     '/images/violation-trash.jpg',
 }
 
 /* ── Violation items mock data by type ─────────────────── */
@@ -367,17 +367,9 @@ export function ViolLogPanel({ violation: v, onClose }) {
 }
 
 /* ── Attachment panel ───────────────────────────────────── */
-const EVIDENCE_IMAGES = [
-  '/images/card-workorder.jpg',
-  '/images/card-violation.jpg',
-  '/images/card-acc.jpg',
-  '/images/card-invoice.jpg',
-  '/images/card-task.jpg',
-]
-
 export function ViolAttachmentPanel({ violation: v, onClose }) {
   const attachments = v.attachments ?? [v.attachment].filter(Boolean)
-  const heroBase    = TYPE_HERO[v.type] ?? '/images/card-violation.jpg'
+  const heroBase    = TYPE_HERO[v.type] ?? '/images/violation-landscaping.jpg'
   const title       = attachments.length > 1 ? `Attachments (${attachments.length})` : 'Attachment'
 
   return (
@@ -388,7 +380,7 @@ export function ViolAttachmentPanel({ violation: v, onClose }) {
         <div className="viol-attachments-list">
           {attachments.map((filename, i) => {
             const isPdf = filename.toLowerCase().endsWith('.pdf')
-            const imgSrc = EVIDENCE_IMAGES[i % EVIDENCE_IMAGES.length]
+            const imgSrc = heroBase
             return (
               <div key={filename} className="viol-attachment-item">
                 <p className="viol-attach-filename">{filename}</p>
