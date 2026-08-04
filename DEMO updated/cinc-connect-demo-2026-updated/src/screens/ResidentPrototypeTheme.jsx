@@ -5,6 +5,7 @@ import { THEMES, THEME_ORDER, applyTheme, saveTheme, getSavedThemeId, getSavedCu
 import './ResidentPrototypeTheme.css'
 
 const DEFAULT_HOA_NAME = 'Cardinal Hills HOA'
+const BRAND_NAME_MAX_LENGTH = 28
 
 function toHex(color) {
   if (!color) return '#000000'
@@ -46,7 +47,7 @@ export default function ResidentPrototypeTheme() {
   const logoInputRef = useRef(null)
 
   function handleNameBlur() {
-    setBrand({ name: nameDraft.trim() })
+    setBrand({ name: nameDraft.trim().slice(0, BRAND_NAME_MAX_LENGTH) })
   }
 
   function handleLogoChange(e) {
@@ -116,12 +117,16 @@ export default function ResidentPrototypeTheme() {
           />
         </div>
         <div className="ptheme-brand-name-row">
-          <span className="ptheme-brand-name-row__label">Association Name</span>
+          <div className="ptheme-brand-name-row__header">
+            <span className="ptheme-brand-name-row__label">Association Name</span>
+            <span className="ptheme-brand-name-row__count">{nameDraft.length}/{BRAND_NAME_MAX_LENGTH}</span>
+          </div>
           <input
             className="ptheme-brand-name-row__input"
             type="text"
             value={nameDraft}
             placeholder={DEFAULT_HOA_NAME}
+            maxLength={BRAND_NAME_MAX_LENGTH}
             onChange={e => setNameDraft(e.target.value)}
             onBlur={handleNameBlur}
           />

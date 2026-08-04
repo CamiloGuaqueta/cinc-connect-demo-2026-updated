@@ -144,6 +144,9 @@
   font-weight: 600;
   color: var(--res-accent);
   font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .more-hoa-row__sub {

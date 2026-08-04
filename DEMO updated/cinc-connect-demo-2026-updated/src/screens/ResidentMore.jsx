@@ -199,7 +199,7 @@ function Row({ icon, label, onTap }) {
 }
 
 export default function ResidentMore() {
-  const { pushResidentView, residentProfile, navStyle, setNavStyle, showBoardRoom, setShowBoardRoom, setChatOpen } = useMode()
+  const { pushResidentView, residentProfile, navStyle, setNavStyle, showBoardRoom, setShowBoardRoom, setChatOpen, brand } = useMode()
   const [customSheet, setCustomSheet] = useState(null)
   const [photoPreview, setPhotoPreview] = useState(null)
   const photoRef = useRef(null)
@@ -232,9 +232,9 @@ export default function ResidentMore() {
         {/* HOA + community section */}
         <div className="more-card">
           <button className="more-hoa-row">
-            <img src={HOA_LOGO} alt="HOA" className="more-hoa-row__logo" />
+            <img src={brand.logo || HOA_LOGO} alt="HOA" className="more-hoa-row__logo" />
             <div className="more-hoa-row__text">
-              <span className="more-hoa-row__name">Cardinal Hills HOA</span>
+              <span className="more-hoa-row__name">{brand.name || 'Cardinal Hills HOA'}</span>
               <span className="more-hoa-row__sub">Add or Switch association</span>
             </div>
             <ChevronIcon />
