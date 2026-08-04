@@ -50,6 +50,16 @@ function ConfidenceDots({ score, label }) {
   )
 }
 
+function ArrowIcon({ direction }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      {direction === 'prev'
+        ? <polyline points="15 18 9 12 15 6"/>
+        : <polyline points="9 18 15 12 9 6"/>}
+    </svg>
+  )
+}
+
 export default function HomeValuationCarousel({ onCardClick, edgePadding = 20 }) {
   const [activeIdx, setActiveIdx] = useState(0)
   const scrollRef = useRef(null)
@@ -58,6 +68,14 @@ export default function HomeValuationCarousel({ onCardClick, edgePadding = 20 })
     const el = e.currentTarget
     const idx = Math.round(el.scrollLeft / el.clientWidth)
     setActiveIdx(Math.min(idx, VALUATION_UNITS.length - 1))
+  }
+
+  function goTo(i) {
+    const el = scrollRef.current
+    if (!el) return
+    const clamped = Math.max(0, Math.min(i, VALUATION_UNITS.length - 1))
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: 'smooth' })
+    setActiveIdx(clamped)
   }
 
   return (
@@ -86,9 +104,36 @@ export default function HomeValuationCarousel({ onCardClick, edgePadding = 20 })
           </div>
         ))}
       </div>
+
+      {activeIdx > 0 && (
+        <button
+          className="hvc-arrow hvc-arrow--prev"
+          style={{ left: edgePadding + 6 }}
+          aria-label="Previous unit"
+          onClick={() => goTo(activeIdx - 1)}
+        >
+          <ArrowIcon direction="prev" />
+        </button>
+      )}
+      {activeIdx < VALUATION_UNITS.length - 1 && (
+        <button
+          className="hvc-arrow hvc-arrow--next"
+          style={{ right: edgePadding + 6 }}
+          aria-label="Next unit"
+          onClick={() => goTo(activeIdx + 1)}
+        >
+          <ArrowIcon direction="next" />
+        </button>
+      )}
+
       <div className="hvc-dots">
         {VALUATION_UNITS.map((_, i) => (
-          <div key={i} className={`hvc-dot${i === activeIdx ? ' hvc-dot--active' : ''}`} />
+          <button
+            key={i}
+            className={`hvc-dot${i === activeIdx ? ' hvc-dot--active' : ''}`}
+            aria-label={`Go to unit ${i + 1}`}
+            onClick={() => goTo(i)}
+          />
         ))}
       </div>
     </div>
