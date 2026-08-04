@@ -251,6 +251,8 @@
   justify-content: center;
   background: color-mix(in srgb, var(--text) 12%, transparent);
   color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .notif-item__body {
@@ -369,6 +371,32 @@
   justify-content: center;
   background: color-mix(in srgb, var(--text) 12%, transparent);
   color: var(--text);
+}
+
+.chat-thread__peer-avatar--initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chat-thread__empty {
+  text-align: center;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--text) 60%, transparent);
+  padding: 20px 0;
+}
+
+.notif-center__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chat-thread__peer-text {

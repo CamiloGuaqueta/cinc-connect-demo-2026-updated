@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react'
 import {
   NOTIFICATIONS, markNotificationRead,
-  CONVERSATIONS, markConversationRead, sendMessage, lastMessage,
+  CONVERSATIONS, markConversationRead, sendMessage, lastMessage, startConversation,
 } from '../data/messagesData'
+import { CONTACTS } from '../data/directoryData'
 import './NotificationCenter.css'
 
 const CINC_ICON = '/images/cinc-icon.png'
 const CEPHAI_ICON = '/images/cephai-logo.svg'
+
+function initialsOf(name) {
+  return name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+}
 
 export function unreadBadgeCount() {
   const notifs = NOTIFICATIONS.filter(n => !n.read).length
@@ -15,12 +20,13 @@ export function unreadBadgeCount() {
 }
 
 export default function NotificationCenter({ isBoard, initialChatId, onClose, onOpenCephai }) {
-  const [view, setView] = useState(initialChatId ? 'chat-thread' : 'notif-list') // notif-list | notif-detail | msg-list | chat-thread
+  const [view, setView] = useState(initialChatId ? 'chat-thread' : 'notif-list') // notif-list | notif-detail | msg-list | chat-thread | new-message
   const [selectedNotif, setSelectedNotif] = useState(null)
   const [activeChatId, setActiveChatId] = useState(initialChatId || null)
   const [query, setQuery] = useState('')
   const [unreadOnly, setUnreadOnly] = useState(false)
   const [draft, setDraft] = useState('')
+  const [contactQuery, setContactQuery] = useState('')
   const [, bump] = useState(0)
   const rerender = () => bump(x => x + 1)
 
@@ -53,6 +59,24 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
     setView('chat-thread')
   }
 
+  function handleSelectContact(person) {
+    const id = startConversation({
+      id: person.id,
+      name: `${person.firstName} ${person.lastName}`,
+      role: person.role,
+      photo: person.photo,
+    })
+    const convo = CONVERSATIONS.find(c => c.id === id)
+    setContactQuery('')
+    openChat(convo)
+  }
+
+  const visibleContacts = CONTACTS.members.filter(p => {
+    if (!contactQuery) return true
+    const name = `${p.firstName} ${p.lastName}`.toLowerCase()
+    return name.includes(contactQuery.toLowerCase())
+  })
+
   function handleSend() {
     const text = draft.trim()
     if (!text || !activeChatId) return
@@ -64,6 +88,7 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
   function handleBack() {
     if (view === 'notif-detail') { setView('notif-list'); setSelectedNotif(null); return }
     if (view === 'chat-thread') { setView('msg-list'); setActiveChatId(null); return }
+    if (view === 'new-message') { setView('msg-list'); setContactQuery(''); return }
     onClose()
   }
 
@@ -80,8 +105,10 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
             <div className="chat-thread__peer">
               {activeConvo.isGroup ? (
                 <span className="chat-thread__peer-avatar chat-thread__peer-avatar--group"><GroupIcon /></span>
-              ) : (
+              ) : activeConvo.photo ? (
                 <img className="chat-thread__peer-avatar" src={activeConvo.photo} alt={activeConvo.name} />
+              ) : (
+                <span className="chat-thread__peer-avatar chat-thread__peer-avatar--initials">{initialsOf(activeConvo.name)}</span>
               )}
               <div className="chat-thread__peer-text">
                 <span className="chat-thread__peer-name">{activeConvo.name}</span>
@@ -89,8 +116,16 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
               </div>
             </div>
           )}
+          {view === 'new-message' && (
+            <span className="notif-center__title">New Message</span>
+          )}
         </div>
         <div className="notif-center__header-right">
+          {view === 'msg-list' && (
+            <button className="notif-btn" aria-label="New message" onClick={() => setView('new-message')}>
+              <ComposeIcon />
+            </button>
+          )}
           <button className="notif-btn" aria-label="Notifications">
             <BellIcon />
             {(unreadNotifCount + unreadMsgCount) > 0 && <span className="notif-btn__badge">{unreadNotifCount + unreadMsgCount}</span>}
@@ -186,15 +221,19 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
               <button key={c.id} className="notif-item" onClick={() => openChat(c)}>
                 {c.isGroup ? (
                   <span className="notif-item__icon notif-item__icon--group"><GroupIcon /></span>
-                ) : (
+                ) : c.photo ? (
                   <img className="notif-item__icon" src={c.photo} alt={c.name} />
+                ) : (
+                  <span className="notif-item__icon notif-item__icon--group">{initialsOf(c.name)}</span>
                 )}
                 <div className="notif-item__body">
                   <span className="notif-item__title">{c.name}</span>
-                  <p className="notif-item__preview">{last.from ? `${last.from}: ` : ''}{last.text}</p>
+                  <p className="notif-item__preview">
+                    {last ? <>{last.from ? `${last.from}: ` : ''}{last.text}</> : 'No messages yet'}
+                  </p>
                 </div>
                 <div className="notif-item__meta">
-                  <span className="notif-item__time">{last.time}</span>
+                  <span className="notif-item__time">{last?.time || ''}</span>
                   {!c.read && <span className="notif-item__dot" />}
                 </div>
               </button>
@@ -206,6 +245,9 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
       {view === 'chat-thread' && activeConvo && (
         <>
           <div className="chat-thread__body">
+            {activeConvo.messages.length === 0 && (
+              <p className="chat-thread__empty">Say hello to {activeConvo.name.split(' ')[0]}!</p>
+            )}
             {activeConvo.messages.map((m, i) => (
               <div key={i} className={`chat-bubble-row${m.fromMe ? ' chat-bubble-row--mine' : ''}`}>
                 {m.from && <span className="chat-bubble__from">{m.from}</span>}
@@ -228,6 +270,46 @@ export default function NotificationCenter({ isBoard, initialChatId, onClose, on
             <button className="chat-composer__send" onClick={handleSend} aria-label="Send" disabled={!draft.trim()}>
               <SendIcon />
             </button>
+          </div>
+        </>
+      )}
+
+      {view === 'new-message' && (
+        <>
+          <div className="notif-toolbar">
+            <div className="notif-search">
+              <SearchIcon />
+              <input
+                className="notif-search__input"
+                type="text"
+                placeholder="Search homeowners…"
+                value={contactQuery}
+                onChange={e => setContactQuery(e.target.value)}
+                autoFocus
+              />
+              {contactQuery && (
+                <button className="notif-search__clear" onClick={() => setContactQuery('')} aria-label="Clear">
+                  <CloseIcon />
+                </button>
+              )}
+            </div>
+          </div>
+          <div className="notif-list">
+            {visibleContacts.length === 0 ? (
+              <p className="notif-empty">No homeowners found.</p>
+            ) : visibleContacts.map(p => (
+              <button key={p.id} className="notif-item" onClick={() => handleSelectContact(p)}>
+                {p.photo ? (
+                  <img className="notif-item__icon" src={p.photo} alt={`${p.firstName} ${p.lastName}`} />
+                ) : (
+                  <span className="notif-item__icon notif-item__icon--group">{initialsOf(`${p.firstName} ${p.lastName}`)}</span>
+                )}
+                <div className="notif-item__body">
+                  <span className="notif-item__title">{p.firstName} {p.lastName}</span>
+                  <p className="notif-item__preview">{p.role || p.address}</p>
+                </div>
+              </button>
+            ))}
           </div>
         </>
       )}
@@ -292,6 +374,15 @@ function SendIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+    </svg>
+  )
+}
+
+function ComposeIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+      <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
     </svg>
   )
 }

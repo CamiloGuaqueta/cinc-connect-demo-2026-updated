@@ -163,6 +163,21 @@ export function lastMessage(convo) {
   return convo.messages[convo.messages.length - 1]
 }
 
+export function startConversation(person) {
+  const existing = CONVERSATIONS.find(c => c.name === person.name)
+  if (existing) return existing.id
+  const id = 'contact-' + person.id
+  CONVERSATIONS.unshift({
+    id,
+    name: person.name,
+    role: person.role || null,
+    photo: person.photo || null,
+    read: true,
+    messages: [],
+  })
+  return id
+}
+
 // ─── Groups ──────────────────────────────────────────────────────────────────
 
 export const GROUPS = [

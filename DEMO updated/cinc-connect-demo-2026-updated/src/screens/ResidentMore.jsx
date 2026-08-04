@@ -305,7 +305,7 @@ export default function ResidentMore() {
             window.dispatchEvent(new CustomEvent('app-logout'))
           }}>Reset Prototype</button>
           <span className="more-proto-sep">|</span>
-          <button className="more-theme-btn" onClick={() => pushResidentView('prototype-theme')}>Prototype Theme</button>
+          <button className="more-theme-btn" onClick={() => pushResidentView('prototype-theme')}>Customize Demo</button>
           <span className="more-proto-sep">|</span>
           <button
             className={`more-theme-btn${showBoardRoom ? ' more-theme-btn--active' : ''}`}

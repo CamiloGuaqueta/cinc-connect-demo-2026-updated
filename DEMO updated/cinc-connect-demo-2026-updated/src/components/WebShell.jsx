@@ -310,7 +310,7 @@ function WebRightPanel() {
         </button>
         <button className="web-right-item" onClick={() => navigateResident('More', 'prototype-theme')}>
           <span className="web-right-item__icon"><ThemeIcon /></span>
-          Prototype Theme
+          Customize Demo
         </button>
         <button className="web-right-item web-right-item--toggle-layout" onClick={() => setIsWeb(v => !v)}>
           <span className="web-right-item__icon"><LayoutIcon /></span>
