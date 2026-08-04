@@ -6,6 +6,7 @@ import sarahPhoto from '../images/sarah1.jpg'
 import soldPhoto from '../images/SOLD.jpg'
 import courtsPhoto from '../images/Amenities/courts.jpg'
 import boardImg from '../images/board.jpg'
+import profileImg from '../images/profile.jpg'
 import './Feed.css'
 import CalendarCheckSvg from '../ICONS/calendar-check.svg'
 import filterIcon from '../ICONS/filter.svg?raw'
@@ -29,6 +30,7 @@ const DARREN_PHOTO  = '/images/personas/darren-wilson.jpg'
 const ETHAN_PHOTO   = '/images/personas/ethan-young.png'
 const WILLIAM_PHOTO = '/images/personas/william-walker.png'
 const SOPHIA_PHOTO  = '/images/personas/sophia-diaz.png'
+const PROFILE_IMG   = profileImg
 
 /* ── Board Members ────────────────────────────────── */
 const BOARD_MEMBERS = [
@@ -1143,6 +1145,10 @@ const RESIDENT_POSTS = [
   },
 ]
 
+export function addPost(post) {
+  RESIDENT_POSTS.unshift(post)
+}
+
 /* ── NMI Preview Card Data ───────────────────────── */
 const NMI_MOCK = {
   neighborhood: 'Cardinal Hills',
@@ -1362,9 +1368,13 @@ const ACCT_UNITS = [
 ]
 
 function ResidentFeed() {
-  const { pushResidentViews } = useMode()
+  const { pushResidentViews, residentProfile } = useMode()
   const [acctIndex, setAcctIndex] = useState(0)
   const acctSliderRef = useRef(null)
+  const [posts, setPosts] = useState(() => [...RESIDENT_POSTS])
+  const [composeOpen, setComposeOpen] = useState(false)
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [selectedAuthors, setSelectedAuthors] = useState(() => new Set())
 
   useLayoutEffect(() => {
     const el = acctSliderRef.current
@@ -1393,15 +1403,45 @@ function ResidentFeed() {
     }
   }
 
+  function handleCreatePost({ body, image }) {
+    const newPost = {
+      id: 'user-' + Date.now(),
+      name: `${residentProfile.firstName} ${residentProfile.lastName}`.trim() || 'Thomas Bravo',
+      initials: `${residentProfile.firstName[0] || ''}${residentProfile.lastName[0] || ''}`,
+      time: 'Just now',
+      isBoardMember: true,
+      subtitle: 'Board Member at Large',
+      title: null,
+      body,
+      image,
+      likes: 0,
+      comments: 0,
+      avatarImg: PROFILE_IMG,
+    }
+    addPost(newPost)
+    setPosts([...RESIDENT_POSTS])
+    setSelectedAuthors(new Set())
+    setComposeOpen(false)
+  }
+
+  const authorNames = [...new Set(posts.map(p => p.name))]
+  const visiblePosts = selectedAuthors.size === 0
+    ? posts
+    : posts.filter(p => selectedAuthors.has(p.name))
+
   return (
     <div className="screen">
       <div className="screen-inner">
         <div className="engage-row">
           <div className="engage-bar">
             <span className="engage-bar__text">Engage With Your Neighbors</span>
-            <button className="engage-bar__icon-btn"><EditIcon /></button>
+            <button className="engage-bar__icon-btn" onClick={() => setComposeOpen(true)} aria-label="Create post"><EditIcon /></button>
           </div>
-          <button className="engage-filter-btn">
+          <button
+            className={`engage-filter-btn${selectedAuthors.size > 0 ? ' engage-filter-btn--active' : ''}`}
+            onClick={() => setFilterOpen(true)}
+            aria-label="Filter feed"
+          >
             <span className="filter-svg-icon" dangerouslySetInnerHTML={{__html: filterIcon}} />
           </button>
         </div>
@@ -1451,10 +1491,25 @@ function ResidentFeed() {
 
         <NmiPreviewCard onViewMore={() => pushResidentViews([{ screen: 'market-index', data: null }])} />
 
-        {RESIDENT_POSTS.map(post => (
+        {visiblePosts.length === 0 && (
+          <p className="feed-empty-state">No posts from the selected neighbors.</p>
+        )}
+        {visiblePosts.map(post => (
           <PostCard key={post.id} post={post} onCta={post.ctaLabel ? () => handleCta(post) : undefined} />
         ))}
       </div>
+
+      {composeOpen && (
+        <FeedComposeSheet onClose={() => setComposeOpen(false)} onSubmit={handleCreatePost} />
+      )}
+      {filterOpen && (
+        <FeedAuthorFilterSheet
+          authors={authorNames}
+          selected={selectedAuthors}
+          onChange={setSelectedAuthors}
+          onClose={() => setFilterOpen(false)}
+        />
+      )}
     </div>
   )
 }
@@ -1479,7 +1534,7 @@ function PostCard({ post, onCta }) {
       </div>
 
       <div className="post-card__content">
-        <p className="post-card__title">{post.title}</p>
+        {post.title && <p className="post-card__title">{post.title}</p>}
         <p className="post-card__body">{post.body}</p>
       </div>
 
@@ -1497,15 +1552,23 @@ function PostCard({ post, onCta }) {
 
       <div className="post-social">
         <div className="post-social__left">
-          <div className="post-social__avatars">
-            <img src={AVATAR_1} alt="" className="post-social__av" />
-            <img src={AVATAR_2} alt="" className="post-social__av" />
-            <img src={AVATAR_3} alt="" className="post-social__av" />
-            <img src={AVATAR_4} alt="" className="post-social__av" />
-          </div>
-          <span className="post-social__liked-by">
-            Liked by <strong>Liza Stevens</strong> and {post.likes - 1} others
-          </span>
+          {post.likes > 0 ? (
+            <>
+              <div className="post-social__avatars">
+                <img src={AVATAR_1} alt="" className="post-social__av" />
+                <img src={AVATAR_2} alt="" className="post-social__av" />
+                <img src={AVATAR_3} alt="" className="post-social__av" />
+                <img src={AVATAR_4} alt="" className="post-social__av" />
+              </div>
+              <span className="post-social__liked-by">
+                {post.likes > 1
+                  ? <>Liked by <strong>Liza Stevens</strong> and {post.likes - 1} others</>
+                  : <>Liked by <strong>Liza Stevens</strong></>}
+              </span>
+            </>
+          ) : (
+            <span className="post-social__liked-by post-social__liked-by--empty">Be the first to like this</span>
+          )}
         </div>
         <div className="post-social__actions">
           <button
@@ -1519,6 +1582,92 @@ function PostCard({ post, onCta }) {
             <CommentIcon />
             <span>{post.comments}</span>
           </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── Create Post Sheet ───────────────────────────── */
+function FeedComposeSheet({ onClose, onSubmit }) {
+  const [text, setText] = useState('')
+  const [photoPreview, setPhotoPreview] = useState(null)
+  const fileRef = useRef(null)
+
+  function handlePhotoChange(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    setPhotoPreview(URL.createObjectURL(file))
+  }
+
+  function handlePost() {
+    if (!text.trim()) return
+    onSubmit({ body: text.trim(), image: photoPreview })
+  }
+
+  return (
+    <div className="feed-compose-backdrop" onClick={onClose}>
+      <div className="feed-compose-sheet" onClick={e => e.stopPropagation()}>
+        <div className="feed-compose-sheet__handle" />
+        <div className="feed-compose-sheet__header">
+          <button className="feed-compose-sheet__cancel" onClick={onClose}>Cancel</button>
+          <span className="feed-compose-sheet__title">Create Post</span>
+          <button className="feed-compose-sheet__post" disabled={!text.trim()} onClick={handlePost}>Post</button>
+        </div>
+        <div className="feed-compose-sheet__author">
+          <img src={PROFILE_IMG} alt="" className="feed-compose-sheet__avatar" />
+          <span className="feed-compose-sheet__name">Thomas Bravo</span>
+        </div>
+        <textarea
+          className="feed-compose-sheet__textarea"
+          placeholder="Share an update with your neighbors…"
+          value={text}
+          onChange={e => setText(e.target.value)}
+          autoFocus
+        />
+        {photoPreview && (
+          <div className="feed-compose-sheet__photo-wrap">
+            <img src={photoPreview} alt="" className="feed-compose-sheet__photo" />
+            <button className="feed-compose-sheet__photo-remove" onClick={() => setPhotoPreview(null)} aria-label="Remove photo">×</button>
+          </div>
+        )}
+        <button className="feed-compose-sheet__add-photo" onClick={() => fileRef.current?.click()}>
+          <CameraIcon /> Add Photo
+        </button>
+        <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handlePhotoChange} />
+      </div>
+    </div>
+  )
+}
+
+/* ── Feed Author Filter Sheet ─────────────────────── */
+function FeedAuthorFilterSheet({ authors, selected, onChange, onClose }) {
+  const [draft, setDraft] = useState(new Set(selected))
+
+  function toggle(name) {
+    setDraft(d => {
+      const next = new Set(d)
+      next.has(name) ? next.delete(name) : next.add(name)
+      return next
+    })
+  }
+
+  return (
+    <div className="feed-compose-backdrop" onClick={onClose}>
+      <div className="feed-compose-sheet" onClick={e => e.stopPropagation()}>
+        <div className="feed-compose-sheet__handle" />
+        <div className="feed-compose-sheet__header">
+          <button className="feed-compose-sheet__cancel" onClick={() => { setDraft(new Set()); onChange(new Set()); onClose() }}>Clear</button>
+          <span className="feed-compose-sheet__title">Filter by Neighbor</span>
+          <button className="feed-compose-sheet__post" onClick={() => { onChange(draft); onClose() }}>Apply</button>
+        </div>
+        <div className="feed-filter-author-list">
+          {authors.map(name => (
+            <button key={name} className="feed-filter-author-row" onClick={() => toggle(name)}>
+              <span>{name}</span>
+              {draft.has(name) && <CheckIcon />}
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -1912,6 +2061,22 @@ function CommentIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  )
+}
+function CameraIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+  )
+}
+function CheckIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="9" cy="9" r="9" fill="currentColor" opacity="0.15"/>
+      <path d="M5 9l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
