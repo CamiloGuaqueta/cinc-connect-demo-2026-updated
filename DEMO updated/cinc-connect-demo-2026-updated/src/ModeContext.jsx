@@ -3,6 +3,18 @@ import { CURRENT_USER } from './data/userData'
 
 const ModeContext = createContext()
 
+const BRAND_KEY = 'res_brand'
+
+function loadSavedBrand() {
+  try {
+    const raw = localStorage.getItem(BRAND_KEY)
+    if (!raw) return { name: '', logo: '' }
+    return { name: '', logo: '', ...JSON.parse(raw) }
+  } catch {
+    return { name: '', logo: '' }
+  }
+}
+
 const INITIAL_RESIDENT_PROFILE = {
   firstName:         CURRENT_USER.firstName,
   lastName:          CURRENT_USER.lastName,
@@ -30,6 +42,11 @@ export function ModeProvider({ children }) {
   const [defaultPaymentMethodId, setDefaultPaymentMethodId] = useState('visa1')
   const [notifOpen,         setNotifOpen]         = useState(false)
   const [notifInitialChatId, setNotifInitialChatId] = useState(null)
+  const [brand,             setBrandState]        = useState(loadSavedBrand)
+
+  useEffect(() => {
+    localStorage.setItem(BRAND_KEY, JSON.stringify(brand))
+  }, [brand])
 
   useEffect(() => {
     localStorage.setItem('layoutMode', isWeb ? 'web' : 'mobile')
@@ -64,6 +81,8 @@ export function ModeProvider({ children }) {
     setResidentViewStack(view ? [{ screen: view, data }] : [])
   }
 
+  const setBrand = (updates) => setBrandState(b => ({ ...b, ...updates }))
+
   const openMessagesThread = (chatId) => {
     setNotifInitialChatId(chatId)
     setNotifOpen(true)
@@ -92,6 +111,7 @@ export function ModeProvider({ children }) {
       defaultPaymentMethodId, setDefaultPaymentMethodId,
       notifOpen,         setNotifOpen,
       notifInitialChatId, openMessagesThread, closeNotifCenter,
+      brand,             setBrand,
     }}>
       {children}
     </ModeContext.Provider>

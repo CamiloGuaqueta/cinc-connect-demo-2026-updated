@@ -4,6 +4,8 @@ import { useMode } from '../ModeContext'
 import { THEMES, THEME_ORDER, applyTheme, saveTheme, getSavedThemeId, getSavedCustomColors } from '../theme'
 import './ResidentPrototypeTheme.css'
 
+const DEFAULT_HOA_NAME = 'Cardinal Hills HOA'
+
 function toHex(color) {
   if (!color) return '#000000'
   if (color.startsWith('#')) return color
@@ -31,7 +33,7 @@ function Swatches({ colors }) {
 }
 
 export default function ResidentPrototypeTheme() {
-  const { popResidentView } = useMode()
+  const { popResidentView, brand, setBrand } = useMode()
   const [activeId, setActiveId] = useState(getSavedThemeId)
   const [showCustomSheet, setShowCustomSheet] = useState(false)
   const [customColors, setCustomColors] = useState(
@@ -40,6 +42,25 @@ export default function ResidentPrototypeTheme() {
   const [draftColors, setDraftColors] = useState({ ...DEFAULT_CUSTOM })
   const [openPicker, setOpenPicker] = useState(null)
   const pickerRef = useRef(null)
+  const [nameDraft, setNameDraft] = useState(brand.name)
+  const logoInputRef = useRef(null)
+
+  function handleNameBlur() {
+    setBrand({ name: nameDraft.trim() })
+  }
+
+  function handleLogoChange(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => setBrand({ logo: reader.result })
+    reader.readAsDataURL(file)
+  }
+
+  function resetBrand() {
+    setNameDraft('')
+    setBrand({ name: '', logo: '' })
+  }
 
   useEffect(() => {
     if (!openPicker) return
@@ -72,9 +93,47 @@ export default function ResidentPrototypeTheme() {
   return (
     <div className="screen ptheme-screen">
       <div className="ptheme-header">
-        <span className="ptheme-title">PROTOTYPE THEME</span>
+        <span className="ptheme-title">CUSTOMIZE DEMO</span>
       </div>
 
+      <p className="ptheme-section-title">ASSOCIATION BRANDING</p>
+      <div className="ptheme-brand-card">
+        <div className="ptheme-brand-logo-row">
+          <div className="ptheme-brand-logo-preview">
+            {brand.logo
+              ? <img src={brand.logo} alt="Logo preview" />
+              : <span className="ptheme-brand-logo-preview__fallback">CINC</span>}
+          </div>
+          <button className="ptheme-brand-upload-btn" onClick={() => logoInputRef.current?.click()}>
+            Upload Logo
+          </button>
+          <input
+            ref={logoInputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleLogoChange}
+          />
+        </div>
+        <div className="ptheme-brand-name-row">
+          <span className="ptheme-brand-name-row__label">Association Name</span>
+          <input
+            className="ptheme-brand-name-row__input"
+            type="text"
+            value={nameDraft}
+            placeholder={DEFAULT_HOA_NAME}
+            onChange={e => setNameDraft(e.target.value)}
+            onBlur={handleNameBlur}
+          />
+        </div>
+        {(brand.name || brand.logo) && (
+          <button className="ptheme-brand-reset-btn" onClick={resetBrand}>
+            Reset to {DEFAULT_HOA_NAME} defaults
+          </button>
+        )}
+      </div>
+
+      <p className="ptheme-section-title">PROTOTYPE THEME</p>
       <div className="ptheme-list">
         {THEME_ORDER.map((id, i) => {
           const theme = THEMES[id]

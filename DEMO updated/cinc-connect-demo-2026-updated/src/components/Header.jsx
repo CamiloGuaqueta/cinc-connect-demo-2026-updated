@@ -12,7 +12,7 @@ const SUB_PAGES = ['/meeting', '/broadcast', '/broadcast/audience', '/pulse/viol
 export default function Header() {
   const {
     isBoard, setIsBoard, residentViewStack, popResidentView, navGuard, setChatOpen,
-    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter,
+    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter, brand,
   } = useMode()
   const { pathname } = useLocation()
   const navigate = useNavigate()
@@ -51,10 +51,10 @@ export default function Header() {
           ) : (
             <>
               <button className="app-header__logo" onClick={handleLogoReset} aria-label="Reset app">
-                <img src={CINC_ICON} alt="CINC" />
+                <img src={brand.logo || CINC_ICON} alt={brand.name || 'CINC'} />
               </button>
               <div className="app-header__hoa">
-                <span className="app-header__hoa-name">Cardinal Hills HOA</span>
+                <span className="app-header__hoa-name">{brand.name || 'Cardinal Hills HOA'}</span>
                 {screenTitle && <span className="app-header__screen">{screenTitle}</span>}
               </div>
             </>

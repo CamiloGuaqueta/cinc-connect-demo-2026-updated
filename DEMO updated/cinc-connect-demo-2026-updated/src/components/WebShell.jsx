@@ -100,7 +100,7 @@ export default function WebShell({ children, showMembershipOptIn, onMembershipCo
 function WebTopNav() {
   const {
     isBoard, residentTab, navigateResident, showBoardRoom, setChatOpen,
-    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter,
+    notifOpen, setNotifOpen, notifInitialChatId, closeNotifCenter, brand,
   } = useMode()
   const navigate = useNavigate()
   const { pathname } = useLocation()
@@ -128,11 +128,11 @@ function WebTopNav() {
       <div className="web-top-nav__left">
         <img
           className="web-top-nav__logo"
-          src="/images/cinc-icon.png"
-          alt="CINC"
+          src={brand.logo || '/images/cinc-icon.png'}
+          alt={brand.name || 'CINC'}
           onError={e => { e.target.style.display = 'none' }}
         />
-        <span className="web-top-nav__hoa">Cardinal Hills HOA</span>
+        <span className="web-top-nav__hoa">{brand.name || 'Cardinal Hills HOA'}</span>
       </div>
 
       {/* Center tabs */}
