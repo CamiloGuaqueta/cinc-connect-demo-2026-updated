@@ -107,13 +107,13 @@ export const CUSTOM_TILES = [
         {
           heading: 'New Residents — Spring 2026',
           list: [
-            'The Martínez Family — 2318 Crestview Lane',
-            'David & Priya Nguyen — 445 Ridgeway Court',
-            'The Okafor Family — 789 Maple Ridge Drive',
-            'James & Lena Schultz — 1102 Hillcrest Blvd',
-            'The Patel Family — 334 Sunrise Pass',
-            'Chloe & Marcus Webb — 2201 Cardinal Way',
-            'The Andersons — 990 Brookstone Circle',
+            'The Martínez Family — 812 Cardinal Heights',
+            'David & Priya Nguyen — 55 Ridgeline Pass',
+            'The Okafor Family — 634 Cardinal Way',
+            'James & Lena Schultz — 128 Hillcrest Loop',
+            'The Patel Family — 90 Pinecrest Loop',
+            'Chloe & Marcus Webb — 500 Cardinal Point Rd',
+            'The Andersons — 275 Cardinal Hills Dr',
           ],
         },
         {
