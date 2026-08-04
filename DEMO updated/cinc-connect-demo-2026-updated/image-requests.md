@@ -4,11 +4,13 @@ Generated from a full audit of every image used in these flows. None are technic
 
 **How to use this:** generate/source each image below, save it with the **exact filename** shown, and drop it into the folder listed. Once the files are there, tell me and I'll wire them into the code (swap the current placeholder paths for the new files) and rebuild.
 
-General guidance: landscape orientation, main subject centered (everything is cropped with `object-fit: cover`, so off-center subjects can get cut off). Recommended sizes, measured against how each surface actually renders and the resolution of existing sibling images:
+General guidance: landscape orientation, main subject centered (everything is cropped with `object-fit: cover`, so off-center subjects can get cut off). Recommended sizes, measured against how each surface actually renders and the existing sibling images already in the repo:
 
-- **Tier 1 (Calendar):** 1600×800px (2:1) — matches the aspect ratio of the current placeholders, shown in a banner up to 200px tall.
-- **Tiers 2, 3, 5 (Violations / ACC / Work Orders):** 1600×640px (2.5:1) — 2× the size of the existing `card-*.jpg` files (800×320) for a crisp full-bleed banner.
-- **Tier 4 (Clubhouse):** 1920×1080px (16:9) — matches the resolution of the other Amenities photos (`pool.jpg`, `courts.jpg` are both 1920×1080).
+- **Tier 1 (Calendar):** 1200×600px (2:1) — matches the current placeholders, shown in a banner up to 200px tall.
+- **Tiers 2, 3, 5 (Violations / ACC / Work Orders):** 800×320px — same as the existing `card-*.jpg` files, which already look fine at the 132px-tall banner they render in. No need to go bigger here.
+- **Tier 4 (Clubhouse):** 1920×1080px (16:9) — matches `pool.jpg` / `courts.jpg`, the other two Amenities photos, since this one gets reused across several screens.
+
+**On file weight:** pixel size isn't what makes an image heavy — compression is. `pool.jpg` (1920×1038) is only 134KB while the current `Clubhouse.jpg` (a smaller 1200×600) is 513KB just from being poorly compressed. Export as JPEG at roughly 80% quality and each of these should land well under 250KB regardless of the pixel dimensions above.
 
 ---
 
