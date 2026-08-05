@@ -1388,6 +1388,14 @@ function ResidentFeed() {
     setAcctIndex(index)
   }
 
+  function goToAcct(i) {
+    const el = acctSliderRef.current
+    if (!el) return
+    const clamped = Math.max(0, Math.min(i, ACCT_UNITS.length - 1))
+    el.scrollTo({ left: clamped * el.offsetWidth, behavior: 'smooth' })
+    setAcctIndex(clamped)
+  }
+
   const handleCta = (post) => {
     if (post.ctaBlogId) {
       const blog = BLOGS.find(b => b.id === post.ctaBlogId)
@@ -1447,6 +1455,7 @@ function ResidentFeed() {
         </div>
 
         <div className="acct-carousel">
+          <div className="acct-carousel__track-wrap">
           <div className="acct-carousel__track" ref={acctSliderRef} onScroll={handleAcctScroll}>
             {ACCT_UNITS.map(unit => (
               <div className="acct-carousel__slide" key={unit.id}>
@@ -1482,9 +1491,25 @@ function ResidentFeed() {
               </div>
             ))}
           </div>
+          {acctIndex > 0 && (
+            <button className="acct-carousel__arrow acct-carousel__arrow--prev" aria-label="Previous unit" onClick={() => goToAcct(acctIndex - 1)}>
+              <span className="acct-carousel__arrow-btn"><ChevronLeftSmallIcon /></span>
+            </button>
+          )}
+          {acctIndex < ACCT_UNITS.length - 1 && (
+            <button className="acct-carousel__arrow acct-carousel__arrow--next" aria-label="Next unit" onClick={() => goToAcct(acctIndex + 1)}>
+              <span className="acct-carousel__arrow-btn"><ChevronRightSmallIcon /></span>
+            </button>
+          )}
+          </div>
           <div className="acct-card__dots">
             {ACCT_UNITS.map((_, i) => (
-              <span key={i} className={`acct-card__dot${i === acctIndex ? ' acct-card__dot--active' : ''}`} />
+              <button
+                key={i}
+                className={`acct-card__dot${i === acctIndex ? ' acct-card__dot--active' : ''}`}
+                aria-label={`Go to unit ${i + 1}`}
+                onClick={() => goToAcct(i)}
+              />
             ))}
           </div>
         </div>
@@ -1998,6 +2023,13 @@ function ChevronRightSmallIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
       <path d="M9 18l6-6-6-6"/>
+    </svg>
+  )
+}
+function ChevronLeftSmallIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
+      <path d="M15 18l-6-6 6-6"/>
     </svg>
   )
 }
