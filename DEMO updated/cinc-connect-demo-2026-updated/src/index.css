@@ -45,12 +45,12 @@
   --phone-h:      844px;
 }
 
-/* ── Resident palette tokens (Dark theme defaults) ──── */
+/* ── Resident palette tokens (Light/CINC brand defaults) ──── */
 :root {
-  --res-bg1:    #313131;
-  --res-bg2:    #1D1D1D;
-  --res-text:   #D1D1D1;
-  --res-accent: #B0DB61;
+  --res-bg1:    #FBFAF7;
+  --res-bg2:    #F1EADC;
+  --res-text:   #171B19;
+  --res-accent: #002D28;
 }
 
 

@@ -12,18 +12,18 @@ export const THEMES = {
   light: {
     id: 'light',
     label: 'Light',
-    '--res-bg1':    '#FFF8EA',
+    '--res-bg1':    '#FBFAF7',
     '--res-bg2':    '#F1EADC',
-    '--res-text':   '#1D1D1D',
-    '--res-accent': '#235237',
+    '--res-text':   '#171B19',
+    '--res-accent': '#002D28',
   },
   cincGreen: {
     id: 'cincGreen',
     label: 'CINC Green',
-    '--res-bg1':    '#112719',
-    '--res-bg2':    '#235237',
-    '--res-text':   '#FFF8EA',
-    '--res-accent': '#B2DE61',
+    '--res-bg1':    '#002D28',
+    '--res-bg2':    '#006A52',
+    '--res-text':   '#FBFAF7',
+    '--res-accent': '#B6E75A',
   },
   eastPurple: {
     id: 'eastPurple',
@@ -64,9 +64,9 @@ export function loadSavedTheme() {
 export function getSavedThemeId() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return 'dark'
+    if (!raw) return 'light'
     return JSON.parse(raw).id
-  } catch { return 'dark' }
+  } catch { return 'light' }
 }
 
 export function getSavedCustomColors() {
