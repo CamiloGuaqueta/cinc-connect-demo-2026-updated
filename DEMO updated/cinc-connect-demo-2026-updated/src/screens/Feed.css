@@ -517,9 +517,6 @@
   gap: 0;
   margin: 0 -16px; /* bleed to screen edges */
 }
-.acct-carousel__track-wrap {
-  position: relative;
-}
 .acct-carousel__track {
   display: flex;
   overflow-x: auto;
@@ -527,34 +524,18 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   gap: 0;
+  cursor: grab;
+  touch-action: pan-y;
 }
 .acct-carousel__track::-webkit-scrollbar { display: none; }
-
-.acct-carousel__arrow {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  width: 40px;
-  border: none;
-  background: none;
-  padding: 0;
-  z-index: 2;
+.acct-carousel__track--dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
 }
-.acct-carousel__arrow--prev { left: 4px; justify-content: flex-start; }
-.acct-carousel__arrow--next { right: 4px; justify-content: flex-end; }
-.acct-carousel__arrow-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.acct-carousel__track--dragging .acct-carousel__slide {
+  pointer-events: none;
 }
-.acct-carousel__arrow:active .acct-carousel__arrow-btn { opacity: 0.7; }
 
 .acct-carousel__slide {
   flex: 0 0 100%;

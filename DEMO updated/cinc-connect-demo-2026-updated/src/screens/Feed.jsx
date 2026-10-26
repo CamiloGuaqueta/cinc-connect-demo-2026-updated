@@ -1371,6 +1371,8 @@ function ResidentFeed() {
   const { pushResidentViews, residentProfile } = useMode()
   const [acctIndex, setAcctIndex] = useState(0)
   const acctSliderRef = useRef(null)
+  const acctDrag = useRef(null)
+  const [acctDragging, setAcctDragging] = useState(false)
   const [posts, setPosts] = useState(() => [...RESIDENT_POSTS])
   const [composeOpen, setComposeOpen] = useState(false)
   const [filterOpen, setFilterOpen] = useState(false)
@@ -1394,6 +1396,29 @@ function ResidentFeed() {
     const clamped = Math.max(0, Math.min(i, ACCT_UNITS.length - 1))
     el.scrollTo({ left: clamped * el.offsetWidth, behavior: 'smooth' })
     setAcctIndex(clamped)
+  }
+
+  // Mouse drag-to-scroll for web (touch already scrolls natively on mobile)
+  function handleAcctPointerDown(e) {
+    if (e.pointerType !== 'mouse') return
+    const el = acctSliderRef.current
+    if (!el) return
+    acctDrag.current = { startX: e.clientX, startScroll: el.scrollLeft }
+    setAcctDragging(true)
+    el.setPointerCapture?.(e.pointerId)
+  }
+  function handleAcctPointerMove(e) {
+    if (!acctDrag.current) return
+    const el = acctSliderRef.current
+    if (!el) return
+    el.scrollLeft = acctDrag.current.startScroll - (e.clientX - acctDrag.current.startX)
+  }
+  function handleAcctPointerUp() {
+    if (!acctDrag.current) return
+    acctDrag.current = null
+    setAcctDragging(false)
+    const el = acctSliderRef.current
+    if (el) goToAcct(Math.round(el.scrollLeft / el.offsetWidth))
   }
 
   const handleCta = (post) => {
@@ -1455,8 +1480,15 @@ function ResidentFeed() {
         </div>
 
         <div className="acct-carousel">
-          <div className="acct-carousel__track-wrap">
-          <div className="acct-carousel__track" ref={acctSliderRef} onScroll={handleAcctScroll}>
+          <div
+            className={`acct-carousel__track${acctDragging ? ' acct-carousel__track--dragging' : ''}`}
+            ref={acctSliderRef}
+            onScroll={handleAcctScroll}
+            onPointerDown={handleAcctPointerDown}
+            onPointerMove={handleAcctPointerMove}
+            onPointerUp={handleAcctPointerUp}
+            onPointerCancel={handleAcctPointerUp}
+          >
             {ACCT_UNITS.map(unit => (
               <div className="acct-carousel__slide" key={unit.id}>
               <div className="acct-card">
@@ -1490,17 +1522,6 @@ function ResidentFeed() {
               </div>
               </div>
             ))}
-          </div>
-          {acctIndex > 0 && (
-            <button className="acct-carousel__arrow acct-carousel__arrow--prev" aria-label="Previous unit" onClick={() => goToAcct(acctIndex - 1)}>
-              <span className="acct-carousel__arrow-btn"><ChevronLeftSmallIcon /></span>
-            </button>
-          )}
-          {acctIndex < ACCT_UNITS.length - 1 && (
-            <button className="acct-carousel__arrow acct-carousel__arrow--next" aria-label="Next unit" onClick={() => goToAcct(acctIndex + 1)}>
-              <span className="acct-carousel__arrow-btn"><ChevronRightSmallIcon /></span>
-            </button>
-          )}
           </div>
           <div className="acct-card__dots">
             {ACCT_UNITS.map((_, i) => (
@@ -2023,13 +2044,6 @@ function ChevronRightSmallIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
       <path d="M9 18l6-6-6-6"/>
-    </svg>
-  )
-}
-function ChevronLeftSmallIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
-      <path d="M15 18l-6-6 6-6"/>
     </svg>
   )
 }
