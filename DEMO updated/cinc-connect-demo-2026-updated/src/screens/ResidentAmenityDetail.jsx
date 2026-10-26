@@ -650,10 +650,10 @@ export default function ResidentAmenityDetail({ amenity }) {
               <div className="amenity-confirm__photo-wrap">
                 <img src={amenity.img} alt={amenity.name} className="amenity-confirm__photo" />
                 <div className="amenity-confirm__photo-gradient" />
-                <button className="amenity-confirm__close" onClick={popResidentView}>
+                <button className="amenity-confirm__close amenity-confirm__close--photo" onClick={popResidentView}>
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                    <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                    <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
+                    <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                   </svg>
                 </button>
                 <div className="amenity-confirm__icon-ring">

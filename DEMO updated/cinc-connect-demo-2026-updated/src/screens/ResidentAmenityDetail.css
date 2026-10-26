@@ -1456,6 +1456,12 @@
   cursor: pointer;
 }
 
+/* Over the edge-to-edge photo: keep clear of the phone frame's rounded corner */
+.amenity-confirm__close--photo {
+  top: 28px;
+  right: 24px;
+}
+
 .amenity-confirm__icon-ring {
   position: absolute;
   bottom: -15px;

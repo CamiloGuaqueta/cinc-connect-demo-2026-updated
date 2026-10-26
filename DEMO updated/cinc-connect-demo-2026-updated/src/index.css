@@ -134,6 +134,7 @@ p { margin: 0; }
   height: min(100dvh, var(--phone-h));
   background: var(--bg-page);
   overflow: hidden;
+  overflow: clip; /* never let focus/scrollIntoView scroll the frame itself (would shift portaled sheets) */
   /* On desktop show as phone emulator */
   border-radius: 44px;
   box-shadow: 0 32px 80px rgba(0,0,0,0.6);
