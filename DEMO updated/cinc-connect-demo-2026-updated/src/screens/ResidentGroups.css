@@ -33,7 +33,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(178,222,97,0.12);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;

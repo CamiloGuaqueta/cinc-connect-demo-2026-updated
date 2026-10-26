@@ -16,10 +16,10 @@ function toHex(color) {
 }
 
 const DEFAULT_CUSTOM = {
-  '--res-bg1':    '#112719',
-  '--res-bg2':    '#235237',
-  '--res-text':   '#FFF8EA',
-  '--res-accent': '#B2DE61',
+  '--res-bg1':    '#E9EEEA',
+  '--res-bg2':    '#FFFFFF',
+  '--res-text':   '#171B19',
+  '--res-accent': '#006A52',
 }
 
 function Swatches({ colors }) {

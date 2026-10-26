@@ -26,7 +26,7 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: #1e3a22;
+  background: color-mix(in srgb, var(--lime) 14%, var(--bg-card));
   border: 2px solid var(--lime);
   color: var(--lime);
   font-size: 26px;
@@ -127,8 +127,8 @@
 }
 
 .viol-log-avatar--owner {
-  background: #1e3a22;
-  color: #a8e6b8;
+  background: color-mix(in srgb, var(--lime) 14%, var(--bg-card));
+  color: var(--lime);
 }
 
 /* ── Attachment panel ────────────────────────────────── */

@@ -90,7 +90,7 @@
 .welcome-modal__feature-text span {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.65);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   line-height: 1.5;
 }
 
@@ -131,5 +131,5 @@
 .welcome-modal__dont-show span {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
 }

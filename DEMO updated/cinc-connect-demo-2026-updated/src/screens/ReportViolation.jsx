@@ -322,7 +322,7 @@ function CephaiLogoIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
       <circle cx="20" cy="20" r="20" fill="currentColor" />
-      <path d="M20 8l8 6v12l-8 6-8-6V14l8-6z" fill="#112719" />
+      <path d="M20 8l8 6v12l-8 6-8-6V14l8-6z" fill="var(--text-dark)" />
       <circle cx="20" cy="20" r="4" fill="currentColor" />
     </svg>
   )

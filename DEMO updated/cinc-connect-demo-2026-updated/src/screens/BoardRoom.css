@@ -81,5 +81,5 @@
 
 .br-row__chevron {
   flex-shrink: 0;
-  color: rgba(255, 248, 234, 0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
 }

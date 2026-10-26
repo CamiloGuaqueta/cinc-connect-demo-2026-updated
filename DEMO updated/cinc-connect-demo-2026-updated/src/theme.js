@@ -7,15 +7,17 @@ export const THEMES = {
     '--res-bg1':    '#313131',
     '--res-bg2':    '#1D1D1D',
     '--res-text':   '#D1D1D1',
-    '--res-accent': '#B0DB61',
+    '--res-accent': '#B6E75A',
+    '--res-border': 'rgba(255,255,255,0.10)',
   },
   light: {
     id: 'light',
     label: 'Light',
-    '--res-bg1':    '#FBFAF7',
-    '--res-bg2':    '#F1EADC',
+    '--res-bg1':    '#E9EEEA',
+    '--res-bg2':    '#FFFFFF',
     '--res-text':   '#171B19',
-    '--res-accent': '#002D28',
+    '--res-accent': '#006A52',
+    '--res-border': '#CBCACD',
   },
   cincGreen: {
     id: 'cincGreen',
@@ -24,6 +26,7 @@ export const THEMES = {
     '--res-bg2':    '#006A52',
     '--res-text':   '#FBFAF7',
     '--res-accent': '#B6E75A',
+    '--res-border': 'rgba(255,255,255,0.10)',
   },
   eastPurple: {
     id: 'eastPurple',
@@ -32,6 +35,7 @@ export const THEMES = {
     '--res-bg2':    '#0c0819',
     '--res-text':   '#e6e8ff',
     '--res-accent': '#ccafff',
+    '--res-border': 'rgba(255,255,255,0.10)',
   },
 }
 

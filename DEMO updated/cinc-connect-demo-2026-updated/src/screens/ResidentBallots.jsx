@@ -522,7 +522,7 @@ function VoteReceiptSheet({ ballotType, ballotTitle, receipt, onClose }) {
           <div className="vote-receipt__check">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <circle cx="14" cy="14" r="14" fill="var(--lime)" />
-              <path d="M7 14L11.5 19L21 9" stroke="#1a2a1a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M7 14L11.5 19L21 9" stroke="var(--text-dark)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
           <p className="vote-receipt__confirmed">Vote Confirmed</p>
@@ -590,7 +590,7 @@ function BallotCard({ sectionLabel, image, title, descKey, closeDate, countdownT
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <circle cx="7" cy="7" r="7" fill="var(--lime)" />
-                <path d="M3.5 7L5.5 9.5L10.5 4.5" stroke="#1a2a1a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3.5 7L5.5 9.5L10.5 4.5" stroke="var(--text-dark)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               Vote Cast
             </div>

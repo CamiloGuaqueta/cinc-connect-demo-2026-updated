@@ -1128,7 +1128,7 @@ function PulseBackIcon() {
 }
 function PulseChevronRightSmallIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFF8EA" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text)" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
       <path d="M9 18l6-6-6-6"/>
     </svg>
   )

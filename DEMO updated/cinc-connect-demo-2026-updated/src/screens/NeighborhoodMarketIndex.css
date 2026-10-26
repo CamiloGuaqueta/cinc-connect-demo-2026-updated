@@ -24,7 +24,7 @@
 }
 .nmi-prop-sub {
   font-size: 12px;
-  color: rgba(255, 248, 234, 0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
   margin-top: 4px;
 }
 
@@ -34,7 +34,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   margin-top: 6px;
   margin-bottom: 0;
 }
@@ -69,7 +69,7 @@
 .nmi-kpi-label {
   font-size: 9px;
   font-weight: 600;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   line-height: 1.3;
@@ -99,7 +99,7 @@
   padding: 3px 8px;
   align-self: flex-start;
 }
-.nmi-score-badge--good { background: rgba(178, 222, 97, 0.18); color: var(--res-accent); }
+.nmi-score-badge--good { background: color-mix(in srgb, var(--lime) 18%, transparent); color: var(--res-accent); }
 .nmi-score-badge--fair { background: rgba(255, 183, 77, 0.18); color: #ffb74d; }
 .nmi-score-badge--bad  { background: rgba(224,  92, 92, 0.18); color: #e05c5c; }
 
@@ -148,7 +148,7 @@
 
 .nmi-avm-updated {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 
 .nmi-change-badge {
@@ -168,7 +168,7 @@
 .nmi-field-label {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.07em;
   margin-bottom: 10px;
@@ -187,7 +187,7 @@
 .nmi-range-fill {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(178, 222, 97, 0.25), rgba(178, 222, 97, 0.7));
+  background: linear-gradient(to right, color-mix(in srgb, var(--lime) 25%, transparent), color-mix(in srgb, var(--lime) 70%, transparent));
   border-radius: 3px;
 }
 .nmi-range-needle {
@@ -199,14 +199,14 @@
   border-radius: 50%;
   background: var(--res-text);
   border: 2px solid var(--res-bg2);
-  box-shadow: 0 0 0 2px rgba(178, 222, 97, 0.55);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--lime) 55%, transparent);
 }
 .nmi-range-labels {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
 }
 .nmi-range-center {
   font-size: 11px;
@@ -230,7 +230,7 @@
 .nmi-conf-dot--on { background: var(--res-accent); }
 .nmi-conf-label {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 
 /* ── NMI Score card ──────────────────────────────────── */
@@ -261,7 +261,7 @@
   text-align: center;
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   margin: 10px 0 16px;
 }
 .nmi-sub-scores {
@@ -277,7 +277,7 @@
 .nmi-sub-label {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
   width: 76px;
   flex-shrink: 0;
 }
@@ -317,7 +317,7 @@
 }
 .nmi-stat-cell--highlight {
   grid-column: 1 / -1;
-  background: rgba(178, 222, 97, 0.05);
+  background: color-mix(in srgb, var(--lime) 5%, transparent);
 }
 .nmi-stat-val {
   font-size: 22px;
@@ -329,16 +329,16 @@
 .nmi-stat-unit {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 .nmi-stat-label {
   font-size: 10px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 .nmi-stat-sub {
   font-size: 9px;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin-top: 1px;
   line-height: 1.4;
 }
@@ -360,7 +360,7 @@
 .nmi-profile-label {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
 }
 .nmi-profile-value {
   font-size: 13px;
@@ -382,8 +382,8 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(178, 222, 97, 0.18);
-  border: 2px solid rgba(178, 222, 97, 0.5);
+  background: color-mix(in srgb, var(--lime) 18%, transparent);
+  border: 2px solid color-mix(in srgb, var(--lime) 50%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -399,7 +399,7 @@
 }
 .nmi-agent-sub {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   margin-top: 2px;
 }
 .nmi-insights-tags {
@@ -415,13 +415,13 @@
   border-radius: 4px;
   padding: 3px 8px;
 }
-.nmi-tag--lime  { background: rgba(178, 222, 97, 0.15); color: var(--res-accent); }
+.nmi-tag--lime  { background: color-mix(in srgb, var(--lime) 15%, transparent); color: var(--res-accent); }
 .nmi-tag--amber { background: rgba(255, 183,  77, 0.15); color: #ffb74d; }
 .nmi-tag--blue  { background: rgba(100, 160, 255, 0.15); color: #64a0ff; }
 .nmi-insights-body {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
   line-height: 1.6;
 }
 
@@ -470,7 +470,7 @@
 }
 .nmi-blog-excerpt {
   font-size: 11px;
-  color: rgba(255, 248, 234, 0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
   line-height: 1.5;
   margin: 0 0 7px;
   display: -webkit-box;
@@ -486,15 +486,15 @@
 .nmi-blog-date,
 .nmi-blog-read {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 .nmi-blog-sep {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.2);
+  color: color-mix(in srgb, var(--text) 20%, transparent);
 }
 .nmi-blog-arrow {
   font-size: 22px;
-  color: rgba(255, 248, 234, 0.2);
+  color: color-mix(in srgb, var(--text) 20%, transparent);
   flex-shrink: 0;
   line-height: 1;
 }
@@ -505,7 +505,7 @@
 .nmi-see-more-btn {
   width: 100%;
   background: none;
-  border: 1px solid rgba(178, 222, 97, 0.25);
+  border: 1px solid color-mix(in srgb, var(--lime) 25%, transparent);
   border-radius: 10px;
   padding: 12px;
   font-size: 13px;
@@ -528,7 +528,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(178, 222, 97, 0.18);
+  background: color-mix(in srgb, var(--lime) 18%, transparent);
   border: 2px solid var(--res-accent);
   display: flex;
   align-items: center;
@@ -549,7 +549,7 @@
 }
 .nmi-realtor-title {
   font-size: 11px;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   margin-top: 2px;
 }
 .nmi-realtor-brokerage {
@@ -572,7 +572,7 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(209, 209, 209, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
 }
 .nmi-realtor-actions {
   display: flex;
@@ -594,7 +594,7 @@
 .nmi-realtor-btn:active { opacity: 0.85; }
 .nmi-realtor-btn--primary {
   background: var(--res-accent);
-  color: #112719;
+  color: var(--text-dark);
 }
 .nmi-realtor-btn--secondary {
   background: var(--res-bg2);
@@ -627,7 +627,7 @@
 }
 .nmi-sale-details {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   margin-top: 2px;
 }
 .nmi-sale-right {
@@ -644,7 +644,7 @@
 }
 .nmi-sale-date {
   font-size: 10px;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 
 /* ── Status badges ───────────────────────────────────── */
@@ -655,9 +655,9 @@
   border-radius: 4px;
   padding: 2px 7px;
 }
-.nmi-badge--active  { background: rgba(178, 222, 97, 0.18); color: var(--res-accent); }
+.nmi-badge--active  { background: color-mix(in srgb, var(--lime) 18%, transparent); color: var(--res-accent); }
 .nmi-badge--pending { background: rgba(107, 203, 119, 0.18); color: #6bcb77; }
-.nmi-badge--sold    { background: rgba(255, 248, 234, 0.08); color: rgba(255, 248, 234, 0.55); }
+.nmi-badge--sold    { background: color-mix(in srgb, var(--text) 8%, transparent); color: color-mix(in srgb, var(--text) 55%, transparent); }
 
 /* ── Pagination ──────────────────────────────────────── */
 .nmi-pagination {
@@ -684,7 +684,7 @@
 .nmi-page-info {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
 }
 
 /* ── Blog pull-up sheet ──────────────────────────────── */
@@ -774,7 +774,7 @@
   height: 30px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -814,7 +814,7 @@
 }
 .nmi-blog-sheet__sub {
   font-size: 11px;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin-top: 2px;
 }
@@ -826,7 +826,7 @@
 .nmi-blog-sheet__para {
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(255, 248, 234, 0.75);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 14px;
 }
@@ -842,12 +842,12 @@
 .nmi-legal p {
   font-size: 10px;
   line-height: 1.6;
-  color: rgba(209, 209, 209, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 .nmi-legal a {
-  color: rgba(209, 209, 209, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -879,7 +879,7 @@
 .nmi-note-body {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(209, 209, 209, 0.75);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
   line-height: 1.65;
   margin: 0 0 10px;
 }
@@ -888,6 +888,6 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
   margin: 0;
 }

@@ -50,7 +50,7 @@
   width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 248, 234, 0.25);
+  background: color-mix(in srgb, var(--text) 25%, transparent);
 }
 
 /* Detail content */
@@ -200,7 +200,7 @@
   height: 16px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%);
 }
 
 .amenity-stat span {
@@ -269,7 +269,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   letter-spacing: 1.26px;
 }
 
@@ -282,7 +282,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   letter-spacing: 0.2px;
 }
 
@@ -398,7 +398,7 @@
 .amenity-disclosure-modal__label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.36px;
   text-transform: uppercase;
   padding: 18px 20px 10px;
@@ -407,7 +407,7 @@
 
 .amenity-disclosure-modal__sep {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
   flex-shrink: 0;
   margin: 0 0px;
 }
@@ -525,8 +525,8 @@
   width: 100%;
   height: 50px;
   border-radius: 10px;
-  background: rgba(255, 248, 234, 0.1);
-  color: rgba(255, 248, 234, 0.25);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+  color: color-mix(in srgb, var(--text) 25%, transparent);
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -555,7 +555,7 @@
 .amenity-detail__details-input {
   width: 100%;
   background: var(--res-bg1);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
   border-radius: 10px;
   color: var(--res-text);
   font-size: 14px;
@@ -570,11 +570,11 @@
 }
 
 .amenity-detail__details-input::placeholder {
-  color: rgba(255, 248, 234, 0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
 }
 
 .amenity-detail__details-input:focus {
-  border-color: rgba(178, 222, 97, 0.5);
+  border-color: color-mix(in srgb, var(--lime) 50%, transparent);
 }
 
 /* Continue */
@@ -601,8 +601,8 @@
 }
 
 .amenity-detail__continue--disabled {
-  background: rgba(255, 248, 234, 0.1);
-  color: rgba(255, 248, 234, 0.25);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+  color: color-mix(in srgb, var(--text) 25%, transparent);
   cursor: default;
 }
 
@@ -639,7 +639,7 @@
   height: 18px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(97%) sepia(8%) saturate(500%) hue-rotate(300deg) brightness(103%) contrast(95%);
+  filter: brightness(0) saturate(100%) invert(8%) sepia(10%) saturate(400%) hue-rotate(100deg);
 }
 
 .amenity-detail__info-row span {
@@ -651,7 +651,7 @@
 
 .amenity-detail__info-divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
   margin: 0;
 }
 
@@ -688,7 +688,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 20px 16px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 .amenity-hours-panel__back {
@@ -718,7 +718,7 @@
 .amenity-hours-panel__name {
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.6px;
   padding: 16px 20px 8px;
@@ -735,7 +735,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .amenity-hours-row__blocks {
@@ -752,7 +752,7 @@
 .amenity-hours-row__day {
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
 }
 
 .amenity-hours-row__time {
@@ -1006,7 +1006,7 @@
   text-align: center;
   font-size: 11px;
   font-weight: 700;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   padding: 4px 0;
 }
 
@@ -1114,7 +1114,7 @@
   padding: 10px 16px;
   margin: -20px -20px 16px;
   background: rgba(22,30,10,0.95);
-  border-bottom: 1px solid rgba(178,222,97,0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--lime) 20%, transparent);
   color: var(--lime);
   font-size: 12px;
   line-height: 1.4;
@@ -1156,7 +1156,7 @@
   height: 32px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%);
   margin-top: 1px;
 }
 
@@ -1183,13 +1183,13 @@
 .amenity-pay-summary-card__date {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
 }
 
 .amenity-pay-summary-card__guests {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   margin-top: 2px;
 }
 
@@ -1210,7 +1210,7 @@
 .amenity-pay-row__label {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
 }
 
 .amenity-pay-row__value {
@@ -1220,7 +1220,7 @@
 }
 
 .amenity-pay-row__value--dim {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 .amenity-pay-row--total .amenity-pay-row__label {
@@ -1237,11 +1237,11 @@
 
 .amenity-pay-divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .amenity-pay-divider--strong {
-  background: rgba(255, 248, 234, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   margin: 4px 0;
 }
 
@@ -1257,14 +1257,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0 12px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   margin-bottom: 12px;
 }
 
 .amenity-pay-deposit-card__label {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
 }
 
 .amenity-pay-deposit-card__amount {
@@ -1276,7 +1276,7 @@
 .amenity-pay-deposit-card__note {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   line-height: 1.65;
   margin: 0;
 }
@@ -1321,7 +1321,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
 }
 
 /* Picker dropdown — alternatives */
@@ -1336,8 +1336,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(35, 82, 55, 0.7);
-  border: 1px solid rgba(255, 248, 234, 0.08);
+  background: var(--bg-card);
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   border-radius: 10px;
   padding: 12px 14px;
   cursor: pointer;
@@ -1366,21 +1366,21 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
 }
 
 .amenity-pay-method-option__sub {
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 .amenity-pay-method__apple-pay {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
   font-size: 17px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.65);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   letter-spacing: -0.2px;
   flex-shrink: 0;
 }
@@ -1392,11 +1392,11 @@
   height: 52px;
   border-radius: 10px;
   border: none;
-  background: rgba(255, 248, 234, 0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 800;
-  color: rgba(255, 248, 234, 0.25);
+  color: color-mix(in srgb, var(--text) 25%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: default;
@@ -1479,7 +1479,7 @@
 .amenity-confirm__icon {
   width: 72px;
   height: 72px;
-  filter: brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%);
+  filter: brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%);
 }
 
 .amenity-confirm__body {
@@ -1533,7 +1533,7 @@
 
 .amenity-confirm__sep {
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
   margin: 0 0 16px;
 }
 
@@ -1554,7 +1554,7 @@
 .amenity-confirm__datetime {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.65);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   line-height: 1.5;
   margin: 0 0 2px;
 }
@@ -1562,7 +1562,7 @@
 .amenity-confirm__guests {
   font-size: 14px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.65);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   line-height: 1.5;
   margin: 0;
 }
@@ -1631,7 +1631,7 @@
 
 .amenity-confirm__divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   margin: 0 20px;
 }
 
@@ -1659,7 +1659,7 @@
   height: 52px;
   border-radius: 10px;
   background: none;
-  border: 1px solid rgba(255, 248, 234, 0.45);
+  border: 1px solid color-mix(in srgb, var(--text) 45%, transparent);
   color: var(--res-text);
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
@@ -1713,7 +1713,7 @@
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: opacity 0.15s;
@@ -1756,7 +1756,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 248, 234, 0.25);
+  border: 1.5px solid color-mix(in srgb, var(--text) 25%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1784,7 +1784,7 @@
 
 .amenity-method-sel__brand-img--bank {
   width: 20px;
-  filter: brightness(0) saturate(100%) invert(97%) sepia(8%) saturate(500%) hue-rotate(300deg) brightness(103%) contrast(95%);
+  filter: brightness(0) saturate(100%) invert(8%) sepia(10%) saturate(400%) hue-rotate(100deg);
   opacity: 0.5;
 }
 
@@ -1818,7 +1818,7 @@
   background: none;
   border: none;
   padding: 4px 6px;
-  color: #fff8ea;
+  color: var(--text);
   font-size: 13px;
   font-weight: 400;
   cursor: pointer;

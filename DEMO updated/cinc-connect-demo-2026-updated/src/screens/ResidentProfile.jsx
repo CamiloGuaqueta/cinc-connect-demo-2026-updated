@@ -332,8 +332,8 @@ function RpToggle({ on, onToggle }) {
 function CheckCircleIcon() {
   return (
     <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="32" fill="rgba(178,222,97,0.12)" />
-      <circle cx="32" cy="32" r="22" fill="rgba(178,222,97,0.18)" />
+      <circle cx="32" cy="32" r="32" fill="color-mix(in srgb, var(--lime) 12%, transparent)" />
+      <circle cx="32" cy="32" r="22" fill="color-mix(in srgb, var(--lime) 18%, transparent)" />
       <path d="M21 32L29 40L44 24" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
@@ -342,7 +342,7 @@ function CheckCircleIcon() {
 function ModalCloseIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M4 4L14 14M14 4L4 14" stroke="rgba(255,248,234,0.5)" strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M4 4L14 14M14 4L4 14" stroke="color-mix(in srgb, var(--text) 50%, transparent)" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   )
 }
@@ -350,8 +350,8 @@ function ModalCloseIcon() {
 function CameraIcon() {
   return (
     <svg width="18" height="16" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9 3L7.17 5H4C2.9 5 2 5.9 2 7V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V7C22 5.9 21.1 5 20 5H16.83L15 3H9ZM12 18C9.24 18 7 15.76 7 13C7 10.24 9.24 8 12 8C14.76 8 17 10.24 17 13C17 15.76 14.76 18 12 18Z" fill="#112719"/>
-      <circle cx="12" cy="13" r="3" fill="#112719"/>
+      <path d="M9 3L7.17 5H4C2.9 5 2 5.9 2 7V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V7C22 5.9 21.1 5 20 5H16.83L15 3H9ZM12 18C9.24 18 7 15.76 7 13C7 10.24 9.24 8 12 8C14.76 8 17 10.24 17 13C17 15.76 14.76 18 12 18Z" fill="var(--text-dark)"/>
+      <circle cx="12" cy="13" r="3" fill="var(--text-dark)"/>
     </svg>
   )
 }

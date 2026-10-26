@@ -136,7 +136,7 @@
 .md-card__label {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255,248,234,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -221,13 +221,13 @@
   background: none;
   padding: 0;
   cursor: pointer;
-  border-top: 1px solid rgba(178,222,97,0.3);
+  border-top: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
 }
 
 .md-units-more span {
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255,248,234,0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -257,7 +257,7 @@
 .md-phone-type {
   font-size: 10px;
   font-weight: 500;
-  color: rgba(255,248,234,0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin-top: 2px;
 }

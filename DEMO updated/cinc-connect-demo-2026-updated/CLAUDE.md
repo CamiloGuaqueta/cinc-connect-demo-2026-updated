@@ -74,26 +74,19 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - Canon de direcciones corregido (Rachel Park → 27 Cardinal Way, directorio con calles canon, Market Index/Home Value con units reales).
 - Imágenes reales en Calendar, Violations, ACC, Work Orders y Clubhouse (spec en `image-requests.md`; originales en `src/images/IMAGENES GPT/`, NO se suben al repo — usar `git add -A -- ':!src/images/IMAGENES GPT'`).
 
-## TRABAJO EN CURSO: migración a colores actuales de CINC
+## Paleta de colores (migración a colores actuales de CINC — HECHA 10/2026)
 
-**Estado: cambios SIN commitear en `src/theme.js` y `src/index.css`. No hacer push hasta terminar** — el login hoy se ve roto (placeholders/legal invisibles) por los hardcodes viejos.
-
-**Paleta objetivo** (extraída por Camilo de la app real en App Store "CINC2Connect", manda sobre la guía de marca para UI de producto):
-- Fondo de página `#E9EEEA` → `--res-bg1` (también header/nav/`--bg-page`)
-- Cards `#FFFFFF` → `--res-bg2` (`--bg-card`)
-- Títulos y botones `#006A52` (Evergreen) → `--res-accent`
-- Texto `#171B19` (CINC Ink) → `--res-text`
-- Borde de cards blancas `#CBCACD` → nuevo token `--res-border` (`--border` ahora lo usa). También `#E9E9E9` para bordes/divisores suaves.
-- NO usar el "sand"/crema (`#FBFAF7`, `#FFF8EA`, `#F1EADC`) — la app real no lo usa.
-- Regla de Camilo: **en ningún lado deben aparecer los colores viejos** ("electric green" / lime).
-
-**Ya hecho en el WIP:** preset `light` en `theme.js` con esa paleta (+ `--res-border` en todos los presets), `:root` de `index.css` con esos defaults, `--bg-page` ahora mapea a `--res-bg1` (antes bg2), default de tema cambiado de `dark` a `light`. Preset `cincGreen` actualizado a Deep Green `#002D28` / Evergreen `#006A52` / Lime `#B6E75A`.
-
-**Falta:**
-1. **Barrido de hardcodes viejos**: 581 ocurrencias en 126 archivos de `#B2DE61`, `#B0DB61`, `#FFF8EA`, `rgba(255,248,234,…)`, `#235237`, `#112719` (y variantes). Reemplazar por variables de tema (`var(--res-accent)`, `var(--res-text)`, `color-mix(in srgb, var(--res-text) X%, transparent)`, etc.) según contexto — ojo que `#112719` a veces es fondo y a veces texto sobre botón lime. Los peores: `ResidentAmenityDetail.jsx/.css`, `Feed.jsx/.css`, `NeighborhoodMarketIndex.css`, `ResidentAmenities.*`, `ResidentMailingAddressDetail.css`, `MembersList.*`, `LoginScreen.*`. ~60 íconos en `src/ICONS/*.svg` con fill fijo → pasar a `currentColor` si se inyectan como raw, o a `#006A52` si se usan con `<img>`.
-2. **Logo del login** (`src/images/login-logo.svg`, todo en `#B2DE61`): reemplazar por logo oficial del kit de marca (skill `cinc-brand-guidelines`, `assets/logos/cinc/png-rgb/` — sobre fondo claro usar colorway `green` o `forest`; escalar SOLO proporcional). Pendiente decisión de Camilo: (a) el wordmark "CONNEC+" (`connecplus-wordmark.svg`) no existe en el kit — ¿recolorear a Evergreen o hay lockup oficial?; (b) la app real usa un ícono de casa con dos puntos en el login — ¿usar ese? (necesitaría el archivo).
-3. **Splash** (`SplashScreen.jsx` → `src/images/splash-bg.png`): imagen única con foto + overlay + logo lime quemados, no se puede recolorear. Pendiente decisión: (a) foto aérea limpia + overlay CSS Deep Green + logo blanco oficial (`cinc-icon-white.png`), (b) fondo sólido + logo blanco, o (c) replicar el splash real de la app si Camilo manda captura.
-4. Verificar en navegador (login, Feed, Financial Hub, My Community, Board Room, More/Customize Demo) y recién ahí build + commit + push.
+**Paleta** (extraída por Camilo de la app real "CINC2Connect", manda sobre la guía de marca para UI de producto). Tema por defecto: `light` en `theme.js`.
+- Fondo de página `#E9EEEA` → `--res-bg1` (`--bg-page`, header, nav)
+- Cards `#FFFFFF` → `--res-bg2` (`--bg-card`), borde `#CBCACD` → `--res-border` (`--border`)
+- Títulos y botones `#006A52` (Evergreen) → `--res-accent` (= `--lime` dentro de `.resident-mode`; el nombre `--lime` es legacy)
+- Texto `#171B19` (CINC Ink) → `--res-text` (`--text`). Texto sobre botón accent → `--text-dark`
+- Superficies de color FIJO que no siguen el tema (cards ilustradas, PDFs): `--brand-evergreen` `#006A52`, `--brand-mint` `#D9E9E3` (en `:root` de `index.css`)
+- **Deep Green `#002D28` SOLO en el logo** del splash y del login. No usarlo en ningún otro lado de la app (también existe en el preset opcional `cincGreen` de Customize Demo).
+- Prohibidos (regla de Camilo): lime/"electric green" viejo (`#B2DE61`, `#B0DB61`, `rgba(178,222,97,…)`), crema (`#FFF8EA`, `#FBFAF7`, `#F1EADC`), verdes oscuros viejos (`#112719`, `#235237`, `#0e1e11`, `#1e3a22`…), gris de texto del tema oscuro (`rgba(209,209,209,…)`). Barrido completo hecho: 0 ocurrencias (salvo `Pulse`/`MeetingAgenda`, inalcanzables).
+- Íconos `src/ICONS/*.svg`: los importados con `?raw` usan `fill="currentColor"`; los usados con `<img>` usan `#171B19`. Para recolorear un `<img>` a Evergreen se usa el filtro `brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)`.
+- Splash: `src/images/splash-bg.jpg` (foto en gris claro + logo `#002D28`), generado desde el splash viejo. Login: `login-logo.svg` y `connecplus-wordmark.svg` recoloreados a `#002D28`.
+- Al probar el login en el navegador NO enviar el form real (manda lead a HubSpot + Google Sheet): stubbear `fetch`/`Image` o setear `localStorage.hubspotLeadCaptured='true'` antes.
 
 ## Pendientes (baja prioridad)
 

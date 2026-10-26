@@ -55,7 +55,7 @@
 }
 
 .rd-search::placeholder {
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-weight: 400;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .rd-chevron {
-  color: #9ab89e;
+  color: var(--text-muted);
   flex-shrink: 0;
 }
 
@@ -118,7 +118,7 @@
 .rd-row__exclusive {
   font-size: 10px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.01em;
 }

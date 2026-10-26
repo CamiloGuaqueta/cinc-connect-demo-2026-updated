@@ -158,7 +158,7 @@ function ConsentCard({ consent, signed, signedDate, onSign, onViewReceipt, onRem
           <div className="consent-signed-badge">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <circle cx="7" cy="7" r="7" fill="var(--lime)" />
-              <path d="M3.5 7L5.5 9.5L10.5 4.5" stroke="#1a2a1a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3.5 7L5.5 9.5L10.5 4.5" stroke="var(--text-dark)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             Signed
           </div>

@@ -248,7 +248,7 @@ export default function ResidentFinancialHub() {
 function PinIcon() {
   return (
     <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:16,height:20,flexShrink:0,color:'currentColor'}}
-      dangerouslySetInnerHTML={{__html: unitIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"')}} />
+      dangerouslySetInnerHTML={{__html: unitIconRaw}} />
   )
 }
 
@@ -289,27 +289,27 @@ function RadioIcon({ selected }) {
 function StatementsIcon() {
   return (
     <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:52,height:52}}
-      dangerouslySetInnerHTML={{__html: invoiceIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"')}} />
+      dangerouslySetInnerHTML={{__html: invoiceIconRaw}} />
   )
 }
 
 function PaymentHistoryIcon() {
   return (
     <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:52,height:52}}
-      dangerouslySetInnerHTML={{__html: timeMoneyIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"')}} />
+      dangerouslySetInnerHTML={{__html: timeMoneyIconRaw}} />
   )
 }
 
 function PaymentMethodsIcon() {
   return (
     <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:52,height:52}}
-      dangerouslySetInnerHTML={{__html: walletIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"')}} />
+      dangerouslySetInnerHTML={{__html: walletIconRaw}} />
   )
 }
 
 function AutopayIcon() {
   return (
     <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:52,height:52}}
-      dangerouslySetInnerHTML={{__html: autopayIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"').replace(/fill="#fff8ea"/g, 'fill="currentColor"')}} />
+      dangerouslySetInnerHTML={{__html: autopayIconRaw}} />
   )
 }

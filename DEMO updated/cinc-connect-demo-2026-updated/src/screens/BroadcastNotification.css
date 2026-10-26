@@ -114,7 +114,7 @@
 .bc-chip--on {
   border-color: var(--lime);
   color: var(--lime);
-  background: rgba(178, 222, 97, 0.1);
+  background: color-mix(in srgb, var(--lime) 10%, transparent);
 }
 
 .bc-chip--delivery {
@@ -163,7 +163,7 @@
 }
 
 .bc-textarea:focus {
-  border-color: rgba(178, 222, 97, 0.4);
+  border-color: color-mix(in srgb, var(--lime) 40%, transparent);
 }
 
 .bc-textarea::placeholder {
@@ -195,7 +195,7 @@
 }
 
 .bc-date-input:focus {
-  border-color: rgba(178, 222, 97, 0.4);
+  border-color: color-mix(in srgb, var(--lime) 40%, transparent);
 }
 
 .bc-next-btn {
@@ -253,7 +253,7 @@
   color: var(--text);
   outline: none;
 }
-.bc-input:focus { border-color: rgba(178,222,97,0.4); }
+.bc-input:focus { border-color: color-mix(in srgb, var(--lime) 40%, transparent); }
 .bc-input::placeholder { color: var(--text-muted); }
 
 .bc-attach-btn {

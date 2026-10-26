@@ -60,7 +60,7 @@ export function SmartHomeSheetScreen() {
 export default function ResidentParticipation() {
   const { pushResidentView, isWeb } = useMode()
 
-  const fix = svg => svg.replace(/fill="#FFF8EA"/gi, 'fill="currentColor"')
+  const fix = svg => svg
 
   const TILES = [
     { label: 'Work\nOrders',             icon: fix(woIcon),         onTap: () => pushResidentView('work-orders') },

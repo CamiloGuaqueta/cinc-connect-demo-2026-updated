@@ -365,7 +365,6 @@ function BoardRoomIcon() {
 
 function PropertyIcon() {
   const svg = myPropertyIconRaw
-    .replace(/fill="#FFF8EA"/g, 'fill="currentColor"')
     .replace(/width="71"/, 'width="100%"')
     .replace(/height="76"/, 'height="100%"')
   return <span style={{display:'contents'}} dangerouslySetInnerHTML={{__html: svg}} />

@@ -32,7 +32,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   text-align: left;
   margin: 0;
 }
@@ -40,7 +40,7 @@
 .moi-divider {
   width: 100%;
   height: 1px;
-  background: rgba(255, 248, 234, 0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
   margin: 0 -24px;
   width: calc(100% + 48px);
 }
@@ -97,12 +97,12 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.55);
+  color: color-mix(in srgb, var(--text) 55%, transparent);
 }
 
 .moi-unit-divider {
   height: 1px;
-  background: rgba(255, 248, 234, 0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 /* ── Toggle ──────────────────────────────────────────── */

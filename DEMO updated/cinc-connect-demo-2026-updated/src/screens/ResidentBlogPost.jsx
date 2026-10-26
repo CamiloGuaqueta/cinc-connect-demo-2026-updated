@@ -2,7 +2,7 @@ import sarahPhoto from '../images/sarah1.jpg'
 import './ResidentBlogPost.css'
 
 const CATEGORY_COLORS = {
-  lime:  { bg: 'rgba(178, 222, 97, 0.15)',  color: '#B2DE61' },
+  lime:  { bg: 'color-mix(in srgb, var(--lime) 15%, transparent)',  color: 'var(--lime)' },
   amber: { bg: 'rgba(255, 183,  77, 0.15)', color: '#ffb74d' },
   blue:  { bg: 'rgba(100, 160, 255, 0.15)', color: '#64a0ff' },
 }

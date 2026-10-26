@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import splashBg from '../images/splash-bg.png'
+import splashBg from '../images/splash-bg.jpg'
 import './SplashScreen.css'
 
 export default function SplashScreen({ onDone }) {

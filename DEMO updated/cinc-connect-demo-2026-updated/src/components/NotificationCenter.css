@@ -18,8 +18,8 @@
   --bg-page:    #313131;
   --bg-card:    #1e1e1e;
   --bg-header:  #313131;
-  --text:       #fff8ea;
-  --lime:       #b2de61;
+  --text:       var(--text);
+  --lime:       var(--lime);
   --border:     rgba(255,255,255,0.08);
 }
 
@@ -199,7 +199,7 @@
 }
 
 .notif-filter--active {
-  background: rgba(178,222,97,0.15);
+  background: color-mix(in srgb, var(--lime) 15%, transparent);
   color: var(--lime);
 }
 

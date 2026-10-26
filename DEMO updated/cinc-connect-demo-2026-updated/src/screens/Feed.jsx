@@ -53,7 +53,7 @@ const WEEKLY_SLIDES_APR12 = [
       { label: 'Emails Responded', value: '98' },
       { label: 'Avg. Response Time', value: '2.3 Hrs' },
     ],
-    theme: { overlayBg: '#21181A', kpiBg: '#B2DE61', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#171B19', kpiBg: '#006A52', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF' },
   },
   {
     eyebrow: 'Work Orders & Maintenance Execution',
@@ -65,7 +65,7 @@ const WEEKLY_SLIDES_APR12 = [
       { label: 'Completed This Week', value: '7' },
       { label: 'Avg Completion Time', value: '2.1 Days' },
     ],
-    theme: { overlayBg: '#AEDBBE', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', illustrationSize: '104%', lightBg: true },
+    theme: { overlayBg: '#E9EEEA', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', illustrationSize: '104%', lightBg: true },
   },
   {
     eyebrow: 'Financial Oversight & Collections',
@@ -77,7 +77,7 @@ const WEEKLY_SLIDES_APR12 = [
       { label: 'Invoices Processed', value: '12' },
       { label: 'Verified & Approved', value: '100%' },
     ],
-    theme: { overlayBg: '#112719', kpiBg: '#AEDBBE', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#006A52', kpiBg: '#D9E9E3', kpiValueColor: '#006A52', kpiLabelColor: '#006A52' },
   },
   {
     eyebrow: 'Violations & Compliance',
@@ -89,7 +89,7 @@ const WEEKLY_SLIDES_APR12 = [
       { label: 'Repeat Cases Escalated', value: '3' },
       { label: 'Resolution Rate', value: '61%' },
     ],
-    theme: { overlayBg: '#B2DE61', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', lightBg: true },
+    theme: { overlayBg: '#D9E9E3', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', lightBg: true },
   },
   {
     eyebrow: 'Architectural Requests (ARC)',
@@ -115,7 +115,7 @@ const WEEKLY_SLIDES_APR19 = [
       { label: 'Emails Responded', value: '104' },
       { label: 'Avg. Response Time', value: '2.1 Hrs' },
     ],
-    theme: { overlayBg: '#21181A', kpiBg: '#B2DE61', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#171B19', kpiBg: '#006A52', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF' },
   },
   {
     eyebrow: 'Work Orders & Maintenance Execution',
@@ -127,7 +127,7 @@ const WEEKLY_SLIDES_APR19 = [
       { label: 'Completed This Week', value: '8' },
       { label: 'Avg Completion Time', value: '1.9 Days' },
     ],
-    theme: { overlayBg: '#AEDBBE', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', illustrationSize: '104%', lightBg: true },
+    theme: { overlayBg: '#E9EEEA', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', illustrationSize: '104%', lightBg: true },
   },
   {
     eyebrow: 'Financial Oversight & Collections',
@@ -139,7 +139,7 @@ const WEEKLY_SLIDES_APR19 = [
       { label: 'Invoices Processed', value: '10' },
       { label: 'Verified & Approved', value: '100%' },
     ],
-    theme: { overlayBg: '#112719', kpiBg: '#AEDBBE', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#006A52', kpiBg: '#D9E9E3', kpiValueColor: '#006A52', kpiLabelColor: '#006A52' },
   },
   {
     eyebrow: 'Violations & Compliance',
@@ -151,7 +151,7 @@ const WEEKLY_SLIDES_APR19 = [
       { label: 'Repeat Cases Escalated', value: '2' },
       { label: 'Resolution Rate', value: '64%' },
     ],
-    theme: { overlayBg: '#B2DE61', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', lightBg: true },
+    theme: { overlayBg: '#D9E9E3', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', lightBg: true },
   },
   {
     eyebrow: 'Architectural Requests (ARC)',
@@ -177,7 +177,7 @@ const WEEKLY_SLIDES_MAR22 = [
       { label: 'Emails Responded', value: '92' },
       { label: 'Avg. Response Time', value: '2.6 Hrs' },
     ],
-    theme: { overlayBg: '#21181A', kpiBg: '#B2DE61', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#171B19', kpiBg: '#006A52', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF' },
   },
   {
     eyebrow: 'Work Orders & Maintenance Execution',
@@ -189,7 +189,7 @@ const WEEKLY_SLIDES_MAR22 = [
       { label: 'Completed This Week', value: '6' },
       { label: 'Avg Completion Time', value: '2.4 Days' },
     ],
-    theme: { overlayBg: '#AEDBBE', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', illustrationSize: '104%', lightBg: true },
+    theme: { overlayBg: '#E9EEEA', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', illustrationSize: '104%', lightBg: true },
   },
   {
     eyebrow: 'Financial Oversight & Collections',
@@ -201,7 +201,7 @@ const WEEKLY_SLIDES_MAR22 = [
       { label: 'Invoices Processed', value: '14' },
       { label: 'Verified & Approved', value: '100%' },
     ],
-    theme: { overlayBg: '#112719', kpiBg: '#AEDBBE', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#006A52', kpiBg: '#D9E9E3', kpiValueColor: '#006A52', kpiLabelColor: '#006A52' },
   },
   {
     eyebrow: 'Violations & Compliance',
@@ -213,7 +213,7 @@ const WEEKLY_SLIDES_MAR22 = [
       { label: 'Repeat Cases Escalated', value: '4' },
       { label: 'Resolution Rate', value: '62%' },
     ],
-    theme: { overlayBg: '#B2DE61', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', lightBg: true },
+    theme: { overlayBg: '#D9E9E3', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', lightBg: true },
   },
   {
     eyebrow: 'Architectural Requests (ARC)',
@@ -239,7 +239,7 @@ const WEEKLY_SLIDES_MAR15 = [
       { label: 'Emails Responded', value: '97' },
       { label: 'Avg. Response Time', value: '2.0 Hrs' },
     ],
-    theme: { overlayBg: '#21181A', kpiBg: '#B2DE61', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#171B19', kpiBg: '#006A52', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF' },
   },
   {
     eyebrow: 'Work Orders & Maintenance Execution',
@@ -251,7 +251,7 @@ const WEEKLY_SLIDES_MAR15 = [
       { label: 'Completed This Week', value: '9' },
       { label: 'Avg Completion Time', value: '1.8 Days' },
     ],
-    theme: { overlayBg: '#AEDBBE', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', illustrationSize: '104%', lightBg: true },
+    theme: { overlayBg: '#E9EEEA', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', illustrationSize: '104%', lightBg: true },
   },
   {
     eyebrow: 'Financial Oversight & Collections',
@@ -263,7 +263,7 @@ const WEEKLY_SLIDES_MAR15 = [
       { label: 'Invoices Processed', value: '11' },
       { label: 'Verified & Approved', value: '100%' },
     ],
-    theme: { overlayBg: '#112719', kpiBg: '#AEDBBE', kpiValueColor: '#112719', kpiLabelColor: '#112719' },
+    theme: { overlayBg: '#006A52', kpiBg: '#D9E9E3', kpiValueColor: '#006A52', kpiLabelColor: '#006A52' },
   },
   {
     eyebrow: 'Violations & Compliance',
@@ -275,7 +275,7 @@ const WEEKLY_SLIDES_MAR15 = [
       { label: 'Repeat Cases Escalated', value: '2' },
       { label: 'Resolution Rate', value: '63%' },
     ],
-    theme: { overlayBg: '#B2DE61', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#1d1d1d', headlineColor: '#21181A', copyColor: '#21181A', lightBg: true },
+    theme: { overlayBg: '#D9E9E3', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#1d1d1d', headlineColor: '#171B19', copyColor: '#171B19', lightBg: true },
   },
   {
     eyebrow: 'Architectural Requests (ARC)',
@@ -314,7 +314,7 @@ const MONTHLY_SLIDES_FEB = [
       { label: 'Completed This Month', value: '38' },
       { label: 'Avg Completion Time', value: '2.2 Days' },
     ],
-    theme: { overlayBg: '#FFF8EA', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#7A5A00', headlineColor: '#21181A', copyColor: '#3A2A00', lightBg: true },
+    theme: { overlayBg: '#FFFFFF', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#7A5A00', headlineColor: '#171B19', copyColor: '#3A2A00', lightBg: true },
   },
   {
     eyebrow: 'February 2026 — Financials',
@@ -338,7 +338,7 @@ const MONTHLY_SLIDES_FEB = [
       { label: 'Repeat Cases Escalated', value: '11' },
       { label: 'Resolution Rate', value: '66%' },
     ],
-    theme: { overlayBg: '#E8AF48', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
+    theme: { overlayBg: '#E8AF48', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
   },
   {
     eyebrow: 'February 2026 — ARC',
@@ -377,7 +377,7 @@ const MONTHLY_SLIDES_MAR = [
       { label: 'Completed This Month', value: '35' },
       { label: 'Avg Completion Time', value: '2.1 Days' },
     ],
-    theme: { overlayBg: '#FFF8EA', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#7A5A00', headlineColor: '#21181A', copyColor: '#3A2A00', lightBg: true },
+    theme: { overlayBg: '#FFFFFF', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#7A5A00', headlineColor: '#171B19', copyColor: '#3A2A00', lightBg: true },
   },
   {
     eyebrow: 'March 2026 — Financials',
@@ -401,7 +401,7 @@ const MONTHLY_SLIDES_MAR = [
       { label: 'Repeat Cases Escalated', value: '13' },
       { label: 'Resolution Rate', value: '68%' },
     ],
-    theme: { overlayBg: '#E8AF48', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
+    theme: { overlayBg: '#E8AF48', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
   },
   {
     eyebrow: 'March 2026 — ARC',
@@ -440,7 +440,7 @@ const MONTHLY_SLIDES_APR = [
       { label: 'Completed This Month', value: '28' },
       { label: 'Avg Completion Time', value: '2.0 Days' },
     ],
-    theme: { overlayBg: '#FFF8EA', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#7A5A00', headlineColor: '#21181A', copyColor: '#3A2A00', lightBg: true },
+    theme: { overlayBg: '#FFFFFF', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#7A5A00', headlineColor: '#171B19', copyColor: '#3A2A00', lightBg: true },
   },
   {
     eyebrow: 'April 2026 — Financials',
@@ -464,7 +464,7 @@ const MONTHLY_SLIDES_APR = [
       { label: 'Repeat Cases Escalated', value: '8' },
       { label: 'Resolution Rate', value: '69%' },
     ],
-    theme: { overlayBg: '#E8AF48', kpiBg: '#21181A', kpiValueColor: '#FFF8EA', kpiLabelColor: '#FFF8EA', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
+    theme: { overlayBg: '#E8AF48', kpiBg: '#171B19', kpiValueColor: '#FFFFFF', kpiLabelColor: '#FFFFFF', eyebrowColor: '#3D2800', headlineColor: '#1A1508', copyColor: '#1A1508', lightBg: true },
   },
   {
     eyebrow: 'April 2026 — ARC',
@@ -625,14 +625,14 @@ const WRAP_CONFIGS = {
     titleFn:     () => 'Here\'s What East Management Has Been Up To',
     sub:         'A quick look at the meaningful work happening behind the scenes.',
     illustration: WorkSvg,
-    cardBg:      '#aedbbe',
-    pillBg:      '#235237',
-    pillColor:   '#a5ce9f',
-    ctaBg:       '#112719',
-    ctaColor:    '#B2DE61',
-    eyebrowColor:'#319245',
-    titleColor:  '#112719',
-    subColor:    '#112719',
+    cardBg:      'var(--brand-mint)',
+    pillBg:      '#FFFFFF',
+    pillColor:   'var(--brand-evergreen)',
+    ctaBg:       'var(--brand-evergreen)',
+    ctaColor:    '#FFFFFF',
+    eyebrowColor:'var(--brand-evergreen)',
+    titleColor:  '#171B19',
+    subColor:    '#171B19',
   },
   monthly: {
     eyebrow:     'Monthly Performance Report',
@@ -645,8 +645,8 @@ const WRAP_CONFIGS = {
     ctaBg:       '#E8AF48',
     ctaColor:    '#1A1508',
     eyebrowColor:'#E8AF48',
-    titleColor:  '#FFF8EA',
-    subColor:    'rgba(255,248,234,0.75)',
+    titleColor:  '#FFFFFF',
+    subColor:    'rgba(255,255,255,0.75)',
   },
   quarterly: {
     eyebrow:     'Q1 2026 Quarterly Review',
@@ -659,8 +659,8 @@ const WRAP_CONFIGS = {
     ctaBg:       '#4AAEA0',
     ctaColor:    '#0D2420',
     eyebrowColor:'#4AAEA0',
-    titleColor:  '#FFF8EA',
-    subColor:    'rgba(255,248,234,0.75)',
+    titleColor:  '#FFFFFF',
+    subColor:    'rgba(255,255,255,0.75)',
   },
   yearly: {
     eyebrow:     '2025 Year in Review',
@@ -794,7 +794,7 @@ function WrapStories({ wrap, onClose }) {
 
       <div className="stories-kpis" key={`kpis-${current}`}>
         {slide.kpis.map((kpi, i) => (
-          <div key={i} className="stories-kpi stories-anim-kpi" style={{ background: t.kpiBg || '#aedbbe', animationDelay: `${0.35 + i * 0.07}s` }}>
+          <div key={i} className="stories-kpi stories-anim-kpi" style={{ background: t.kpiBg || 'var(--brand-mint)', animationDelay: `${0.35 + i * 0.07}s` }}>
             <span className="stories-kpi__label" style={t.kpiLabelColor ? { color: t.kpiLabelColor } : undefined}>{kpi.label}</span>
             <span className="stories-kpi__value" style={t.kpiValueColor ? { color: t.kpiValueColor } : undefined}>{kpi.value}</span>
           </div>
@@ -2035,7 +2035,7 @@ function FeedFilter({ filters, onChange, onClose }) {
 /* ── Icons ────────────────────────────────────────── */
 function ChevronRightIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#112719" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" strokeWidth="2.5" strokeLinecap="round" style={{flexShrink:0}}>
       <path d="M9 18l6-6-6-6"/>
     </svg>
   )

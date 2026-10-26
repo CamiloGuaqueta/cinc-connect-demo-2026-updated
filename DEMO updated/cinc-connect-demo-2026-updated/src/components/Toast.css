@@ -12,9 +12,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #1d1d1d;
-  color: #fff8ea;
-  border: 1px solid rgba(178, 222, 97, 0.35);
+  background: #171B19;
+  color: #FFFFFF;
+  border: 1px solid color-mix(in srgb, var(--lime) 35%, transparent);
   border-radius: 999px;
   padding: 10px 18px;
   font-family: 'Montserrat', sans-serif;

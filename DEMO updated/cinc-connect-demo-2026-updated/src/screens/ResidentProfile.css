@@ -36,7 +36,7 @@
 .rp-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(17, 39, 25, 0.4) 0%, rgba(17, 39, 25, 1.0) 100%);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--bg-page) 30%, transparent) 0%, var(--bg-page) 100%);
 }
 
 .rp-hero__avatar-wrap {
@@ -112,7 +112,7 @@
 .rp-section-title {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 8px 0 2px 2px;
@@ -141,7 +141,7 @@
 .rp-caps-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin: 0 0 6px;
@@ -157,7 +157,7 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
-  color: rgba(255, 248, 234, 0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
   margin-left: 4px;
 }
 
@@ -230,7 +230,7 @@
 .rp-field-input {
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
   font-size: 13px;
@@ -241,7 +241,7 @@
 }
 
 .rp-field-input::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 /* used when input sits directly under a .rp-field-header */
@@ -253,7 +253,7 @@
 .rp-remove-btn {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -341,7 +341,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   margin: 0;
   padding-right: 24px;
 }
@@ -350,7 +350,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.8);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   line-height: 1.55;
   margin: 0;
 }
@@ -361,7 +361,7 @@
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  border-top: 1px solid rgba(255, 248, 234, 0.1);
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 .rp-modal-accept-btn {
@@ -390,7 +390,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   cursor: pointer;
   padding: 0;
   text-decoration: underline;

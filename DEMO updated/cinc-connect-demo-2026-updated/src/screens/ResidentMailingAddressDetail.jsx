@@ -390,8 +390,8 @@ export default function ResidentMailingAddressDetail({ unitAddress, account }) {
               <p className="atp-title">Address Type</p>
               <button className="atp-close" onClick={() => setAddrTypePickerOpen(false)} aria-label="Close">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5"/>
-                  <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="rgba(255,248,234,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
+                  <circle cx="14" cy="14" r="13" stroke="color-mix(in srgb, var(--text) 35%, transparent)" strokeWidth="1.5"/>
+                  <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="color-mix(in srgb, var(--text) 70%, transparent)" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </button>
             </div>
@@ -427,8 +427,8 @@ export default function ResidentMailingAddressDetail({ unitAddress, account }) {
               <p className="atp-title">State</p>
               <button className="atp-close" onClick={() => setStatePickerOpen(false)} aria-label="Close">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5"/>
-                  <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="rgba(255,248,234,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
+                  <circle cx="14" cy="14" r="13" stroke="color-mix(in srgb, var(--text) 35%, transparent)" strokeWidth="1.5"/>
+                  <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="color-mix(in srgb, var(--text) 70%, transparent)" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </button>
             </div>
@@ -469,8 +469,8 @@ export default function ResidentMailingAddressDetail({ unitAddress, account }) {
           <div className="cpn-sheet">
             <button className="cpn-close" onClick={() => setPendingMethod(null)} aria-label="Close">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <circle cx="14" cy="14" r="13" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5"/>
-                <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="rgba(255,248,234,0.7)" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="14" cy="14" r="13" stroke="color-mix(in srgb, var(--text) 35%, transparent)" strokeWidth="1.5"/>
+                <path d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5" stroke="color-mix(in srgb, var(--text) 70%, transparent)" strokeWidth="1.5" strokeLinecap="round"/>
               </svg>
             </button>
             <div className="cpn-body">
@@ -497,7 +497,7 @@ function ComposeIcon() {
       </mask>
       <g mask="url(#mad-compose-mask)">
         <path d="M11.97 1.8466L10.4812 0.357856C10.0038 -0.119537 9.22703 -0.119251 8.74993 0.358142L0 9.10921V12.3298L3.22005 12.3293L11.97 3.57819C12.4471 3.1008 12.4474 2.324 11.97 1.8466ZM0.974785 11.8247L0.50482 11.3548V9.43347L2.89579 11.8244L0.974785 11.8247ZM3.13177 11.7033L0.625954 9.19749L7.50973 2.31257L10.0155 4.81867L3.13177 11.7033ZM10.1941 4.64011L7.68829 2.13401L7.796 2.02602L10.3021 4.53212L10.1941 4.64011ZM10.4807 4.35356L7.97455 1.84746L8.08226 1.73975L10.5884 4.24586L10.4807 4.35356ZM10.7669 4.0673L8.26082 1.5612L8.36853 1.45349L10.8746 3.95959L10.7669 4.0673ZM11.6129 3.22107L11.0532 3.78103L8.54708 1.27493L9.10676 0.714973C9.38731 0.434708 9.84385 0.434422 10.1241 0.714973L11.6131 2.20372C11.8934 2.48399 11.8934 2.94052 11.6129 3.22107Z"
-          fill="rgba(255,248,234,0.55)"/>
+          fill="color-mix(in srgb, var(--text) 55%, transparent)"/>
       </g>
     </svg>
   )
@@ -506,7 +506,7 @@ function ComposeIcon() {
 function ChevronRightIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
-      <path d="M6 4L10 8L6 12" stroke="rgba(255,248,234,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M6 4L10 8L6 12" stroke="color-mix(in srgb, var(--text) 40%, transparent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }

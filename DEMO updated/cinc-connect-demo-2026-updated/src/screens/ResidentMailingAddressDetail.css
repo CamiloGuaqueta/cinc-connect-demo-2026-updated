@@ -40,7 +40,7 @@
 .mad-unit-account {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   margin: 0;
 }
 
@@ -110,9 +110,9 @@
   flex: 1;
   height: 36px;
   border-radius: 8px;
-  border: 1.5px solid rgba(178, 222, 97, 0.3);
+  border: 1.5px solid color-mix(in srgb, var(--lime) 30%, transparent);
   background: transparent;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   font-size: 13px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
@@ -129,7 +129,7 @@
 .mad-caps-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin: 0;
@@ -197,7 +197,7 @@
 .mad-edit-btn {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,7 +210,7 @@
 .mad-remove-btn {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -229,7 +229,7 @@
 .mad-input {
   flex: 1;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
   font-size: 13px;
@@ -240,7 +240,7 @@
 }
 
 .mad-input::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 .mad-confirm-btn {
@@ -259,7 +259,7 @@
 .mad-cancel-btn {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -311,7 +311,7 @@
 .mad-addr-cancel-link {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-size: 12px;
   font-weight: 500;
   font-family: 'Montserrat', sans-serif;
@@ -328,7 +328,7 @@
 .mad-stmt-copy {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
   line-height: 1.55;
   margin: 10px 0 0;
   font-family: 'Montserrat', sans-serif;
@@ -420,7 +420,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   margin: 0;
   padding-right: 32px;
 }
@@ -429,7 +429,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.8);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   line-height: 1.55;
   margin: 0;
 }
@@ -440,7 +440,7 @@
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  border-top: 1px solid rgba(255, 248, 234, 0.1);
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 .cpn-accept-btn {
@@ -469,7 +469,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   cursor: pointer;
   padding: 0;
   text-decoration: underline;
@@ -477,7 +477,7 @@
 }
 
 .cpn-cancel-link:active {
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
 }
 
 /* ── Address Type field ─────────────────────────────────── */
@@ -491,7 +491,7 @@
 }
 
 .mad-addr-type-placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
   font-size: 13px;
   font-weight: 400;
   font-family: 'Montserrat', sans-serif;
@@ -535,7 +535,7 @@
   width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 248, 234, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   margin: 12px auto 0;
   flex-shrink: 0;
 }
@@ -545,7 +545,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px 14px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
   flex-shrink: 0;
 }
 
@@ -555,7 +555,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   margin: 0;
 }
 
@@ -589,7 +589,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.75);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
 }
 
 .atp-option--selected {
@@ -605,7 +605,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 248, 234, 0.3);
+  border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -634,7 +634,7 @@
 .stp-search {
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.3);
+  border: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
   border-radius: 8px;
   color: var(--res-text);
   font-size: 13px;
@@ -644,7 +644,7 @@
 }
 
 .stp-search::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 /* ── ADD ADDRESS inactive state ──────────────────────────── */

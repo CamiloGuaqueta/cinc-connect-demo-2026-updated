@@ -10,14 +10,18 @@
   --bg-nav:       #1e1e1e;
 
   /* Accent */
-  --lime:         #b2de61;
-  --lime-border:  #9ac93c;
-  --lime-dim:     #aedbbe;
+  --lime:         #006A52;
+  --lime-border:  #00553F;
+  --lime-dim:     #D9E9E3;
+
+  /* Fixed CINC brand colors (surfaces that don't follow the theme) */
+  --brand-evergreen: #006A52;
+  --brand-mint:      #D9E9E3;
 
   /* Text */
-  --text:         #fff8ea;
+  --text:         #171B19;
   --text-muted:   #8e8e8e;
-  --text-dark:    #112719;
+  --text-dark:    #FFFFFF;
 
   /* Status */
   --amber:        #efa41e;
@@ -47,10 +51,11 @@
 
 /* ── Resident palette tokens (Light/CINC brand defaults) ──── */
 :root {
-  --res-bg1:    #FBFAF7;
-  --res-bg2:    #F1EADC;
+  --res-bg1:    #E9EEEA;
+  --res-bg2:    #FFFFFF;
   --res-text:   #171B19;
-  --res-accent: #002D28;
+  --res-accent: #006A52;
+  --res-border: #CBCACD;
 }
 
 
@@ -59,7 +64,7 @@
 /* ── Resident mode palette (also applied to web shell) ── */
 .resident-mode,
 .web-shell {
-  --bg-page:      var(--res-bg2);
+  --bg-page:      var(--res-bg1);
   --bg-card:      var(--res-bg2);
   --bg-card-alt:  var(--res-bg2);
   --bg-header:    var(--res-bg1);
@@ -68,7 +73,7 @@
   --text:         var(--res-text);
   --text-dark:    var(--res-bg1);
   --text-muted:   color-mix(in srgb, var(--text) 70%, transparent);
-  --border:       rgba(255,255,255,0.10);
+  --border:       var(--res-border);
 }
 
 /* ── Reset ──────────────────────────────────────────── */
@@ -203,7 +208,7 @@ p { margin: 0; }
   text-transform: uppercase;
   transition: background 0.15s;
 }
-.cta-btn:active { background: rgba(178,222,97,0.1); }
+.cta-btn:active { background: color-mix(in srgb, var(--lime) 10%, transparent); }
 
 /* ── Scroll row ─────────────────────────────────────── */
 .scroll-row {

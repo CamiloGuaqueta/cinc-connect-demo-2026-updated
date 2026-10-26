@@ -236,12 +236,12 @@
   82% {
     stroke-dashoffset: 0;
     opacity: 1;
-    filter: drop-shadow(0 0 6px rgba(178, 222, 97, 0.95));
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--lime) 95%, transparent));
   }
   100% {
     stroke-dashoffset: 0;
     opacity: 0;
-    filter: drop-shadow(0 0 2px rgba(178, 222, 97, 0));
+    filter: drop-shadow(0 0 2px color-mix(in srgb, var(--lime) 0%, transparent));
   }
 }
 

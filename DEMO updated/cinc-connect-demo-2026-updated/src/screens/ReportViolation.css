@@ -100,7 +100,7 @@
 .rv-photo-zone:active { background: rgba(255,255,255,0.07); }
 .rv-photo-zone--loaded {
   border-style: solid;
-  border-color: rgba(178,222,97,0.35);
+  border-color: color-mix(in srgb, var(--lime) 35%, transparent);
   padding: 0;
   overflow: hidden;
 }
@@ -184,9 +184,9 @@
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 .rv-geo-btn--active {
-  border-color: rgba(178,222,97,0.5);
+  border-color: color-mix(in srgb, var(--lime) 50%, transparent);
   color: var(--lime);
-  background: rgba(178,222,97,0.08);
+  background: color-mix(in srgb, var(--lime) 8%, transparent);
 }
 .rv-geo-btn--loading { opacity: 0.65; }
 .rv-geo-btn:active:not(:disabled) { opacity: 0.8; }

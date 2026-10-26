@@ -94,7 +94,7 @@ function arcSegColor(t) {
 function NmiGauge({ score }) {
   const cx = 70, cy = 70, R = 54
   const SEGS = 72
-  const glowColor = score < 40 ? '#e05c5c' : score < 70 ? '#ffb74d' : '#B2DE61'
+  const glowColor = score < 40 ? '#e05c5c' : score < 70 ? '#ffb74d' : 'var(--lime)'
 
   const segs = []
   for (let i = 0; i < SEGS; i++) {
@@ -123,15 +123,15 @@ function NmiGauge({ score }) {
       {segs}
       <circle cx={cx + R * Math.cos(startA)} cy={cy + R * Math.sin(startA)} r={capR} fill="#e05c5c" opacity="0.92" />
       <circle cx={cx + R * Math.cos(endA)}   cy={cy + R * Math.sin(endA)}   r={capR} fill={arcSegColor(1)} opacity="0.92" />
-      <text x={cx} y={cy + 8} fill="#FFF8EA" fontSize="34" fontWeight="700" textAnchor="middle" fontFamily="Montserrat,sans-serif" letterSpacing="-1">{score}</text>
-      <text x={cx} y={cy + 28} fill="rgba(255,248,234,0.35)" fontSize="11" textAnchor="middle" fontFamily="Montserrat,sans-serif">/ 100</text>
+      <text x={cx} y={cy + 8} fill="var(--text)" fontSize="34" fontWeight="700" textAnchor="middle" fontFamily="Montserrat,sans-serif" letterSpacing="-1">{score}</text>
+      <text x={cx} y={cy + 28} fill="color-mix(in srgb, var(--text) 35%, transparent)" fontSize="11" textAnchor="middle" fontFamily="Montserrat,sans-serif">/ 100</text>
     </svg>
   )
 }
 
 /* ── Sub-score bar ──────────────────────────────────── */
 function SubScoreBar({ label, value }) {
-  const color = value < 40 ? '#e05c5c' : value < 70 ? '#ffb74d' : '#B2DE61'
+  const color = value < 40 ? '#e05c5c' : value < 70 ? '#ffb74d' : 'var(--lime)'
   return (
     <div className="nmi-sub-row">
       <span className="nmi-sub-label">{label}</span>
@@ -186,8 +186,8 @@ function StatusBadge({ status }) {
 function PinIcon() {
   return (
     <svg width="24" height="32" viewBox="0 0 24 32" fill="none" style={{ position: 'relative', zIndex: 1 }}>
-      <path d="M12 0C5.373 0 0 5.373 0 12c0 8.5 12 20 12 20S24 20.5 24 12C24 5.373 18.627 0 12 0Z" fill="rgba(178,222,97,0.7)" />
-      <circle cx="12" cy="12" r="5" fill="#112719" />
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 8.5 12 20 12 20S24 20.5 24 12C24 5.373 18.627 0 12 0Z" fill="color-mix(in srgb, var(--lime) 70%, transparent)" />
+      <circle cx="12" cy="12" r="5" fill="var(--text-dark)" />
     </svg>
   )
 }
@@ -209,7 +209,7 @@ function EmailSmIcon() {
 
 /* ── Blog pull-up sheet ─────────────────────────────── */
 const CATEGORY_COLORS = {
-  lime:  { bg: 'rgba(178,222,97,0.15)',   color: '#B2DE61' },
+  lime:  { bg: 'color-mix(in srgb, var(--lime) 15%, transparent)',   color: 'var(--lime)' },
   amber: { bg: 'rgba(255,183,77,0.15)',   color: '#ffb74d' },
   blue:  { bg: 'rgba(100,160,255,0.15)',  color: '#64a0ff' },
 }

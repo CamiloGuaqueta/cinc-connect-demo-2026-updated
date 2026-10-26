@@ -60,7 +60,7 @@
 }
 
 .tasks-progress__dot--done {
-  background: rgba(178, 222, 97, 0.35);
+  background: color-mix(in srgb, var(--lime) 35%, transparent);
 }
 
 /* ── Swipe stack ─────────────────────────────────────── */
@@ -267,9 +267,9 @@
 }
 
 .swipe-btn--approve {
-  background: rgba(178, 222, 97, 0.12);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
   color: var(--lime);
-  border: 1px solid rgba(178, 222, 97, 0.25);
+  border: 1px solid color-mix(in srgb, var(--lime) 25%, transparent);
 }
 
 /* ── Invoice card ────────────────────────────────────── */
@@ -486,9 +486,9 @@
 }
 
 .inv-btn--approve {
-  background: rgba(178, 222, 97, 0.12);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
   color: var(--lime);
-  border: 1px solid rgba(178, 222, 97, 0.25);
+  border: 1px solid color-mix(in srgb, var(--lime) 25%, transparent);
 }
 
 /* ── Violation extras ────────────────────────────────── */
@@ -545,8 +545,8 @@
 
 .viol-btn--comment {
   background: transparent;
-  border: 1.5px solid rgba(255, 248, 234, 0.3);
-  color: rgba(255, 248, 234, 0.75);
+  border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
 }
 
 .viol-btn--note {
@@ -627,8 +627,8 @@
 
 .acc-btn--comment {
   background: transparent;
-  border: 1.5px solid rgba(255, 248, 234, 0.3);
-  color: rgba(255, 248, 234, 0.75);
+  border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
 }
 
 .acc-btn--decision {
@@ -658,7 +658,7 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 248, 234, 0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
@@ -667,9 +667,9 @@
 }
 
 .tasks-header-btn--active {
-  border-color: rgba(178, 222, 97, 0.45);
+  border-color: color-mix(in srgb, var(--lime) 45%, transparent);
   color: var(--lime);
-  background: rgba(178, 222, 97, 0.08);
+  background: color-mix(in srgb, var(--lime) 8%, transparent);
 }
 
 .tasks-filter-dot {
@@ -689,7 +689,7 @@
   right: 0;
   z-index: 60;
   min-width: 170px;
-  background: #1a2b1d;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -921,8 +921,8 @@
 
 .task-btn--progress {
   background: transparent;
-  border: 1.5px solid rgba(255, 248, 234, 0.3);
-  color: rgba(255, 248, 234, 0.75);
+  border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
 }
 
 .task-btn--complete {
@@ -946,8 +946,8 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(178, 222, 97, 0.12);
-  border: 2px solid rgba(178, 222, 97, 0.3);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
+  border: 2px solid color-mix(in srgb, var(--lime) 30%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -971,7 +971,7 @@
   position: absolute;
   inset: 0;
   z-index: 200;
-  background: #1d1d1d;
+  background: var(--bg-page);
   display: flex;
   flex-direction: column;
   animation: panel-slide-in 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1028,7 +1028,7 @@
 
 .inv-panel__body--pdf {
   padding: 16px;
-  background: #1e1e1e;
+  background: color-mix(in srgb, var(--text) 10%, var(--bg-page));
 }
 
 /* Vendor panel */
@@ -1042,7 +1042,7 @@
 .vend-name-row__name { font-size: 20px; font-weight: 700; color: var(--lime); }
 
 .vend-fields {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 0 12px;
   margin-bottom: 0;
@@ -1060,7 +1060,7 @@
 .vend-field__value { color: var(--text-muted); word-break: break-word; }
 
 .vend-links {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -1141,7 +1141,7 @@
 .approvers-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
 .approvers-list {
   display: flex; flex-direction: column;
-  background: #2a2a2a; border-radius: 12px; overflow: hidden;
+  background: var(--bg-card); border-radius: 12px; overflow: hidden;
 }
 .approver-row {
   display: flex; align-items: center; gap: 12px;
@@ -1150,7 +1150,7 @@
 .approver-row:last-child { border-bottom: none; }
 .approver-avatar {
   width: 40px; height: 40px; border-radius: 50%;
-  background: rgba(178,222,97,0.13); display: flex; align-items: center;
+  background: color-mix(in srgb, var(--lime) 13%, transparent); display: flex; align-items: center;
   justify-content: center; font-size: 13px; font-weight: 700;
   color: var(--lime); flex-shrink: 0;
 }
@@ -1185,7 +1185,7 @@
 
 /* ── Vendor Info panel layout ────────────────────────── */
 .vend-card {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 14px;
   padding: 10px 12px 0;
   margin-bottom: 14px;
@@ -1217,7 +1217,7 @@
   margin-bottom: 14px;
 }
 .vend-wo-cell {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 16px 12px 14px;
   display: flex;
@@ -1246,7 +1246,7 @@
 
 /* Total Paid Invoices card */
 .vend-invoice-card {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 10px 12px;
   display: flex;
@@ -1353,11 +1353,11 @@
   color: var(--text);
 }
 .acc-bubble--committee {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-bottom-left-radius: 4px;
 }
 .acc-bubble--homeowner {
-  background: #1e3a22;
+  background: color-mix(in srgb, var(--lime) 14%, var(--bg-card));
   border-bottom-right-radius: 4px;
   text-align: left;
 }
@@ -1379,7 +1379,7 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #3a6b3e;
+  color: #006A52;
   margin-bottom: 4px;
 }
 .acc-pdf-title {
@@ -1471,13 +1471,13 @@
   justify-content: center;
 }
 .acc-sketch-house {
-  border: 2px solid #3a6b3e;
+  border: 2px solid #006A52;
   border-radius: 4px;
   padding: 16px 32px;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
-  color: #3a6b3e;
+  color: #006A52;
   position: relative;
   background: #f0f5f0;
 }
@@ -1522,13 +1522,13 @@
   align-items: center;
   gap: 10px;
   padding: 10px 14px 14px;
-  background: #1d1d1d;
+  background: var(--bg-page);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
 .acc-chat-input__field {
   flex: 1;
-  background: #2a2a2a;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 10px 16px;
@@ -1623,7 +1623,7 @@
 }
 .acc-decision-textarea {
   width: 100%;
-  background: #2a2a2a;
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 14px;
@@ -1639,7 +1639,7 @@
 .acc-decision-textarea:focus { border-color: var(--lime); }
 .acc-decision-footer {
   padding: 12px 14px 18px;
-  background: #1d1d1d;
+  background: var(--bg-page);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
@@ -1651,7 +1651,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  background: #2a2a2a;
+  background: var(--bg-card);
   color: var(--text-muted);
   border: 1px solid var(--border);
   transition: background 0.15s, color 0.15s, border-color 0.15s;

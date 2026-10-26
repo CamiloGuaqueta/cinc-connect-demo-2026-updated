@@ -134,7 +134,7 @@
 .stories-company-date {
   font-size: 10px;
   font-weight: 500;
-  color: rgba(255,248,234,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
 }
 
 .stories-close-btn {
@@ -162,7 +162,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(178,222,97,0.65);
+  color: color-mix(in srgb, var(--lime) 65%, transparent);
 }
 
 .stories-headline {
@@ -177,7 +177,7 @@
 .stories-copy {
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,0.8);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   line-height: 1.55;
 }
 
@@ -205,7 +205,7 @@
 }
 
 .stories-kpi {
-  background: #aedbbe;
+  background: var(--brand-mint);
   border-radius: 12px;
   padding: 12px 14px 10px;
   display: flex;
@@ -216,7 +216,7 @@
 .stories-kpi__label {
   font-size: 10px;
   font-weight: 600;
-  color: #1a3828;
+  color: #171B19;
   line-height: 1.3;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -225,14 +225,14 @@
 .stories-kpi__value {
   font-size: 26px;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #171B19;
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
 
 /* ── Weekly Wrap card ───────────────────────────────── */
 .weekly-wrap {
-  background: #aedbbe;
+  background: var(--brand-mint);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -258,15 +258,15 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #319245;
+  color: var(--brand-evergreen);
 }
 
 .weekly-wrap__date-pill {
   display: inline-block;
   font-size: 11px;
   font-weight: 600;
-  color: #a5ce9f;
-  background: var(--bg-card);
+  color: var(--brand-evergreen);
+  background: #FFFFFF;
   border-radius: 20px;
   padding: 3px 10px;
   width: fit-content;
@@ -275,14 +275,14 @@
 .weekly-wrap__title {
   font-size: 18px;
   font-weight: 800;
-  color: var(--text-dark);
+  color: #171B19;
   line-height: 1.2;
 }
 
 .weekly-wrap__sub {
   font-size: 12px;
   font-weight: 400;
-  color: var(--text-dark);
+  color: #171B19;
   line-height: 1.45;
 }
 
@@ -306,17 +306,17 @@
   padding: 15px;
   border: none;
   border-radius: var(--radius-md);
-  background: var(--text-dark);
+  background: var(--brand-evergreen);
   font-family: var(--font);
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--lime);
+  color: #FFFFFF;
   cursor: pointer;
   transition: background 0.15s;
 }
-.weekly-wrap__cta:active { background: var(--text-dark); }
+.weekly-wrap__cta:active { background: #00553F; }
 
 /* ── Engage bar ─────────────────────────────────────── */
 .engage-row {
@@ -546,7 +546,7 @@
 }
 
 .acct-card {
-  background: var(--text);
+  background: var(--lime);
   border-radius: var(--radius-lg);
   padding: 12px 18px 10px;
   display: flex;
@@ -655,7 +655,7 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: var(--text-dark);
+  background: var(--text);
   opacity: 0.25;
   cursor: pointer;
 }
@@ -744,7 +744,7 @@
   width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255,248,234,0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   margin: 10px auto 0;
   flex-shrink: 0;
 }
@@ -754,7 +754,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 6px 0 4px;
-  border-bottom: 1px solid rgba(255,248,234,0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   flex-shrink: 0;
 }
 
@@ -823,7 +823,7 @@
 
 .filter-date-input {
   background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 248, 234, 0.12);
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
   border-radius: var(--radius-sm);
   padding: 9px 10px;
   font-size: 13px;
@@ -835,7 +835,7 @@
 }
 
 .filter-date-input:focus {
-  border-color: rgba(178, 222, 97, 0.5);
+  border-color: color-mix(in srgb, var(--lime) 50%, transparent);
 }
 
 .filter-section__label {
@@ -861,15 +861,15 @@
   gap: 4px;
   padding: 10px 14px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(255,248,234,0.15);
-  background: rgba(255,248,234,0.05);
+  border: 1.5px solid color-mix(in srgb, var(--text) 15%, transparent);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
   font-family: var(--font);
   transition: border-color 0.15s, background 0.15s;
   cursor: pointer;
 }
 .filter-date-btn--active {
   border-color: var(--lime);
-  background: rgba(178,222,97,0.08);
+  background: color-mix(in srgb, var(--lime) 8%, transparent);
 }
 .filter-date-btn__label {
   font-size: 10px;
@@ -885,7 +885,7 @@
   color: var(--text);
 }
 .filter-date-btn__value--placeholder {
-  color: rgba(255,248,234,0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
   font-weight: 400;
 }
 .filter-date-arrow {
@@ -897,9 +897,9 @@
 
 /* ── Mini calendar ──────────────────────────────────── */
 .mini-cal {
-  background: rgba(255,248,234,0.04);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,248,234,0.08);
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   overflow: hidden;
 }
 .mini-cal__nav {
@@ -907,7 +907,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
-  border-bottom: 1px solid rgba(255,248,234,0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 .mini-cal__nav-btn {
   font-size: 22px;
@@ -969,13 +969,13 @@
   border-radius: 50%;
 }
 .mini-cal__cell--range {
-  background: rgba(178,222,97,0.18);
+  background: color-mix(in srgb, var(--lime) 18%, transparent);
   border-radius: 0;
 }
 .mini-cal__cell--range-start { border-radius: 50% 0 0 50%; }
 .mini-cal__cell--range-end   { border-radius: 0 50% 50% 0; }
 .mini-cal__cell:not(.mini-cal__cell--disabled):not(.mini-cal__cell--empty):active {
-  background: rgba(178,222,97,0.35);
+  background: color-mix(in srgb, var(--lime) 35%, transparent);
 }
 
 .filter-chips {
@@ -990,7 +990,7 @@
   gap: 6px;
   padding: 7px 14px;
   border-radius: 20px;
-  border: 1.5px solid rgba(255,248,234,0.15);
+  border: 1.5px solid color-mix(in srgb, var(--text) 15%, transparent);
   font-size: 13px;
   font-weight: 600;
   color: var(--text-muted);
@@ -1100,7 +1100,7 @@
 .post-card__subtitle {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   line-height: 1.3;
 }
 .post-card__time {
@@ -1390,13 +1390,15 @@
 }
 
 .resident-mode .post-card {
-  background: var(--text-dark);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
 }
 
 /* ── NMI Preview Card ─────────────────────────────── */
 .nmi-preview-card {
   position: relative;
-  background: var(--res-bg1);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 0;
   overflow: hidden;
@@ -1466,7 +1468,7 @@
   margin: 0 16px 16px;
   padding: 14px;
   background: var(--res-accent);
-  color: #112719;
+  color: var(--text-dark);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -1508,7 +1510,7 @@
 .nmi-pv-kpi--lime .nmi-pv-kpi__value { color: var(--res-accent); }
 .nmi-pv-kpi__delta {
   font-size: 11px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin-top: 2px;
 }
 .nmi-pv-kpi__delta.up { color: var(--res-accent); }
@@ -1535,13 +1537,13 @@
 }
 .nmi-pv-agent__title {
   font-size: 12px;
-  color: rgba(209,209,209,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   margin-top: 3px;
 }
 .nmi-pv-agent__brokerage {
   font-size: 12px;
   font-weight: 600;
-  color: rgba(209,209,209,0.65);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   margin-top: 2px;
 }
 .nmi-pv-agent__phone {
@@ -1560,7 +1562,7 @@
 .nmi-pv-avm__eyebrow {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(209,209,209,0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
@@ -1588,7 +1590,7 @@
   align-items: center;
   gap: 8px;
   font-size: 11px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 .nmi-pv-avm__range-track {
   flex: 1;
@@ -1638,7 +1640,7 @@
 }
 .nmi-pv-score__out {
   font-size: 16px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-weight: 500;
 }
 .nmi-pv-score__badge {
@@ -1652,7 +1654,7 @@
 }
 .nmi-pv-score__county {
   font-size: 11px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin-top: 4px;
 }
 .nmi-pv-score__bars { display: flex; flex-direction: column; gap: 5px; }
@@ -1663,7 +1665,7 @@
 }
 .nmi-pv-score__bar-label {
   font-size: 11px;
-  color: rgba(209,209,209,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   width: 66px;
   flex-shrink: 0;
 }
@@ -1710,12 +1712,12 @@
 }
 .nmi-pv-hero__label {
   font-size: 13px;
-  color: rgba(209,209,209,0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
   line-height: 1.3;
 }
 .nmi-pv-hero__sub {
   font-size: 12px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 .nmi-pv-hero__sub.up { color: var(--res-accent); }
 .nmi-pv-hero__badge {
@@ -1748,7 +1750,7 @@
 .nmi-pv-profile__val--sm { font-size: 11px; line-height: 1.3; }
 .nmi-pv-profile__label {
   font-size: 10px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1771,7 +1773,7 @@
 }
 .nmi-pv-sale-row__meta {
   font-size: 11px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin-top: 2px;
 }
 .nmi-pv-sale-row__price {
@@ -1782,7 +1784,7 @@
 }
 .nmi-pv-sale-row__date {
   font-size: 11px;
-  color: rgba(209,209,209,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   text-align: right;
   margin-top: 2px;
 }
@@ -1812,7 +1814,7 @@
 }
 .nmi-pv-blog__excerpt {
   font-size: 13px;
-  color: rgba(209,209,209,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;

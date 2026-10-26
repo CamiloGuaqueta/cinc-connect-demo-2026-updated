@@ -76,7 +76,7 @@
 
 .bs-card__dots {
   flex: 1;
-  border-bottom: 1px dotted rgba(255, 248, 234, 0.25);
+  border-bottom: 1px dotted color-mix(in srgb, var(--text) 25%, transparent);
   transform: translateY(-4px);
 }
 

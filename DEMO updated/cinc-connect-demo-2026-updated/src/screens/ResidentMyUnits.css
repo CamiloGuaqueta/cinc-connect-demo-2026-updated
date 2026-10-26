@@ -76,14 +76,14 @@
 .myu-unit-card__account {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   margin: 0;
 }
 
 .myu-unit-card__pending-label {
   font-size: 10px;
   font-weight: 600;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   letter-spacing: 0.02em;
   margin: 2px 0 0;
   text-transform: uppercase;
@@ -142,7 +142,7 @@
   width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 248, 234, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   margin: 12px auto 0;
   flex-shrink: 0;
 }
@@ -152,7 +152,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px 14px;
-  border-bottom: 1px solid rgba(255, 248, 234, 0.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
   flex-shrink: 0;
 }
 
@@ -162,7 +162,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   margin: 0;
 }
 
@@ -198,7 +198,7 @@
 .myu-caps-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin: 0 0 8px;
@@ -210,7 +210,7 @@
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
-  color: rgba(255, 248, 234, 0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
 }
 
 /* ── Search input ─────────────────────────────────────── */
@@ -219,7 +219,7 @@
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   padding: 0 10px;
 }
@@ -242,7 +242,7 @@
 }
 
 .myu-search-input::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 /* ── Address list ─────────────────────────────────────── */
@@ -258,7 +258,7 @@
 .myu-addr-opt {
   display: block;
   width: 100%;
-  background: rgba(17, 39, 25, 0.6);
+  background: var(--bg-card);
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 12px 14px;
@@ -266,7 +266,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.8);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   cursor: pointer;
 }
 
@@ -275,13 +275,13 @@
 }
 
 .myu-addr-opt:active {
-  background: rgba(178, 222, 97, 0.1);
+  background: color-mix(in srgb, var(--lime) 10%, transparent);
 }
 
 .myu-no-results {
   padding: 14px;
   font-size: 12px;
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   text-align: center;
@@ -292,8 +292,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(178, 222, 97, 0.12);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  background: color-mix(in srgb, var(--lime) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   padding: 10px 12px;
 }
@@ -310,7 +310,7 @@
 .myu-selected-addr__clear {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -322,7 +322,7 @@
 .myu-field-input {
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
   font-size: 13px;
@@ -333,7 +333,7 @@
 }
 
 .myu-field-input::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 /* ── Relationship trigger ─────────────────────────────── */
@@ -343,14 +343,14 @@
   justify-content: space-between;
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   padding: 10px 12px;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
   text-align: left;
 }
 
@@ -396,7 +396,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   cursor: pointer;
   padding: 0;
   text-decoration: underline;
@@ -419,7 +419,7 @@
   left: 0;
   right: 0;
   z-index: 403;
-  background: #1c3f2b;
+  background: var(--bg-card);
   border-radius: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
@@ -448,7 +448,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 248, 234, 0.75);
+  color: color-mix(in srgb, var(--text) 75%, transparent);
 }
 
 .myu-rel-opt--selected {
@@ -464,7 +464,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 248, 234, 0.3);
+  border: 1.5px solid color-mix(in srgb, var(--text) 30%, transparent);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -480,5 +480,5 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #1c3f2b;
+  background: var(--lime);
 }

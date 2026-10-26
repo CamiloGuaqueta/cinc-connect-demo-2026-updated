@@ -1,8 +1,8 @@
 /* ── Long-press hold animation ───────────────────────── */
 @keyframes hold-glow {
-  0%   { box-shadow: var(--shadow), 0 0 0 0px rgba(178,222,97,0);    border-color: transparent; }
-  30%  { box-shadow: var(--shadow), 0 0 0 2px rgba(178,222,97,0.25); }
-  100% { box-shadow: var(--shadow), 0 0 0 4px rgba(178,222,97,0.55); border-color: rgba(178,222,97,0.55); }
+  0%   { box-shadow: var(--shadow), 0 0 0 0px color-mix(in srgb, var(--lime) 0%, transparent);    border-color: transparent; }
+  30%  { box-shadow: var(--shadow), 0 0 0 2px color-mix(in srgb, var(--lime) 25%, transparent); }
+  100% { box-shadow: var(--shadow), 0 0 0 4px color-mix(in srgb, var(--lime) 55%, transparent); border-color: color-mix(in srgb, var(--lime) 55%, transparent); }
 }
 
 .card--holding {

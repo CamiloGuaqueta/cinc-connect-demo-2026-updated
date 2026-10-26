@@ -338,7 +338,7 @@
   flex-shrink: 0;
 }
 
-.vote-member--you { background: rgba(178,222,97,0.05); }
+.vote-member--you { background: color-mix(in srgb, var(--lime) 5%, transparent); }
 
 .vote-member__info {
   flex: 1;

@@ -171,8 +171,8 @@ export const AMENITIES_DATA = [
 function ClockIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 13 13" fill="none" className="amenity-stat__icon">
-      <circle cx="6.5" cy="6.5" r="5.7" stroke="#fff8ea" strokeWidth="1.2" />
-      <path d="M6.5 3.5v3l2 1.5" stroke="#fff8ea" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="6.5" cy="6.5" r="5.7" stroke="var(--text)" strokeWidth="1.2" />
+      <path d="M6.5 3.5v3l2 1.5" stroke="var(--text)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -184,7 +184,7 @@ function HeartIcon({ active }) {
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
       <path
         d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-        fill={active ? '#FF3B30' : '#FFF8EA'}
+        fill={active ? '#FF3B30' : 'var(--text)'}
       />
     </svg>
   )
@@ -193,8 +193,8 @@ function HeartIcon({ active }) {
 function SearchIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <circle cx="8" cy="8" r="6" stroke="#fff8ea" strokeWidth="1.5" opacity="0.5" />
-      <path d="M12.5 12.5l3.5 3.5" stroke="#fff8ea" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
+      <circle cx="8" cy="8" r="6" stroke="var(--text)" strokeWidth="1.5" opacity="0.5" />
+      <path d="M12.5 12.5l3.5 3.5" stroke="var(--text)" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
     </svg>
   )
 }
@@ -328,8 +328,8 @@ export function cancelReservation(id) {
 function ResLocationIcon() {
   return (
     <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
-      <path d="M9 1C5.13 1 2 4.13 2 8c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#fff8ea" strokeWidth="1.4" />
-      <circle cx="9" cy="8" r="2.5" stroke="#fff8ea" strokeWidth="1.3" />
+      <path d="M9 1C5.13 1 2 4.13 2 8c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="var(--text)" strokeWidth="1.4" />
+      <circle cx="9" cy="8" r="2.5" stroke="var(--text)" strokeWidth="1.3" />
     </svg>
   )
 }
@@ -343,14 +343,14 @@ function FeeScreen({ img, icon, title, onBack, children, footer, hideSep }) {
           <div className="amenity-confirm__photo-gradient" />
           <button className="res-fee-screen__back" onClick={onBack}>
             <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-              <path d="M7 1L1 7l6 6" stroke="#fff8ea" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M7 1L1 7l6 6" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span>Back</span>
           </button>
           <button className="amenity-confirm__close" onClick={onBack}>
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="#fff8ea" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff8ea" strokeWidth="1.6" strokeLinecap="round" />
+              <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
+              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </button>
           <div className="amenity-confirm__icon-ring">
@@ -393,14 +393,14 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
             <div className="amenity-confirm__photo-gradient" />
             <button className="amenity-confirm__close" onClick={onClose}>
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <circle cx="14" cy="14" r="13" stroke="#fff8ea" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff8ea" strokeWidth="1.6" strokeLinecap="round" />
+                <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
+                <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
             </button>
             <div className={`amenity-confirm__icon-ring${reservation.status === 'cancelled' ? ' amenity-confirm__icon-ring--cancelled' : ''}`}>
               {reservation.status === 'completed' ? (
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-                  <path d="M18 36l13 13 23-23" stroke="#B2DE61" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M18 36l13 13 23-23" stroke="var(--lime)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               ) : reservation.status === 'cancelled' ? (
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
@@ -415,7 +415,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
           <div className="amenity-confirm__body">
             <div className="amenity-confirm__main-card">
               <button className="amenity-confirm__share-icon-btn" aria-label="Share" onClick={() => setToast('Reservation link copied')}>
-                <img src={shareIcon} alt="" width="20" height="20" style={{ filter: 'brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%)' }} />
+                <img src={shareIcon} alt="" width="20" height="20" style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)' }} />
               </button>
               <h2 className={`amenity-confirm__title${reservation.status === 'cancelled' ? ' amenity-confirm__title--cancelled' : ''}`}>
                 {reservation.status === 'completed' ? 'Reservation Completed' : reservation.status === 'cancelled' ? 'Reservation Cancelled' : 'Upcoming Reservation'}
@@ -436,7 +436,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
                 <img src={noteIcon} alt="" className="amenity-confirm__row-icon" />
                 <span className="amenity-confirm__row-text">Reservation Notes</span>
                 <svg width="7" height="13" viewBox="0 0 7 13" fill="none" className="amenity-confirm__row-chevron">
-                  <path d="M1 1l5 5.5L1 12" stroke="#fff8ea" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+                  <path d="M1 1l5 5.5L1 12" stroke="var(--text)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
                 </svg>
               </button>
             )}
@@ -448,14 +448,14 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
                 {reservation.notes?.some(n => n.type === 'fee') && (
                   <span className="amenity-confirm__row-alert">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="7.5" stroke="var(--lime)" strokeWidth="1.2" fill="rgba(178,222,97,0.12)" />
+                      <circle cx="8" cy="8" r="7.5" stroke="var(--lime)" strokeWidth="1.2" fill="color-mix(in srgb, var(--lime) 12%, transparent)" />
                       <rect x="7.25" y="4" width="1.5" height="5" rx="0.75" fill="var(--lime)" />
                       <rect x="7.25" y="10.5" width="1.5" height="1.5" rx="0.75" fill="var(--lime)" />
                     </svg>
                   </span>
                 )}
                 <svg width="7" height="13" viewBox="0 0 7 13" fill="none" className="amenity-confirm__row-chevron">
-                  <path d="M1 1l5 5.5L1 12" stroke="#fff8ea" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+                  <path d="M1 1l5 5.5L1 12" stroke="var(--text)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
                 </svg>
               </button>
             )}
@@ -473,7 +473,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
                   </span>
                 )}
                 <svg width="7" height="13" viewBox="0 0 7 13" fill="none" className="amenity-confirm__row-chevron">
-                  <path d="M1 1l5 5.5L1 12" stroke="#fff8ea" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+                  <path d="M1 1l5 5.5L1 12" stroke="var(--text)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
                 </svg>
               </button>
             )}
@@ -552,15 +552,15 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
                     {note.isApproval && (
                       <div className="res-note-card__title">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                          <circle cx="6.5" cy="6.5" r="6.5" fill="rgba(178,222,97,0.2)" />
-                          <path d="M3.5 6.5l2 2 4-4" stroke="#B2DE61" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <circle cx="6.5" cy="6.5" r="6.5" fill="color-mix(in srgb, var(--lime) 20%, transparent)" />
+                          <path d="M3.5 6.5l2 2 4-4" stroke="var(--lime)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <span>Reservation Approved</span>
                       </div>
                     )}
                     {note.type === 'fee' && (
                       <div className="res-note-card__title res-note-card__title--fee">
-                        <img src={invoiceIcon} alt="" width="13" height="13" style={{ filter: 'brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%)' }} />
+                        <img src={invoiceIcon} alt="" width="13" height="13" style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)' }} />
                         <span>{note.title}</span>
                       </div>
                     )}
@@ -607,7 +607,7 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
           {reservation.notes?.filter(n => n.type === 'fee').map(n => (
             <div key={n.id} className="res-fee-typed-note res-fee-typed-note--fee">
               <div className="res-fee-typed-note__header">
-                <img src={invoiceIcon} alt="" width="13" height="13" style={{ filter: 'brightness(0) saturate(100%) invert(82%) sepia(20%) saturate(700%) hue-rotate(47deg) brightness(104%) contrast(85%)' }} />
+                <img src={invoiceIcon} alt="" width="13" height="13" style={{ filter: 'brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)' }} />
                 <span className="res-fee-typed-note__title">{n.title}</span>
               </div>
               <p className="res-fee-typed-note__text">{n.text}</p>

@@ -13,8 +13,8 @@ export default function CustomContentSheet({ content, onClose }) {
           <span className="ccs-header__name">{content.title}</span>
           <button className="ccs-close" onClick={onClose} aria-label="Close">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="#fff8ea" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#fff8ea" strokeWidth="1.6" strokeLinecap="round" />
+              <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
+              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </button>
         </div>

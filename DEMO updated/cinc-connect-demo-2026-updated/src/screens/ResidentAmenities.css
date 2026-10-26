@@ -77,7 +77,7 @@
   background: none;
   border: none;
   padding: 4px 6px;
-  color: #fff8ea;
+  color: var(--text);
   font-size: 13px;
   font-weight: 400;
   cursor: pointer;
@@ -147,7 +147,7 @@
   border-radius: 4px;
   font-size: 10px;
   font-weight: 300;
-  color: rgba(255, 248, 234, 0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
   background: rgba(255, 255, 255, 0.1);
   white-space: nowrap;
   letter-spacing: 0.03em;
@@ -160,7 +160,7 @@
   font-size: 10px;
   font-weight: 300;
   color: var(--lime);
-  background: rgba(178, 222, 97, 0.15);
+  background: color-mix(in srgb, var(--lime) 15%, transparent);
   white-space: nowrap;
   letter-spacing: 0.03em;
   display: table;
@@ -181,7 +181,7 @@
 }
 
 .res-note-card--approval {
-  border: 1px solid rgba(178, 222, 97, 0.2);
+  border: 1px solid color-mix(in srgb, var(--lime) 20%, transparent);
 }
 
 .res-note-card__header {
@@ -247,7 +247,7 @@
   padding: 12px 14px;
   margin-top: 12px;
 }
-.res-fee-typed-note--fee { background: rgba(178,222,97,0.07); border: 1px solid rgba(178,222,97,0.18); }
+.res-fee-typed-note--fee { background: color-mix(in srgb, var(--lime) 7%, transparent); border: 1px solid color-mix(in srgb, var(--lime) 18%, transparent); }
 .res-fee-typed-note--deposit { background: rgba(245,200,66,0.07); border: 1px solid rgba(245,200,66,0.18); }
 .res-fee-typed-note__header {
   display: flex;
@@ -270,7 +270,7 @@
 }
 .res-fee-typed-note__time {
   font-size: 10px;
-  color: rgba(255,248,234,0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
 }
 
 .res-note-card__text {
@@ -439,7 +439,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(178, 222, 97, 0.3);
+  background: color-mix(in srgb, var(--lime) 30%, transparent);
 }
 
 .amenity-dot--active {
@@ -520,12 +520,12 @@
   min-width: 70px;
   padding: 0 8px;
   border-radius: 5px;
-  border: none;
-  background: var(--res-text);
+  border: 1px solid var(--lime);
+  background: var(--bg-card);
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 800;
-  color: var(--res-bg2);
+  color: var(--lime);
   text-transform: uppercase;
   letter-spacing: 0.36px;
   cursor: pointer;
@@ -542,7 +542,7 @@
 .my-res__section-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0 0 12px;
@@ -635,7 +635,7 @@
 
 .my-res__empty {
   font-size: 13px;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   margin: 0;
 }
 
@@ -666,7 +666,7 @@
 
 .amenity-confirm__cancel-confirm-text {
   font-size: 13px;
-  color: #fff8ea;
+  color: var(--text);
   line-height: 1.5;
   margin: 0 0 12px;
 }
@@ -685,13 +685,13 @@
   flex: 1;
   height: 52px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 248, 234, 0.25);
+  border: 1px solid color-mix(in srgb, var(--text) 25%, transparent);
   background: transparent;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: #fff8ea;
+  color: var(--text);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -703,13 +703,13 @@
   padding: 14px;
   margin-top: 8px;
   background: none;
-  border: 1px solid rgba(255, 248, 234, 0.15);
+  border: 1px solid color-mix(in srgb, var(--text) 15%, transparent);
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.08em;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   cursor: pointer;
   text-align: center;
   -webkit-tap-highlight-color: transparent;
@@ -769,14 +769,14 @@
   box-sizing: border-box;
 }
 
-.all-past-res__search::placeholder { color: rgba(255,248,234,0.35); }
+.all-past-res__search::placeholder { color: color-mix(in srgb, var(--text) 35%, transparent); }
 
 .all-past-res__search-icon {
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255,248,234,0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 .all-past-res__filters {
@@ -794,22 +794,22 @@
 .all-past-res__chip {
   padding: 5px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(255,248,234,0.2);
+  border: 1px solid color-mix(in srgb, var(--text) 20%, transparent);
   background: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255,248,234,0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .all-past-res__chip--active { border-color: transparent; }
-.all-past-res__chip--completed { background: rgba(30,40,15,0.9); color: var(--lime); border-color: rgba(178,222,97,0.4); }
+.all-past-res__chip--completed { background: rgba(30,40,15,0.9); color: var(--lime); border-color: color-mix(in srgb, var(--lime) 40%, transparent); }
 .all-past-res__chip--cancelled { background: rgba(40,15,15,0.9); color: #FF6B62; border-color: rgba(255,107,98,0.4); }
 .all-past-res__chip--active:not(.all-past-res__chip--completed):not(.all-past-res__chip--cancelled) {
-  background: rgba(255,248,234,0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
   color: var(--text);
 }
 
@@ -836,7 +836,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255,248,234,0.6);
+  color: color-mix(in srgb, var(--text) 60%, transparent);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   gap: 6px;
@@ -863,7 +863,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: rgba(255,248,234,0.7);
+  color: color-mix(in srgb, var(--text) 70%, transparent);
   text-align: left;
   cursor: pointer;
   border-bottom: 1px solid rgba(255,255,255,0.06);

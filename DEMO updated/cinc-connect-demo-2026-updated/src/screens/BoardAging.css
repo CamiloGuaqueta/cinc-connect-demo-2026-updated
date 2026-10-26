@@ -135,7 +135,7 @@
   margin-top: 1px;
 }
 
-.ba-card__owner-chevron { color: rgba(255, 248, 234, 0.35); flex-shrink: 0; }
+.ba-card__owner-chevron { color: color-mix(in srgb, var(--text) 35%, transparent); flex-shrink: 0; }
 
 /* ── Charges accordion ──────────────────────────────── */
 .ba-card__charges {
@@ -194,7 +194,7 @@
 
 .ba-breakdown__dots {
   flex: 1;
-  border-bottom: 1px dotted rgba(255, 248, 234, 0.2);
+  border-bottom: 1px dotted color-mix(in srgb, var(--text) 20%, transparent);
   transform: translateY(-3px);
 }
 

@@ -713,7 +713,7 @@ function renderText(text, onAction) {
     if (recMatch) {
       const confidence = parseInt(recMatch[1])
       const action = recMatch[2]
-      const barColor = confidence >= 85 ? '#b2de61' : confidence >= 65 ? '#f5a623' : '#e05252'
+      const barColor = confidence >= 85 ? 'var(--lime)' : confidence >= 65 ? '#f5a623' : '#e05252'
       const actionParts = action.split(/\*\*(.*?)\*\*/g).map((p, j) =>
         j % 2 === 1 ? <strong key={j}>{p}</strong> : p
       )

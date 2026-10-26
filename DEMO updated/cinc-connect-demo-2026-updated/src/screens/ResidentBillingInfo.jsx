@@ -163,7 +163,7 @@ export default function ResidentBillingInfo() {
 
 /* ── Icons ─────────────────────────────────────────────── */
 function EnvelopeIcon({ active }) {
-  const c = active ? '#112719' : '#B2DE61'
+  const c = active ? 'var(--text-dark)' : 'var(--lime)'
   return (
     <svg width="16" height="13" viewBox="0 0 24 20" fill="none">
       <rect x="1" y="1" width="22" height="18" rx="3" stroke={c} strokeWidth="2"/>
@@ -173,7 +173,7 @@ function EnvelopeIcon({ active }) {
 }
 
 function PaperIcon({ active }) {
-  const c = active ? '#112719' : '#B2DE61'
+  const c = active ? 'var(--text-dark)' : 'var(--lime)'
   return (
     <svg width="14" height="16" viewBox="0 0 20 24" fill="none">
       <path d="M3 1H13L19 7V23H3V1Z" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -184,7 +184,7 @@ function PaperIcon({ active }) {
 }
 
 function BothIcon({ active }) {
-  const c = active ? '#112719' : '#B2DE61'
+  const c = active ? 'var(--text-dark)' : 'var(--lime)'
   return (
     <svg width="18" height="14" viewBox="0 0 26 20" fill="none">
       <rect x="1" y="1" width="16" height="13" rx="2" stroke={c} strokeWidth="1.8"/>

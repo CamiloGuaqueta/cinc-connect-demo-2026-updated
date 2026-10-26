@@ -69,7 +69,7 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 248, 234, 0.2);
+  background: color-mix(in srgb, var(--text) 20%, transparent);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }

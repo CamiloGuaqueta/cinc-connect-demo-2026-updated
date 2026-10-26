@@ -107,7 +107,7 @@
 .np-caps-label {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(209, 209, 209, 0.56);
+  color: color-mix(in srgb, var(--text) 56%, transparent);
   letter-spacing: 0.3px;
   text-transform: uppercase;
   margin: 0 0 4px;
@@ -151,7 +151,7 @@
 .np-remove-btn {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -193,7 +193,7 @@
 .np-email-input {
   flex: 1;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(178, 222, 97, 0.4);
+  border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
   font-size: 13px;
@@ -204,7 +204,7 @@
 }
 
 .np-email-input::placeholder {
-  color: rgba(255, 248, 234, 0.35);
+  color: color-mix(in srgb, var(--text) 35%, transparent);
 }
 
 .np-add-confirm {
@@ -223,7 +223,7 @@
 .np-add-cancel {
   background: none;
   border: none;
-  color: rgba(255, 248, 234, 0.4);
+  color: color-mix(in srgb, var(--text) 40%, transparent);
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
@@ -269,7 +269,7 @@
 .np-unit-account {
   font-size: 11px;
   font-weight: 400;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -284,9 +284,9 @@
   flex: 1;
   height: 36px;
   border-radius: 8px;
-  border: 1.5px solid rgba(178, 222, 97, 0.3);
+  border: 1.5px solid color-mix(in srgb, var(--lime) 30%, transparent);
   background: transparent;
-  color: rgba(255, 248, 234, 0.5);
+  color: color-mix(in srgb, var(--text) 50%, transparent);
   font-size: 13px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
@@ -303,7 +303,7 @@
 /* ── Edit address button ──────────────────────────────── */
 .np-edit-btn {
   background: none;
-  border: 1px solid rgba(178, 222, 97, 0.35);
+  border: 1px solid color-mix(in srgb, var(--lime) 35%, transparent);
   border-radius: 6px;
   color: var(--res-accent);
   font-size: 11px;

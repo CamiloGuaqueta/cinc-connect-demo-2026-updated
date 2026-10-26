@@ -59,7 +59,7 @@ function FileIcon() {
 function ChevronRightIcon() {
   return (
     <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-      <path d="M1 1l6 6-6 6" stroke="rgba(255,248,234,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 1l6 6-6 6" stroke="color-mix(in srgb, var(--text) 35%, transparent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

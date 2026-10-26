@@ -232,7 +232,7 @@ function UnitIcon() {
 function ChevronIcon() {
   return (
     <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-      <path d="M1 1L7 7L1 13" stroke="rgba(255,248,234,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M1 1L7 7L1 13" stroke="color-mix(in srgb, var(--text) 30%, transparent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }

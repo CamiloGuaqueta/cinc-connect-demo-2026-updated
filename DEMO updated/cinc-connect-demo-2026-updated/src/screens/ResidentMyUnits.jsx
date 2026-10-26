@@ -280,7 +280,7 @@ function UnitIcon() {
 function CloseIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M4 4L14 14M14 4L4 14" stroke="rgba(255,248,234,0.5)" strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M4 4L14 14M14 4L4 14" stroke="color-mix(in srgb, var(--text) 50%, transparent)" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   )
 }
@@ -288,8 +288,8 @@ function CloseIcon() {
 function SearchIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
-      <circle cx="9" cy="9" r="7" stroke="rgba(255,248,234,0.4)" strokeWidth="1.8"/>
-      <path d="M14 14L18 18" stroke="rgba(255,248,234,0.4)" strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="9" cy="9" r="7" stroke="color-mix(in srgb, var(--text) 40%, transparent)" strokeWidth="1.8"/>
+      <path d="M14 14L18 18" stroke="color-mix(in srgb, var(--text) 40%, transparent)" strokeWidth="1.8" strokeLinecap="round"/>
     </svg>
   )
 }
@@ -297,7 +297,7 @@ function SearchIcon() {
 function ChevronIcon() {
   return (
     <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
-      <path d="M1 1l5 5-5 5" stroke="rgba(255,248,234,0.4)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M1 1l5 5-5 5" stroke="color-mix(in srgb, var(--text) 40%, transparent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }

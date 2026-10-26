@@ -288,7 +288,6 @@ function BoardRoomIcon() {
 
 function MyPropertyIcon() {
   const svg = myPropertyIconRaw
-    .replace(/fill="#FFF8EA"/g, 'fill="currentColor"')
     .replace(/width="71"/, 'width="22"')
     .replace(/height="76"/, 'height="24"')
   return <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:24,height:24}} dangerouslySetInnerHTML={{__html: svg}} />
@@ -307,7 +306,7 @@ function CommunityIcon() {
 }
 
 function FinancialHubIcon() {
-  return <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:24,height:24}} dangerouslySetInnerHTML={{__html: financialHubIconRaw.replace(/fill="#FFF8EA"/g, 'fill="currentColor"')}} />
+  return <span style={{display:'flex',alignItems:'center',justifyContent:'center',width:24,height:24}} dangerouslySetInnerHTML={{__html: financialHubIconRaw}} />
 }
 
 function ResidentChatIcon() {

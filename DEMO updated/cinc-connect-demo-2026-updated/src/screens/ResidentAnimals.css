@@ -127,7 +127,7 @@
   width: 100%;
   height: 46px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 248, 234, 0.35);
+  border: 1px solid color-mix(in srgb, var(--text) 35%, transparent);
   background: transparent;
   color: var(--res-text);
   font-family: var(--font);
