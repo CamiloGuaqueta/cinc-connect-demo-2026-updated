@@ -67,12 +67,38 @@ Hub: `src/screens/BoardRoom.jsx` (filas con `screen` key → `pushResidentView`)
 
 Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violation` a mano — si agregas un campo nuevo al task de violación, hay que agregarlo también a ese mapeo.
 
-## Pendientes
+## Hecho (referencia)
 
-1. **HubSpot lead capture form** — form/login antes de entrar al demo (detalles por definir con Camilo).
-2. **Swap de dominio** — apuntar `democonnect.cincsystems.com` al proyecto Vercel nuevo cuando el demo esté aprobado.
-3. *(Opcional, solo si se revive el modo BOD)*: pase de consistencia en pantallas inalcanzables: `Pulse.jsx`, `PulseViolations.jsx`, `MeetingAgenda.jsx` y contextos `kpi:*`/`v1-v15`/`delinquencies` de `CephAIChat.jsx` — aún usan Thompson/Davis/Wilson, calles genéricas y a Sarah Mitchell/David Chen como board.
-4. Inconsistencias menores conocidas (baja prioridad): Rachel Park comparte dirección con la unit 1 de Thomas (319 Cardinal Hills Dr); el directorio de 67 miembros usa calles genéricas (Cherry Blossom Ln...); My Properties/Market Index muestran "2545 North Point Hill"/"12346 Washington Avenue" como casa del usuario.
+- **HubSpot lead capture**: integrado en `LoginScreen.jsx` (campo Name + texto legal + POST silencioso a HubSpot Forms API, una vez por navegador) + beacon a Google Sheet (Apps Script) en cada login.
+- **Swap de dominio (26 oct 2026)**: `democonnect.cincsystems.com` ya apunta al proyecto Vercel `cinc-connect-demo-2026-updated`. Vercel team slug `cinc-systems`. El proyecto viejo `cinc-connect-demo` ya no tiene el dominio. **Ojo: cada push a `main` ahora va directo al dominio público.**
+- Canon de direcciones corregido (Rachel Park → 27 Cardinal Way, directorio con calles canon, Market Index/Home Value con units reales).
+- Imágenes reales en Calendar, Violations, ACC, Work Orders y Clubhouse (spec en `image-requests.md`; originales en `src/images/IMAGENES GPT/`, NO se suben al repo — usar `git add -A -- ':!src/images/IMAGENES GPT'`).
+
+## TRABAJO EN CURSO: migración a colores actuales de CINC
+
+**Estado: cambios SIN commitear en `src/theme.js` y `src/index.css`. No hacer push hasta terminar** — el login hoy se ve roto (placeholders/legal invisibles) por los hardcodes viejos.
+
+**Paleta objetivo** (extraída por Camilo de la app real en App Store "CINC2Connect", manda sobre la guía de marca para UI de producto):
+- Fondo de página `#E9EEEA` → `--res-bg1` (también header/nav/`--bg-page`)
+- Cards `#FFFFFF` → `--res-bg2` (`--bg-card`)
+- Títulos y botones `#006A52` (Evergreen) → `--res-accent`
+- Texto `#171B19` (CINC Ink) → `--res-text`
+- Borde de cards blancas `#CBCACD` → nuevo token `--res-border` (`--border` ahora lo usa). También `#E9E9E9` para bordes/divisores suaves.
+- NO usar el "sand"/crema (`#FBFAF7`, `#FFF8EA`, `#F1EADC`) — la app real no lo usa.
+- Regla de Camilo: **en ningún lado deben aparecer los colores viejos** ("electric green" / lime).
+
+**Ya hecho en el WIP:** preset `light` en `theme.js` con esa paleta (+ `--res-border` en todos los presets), `:root` de `index.css` con esos defaults, `--bg-page` ahora mapea a `--res-bg1` (antes bg2), default de tema cambiado de `dark` a `light`. Preset `cincGreen` actualizado a Deep Green `#002D28` / Evergreen `#006A52` / Lime `#B6E75A`.
+
+**Falta:**
+1. **Barrido de hardcodes viejos**: 581 ocurrencias en 126 archivos de `#B2DE61`, `#B0DB61`, `#FFF8EA`, `rgba(255,248,234,…)`, `#235237`, `#112719` (y variantes). Reemplazar por variables de tema (`var(--res-accent)`, `var(--res-text)`, `color-mix(in srgb, var(--res-text) X%, transparent)`, etc.) según contexto — ojo que `#112719` a veces es fondo y a veces texto sobre botón lime. Los peores: `ResidentAmenityDetail.jsx/.css`, `Feed.jsx/.css`, `NeighborhoodMarketIndex.css`, `ResidentAmenities.*`, `ResidentMailingAddressDetail.css`, `MembersList.*`, `LoginScreen.*`. ~60 íconos en `src/ICONS/*.svg` con fill fijo → pasar a `currentColor` si se inyectan como raw, o a `#006A52` si se usan con `<img>`.
+2. **Logo del login** (`src/images/login-logo.svg`, todo en `#B2DE61`): reemplazar por logo oficial del kit de marca (skill `cinc-brand-guidelines`, `assets/logos/cinc/png-rgb/` — sobre fondo claro usar colorway `green` o `forest`; escalar SOLO proporcional). Pendiente decisión de Camilo: (a) el wordmark "CONNEC+" (`connecplus-wordmark.svg`) no existe en el kit — ¿recolorear a Evergreen o hay lockup oficial?; (b) la app real usa un ícono de casa con dos puntos en el login — ¿usar ese? (necesitaría el archivo).
+3. **Splash** (`SplashScreen.jsx` → `src/images/splash-bg.png`): imagen única con foto + overlay + logo lime quemados, no se puede recolorear. Pendiente decisión: (a) foto aérea limpia + overlay CSS Deep Green + logo blanco oficial (`cinc-icon-white.png`), (b) fondo sólido + logo blanco, o (c) replicar el splash real de la app si Camilo manda captura.
+4. Verificar en navegador (login, Feed, Financial Hub, My Community, Board Room, More/Customize Demo) y recién ahí build + commit + push.
+
+## Pendientes (baja prioridad)
+
+1. *(Opcional, solo si se revive el modo BOD)*: pase de consistencia en pantallas inalcanzables: `Pulse.jsx`, `PulseViolations.jsx`, `MeetingAgenda.jsx` y contextos `kpi:*`/`v1-v15`/`delinquencies` de `CephAIChat.jsx` — aún usan Thompson/Davis/Wilson, calles genéricas y a Sarah Mitchell/David Chen como board.
+2. White-label self-service (pedido de Jessica): hay una v1 ligera en More → Customize Demo (logo + nombre + tema, en localStorage). La versión completa no está planeada.
 
 ## Preferencias de Camilo
 
