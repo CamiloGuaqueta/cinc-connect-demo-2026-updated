@@ -15,7 +15,6 @@ export default {
   assets: {
     'src/images/splash-bg.jpg':           'public/tenants/krj/splash.jpg',
     'src/images/login-logo.svg':          'public/tenants/krj/logo.png',
-    'src/images/connecplus-wordmark.svg': 'public/tenants/krj/connecplus.svg',
   },
 
   // Ordered: specific strings before generic ones
@@ -75,8 +74,8 @@ export default {
 .phone-frame .resident-nav__item--active .resident-nav__icon { background: #FFFFFF; }
 .phone-frame .resident-nav__item--active .resident-nav__icon svg { color: ${KRJ_DARK}; }
 
-.login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
 .login-screen .login-logo { position: static; width: 220px; height: auto; object-position: center; }
-.login-screen .login-connecplus { position: static; width: 120px; height: 15px; }
+.login-screen .login-connecplus { display: none; }
 `,
 }
