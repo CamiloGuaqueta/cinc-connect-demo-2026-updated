@@ -30,7 +30,7 @@
   --green-cure:   #319245;
 
   /* UI */
-  --border:       rgba(255,255,255,0.08);
+  --border:       color-mix(in srgb, var(--text) 8%, transparent);
   --shadow:       0px 3px 6px rgba(0,0,0,0.16);
   --shadow-md:    0px 4px 12px rgba(0,0,0,0.32);
 

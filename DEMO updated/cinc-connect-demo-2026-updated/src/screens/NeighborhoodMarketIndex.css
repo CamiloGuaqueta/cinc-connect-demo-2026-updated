@@ -179,7 +179,7 @@
 .nmi-range-bar {
   position: relative;
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
   border-radius: 3px;
   margin-bottom: 8px;
   overflow: visible;
@@ -225,7 +225,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
 }
 .nmi-conf-dot--on { background: var(--res-accent); }
 .nmi-conf-label {
@@ -284,7 +284,7 @@
 .nmi-sub-track {
   flex: 1;
   height: 7px;
-  background: rgba(255, 255, 255, 0.07);
+  background: color-mix(in srgb, var(--text) 7%, transparent);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -306,7 +306,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }
 .nmi-stat-cell {
   background: var(--res-bg2);
@@ -355,7 +355,7 @@
   padding: 13px 16px;
 }
 .nmi-profile-row--border {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-profile-label {
   font-size: 13px;
@@ -439,7 +439,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 .nmi-blog-row--border {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-blog-tag {
   margin-bottom: 7px;
@@ -500,7 +500,7 @@
 }
 .nmi-blog-cta-wrap {
   padding: 12px 16px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-see-more-btn {
   width: 100%;
@@ -562,7 +562,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
   padding-top: 12px;
   margin-bottom: 14px;
 }
@@ -611,7 +611,7 @@
   padding: 12px 16px;
 }
 .nmi-sale-row--border {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-sale-info {
   flex: 1;
@@ -666,13 +666,13 @@
   justify-content: center;
   gap: 18px;
   padding: 12px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-page-btn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   color: var(--res-text);
   font-size: 20px;
   line-height: 1;
@@ -724,7 +724,7 @@
   width: 36px;
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.2);
+  background: color-mix(in srgb, var(--text) 20%, transparent);
   margin: 10px auto 0;
   flex-shrink: 0;
 }
@@ -773,7 +773,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   color: color-mix(in srgb, var(--text) 70%, transparent);
   font-size: 14px;
   display: flex;
@@ -820,7 +820,7 @@
 }
 .nmi-blog-sheet__divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   margin-bottom: 16px;
 }
 .nmi-blog-sheet__para {
@@ -837,7 +837,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .nmi-legal p {
   font-size: 10px;

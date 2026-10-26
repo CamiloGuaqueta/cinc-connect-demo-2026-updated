@@ -86,6 +86,9 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - Prohibidos (regla de Camilo): lime/"electric green" viejo (`#B2DE61`, `#B0DB61`, `rgba(178,222,97,…)`), crema (`#FFF8EA`, `#FBFAF7`, `#F1EADC`), verdes oscuros viejos (`#112719`, `#235237`, `#0e1e11`, `#1e3a22`…), gris de texto del tema oscuro (`rgba(209,209,209,…)`). Barrido completo hecho: 0 ocurrencias (salvo `Pulse`/`MeetingAgenda`, inalcanzables).
 - Íconos `src/ICONS/*.svg`: los importados con `?raw` usan `fill="currentColor"`; los usados con `<img>` usan `#171B19`. Para recolorear un `<img>` a Evergreen se usa el filtro `brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)`.
 - Splash: `src/images/splash-bg.jpg` (foto en gris claro + logo `#002D28`), generado desde el splash viejo. Login: `login-logo.svg` y `connecplus-wordmark.svg` recoloreados a `#002D28`.
+- Card de pagos del Feed (`.acct-card`): fondo CINC Ink `#171B19`, texto blanco, botón blanco con texto Evergreen.
+- Sliders/carruseles: solo puntos (dots) + swipe/drag, **sin flechas**.
+- Tintes sutiles (divisores, inputs, hovers) usan `color-mix(in srgb, var(--text) X%, transparent)` — no `rgba(255,255,255,…)` (era del tema oscuro).
 - Al probar el login en el navegador NO enviar el form real (manda lead a HubSpot + Google Sheet): stubbear `fetch`/`Image` o setear `localStorage.hubspotLeadCaptured='true'` antes.
 
 ## Pendientes (baja prioridad)

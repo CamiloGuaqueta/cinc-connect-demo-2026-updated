@@ -27,7 +27,7 @@
 .rbp-header {
   background: #1a3326;
   padding: 24px 20px 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .rbp-category {
   display: inline-block;
@@ -102,7 +102,7 @@
 .rbp-footer {
   margin-top: 8px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 .rbp-author-card {
   display: flex;

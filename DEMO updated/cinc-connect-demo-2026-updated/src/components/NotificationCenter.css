@@ -20,7 +20,7 @@
   --bg-header:  #313131;
   --text:       var(--text);
   --lime:       var(--lime);
-  --border:     rgba(255,255,255,0.08);
+  --border:     color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .notif-center[data-mode="resident"] {
@@ -29,7 +29,7 @@
   --bg-header:  var(--res-bg1);
   --text:       var(--res-text);
   --lime:       var(--res-accent);
-  --border:     rgba(255,255,255,0.10);
+  --border:     color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 .notif-center__header {

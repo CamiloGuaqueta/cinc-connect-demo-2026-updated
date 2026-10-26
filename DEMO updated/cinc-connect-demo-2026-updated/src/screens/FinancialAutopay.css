@@ -89,7 +89,7 @@
   height: 26px;
   border-radius: 13px;
   border: none;
-  background: rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   padding: 3px;
   cursor: pointer;
   display: flex;

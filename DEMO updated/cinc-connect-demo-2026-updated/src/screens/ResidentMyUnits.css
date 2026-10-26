@@ -191,7 +191,7 @@
 }
 
 .myu-form-section--bordered {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 /* ── Caps label ───────────────────────────────────────── */
@@ -218,7 +218,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   padding: 0 10px;
@@ -248,7 +248,7 @@
 /* ── Address list ─────────────────────────────────────── */
 .myu-addr-list {
   margin-top: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   border-radius: 8px;
   overflow: hidden;
   max-height: 220px;
@@ -260,7 +260,7 @@
   width: 100%;
   background: var(--bg-card);
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
   padding: 12px 14px;
   text-align: left;
   font-family: 'Montserrat', sans-serif;
@@ -321,7 +321,7 @@
 /* ── Text input ───────────────────────────────────────── */
 .myu-field-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
@@ -342,7 +342,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   padding: 10px 12px;
@@ -366,7 +366,7 @@
   align-items: center;
   gap: 14px;
   padding: 20px 16px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   margin-top: auto;
 }
 
@@ -441,7 +441,7 @@
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
   padding: 18px 20px;
   cursor: pointer;
   text-align: left;
@@ -456,7 +456,7 @@
 }
 
 .myu-rel-opt:active {
-  background: rgba(255, 255, 255, 0.04);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
 }
 
 /* ── Radio ────────────────────────────────────────────── */

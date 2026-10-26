@@ -61,7 +61,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.25);
+  border: 1.5px solid color-mix(in srgb, var(--text) 25%, transparent);
   background: none;
   padding: 0;
   cursor: pointer;
@@ -146,7 +146,7 @@
   height: 24px;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid color-mix(in srgb, var(--text) 20%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +200,7 @@
   padding: 0;
 }
 
-.fpm-field__input::placeholder { color: rgba(255,255,255,0.3); }
+.fpm-field__input::placeholder { color: color-mix(in srgb, var(--text) 30%, transparent); }
 
 .fpm-field--card-row {
   flex-direction: row;

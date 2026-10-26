@@ -49,7 +49,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   transition: background 0.25s, transform 0.25s, width 0.25s;
 }
 
@@ -656,14 +656,14 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
   color: color-mix(in srgb, var(--text) 60%, transparent);
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .tasks-header-btn:active {
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
 }
 
 .tasks-header-btn--active {
@@ -711,7 +711,7 @@
 }
 
 .tasks-filter-option:active {
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
 }
 
 .tasks-filter-option--active {
@@ -730,7 +730,7 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--text-muted);
-  background: rgba(255,255,255,0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border-radius: 99px;
   padding: 1px 7px;
 }
@@ -1163,7 +1163,7 @@
 }
 .approver-vote--approve { background: rgba(107,203,119,0.15); color: #6bcb77; }
 .approver-vote--deny    { background: rgba(224,92,92,0.15);   color: #e05c5c; }
-.approver-vote--pending { background: rgba(255,255,255,0.07); color: var(--text-muted); }
+.approver-vote--pending { background: color-mix(in srgb, var(--text) 7%, transparent); color: var(--text-muted); }
 
 /* ── Panel app-header override ───────────────────────── */
 .inv-panel__appheader {
@@ -1192,7 +1192,7 @@
 }
 .vend-card__divider {
   height: 1px;
-  background: var(--border, rgba(255,255,255,0.1));
+  background: var(--border, color-mix(in srgb, var(--text) 10%, transparent));
   margin: 4px 0 0;
 }
 .vend-link__icon {

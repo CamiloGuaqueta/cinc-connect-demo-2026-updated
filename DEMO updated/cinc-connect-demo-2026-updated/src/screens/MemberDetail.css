@@ -208,7 +208,7 @@
 }
 
 .md-unit-row + .md-unit-row {
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }
 
 .md-units-more {
@@ -250,7 +250,7 @@
 }
 
 .md-phone-row + .md-phone-row {
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
   margin-top: 4px;
 }
 

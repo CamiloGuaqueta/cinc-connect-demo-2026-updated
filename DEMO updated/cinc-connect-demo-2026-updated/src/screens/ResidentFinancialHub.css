@@ -67,7 +67,7 @@
 .fh-sheet__handle {
   width: 40px;
   height: 4px;
-  background: rgba(255,255,255,0.2);
+  background: color-mix(in srgb, var(--text) 20%, transparent);
   border-radius: 2px;
   margin: 12px auto 0;
   flex-shrink: 0;
@@ -102,7 +102,7 @@
 
 .fh-sheet__divider {
   height: 1px;
-  background: rgba(255,255,255,0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
   flex-shrink: 0;
 }
 
@@ -215,7 +215,7 @@
 
 .fh-unit-card__divider {
   height: 1px;
-  background: rgba(255,255,255,0.1);
+  background: color-mix(in srgb, var(--text) 10%, transparent);
   margin-bottom: 8px;
 }
 
@@ -290,7 +290,7 @@
 .fh-line-item__autopay {
   font-size: 9px;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
 }
 
 .fh-line-item__autopay--on { color: var(--lime); }
@@ -309,11 +309,11 @@
 
 .fh-divider {
   height: 1px;
-  background: rgba(255,255,255,0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .fh-divider--thick {
-  background: rgba(255,255,255,0.18);
+  background: color-mix(in srgb, var(--text) 18%, transparent);
   margin: 8px 0;
 }
 
@@ -334,7 +334,7 @@
 
 .fh-balance-row__dots {
   flex: 1;
-  border-bottom: 1px dotted rgba(255,255,255,0.25);
+  border-bottom: 1px dotted color-mix(in srgb, var(--text) 25%, transparent);
   margin-bottom: 3px;
 }
 

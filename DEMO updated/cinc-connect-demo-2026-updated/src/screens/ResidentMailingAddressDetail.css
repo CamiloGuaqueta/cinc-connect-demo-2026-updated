@@ -84,7 +84,7 @@
 }
 
 .mad-addr-section--bordered {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 /* ── Inline row (address text + toggle + remove) ──────── */
@@ -154,7 +154,7 @@
   border: none;
   cursor: pointer;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--text) 15%, transparent);
   transition: background 0.2s;
   padding: 0;
 }
@@ -228,7 +228,7 @@
 
 .mad-input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--lime) 40%, transparent);
   border-radius: 8px;
   color: var(--res-text);
@@ -322,7 +322,7 @@
 /* ── Statements card ─────────────────────────────────── */
 .mad-stmt-copy-section {
   padding: 0 16px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .mad-stmt-copy {
@@ -339,7 +339,7 @@
   align-items: center;
   padding: 0 16px;
   height: 52px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
 }
 
 .mad-stmt-toggle-row .mad-row__label {
@@ -354,7 +354,7 @@
   width: 100%;
   background: none;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
   padding: 0 16px;
   height: 48px;
   cursor: pointer;
@@ -582,7 +582,7 @@
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
   padding: 18px 20px;
   cursor: pointer;
   text-align: left;
@@ -597,7 +597,7 @@
 }
 
 .atp-option:active {
-  background: rgba(255, 255, 255, 0.04);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
 }
 
 /* ── Radio circle ── */
@@ -628,12 +628,12 @@
 .stp-search-wrap {
   padding: 10px 16px 6px;
   flex-shrink: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
 }
 
 .stp-search {
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
   border: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
   border-radius: 8px;
   color: var(--res-text);

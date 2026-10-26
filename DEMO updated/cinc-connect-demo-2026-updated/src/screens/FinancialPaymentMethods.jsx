@@ -23,9 +23,9 @@ function ChevronRightIcon() {
 function CardIcon() {
   return (
     <svg width="26" height="18" viewBox="0 0 28 20" fill="none">
-      <rect x="0.5" y="0.5" width="27" height="19" rx="3.5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" />
-      <rect x="0" y="6" width="28" height="5" fill="rgba(255,255,255,0.15)" />
-      <rect x="3" y="13" width="8" height="2" rx="1" fill="rgba(255,255,255,0.3)" />
+      <rect x="0.5" y="0.5" width="27" height="19" rx="3.5" fill="color-mix(in srgb, var(--text) 8%, transparent)" stroke="color-mix(in srgb, var(--text) 20%, transparent)" />
+      <rect x="0" y="6" width="28" height="5" fill="color-mix(in srgb, var(--text) 15%, transparent)" />
+      <rect x="3" y="13" width="8" height="2" rx="1" fill="color-mix(in srgb, var(--text) 30%, transparent)" />
     </svg>
   )
 }

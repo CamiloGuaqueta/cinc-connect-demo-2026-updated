@@ -12,25 +12,6 @@
 }
 .hvc-track::-webkit-scrollbar { display: none; }
 
-.hvc-arrow {
-  position: absolute;
-  top: 57px;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  cursor: pointer;
-  z-index: 2;
-}
-.hvc-arrow:active { opacity: 0.7; }
-.hvc-arrow--next svg { margin-left: 1px; }
-.hvc-arrow--prev svg { margin-right: 1px; }
-
 .hvc-slide {
   flex: 0 0 100%;
   min-width: 100%;

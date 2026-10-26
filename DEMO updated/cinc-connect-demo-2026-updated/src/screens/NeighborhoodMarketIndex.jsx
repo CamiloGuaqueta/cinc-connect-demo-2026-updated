@@ -119,7 +119,7 @@ function NmiGauge({ score }) {
   return (
     <svg width="140" height="140" viewBox="0 0 140 140">
       <circle cx={cx} cy={cy} r={R + 9} fill="none" stroke={glowColor} strokeWidth="1" opacity="0.12" />
-      <circle cx={cx} cy={cy} r={R} fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="13" />
+      <circle cx={cx} cy={cy} r={R} fill="none" stroke="color-mix(in srgb, var(--text) 7%, transparent)" strokeWidth="13" />
       {segs}
       <circle cx={cx + R * Math.cos(startA)} cy={cy + R * Math.sin(startA)} r={capR} fill="#e05c5c" opacity="0.92" />
       <circle cx={cx + R * Math.cos(endA)}   cy={cy + R * Math.sin(endA)}   r={capR} fill={arcSegColor(1)} opacity="0.92" />

@@ -87,7 +87,7 @@
   gap: 12px;
   width: 100%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--text) 3%, transparent);
   border: none;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -96,7 +96,7 @@
   transition: background 0.12s;
 }
 
-.ba-card__owner:active { background: rgba(255, 255, 255, 0.07); }
+.ba-card__owner:active { background: color-mix(in srgb, var(--text) 7%, transparent); }
 
 .ba-card__owner-photo,
 .ba-card__owner-initials {
