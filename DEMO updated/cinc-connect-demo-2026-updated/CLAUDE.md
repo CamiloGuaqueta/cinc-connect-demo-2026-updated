@@ -91,6 +91,16 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - Tintes sutiles (divisores, inputs, hovers) usan `color-mix(in srgb, var(--text) X%, transparent)` — no `rgba(255,255,255,…)` (era del tema oscuro).
 - Al probar el login en el navegador NO enviar el form real (manda lead a HubSpot + Google Sheet): stubbear `fetch`/`Image` o setear `localStorage.hubspotLeadCaptured='true'` antes.
 
+## Demos por prospecto (tenants) — `/krj`
+
+- Cada prospecto tiene su versión en `democonnect.cincsystems.com/<id>`, generada en el build **sin tocar el código del demo**: `tenants/<id>/config.js` define reemplazos de texto (HOA, calles, ciudades, administradora, prefijo de cuentas), colores (swap de hex de la paleta CINC), assets importados (splash, logo de login, wordmark) y CSS extra.
+- `npm run build` = build del demo CINC en `dist/` + `vite build --mode krj` en `dist/krj/` (plugin `tenantPlugin` en `vite.config.js`). `vercel.json` reescribe `/krj/*` → `/krj/index.html`.
+- Dev local del tenant: `npm run dev:krj` (puerto 5176, servido en `/`). Cambios en `tenants/*/config.js` requieren reiniciar el server.
+- localStorage separado por tenant (shim que antepone `krj:` a las keys) para que no se mezcle el estado con el demo CINC.
+- Assets del tenant en `public/tenants/<id>/` (logo.png transparente, icon.png cuadrado para header/favicon, splash.jpg, connecplus.svg).
+- **KRJ Cares** (Houston, prospecto grande — reunión 28/10/2026): comunidad ficticia **Bayou Oaks HOA** (no usar comunidades reales de KRJ como Ravenna/Westchase/Friendswood: el demo tiene morosos y violaciones). Calles: Bayou Oaks Dr, Bayou Point Rd, Bayou Way, Bayou Heights, Magnolia Loop, Live Oak Loop, Cypress Bend Pass. Cuentas `BO:`. Paleta: botones/títulos `#313131`, nav `#84BCCE`, fondo `#F2F2F2`, bordes `#E2E2E2` (como las animaciones de Diego; el azul no sirve de color de botón por contraste).
+- Para un prospecto nuevo: copiar `tenants/krj/`, ajustar config + assets, agregar `&& vite build --mode <id>` al script `build` y las rewrites en `vercel.json`.
+
 ## Pendientes (baja prioridad)
 
 1. *(Opcional, solo si se revive el modo BOD)*: pase de consistencia en pantallas inalcanzables: `Pulse.jsx`, `PulseViolations.jsx`, `MeetingAgenda.jsx` y contextos `kpi:*`/`v1-v15`/`delinquencies` de `CephAIChat.jsx` — aún usan Thompson/Davis/Wilson, calles genéricas y a Sarah Mitchell/David Chen como board.
