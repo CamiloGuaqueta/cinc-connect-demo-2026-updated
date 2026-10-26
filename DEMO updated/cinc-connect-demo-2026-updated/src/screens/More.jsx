@@ -256,7 +256,7 @@ export default function More() {
 
         <button className="more-signout">Sign Out</button>
 
-        <p className="more-version">CINC BOD Experience · v1.0 prototype</p>
+        <p className="more-version">CINC Connect Demo · v1.0 prototype</p>
 
       </div>
     </div>
