@@ -398,7 +398,7 @@
 .amenity-list-card__gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.75) 100%);
+  background: linear-gradient(to bottom, transparent 55%, color-mix(in srgb, var(--bg-card) 92%, transparent) 100%);
   border-radius: 10px;
 }
 
@@ -408,7 +408,7 @@
   left: 14px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--res-text);
+  color: var(--res-accent);
   line-height: 1.2;
 }
 
