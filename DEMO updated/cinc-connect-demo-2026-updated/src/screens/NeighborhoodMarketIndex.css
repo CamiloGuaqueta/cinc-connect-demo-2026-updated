@@ -842,12 +842,12 @@
 .nmi-legal p {
   font-size: 10px;
   line-height: 1.6;
-  color: color-mix(in srgb, var(--text) 35%, transparent);
+  color: color-mix(in srgb, var(--text) 65%, transparent);
   font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 .nmi-legal a {
-  color: color-mix(in srgb, var(--text) 50%, transparent);
+  color: color-mix(in srgb, var(--text) 80%, transparent);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

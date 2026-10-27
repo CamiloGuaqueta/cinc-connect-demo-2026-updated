@@ -5,6 +5,7 @@
 .hvc-track {
   display: flex;
   overflow-x: auto;
+  padding: 6px 0 18px;   /* room for the card shadow — the scroller clips anything outside it */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -42,7 +43,7 @@
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin: 10px 0 0;
+  margin: -4px 0 0;
 }
 .hvc-dot {
   width: 6px;

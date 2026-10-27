@@ -425,8 +425,8 @@ export default function NeighborhoodMarketIndex() {
 
       <div className="nmi-legal">
         <p>The information provided is drawn from a variety of trusted sources. Data may vary and is intended for informational purposes only. Not appraisals; not warranted to be accurate. Consult a licensed real estate professional.</p>
-        <p>Content is managed by the platform, and does not constitute an endorsement by HOA, its board or management company. Questions: <a href="mailto:[email protected]">[email protected]</a></p>
-        <p>Realtors interested in contributing: <a href="mailto:[email protected]">[email protected]</a></p>
+        <p>Content is managed by the platform, and does not constitute an endorsement by HOA, its board or management company. Questions: <a href="mailto:marketinsights@cardinalhills.org">marketinsights@cardinalhills.org</a></p>
+        <p>Realtors interested in contributing: <a href="mailto:agents@cardinalhills.org">agents@cardinalhills.org</a></p>
       </div>
 
       {toast && <Toast message={toast} onDone={() => setToast(null)} />}
