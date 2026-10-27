@@ -1837,3 +1837,78 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ── Post comments sheet ─────────────────────────── */
+.post-comments-backdrop { z-index: 400; animation: post-comments-fade 0.2s ease-out; }
+.post-comments {
+  gap: 10px;
+  padding-bottom: 30px;
+  max-height: 72%;
+  overflow: hidden;
+  animation: post-comments-up 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.post-comments__header { display: flex; align-items: center; gap: 8px; }
+.post-comments__count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+.post-comments__list {
+  flex: 1;
+  min-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0;
+}
+.post-comments__earlier { font-size: 12px; font-weight: 600; color: var(--text-muted); margin: 0; }
+.post-comment { display: flex; align-items: flex-start; gap: 10px; }
+.post-comment--mine { animation: post-comments-rise 0.3s ease-out; }
+.post-comment__avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.post-comment__bubble {
+  flex: 1;
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  border-radius: 4px 14px 14px 14px;
+  padding: 8px 12px;
+}
+.post-comment__name { font-size: 12px; font-weight: 700; color: var(--text); }
+.post-comment__text { font-size: 13px; line-height: 1.4; color: var(--text); margin: 2px 0 0; }
+.post-comment__time { font-size: 11px; color: var(--text-muted); padding-top: 8px; flex-shrink: 0; }
+.post-comments__composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.post-comments__input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-card);
+  outline: none;
+}
+.post-comments__input:focus { border-color: var(--lime); }
+.post-comments__send {
+  border: none;
+  background: none;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--lime);
+  cursor: pointer;
+  padding: 6px 2px;
+}
+.post-comments__send:disabled { opacity: 0.35; cursor: default; }
+@keyframes post-comments-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes post-comments-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes post-comments-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }

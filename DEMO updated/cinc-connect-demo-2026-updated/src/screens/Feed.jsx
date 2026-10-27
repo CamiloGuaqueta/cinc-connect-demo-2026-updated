@@ -1,4 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { useMode } from '../ModeContext'
 import { BLOGS } from '../data/blogs'
@@ -1564,6 +1565,8 @@ function ResidentFeed() {
 /* ── Post Card ────────────────────────────────────── */
 function PostCard({ post, onCta }) {
   const [liked, setLiked] = useState(false)
+  const [commentsOpen, setCommentsOpen] = useState(false)
+  const [myComments, setMyComments] = useState([])
 
   return (
     <div className="post-card card">
@@ -1625,14 +1628,103 @@ function PostCard({ post, onCta }) {
             <HeartIcon filled={liked} />
             <span>{liked ? post.likes + 1 : post.likes}</span>
           </button>
-          <button className="post-social__btn">
+          <button className="post-social__btn" onClick={() => setCommentsOpen(true)}>
             <CommentIcon />
-            <span>{post.comments}</span>
+            <span>{post.comments + myComments.length}</span>
           </button>
+        </div>
+      </div>
+
+      {commentsOpen && (
+        <PostCommentsSheet
+          post={post}
+          myComments={myComments}
+          onAdd={text => setMyComments(c => [...c, text])}
+          onClose={() => setCommentsOpen(false)}
+        />
+      )}
+    </div>
+  )
+}
+
+/* ── Post Comments Sheet ──────────────────────────── */
+const COMMENT_POOL = [
+  { name: 'Emma Hughes',    photo: '/images/personas/emma-hughes.png',    text: 'Thanks for sharing this — really helpful.' },
+  { name: 'Ethan Young',    photo: '/images/personas/ethan-young.png',    text: 'Great to see this. Appreciate the update!' },
+  { name: 'Sophia Diaz',    photo: '/images/personas/sophia-diaz.png',    text: 'Will there be more details at the next board meeting?' },
+  { name: 'William Walker', photo: '/images/personas/william-walker.png', text: 'Count me in 👍' },
+  { name: 'Mary Compton',   photo: '/images/personas/mary-compton.png',   text: 'Love how quickly things get communicated here now.' },
+  { name: 'Daniel Carter',  photo: '/images/personas/daniel-carter.png',  text: 'Good call. Thanks to everyone involved.' },
+]
+
+function PostCommentsSheet({ post, myComments, onAdd, onClose }) {
+  const [text, setText] = useState('')
+  const listRef = useRef(null)
+  const frame = document.querySelector('.phone-frame')
+  // Deterministic sample of neighbor comments per post (never the post author)
+  const seed = String(post.id ?? post.name).split('').reduce((a, c) => a + c.charCodeAt(0), 0)
+  const pool = COMMENT_POOL.filter(c => c.name !== post.name)
+  const sample = Array.from({ length: Math.min(post.comments, 3) }, (_, i) => pool[(seed + i) % pool.length])
+  const times = ['2h', '1h', '35m']
+
+  useEffect(() => {
+    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
+  }, [myComments.length])
+
+  function send() {
+    if (!text.trim()) return
+    onAdd(text.trim())
+    setText('')
+  }
+
+  const sheet = (
+    <div className="feed-compose-backdrop post-comments-backdrop" onClick={onClose}>
+      <div className="feed-compose-sheet post-comments" onClick={e => e.stopPropagation()}>
+        <div className="feed-compose-sheet__handle" />
+        <div className="post-comments__header">
+          <span className="feed-compose-sheet__title">Comments</span>
+          <span className="post-comments__count">{post.comments + myComments.length}</span>
+        </div>
+        <div className="post-comments__list" ref={listRef}>
+          {post.comments > sample.length && (
+            <p className="post-comments__earlier">View {post.comments - sample.length} earlier comments</p>
+          )}
+          {sample.map((c, i) => (
+            <div key={i} className="post-comment">
+              <img src={c.photo} alt="" className="post-comment__avatar" />
+              <div className="post-comment__bubble">
+                <span className="post-comment__name">{c.name}</span>
+                <p className="post-comment__text">{c.text}</p>
+              </div>
+              <span className="post-comment__time">{times[i]}</span>
+            </div>
+          ))}
+          {myComments.map((t, i) => (
+            <div key={`me-${i}`} className="post-comment post-comment--mine">
+              <img src={PROFILE_IMG} alt="" className="post-comment__avatar" />
+              <div className="post-comment__bubble">
+                <span className="post-comment__name">Thomas Bravo</span>
+                <p className="post-comment__text">{t}</p>
+              </div>
+              <span className="post-comment__time">now</span>
+            </div>
+          ))}
+        </div>
+        <div className="post-comments__composer">
+          <img src={PROFILE_IMG} alt="" className="post-comment__avatar" />
+          <input
+            className="post-comments__input"
+            placeholder="Write a comment…"
+            value={text}
+            onChange={e => setText(e.target.value)}
+            onKeyDown={e => { if (e.key === 'Enter') send() }}
+          />
+          <button className="post-comments__send" onClick={send} disabled={!text.trim()}>Post</button>
         </div>
       </div>
     </div>
   )
+  return frame ? createPortal(sheet, frame) : sheet
 }
 
 /* ── Create Post Sheet ───────────────────────────── */
