@@ -554,6 +554,9 @@ const CARD_CONTEXTS = {
 function getAIResponse(message, pathname, task) {
   const m = message.toLowerCase()
 
+  const smallTalk = getSmallTalk(m)
+  if (smallTalk) return smallTalk
+
   /* ── Pulse responses ──────────────────────────────── */
   if (pathname === '/pulse') {
     if (m.includes('maintenance') || m.includes('explain budget') || (m.includes('budget') && m.includes('over'))) {
@@ -702,6 +705,10 @@ function getAIResponse(message, pathname, task) {
   if (m.includes('pool')) {
     return "The Cardinal Hills pool is open **7:00 AM – 9:00 PM** most days (Sunday 8:00 AM – 8:00 PM).\n\n• Guests must be **accompanied by a resident** at all times\n• Private reservations allow up to **4 guests** for up to 4 hours\n• No glass containers, and no lifeguard on duty — swim at your own risk\n\nYou can book a private slot from My Community → Amenities.\n[[source: Pool Rules & Regulations · Sections 1–3 | pool#0,1,2]]"
   }
+  /* ── "Where do I find…" — points to real places in the app ── */
+  const nav = NAV_ANSWERS.find(n => n.match.test(m))
+  if (nav) return nav.a
+
   if (m.includes('rule') || m.includes('regulation') || m.includes("cc&r")) {
     return "Cardinal Hills HOA is governed by the CC&Rs recorded in 2018, with amendments in 2021 and 2023. Key areas include architectural guidelines, landscaping standards, parking rules, and noise ordinances.\n\nWhat specific rule or topic are you looking for?\n[[source: CC&Rs · 2023 amended edition | ccrs#0]]"
   }
@@ -712,8 +719,67 @@ function getAIResponse(message, pathname, task) {
     return "The next board meeting is scheduled for **May 14, 2026 at 5:30 PM** via Zoom. The agenda includes: reserve study update, Q1 financial review, 3 ACC appeals, and the Maintenance contractor contract renewal.\n\nWant me to summarize any of the agenda items?\n[[source: Board meeting calendar · May 2026 | meetings#1]]"
   }
 
-  return `I can help with that. Could you be more specific? I can cover vendor history, budget details, CC&R rules, fine enforcement, draft notes, or anything currently on your screen.`
+  return "That one needs the live Cephai. **This demo version doesn't include real AI answers** — in your community's app, Cephai answers anything about your community from your governing documents, account and community data, and cites the source.\n\nFor this demo, try one of the suggested questions below, or ask me where to find something in the app (payments, amenities, work orders, documents…)."
 }
+
+/* ── Demo small talk (checked before any other answer) ── */
+function getSmallTalk(m) {
+  const t = m.replace(/[!?.,]+/g, '').trim()
+  if (/^(hi|hello|hey|hola|good (morning|afternoon|evening))( there| cephai)?$/.test(t)) {
+    return "Hi Thomas! 👋 How can I help you today? I can answer questions about Cardinal Hills rules and your account, or help you find anything in the app."
+  }
+  if (/^(thanks|thank you|thank you so much|thx|ty|great thanks|perfect thanks|awesome)$/.test(t)) {
+    return "You're welcome! Anything else I can help you with?"
+  }
+  if (/^(bye|goodbye|see you|that's all|thats all|no thanks|nothing else)$/.test(t)) {
+    return "Have a great day, Thomas! I'm here whenever you need me — just tap Ask CephAI in the More tab."
+  }
+  if (/^how are you( doing)?( today)?$/.test(t)) {
+    return "Doing great, thanks for asking! What can I help you with?"
+  }
+  if (/(who are you|what are you|what can you do|what is cephai|^help$)/.test(t)) {
+    return "I'm **Cephai**, your HOA intelligence assistant. I can:\n\n• Answer questions about your community's rules, citing the exact document\n• Explain your balance and charges, live from your account\n• Help you find anything in the app — payments, reservations, requests, documents\n• Help board members review approvals, violations and financials\n\nTry one of the suggested questions below."
+  }
+  return null
+}
+
+/* ── Navigation answers: where things live in the app ── */
+const NAV_ANSWERS = [
+  { match: /(my account|account (details|number|info))/,
+    a: "Your units and their account numbers are in the **More** tab → **My Units**. Balances, charges and statements for each account are in the **Financial Hub** tab — use the unit selector at the top to switch between your 4 properties." },
+  { match: /(make a payment|pay my|how (do|can) i pay|payment method|card on file)/,
+    a: "To make a payment, open the **Financial Hub** tab and tap **Make a Payment**. You can pay the full balance or another amount, by card or bank account. Saved cards live under **Payment Methods** in the same tab." },
+  { match: /autopay|auto pay|automatic payment/,
+    a: "Autopay is in the **Financial Hub** tab → **Autopay**. Turn it on per unit and your assessment is paid automatically every month, so it's never late." },
+  { match: /(statement|payment history|receipt|ledger)/,
+    a: "Your statements and past payments are in the **Financial Hub** tab → **Statements** and **Payment History**. Tap any charge on the balance card to see its full ledger." },
+  { match: /(reserve (a|the|an)|reservation|\bbook|amenit|clubhouse|tennis|\bgym|media room)/,
+    a: "To reserve an amenity, go to **My Community** → **Amenities & Common Areas**, pick the amenity, then choose a date, time and guests. Your bookings appear under **My Reservations** on the same screen." },
+  { match: /(\bevents?\b|calendar|\bparty|\bsocial)/,
+    a: "Community events are in **My Community** → **Community Calendar**. Switch between List View and Calendar View, and tap any event to add it to your personal calendar." },
+  { match: /(work order|repair|broken|maintenance request|\bfix)/,
+    a: "To request a repair, open **My Properties** → **Work Orders** and tap **+ New**. You can follow its status and the vendor's updates from the same screen." },
+  { match: /(\bacc\b|architectural|\barc request|approval request|modification|remodel|solar|\bdeck)/,
+    a: "Architectural (ACC) requests are in **My Properties** → **Architectural Requests** → **+ New**. Attach photos and plans — the committee's decision and comments show up in the request log." },
+  { match: /(violation|report a neighbor|report an issue|complain)/,
+    a: "To report a violation, go to **My Properties** → **Violations**. Add a photo, a short description and the location — Cephai helps classify it before it's sent to management." },
+  { match: /(document|bylaw|policy|minutes|pdf)/,
+    a: "All community documents are in the **More** tab → **Documents**: governing documents (CC&Rs, Bylaws, Architectural Guidelines), financial reports, rules & policies and board meetings." },
+  { match: /(vote|ballot|election|survey|consent|signature)/,
+    a: "Voting and community input live in the **More** tab: **Ballots & Votes**, **Surveys** and **Signatures & Consents**. The current Board election ballot is open there." },
+  { match: /(\bpets?\b|\bdogs?\b|\bcats?\b|animal)/,
+    a: "Pet registration is in the **More** tab → **Animals**. Add your pet's details and photo; the HOA Animal Policy is in Documents → Rules & Policies." },
+  { match: /(directory|neighbor|contact (the )?board|board members|phone number|email (the )?board)/,
+    a: "The community and board contacts are in the **More** tab → **Directories**. To message someone directly, tap the chat icon at the top right and open **Messages**." },
+  { match: /(message|chat|inbox|notification)/,
+    a: "Your notifications and messages are behind the icon at the top right of the screen — switch between the **Notifications** and **Messages** tabs." },
+  { match: /(profile|email address|phone|mailing address|password|language|preferences)/,
+    a: "Your personal settings are in the **More** tab: **My Profile**, **My Units**, **My Billing Information**, **Password**, **Communication Preferences** and **Languages**." },
+  { match: /(home value|property value|market)/,
+    a: "Your home's estimated value and neighborhood market data are in **My Properties** (top card) and in **More** → **Home Value Insights**." },
+  { match: /(board room|approvals|accounts receivable|aging|bank)/,
+    a: "As a board member, everything that needs your attention is in the **Board Room** tab: invoice approvals, ACC and violation reviews, work orders, accounts receivable, aging and bank summaries." },
+]
 
 /* ── Markdown-lite renderer ───────────────────────────── */
 const CITED_DOCS = {
