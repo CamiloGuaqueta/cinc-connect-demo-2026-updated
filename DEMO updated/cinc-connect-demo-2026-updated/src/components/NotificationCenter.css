@@ -510,6 +510,8 @@
   transition: opacity 0.15s;
 }
 
+.chat-composer__send svg { color: #FFFFFF; } /* beat `.resident-mode svg { color: accent }` */
+
 .chat-composer__send:disabled {
   opacity: 0.4;
 }
