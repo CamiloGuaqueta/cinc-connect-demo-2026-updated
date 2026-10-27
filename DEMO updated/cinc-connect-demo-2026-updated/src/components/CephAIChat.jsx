@@ -909,12 +909,17 @@ export default function CephAIChat() {
     return SCREEN_CONTEXTS[pathname] ?? DEFAULT_CONTEXT
   }
 
-  // Reset and seed greeting each time panel opens
+  // Seed the greeting when the panel opens in a new context; reopening in the
+  // same context keeps the conversation history.
   // NOTE: cephAICardContext intentionally excluded from deps — it's set ~1800ms
   // before chatOpen flips to true, so getCtx() already sees the correct value.
   // Including it would cause the else-branch to clear it immediately on set.
+  const ctxKeyRef = useRef(null)
   useEffect(() => {
     if (chatOpen) {
+      const key = cephAICardContext || (pathname === '/tasks' && activeTask ? `task:${activeTask.id}` : pathname)
+      if (key === ctxKeyRef.current) return
+      ctxKeyRef.current = key
       const ctx = getCtx()
       setMessages([{ role: 'ai', text: ctx.greeting }])
       setSuggestions(ctx.suggestions)
