@@ -74,6 +74,10 @@ export default {
 .phone-frame .resident-nav__item--active .resident-nav__icon { background: #FFFFFF; }
 .phone-frame .resident-nav__item--active .resident-nav__icon svg { color: ${KRJ_DARK}; }
 
+/* Web/Mobile toggle sits on the dark page outside the phone: use the brand blue */
+body .layout-toggle { color: ${KRJ_BLUE}; border-color: ${KRJ_BLUE}; background: #1E1E1E; }
+body .layout-toggle:hover { border-color: ${KRJ_BLUE}; }
+
 .login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
 .login-screen .login-logo { position: static; width: 220px; height: auto; object-position: center; }
 .login-screen .login-connecplus { display: none; }

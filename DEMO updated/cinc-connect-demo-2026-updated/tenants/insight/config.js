@@ -77,6 +77,10 @@ export default {
 .phone-frame .resident-nav__item--active .resident-nav__icon svg { color: ${INS_NAVY}; }
 .phone-frame .resident-nav__item--active .resident-nav__label { color: #FFFFFF; }
 
+/* Web/Mobile toggle sits on the dark page outside the phone: use the brand blue */
+body .layout-toggle { color: ${INS_BLUE}; border-color: ${INS_BLUE}; background: #1E1E1E; }
+body .layout-toggle:hover { border-color: ${INS_BLUE}; }
+
 .login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
 .login-screen .login-logo { position: static; width: 230px; height: auto; object-position: center; }
 .login-screen .login-connecplus { display: none; }
