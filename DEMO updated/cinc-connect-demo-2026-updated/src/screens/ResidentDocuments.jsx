@@ -18,7 +18,9 @@ const DOC_FOLDERS = [
     id: 'governing',
     name: 'Governing Documents',
     docs: [
+      { id: 'ccrs', name: 'Cardinal Hills CC&Rs.pdf', kind: 'pdf', docType: 'ccrs' },
       { id: 'bylaws', name: 'Cardinal Hills HOA Bylaws.pdf', kind: 'pdf', docType: 'bylaws' },
+      { id: 'arch', name: 'Architectural Review Guidelines.pdf', kind: 'pdf', docType: 'arch' },
       { id: 'ballot', name: '2027 Board of Directors Election Ballot.pdf', kind: 'pdf', docType: 'ballot' },
     ],
   },
@@ -35,6 +37,14 @@ const DOC_FOLDERS = [
     docs: [
       { id: 'animal', name: 'Animal Policy.pdf', kind: 'sheet', content: ANIMAL_POLICY_CONTENT },
       { id: 'landscaping', name: 'Landscaping & Lawn Care Policy.pdf', kind: 'sheet', content: LANDSCAPING_CONTENT },
+      { id: 'pool', name: 'Pool Rules & Regulations.pdf', kind: 'pdf', docType: 'pool' },
+    ],
+  },
+  {
+    id: 'meetings',
+    name: 'Board Meetings',
+    docs: [
+      { id: 'meetings', name: 'Board Meeting Calendar 2026.pdf', kind: 'pdf', docType: 'meetings' },
     ],
   },
 ]

@@ -87,3 +87,18 @@
   line-height: 1.7;
   margin: 0 0 16px;
 }
+
+/* Passage cited by Cephai */
+.res-pdf-page__body--mark {
+  background: color-mix(in srgb, var(--lime) 12%, #FFFFFF);
+  border-left: 3px solid var(--lime);
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-left: -13px;
+  color: #171B19;
+  animation: res-pdf-mark 1.4s ease-out;
+}
+@keyframes res-pdf-mark {
+  0%   { background: color-mix(in srgb, var(--lime) 35%, #FFFFFF); }
+  100% { background: color-mix(in srgb, var(--lime) 12%, #FFFFFF); }
+}

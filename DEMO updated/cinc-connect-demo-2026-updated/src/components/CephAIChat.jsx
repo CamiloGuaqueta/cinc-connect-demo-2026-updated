@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import ResidentPDFViewer from '../screens/ResidentPDFViewer'
 import { useLocation } from 'react-router-dom'
 import { useMode } from '../ModeContext'
 import './CephAIChat.css'
@@ -693,29 +694,37 @@ function getAIResponse(message, pathname, task) {
   /* ── General responses ────────────────────────────── */
   // [[source: …]] and [[live: …]] lines render as citation chips (see renderText)
   if (m.includes('fence') || m.includes('paint') || m.includes('stain')) {
-    return "Yes — but you'll need **ACC approval first**. Exterior changes, including staining or painting a fence, must be approved in writing by the Architectural Control Committee before work begins.\n\n• Colors must come from the community-approved palette\n• The committee responds within **30 days** of a complete application\n• Work started without approval can be cited as a violation\n\nYou don't have an open ACC request for 319 Cardinal Hills Dr. Want me to start one? You can attach a photo and the color sample.\n[[source: CC&Rs · Section 4.2 — Exterior modifications]]\n[[source: Architectural Review Guidelines · p. 6]]"
+    return "Yes — but you'll need **ACC approval first**. Exterior changes, including staining or painting a fence, must be approved in writing by the Architectural Control Committee before work begins.\n\n• Colors must come from the community-approved palette\n• The committee responds within **30 days** of a complete application\n• Work started without approval can be cited as a violation\n\nYou don't have an open ACC request for 319 Cardinal Hills Dr. Want me to start one? You can attach a photo and the color sample.\n[[source: CC&Rs · Section 4.2 — Exterior modifications | ccrs#3]]\n[[source: Architectural Review Guidelines · p. 6 | arch#3]]"
   }
   if (m.includes('owe') || m.includes('balance') || m.includes('due')) {
     return "Your balance on **319 Cardinal Hills Dr (CH:6523)** is **$650.41**:\n\n• Regular Charges — May assessment: **$500.00**\n• Special Assessment: **$70.41**\n• Violations: **$80.00**\n\nYour last 4 monthly assessments were paid on time. You can pay now from the Financial Hub or turn on Autopay so it's never late.\n[[live: Live from your account · CH:6523 · updated today]]"
   }
   if (m.includes('pool')) {
-    return "The Cardinal Hills pool is open **7:00 AM – 9:00 PM** most days (Sunday 8:00 AM – 8:00 PM).\n\n• Guests must be **accompanied by a resident** at all times\n• Private reservations allow up to **4 guests** for up to 4 hours\n• No glass containers, and no lifeguard on duty — swim at your own risk\n\nYou can book a private slot from My Community → Amenities.\n[[source: Pool Rules & Regulations · Sections 1–3]]"
+    return "The Cardinal Hills pool is open **7:00 AM – 9:00 PM** most days (Sunday 8:00 AM – 8:00 PM).\n\n• Guests must be **accompanied by a resident** at all times\n• Private reservations allow up to **4 guests** for up to 4 hours\n• No glass containers, and no lifeguard on duty — swim at your own risk\n\nYou can book a private slot from My Community → Amenities.\n[[source: Pool Rules & Regulations · Sections 1–3 | pool#0,1,2]]"
   }
   if (m.includes('rule') || m.includes('regulation') || m.includes("cc&r")) {
-    return "Cardinal Hills HOA is governed by the CC&Rs recorded in 2018, with amendments in 2021 and 2023. Key areas include architectural guidelines, landscaping standards, parking rules, and noise ordinances.\n\nWhat specific rule or topic are you looking for?\n[[source: CC&Rs · 2023 amended edition]]"
+    return "Cardinal Hills HOA is governed by the CC&Rs recorded in 2018, with amendments in 2021 and 2023. Key areas include architectural guidelines, landscaping standards, parking rules, and noise ordinances.\n\nWhat specific rule or topic are you looking for?\n[[source: CC&Rs · 2023 amended edition | ccrs#0]]"
   }
   if (m.includes('board') || m.includes('duty') || m.includes('role') || m.includes('responsib')) {
-    return "As a Cardinal Hills board member your core responsibilities are:\n\n• **Fiduciary duty** — act in the financial interest of the association\n• Approve annual budgets and reserve studies\n• Enforce CC&Rs and bylaws consistently\n• Approve or deny architectural change requests\n• Attend and vote at monthly board meetings\n\nIs there a specific area you'd like guidance on?\n[[source: Bylaws · Article V — Board of Directors]]"
+    return "As a Cardinal Hills board member your core responsibilities are:\n\n• **Fiduciary duty** — act in the financial interest of the association\n• Approve annual budgets and reserve studies\n• Enforce CC&Rs and bylaws consistently\n• Approve or deny architectural change requests\n• Attend and vote at monthly board meetings\n\nIs there a specific area you'd like guidance on?\n[[source: Bylaws · Article III — Board of Directors | bylaws#1]]"
   }
   if (m.includes('meeting') || m.includes('agenda') || m.includes('schedule')) {
-    return "The next board meeting is scheduled for **May 14, 2026 at 5:30 PM** via Zoom. The agenda includes: reserve study update, Q1 financial review, 3 ACC appeals, and the Maintenance contractor contract renewal.\n\nWant me to summarize any of the agenda items?\n[[source: Board meeting calendar · May 2026]]"
+    return "The next board meeting is scheduled for **May 14, 2026 at 5:30 PM** via Zoom. The agenda includes: reserve study update, Q1 financial review, 3 ACC appeals, and the Maintenance contractor contract renewal.\n\nWant me to summarize any of the agenda items?\n[[source: Board meeting calendar · May 2026 | meetings#1]]"
   }
 
   return `I can help with that. Could you be more specific? I can cover vendor history, budget details, CC&R rules, fine enforcement, draft notes, or anything currently on your screen.`
 }
 
 /* ── Markdown-lite renderer ───────────────────────────── */
-function renderText(text, onAction) {
+const CITED_DOCS = {
+  ccrs:     'Cardinal Hills CC&Rs.pdf',
+  arch:     'Architectural Review Guidelines.pdf',
+  pool:     'Pool Rules & Regulations.pdf',
+  meetings: 'Board Meeting Calendar 2026.pdf',
+  bylaws:   'Cardinal Hills HOA Bylaws.pdf',
+}
+
+function renderText(text, onAction, onOpenDoc) {
   const lines = text.split('\n')
   return lines.map((line, i) => {
     // Recommendation box (with optional confidence score)
@@ -747,12 +756,26 @@ function renderText(text, onAction) {
         </div>
       )
     }
-    const cite = line.match(/^\[\[(source|live):\s*(.+?)\]\]$/)
+    const cite = line.match(/^\[\[(source|live):\s*(.+?)(?:\s*\|\s*(\w+)#([\d,]+))?\]\]$/)
     if (cite) {
+      const [, kind, label, docType, paras] = cite
+      if (docType && CITED_DOCS[docType] && onOpenDoc) {
+        return (
+          <button
+            key={i}
+            className="cephai-cite cephai-cite--source cephai-cite--link"
+            onClick={() => onOpenDoc({ docType, filename: CITED_DOCS[docType], highlight: paras.split(',').map(Number) })}
+          >
+            <DocIcon />
+            <span>{label}</span>
+            <span className="cephai-cite__open">Open</span>
+          </button>
+        )
+      }
       return (
-        <span key={i} className={`cephai-cite cephai-cite--${cite[1]}`}>
-          {cite[1] === 'live' ? <span className="cephai-cite__dot" /> : <DocIcon />}
-          {cite[2]}
+        <span key={i} className={`cephai-cite cephai-cite--${kind}`}>
+          {kind === 'live' ? <span className="cephai-cite__dot" /> : <DocIcon />}
+          {label}
         </span>
       )
     }
@@ -806,6 +829,7 @@ export default function CephAIChat() {
   const [input, setInput] = useState('')
   const [thinking, setThinking] = useState(false)
   const [suggestions, setSuggestions] = useState([])
+  const [openDoc, setOpenDoc] = useState(null)
 
   // Resolve context: card-specific (long-press) > task card > screen-level
   function getCtx() {
@@ -904,7 +928,7 @@ export default function CephAIChat() {
                 <div className="cephai-bubble__body">
                   {msg.role === 'ai'
                     ? <div className="cephai-bubble__text">
-                        {renderText(msg.text, msg.role === 'ai' && pathname === '/tasks' ? () => setChatOpen(false) : null)}
+                        {renderText(msg.text, msg.role === 'ai' && pathname === '/tasks' ? () => setChatOpen(false) : null, setOpenDoc)}
                         {draft && (
                           <button
                             className="cephai-insert-btn"
@@ -967,6 +991,15 @@ export default function CephAIChat() {
         </div>
 
       </div>
+
+      {openDoc && (
+        <ResidentPDFViewer
+          filename={openDoc.filename}
+          docType={openDoc.docType}
+          highlight={openDoc.highlight}
+          onClose={() => setOpenDoc(null)}
+        />
+      )}
     </>
   )
 }

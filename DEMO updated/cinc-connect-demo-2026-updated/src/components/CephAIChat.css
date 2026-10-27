@@ -415,3 +415,24 @@
   flex-shrink: 0;
 }
 @keyframes cephai-cite-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.cephai-cite--link {
+  cursor: pointer;
+  font-family: var(--font);
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.cephai-cite--link:hover,
+.cephai-cite--link:active {
+  border-color: var(--lime);
+  background: color-mix(in srgb, var(--lime) 6%, var(--bg-card));
+}
+.cephai-cite__open {
+  margin-left: auto;
+  padding-left: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--lime);
+  flex-shrink: 0;
+}
