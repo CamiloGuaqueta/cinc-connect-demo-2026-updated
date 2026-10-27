@@ -333,7 +333,8 @@ function MainApp() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    // basename keeps prospect demos (/krj, /insight…) inside their own path
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
       <Routes>
         <Route path="/standalone/:flow" element={<StandaloneFlow />} />
         <Route path="*" element={<MainApp />} />

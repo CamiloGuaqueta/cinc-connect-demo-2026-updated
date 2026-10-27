@@ -35,7 +35,8 @@ function tenantPlugin(tenant) {
     },
     transformIndexHtml(html) {
       // Separate localStorage namespace so the CINC demo and this one never share state
-      const storageShim = `<script>(function(){var p='${tenant.id}:',s=Storage.prototype;['getItem','setItem','removeItem'].forEach(function(m){var o=s[m];s[m]=function(k){var a=[].slice.call(arguments);if(this===window.localStorage)a[0]=p+k;return o.apply(this,a)}})})();</script>`
+      // clear() only wipes this tenant's keys ("Reset Prototype" must not reset other demos)
+      const storageShim = `<script>(function(){var p='${tenant.id}:',s=Storage.prototype;['getItem','setItem','removeItem'].forEach(function(m){var o=s[m];s[m]=function(k){var a=[].slice.call(arguments);if(this===window.localStorage)a[0]=p+k;return o.apply(this,a)}});var c=s.clear,r=s.removeItem,kf=s.key;s.clear=function(){if(this!==window.localStorage)return c.call(this);for(var i=this.length-1;i>=0;i--){var k=kf.call(this,i);if(k&&k.indexOf(p)===0)r.call(this,k)}}})();</script>`
       return html
         .replace(/<title>.*<\/title>/, `<title>${tenant.title}</title>`)
         .replace(/href="\/favicon\.svg"/, `href="${tenant.favicon}"`)
