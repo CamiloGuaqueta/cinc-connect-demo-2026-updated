@@ -197,8 +197,25 @@ function LayoutToggle() {
   )
 }
 
+// Phones always get the mobile layout (the Web layout is a desktop-only preview)
+function useIsPhone() {
+  const query = '(max-width: 700px)'
+  const [isPhone, setIsPhone] = useState(() => window.matchMedia(query).matches)
+  useEffect(() => {
+    const mq = window.matchMedia(query)
+    const onChange = e => setIsPhone(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return isPhone
+}
+
 function AppShell({ showMembershipOptIn, onMembershipContinue }) {
-  const { isBoard, isWeb, residentTab, residentViewStack, popResidentView, navStyle } = useMode()
+  const { isBoard, isWeb: isWebPref, setIsWeb, residentTab, residentViewStack, popResidentView, navStyle } = useMode()
+  const isPhone = useIsPhone()
+  const isWeb = isWebPref && !isPhone
+  // A saved "web" preference from a desktop session must not trap phone users
+  useEffect(() => { if (isPhone && isWebPref) setIsWeb(false) }, [isPhone, isWebPref, setIsWeb])
   const [showWelcome, setShowWelcome] = useState(false)
   const prevIsBoard = useRef(false)
   const frameRef = useRef(null)
@@ -236,7 +253,7 @@ function AppShell({ showMembershipOptIn, onMembershipContinue }) {
         {showWelcome && <WelcomeModal onClose={() => setShowWelcome(false)} />}
         {showMembershipOptIn && <MembershipOptInModal onContinue={onMembershipContinue} />}
       </div>
-      <LayoutToggle />
+      {!isPhone && <LayoutToggle />}
     </>
   )
 }

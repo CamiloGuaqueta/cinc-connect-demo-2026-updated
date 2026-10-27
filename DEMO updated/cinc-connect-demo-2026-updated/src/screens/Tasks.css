@@ -1,6 +1,7 @@
 /* ── Screen layout ───────────────────────────────────── */
 .tasks-screen {
   overflow: hidden;
+  padding-bottom: 8px; /* Board Room decks open as sub-screens: no bottom nav to reserve space for */
 }
 
 .tasks-layout {
@@ -65,9 +66,22 @@
 
 /* ── Swipe stack ─────────────────────────────────────── */
 .swipe-stack {
-  flex: 0 0 532px;
+  flex: 1 1 532px;      /* shrink on short phone screens so the action buttons stay visible */
+  min-height: 360px;
+  max-height: 532px;
   position: relative;
 }
+
+/* Card content scrolls vertically on touch when it doesn't fit (horizontal swipe still decides) */
+.swipe-card .invoice-body,
+.swipe-card .inv-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: none;
+}
+.swipe-card .invoice-body::-webkit-scrollbar,
+.swipe-card .inv-scroll::-webkit-scrollbar { display: none; }
 
 .swipe-card {
   position: absolute;

@@ -525,7 +525,7 @@
   scrollbar-width: none;
   gap: 0;
   cursor: grab;
-  touch-action: pan-y;
+  touch-action: pan-x pan-y; /* native swipe on touch; mouse drag handled in JS */
 }
 .acct-carousel__track::-webkit-scrollbar { display: none; }
 .acct-carousel__track--dragging {
