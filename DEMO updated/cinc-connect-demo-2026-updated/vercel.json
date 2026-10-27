@@ -3,6 +3,14 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/insight",
+      "destination": "/insight/index.html"
+    },
+    {
+      "source": "/insight/(.*)",
+      "destination": "/insight/index.html"
+    },
+    {
       "source": "/krj",
       "destination": "/krj/index.html"
     },

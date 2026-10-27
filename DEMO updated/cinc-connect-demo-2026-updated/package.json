@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --mode krj",
+    "build": "vite build && vite build --mode krj && vite build --mode insight",
     "lint": "eslint .",
     "preview": "vite preview",
-    "dev:krj": "vite --mode krj --port 5176"
+    "dev:krj": "vite --mode krj --port 5176",
+    "dev:insight": "vite --mode insight --port 5177"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.1",
