@@ -48,7 +48,6 @@ const LEFT_NAV = {
     { label: 'Work Orders',            view: 'work-orders',      Icon: WorkOrderIcon },
     { label: 'Architectural Requests', view: 'arch-requests',    Icon: ArchIcon },
     { label: 'Violations',             view: 'report-violation', Icon: ViolationIcon },
-    { label: 'Smart Home Upgrade',     view: 'smart-home',       Icon: SmartHomeNavIcon },
   ],
 }
 

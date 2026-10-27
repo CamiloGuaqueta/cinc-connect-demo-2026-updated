@@ -66,7 +66,6 @@ export default function ResidentParticipation() {
     { label: 'Work\nOrders',             icon: fix(woIcon),         onTap: () => pushResidentView('work-orders') },
     { label: 'Architectural\nRequests',  icon: fix(houseCheckIcon), onTap: () => pushResidentView('arch-requests') },
     { label: 'Violations',               icon: fix(violationIcon),  onTap: () => pushResidentView('report-violation') },
-    { label: 'Smart Home\nUpgrade',      icon: null,                onTap: () => pushResidentView('smart-home'), customIcon: <SmartHomeIcon /> },
   ]
 
   return (
