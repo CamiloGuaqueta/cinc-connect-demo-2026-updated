@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useRef } from 'react'
 import { CURRENT_USER } from './data/userData'
 
 const ModeContext = createContext()
@@ -80,6 +80,52 @@ export function ModeProvider({ children }) {
     setResidentTab(tab)
     setResidentViewStack(view ? [{ screen: view, data }] : [])
   }
+
+  // ── Phone/browser back button ─────────────────────────────────────────────
+  // In-app navigation is state, not URLs, so the hardware back button used to
+  // leave the demo. While anything is "open" (Cephai, notifications, a
+  // sub-screen or a non-Feed tab) we keep one guard entry in browser history;
+  // back consumes it and we close/step back one level instead of exiting.
+  const backRef = useRef({})
+  backRef.current = { chatOpen, notifOpen, stackLen: residentViewStack.length, residentTab }
+  const inApp = chatOpen || notifOpen || residentViewStack.length > 0 || residentTab !== 'Feed'
+  const guardRef = useRef(false)
+  const ignorePopRef = useRef(false)
+
+  useEffect(() => {
+    if (inApp && !guardRef.current) {
+      window.history.pushState({ cincBackGuard: true }, '')
+      guardRef.current = true
+    } else if (!inApp && guardRef.current) {
+      // Back to the home Feed via in-app UI: drop the now-unneeded guard entry
+      guardRef.current = false
+      ignorePopRef.current = true
+      window.history.back()
+    }
+  }, [inApp])
+
+  useEffect(() => {
+    const onPop = () => {
+      guardRef.current = false
+      if (ignorePopRef.current) { ignorePopRef.current = false; return }
+      const s = backRef.current
+      if (s.chatOpen)               setChatOpen(false)
+      else if (s.notifOpen)         setNotifOpen(false)
+      else if (s.stackLen > 0)      setResidentViewStack(prev => prev.slice(0, -1))
+      else if (s.residentTab !== 'Feed') setResidentTab('Feed')
+      // If something is still open after this step, the effect above re-arms the guard
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [])
+
+  useEffect(() => {
+    // Still in-app after a back step → re-arm so the next back works too
+    if (inApp && !guardRef.current) {
+      window.history.pushState({ cincBackGuard: true }, '')
+      guardRef.current = true
+    }
+  })
 
   const setBrand = (updates) => setBrandState(b => ({ ...b, ...updates }))
 
