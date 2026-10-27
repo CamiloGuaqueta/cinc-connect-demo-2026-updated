@@ -11,6 +11,7 @@ import roadImg from '../images/road.jpg'
 import hoaImg from '../images/hoa.jpg'
 import boardImg from '../images/board.jpg'
 import { UNITS, fmt } from '../data/financialData'
+import CountUp from '../components/CountUp'
 import './ResidentFinancialHub.css'
 
 // Layout: hero image + two data tables
@@ -201,7 +202,7 @@ export default function ResidentFinancialHub() {
         <div className="fh-balance-row">
           <span className="fh-balance-row__label">Total Balance</span>
           <span className="fh-balance-row__dots" />
-          <span className="fh-balance-row__total">{fmt(unit.balance)}</span>
+          <span className="fh-balance-row__total"><CountUp value={fmt(unit.balance)} /></span>
         </div>
         <div className="fh-balance-row fh-balance-row--future">
           <span className="fh-balance-row__label">Future Balance (90 days)</span>

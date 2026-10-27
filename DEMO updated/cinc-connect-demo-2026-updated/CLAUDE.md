@@ -91,6 +91,13 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - Tintes sutiles (divisores, inputs, hovers) usan `color-mix(in srgb, var(--text) X%, transparent)` — no `rgba(255,255,255,…)` (era del tema oscuro).
 - Al probar el login en el navegador NO enviar el form real (manda lead a HubSpot + Google Sheet): stubbear `fetch`/`Image` o setear `localStorage.hubspotLeadCaptured='true'` antes.
 
+## Mejoras inspiradas en las animaciones del sitio (cincsystems.com/boards-residents) — 27/10/2026
+
+- **Cephai cita fuentes**: en `getAIResponse` (CephAIChat.jsx) una línea `[[source: …]]` o `[[live: …]]` se renderiza como chip (documento / dato en vivo de la cuenta). Preguntas sugeridas del residente: fence/ACC (CC&Rs §4.2), "What do I owe" (CH:6523 = $650.41, igual que `financialData.js`), pool, meetings, board duties.
+- **Aprobar factura → sheet con chequeo de presupuesto** (`InvoiceApproveSheet` en Tasks.jsx, data `budget` en cada task Invoice): Green Valley y Pacific Pool "Within budget", Westside Plumbing "Over budget" (Repairs & Maintenance, coherente con el sobrecosto de Maintenance que menciona Cephai).
+- **Microanimaciones**: `components/CountUp.jsx` (saldos que cuentan desde $0: card de cuenta del Feed y Total Balance del Financial Hub), like con pop en posts, "Processing…" con spinner al pagar + confirmación animada. El "escribiendo…" de Cephai ya existía (`.cephai-thinking`).
+- Pendientes de esa lista (no hechos): búsqueda dentro de Documents con párrafo resaltado, aprobación de cobranza, agenda + board packet, digest diario de Cephai, Community Pulse con long-press, selector BOD/Personal.
+
 ## Demos por prospecto (tenants) — `/krj`
 
 - Cada prospecto tiene su versión en `democonnect.cincsystems.com/<id>`, generada en el build **sin tocar el código del demo**: `tenants/<id>/config.js` define reemplazos de texto (HOA, calles, ciudades, administradora, prefijo de cuentas), colores (swap de hex de la paleta CINC), assets importados (splash, logo de login, wordmark) y CSS extra.

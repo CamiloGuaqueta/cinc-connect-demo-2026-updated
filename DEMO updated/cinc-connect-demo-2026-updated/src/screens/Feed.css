@@ -1379,6 +1379,22 @@
 .post-social__btn--liked {
   color: #df434f;
 }
+.post-social__btn--liked svg {
+  animation: like-pop 0.42s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.post-social__btn--liked span {
+  animation: like-count 0.3s ease-out;
+}
+@keyframes like-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.45); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+@keyframes like-count {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
 
 /* ── Resident feed overrides ────────────────────────── */
 .resident-mode .engage-bar {

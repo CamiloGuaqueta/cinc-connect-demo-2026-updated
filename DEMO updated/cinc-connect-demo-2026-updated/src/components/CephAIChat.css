@@ -387,3 +387,31 @@
   animation: cephai-glow 4s ease-in-out infinite;
 }
 
+
+/* ── Source / live-data citation chips ───────────────── */
+.cephai-cite {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin: 8px 6px 0 0;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+  animation: cephai-cite-in 0.35s ease-out both;
+}
+.cephai-cite svg { color: var(--lime); flex-shrink: 0; }
+.cephai-cite__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 25%, transparent);
+  flex-shrink: 0;
+}
+@keyframes cephai-cite-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }

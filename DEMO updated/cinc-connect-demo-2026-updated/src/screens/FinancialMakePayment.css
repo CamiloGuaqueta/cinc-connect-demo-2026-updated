@@ -290,3 +290,36 @@
   font-size: 11px;
   color: var(--text-muted);
 }
+
+/* ── Processing + success micro-animations ── */
+.fmp-continue--processing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0.9;
+  cursor: progress;
+}
+.fmp-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-top-color: currentColor;
+  animation: fmp-spin 0.7s linear infinite;
+}
+@keyframes fmp-spin { to { transform: rotate(360deg); } }
+.fmp-success__icon {
+  animation: fmp-pop 0.5s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.fmp-success__title,
+.fmp-success__text,
+.fmp-confirm-card,
+.fmp-success ~ .fmp-review-card {
+  animation: fmp-rise 0.45s ease-out both;
+}
+.fmp-success__text { animation-delay: 0.08s; }
+.fmp-confirm-card { animation-delay: 0.16s; }
+.fmp-success ~ .fmp-review-card { animation-delay: 0.24s; }
+@keyframes fmp-pop { 0% { transform: scale(0.3); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes fmp-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }

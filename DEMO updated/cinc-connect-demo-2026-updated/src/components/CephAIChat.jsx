@@ -99,7 +99,7 @@ const SCREEN_CONTEXTS = {
 const DEFAULT_CONTEXT = {
   badge: null,
   greeting: "Hi, I'm Cephai — your HOA intelligence assistant. Ask me about Cardinal Hills HOA rules, financials, board responsibilities, or anything you see on screen.",
-  suggestions: ['HOA rules summary', 'Board member duties', 'Community policies', 'Upcoming meetings'],
+  suggestions: ['Can I paint my fence?', 'What do I owe this month?', 'Pool hours & guest policy', 'Upcoming meetings', 'Board member duties'],
 }
 
 /* ── Pulse card-level contexts (triggered by long press) ── */
@@ -691,14 +691,24 @@ function getAIResponse(message, pathname, task) {
   }
 
   /* ── General responses ────────────────────────────── */
+  // [[source: …]] and [[live: …]] lines render as citation chips (see renderText)
+  if (m.includes('fence') || m.includes('paint') || m.includes('stain')) {
+    return "Yes — but you'll need **ACC approval first**. Exterior changes, including staining or painting a fence, must be approved in writing by the Architectural Control Committee before work begins.\n\n• Colors must come from the community-approved palette\n• The committee responds within **30 days** of a complete application\n• Work started without approval can be cited as a violation\n\nYou don't have an open ACC request for 319 Cardinal Hills Dr. Want me to start one? You can attach a photo and the color sample.\n[[source: CC&Rs · Section 4.2 — Exterior modifications]]\n[[source: Architectural Review Guidelines · p. 6]]"
+  }
+  if (m.includes('owe') || m.includes('balance') || m.includes('due')) {
+    return "Your balance on **319 Cardinal Hills Dr (CH:6523)** is **$650.41**:\n\n• Regular Charges — May assessment: **$500.00**\n• Special Assessment: **$70.41**\n• Violations: **$80.00**\n\nYour last 4 monthly assessments were paid on time. You can pay now from the Financial Hub or turn on Autopay so it's never late.\n[[live: Live from your account · CH:6523 · updated today]]"
+  }
+  if (m.includes('pool')) {
+    return "The Cardinal Hills pool is open **7:00 AM – 9:00 PM** most days (Sunday 8:00 AM – 8:00 PM).\n\n• Guests must be **accompanied by a resident** at all times\n• Private reservations allow up to **4 guests** for up to 4 hours\n• No glass containers, and no lifeguard on duty — swim at your own risk\n\nYou can book a private slot from My Community → Amenities.\n[[source: Pool Rules & Regulations · Sections 1–3]]"
+  }
   if (m.includes('rule') || m.includes('regulation') || m.includes("cc&r")) {
-    return "Cardinal Hills HOA is governed by the CC&Rs recorded in 2018, with amendments in 2021 and 2023. Key areas include architectural guidelines, landscaping standards, parking rules, and noise ordinances.\n\nWhat specific rule or topic are you looking for?"
+    return "Cardinal Hills HOA is governed by the CC&Rs recorded in 2018, with amendments in 2021 and 2023. Key areas include architectural guidelines, landscaping standards, parking rules, and noise ordinances.\n\nWhat specific rule or topic are you looking for?\n[[source: CC&Rs · 2023 amended edition]]"
   }
   if (m.includes('board') || m.includes('duty') || m.includes('role') || m.includes('responsib')) {
-    return "As a Cardinal Hills board member your core responsibilities are:\n\n• **Fiduciary duty** — act in the financial interest of the association\n• Approve annual budgets and reserve studies\n• Enforce CC&Rs and bylaws consistently\n• Approve or deny architectural change requests\n• Attend and vote at monthly board meetings\n\nIs there a specific area you'd like guidance on?"
+    return "As a Cardinal Hills board member your core responsibilities are:\n\n• **Fiduciary duty** — act in the financial interest of the association\n• Approve annual budgets and reserve studies\n• Enforce CC&Rs and bylaws consistently\n• Approve or deny architectural change requests\n• Attend and vote at monthly board meetings\n\nIs there a specific area you'd like guidance on?\n[[source: Bylaws · Article V — Board of Directors]]"
   }
   if (m.includes('meeting') || m.includes('agenda') || m.includes('schedule')) {
-    return "The next board meeting is scheduled for **May 14, 2026 at 5:30 PM** via Zoom. The agenda includes: reserve study update, Q1 financial review, 3 ACC appeals, and the Maintenance contractor contract renewal.\n\nWant me to summarize any of the agenda items?"
+    return "The next board meeting is scheduled for **May 14, 2026 at 5:30 PM** via Zoom. The agenda includes: reserve study update, Q1 financial review, 3 ACC appeals, and the Maintenance contractor contract renewal.\n\nWant me to summarize any of the agenda items?\n[[source: Board meeting calendar · May 2026]]"
   }
 
   return `I can help with that. Could you be more specific? I can cover vendor history, budget details, CC&R rules, fine enforcement, draft notes, or anything currently on your screen.`
@@ -735,6 +745,15 @@ function renderText(text, onAction) {
             </button>
           )}
         </div>
+      )
+    }
+    const cite = line.match(/^\[\[(source|live):\s*(.+?)\]\]$/)
+    if (cite) {
+      return (
+        <span key={i} className={`cephai-cite cephai-cite--${cite[1]}`}>
+          {cite[1] === 'live' ? <span className="cephai-cite__dot" /> : <DocIcon />}
+          {cite[2]}
+        </span>
       )
     }
     const parts = line.split(/\*\*(.*?)\*\*/g)
@@ -949,6 +968,14 @@ export default function CephAIChat() {
 
       </div>
     </>
+  )
+}
+
+function DocIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" />
+    </svg>
   )
 }
 

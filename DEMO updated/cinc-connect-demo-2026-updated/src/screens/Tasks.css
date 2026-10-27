@@ -1661,3 +1661,152 @@
   color: #1a1a1a;
   border-color: var(--lime);
 }
+
+/* ── Invoice approval confirm sheet (budget check) ───── */
+.inv-confirm {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.inv-confirm__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  animation: inv-confirm-fade 0.2s ease-out;
+}
+.inv-confirm__sheet {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 20px 20px 0 0;
+  padding: 10px 20px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: inv-confirm-up 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.inv-confirm__handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--text) 20%, transparent);
+  margin-bottom: 16px;
+}
+.inv-confirm__badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  background: var(--lime);
+  margin-bottom: 12px;
+}
+.inv-confirm__badge--warn { background: var(--amber); }
+.inv-confirm__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 4px;
+  text-align: center;
+}
+.inv-confirm__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+  text-align: center;
+}
+.inv-budget {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  background: color-mix(in srgb, var(--lime) 10%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, var(--lime) 35%, transparent);
+}
+.inv-budget--warn {
+  background: color-mix(in srgb, var(--amber) 12%, var(--bg-card));
+  border-color: color-mix(in srgb, var(--amber) 55%, transparent);
+}
+.inv-budget__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.inv-budget__status {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--lime);
+}
+.inv-budget--warn .inv-budget__status { color: #B9780A; }
+.inv-budget__line {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.inv-budget__text {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.inv-budget__bar {
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+  overflow: hidden;
+}
+.inv-budget__bar span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--lime);
+  animation: inv-budget-fill 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: left;
+}
+.inv-budget--warn .inv-budget__bar span { background: var(--amber); }
+.inv-budget__legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+.inv-confirm__btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.inv-confirm__btn--primary {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #FFFFFF;
+  margin-top: 0;
+}
+.inv-confirm__note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 12px 0 0;
+  text-align: center;
+}
+@keyframes inv-confirm-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes inv-confirm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes inv-budget-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }

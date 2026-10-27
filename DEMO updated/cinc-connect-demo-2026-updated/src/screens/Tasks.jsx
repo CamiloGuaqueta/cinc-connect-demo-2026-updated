@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
 import './Tasks.css'
 import VendorSvg    from '../ICONS/Vendor.svg'
@@ -47,6 +48,7 @@ const TASKS = [
     actionLabel: 'Approve',
     vendorInfo: { contact: 'Michael Reed', email: 'info@greenvalley.com', phone: '305.555.0142', website: 'www.greenvalleylandscaping.com', address: '245 Green Way, Miami, FL 33131', type: 'Landscaping', recentPayments: 8, currentWOs: 2, woAll: 29, woOpen: 1, woInProgress: 3, woCompleted: 25, totalInvoices: 23, totalAmount: '$25,568.00' },
     approvers: [{ name: 'Darren Wilson', role: 'President', initials: 'DW', vote: 'approve', votedAt: 'Apr 2, 2026 · 9:14 AM' }],
+    budget: { line: 'Landscaping', annual: 144000, ytdPlan: 48000, ytdSpent: 40600 },
   },
   {
     id: 2,
@@ -64,6 +66,7 @@ const TASKS = [
     actionLabel: 'Approve',
     vendorInfo: { contact: 'Sandra Kim', email: 'contact@pacificpool.com', phone: '305.555.0187', website: 'www.pacificpoolsvc.com', address: '78 Blue Wave Dr, Miami, FL 33139', type: 'Pool Maintenance', recentPayments: 6, currentWOs: 1, woAll: 14, woOpen: 1, woInProgress: 1, woCompleted: 12, totalInvoices: 11, totalAmount: '$18,320.00' },
     approvers: [{ name: 'Darren Wilson', role: 'President', initials: 'DW', vote: 'approve', votedAt: 'Apr 2, 2026 · 9:14 AM' }, { name: 'Marcus Chen', role: 'Vice President', initials: 'MC', vote: 'approve', votedAt: 'Apr 3, 2026 · 2:41 PM' }],
+    budget: { line: 'Pool Maintenance', annual: 48000, ytdPlan: 16000, ytdSpent: 11400 },
   },
   {
     id: 3,
@@ -98,6 +101,7 @@ const TASKS = [
     actionLabel: 'Approve',
     vendorInfo: { contact: 'Tom Ramirez', email: 'support@westsideplumbing.com', phone: '305.555.0219', website: 'www.westsideplumbing.com', address: '315 West End Blvd, Miami, FL 33142', type: 'Plumbing', recentPayments: 3, currentWOs: 0, woAll: 5, woOpen: 0, woInProgress: 1, woCompleted: 4, totalInvoices: 3, totalAmount: '$4,890.00' },
     approvers: [],
+    budget: { line: 'Repairs & Maintenance', annual: 72000, ytdPlan: 24000, ytdSpent: 38240 },
   },
   {
     id: 5,
@@ -648,6 +652,7 @@ function CardContent({ task, flyCard, flyOff, onOpenPanel }) {
 
 /* ── Invoice card ─────────────────────────────────────── */
 function InvoiceCardContent({ task, flyCard, flyOff, onOpenPanel }) {
+  const [confirming, setConfirming] = useState(false)
   function stopDrag(e) { e.stopPropagation() }
 
   return (
@@ -745,14 +750,71 @@ function InvoiceCardContent({ task, flyCard, flyOff, onOpenPanel }) {
         </button>
         <button
           className="inv-btn inv-btn--approve"
-          onClick={() => flyCard && !flyOff && flyCard('right')}
+          onClick={() => !flyOff && setConfirming(true)}
         >
           <span>Approve</span>
           <ApproveIcon />
         </button>
       </div>
+
+      {confirming && (
+        <InvoiceApproveSheet
+          task={task}
+          onCancel={() => setConfirming(false)}
+          onConfirm={() => { setConfirming(false); flyCard && !flyOff && flyCard('right') }}
+        />
+      )}
     </div>
   )
+}
+
+/* ── Invoice approval confirm sheet (budget check) ────── */
+const usd = n => '$' + n.toLocaleString('en-US')
+
+function InvoiceApproveSheet({ task, onCancel, onConfirm }) {
+  const frame = document.querySelector('.phone-frame')
+  const b = task.budget
+  const amount = Number(task.amount.replace(/[$,]/g, ''))
+  const after = b ? b.ytdSpent + amount : 0
+  const within = b ? after <= b.ytdPlan : true
+  const diff = b ? Math.abs(b.ytdPlan - after) : 0
+  const pct = b ? Math.min(100, Math.round((after / b.ytdPlan) * 100)) : 0
+
+  const sheet = (
+    <div className="inv-confirm" onPointerDown={e => e.stopPropagation()}>
+      <div className="inv-confirm__backdrop" onClick={onCancel} />
+      <div className="inv-confirm__sheet">
+        <div className="inv-confirm__handle" />
+        <div className={`inv-confirm__badge${within ? '' : ' inv-confirm__badge--warn'}`}>{within ? '✓' : '!'}</div>
+        <h3 className="inv-confirm__title">Approve invoice · {task.amount}</h3>
+        <p className="inv-confirm__sub">{task.title} · {task.invoiceNum} · GL {task.glAccount}</p>
+
+        {b && (
+          <div className={`inv-budget${within ? '' : ' inv-budget--warn'}`}>
+            <div className="inv-budget__head">
+              <span className="inv-budget__status">{within ? 'Within budget' : 'Over budget'}</span>
+              <span className="inv-budget__line">{b.line}</span>
+            </div>
+            <p className="inv-budget__text">
+              {within
+                ? <>After this payment, {b.line} stays <strong>{usd(diff)} under</strong> the year-to-date plan, with {usd(b.annual - after)} left for 2026.</>
+                : <>Approving puts {b.line} <strong>{usd(diff)} over</strong> the year-to-date plan of {usd(b.ytdPlan)}. Consider adding a note for the board.</>}
+            </p>
+            <div className="inv-budget__bar"><span style={{ width: `${pct}%` }} /></div>
+            <div className="inv-budget__legend">
+              <span>{usd(after)} spent YTD</span>
+              <span>Plan {usd(b.ytdPlan)}</span>
+            </div>
+          </div>
+        )}
+
+        <button className="inv-confirm__btn inv-confirm__btn--primary" onClick={onConfirm}>Approve</button>
+        <button className="inv-confirm__btn" onClick={onCancel}>Cancel</button>
+        <p className="inv-confirm__note">Your vote is recorded in the invoice log and your manager is notified.</p>
+      </div>
+    </div>
+  )
+  return frame ? createPortal(sheet, frame) : sheet
 }
 
 /* ── Work Order card ──────────────────────────────────── */

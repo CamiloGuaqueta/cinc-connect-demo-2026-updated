@@ -40,6 +40,7 @@ export default function FinancialMakePayment({ unitId }) {
   const [otherAmount, setOtherAmount] = useState('')
   const [methodId, setMethodId] = useState(defaultPaymentMethodId || PAYMENT_METHODS[0].id)
   const [receipt, setReceipt] = useState(null)
+  const [processing, setProcessing] = useState(false)
 
   const method = PAYMENT_METHODS.find(m => m.id === methodId) || PAYMENT_METHODS[0]
   const amount = amountMode === 'total' ? unit.balance : (parseFloat(otherAmount) || 0)
@@ -48,9 +49,14 @@ export default function FinancialMakePayment({ unitId }) {
   const total = amount + fee
 
   function submitPayment() {
-    setReceipt({ amount, fee, total, amountMode, method })
-    applyPayment(unit, amountMode, amount)
-    setStep('success')
+    if (processing) return
+    setProcessing(true)
+    setTimeout(() => {
+      setReceipt({ amount, fee, total, amountMode, method })
+      applyPayment(unit, amountMode, amount)
+      setProcessing(false)
+      setStep('success')
+    }, 1400)
   }
 
   return (
@@ -187,7 +193,9 @@ export default function FinancialMakePayment({ unitId }) {
             <span className="fmp-info-card__value">{method.label} - {method.sub}</span>
           </div>
 
-          <button className="fmp-continue" onClick={submitPayment}>Submit Payment</button>
+          <button className={`fmp-continue${processing ? ' fmp-continue--processing' : ''}`} onClick={submitPayment} disabled={processing}>
+            {processing ? <><span className="fmp-spinner" /> Processing…</> : 'Submit Payment'}
+          </button>
         </>
       )}
 

@@ -15,6 +15,7 @@ import EmailsSvg from '../Illustrations/emails.svg'
 import WOSvg from '../Illustrations/WO.svg'
 import InvoicesSvg from '../Illustrations/invoices.svg'
 import ViolationsSvg from '../Illustrations/violations.svg'
+import CountUp from '../components/CountUp'
 
 const CINC_ICON     = '/images/cinc-icon.png'
 const CEPHAI_LOGO   = '/images/cephai-logo.svg'
@@ -1361,7 +1362,7 @@ function NmiPreviewCard({ onViewMore }) {
 }
 
 const ACCT_UNITS = [
-  { id: 1, address: '319 Cardinal Hills Dr',        acct: 'CH:6523', balance: '$750.41', autopay: '03/01/2026' },
+  { id: 1, address: '319 Cardinal Hills Dr',        acct: 'CH:6523', balance: '$650.41', autopay: '03/01/2026' },
   { id: 2, address: '47 Pinecrest Loop',             acct: 'CH:7841', balance: '$320.00', autopay: null         },
   { id: 3, address: '200 Cardinal Hills Dr, Unit 3', acct: 'CH:9902', balance: '$0.00',   autopay: '03/15/2026' },
   { id: 4, address: '400 Cardinal Point Rd, Unit 2', acct: 'CH:4417', balance: '$125.50', autopay: null         },
@@ -1501,7 +1502,7 @@ function ResidentFeed() {
                   <div className="acct-card__balance-row">
                     <span className="acct-card__balance-label">Current Balance</span>
                     <span className="acct-card__balance-dots" />
-                    <span className="acct-card__balance-amount">{unit.balance}</span>
+                    <span className="acct-card__balance-amount"><CountUp value={unit.balance} /></span>
                   </div>
                 </div>
                 <div className="acct-card__divider" />

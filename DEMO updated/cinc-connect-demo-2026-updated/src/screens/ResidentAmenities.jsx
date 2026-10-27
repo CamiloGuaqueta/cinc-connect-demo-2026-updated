@@ -99,7 +99,7 @@ export const AMENITIES_DATA = [
     hourlyRate: null,
     deposit: null,
     availableTimes: ['11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '3:00 PM', '4:30 PM'],
-    description: 'The Cardinal Hills Pool is a resort-style outdoor swimming pool available for private reservations. Enjoy a relaxing private swim with up to 5 guests in a beautifully maintained setting.',
+    description: 'The Cardinal Hills Pool is a resort-style outdoor swimming pool available for private reservations. Enjoy a relaxing private swim with up to 4 guests in a beautifully maintained setting.',
     address: '1056 NE, Cardinal Point Road, Duluth, GA 30096',
     phone: '+1 (555) 256.256',
     hours: 'Mon – Sun: 7:00 AM – 9:00 PM',
