@@ -4,8 +4,10 @@
 // Logo + colors taken from insightam.com; swap the files in public/tenants/insight/
 // if Diego sends official assets.
 
-const INS_NAVY = '#3A4262'   // logo wordmark
-const INS_BLUE = '#6B92D0'   // logo mark
+// Palette from Diego's Figma for Insight (28/10/2026)
+const INS_SKY   = '#4A95CF'   // titles, icons, active states, primary buttons
+const INS_SLATE = '#4F5875'   // payment card, time-slot pills
+const INS_NAVY  = '#3A4262'   // logo wordmark
 
 export default {
   id: 'insight',
@@ -54,32 +56,38 @@ export default {
     ['/images/cinc-icon.png', '/tenants/insight/icon.png'],
 
     // CINC palette → Insight palette (theme presets, :root defaults, fixed surfaces)
-    [/#006A52/gi, INS_NAVY],
-    [/#00553F/gi, '#2C3350'],
+    [/#006A52/gi, INS_SKY],
+    [/#00553F/gi, '#3D7FB5'],
     [/#002D28/gi, INS_NAVY],
     [/#171B19/gi, '#262B3D'],
     [/#E9EEEA/gi, '#F3F5F9'],
-    [/#D9E9E3/gi, '#E3EBF7'],
+    [/#D9E9E3/gi, '#E4EFF8'],
     [/#CBCACD/gi, '#DDE3EC'],
-    // CSS filter that tints <img> icons Evergreen → Insight navy
+    // CSS filter that tints <img> icons Evergreen → Insight sky blue
     ['brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)',
-     'brightness(0) saturate(100%) invert(24%) sepia(18%) saturate(1200%) hue-rotate(196deg) brightness(92%) contrast(90%)'],
+     'brightness(0) saturate(100%) invert(62%) sepia(8%) saturate(3243%) hue-rotate(166deg) brightness(86%) contrast(87%)'],
   ],
 
   // Appended to src/index.css
   css: `
 /* ── Insight tenant overrides (prefixed for specificity over per-screen CSS) ── */
+/* Bottom nav: white bar, dark icons; active item = sky-blue circle with white icon */
 .phone-frame .resident-nav__bg,
-.phone-frame .resident-nav-v2 { background: ${INS_BLUE}; }
+.phone-frame .resident-nav-v2 { background: #FFFFFF; }
 .phone-frame .resident-nav__icon svg,
-.phone-frame .resident-nav__label { color: #FFFFFF; }
-.phone-frame .resident-nav__item--active .resident-nav__icon { background: #FFFFFF; }
-.phone-frame .resident-nav__item--active .resident-nav__icon svg { color: ${INS_NAVY}; }
-.phone-frame .resident-nav__item--active .resident-nav__label { color: #FFFFFF; }
+.phone-frame .resident-nav__label { color: #262B3D; }
+.phone-frame .resident-nav__item--active .resident-nav__icon { background: ${INS_SKY}; }
+.phone-frame .resident-nav__item--active .resident-nav__icon svg { color: #FFFFFF; }
+.phone-frame .resident-nav__item--active .resident-nav__label { color: #262B3D; }
+
+/* Payment card and time-slot pills in slate */
+.phone-frame .acct-card { background: ${INS_SLATE}; }
+.phone-frame .amenity-time-pill { background: ${INS_SLATE}; border-color: ${INS_SLATE}; color: #FFFFFF; }
+.phone-frame .amenity-time-pill--active { background: ${INS_SKY}; border-color: ${INS_SKY}; }
 
 /* Web/Mobile toggle sits on the dark page outside the phone: use the brand blue */
-body .layout-toggle { color: ${INS_BLUE}; border-color: ${INS_BLUE}; background: #1E1E1E; }
-body .layout-toggle:hover { border-color: ${INS_BLUE}; }
+body .layout-toggle { color: ${INS_SKY}; border-color: ${INS_SKY}; background: #1E1E1E; }
+body .layout-toggle:hover { border-color: ${INS_SKY}; }
 
 .login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
 .login-screen .login-logo { position: static; width: 230px; height: auto; object-position: center; }
