@@ -38,6 +38,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Long street names (e.g. prospect demos) wrap to a 2nd line instead of overflowing the card */
+.hvc-card .nmi-avm-info { min-width: 0; }
+.hvc-card .hvc-address {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
 .hvc-dots {
   display: flex;
