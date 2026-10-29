@@ -1,7 +1,7 @@
 .resident-community {
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 24px;
+  padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bottom, 0px)); /* tab screen: clear the bottom nav */
   background: var(--res-bg1);
 }
 

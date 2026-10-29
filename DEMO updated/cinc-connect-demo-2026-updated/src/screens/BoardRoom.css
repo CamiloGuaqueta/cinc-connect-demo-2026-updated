@@ -1,7 +1,7 @@
 .br-screen {
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 32px;
+  padding-bottom: calc(var(--nav-h) + 24px + env(safe-area-inset-bottom, 0px)); /* tab screen: clear the bottom nav */
   font-family: 'Montserrat', sans-serif;
   background: var(--res-bg2);
 }
