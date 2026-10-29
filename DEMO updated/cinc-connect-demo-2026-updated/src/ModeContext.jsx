@@ -29,7 +29,14 @@ export function ModeProvider({ children }) {
   const [isBoard,           setIsBoard]           = useState(false)
   const [isWeb,             setIsWeb]             = useState(() => localStorage.getItem('layoutMode') === 'web')
   const [navStyle,          setNavStyleState]     = useState(() => localStorage.getItem('navStyle') || 'v1')
-  const [showBoardRoom,     setShowBoardRoomState] = useState(() => localStorage.getItem('showBoardRoom') !== 'false')
+  // ?view=homeowner opens the demo without the Board Room tab (homeowner-only view);
+  // ?view=board brings it back. Otherwise the last choice in this browser is kept.
+  const [showBoardRoom,     setShowBoardRoomState] = useState(() => {
+    const view = new URLSearchParams(window.location.search).get('view')
+    if (view === 'homeowner') return false
+    if (view === 'board') return true
+    return localStorage.getItem('showBoardRoom') !== 'false'
+  })
   const [chatOpen,          setChatOpen]          = useState(false)
   const [activeTask,        setActiveTask]        = useState(null)
   const [cephAIPulseCount,  setCephAIPulseCount]  = useState(0)
