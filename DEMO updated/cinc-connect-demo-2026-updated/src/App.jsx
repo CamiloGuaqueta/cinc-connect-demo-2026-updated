@@ -29,7 +29,6 @@ import ResidentMore from './screens/ResidentMore'
 import ResidentDocuments from './screens/ResidentDocuments'
 import ResidentGroups from './screens/ResidentGroups'
 import ResidentViolations from './screens/ResidentViolations'
-import ResidentMyViolations from './screens/ResidentMyViolations'
 import ResidentWorkOrders from './screens/ResidentWorkOrders'
 import ResidentArchRequests from './screens/ResidentArchRequests'
 import { SmartHomeSheetScreen } from './screens/ResidentParticipation'
@@ -87,7 +86,6 @@ function renderResidentSubScreen(view) {
   if (view.screen === 'documents')          return <ResidentDocuments />
   if (view.screen === 'groups')             return <ResidentGroups />
   if (view.screen === 'report-violation')   return <ResidentViolations />
-  if (view.screen === 'my-violations')      return <ResidentMyViolations />
   if (view.screen === 'work-orders')        return <ResidentWorkOrders />
   if (view.screen === 'arch-requests')      return <ResidentArchRequests />
   if (view.screen === 'smart-home')         return <SmartHomeSheetScreen />

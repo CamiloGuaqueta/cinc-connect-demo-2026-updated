@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useMode } from '../ModeContext'
-import { AddAttachmentButton, AttachmentList } from '../components/Attachments'
 import { CURRENT_USER } from '../data/userData'
 import { WORK_ORDERS, WORK_ORDER_CATEGORIES, submitWorkOrder, unitById } from '../data/propertiesData'
 import './ResidentWorkOrders.css'
@@ -60,10 +59,6 @@ export default function ResidentWorkOrders() {
                       <span className="rwo-log-text">{l.text}</span>
                     </div>
                   ))}
-                  <div className="rwo-card__attachments">
-                    <AttachmentList items={wo.attachments} />
-                    <AddAttachmentButton label="Add Attachment" onAdd={files => { (wo.attachments ||= []).push(...files); rerender() }} />
-                  </div>
                 </div>
               )}
             </div>
@@ -82,7 +77,6 @@ function NewWorkOrderSheet({ onSave, onClose }) {
   const [unitId, setUnitId] = useState(CURRENT_USER.units[0].id)
   const [category, setCategory] = useState(WORK_ORDER_CATEGORIES[0])
   const [description, setDescription] = useState('')
-  const [attachments, setAttachments] = useState([])
   const canSave = description.trim().length > 0
 
   return (
@@ -132,18 +126,10 @@ function NewWorkOrderSheet({ onSave, onClose }) {
           />
         </div>
 
-        <div className="filter-section">
-          <p className="filter-section__label">Photos or Documents</p>
-          <AttachmentList items={attachments} onRemove={i => setAttachments(a => a.filter((_, j) => j !== i))} />
-          <div style={{ marginTop: attachments.length ? 8 : 0 }}>
-            <AddAttachmentButton onAdd={files => setAttachments(a => [...a, ...files])} />
-          </div>
-        </div>
-
         <button
           className={`filter-apply${canSave ? '' : ' filter-apply--disabled'}`}
           disabled={!canSave}
-          onClick={() => onSave({ unitId, category, description: description.trim(), attachments })}
+          onClick={() => onSave({ unitId, category, description: description.trim() })}
         >
           Submit Request
         </button>

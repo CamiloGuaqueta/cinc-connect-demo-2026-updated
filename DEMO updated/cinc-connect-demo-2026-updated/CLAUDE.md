@@ -99,13 +99,6 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - **Microanimaciones**: `components/CountUp.jsx` (saldos que cuentan desde $0: card de cuenta del Feed y Total Balance del Financial Hub), like con pop en posts, "Processing…" con spinner al pagar + confirmación animada. El "escribiendo…" de Cephai ya existía (`.cephai-thinking`).
 - Pendientes de esa lista (no hechos): búsqueda dentro de Documents con párrafo resaltado, aprobación de cobranza, agenda + board packet, digest diario de Cephai, Community Pulse con long-press, selector BOD/Personal.
 
-## Paridad con la app real (cuenta demo de ventas sales.cincconnect.com — revisada 29/10/2026)
-
-- **My Violations** (`ResidentMyViolations.jsx`, `'my-violations'`): vista del propietario igual a la app real — selector de unidad, contadores Open/Closed (filtran), cards (Acct, dirección, fecha, nivel, fine starts), Violation Items, Log & Notes con timeline + "Add Note", adjuntos. Data `MY_VIOLATIONS` en `propertiesData.js` (la de 319 Cardinal Hills Dr = la multa de $80 "Landscaping Violation Fine" de `financialData.js`). En la app real el propietario NO reporta violaciones; en el demo "Report a Violation" quedó como botón secundario (decisión de Camilo).
-- **Adjuntos** (`components/Attachments.jsx`: `AddAttachmentButton` + `AttachmentList` con preview de imagen): en el formulario nuevo y en las cards de Work Orders y ACC, y en My Violations. Archivos solo en memoria (object URLs), no se suben.
-- Diferencias conocidas que quedan: en la app real Ballots/Signatures/Surveys/Ratings están en My Property (demo: More); el formulario real de WO va por pasos (categoría → ítem → título/descripción); Financial Hub real es más simple. Board Room es igual (mismas 10 filas).
-- `?view=homeowner` en cualquier link oculta Board Room (vista solo propietario); `?view=board` lo vuelve a mostrar.
-
 ## Demos por prospecto (tenants) — `/krj`
 
 - Cada prospecto tiene su versión en `democonnect.cincsystems.com/<id>`, generada en el build **sin tocar el código del demo**: `tenants/<id>/config.js` define reemplazos de texto (HOA, calles, ciudades, administradora, prefijo de cuentas), colores (swap de hex de la paleta CINC), assets importados (splash, logo de login, wordmark) y CSS extra.
