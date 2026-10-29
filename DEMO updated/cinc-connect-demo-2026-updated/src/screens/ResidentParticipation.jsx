@@ -65,7 +65,7 @@ export default function ResidentParticipation() {
   const TILES = [
     { label: 'Work\nOrders',             icon: fix(woIcon),         onTap: () => pushResidentView('work-orders') },
     { label: 'Architectural\nRequests',  icon: fix(houseCheckIcon), onTap: () => pushResidentView('arch-requests') },
-    { label: 'Violations',               icon: fix(violationIcon),  onTap: () => pushResidentView('report-violation') },
+    { label: 'Violations',               icon: fix(violationIcon),  onTap: () => pushResidentView('my-violations') },
   ]
 
   return (

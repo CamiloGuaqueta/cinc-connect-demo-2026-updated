@@ -762,7 +762,7 @@ const NAV_ANSWERS = [
   { match: /(\bacc\b|architectural|\barc request|approval request|modification|remodel|solar|\bdeck)/,
     a: "Architectural (ACC) requests are in **My Properties** → **Architectural Requests** → **+ New**. Attach photos and plans — the committee's decision and comments show up in the request log." },
   { match: /(violation|report a neighbor|report an issue|complain)/,
-    a: "To report a violation, go to **My Properties** → **Violations**. Add a photo, a short description and the location — Cephai helps classify it before it's sent to management." },
+    a: "Your violations are in **My Properties** → **Violations**: open and closed notices for each of your units, the violation items, and the Log & Notes where you can reply to management or add a photo. To report an issue in the community, tap **Report a Violation** at the bottom of that screen." },
   { match: /(document|bylaw|policy|minutes|pdf)/,
     a: "All community documents are in the **More** tab → **Documents**: governing documents (CC&Rs, Bylaws, Architectural Guidelines), financial reports, rules & policies and board meetings." },
   { match: /(vote|ballot|election|survey|consent|signature)/,

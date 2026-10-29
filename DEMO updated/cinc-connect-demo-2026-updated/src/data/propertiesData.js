@@ -21,6 +21,7 @@ export const WORK_ORDERS = [
     status: 'Completed',
     submittedDate: '04/28/2026',
     vendor: 'Green Valley Landscaping',
+    attachments: [{ name: 'sprinkler_leak.jpg', url: '/images/wo-irrigation.jpg', isImage: true }],
     log: [
       { date: '04/28/2026', text: 'Request submitted by homeowner.' },
       { date: '04/30/2026', text: 'Green Valley Landscaping dispatched.' },
@@ -35,6 +36,7 @@ export const WORK_ORDERS = [
     status: 'Scheduled',
     submittedDate: '05/12/2026',
     vendor: 'Westside Plumbing',
+    attachments: [],
     log: [
       { date: '05/12/2026', text: 'Request submitted by homeowner.' },
       { date: '05/14/2026', text: 'Assigned to Westside Plumbing. Scheduled for 05/22.' },
@@ -42,10 +44,10 @@ export const WORK_ORDERS = [
   },
 ]
 
-export function submitWorkOrder({ unitId, category, description }) {
+export function submitWorkOrder({ unitId, category, description, attachments = [] }) {
   const id = `wo-${WORK_ORDERS.length + 1}`
   const order = {
-    id, unitId, category, description,
+    id, unitId, category, description, attachments,
     status: 'Submitted',
     submittedDate: TODAY,
     vendor: null,
@@ -70,6 +72,7 @@ export const ARCH_REQUESTS = [
     status: 'Under Review',
     submittedDate: '05/10/2026',
     decisionDate: null,
+    attachments: [{ name: 'fence_site_plan.pdf', url: null, isImage: false }],
     log: [
       { date: '05/10/2026', text: 'Application submitted.' },
       { date: '05/13/2026', text: 'Assigned to Architectural Review Committee for site review.' },
@@ -83,6 +86,7 @@ export const ARCH_REQUESTS = [
     status: 'Approved',
     submittedDate: '04/02/2026',
     decisionDate: '04/16/2026',
+    attachments: [{ name: 'ACC Request Form - Exterior Paint.pdf', url: null, isImage: false }],
     log: [
       { date: '04/02/2026', text: 'Application submitted.' },
       { date: '04/16/2026', text: 'Approved by ACC committee.' },
@@ -90,10 +94,10 @@ export const ARCH_REQUESTS = [
   },
 ]
 
-export function submitArchRequest({ unitId, projectType, description }) {
+export function submitArchRequest({ unitId, projectType, description, attachments = [] }) {
   const id = `acr-${ARCH_REQUESTS.length + 1}`
   const request = {
-    id, unitId, projectType, description,
+    id, unitId, projectType, description, attachments,
     status: 'Under Review',
     submittedDate: TODAY,
     decisionDate: null,
@@ -116,4 +120,67 @@ export function submitViolationReport({ address, violationType = 'Overgrown Lawn
   }
   REPORTED_VIOLATIONS.unshift(report)
   return report
+}
+
+// ─── Violations against the resident's own units (owner view, like the live app) ──
+// Unit 1's landscaping violation matches the $80 "Landscaping Violation Fine"
+// (May 05, 2026) in financialData.js — keep both in sync.
+
+export const MY_VIOLATIONS = [
+  {
+    id: 'mv-1',
+    unitId: 1,
+    type: 'Landscaping',
+    date: '04/14/2026',
+    level: '2nd Notice - Fine $80',
+    status: 'Open',
+    fineStarts: '05/05/2026',
+    items: [
+      { title: 'Overgrown Lawn', text: 'Front yard grass exceeds the 6-inch maximum height (CC&Rs Section 6.1).' },
+      { title: 'Shrubs Over Sidewalk', text: 'Hedges along the sidewalk need trimming to keep the walkway clear.' },
+    ],
+    log: [
+      { date: '04/14/2026', author: 'Management Company Note', text: '1st Notice - No Fine. Landscaping violation created after the April community inspection: front lawn over 6 in. and hedges over the sidewalk. Please correct within 14 days.' },
+      { date: '04/28/2026', author: 'Management Company Note', text: '2nd Notice - Fine $80. Re-inspection found the items still open. A fine of $80 is applied on 05/05/2026. Reply here once the work is done so we can schedule a re-inspection.' },
+    ],
+    attachments: [{ name: 'inspection_photo_0414.jpg', url: '/images/violation-landscaping.jpg', isImage: true }],
+  },
+  {
+    id: 'mv-2',
+    unitId: 2,
+    type: 'Trash / Bins',
+    date: '05/12/2026',
+    level: '1st Notice - No Fine',
+    status: 'Open',
+    fineStarts: null,
+    items: [
+      { title: 'Bins Visible From Street', text: 'Trash bins must be stored out of view from the street on non-collection days (CC&Rs Section 8.4).' },
+    ],
+    log: [
+      { date: '05/12/2026', author: 'Management Company Note', text: '1st Notice - No Fine. Trash bins were visible from the street on a non-collection day. Please store them behind the gate or in the garage.' },
+    ],
+    attachments: [{ name: 'inspection_photo_0512.jpg', url: '/images/violation-trash.jpg', isImage: true }],
+  },
+  {
+    id: 'mv-3',
+    unitId: 3,
+    type: 'Parking',
+    date: '02/10/2026',
+    level: 'Courtesy Notice - No Fine',
+    status: 'Closed',
+    fineStarts: null,
+    items: [
+      { title: 'Guest Space Overnight', text: 'Resident vehicle parked overnight in a guest-only space (CC&Rs Section 8.2).' },
+    ],
+    log: [
+      { date: '02/10/2026', author: 'Management Company Note', text: 'Courtesy Notice - No Fine. A resident vehicle was parked overnight in a guest-only space.' },
+      { date: '02/24/2026', author: 'Management Company Note', text: 'No further incidents observed. Violation closed. Thank you!' },
+    ],
+    attachments: [],
+  },
+]
+
+export function addViolationNote(id, text) {
+  const v = MY_VIOLATIONS.find(x => x.id === id)
+  if (v) v.log.push({ date: TODAY, author: 'Homeowner Note', text })
 }
