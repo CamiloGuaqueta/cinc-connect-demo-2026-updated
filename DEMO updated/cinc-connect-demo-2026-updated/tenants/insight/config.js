@@ -43,7 +43,7 @@ export default {
     ['East Management',      'Insight Association Management'],
 
     // Cities → North Texas
-    ['Duluth, GA 30096',     'Frisco, TX 75034'],
+    ['Miami, FL 33130',     'Frisco, TX 75034'],
     [/Miami, FL 331(\d\d)/g, 'Plano, TX 750$1'],
     ['Los Altos, CA 94023',  'McKinney, TX 75070'],
     ['Saratoga, CA 95070',   'Prosper, TX 75078'],

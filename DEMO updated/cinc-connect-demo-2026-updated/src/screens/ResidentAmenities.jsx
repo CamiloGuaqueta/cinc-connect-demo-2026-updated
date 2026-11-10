@@ -50,7 +50,7 @@ export const AMENITIES_DATA = [
     deposit: 200,
     availableTimes: ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '5:00 PM'],
     description: 'The Cardinal Hills Clubhouse is a welcoming community space available for private parties, celebrations, meetings, and special events. Featuring an open gathering area, kitchen access, and flexible seating arrangements.',
-    address: '1056 NE, Cardinal Point Road, Duluth, GA 30096',
+    address: '1056 Cardinal Point Road, Miami, FL 33130',
     phone: '+1 (555) 256.256',
     hours: 'Mon – Sun: 8:00 AM – 10:00 PM',
     dailyHours: [
@@ -76,7 +76,7 @@ export const AMENITIES_DATA = [
     deposit: 120,
     availableTimes: [],
     description: 'The Cardinal Hills Media Room features a large-format screen, surround sound system, and plush theater seating — perfect for private screenings, sports watch parties, or presentations.',
-    address: '1056 NE, Cardinal Point Road, Duluth, GA 30096',
+    address: '1056 Cardinal Point Road, Miami, FL 33130',
     phone: '+1 (555) 256.256',
     hours: 'Mon – Sun: 10:00 AM – 9:00 PM',
     dailyHours: [
@@ -100,7 +100,7 @@ export const AMENITIES_DATA = [
     deposit: null,
     availableTimes: ['11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '3:00 PM', '4:30 PM'],
     description: 'The Cardinal Hills Pool is a resort-style outdoor swimming pool available for private reservations. Enjoy a relaxing private swim with up to 4 guests in a beautifully maintained setting.',
-    address: '1056 NE, Cardinal Point Road, Duluth, GA 30096',
+    address: '1056 Cardinal Point Road, Miami, FL 33130',
     phone: '+1 (555) 256.256',
     hours: 'Mon – Sun: 7:00 AM – 9:00 PM',
     dailyHours: [
@@ -150,7 +150,7 @@ export const AMENITIES_DATA = [
       { id: 'court-f', name: 'Court F' },
     ],
     description: 'The Cardinal Hills Tennis Courts offer two well-maintained hard courts available for private reservations. Reserve a court for a match or practice session with up to 5 guests.',
-    address: '1056 NE, Cardinal Point Road, Duluth, GA 30096',
+    address: '1056 Cardinal Point Road, Miami, FL 33130',
     phone: '+1 (555) 256.256',
     hours: 'Mon – Sun: 7:00 AM – 10:00 PM',
     dailyHours: [
