@@ -3,6 +3,22 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/cwd",
+      "destination": "/cwd/index.html"
+    },
+    {
+      "source": "/cwd/(.*)",
+      "destination": "/cwd/index.html"
+    },
+    {
+      "source": "/spinnaker",
+      "destination": "/spinnaker/index.html"
+    },
+    {
+      "source": "/spinnaker/(.*)",
+      "destination": "/spinnaker/index.html"
+    },
+    {
       "source": "/insight",
       "destination": "/insight/index.html"
     },
