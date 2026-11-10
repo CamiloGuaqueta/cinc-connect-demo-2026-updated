@@ -1238,7 +1238,7 @@ function InvoicePDFPanel({ task, onClose }) {
           <div className="pdf-bill-to">
             <p className="pdf-bill-to__label">BILL TO</p>
             <p className="pdf-bill-to__name">Cardinal Hills HOA</p>
-            <p className="pdf-bill-to__addr">1200 Cardinal Dr, Miami, FL 33130</p>
+            <p className="pdf-bill-to__addr">1200 Cardinal Hills Dr, Miami, FL 33130</p>
           </div>
           <div className="pdf-divider" />
           <div className="pdf-table">
@@ -1265,9 +1265,9 @@ function InvoicePDFPanel({ task, onClose }) {
 const ALL_BOARD_MEMBERS = [
   { name: 'Darren Wilson', role: 'President',      initials: 'DW' },
   { name: 'Marcus Chen',   role: 'Vice President', initials: 'MC' },
-  { name: 'Lisa Thompson',  role: 'Treasurer',      initials: 'LT' },
-  { name: 'John Parker',    role: 'Secretary',      initials: 'JP' },
-  { name: 'Maria Garcia',   role: 'Director',       initials: 'MG' },
+  { name: 'Lisa Thomas',   role: 'Secretary',      initials: 'LT' },
+  { name: 'Thomas Lowes',  role: 'Treasurer',      initials: 'TL' },
+  { name: 'Rachel Park',   role: 'Member at Large', initials: 'RP' },
 ]
 
 function ApproversPanel({ task, onClose }) {
@@ -1616,7 +1616,7 @@ function AccAttachmentPanel({ task, onClose }) {
               <span>Decision Date</span>
             </div>
           </div>
-          <p className="pdf-footer" style={{marginTop:16}}>Cardinal Hills HOA · Architectural Review Committee · 1200 Cardinal Dr, Miami FL 33130</p>
+          <p className="pdf-footer" style={{marginTop:16}}>Cardinal Hills HOA · Architectural Review Committee · 1200 Cardinal Hills Dr, Miami FL 33130</p>
         </div>
 
       </div>
