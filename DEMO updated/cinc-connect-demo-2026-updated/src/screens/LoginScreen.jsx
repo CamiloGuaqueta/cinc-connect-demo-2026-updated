@@ -98,15 +98,35 @@ function EyeIcon() {
   )
 }
 
+// Name + email are required (they feed HubSpot and the Sheet). The password is decorative:
+// it comes pre-filled so nobody thinks they need one. "Remember me" keeps name + email.
+const REMEMBER_KEY = 'demoLoginRemember'
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const DEMO_PASSWORD = 'demo1234' // shown as dots; read-only
+
+function readRemembered() {
+  try { return JSON.parse(localStorage.getItem(REMEMBER_KEY)) || null } catch { return null }
+}
+
 export default function LoginScreen({ onLogin }) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const remembered = readRemembered()
+  const [name, setName] = useState(remembered?.name || '')
+  const [email, setEmail] = useState(remembered?.email || '')
   const [showPassword, setShowPassword] = useState(false)
-  const [rememberMe, setRememberMe] = useState(false)
+  // On by default: returning visitors (same browser/phone) find name + email filled in and just tap Sign in.
+  const [rememberMe, setRememberMe] = useState(() => {
+    if (remembered) return true
+    try { return localStorage.getItem(REMEMBER_KEY + ':off') !== 'true' } catch { return true }
+  })
   const [toast, setToast] = useState(null)
 
   function handleSignIn() {
+    if (!name.trim() || !email.trim()) return setToast('Please enter your name and email')
+    if (!EMAIL_RE.test(email.trim())) return setToast('Please enter a valid email')
+    try {
+      if (rememberMe) { localStorage.setItem(REMEMBER_KEY, JSON.stringify({ name: name.trim(), email: email.trim() })); localStorage.removeItem(REMEMBER_KEY + ':off') }
+      else { localStorage.removeItem(REMEMBER_KEY); localStorage.setItem(REMEMBER_KEY + ':off', 'true') }
+    } catch { /* storage blocked: sign in anyway */ }
     submitHubspotLead(name, email)
     trackLoginToSheet(name, email)
     onLogin()
@@ -152,9 +172,11 @@ export default function LoginScreen({ onLogin }) {
             className="login-input"
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            autoComplete="current-password"
+            value={DEMO_PASSWORD}
+            readOnly
+            tabIndex={-1}
+            aria-label="Password (not needed in the demo)"
+            onFocus={e => e.target.blur()}
           />
           <button
             className="login-eye-btn"
@@ -182,7 +204,9 @@ export default function LoginScreen({ onLogin }) {
           Sign in
         </button>
 
-        <button className="login-forgot" onClick={() => setToast("Demo mode — any password works, just tap Sign In")}>
+        <p className="login-hint">Demo environment: just enter your name and email. No password needed.</p>
+
+        <button className="login-forgot" onClick={() => setToast('Demo mode: no password needed, just enter your name and email')}>
           Forgot username or password?
         </button>
       </div>

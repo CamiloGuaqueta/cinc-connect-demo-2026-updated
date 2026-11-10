@@ -171,6 +171,17 @@
 }
 
 /* ── Forgot ──────────────────────────────────────────── */
+.login-input[readonly] { cursor: default; user-select: none; }
+
+.login-hint {
+  margin: -4px 0 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+  color: color-mix(in srgb, var(--res-text) 60%, transparent);
+}
+
 .login-forgot {
   background: none;
   border: none;
