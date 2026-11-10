@@ -281,8 +281,8 @@ export default function AdditionalContentSheet({ onClose }) {
           )}
           <button className="acs-close" onClick={onClose} aria-label="Close">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="currentColor" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" opacity="0.5"/>
-              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" opacity="0.7"/>
+              <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)"/>
+              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round"/>
             </svg>
           </button>
         </div>

@@ -392,8 +392,8 @@ export default function ResidentAmenityDetail({ amenity }) {
         </button>
         <button className="amenity-detail__close amenity-hours-panel__close" aria-label="Close" onClick={popResidentView}>
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-            <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+            <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
           </svg>
         </button>
       </div>
@@ -435,8 +435,8 @@ export default function ResidentAmenityDetail({ amenity }) {
         <div className="amenity-detail__hero-gradient" />
         <button className="amenity-detail__close" aria-label="Close" onClick={popResidentView}>
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-            <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+            <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
           </svg>
         </button>
         <h2 className="amenity-detail__hero-name">{amenity.name}</h2>
@@ -614,8 +614,8 @@ export default function ResidentAmenityDetail({ amenity }) {
               <span className="amenity-pdf-panel__title">{amenity.rules}</span>
               <button className="amenity-pdf-panel__close" onClick={() => setShowPdf(false)}>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                  <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </button>
             </div>
@@ -652,7 +652,7 @@ export default function ResidentAmenityDetail({ amenity }) {
                 <div className="amenity-confirm__photo-gradient" />
                 <button className="amenity-confirm__close amenity-confirm__close--photo" onClick={popResidentView}>
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
+                    <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
                     <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                   </svg>
                 </button>
@@ -727,8 +727,8 @@ export default function ResidentAmenityDetail({ amenity }) {
               </button>
               <button className="amenity-detail__close amenity-hours-panel__close" onClick={popResidentView}>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                  <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </button>
             </div>
@@ -870,8 +870,8 @@ export default function ResidentAmenityDetail({ amenity }) {
                   </button>
                   <button className="amenity-confirm__close" onClick={() => setShowFeeReceipt(false)}>
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                      <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                      <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                      <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                      <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                     </svg>
                   </button>
                   <div className="amenity-confirm__icon-ring">
@@ -921,8 +921,8 @@ export default function ResidentAmenityDetail({ amenity }) {
                   </button>
                   <button className="amenity-confirm__close" onClick={() => setShowDepositDetail(false)}>
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                      <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                      <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                      <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                      <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                     </svg>
                   </button>
                   <div className="amenity-confirm__icon-ring">
@@ -972,8 +972,8 @@ export default function ResidentAmenityDetail({ amenity }) {
               </button>
               <button className="amenity-detail__close amenity-hours-panel__close" aria-label="Close" onClick={popResidentView}>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                  <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </button>
             </div>
@@ -1109,8 +1109,8 @@ export default function ResidentAmenityDetail({ amenity }) {
               </button>
               <button className="amenity-detail__close amenity-hours-panel__close" aria-label="Close" onClick={popResidentView}>
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                  <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                  <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
               </button>
             </div>

@@ -69,10 +69,10 @@ function CloseBtn({ onClick }) {
   return (
     <button className="ballot-sheet-close" onClick={onClick} aria-label="Close">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="16" fill="rgba(0,0,0,0.35)" />
-        <circle cx="16" cy="16" r="15.5" stroke="var(--text)" strokeOpacity="0.25" />
-        <line x1="11" y1="11" x2="21" y2="21" stroke="var(--text)" strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="21" y1="11" x2="11" y2="21" stroke="var(--text)" strokeWidth="1.8" strokeLinecap="round" />
+        <circle cx="16" cy="16" r="16" fill="rgba(0,0,0,0.45)" />
+        <circle cx="16" cy="16" r="15.5" stroke="#FFFFFF" strokeOpacity="0.25" />
+        <line x1="11" y1="11" x2="21" y2="21" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+        <line x1="21" y1="11" x2="11" y2="21" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
       </svg>
     </button>
   )

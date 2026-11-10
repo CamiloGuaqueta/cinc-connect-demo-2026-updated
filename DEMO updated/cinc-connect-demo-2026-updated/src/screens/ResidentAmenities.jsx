@@ -349,8 +349,8 @@ function FeeScreen({ img, icon, title, onBack, children, footer, hideSep }) {
           </button>
           <button className="amenity-confirm__close" onClick={onBack}>
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+              <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+              <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </button>
           <div className="amenity-confirm__icon-ring">
@@ -393,8 +393,8 @@ function ReservationDetailSheet({ reservation, amenity, onClose, onCancelled }) 
             <div className="amenity-confirm__photo-gradient" />
             <button className="amenity-confirm__close" onClick={onClose}>
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <circle cx="14" cy="14" r="13" stroke="var(--text)" strokeWidth="1.4" fill="rgba(0,0,0,0.35)" />
-                <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="var(--text)" strokeWidth="1.6" strokeLinecap="round" />
+                <circle cx="14" cy="14" r="13" stroke="#FFFFFF" strokeWidth="1.4" fill="rgba(0,0,0,0.45)" />
+                <path d="M9.5 9.5l9 9M18.5 9.5l-9 9" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
             </button>
             <div className={`amenity-confirm__icon-ring${reservation.status === 'cancelled' ? ' amenity-confirm__icon-ring--cancelled' : ''}`}>
