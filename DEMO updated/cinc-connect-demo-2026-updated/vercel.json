@@ -67,22 +67,6 @@
       "destination": "/clagett/index.html"
     },
     {
-      "source": "/spaces",
-      "destination": "/spaces/index.html"
-    },
-    {
-      "source": "/spaces/(.*)",
-      "destination": "/spaces/index.html"
-    },
-    {
-      "source": "/wright",
-      "destination": "/wright/index.html"
-    },
-    {
-      "source": "/wright/(.*)",
-      "destination": "/wright/index.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
