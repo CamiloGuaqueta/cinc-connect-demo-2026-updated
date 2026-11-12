@@ -5,13 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --mode krj && vite build --mode insight && vite build --mode cwd && vite build --mode spinnaker",
+    "build": "vite build && vite build --mode krj && vite build --mode insight && vite build --mode cwd && vite build --mode spinnaker && vite build --mode avantstay && vite build --mode lagovista && vite build --mode nhe && vite build --mode clagett && vite build --mode spaces && vite build --mode wright",
     "lint": "eslint .",
     "preview": "vite preview",
     "dev:krj": "vite --mode krj --port 5176",
     "dev:insight": "vite --mode insight --port 5177",
     "dev:cwd": "vite --mode cwd --port 5178",
-    "dev:spinnaker": "vite --mode spinnaker --port 5179"
+    "dev:spinnaker": "vite --mode spinnaker --port 5179",
+    "dev:avantstay": "vite --mode avantstay --port 5180",
+    "dev:lagovista": "vite --mode lagovista --port 5181",
+    "dev:nhe": "vite --mode nhe --port 5182",
+    "dev:clagett": "vite --mode clagett --port 5183",
+    "dev:spaces": "vite --mode spaces --port 5184",
+    "dev:wright": "vite --mode wright --port 5185"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.1",

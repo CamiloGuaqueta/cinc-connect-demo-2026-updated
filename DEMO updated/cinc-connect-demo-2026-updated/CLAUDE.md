@@ -111,6 +111,16 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
 - **CWD Group** (Seattle, pedido de Celeste 09/11/2026) → `/cwd`: comunidad ficticia **Cascade Ridge HOA**. Calles: Cascade Ridge Dr, Cascade Point Rd, Cascade Way, Cascade Heights, Cedar Loop, Madrona Loop, Rainier View Pass. Cuentas `CR:`. Ciudades Puget Sound (Bellevue, Seattle, Kirkland, Redmond…). Paleta de cwdgroup.com: rojo `#B5121B` (botones/títulos), slate `#273840` (card de pagos, íconos de la nav blanca). Dev: `npm run dev:cwd` (5178).
 - **Spinnaker Management** (Hudson Valley/Capital District NY, deal Spinnaker) → `/spinnaker`: comunidad ficticia **Hudson Ridge HOA**. Calles: Hudson Ridge Dr, Hudson Point Rd, Hudson Way, Hudson Heights, Birchwood Loop, Maple Hollow Loop, Catskill View Pass. Cuentas `HR:`. Ciudades: Poughkeepsie, Albany, New Paltz, Saratoga Springs, Newburgh, Kingston, Wallkill. Paleta de spinnakerusa.com: índigo `#444798` (botones/títulos), navy `#1B1D4B` (nav y card de pagos). Dev: `npm run dev:spinnaker` (5179).
 - Assets de CWD/Spinnaker (logo, icon, splash) bajados de sus sitios; el logo de CWD es pequeño (174px) — reemplazar si mandan uno en alta.
+- **Tanda 12/11/2026** (lista de ventas "Requested"), assets bajados de sus sitios, configs generados con el mismo template de CWD (nav, card de pagos, filtro de íconos recalculado al color primario):
+  | id (puerto dev) | Prospecto | HOA ficticia · cuentas | Calles extra (Loop/Loop/Pass) | Paleta |
+  |---|---|---|---|---|
+  | `avantstay` (5180) | AvantStay, Torrance CA (rentas vacacionales, no HOA) | Pacific Shores HOA · `PS:` | Seabreeze, Palm, Catalina View | Diego: accent `#102749`, fondo `#F3F4F7`, texto `#313131` |
+  | `lagovista` (5181) | Lago Vista POA, TX (es la asociación misma) | Cedar Shores POA · `CS:` | Juniper, Mockingbird, Hill Country | Diego: accent `#1980C9`, fondo `#F7F9F8`, texto `#313131` |
+  | `nhe` (5182) | NHE, Greenville/Columbia SC | Palmetto Ridge HOA · `PR:` | Dogwood, Wren, Paris Mountain View | Diego: accent `#027BBF`, fondo blanco, cards `#F5F5F5` |
+  | `clagett` (5183) | Clagett Enterprises, Frederick MD | Catoctin Ridge HOA · `CA:` | Monocacy, Sugarloaf, Blue Ridge View | Diego: accent `#CB2122`, fondo blanco, cards `#F2F2F2`, texto `#231F20` |
+  | `spaces` (5184) | Spaces Management, Tuscaloosa AL | Riverbend HOA · `RB:` | Camellia, Yellowhammer, Black Warrior View | slate `#3C617A`, nav `#233339`, activo dorado `#ECAE59` |
+  | `wright` (5185) | Wright PM, Memphis TN | Shelby Oaks HOA · `SO:` | Hickory, Cypress, Wolf River View | navy `#003F87`, activo verde `#13A300` |
+  AvantStay/LagoVista/NHE/Clagett usan logos y colores del pack de Diego (`Custom Demos/Custom Connect Demos 1/`, no se sube al repo; el "element color" = cards, se cambia con el replace de `--res-bg2` en `index.css` y `theme.js`). Spaces y Wright siguen con assets del sitio web (logo de Wright = JPG con fondo quitado a mano). El pack también trae Cummings y Vertex (aún sin demo). No usar sus comunidades reales (Lago Vista/Bar K/Greenshore, Verdae/Waterleaf, Brunswick/Bellaire/Park Place, The Nine/Blue Haus, Harbor Town/Candy Factory/Artesian).
 - Para un prospecto nuevo: copiar `tenants/krj/`, ajustar config + assets, agregar `&& vite build --mode <id>` al script `build` y las rewrites en `vercel.json`.
 
 ## Pendientes (baja prioridad)
