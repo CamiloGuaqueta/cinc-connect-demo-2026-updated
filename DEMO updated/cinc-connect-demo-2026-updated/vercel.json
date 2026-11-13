@@ -51,6 +51,22 @@
       "destination": "/lagovista/index.html"
     },
     {
+      "source": "/nhe",
+      "destination": "/nhe/index.html"
+    },
+    {
+      "source": "/nhe/(.*)",
+      "destination": "/nhe/index.html"
+    },
+    {
+      "source": "/clagett",
+      "destination": "/clagett/index.html"
+    },
+    {
+      "source": "/clagett/(.*)",
+      "destination": "/clagett/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
