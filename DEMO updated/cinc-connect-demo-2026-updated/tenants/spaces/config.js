@@ -51,6 +51,11 @@ export default {
     ['Santa Clara, CA 95051','Vestavia Hills, AL 35216'],
     ['San Jose, CA 95112',   'Huntsville, AL 35801'],
     ['Los Gatos, CA 95032',  'Coker, AL 35452'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Tuscaloosa County'],
+    ['South Florida continues', 'West Alabama continues'],
+    ['South Florida',        'West Alabama'],
+    ['(305) 555-0192',       '(205) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/spaces/icon.png'],

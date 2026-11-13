@@ -123,6 +123,7 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
   AvantStay/LagoVista/NHE/Clagett usan logos y colores del pack de Diego (`Custom Demos/Custom Connect Demos 1/`, no se sube al repo; el "element color" = cards, se cambia con el replace de `--res-bg2` en `index.css` y `theme.js`). Spaces y Wright siguen con assets del sitio web (logo de Wright = JPG con fondo quitado a mano). El pack también trae Cummings y Vertex (aún sin demo). No usar sus comunidades reales (Lago Vista/Bar K/Greenshore, Verdae/Waterleaf, Brunswick/Bellaire/Park Place, The Nine/Blue Haus, Harbor Town/Candy Factory/Artesian).
   **Entregados**: AvantStay y Lago Vista (12/11/2026), NHE y Clagett (13/11/2026).
   **Spaces y Wright DESPUBLICADOS (12/11/2026, pedido de Camilo, prioridad = sandbox)**: config y assets siguen en `tenants/` y `public/tenants/`, y `npm run dev:spaces` / `dev:wright` funcionan; para republicar, agregar `&& vite build --mode spaces` / `wright` al script `build` y sus 2 rewrites en `vercel.json`.
+- **Ubicación en blogs / Market Index**: el canon del demo base es `Miami-Dade County`, `South Florida` y el teléfono de Sarah `(305) 555-0192`; cada tenant los reemplaza por su condado, región y código de área (bloque "Blog / Market Index location" en su config). Incluirlo en cada prospecto nuevo.
 - Para un prospecto nuevo: copiar `tenants/krj/`, ajustar config + assets, agregar `&& vite build --mode <id>` al script `build` y las rewrites en `vercel.json`.
 
 ## Pendientes (baja prioridad)

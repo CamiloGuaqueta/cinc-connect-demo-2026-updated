@@ -47,6 +47,11 @@ export default {
     ['Santa Clara, CA 95051','Pearland, TX 77581'],
     ['San Jose, CA 95112',   'Houston, TX 77002'],
     ['Los Gatos, CA 95032',  'Cypress, TX 77429'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Harris County'],
+    ['South Florida continues', 'Greater Houston continues'],
+    ['South Florida',        'Greater Houston'],
+    ['(305) 555-0192',       '(713) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/krj/icon.png'],

@@ -51,6 +51,11 @@ export default {
     ['Santa Clara, CA 95051','Celina, TX 75009'],
     ['San Jose, CA 95112',   'Dallas, TX 75201'],
     ['Los Gatos, CA 95032',  'Little Elm, TX 75068'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Collin County'],
+    ['South Florida continues', 'North Texas continues'],
+    ['South Florida',        'North Texas'],
+    ['(305) 555-0192',       '(972) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/insight/icon.png'],

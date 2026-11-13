@@ -50,6 +50,11 @@ export default {
     ['Santa Clara, CA 95051','Mauldin, SC 29662'],
     ['San Jose, CA 95112',   'Charlotte, NC 28202'],
     ['Los Gatos, CA 95032',  'Easley, SC 29640'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Greenville County'],
+    ['South Florida continues', 'Upstate South Carolina continues'],
+    ['South Florida',        'Upstate South Carolina'],
+    ['(305) 555-0192',       '(864) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/nhe/icon.png'],

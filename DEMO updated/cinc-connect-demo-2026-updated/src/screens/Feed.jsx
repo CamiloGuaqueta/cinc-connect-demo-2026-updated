@@ -849,7 +849,7 @@ const FEED_ITEMS = [
     id: 'p7', type: 'post', name: 'Darren Wilson', initials: 'DW', date: '2026-04-07', time: 'Apr 7',
     isBoardMember: true, avatarImg: DARREN_PHOTO, image: null, likes: 5, comments: 2,
     title: 'April 17 Board Meeting Agenda Now Available',
-    body: 'The agenda for our April 17 board meeting has been posted to the community portal. Key items include the landscaping vendor vote, Q1 financials review, pool reopening approval, and an update on the Oak Lane street light replacements. Meeting is at 6 PM via Zoom — link in the portal.',
+    body: 'The agenda for our April 17 board meeting has been posted to the community portal. Key items include the landscaping vendor vote, Q1 financials review, pool reopening approval, and an update on the Hillcrest Loop street light replacements. Meeting is at 6 PM via Zoom — link in the portal.',
   },
   {
     id: 'p8', type: 'post', name: 'Lisa Thomas', initials: 'LT', date: '2026-04-03', time: 'Apr 3',
@@ -884,8 +884,8 @@ const FEED_ITEMS = [
   {
     id: 'p13', type: 'post', name: 'Lisa Thomas', initials: 'LT', date: '2026-03-12', time: 'Mar 12',
     isBoardMember: true, avatarImg: AVATAR_2, image: null, likes: 11, comments: 8,
-    title: 'Speeding Concerns on Oak Lane — Reminder to All Residents',
-    body: 'We\'ve received multiple complaints about speeding on Oak Lane, particularly in the mornings and evenings. The board has issued a reminder through the community portal and is exploring speed bump installation as a longer-term solution. Please be mindful of the 15 MPH limit throughout our community.',
+    title: 'Speeding Concerns on Cardinal Way — Reminder to All Residents',
+    body: 'We\'ve received multiple complaints about speeding on Cardinal Way, particularly in the mornings and evenings. The board has issued a reminder through the community portal and is exploring speed bump installation as a longer-term solution. Please be mindful of the 15 MPH limit throughout our community.',
   },
   {
     id: 'p14', type: 'post', name: 'Marcus Chen', initials: 'MC', date: '2026-03-05', time: 'Mar 5',
@@ -1163,7 +1163,7 @@ const NMI_MOCK = {
   },
   areaProfile: {
     ownerOccupiedPct: 78, medianHomeValue: 412000,
-    schoolDistrict: 'Orange County Schools',
+    schoolDistrict: 'Miami-Dade County Schools',
   },
   recentSales: [
     { address: '101 Maple Ridge Dr', beds: 3, baths: 2, price: 415000, date: 'Apr 12' },
@@ -1176,7 +1176,7 @@ const NMI_MOCK = {
   },
   agent: {
     name: 'Sarah Mitchell', title: 'Senior Real Estate Agent',
-    brokerage: 'Cardinal Realty Group', phone: '(407) 555-0192',
+    brokerage: 'Cardinal Realty Group', phone: '(305) 555-0192',
   },
 }
 

@@ -43,7 +43,7 @@ export default function ResidentBlogPost({ post }) {
             <div>
               <p className="rbp-footer-name">Sarah Mitchell</p>
               <p className="rbp-footer-title">Senior Real Estate Agent · Cardinal Realty Group</p>
-              <p className="rbp-footer-contact">(407) 555-0192</p>
+              <p className="rbp-footer-contact">(305) 555-0192</p>
             </div>
           </div>
         </div>

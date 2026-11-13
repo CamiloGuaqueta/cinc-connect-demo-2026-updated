@@ -48,6 +48,11 @@ export default {
     ['Santa Clara, CA 95051','Issaquah, WA 98027'],
     ['San Jose, CA 95112',   'Seattle, WA 98101'],
     ['Los Gatos, CA 95032',  'Sammamish, WA 98074'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'King County'],
+    ['South Florida continues', 'Puget Sound continues'],
+    ['South Florida',        'Puget Sound'],
+    ['(305) 555-0192',       '(425) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/cwd/icon.png'],

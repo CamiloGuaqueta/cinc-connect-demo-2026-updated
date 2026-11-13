@@ -52,6 +52,11 @@ export default {
     ['Santa Clara, CA 95051','Round Rock, TX 78664'],
     ['San Jose, CA 95112',   'Georgetown, TX 78628'],
     ['Los Gatos, CA 95032',  'Spicewood, TX 78669'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Travis County'],
+    ['South Florida continues', 'Central Texas continues'],
+    ['South Florida',        'Central Texas'],
+    ['(305) 555-0192',       '(512) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/lagovista/icon.png'],

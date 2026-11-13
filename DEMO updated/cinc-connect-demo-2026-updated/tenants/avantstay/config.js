@@ -51,6 +51,11 @@ export default {
     ['Santa Clara, CA 95051','Long Beach, CA 90803'],
     ['San Jose, CA 95112',   'Los Angeles, CA 90045'],
     ['Los Gatos, CA 95032',  'Rolling Hills, CA 90274'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Los Angeles County'],
+    ['South Florida continues', 'The South Bay continues'],
+    ['South Florida',        'the South Bay'],
+    ['(305) 555-0192',       '(310) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/avantstay/icon.png'],

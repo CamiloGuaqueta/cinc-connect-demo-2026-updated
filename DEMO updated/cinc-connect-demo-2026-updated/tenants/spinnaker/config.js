@@ -48,6 +48,11 @@ export default {
     ['Santa Clara, CA 95051','Kingston, NY 12401'],
     ['San Jose, CA 95112',   'Albany, NY 12207'],
     ['Los Gatos, CA 95032',  'Wallkill, NY 12589'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Dutchess County'],
+    ['South Florida continues', 'The Hudson Valley continues'],
+    ['South Florida',        'the Hudson Valley'],
+    ['(305) 555-0192',       '(845) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/spinnaker/icon.png'],

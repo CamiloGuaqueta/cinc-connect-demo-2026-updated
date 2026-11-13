@@ -51,6 +51,11 @@ export default {
     ['Santa Clara, CA 95051','Bartlett, TN 38133'],
     ['San Jose, CA 95112',   'Lakeland, TN 38002'],
     ['Los Gatos, CA 95032',  'Arlington, TN 38002'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Shelby County'],
+    ['South Florida continues', 'Greater Memphis continues'],
+    ['South Florida',        'Greater Memphis'],
+    ['(305) 555-0192',       '(901) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/wright/icon.png'],

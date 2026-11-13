@@ -50,6 +50,11 @@ export default {
     ['Santa Clara, CA 95051','Walkersville, MD 21793'],
     ['San Jose, CA 95112',   'Thurmont, MD 21788'],
     ['Los Gatos, CA 95032',  'Mount Airy, MD 21771'],
+    // Blog / Market Index location (source canon: Miami-Dade, South Florida, 305)
+    ['Miami-Dade County',    'Frederick County'],
+    ['South Florida continues', 'Central Maryland continues'],
+    ['South Florida',        'Central Maryland'],
+    ['(305) 555-0192',       '(301) 555-0192'],
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/clagett/icon.png'],

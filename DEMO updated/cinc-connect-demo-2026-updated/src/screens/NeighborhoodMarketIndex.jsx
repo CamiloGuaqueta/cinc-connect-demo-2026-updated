@@ -44,7 +44,7 @@ const MOCK = {
     agentName: 'Sarah Mitchell',
     title: 'Senior Real Estate Agent',
     brokerage: 'Cardinal Realty Group',
-    phone: '(407) 555-0192',
+    phone: '(305) 555-0192',
     email: 'sarah@cardinalrealty.com',
   },
   market: {
@@ -63,7 +63,7 @@ const MOCK = {
     ownerOccupiedPct: 78,
     medianHomeValue: 412000,
     medianBuildYear: 2001,
-    schoolDistrict: 'Orange County Schools',
+    schoolDistrict: 'Miami-Dade County Schools',
     vacancyRate: 4.2,
   },
   recentSales: [
