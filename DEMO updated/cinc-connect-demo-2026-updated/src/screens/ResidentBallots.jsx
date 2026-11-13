@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom'
 import { useMode } from '../ModeContext'
 import ResidentPDFViewer from './ResidentPDFViewer'
 import Toast from '../components/Toast'
+import { CURRENT_USER } from '../data/userData'
+import { downloadVoteReceipt } from '../data/voteReceiptPdf'
 import boardImg from '../images/board.jpg'
 import newChImg from '../images/new-ch.png'
 import roadImg from '../images/road.jpg'
@@ -100,8 +102,12 @@ function SheetHeader({ title, onBack, onClose }) {
 
 // ─── Success Screen ───────────────────────────────────────────────────────────
 
-function SuccessScreen({ note, onClose }) {
+function SuccessScreen({ note, onClose, ballotTitle, selections = [] }) {
   const [toast, setToast] = useState(null)
+  const download = () => {
+    downloadVoteReceipt({ ballotTitle, selections })
+    setToast('Receipt downloaded')
+  }
   return (
     <div className="ballot-success">
       <div className="ballot-success__icon">
@@ -113,11 +119,11 @@ function SuccessScreen({ note, onClose }) {
         </svg>
       </div>
       <h2 className="ballot-success__title">Your Vote Has Been Cast!</h2>
-      <p className="ballot-success__sub">A receipt has been sent to your email at n***@gmail.com.</p>
+      <p className="ballot-success__sub">A receipt has been sent to your email at {CURRENT_USER.primaryEmail}.</p>
       {note && <p className="ballot-success__note">{note}</p>}
-      <p className="ballot-success__hint">Access your receipt anytime in the Participation section.</p>
+      <p className="ballot-success__hint">Access your receipt anytime in Ballots &amp; Votes.</p>
       <div className="ballot-success__actions">
-        <button className="ballot-btn ballot-btn--outline" onClick={() => setToast('Receipt downloaded')}>DOWNLOAD RECEIPT</button>
+        <button className="ballot-btn ballot-btn--outline" onClick={download}>DOWNLOAD RECEIPT</button>
         <button className="ballot-btn ballot-btn--solid" onClick={onClose}>CLOSE</button>
       </div>
       {toast && <Toast message={toast} onDone={() => setToast(null)} />}
@@ -231,7 +237,9 @@ function ElectoralSheet({ onClose, onVoted, image, title, closeDate, description
       <div className="ballot-sheet ballot-sheet--full">
         <SuccessScreen
           note={null}
-          onClose={() => { onVoted?.(selectedCandidates); onClose() }}
+          ballotTitle={title}
+          selections={selectedCandidates.map(c => `${c.name} (${c.role})`)}
+          onClose={onClose}
         />
       </div>
     )
@@ -266,7 +274,7 @@ function ElectoralSheet({ onClose, onVoted, image, title, closeDate, description
           </div>
         </div>
         <div className="ballot-sheet__footer">
-          <button className="ballot-btn ballot-btn--solid" onClick={() => setStep(3)}>CONFIRM VOTE</button>
+          <button className="ballot-btn ballot-btn--solid" onClick={() => { onVoted?.(selectedCandidates); setStep(3) }}>CONFIRM VOTE</button>
           <button className="ballot-sheet-back-link" onClick={() => setStep(1)}>BACK</button>
         </div>
       </div>
@@ -386,7 +394,9 @@ function AssessmentSheet({ onClose, onVoted, image, title, closeDate, descriptio
       <div className="ballot-sheet ballot-sheet--full">
         <SuccessScreen
           note="You can change your vote until the ballot closes."
-          onClose={() => { onVoted?.(choice); onClose() }}
+          ballotTitle={title}
+          selections={choice ? [choice.label] : []}
+          onClose={onClose}
         />
       </div>
     )
@@ -417,7 +427,7 @@ function AssessmentSheet({ onClose, onVoted, image, title, closeDate, descriptio
           <p className="ballot-confirm__change-note">You may change your vote any time before {closeDate}.</p>
         </div>
         <div className="ballot-sheet__footer">
-          <button className="ballot-btn ballot-btn--solid" onClick={() => setStep(3)}>CONFIRM VOTE</button>
+          <button className="ballot-btn ballot-btn--solid" onClick={() => { onVoted?.(choice); setStep(3) }}>CONFIRM VOTE</button>
           <button className="ballot-sheet-back-link" onClick={() => setStep(1)}>BACK</button>
         </div>
       </div>
@@ -558,6 +568,17 @@ function VoteReceiptSheet({ ballotType, ballotTitle, receipt, onClose }) {
             ? 'Your vote has been recorded and is final. Electoral ballot selections cannot be changed after submission.'
             : 'A confirmation has been recorded. You may change your vote any time before the ballot closes.'}
         </p>
+        <button
+          className="ballot-btn ballot-btn--outline ballot-btn--full"
+          style={{ marginTop: '16px' }}
+          onClick={() => downloadVoteReceipt({
+            ballotTitle,
+            selections: candidates ? candidates.map(c => `${c.name} (${c.role})`) : [choice?.label],
+            timestamp,
+          })}
+        >
+          DOWNLOAD RECEIPT
+        </button>
       </div>
     </div>
   )
@@ -636,23 +657,37 @@ function BallotCard({ sectionLabel, image, title, descKey, closeDate, countdownT
 
 // ─── Main Screen ──────────────────────────────────────────────────────────────
 
+const VOTES_KEY = 'ballotVotes'
+
+function loadVotes() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(VOTES_KEY)) || {}
+    return Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, { ...v, timestamp: new Date(v.timestamp) }]))
+  } catch { return {} }
+}
+
+function saveVotes(votes) {
+  try { localStorage.setItem(VOTES_KEY, JSON.stringify(votes)) } catch { /* storage unavailable */ }
+}
+
 export default function ResidentBallots() {
   const { popResidentView } = useMode()
   const [activeSheet, setActiveSheet] = useState(null)
   const [openWithDetail, setOpenWithDetail] = useState(false)
   const [activePdf, setActivePdf] = useState(null)
-  const [votedBallots, setVotedBallots] = useState(new Set())
-  const [voteReceipts, setVoteReceipts] = useState({})
+  // Votes persist across visits (Feed CTA and More → Ballots & Votes open this same screen)
+  const [voteReceipts, setVoteReceipts] = useState(loadVotes)
+  const votedBallots = new Set(Object.keys(voteReceipts))
   const [activeReceipt, setActiveReceipt] = useState(null)
   const [filterType, setFilterType] = useState('all') // 'all' | 'electoral' | 'non-electoral'
 
+  useEffect(() => { saveVotes(voteReceipts) }, [voteReceipts])
+
   const markVoted = (key, data) => {
-    setVotedBallots(prev => new Set([...prev, key]))
     setVoteReceipts(prev => ({ ...prev, [key]: { ...data, timestamp: new Date() } }))
   }
 
   const resetVote = (key) => {
-    setVotedBallots(prev => { const s = new Set(prev); s.delete(key); return s })
     setVoteReceipts(prev => { const r = { ...prev }; delete r[key]; return r })
   }
 
@@ -782,7 +817,7 @@ export default function ResidentBallots() {
           <div className="ballot-overlay__backdrop" onClick={() => setActiveSheet(null)} />
           <ElectoralSheet
             onClose={() => setActiveSheet(null)}
-            onVoted={(candidates) => { markVoted('electoral', { candidates }); setActiveSheet(null) }}
+            onVoted={(candidates) => markVoted('electoral', { candidates })}
             image={boardImg}
             title="2027 Board of Directors Election"
             closeDate="June 29, 2026, 11:59 PM"
@@ -798,7 +833,7 @@ export default function ResidentBallots() {
           <div className="ballot-overlay__backdrop" onClick={() => setActiveSheet(null)} />
           <AssessmentSheet
             onClose={() => setActiveSheet(null)}
-            onVoted={(choice) => { markVoted('assessment', { choice }); setActiveSheet(null) }}
+            onVoted={(choice) => markVoted('assessment', { choice })}
             image={roadImg}
             title="Special Assessment for HOA Main Roads Repair"
             closeDate="June 29, 2026, 11:59 PM"
@@ -814,7 +849,7 @@ export default function ResidentBallots() {
           <div className="ballot-overlay__backdrop" onClick={() => setActiveSheet(null)} />
           <AssessmentSheet
             onClose={() => setActiveSheet(null)}
-            onVoted={(choice) => { markVoted('clubhouse', { choice }); setActiveSheet(null) }}
+            onVoted={(choice) => markVoted('clubhouse', { choice })}
             image={newChImg}
             title="Clubhouse Design Proposal"
             closeDate="July 15, 2026, 11:59 PM"

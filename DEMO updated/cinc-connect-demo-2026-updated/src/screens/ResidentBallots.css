@@ -731,7 +731,7 @@
   padding: 12px 14px;
   font-family: var(--font);
   font-size: 13px;
-  color: #ffd06b;
+  color: color-mix(in srgb, #C98A00 45%, var(--text));
   line-height: 1.5;
   margin-bottom: 20px;
   display: flex;
