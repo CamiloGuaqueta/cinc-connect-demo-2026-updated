@@ -25,7 +25,7 @@
 
 /* ── Header ─────────────────────────────────────────── */
 .rbp-header {
-  background: #1a3326;
+  background: var(--bg-page);
   padding: 24px 20px 22px;
   border-bottom: 1px solid color-mix(in srgb, var(--text) 7%, transparent);
 }

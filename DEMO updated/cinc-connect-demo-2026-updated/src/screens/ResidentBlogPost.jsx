@@ -24,7 +24,7 @@ export default function ResidentBlogPost({ post }) {
         </span>
         <h1 className="rbp-title">{post.title}</h1>
         <div className="rbp-meta">
-          <img src="{sarahPhoto}" alt="Sarah Mitchell" className="rbp-author-avatar rbp-author-avatar--photo" />
+          <img src={sarahPhoto} alt="Sarah Mitchell" className="rbp-author-avatar rbp-author-avatar--photo" />
           <div className="rbp-meta-text">
             <span className="rbp-author-name">Sarah Mitchell</span>
             <span className="rbp-meta-sub">{post.date} · {post.readTime}</span>
@@ -39,7 +39,7 @@ export default function ResidentBlogPost({ post }) {
 
         <div className="rbp-footer">
           <div className="rbp-author-card">
-            <img src="{sarahPhoto}" alt="Sarah Mitchell" className="rbp-footer-avatar rbp-footer-avatar--photo" />
+            <img src={sarahPhoto} alt="Sarah Mitchell" className="rbp-footer-avatar rbp-footer-avatar--photo" />
             <div>
               <p className="rbp-footer-name">Sarah Mitchell</p>
               <p className="rbp-footer-title">Senior Real Estate Agent · Cardinal Realty Group</p>
