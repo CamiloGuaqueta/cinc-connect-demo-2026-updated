@@ -16,6 +16,12 @@ const ELECTION_CLOSE = new Date('2026-06-29T23:59:00')
 const ASSESSMENT_CLOSE = new Date('2026-06-29T23:59:00')
 const CLUBHOUSE_CLOSE = new Date('2026-07-15T23:59:00')
 
+// Demo clock: the demo's "today" is 05/19/2026 (same as Bank Summary / VendorPaymentHistory).
+// It ticks in real time from page load, so countdowns run and receipts carry demo dates.
+const DEMO_START = new Date('2026-05-19T09:30:00').getTime()
+const PAGE_LOAD = Date.now()
+const demoNow = () => new Date(DEMO_START + (Date.now() - PAGE_LOAD))
+
 const CANDIDATES = [
   { id: 1, name: 'Darren Wilson',  role: 'Incumbent – President',  bio: 'Darren has served as Board President for four years and led the initiative to fully fund the Reserve Study, including the funding increase taking effect in January 2027 to keep the community\'s reserves on track.', photo: '/images/personas/darren-wilson.jpg', pdf: 'Darren_Wilson_Platform.pdf' },
   { id: 2, name: 'William Walker', role: 'Challenger',             bio: 'William is a longtime Cardinal Hills resident who wants to expand recreational programming — more organized pickleball and tennis events — and bring more transparency to amenity scheduling.', photo: '/images/personas/william-walker.png', pdf: null },
@@ -38,7 +44,7 @@ const CLUBHOUSE_CHOICES = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function getTimeLeft(target) {
-  const diff = Math.max(0, target - Date.now())
+  const diff = Math.max(0, target - demoNow())
   const days    = Math.floor(diff / 86400000)
   const hours   = Math.floor((diff % 86400000) / 3600000)
   const minutes = Math.floor((diff % 3600000) / 60000)
@@ -105,7 +111,7 @@ function SheetHeader({ title, onBack, onClose }) {
 function SuccessScreen({ note, onClose, ballotTitle, selections = [] }) {
   const [toast, setToast] = useState(null)
   const download = () => {
-    downloadVoteReceipt({ ballotTitle, selections })
+    downloadVoteReceipt({ ballotTitle, selections, timestamp: demoNow() })
     setToast('Receipt downloaded')
   }
   return (
@@ -684,7 +690,7 @@ export default function ResidentBallots() {
   useEffect(() => { saveVotes(voteReceipts) }, [voteReceipts])
 
   const markVoted = (key, data) => {
-    setVoteReceipts(prev => ({ ...prev, [key]: { ...data, timestamp: new Date() } }))
+    setVoteReceipts(prev => ({ ...prev, [key]: { ...data, timestamp: demoNow() } }))
   }
 
   const resetVote = (key) => {
