@@ -807,8 +807,8 @@
 }
 
 .all-past-res__chip--active { border-color: transparent; }
-.all-past-res__chip--completed { background: rgba(30,40,15,0.9); color: var(--lime); border-color: color-mix(in srgb, var(--lime) 40%, transparent); }
-.all-past-res__chip--cancelled { background: rgba(40,15,15,0.9); color: #FF6B62; border-color: rgba(255,107,98,0.4); }
+.all-past-res__chip--completed { background: color-mix(in srgb, var(--lime) 12%, var(--bg-card)); color: var(--lime); border-color: color-mix(in srgb, var(--lime) 40%, transparent); }
+.all-past-res__chip--cancelled { background: color-mix(in srgb, #D32F2F 10%, var(--bg-card)); color: #C62828; border-color: rgba(198,40,40,0.35); }
 .all-past-res__chip--active:not(.all-past-res__chip--completed):not(.all-past-res__chip--cancelled) {
   background: color-mix(in srgb, var(--text) 12%, transparent);
   color: var(--text);

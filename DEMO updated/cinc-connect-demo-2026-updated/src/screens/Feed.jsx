@@ -1375,6 +1375,7 @@ function ResidentFeed() {
   const acctSliderRef = useRef(null)
   const acctDrag = useRef(null)
   const [acctDragging, setAcctDragging] = useState(false)
+  const acctJustDragged = useRef(false)
   const [posts, setPosts] = useState(() => [...RESIDENT_POSTS])
   const [composeOpen, setComposeOpen] = useState(false)
   const [filterOpen, setFilterOpen] = useState(false)
@@ -1401,26 +1402,41 @@ function ResidentFeed() {
   }
 
   // Mouse drag-to-scroll for web (touch already scrolls natively on mobile)
+  // The drag only starts after the mouse moves a few px, so clicks on the card's
+  // buttons (MAKE A PAYMENT) still reach them; the click that ends a drag is ignored.
   function handleAcctPointerDown(e) {
     if (e.pointerType !== 'mouse') return
     const el = acctSliderRef.current
     if (!el) return
-    acctDrag.current = { startX: e.clientX, startScroll: el.scrollLeft }
-    setAcctDragging(true)
-    el.setPointerCapture?.(e.pointerId)
+    acctDrag.current = { startX: e.clientX, startScroll: el.scrollLeft, pointerId: e.pointerId, moved: false }
   }
   function handleAcctPointerMove(e) {
-    if (!acctDrag.current) return
+    const drag = acctDrag.current
+    if (!drag) return
     const el = acctSliderRef.current
     if (!el) return
-    el.scrollLeft = acctDrag.current.startScroll - (e.clientX - acctDrag.current.startX)
+    const dx = e.clientX - drag.startX
+    if (!drag.moved) {
+      if (Math.abs(dx) < 6) return
+      drag.moved = true
+      setAcctDragging(true)
+      el.setPointerCapture?.(drag.pointerId)
+    }
+    el.scrollLeft = drag.startScroll - dx
   }
   function handleAcctPointerUp() {
-    if (!acctDrag.current) return
+    const drag = acctDrag.current
+    if (!drag) return
     acctDrag.current = null
+    if (!drag.moved) return
+    acctJustDragged.current = true
+    setTimeout(() => { acctJustDragged.current = false }, 0)
     setAcctDragging(false)
     const el = acctSliderRef.current
     if (el) goToAcct(Math.round(el.scrollLeft / el.offsetWidth))
+  }
+  function handleAcctClickCapture(e) {
+    if (acctJustDragged.current) { e.stopPropagation(); e.preventDefault() }
   }
 
   const handleCta = (post) => {
@@ -1490,6 +1506,7 @@ function ResidentFeed() {
             onPointerMove={handleAcctPointerMove}
             onPointerUp={handleAcctPointerUp}
             onPointerCancel={handleAcctPointerUp}
+            onClickCapture={handleAcctClickCapture}
           >
             {ACCT_UNITS.map(unit => (
               <div className="acct-carousel__slide" key={unit.id}>

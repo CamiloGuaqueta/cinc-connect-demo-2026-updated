@@ -1113,7 +1113,7 @@
   gap: 8px;
   padding: 10px 16px;
   margin: -20px -20px 16px;
-  background: rgba(22,30,10,0.95);
+  background: color-mix(in srgb, var(--lime) 12%, var(--bg-card));
   border-bottom: 1px solid color-mix(in srgb, var(--lime) 20%, transparent);
   color: var(--lime);
   font-size: 12px;
