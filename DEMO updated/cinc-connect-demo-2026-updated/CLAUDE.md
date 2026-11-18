@@ -122,6 +122,13 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
   | `wright` (5185) | Wright PM, Memphis TN | Shelby Oaks HOA · `SO:` | Hickory, Cypress, Wolf River View | navy `#003F87`, activo verde `#13A300` |
   AvantStay/LagoVista/NHE/Clagett usan logos y colores del pack de Diego (`Custom Demos/Custom Connect Demos 1/`, no se sube al repo; el "element color" = cards, se cambia con el replace de `--res-bg2` en `index.css` y `theme.js`). Spaces y Wright siguen con assets del sitio web (logo de Wright = JPG con fondo quitado a mano). El pack también trae Cummings y Vertex (aún sin demo). No usar sus comunidades reales (Lago Vista/Bar K/Greenshore, Verdae/Waterleaf, Brunswick/Bellaire/Park Place, The Nine/Blue Haus, Harbor Town/Candy Factory/Artesian).
   **Entregados**: AvantStay y Lago Vista (12/11/2026), NHE y Clagett (13/11/2026), Spaces y Wright (17/11/2026).
+- **Pack 02 de Diego** (`Custom Demos/Custom Connect Demos 02/02/`, no se sube al repo: logos 1080×1080 + colores en el .rtf para TMG Utah, Metro Group, Vintage, McGill, Around the Clock, Cedar). Mismo template de Clagett; logo/icon/splash generados recortando el PNG de Diego.
+  | id (puerto dev) | Prospecto | HOA ficticia · cuentas | Calles extra (Loop/Loop/Pass) | Paleta |
+  |---|---|---|---|---|
+  | `mcgill` (5188) | McGill Management, Arlington Heights IL | Prairie Grove HOA · `PG:` | Linden, Burr Oak, Des Plaines View | accent `#2E2E2E`, fondo `#F0F0F0`, cards `#FAFAFA`; Cook County / Chicagoland / (847) |
+  | `vintage` (5189) | Vintage Group, Rancho Santa Margarita CA | Saddleback Ridge HOA · `SR:` | Sycamore, Toyon, Trabuco Canyon View | accent `#D92D37`, fondo blanco, cards `#F2F2F2`; Orange County / Southern California / (949) |
+  **Entregados**: McGill y Vintage (18/11/2026). Cummings (5186) y Vertex (5187) tienen config local sin publicar.
+  Ojo: el footer del PDF de ACC dice `Miami FL 33130` (sin coma); los configs nuevos lo reemplazan, los tenants anteriores aún lo filtran.
 - **Ubicación en blogs / Market Index**: el canon del demo base es `Miami-Dade County`, `South Florida` y el teléfono de Sarah `(305) 555-0192`; cada tenant los reemplaza por su condado, región y código de área (bloque "Blog / Market Index location" en su config). Incluirlo en cada prospecto nuevo.
 - Para un prospecto nuevo: copiar `tenants/krj/`, ajustar config + assets, agregar `&& vite build --mode <id>` al script `build` y las rewrites en `vercel.json`.
 

@@ -83,6 +83,22 @@
       "destination": "/wright/index.html"
     },
     {
+      "source": "/mcgill",
+      "destination": "/mcgill/index.html"
+    },
+    {
+      "source": "/mcgill/(.*)",
+      "destination": "/mcgill/index.html"
+    },
+    {
+      "source": "/vintage",
+      "destination": "/vintage/index.html"
+    },
+    {
+      "source": "/vintage/(.*)",
+      "destination": "/vintage/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
