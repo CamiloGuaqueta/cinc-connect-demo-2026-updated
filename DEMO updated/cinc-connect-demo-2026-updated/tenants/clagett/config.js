@@ -43,6 +43,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Frederick, MD 21701'],
+    ['Miami FL 33130',       'Frederick MD 21701'],
     [/Miami, FL 331(\d\d)/g, 'Frederick, MD 217$1'],
     ['Los Altos, CA 94023',  'Hagerstown, MD 21740'],
     ['Saratoga, CA 95070',   'Urbana, MD 21704'],

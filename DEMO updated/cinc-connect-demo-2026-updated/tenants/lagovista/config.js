@@ -45,6 +45,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Leander, TX 78641'],
+    ['Miami FL 33130',       'Leander TX 78641'],
     [/Miami, FL 331(\d\d)/g, 'Austin, TX 787$1'],
     ['Los Altos, CA 94023',  'Cedar Park, TX 78613'],
     ['Saratoga, CA 95070',   'Jonestown, TX 78645'],

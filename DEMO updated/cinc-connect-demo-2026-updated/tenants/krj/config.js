@@ -40,6 +40,7 @@ export default {
 
     // Cities → greater Houston
     ['Miami, FL 33130',     'Houston, TX 77096'],
+    ['Miami FL 33130',      'Houston TX 77096'],
     [/Miami, FL 331(\d\d)/g, 'Houston, TX 770$1'],
     ['Los Altos, CA 94023',  'Spring, TX 77373'],
     ['Saratoga, CA 95070',   'Sugar Land, TX 77479'],

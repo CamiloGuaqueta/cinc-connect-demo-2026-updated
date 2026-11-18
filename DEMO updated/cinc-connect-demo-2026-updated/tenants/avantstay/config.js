@@ -44,6 +44,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Torrance, CA 90503'],
+    ['Miami FL 33130',       'Torrance CA 90503'],
     [/Miami, FL 331(\d\d)/g, 'Redondo Beach, CA 902$1'],
     ['Los Altos, CA 94023',  'Manhattan Beach, CA 90266'],
     ['Saratoga, CA 95070',   'Hermosa Beach, CA 90254'],

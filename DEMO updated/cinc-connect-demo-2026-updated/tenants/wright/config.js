@@ -44,6 +44,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Memphis, TN 38103'],
+    ['Miami FL 33130',       'Memphis TN 38103'],
     [/Miami, FL 331(\d\d)/g, 'Memphis, TN 381$1'],
     ['Los Altos, CA 94023',  'Germantown, TN 38138'],
     ['Saratoga, CA 95070',   'Collierville, TN 38017'],

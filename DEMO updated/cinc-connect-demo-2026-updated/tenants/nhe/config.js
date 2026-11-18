@@ -43,6 +43,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Greenville, SC 29601'],
+    ['Miami FL 33130',       'Greenville SC 29601'],
     [/Miami, FL 331(\d\d)/g, 'Columbia, SC 292$1'],
     ['Los Altos, CA 94023',  'Spartanburg, SC 29302'],
     ['Saratoga, CA 95070',   'Simpsonville, SC 29681'],

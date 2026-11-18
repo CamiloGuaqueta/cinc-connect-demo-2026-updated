@@ -41,6 +41,7 @@ export default {
 
     // Cities → Hudson Valley / Capital District
     ['Miami, FL 33130',     'Poughkeepsie, NY 12601'],
+    ['Miami FL 33130',      'Poughkeepsie NY 12601'],
     [/Miami, FL 331(\d\d)/g, 'Albany, NY 122$1'],
     ['Los Altos, CA 94023',  'New Paltz, NY 12561'],
     ['Saratoga, CA 95070',   'Saratoga Springs, NY 12866'],

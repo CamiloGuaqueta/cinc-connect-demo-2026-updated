@@ -44,6 +44,7 @@ export default {
 
     // Cities
     ['Miami, FL 33130',      'Tuscaloosa, AL 35401'],
+    ['Miami FL 33130',       'Tuscaloosa AL 35401'],
     [/Miami, FL 331(\d\d)/g, 'Birmingham, AL 352$1'],
     ['Los Altos, CA 94023',  'Northport, AL 35473'],
     ['Saratoga, CA 95070',   'Hoover, AL 35244'],

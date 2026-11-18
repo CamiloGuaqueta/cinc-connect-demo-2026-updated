@@ -41,6 +41,7 @@ export default {
 
     // Cities → Puget Sound
     ['Miami, FL 33130',     'Bellevue, WA 98004'],
+    ['Miami FL 33130',      'Bellevue WA 98004'],
     [/Miami, FL 331(\d\d)/g, 'Seattle, WA 981$1'],
     ['Los Altos, CA 94023',  'Kirkland, WA 98033'],
     ['Saratoga, CA 95070',   'Redmond, WA 98052'],
