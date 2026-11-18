@@ -127,7 +127,10 @@ Ojo: `ViolationCardContent` en Tasks.jsx mapea campos del task al objeto `violat
   |---|---|---|---|---|
   | `mcgill` (5188) | McGill Management, Arlington Heights IL | Prairie Grove HOA · `PG:` | Linden, Burr Oak, Des Plaines View | accent `#2E2E2E`, fondo `#F0F0F0`, cards `#FAFAFA`; Cook County / Chicagoland / (847) |
   | `vintage` (5189) | Vintage Group, Rancho Santa Margarita CA | Saddleback Ridge HOA · `SR:` | Sycamore, Toyon, Trabuco Canyon View | accent `#D92D37`, fondo blanco, cards `#F2F2F2`; Orange County / Southern California / (949) |
-  **Entregados**: McGill y Vintage (18/11/2026). Cummings (5186) y Vertex (5187) tienen config local sin publicar.
+  | `metro` (5192) | Metro Group Management, Keego Harbor MI | Walnut Ridge HOA · `WR:` | Birch, Aspen, Clinton River View | accent `#406595`, fondo blanco, cards beige `#E6E6CC` (texto del botón de login forzado a blanco); Oakland County / Metro Detroit / (248) |
+  | `atc` (5193) | Around the Clock, Kent WA | Kestrel Ridge HOA · `KR:` | Fir, Alder, Green River View | accent `#303030`, fondo `#F1F1F1`, cards `#FAFAFA`; logo = solo el reloj (cuadrado, login a 130px); King County / South King County / (253) |
+  **Entregados**: McGill y Vintage (18/11/2026). **Listos sin publicar** (en el repo, fuera de `build`/`vercel.json`): Metro y Around the Clock. Cummings (5186) y Vertex (5187) tienen config local sin commit. Pendientes del pack 02: TMG Utah, Cedar.
+  Al generar íconos: los PNG de Diego ya traen transparencia (no quitar el blanco: el reloj/casas tienen blanco interno) y el monograma se corta en la franja vacía sobre el texto, no a un % fijo. Puertos 5190/5191 los usa otro proyecto (sandbox-proto).
   Ojo: el footer del PDF de ACC dice `Miami FL 33130` (sin coma); todo config de tenant necesita también ese reemplazo (además de `Miami, FL 33130`). Ya está en todos.
 - **Ubicación en blogs / Market Index**: el canon del demo base es `Miami-Dade County`, `South Florida` y el teléfono de Sarah `(305) 555-0192`; cada tenant los reemplaza por su condado, región y código de área (bloque "Blog / Market Index location" en su config). Incluirlo en cada prospecto nuevo.
 - Para un prospecto nuevo: copiar `tenants/krj/`, ajustar config + assets, agregar `&& vite build --mode <id>` al script `build` y las rewrites en `vercel.json`.

@@ -19,7 +19,9 @@
     "dev:spaces": "vite --mode spaces --port 5184",
     "dev:wright": "vite --mode wright --port 5185",
     "dev:mcgill": "vite --mode mcgill --port 5188",
-    "dev:vintage": "vite --mode vintage --port 5189"
+    "dev:vintage": "vite --mode vintage --port 5189",
+    "dev:metro": "vite --mode metro --port 5192",
+    "dev:atc": "vite --mode atc --port 5193"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.1",
