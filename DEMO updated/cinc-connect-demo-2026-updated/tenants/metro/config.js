@@ -68,9 +68,9 @@ export default {
     [/#E9EEEA/gi, '#FFFFFF'],
     [/#D9E9E3/gi, '#E3EAF3'],
     [/#CBCACD/gi, '#E2E2E2'],
-    // Cards ("element" color)
-    ["'--res-bg2':    '#FFFFFF'", "'--res-bg2':    '#E6E6CC'"],
-    ['--res-bg2:    #FFFFFF;', '--res-bg2:    #E6E6CC;'],
+    // Cards: soft blue-gray tint of the primary (replaces Diego's beige #E6E6CC, Camilo 19/11)
+    ["'--res-bg2':    '#FFFFFF'", "'--res-bg2':    '#EEF2F7'"],
+    ['--res-bg2:    #FFFFFF;', '--res-bg2:    #EEF2F7;'],
     // CSS filter that tints <img> icons Evergreen → primary
     ['brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)',
      'brightness(0) saturate(100%) invert(39%) sepia(15%) saturate(1893%) hue-rotate(174deg) brightness(87%) contrast(81%)'],
@@ -96,7 +96,7 @@ body .layout-toggle:hover { border-color: #FFFFFF; }
 .login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
 .login-screen .login-logo { position: static; width: 240px; height: auto; object-position: center; }
 .login-screen .login-connecplus { display: none; }
-/* The login button uses the card color for its text; the beige cards need white text instead */
+/* The login button uses the card color for its text; the light cards need white text instead */
 .login-screen .login-btn { color: #FFFFFF; }
 `,
 }
