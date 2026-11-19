@@ -99,6 +99,22 @@
       "destination": "/vintage/index.html"
     },
     {
+      "source": "/metro",
+      "destination": "/metro/index.html"
+    },
+    {
+      "source": "/metro/(.*)",
+      "destination": "/metro/index.html"
+    },
+    {
+      "source": "/atc",
+      "destination": "/atc/index.html"
+    },
+    {
+      "source": "/atc/(.*)",
+      "destination": "/atc/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
