@@ -1,7 +1,7 @@
 // Around the Clock prospect demo → served at /atc
 // Built by `vite build --mode atc` (see vite.config.js). Source code is never
 // edited: every string below is swapped at build time in src/**/*.{js,jsx,css}.
-// Logo + colors from Diego's pack (Custom Connect Demos 02, 11/2026); brand site: aroundtheclockinc.com (Kent, WA).
+// Clock + colors from Diego's pack (Custom Connect Demos 02, 11/2026); name/tagline lettering from the aroundtheclockinc.com header logo, stacked vertically. Kent, WA.
 
 const PRIMARY    = '#303030'   // titles, icons, buttons
 const CARD       = '#303030'   // payment card
@@ -94,7 +94,7 @@ body .layout-toggle { color: #FFFFFF; border-color: ${PRIMARY}; background: #1E1
 body .layout-toggle:hover { border-color: #FFFFFF; }
 
 .login-screen .login-logo-lockup { width: auto; height: auto; display: flex; flex-direction: column; align-items: center; }
-.login-screen .login-logo { position: static; width: 130px; height: auto; object-position: center; margin-top: 16px; }  /* square clock logo */
+.login-screen .login-logo { position: static; width: 230px; height: auto; object-position: center; margin-top: 16px; }  /* vertical lockup: clock + name (type from aroundtheclockinc.com) */
 .login-screen .login-connecplus { display: none; }
 `,
 }
