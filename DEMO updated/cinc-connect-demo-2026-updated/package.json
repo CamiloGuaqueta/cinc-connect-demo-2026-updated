@@ -21,7 +21,9 @@
     "dev:mcgill": "vite --mode mcgill --port 5188",
     "dev:vintage": "vite --mode vintage --port 5189",
     "dev:metro": "vite --mode metro --port 5192",
-    "dev:atc": "vite --mode atc --port 5193"
+    "dev:atc": "vite --mode atc --port 5193",
+    "dev:tmg": "vite --mode tmg --port 5194",
+    "dev:cedar": "vite --mode cedar --port 5195"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.1",
