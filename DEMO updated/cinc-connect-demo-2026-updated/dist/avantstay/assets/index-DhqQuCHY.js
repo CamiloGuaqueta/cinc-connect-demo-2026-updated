@@ -510,7 +510,7 @@ Would you like me to adjust the tone or add any detail?`},{q:`Similar recent cas
 
 • 163 E Willow St (Patricia Moore) — Apr 2026 · 1st notice · **Cured** ✓
 • 441 N Cedar Dr (Susan & Tom Baker) — Apr 2026 · 1st notice · **Cured** ✓
-• 12 Pinecrest Blvd — Mar 2026 · 2nd notice · Resolved after letter
+• 12 Seabreeze Blvd — Mar 2026 · 2nd notice · Resolved after letter
 
 All recent comparable cases resolved at 1st or 2nd notice. No escalations this year for §6.1. Standard enforcement posture is appropriate here.`}]},v2:{badge:`Violation — 323 S Elm Dr`,greeting:`**2nd Notice — Noise / Nuisance · Daniel & Susan Taylor**
 

@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Walnut Point Rd'],
     ['Cardinal Way',         'Walnut Way'],
     ['Cardinal Heights',     'Walnut Heights'],
+    ['Pinecrest Blvd',       'Birch Blvd'],
     ['Pinecrest Loop',       'Birch Loop'],
     ['Hillcrest Loop',       'Aspen Loop'],
     ['Ridgeline Pass',       'Clinton River View Pass'],

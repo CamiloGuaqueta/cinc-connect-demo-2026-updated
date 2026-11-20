@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Osprey Point Rd'],
     ['Cardinal Way',         'Osprey Way'],
     ['Cardinal Heights',     'Osprey Heights'],
+    ['Pinecrest Blvd',       'Mangrove Blvd'],
     ['Pinecrest Loop',       'Mangrove Loop'],
     ['Hillcrest Loop',       'Sabal Palm Loop'],
     ['Ridgeline Pass',       'Bayshore View Pass'],

@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Skippack Point Rd'],
     ['Cardinal Way',         'Skippack Way'],
     ['Cardinal Heights',     'Skippack Heights'],
+    ['Pinecrest Blvd',       'Laurel Blvd'],
     ['Pinecrest Loop',       'Laurel Loop'],
     ['Hillcrest Loop',       'Hemlock Loop'],
     ['Ridgeline Pass',       'Perkiomen View Pass'],

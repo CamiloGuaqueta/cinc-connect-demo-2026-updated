@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Palmetto Point Rd'],
     ['Cardinal Way',         'Palmetto Way'],
     ['Cardinal Heights',     'Palmetto Heights'],
+    ['Pinecrest Blvd',       'Dogwood Blvd'],
     ['Pinecrest Loop',       'Dogwood Loop'],
     ['Hillcrest Loop',       'Wren Loop'],
     ['Ridgeline Pass',       'Paris Mountain View Pass'],

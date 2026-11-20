@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Kestrel Point Rd'],
     ['Cardinal Way',         'Kestrel Way'],
     ['Cardinal Heights',     'Kestrel Heights'],
+    ['Pinecrest Blvd',       'Fir Blvd'],
     ['Pinecrest Loop',       'Fir Loop'],
     ['Hillcrest Loop',       'Alder Loop'],
     ['Ridgeline Pass',       'Green River View Pass'],

@@ -30,6 +30,7 @@ export default {
     ['Cardinal Point Rd',    'Bluebonnet Point Rd'],
     ['Cardinal Way',         'Bluebonnet Way'],
     ['Cardinal Heights',     'Bluebonnet Heights'],
+    ['Pinecrest Blvd',       'Pecan Blvd'],
     ['Pinecrest Loop',       'Pecan Loop'],
     ['Hillcrest Loop',       'Mesquite Loop'],
     ['Ridgeline Pass',       'Trinity Bend Pass'],

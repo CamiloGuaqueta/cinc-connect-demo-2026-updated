@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Saddleback Point Rd'],
     ['Cardinal Way',         'Saddleback Way'],
     ['Cardinal Heights',     'Saddleback Heights'],
+    ['Pinecrest Blvd',       'Sycamore Blvd'],
     ['Pinecrest Loop',       'Sycamore Loop'],
     ['Hillcrest Loop',       'Toyon Loop'],
     ['Ridgeline Pass',       'Trabuco Canyon View Pass'],

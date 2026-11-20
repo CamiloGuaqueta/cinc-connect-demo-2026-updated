@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Sandstone Point Rd'],
     ['Cardinal Way',         'Sandstone Way'],
     ['Cardinal Heights',     'Sandstone Heights'],
+    ['Pinecrest Blvd',       'Desert Willow Blvd'],
     ['Pinecrest Loop',       'Desert Willow Loop'],
     ['Hillcrest Loop',       'Sagebrush Loop'],
     ['Ridgeline Pass',       'Virgin River View Pass'],

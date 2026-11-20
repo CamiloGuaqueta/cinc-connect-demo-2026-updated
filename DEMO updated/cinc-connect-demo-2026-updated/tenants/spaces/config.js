@@ -30,6 +30,7 @@ export default {
     ['Cardinal Point Rd',    'Riverbend Point Rd'],
     ['Cardinal Way',         'Riverbend Way'],
     ['Cardinal Heights',     'Riverbend Heights'],
+    ['Pinecrest Blvd',       'Camellia Blvd'],
     ['Pinecrest Loop',       'Camellia Loop'],
     ['Hillcrest Loop',       'Yellowhammer Loop'],
     ['Ridgeline Pass',       'Black Warrior View Pass'],

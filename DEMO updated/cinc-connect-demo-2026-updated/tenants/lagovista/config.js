@@ -31,6 +31,7 @@ export default {
     ['Cardinal Point Rd',    'Cedar Point Rd'],
     ['Cardinal Way',         'Cedar Way'],
     ['Cardinal Heights',     'Cedar Heights'],
+    ['Pinecrest Blvd',       'Juniper Blvd'],
     ['Pinecrest Loop',       'Juniper Loop'],
     ['Hillcrest Loop',       'Mockingbird Loop'],
     ['Ridgeline Pass',       'Hill Country Pass'],

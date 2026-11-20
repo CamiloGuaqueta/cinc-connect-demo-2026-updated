@@ -32,6 +32,7 @@ export default {
     ['Cardinal Point Rd',    'Huron Point Rd'],
     ['Cardinal Way',         'Huron Way'],
     ['Cardinal Heights',     'Huron Heights'],
+    ['Pinecrest Blvd',       'Tamarack Blvd'],
     ['Pinecrest Loop',       'Tamarack Loop'],
     ['Hillcrest Loop',       'White Pine Loop'],
     ['Ridgeline Pass',       'Flint River View Pass'],

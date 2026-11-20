@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Olentangy Point Rd'],
     ['Cardinal Way',         'Olentangy Way'],
     ['Cardinal Heights',     'Olentangy Heights'],
+    ['Pinecrest Blvd',       'Buckeye Blvd'],
     ['Pinecrest Loop',       'Buckeye Loop'],
     ['Hillcrest Loop',       'Hackberry Loop'],
     ['Ridgeline Pass',       'Scioto River View Pass'],

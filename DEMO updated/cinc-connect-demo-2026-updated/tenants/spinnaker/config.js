@@ -27,6 +27,7 @@ export default {
     ['Cardinal Point Rd',    'Hudson Point Rd'],
     ['Cardinal Way',         'Hudson Way'],
     ['Cardinal Heights',     'Hudson Heights'],
+    ['Pinecrest Blvd',       'Birchwood Blvd'],
     ['Pinecrest Loop',       'Birchwood Loop'],
     ['Hillcrest Loop',       'Maple Hollow Loop'],
     ['Ridgeline Pass',       'Catskill View Pass'],

@@ -31,6 +31,7 @@ export default {
     ['Cardinal Point Rd',    'Tumalo Point Rd'],
     ['Cardinal Way',         'Tumalo Way'],
     ['Cardinal Heights',     'Tumalo Heights'],
+    ['Pinecrest Blvd',       'Ponderosa Blvd'],
     ['Pinecrest Loop',       'Ponderosa Loop'],
     ['Hillcrest Loop',       'Manzanita Loop'],
     ['Ridgeline Pass',       'Deschutes River View Pass'],

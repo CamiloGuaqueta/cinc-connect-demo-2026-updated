@@ -30,6 +30,7 @@ export default {
     ['Cardinal Point Rd',    'Shelby Point Rd'],
     ['Cardinal Way',         'Shelby Way'],
     ['Cardinal Heights',     'Shelby Heights'],
+    ['Pinecrest Blvd',       'Hickory Blvd'],
     ['Pinecrest Loop',       'Hickory Loop'],
     ['Hillcrest Loop',       'Cypress Loop'],
     ['Ridgeline Pass',       'Wolf River View Pass'],

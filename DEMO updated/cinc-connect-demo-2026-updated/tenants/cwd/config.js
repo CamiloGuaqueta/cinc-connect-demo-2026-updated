@@ -27,6 +27,7 @@ export default {
     ['Cardinal Point Rd',    'Cascade Point Rd'],
     ['Cardinal Way',         'Cascade Way'],
     ['Cardinal Heights',     'Cascade Heights'],
+    ['Pinecrest Blvd',       'Cedar Blvd'],
     ['Pinecrest Loop',       'Cedar Loop'],
     ['Hillcrest Loop',       'Madrona Loop'],
     ['Ridgeline Pass',       'Rainier View Pass'],

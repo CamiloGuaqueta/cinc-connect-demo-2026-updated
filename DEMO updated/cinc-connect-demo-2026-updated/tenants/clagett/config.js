@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Catoctin Point Rd'],
     ['Cardinal Way',         'Catoctin Way'],
     ['Cardinal Heights',     'Catoctin Heights'],
+    ['Pinecrest Blvd',       'Monocacy Blvd'],
     ['Pinecrest Loop',       'Monocacy Loop'],
     ['Hillcrest Loop',       'Sugarloaf Loop'],
     ['Ridgeline Pass',       'Blue Ridge View Pass'],

@@ -29,6 +29,7 @@ export default {
     ['Cardinal Point Rd',    'Northwood Point Rd'],
     ['Cardinal Way',         'Northwood Way'],
     ['Cardinal Heights',     'Northwood Heights'],
+    ['Pinecrest Blvd',       'Basswood Blvd'],
     ['Pinecrest Loop',       'Basswood Loop'],
     ['Hillcrest Loop',       'Spruce Loop'],
     ['Ridgeline Pass',       'Mississippi View Pass'],

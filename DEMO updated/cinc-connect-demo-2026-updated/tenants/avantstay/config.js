@@ -30,6 +30,7 @@ export default {
     ['Cardinal Point Rd',    'Pacific Point Rd'],
     ['Cardinal Way',         'Pacific Way'],
     ['Cardinal Heights',     'Pacific Heights'],
+    ['Pinecrest Blvd',       'Seabreeze Blvd'],
     ['Pinecrest Loop',       'Seabreeze Loop'],
     ['Hillcrest Loop',       'Palm Loop'],
     ['Ridgeline Pass',       'Catalina View Pass'],
