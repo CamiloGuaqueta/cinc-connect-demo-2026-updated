@@ -66,7 +66,7 @@ export const CUSTOM_TILES = [
     content: {
       tag: 'Policy Update · Effective July 1, 2026',
       title: 'Updated Landscaping & Lawn Care Policy',
-      subtitle: 'Adopted by the Board of Directors — May 20, 2026',
+      subtitle: 'Adopted by the Board of Directors — May 13, 2026',
       sections: [
         {
           heading: 'Irrigation',
@@ -133,7 +133,7 @@ export const CUSTOM_TILES = [
     content: {
       hero: boardImg,
       tag: 'Board Update',
-      title: 'Annual Meeting Recap',
+      title: 'Spring Membership Meeting Recap',
       subtitle: 'April 10, 2026 · Clubhouse · 94 residents attended',
       sections: [
         {
@@ -162,14 +162,14 @@ export const CUSTOM_TILES = [
         {
           heading: 'Resolutions Passed',
           list: [
-            'Updated Landscaping Policy — effective July 1, 2026',
+            'Landscaping policy update sent to the Board for adoption (effective July 1, 2026)',
             'New grounds maintenance vendor contract',
             'EV charging stations approved for visitor parking',
           ],
         },
         {
           heading: 'Next Meeting',
-          text: 'Board Meeting — June 18, 2026 at 6:30 PM in the Clubhouse. All residents welcome.',
+          text: 'Board Meeting — May 13, 2026 at 5:30 PM in the Clubhouse (Zoom link in the app). All residents welcome.',
         },
       ],
       links: [

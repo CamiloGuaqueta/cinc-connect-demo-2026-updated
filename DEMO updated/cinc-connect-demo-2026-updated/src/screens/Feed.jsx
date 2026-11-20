@@ -1117,8 +1117,8 @@ const RESIDENT_POSTS = [
   },
   {
     id: 'r3', name: 'Ethan Young', initials: 'EY', time: '3 hours ago',
-    isBoardMember: false, title: 'Exterior Refresh Complete!',
-    body: 'Thrilled to share our home just got final ACC sign-off for the new Sage Green exterior with Warm White trim — painters start next week. Thanks to the board for the quick turnaround!',
+    isBoardMember: false, title: 'Exterior Refresh Almost There!',
+    body: 'Our ACC request for a Sage Green exterior with Warm White trim is with the committee now. Both colors are on the approved palette, so fingers crossed. The painters are on standby!',
     image: null, likes: 12, comments: 4, avatarImg: ETHAN_PHOTO,
   },
   {

@@ -258,7 +258,7 @@ export const MY_RESERVATIONS_DATA = [
       { id: 'n4', type: 'fee', title: 'Amenity Fee Waived', text: 'The $120 amenity fee has been waived and refunded as a one-time courtesy. No charges will appear on your account.', timestamp: '06/13/2026  11:00 AM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
       { id: 'n3', text: 'Reminder: please ensure all guests check in at the front desk before proceeding to the clubhouse. Parking is available in Lot B only.', timestamp: '06/14/2026  2:30 PM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
       { id: 'n2', text: 'Setup crew will need access 1 hour before the reservation starts. Please coordinate with building management at least 48 hours in advance.', timestamp: '06/12/2026  10:15 AM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
-      { id: 'n1', text: 'Your reservation for the Club House has been approved. Please review the attached rules and regulations before your event. Deposit hold of $200 has been placed.', timestamp: '06/10/2026  9:00 AM', isApproval: true, author: { name: 'Dalton Thomson', avatar: '/images/avatar-1.jpg' } },
+      { id: 'n1', text: 'Your reservation for the Club House has been approved. Please review the attached rules and regulations before your event. Deposit hold of $200 has been placed.', timestamp: '06/10/2026  9:00 AM', isApproval: true, author: { name: 'Darren Wilson', avatar: '/images/avatar-1.jpg' } },
     ],
   },
   { id: 'r2', amenityId: 'media-room', amenityName: 'Media Room',  img: mediaRoomImg,  date: '06/20/2026', startTime: '10:00 AM', endTime: '1:00 PM',  guests: 6,  status: 'upcoming' },
@@ -267,7 +267,7 @@ export const MY_RESERVATIONS_DATA = [
     date: '05/10/2026', startTime: '2:00 PM', endTime: '5:00 PM', guests: 8, status: 'completed',
     notes: [
       { id: 'r3n2', text: 'Event went smoothly. All guests checked out by 5:15 PM. Facility left in good condition.', timestamp: '05/10/2026  5:20 PM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
-      { id: 'r3n1', text: 'Your reservation for the Club House has been approved. Deposit hold of $200 has been placed on your account.', timestamp: '05/08/2026  10:00 AM', isApproval: true, author: { name: 'Dalton Thomson', avatar: '/images/avatar-1.jpg' } },
+      { id: 'r3n1', text: 'Your reservation for the Club House has been approved. Deposit hold of $200 has been placed on your account.', timestamp: '05/08/2026  10:00 AM', isApproval: true, author: { name: 'Darren Wilson', avatar: '/images/avatar-1.jpg' } },
     ],
   },
   {
@@ -275,14 +275,14 @@ export const MY_RESERVATIONS_DATA = [
     date: '04/28/2026', startTime: '6:00 PM', endTime: '9:00 PM', guests: 5, status: 'cancelled',
     notes: [
       { id: 'r4n2', text: 'Reservation has been cancelled per your request. Any deposit hold will be released within 3–5 business days.', timestamp: '04/25/2026  11:30 AM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
-      { id: 'r4n1', text: 'Your reservation for the Media Room has been approved. Please arrive 10 minutes early for setup.', timestamp: '04/22/2026  9:00 AM', isApproval: true, author: { name: 'Dalton Thomson', avatar: '/images/avatar-1.jpg' } },
+      { id: 'r4n1', text: 'Your reservation for the Media Room has been approved. Please arrive 10 minutes early for setup.', timestamp: '04/22/2026  9:00 AM', isApproval: true, author: { name: 'Darren Wilson', avatar: '/images/avatar-1.jpg' } },
     ],
   },
   {
     id: 'r5', amenityId: 'pool', amenityName: 'Pool', img: poolImg,
     date: '03/22/2026', startTime: '11:00 AM', endTime: '3:00 PM', guests: 4, status: 'completed',
     notes: [
-      { id: 'r5n1', text: 'Your pool reservation has been approved. Reminder: no glass containers allowed in the pool area. Towels available at the front desk.', timestamp: '03/20/2026  2:00 PM', isApproval: true, author: { name: 'Dalton Thomson', avatar: '/images/avatar-1.jpg' } },
+      { id: 'r5n1', text: 'Your pool reservation has been approved. Reminder: no glass containers allowed in the pool area. Towels available at the front desk.', timestamp: '03/20/2026  2:00 PM', isApproval: true, author: { name: 'Darren Wilson', avatar: '/images/avatar-1.jpg' } },
     ],
   },
   {
@@ -298,7 +298,7 @@ export const MY_RESERVATIONS_DATA = [
     notes: [
       { id: 'r7n3', type: 'deposit', title: 'Security Deposit Partially Charged', text: 'During the post-event inspection a broken piece of furniture was found, prompting management to charge $25 from the security deposit. The remaining $175 will be released within 5 business days.', timestamp: '02/14/2026  10:45 PM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
       { id: 'r7n2', text: 'Reminder: maximum occupancy is 20 guests. Catering must be arranged through approved vendors only. See attached vendor list.', timestamp: '02/12/2026  1:00 PM', author: { name: 'Lisa Thomas', avatar: '/images/avatar-2.jpg' } },
-      { id: 'r7n1', text: 'Your Valentine\'s Day reservation for the Club House has been approved. Deposit hold of $200 has been placed on your account.', timestamp: '02/10/2026  9:30 AM', isApproval: true, author: { name: 'Dalton Thomson', avatar: '/images/avatar-1.jpg' } },
+      { id: 'r7n1', text: 'Your Valentine\'s Day reservation for the Club House has been approved. Deposit hold of $200 has been placed on your account.', timestamp: '02/10/2026  9:30 AM', isApproval: true, author: { name: 'Darren Wilson', avatar: '/images/avatar-1.jpg' } },
     ],
   },
 ]

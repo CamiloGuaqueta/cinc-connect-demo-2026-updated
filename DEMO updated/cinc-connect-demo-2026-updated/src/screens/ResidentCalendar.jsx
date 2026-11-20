@@ -13,7 +13,7 @@ export const CATEGORIES = [
 ]
 
 const INITIAL_EVENTS = [
-  { id: 1,  title: 'May Board Of Directors Meeting', category: 'Board Of Directors', location: 'Clubhouse',     date: '2026-05-04', start: '12:00 PM', end: '3:00 PM',  image: '/images/calendar/board-meeting.jpg', description: 'Monthly Board of Directors meeting covering financial updates, community projects, and homeowner compliance matters.' },
+  { id: 1,  title: 'May Board Of Directors Meeting', category: 'Board Of Directors', location: 'Clubhouse',     date: '2026-05-13', start: '5:30 PM',  end: '7:30 PM',  image: '/images/calendar/board-meeting.jpg', description: 'Monthly Board of Directors meeting covering financial updates, community projects, and homeowner compliance matters.' },
   { id: 2,  title: 'Pool Party',                     category: 'Community Calendar', location: 'Pool Area',     date: '2026-05-04', start: '4:00 PM',  end: '7:00 PM',  image: '/images/calendar/pool-party.jpg', description: 'Community pool party! Enjoy warm weather with your neighbors. Drinks and snacks will be provided.' },
   { id: 3,  title: 'Trash Day',                      category: 'Trash Pickup',       location: 'Curbside',      date: '2026-05-06', start: '7:00 AM',  end: '9:00 AM',  image: '/images/calendar/trash-day.jpg', recurrenceId: 'trash-weekly', description: 'Regular trash and recycling pickup. Please have all bins at the curb by 7:00 AM.' },
   { id: 4,  title: 'Spring Mixer',                   category: 'Community Calendar', location: 'Clubhouse',     date: '2026-05-08', start: '4:00 PM',  end: '7:00 PM',  image: '/images/calendar/spring-mixer.jpg', description: 'Annual spring mixer! Join your neighbors for food, drinks, and great conversation at the clubhouse.' },
@@ -25,7 +25,7 @@ const INITIAL_EVENTS = [
   { id: 10, title: 'Memorial Day BBQ',               category: 'Community Calendar', location: 'Pool Area',     date: '2026-05-25', start: '12:00 PM', end: '4:00 PM',  image: '/images/calendar/memorial-day-bbq.jpg', description: 'Annual Memorial Day BBQ celebration at the pool. Free for all residents. RSVP to the community manager by May 22.' },
   { id: 11, title: 'Trash Day',                      category: 'Trash Pickup',       location: 'Curbside',      date: '2026-05-27', start: '7:00 AM',  end: '9:00 AM',  image: '/images/calendar/trash-day.jpg', recurrenceId: 'trash-weekly', description: 'Regular trash and recycling pickup. Please have all bins at the curb by 7:00 AM.' },
   { id: 12, title: 'Summer Kick-off Party',          category: 'Community Calendar', location: 'Pool Area',     date: '2026-06-06', start: '3:00 PM',  end: '7:00 PM',  image: '/images/calendar/summer-kickoff.jpg', description: 'Welcome summer with a poolside celebration! DJ, food trucks, and activities for kids and adults alike.' },
-  { id: 13, title: 'June Board Meeting',             category: 'Board Of Directors', location: 'Clubhouse',     date: '2026-06-08', start: '5:30 PM',  end: '7:30 PM',  image: '/images/calendar/board-meeting.jpg', description: 'Monthly Board of Directors meeting. Agenda includes reserve fund review and summer maintenance schedule.' },
+  { id: 13, title: 'June Board Meeting',             category: 'Board Of Directors', location: 'Clubhouse',     date: '2026-06-10', start: '5:30 PM',  end: '7:30 PM',  image: '/images/calendar/board-meeting.jpg', description: 'Monthly Board of Directors meeting. Agenda includes reserve fund review and summer maintenance schedule.' },
 ]
 
 function getCatColor(categoryName) {
