@@ -115,6 +115,22 @@
       "destination": "/atc/index.html"
     },
     {
+      "source": "/crystallake",
+      "destination": "/crystallake/index.html"
+    },
+    {
+      "source": "/crystallake/(.*)",
+      "destination": "/crystallake/index.html"
+    },
+    {
+      "source": "/vaughan",
+      "destination": "/vaughan/index.html"
+    },
+    {
+      "source": "/vaughan/(.*)",
+      "destination": "/vaughan/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
