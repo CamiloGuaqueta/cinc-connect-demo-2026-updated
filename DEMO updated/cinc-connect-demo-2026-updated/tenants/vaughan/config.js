@@ -1,13 +1,13 @@
 // Vaughan Group prospect demo → served at /vaughan
 // Built by `vite build --mode vaughan` (see vite.config.js). Source code is never
 // edited: every string below is swapped at build time in src/**/*.{js,jsx,css}.
-// No Diego pack: logo + colors taken from the prospect's site (20/11/2026).
+// Logo + colors from Diego's pack (Custom Connect Demos 03, 20/11/2026); brand site: vaughangroupltd.com (Dublin, OH).
 
-const PRIMARY    = '#144994'   // titles, icons, buttons
-const CARD       = '#144994'   // payment card
+const PRIMARY    = '#C3353B'   // titles, icons, buttons
+const CARD       = '#144994'   // payment card (navy from the VGL logo)
 const NAV_BAR    = '#FFFFFF'
 const NAV_ICON   = '#313131'
-const NAV_ACTIVE = '#144994'
+const NAV_ACTIVE = '#C3353B'
 
 export default {
   id: 'vaughan',
@@ -63,18 +63,18 @@ export default {
 
     // CINC palette → Vaughan Group palette (theme presets, :root defaults, fixed surfaces)
     [/#006A52/gi, PRIMARY],
-    [/#00553F/gi, '#0F3873'],
+    [/#00553F/gi, '#A02A2F'],
     [/#002D28/gi, PRIMARY],
-    [/#171B19/gi, '#313131'],
+    [/#171B19/gi, '#484848'],
     [/#E9EEEA/gi, '#FFFFFF'],
-    [/#D9E9E3/gi, '#E3EAF5'],
+    [/#D9E9E3/gi, '#F7E1E2'],
     [/#CBCACD/gi, '#E2E2E2'],
-    // Cards: soft blue-gray tint of the primary
-    ["'--res-bg2':    '#FFFFFF'", "'--res-bg2':    '#EEF2F7'"],
-    ['--res-bg2:    #FFFFFF;', '--res-bg2:    #EEF2F7;'],
+    // Cards ("element" color)
+    ["'--res-bg2':    '#FFFFFF'", "'--res-bg2':    '#F6F6F6'"],
+    ['--res-bg2:    #FFFFFF;', '--res-bg2:    #F6F6F6;'],
     // CSS filter that tints <img> icons Evergreen → primary
     ['brightness(0) saturate(100%) invert(27%) sepia(87%) saturate(1530%) hue-rotate(143deg) brightness(93%) contrast(101%)',
-     'brightness(0) saturate(100%) invert(17%) sepia(73%) saturate(2238%) hue-rotate(204deg) brightness(98%) contrast(90%)'],
+     'brightness(0) saturate(100%) invert(25%) sepia(61%) saturate(5706%) hue-rotate(345deg) brightness(91%) contrast(86%)'],
   ],
 
   // Appended to src/index.css

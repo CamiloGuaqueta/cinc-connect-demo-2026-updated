@@ -27,7 +27,8 @@
     "dev:tmg": "vite --mode tmg --port 5194",
     "dev:cedar": "vite --mode cedar --port 5195",
     "dev:crystallake": "vite --mode crystallake --port 5196",
-    "dev:vaughan": "vite --mode vaughan --port 5197"
+    "dev:vaughan": "vite --mode vaughan --port 5197",
+    "dev:danella": "vite --mode danella --port 5198"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.0.1",
