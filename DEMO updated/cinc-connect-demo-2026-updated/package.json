@@ -18,6 +18,8 @@
     "dev:clagett": "vite --mode clagett --port 5183",
     "dev:spaces": "vite --mode spaces --port 5184",
     "dev:wright": "vite --mode wright --port 5185",
+    "dev:cummings": "vite --mode cummings --port 5186",
+    "dev:vertex": "vite --mode vertex --port 5187",
     "dev:mcgill": "vite --mode mcgill --port 5188",
     "dev:vintage": "vite --mode vintage --port 5189",
     "dev:metro": "vite --mode metro --port 5192",
