@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Southern Utah continues'],
     ['South Florida',        'Southern Utah'],
     ['(305) 555-0192',       '(435) 555-0192'],
+    ['305.555.',            '435.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/tmg/icon.png'],

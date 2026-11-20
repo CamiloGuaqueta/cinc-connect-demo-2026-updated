@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'the Twin Cities continues'],
     ['South Florida',        'the Twin Cities'],
     ['(305) 555-0192',       '(763) 555-0192'],
+    ['305.555.',            '763.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/cedar/icon.png'],

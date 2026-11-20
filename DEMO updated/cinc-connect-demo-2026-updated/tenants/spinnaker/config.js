@@ -54,6 +54,7 @@ export default {
     ['South Florida continues', 'The Hudson Valley continues'],
     ['South Florida',        'the Hudson Valley'],
     ['(305) 555-0192',       '(845) 555-0192'],
+    ['305.555.',            '845.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/spinnaker/icon.png'],

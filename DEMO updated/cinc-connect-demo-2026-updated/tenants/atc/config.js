@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'South King County continues'],
     ['South Florida',        'South King County'],
     ['(305) 555-0192',       '(253) 555-0192'],
+    ['305.555.',            '253.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/atc/icon.png'],

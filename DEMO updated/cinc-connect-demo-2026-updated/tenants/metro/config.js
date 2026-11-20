@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Metro Detroit continues'],
     ['South Florida',        'Metro Detroit'],
     ['(305) 555-0192',       '(248) 555-0192'],
+    ['305.555.',            '248.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/metro/icon.png'],

@@ -57,6 +57,7 @@ export default {
     ['South Florida continues', 'West Alabama continues'],
     ['South Florida',        'West Alabama'],
     ['(305) 555-0192',       '(205) 555-0192'],
+    ['305.555.',            '205.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/spaces/icon.png'],

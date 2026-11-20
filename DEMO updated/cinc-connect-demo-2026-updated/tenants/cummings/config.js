@@ -59,6 +59,7 @@ export default {
     ['South Florida continues', 'Mid-Michigan continues'],
     ['South Florida',        'Mid-Michigan'],
     ['(305) 555-0192',       '(810) 555-0192'],
+    ['305.555.',            '810.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/cummings/icon.png'],

@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Southern California continues'],
     ['South Florida',        'Southern California'],
     ['(305) 555-0192',       '(949) 555-0192'],
+    ['305.555.',            '949.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/vintage/icon.png'],

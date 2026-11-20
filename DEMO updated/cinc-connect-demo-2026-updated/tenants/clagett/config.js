@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Central Maryland continues'],
     ['South Florida',        'Central Maryland'],
     ['(305) 555-0192',       '(301) 555-0192'],
+    ['305.555.',            '301.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/clagett/icon.png'],

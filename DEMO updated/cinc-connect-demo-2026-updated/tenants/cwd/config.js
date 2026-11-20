@@ -54,6 +54,7 @@ export default {
     ['South Florida continues', 'Puget Sound continues'],
     ['South Florida',        'Puget Sound'],
     ['(305) 555-0192',       '(425) 555-0192'],
+    ['305.555.',            '425.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/cwd/icon.png'],

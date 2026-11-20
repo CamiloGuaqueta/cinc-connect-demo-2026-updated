@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Central Ohio continues'],
     ['South Florida',        'Central Ohio'],
     ['(305) 555-0192',       '(614) 555-0192'],
+    ['305.555.',            '614.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/vaughan/icon.png'],

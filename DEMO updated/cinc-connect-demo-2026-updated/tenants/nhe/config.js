@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Upstate South Carolina continues'],
     ['South Florida',        'Upstate South Carolina'],
     ['(305) 555-0192',       '(864) 555-0192'],
+    ['305.555.',            '864.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/nhe/icon.png'],

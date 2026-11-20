@@ -57,6 +57,7 @@ export default {
     ['South Florida continues', 'The South Bay continues'],
     ['South Florida',        'the South Bay'],
     ['(305) 555-0192',       '(310) 555-0192'],
+    ['305.555.',            '310.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/avantstay/icon.png'],

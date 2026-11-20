@@ -57,6 +57,7 @@ export default {
     ['South Florida continues', 'North Texas continues'],
     ['South Florida',        'North Texas'],
     ['(305) 555-0192',       '(972) 555-0192'],
+    ['305.555.',            '972.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/insight/icon.png'],

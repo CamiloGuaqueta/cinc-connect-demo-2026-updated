@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Tampa Bay continues'],
     ['South Florida',        'Tampa Bay'],
     ['(305) 555-0192',       '(813) 555-0192'],
+    ['305.555.',            '813.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/vertex/icon.png'],

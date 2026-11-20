@@ -53,6 +53,7 @@ export default {
     ['South Florida continues', 'Greater Houston continues'],
     ['South Florida',        'Greater Houston'],
     ['(305) 555-0192',       '(713) 555-0192'],
+    ['305.555.',            '713.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/krj/icon.png'],

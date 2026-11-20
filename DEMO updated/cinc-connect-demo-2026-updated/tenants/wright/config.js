@@ -57,6 +57,7 @@ export default {
     ['South Florida continues', 'Greater Memphis continues'],
     ['South Florida',        'Greater Memphis'],
     ['(305) 555-0192',       '(901) 555-0192'],
+    ['305.555.',            '901.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/wright/icon.png'],

@@ -56,6 +56,7 @@ export default {
     ['South Florida continues', 'Chicagoland continues'],
     ['South Florida',        'Chicagoland'],
     ['(305) 555-0192',       '(847) 555-0192'],
+    ['305.555.',            '847.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/mcgill/icon.png'],

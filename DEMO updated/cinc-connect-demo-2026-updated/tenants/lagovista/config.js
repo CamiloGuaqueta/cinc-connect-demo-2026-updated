@@ -58,6 +58,7 @@ export default {
     ['South Florida continues', 'Central Texas continues'],
     ['South Florida',        'Central Texas'],
     ['(305) 555-0192',       '(512) 555-0192'],
+    ['305.555.',            '512.555.'],   // ACC/WO/vendor phones in Tasks.jsx
 
     // HOA avatar
     ['/images/cinc-icon.png', '/tenants/lagovista/icon.png'],
