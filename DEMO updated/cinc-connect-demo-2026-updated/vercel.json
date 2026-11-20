@@ -131,6 +131,14 @@
       "destination": "/vaughan/index.html"
     },
     {
+      "source": "/danella",
+      "destination": "/danella/index.html"
+    },
+    {
+      "source": "/danella/(.*)",
+      "destination": "/danella/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
