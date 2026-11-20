@@ -18,24 +18,25 @@ const TABS = [
       hero: poolImg,
       title: 'Pool Renovation Update',
       tag: 'Community Update',
-      lead: 'Plaster resurfacing is in progress and on schedule. Estimated completion August 15, 2026.',
+      lead: 'Phase 1 is complete and the pool opens for the summer on May 23. Phase 2 (resurfacing and the new deck) runs September 8 to November 6, 2026.',
       sections: [
         {
           heading: 'Milestone Status',
           table: {
             headers: ['Milestone', 'Status'],
             rows: [
-              ['Pool drained', '✅  Jun 2'],
-              ['Plumbing installed', '✅  Jun 18'],
-              ['Plaster resurfacing', '🔄  Jul 10'],
-              ['Deck & furniture', '⏳  Aug 1'],
-              ['Final refill', '⏳  Aug 15'],
+              ['Pool drained & inspected', '✅  Mar 30'],
+              ['Plumbing & filtration', '✅  Apr 24'],
+              ['Pool opens for summer', '⏳  May 23'],
+              ['Plaster resurfacing', '⏳  Sep 8'],
+              ['Deck & furniture', '⏳  Oct 1'],
+              ['Final refill', '⏳  Nov 6'],
             ],
           },
         },
         {
-          heading: 'Temporary Access',
-          text: 'Clubhouse fitness center and tennis courts remain open. A splash pad is available near the playground during construction.',
+          heading: 'During Phase 2',
+          text: 'The pool closes on September 8. Clubhouse fitness center and tennis courts remain open, and a splash pad is available near the playground during construction.',
         },
       ],
       links: [

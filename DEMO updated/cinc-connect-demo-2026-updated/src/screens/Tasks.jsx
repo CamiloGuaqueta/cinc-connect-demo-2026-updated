@@ -269,14 +269,14 @@ const TASKS = [
     id: 13,
     type: 'Task',
     title: 'Approve Pool Renovation Change Order',
-    dueDate: '04/28/2026',
+    dueDate: '05/27/2026',
     category: 'Capital Projects',
     taskStatus: null,
-    description: 'AC&M Construction Services submitted Change Order #2 for the pool renovation: additional plaster repair discovered after draining, adding $4,800 to the contract. Board approval required to keep the August 15 completion date.',
+    description: 'AC&M Construction Services submitted Change Order #2 for the pool renovation: additional plaster repair found during the spring drain-down, adding $4,800 to the fall resurfacing. Board approval by May 27 keeps the September 8 start of Phase 2.',
     attachment: 'Change Order #2 — AC&M',
     acctInfo: null,
     logCount: 3,
-    due: 'Due Apr 28',
+    due: 'Due May 27',
     urgency: 'normal',
     actionLabel: 'Complete',
   },
@@ -1715,9 +1715,9 @@ const TASK_LOG_MESSAGES = {
     { id: 2, from: 'committee', name: 'Thomas Lowes · Treasurer', avatar: '/images/avatar-linkedin.jpg', time: 'Apr 23 · 7:50 PM', text: 'I support the split approach. Flagging that the insurance renewal quotes (due May 31) could move the total ±3% — we should hold final adoption until those land.' },
   ],
   13: [
-    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 21 · 9:00 AM', text: 'AC&M submitted Change Order #2: additional plaster repair found after draining, +$4,800. Without approval this week, the plaster crew moves to another job and completion slips ~3 weeks.' },
+    { id: 1, from: 'committee', name: 'Community Manager', avatar: '/images/cinc-icon.png', time: 'Apr 21 · 9:00 AM', text: 'AC&M submitted Change Order #2: additional plaster repair found during the spring drain-down, +$4,800 to the fall resurfacing. Without approval by May 27, AC&M releases our September slot and Phase 2 slips ~3 weeks.' },
     { id: 2, from: 'committee', name: 'Marcus Chen · Vice President', avatar: '/images/avatar-3.jpg', time: 'Apr 21 · 6:30 PM', text: 'Scope looks legitimate — the photos show real delamination. Reserve fund has capacity per the 2026 study.' },
-    { id: 3, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/personas/darren-wilson.jpg', time: 'Apr 22 · 8:10 AM', text: 'Agreed. Adding to this week’s agenda for a vote so we protect the August 15 completion date.' },
+    { id: 3, from: 'committee', name: 'Darren Wilson · President', avatar: '/images/personas/darren-wilson.jpg', time: 'Apr 22 · 8:10 AM', text: 'Agreed. Let’s vote on it before May 27 so we keep the September 8 start and the pool stays open all summer.' },
   ],
 }
 
@@ -1784,14 +1784,14 @@ const TASK_REPORTS = {
         ['Scope', 'Additional plaster repair — 340 sq ft'],
         ['Amount', '+$4,800.00'],
         ['Revised contract total', '$41,520.00'],
-        ['Schedule impact', 'None if approved by Apr 28'],
+        ['Schedule impact', 'None if approved by May 27'],
       ]},
       { label: 'FUNDING', rows: [
         ['Source', 'Reserve fund — pool resurfacing line'],
         ['Reserve balance', '$1,245,360.00'],
       ]},
     ],
-    note: 'Delamination discovered after draining, documented with photos on file. Approval this week preserves the August 15 completion date.',
+    note: 'Delamination found during the spring drain-down, documented with photos on file. Approval by May 27 keeps the September 8 start of Phase 2 (completion November 6).',
   },
 }
 

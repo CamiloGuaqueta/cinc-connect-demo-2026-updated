@@ -1123,8 +1123,8 @@ const RESIDENT_POSTS = [
   },
   {
     id: 'r2', name: 'Lisa Thomas', initials: 'LT', time: '1 Day Ago',
-    isBoardMember: true, title: 'Community Pool Opening Soon',
-    body: 'The pool will reopen May 1st with new hours: 8 AM – 9 PM daily. Please review the updated pool rules before your first visit.',
+    isBoardMember: true, title: 'Community Pool Opens May 23',
+    body: 'Phase 1 of the pool renovation is done, so the pool opens for the summer on Saturday, May 23 (Memorial Day weekend). Hours: 7 AM – 9 PM daily, Sundays 8 AM – 8 PM. Phase 2 (resurfacing and the new deck) starts after Labor Day. Please review the pool rules before your first visit.',
     image: null, likes: 5, comments: 11, avatarImg: AVATAR_2,
   },
   {

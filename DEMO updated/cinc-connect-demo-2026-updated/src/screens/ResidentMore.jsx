@@ -28,21 +28,23 @@ export const CUSTOM_TILES = [
     // Layout: no hero — starts with title, then progress status table
     label: 'Pool Renovation\nUpdate',
     content: {
-      tag: 'Capital Project · In Progress',
+      tag: 'Capital Project · Phase 1 Complete',
       title: 'Pool Renovation Update',
-      subtitle: 'Expected completion: August 15, 2026',
-      lead: 'We\'re upgrading the pool deck, resurfacing the interior, and replacing aging equipment. Work is on schedule.',
+      subtitle: 'Phase 2 starts September 8 · Expected completion: November 6, 2026',
+      lead: 'Phase 1 (new plumbing and filtration) wrapped up this spring, so the pool opens for the summer on May 23. Phase 2 (interior resurfacing, new deck and furniture) starts after Labor Day.',
       sections: [
         {
           heading: 'Milestone Status',
           table: {
             headers: ['Milestone', 'Status'],
             rows: [
-              ['Pool drained & surface removed', '✅ Done June 2'],
-              ['New plumbing & filtration', '✅ Done June 18'],
-              ['Plaster resurfacing', '🔄 Est. July 10'],
-              ['Deck pavers & furniture', '⏳ July 15–Aug 1'],
-              ['Final inspection & refill', '⏳ Aug 5–15'],
+              ['Pool drained & surface inspected', '✅ Done March 30'],
+              ['New plumbing & filtration', '✅ Done April 24'],
+              ['Pump replacement (WO #4822)', '🔄 Before opening day'],
+              ['Pool opens for summer', '⏳ May 23'],
+              ['Plaster resurfacing (incl. Change Order #2)', '⏳ Sept 8–30'],
+              ['Deck pavers & furniture', '⏳ Oct 1–20'],
+              ['Final inspection & refill', '⏳ Oct 26–Nov 6'],
             ],
           },
         },
@@ -50,8 +52,8 @@ export const CUSTOM_TILES = [
           image: poolImg,
         },
         {
-          heading: 'During Renovation',
-          text: 'Full access to the Clubhouse fitness center and tennis courts. A splash pad has been installed near the playground for kids.',
+          heading: 'During Phase 2',
+          text: 'The pool closes on September 8. The Clubhouse fitness center and tennis courts stay open, and the splash pad near the playground runs through October.',
         },
       ],
       links: [

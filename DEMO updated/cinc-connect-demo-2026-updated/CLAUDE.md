@@ -44,6 +44,7 @@ Fuente única: `src/data/userData.js` → `CURRENT_USER`.
 - **Vendors**: Green Valley Landscaping, Pacific Pool Services, Westside Plumbing (con invoices pendientes en Tasks), AC&M Construction (pool renovation), Pipes And Flows, 1-800-GOT-JUNK?, EverGreen Property Care.
 - **"Hoy" del demo**: ~05/19/2026 (fecha "As of" de Bank Summary y `NOW` en VendorPaymentHistory).
 - **Historias cruzadas que deben mantenerse coherentes**: la violación de landscaping es de Dalton (mismos datos en 3 pantallas); el WO #4822 (bomba de piscina $3,850, Pacific Pool) es la misma historia que la notificación de la campana; el change order del pool renovation amarra con el tile "Pool Renovation Update" de More; Reserve Study = 59.4% funded, +$18/mes desde ene 2027 (Financial Hub y notificación); "Sarah Mitchell" es SOLO la agente inmobiliaria del Feed/blog (NO es board member).
+- **Reuniones del board** (canon 20/11/2026): segundo miércoles de cada mes, 5:30 PM, Clubhouse + link de Zoom; sesión ejecutiva 6:30 PM. Mayo 13 (ya pasó) y **junio 10** (próxima, con la audiencia de la violación de Dalton). Annual Meeting = 12 de julio (certifica la elección). Main Roads: $285,000, $254,850 del Reserve Fund y $30,150 entre las **67 units** = $450/unit. Fechas que ya deben estar en el pasado respecto a "hoy" (05/19) o en el futuro según corresponda: revisar al agregar data.
 - Fotos de personas: `public/images/personas/` (17 personas del demo viejo). Avatares BOD: `/images/avatar-*.jpg`.
 
 ## Board Room (tab principal BOD) — COMPLETO 10/10
